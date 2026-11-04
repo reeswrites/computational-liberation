@@ -104,3 +104,17 @@ Decisions from plans/priority-slice1-results.md, all accepted:
 
    Original statement of the decision: the author names, before the run, the rule expected to carry the highest load_freedom in coverture-household, kibbutz-childrens-house, footbinding, mwpa-property and ectogenesis. Note found while settling: no freedom property currently reads ectogenesis R5 (care_assigned_by_sex is already `violated` there because R4 permits male care), so the T3 expectation "R5 is next" needs a property R5 actually carries (e.g. a `persists`-shaped care duty on female intended parents) written and preregistered in slice 1, or the expectation reads load 0 by construction.
 6. **Ectogenesis drift 1:** fix under a v2 preregistration (start_gestation and implant merged; surrogacy `birth_labor_rival` preregistered holds_to_k), committed before the rerun.
+
+### Slice 1 revision 3: liberty flag (preregistered 2026-11-05, before any run)
+
+Author decision (2026-11-05): option (c) from plans/priority-slice1-results.md. An action declaration gets `liberty: bool` (default false). For a liberty action, `(enabled a args)` at t is true iff no disability (`must_not`, `or_else` null) on that instance holds at t, whether or not any `may`/`must` names it. Power actions (the default) keep ADR 0013's 2026-11-03 amendment: constant false when nameless. Trace semantics unchanged either way. Encoder marks a liberty only where the institution withholds by prohibition something people do by default; initial set: `contract` in the coverture chain (coverture-household and every mwpa-* entry). Nothing else.
+
+Predictions, written before the engine change or the dataset change:
+
+1. Layer 1: zero verdict changes across all 25 entries against the committed semantics (`phil rules check-all --no-cache` diffed row by row). R7 (`must_not contract`) holds through coverture, mwpa-creditor-exemption, mwpa-property, mwpa-property-narrowed, mwpa-earnings; R15 (`may contract`) grants from mwpa-sole-trader on.
+2. Ablation, k=6 and 8: deleting R7 flips `cannot_contract` holds_to_k -> violated (freedom, up) in coverture-household, mwpa-creditor-exemption, mwpa-property, mwpa-property-narrowed, mwpa-earnings. R7 is a `must_not`, so it has no prohibit variant and the deletion is not `deregulated` (the flag is `may`-only).
+3. Tops: coverture-household top set becomes {R6, R7} at load_freedom_up 1 (R4 joins only if it already reads 1 in revision 2; not predicted). mwpa-property top set becomes {R6, R7}; the revision-2 miss turns into a hit on the "R7 in top set" criterion. Kibbutz R2, footbinding R3, ectogenesis R5 unchanged. Rediscovery 5/5.
+4. Every row on an entry with no liberty action is byte-identical to revision 2 (ablate-25-v4) apart from timing.
+5. Monotonicity laws (tests/test_rules_meta.py, `enablement_polarity`): a `must_not` on a liberty action is the only rule that moves it; "removing a may never adds reachability" still holds for liberty actions because a `may` on a liberty is redundant. Prediction: the existing metamorphic tests pass unchanged.
+
+Drift from any of 1-5 is recorded in plans/priority-slice1-results.md, never edited to match.
