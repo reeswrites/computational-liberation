@@ -119,9 +119,22 @@ shares, final fluent rates, score vectors, `necessary_modules`. Seed 0 default; 
 (d) **Seed stability**: Spearman rank of institutions by summed score ≥ 0.9 between disjoint halves of ≥ 100
     seeds, for every switch set.
 
+## Gate rerun 2026-11-04, after the default-capacity change (engine 3da984b, `phil abm gate --seeds 100 --workers 4`, spawn pool, 25 entries, 210 s wall / 207 s internal, 19400 runs, 4 workers)
+
+Rerun as the author decided after docs/reviews/2026-11-05-liberty-flag-rev3-review.md item 5, because `Reference.power` now reads default capacities and the ABM gates available actions on it. Layer 2 stays frozen; this is a reproduction check of the record above, not new work.
+
+| Criterion | Frozen record (0abf7a4, 23 entries) | Rerun (3da984b, 25 entries) |
+|---|---|---|
+| (a) footbinding | FAIL, iff pattern at none of 9 grid points, band NONE | FAIL, none of 9, band NONE: same |
+| (b) committed minority | FAIL, max adjacent jump 0.1845 at [0.3, 0.35] | FAIL, 0.1845 at [0.3, 0.35] under both configurations: same |
+| (c) kibbutz | PASS | PASS, band [0.25..4.0], no-implicit pair adopted everywhere it out-pays: same |
+| (d) seed stability | PASS, Spearman 0.963 / 0.958 / 0.957 over 23 | PASS, 0.950 / 0.946 / 0.945 over 25, 0 errors |
+
+Verdicts reproduce. (d) moved by about 0.013 and is over a different entry set (the ectogenesis pair is in, and 24 permission rows are gone), so the two numbers are not the same measurement; it stays above the 0.9 floor. The coverture-chain concern (an extra lawful candidate changing the random draw) did not move any criterion. Wall clock 1132 s serial to 210 s with the spawn pool. Timing: a 36 s, b 6 s, c 94 s, d 71 s.
+
 ## Note 2026-11-04: frozen record may not reproduce on the coverture chain
 
-ADR 0013 amendment 3 (liberty flag, engine 9cf3672) changes `Reference.power`, which `abm/model.py` uses to gate an agent's available actions. `contract` is now a lawful candidate for unmarried wife agents in coverture-household and the six mwpa-* entries; it has no effects and zero payoff but changes the random-lawful-candidate draw, so the gate record above (engine 0abf7a4) is not guaranteed to reproduce on those seven entries. Not rerun. See plans/priority-slice1-results.md "Revision 3 run".
+ADR 0013 amendment 3 (liberty flag, engine 9cf3672) changes `Reference.power`, which `abm/model.py` uses to gate an agent's available actions. `contract` is now a lawful candidate for unmarried wife agents in coverture-household and the six mwpa-* entries; it has no effects and zero payoff but changes the random-lawful-candidate draw, so the gate record above (engine 0abf7a4) is not guaranteed to reproduce on those seven entries. Rerun above (same section, next heading up): verdicts reproduce. See plans/priority-slice1-results.md "Revision 3 run".
 
 ## Non-goals
 
