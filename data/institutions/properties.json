@@ -91,6 +91,11 @@
   "formal": "(forall ((f agent) (d agent)) (=> (and (is_subject d t) (marriageable f d t)) (or (bound d t) (pledged f t))))"
  },
  {
+  "name": "new_convention_adopted",
+  "gloss": "The new name is the convention in use: every member uses the new name and not the old one at step t. Written for `naming-convention` (layer-2 gate (b), Centola et al. 2018; preregistered 2026-11-04). Layer 1: reachable (one use_new step from the declared initial uses_old); not persists (use_old stays permitted). Layer 2: read on the shared role-level state, where set-true wins over set-false in the successor, it is true at a step iff some member fired use_new and no member fired use_old; crit_b's mean over seeds of its last-step value is the adoption rate the committed_minority sweep reads. New-and-not-old, not uses_new alone, so that a committed minority using the new name does not by itself read as adoption.",
+  "formal": "(forall ((m agent)) (and (uses_new m t) (not (uses_old m t))))"
+ },
+ {
   "name": "worker_uninsured",
   "gloss": "Some worker earns through the institution and holds no insurance from it (dark twin of job unbundling).",
   "formal": "(exists ((w agent)) (and (is_worker w t) (not (insured w t))))"
