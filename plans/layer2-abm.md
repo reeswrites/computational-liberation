@@ -11,6 +11,17 @@ collapse, persistence or regendering, and do the rankings survive random seeds?*
 
 Status: slices 1-3 built in philosophy-engine (2026-11-03/04; ADR 0015 A1-A8). `phil abm run`, `sweep`, `score`, `gate` exist; `material` module only, `coordination` and `imagination` are stubs. Gate run below.
 
+## Gate run 2026-11-04, evening (engine 8e246b7 slice 4 + performance, `phil abm gate --seeds 100 --workers 4`, six configurations, 23 entries, 289 s)
+
+| letter | status | detail |
+| --- | --- | --- |
+| (a) footbinding | BLOCKED | the entry now has two pledge actions (family and suitor, encoding review finding 2) and the gate's collapse-action reading is ambiguous; before that edit it ran and FAILED at every grid point (docs/reviews/2026-11-04-abm-slice4-review.md: persistence arm vacuous without `initial_practice: bind`; shared `pledged` lifts the sanction for all) |
+| (b) committed minority | FAIL | max adjacent jump 0.19 against the plan's 0.5; the rise is a sigmoid under the max-share threshold rule (review finding 7: the implicit 0.5 in `max` sets the location) |
+| (c) kibbutz | PASS | as in the earlier run, all three configurations |
+| (d) seed stability | PASS | Spearman 0.948 / 0.960 / 0.960 over 23 institutions |
+
+Overall FAIL. Not tuned; the fix list is in docs/plan.md.
+
 ## Gate run 2026-11-04 (engine 59ee9f7, `phil abm gate --seeds 100`, material only)
 
 | letter | status | detail |

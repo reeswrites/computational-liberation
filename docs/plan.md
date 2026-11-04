@@ -39,6 +39,36 @@ Compute liberation: given institutions as rules and candidate changes, say which
 - Encoding reviewer for Phase 0 (ADR 0012): the author, until there is someone else.
 - (All 2026-11-04 decisions accepted by the author in-session; see the log and ADR 0016's council amendment.)
 
+## Restart list (2026-11-04, evening; in order)
+1. todo — Engine fix pass on slice 4 (docs/reviews/2026-11-04-abm-slice4-review.md): (1) dataset-backed test asserts (a) BLOCKED, now FAIL/BLOCKED; (2) gate (a) persistence arm vacuous: needs `initial_practice: bind` on both footbinding entries (dataset) and a step-0 share guard; gate (a) must read two pledge actions (family + suitor) since the encoding fix; (6) committed-minority draw perturbs the rng stream, use a child rng; (7) the max-share threshold rule puts an implicit 0.5 in the (b) location: restate (b) honestly or compare against θ only; docstrings for 4, 5, 9; add the crit_c band condition to (a) (8).
+2. todo — Then rerun `phil abm gate --seeds 100 --workers 4` (~5 min now) and record.
+3. todo — Council consistency seat: reconcile plans/layer2-abm.md "Sources opened" with the entries' "never opened"; ADR 0011 status differs between repos; engine ADR index lacks pointers to 0015/0016.
+4. done — Footbinding + naming-convention encoded, reviewed (faithful with reservations), fixes applied with preregistration committed before the run (b6f48aa → 584ef7d); `marriage_requires_binding` flagged by construction.
+5. done — Coordination module (engine 20f60d7), reviewed weakened; performance pass (engine 8e246b7): 45 min → 5 min gate, 3.3 min → 1 min tests, outputs identical.
+6. done — README cold-visitor pass with diagrams.
+
+## Decisions waiting on the author (from slice 4; see the slice-4 review's closing paragraph)
+- **A2 per-agent pledge state**: necessary but not sufficient for Mackie's mechanism. Also give the pledge a cost or zero payoff and set `initial_practice: bind`; otherwise (a) is decided by step-0 ties.
+- **Sanction-in-force reading**: keep (no layer-2 number changed on kibbutz, cps, paternity-quota) with the docstring caveat that a sanction conditioned on a fluent the breach clears never lands.
+- **Gate (b) criterion**: the plan's "jump > 0.5" fails on this mechanism (0.19); restate as a location-in-band test, or keep and record.
+- `marriage_requires_binding`: redefine via `married` or drop; `new_cohort` action for footbinding (one-cohort layer 1).
+- Reserved `payoffs`-block keys as the declaration mechanism.
+
+## Standing process
+- Preregistration: expected verdicts are written before runs and never edited to match; drift is recorded (CONTRIBUTING.md).
+- Council after every batch (docs/decisions/0014-review-council.md): correctness, consistency, scope, encoding faithfulness; fresh agents, never the builder. Reports go in docs/reviews/.
+- docs/claims.md is the honest summary; README points to it. CI fails if a `supported` claim has no passing evidence (todo).
+- This file is revised at the end of each batch.
+
+## Housekeeping after the split (2026-11-03)
+- todo — Decouple philosophy-engine tests from data/institutions (move dataset-dependent tests here, or skip when PHIL_DATA_DIR has no institutions), then delete from philosophy-engine: data/institutions/, docs/theory.md, intent.md, plan.md, claims.md, docs/reviews/, plans/, ADRs 0001/0005/0006/0007/0008/0010/0011/0012/0014 (rebuild its index). Keep glossary and CONTRIBUTING in both.
+- todo — Split ADR 0007 and 0010 into theory/process halves (here) and engine halves (there).
+- todo — Re-export docs/theory.md from the Claude doc when the theory changes; make this file canonical once it stabilises.
+
+## Decisions waiting on the author
+- Encoding reviewer for Phase 0 (ADR 0012): the author, until there is someone else.
+- (All 2026-11-04 decisions accepted by the author in-session; see the log and ADR 0016's council amendment.)
+
 ## Next slice (2026-11-04, accepted): gate (a) and (b)
 1. done — `footbinding` + `footbinding-no-pledge` (Mackie 1996; sources mostly UNVERIFIED, network refused every page) and `naming-convention` (Centola 2018, cited from memory, UNVERIFIED) encoded with preregistered layer-1 verdicts; check-all 115/115, layer-1 gate PASS, 23 entries. Encoding-faithfulness review owed.
 2. done — Engine `coordination` module (slice 4, engine 20f60d7, 479 tests): assurance payoff, pledge flip, `committed_minority`, `initial_practice`, sanction-in-force reading, `necessary_modules`; gate runs six configurations. Correctness review owed.
@@ -77,6 +107,7 @@ Compute liberation: given institutions as rules and candidate changes, say which
 5. doing — README cold-visitor pass with diagrams (docs/overview.md, both READMEs).
 
 ## Log
+- 2026-11-04 (night, wound down for usage) — Performance pass landed (pool over seeds, memoised readings, timing, xdist). Reviews: coordination slice weakened (suite fails with footbinding present, (a) persistence vacuous, max-share rule sets the (b) location); encodings faithful with reservations, fixes applied with preregistration committed before the run (first time the order is in git). 100-seed six-configuration gate: (a) BLOCKED, (b) FAIL 0.19, (c) PASS, (d) PASS 0.95-0.96 over 23. Agent costs this stretch: ~730k tokens across 5 agents (perf 252k, slice-4 review 176k, encoding review 128k, dataset fixes ~170k). Day total ~3.0M across 20 agents.
 - 2026-11-04 (evening, spun down at the author's request until the session reset) — Next slice: footbinding + naming-convention encoded (branches merged, 23 entries, 115/115), coordination module built (479 tests), gate (a) runs and fails honestly (shared state lets one pledge lift the sanction for all), README pass with five Mermaid diagrams and docs/overview.md. Kibbutz R6 guard tried and reverted (flips care_and_sanction_same_role to vacuous). All 2026-11-04 decisions applied. Agent costs this stretch: ~1.0M tokens across 6 agents (docs 109k, kibbutz 119k, footbinding 169k, naming 178k, coordination 242k, README 202k). Day total ~2.3M across 15 agents.
 - 2026-11-04 (afternoon) — Author accepted every pending decision: ADR 0016 council reds (the `narrowed` branch is Backlash again, Section 4 test exhaustive, "for whom" = the preregistered liberated role, orthogonality criterion, per-mode sweep criteria, provisional-taxonomy sentence); ADR 0015 A8 and the A1 per-instance-payoff extension accepted; kibbutz: R6 guarded (preregistered, revert on any flip), the coverture iso disagreement recorded not edited, R8 step-0 reading documented; L20 reworded, T11 evidence refreshed. Next slice opened: footbinding + naming-convention encodings and the coordination module.
 - 2026-11-04 (later) — Slice 3 built, reviewed (weakened: gate (c) replayed the layer-1 verdict), fixed (two-axis sweep on the forbidden instance, preregistered and matched), and the A8 slice reviewed (weakened: breach rate mixed chosen and forced breach) and fixed (separate `unavoidable` series, diagnostics once per step). Engine tests 445 -> 467. Agent costs this stretch: ~830k tokens across 5 agents (slice 3 205k, two reviews 135k + 145k, two fix passes 143k + 200k). Batch total ~1.3M tokens across 9 agents.
