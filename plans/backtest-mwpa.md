@@ -1,6 +1,6 @@
 # Backtest: Married Women's Property Acts (preregistered, 2026-11-03)
 
-Tags as in `backtest-data-inventory.md`: [F] opened; [R] recalled, verify. Failure modes DT/DI/BL/RB. Blows: (A) do rules trail material change? (B) did standing precede any floor and persist?
+Tags as in `backtest-data-inventory.md`: [F] opened; [R] recalled, verify. Failure modes DT/DI/BL/RB as planned; relabelled under ADR 0016 in the drift log below (DT -> Capture, BL -> Erosion). Blows: (A) do rules trail material change? (B) did standing precede any floor and persist?
 
 ## 1. Timeline and ordering
 

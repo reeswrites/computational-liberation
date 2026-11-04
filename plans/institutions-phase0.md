@@ -71,8 +71,8 @@ Lowering, kept deliberately thin for Phase 0:
 
 Properties are named and reused across institutions (`properties.json`), e.g. `dependent_cannot_exit`,
 `care_and_sanction_same_role`, `care_assigned_by_sex`, `worker_uninsured`, `solo_care_by_non_birthing_parent`.
-The four failure modes from the theory (dark twin, displacement, backlash, rebundling) are written as properties so
-they are checked, not just worried about.
+The failure modes from the theory (the "who pays" axis: dark twin, displacement, backlash, rebundling; since ADR 0016 also the
+Rule and Time axes, eleven modes in all) are written as properties where a layer can detect them, so they are checked, not just worried about.
 
 ## Stages
 

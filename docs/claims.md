@@ -54,7 +54,7 @@ A claim is `supported` only if a check that could have failed passed and the rev
 | T8 | Rules lead change rather than trail it (the planner reading of the theory). | intent "would surprise the author"; roadmap "Rule" | backtest inventory: whaling, footbinding, Norway quota recorded as rules-trailed; not yet run | untested | 2026-11-03 |
 | T9 | The three mechanisms (material, coordination, imagination) separate and can be switched. | intent; layer 2 plan | none | untested | 2026-11-03 |
 | T10 | Freedom and flourishing add rather than conflict. | intent | none; layer 2 reports disagreement rows | untested | 2026-11-03 |
-| T11 | The four failure modes (dark twin, displacement, backlash, rebundling) can be written as checkable properties. | ADR 0006; plan Checks | `worker_uninsured` (dark twin) exists in `properties.json`; no displacement, backlash or rebundling property | untested | 2026-11-03 |
+| T11 | The "who pays" failure modes (dark twin, displacement, backlash, rebundling; the full list is ADR 0016's eleven) can be written as checkable properties. | ADR 0006; plan Checks | `worker_uninsured` (dark twin), `double_burden` (DI) and `creditor_shield` / `backlash` (filed DT/BL, relabelled Capture/Erosion by ADR 0016) exist in `properties.json`; no rebundling property | untested | 2026-11-03 |
 
 ## Status counts
 

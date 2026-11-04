@@ -67,17 +67,17 @@
  },
  {
   "name": "double_burden",
-  "gloss": "Displacement (DI) check for the MWPA chain: some married wife owns her earnings and is still bound to the household's care (the implicit R3 unchanged). Reachable from the earnings act on; open before (preregistered 2026-11-03).",
+  "gloss": "Displacement (DI) check for the MWPA chain (left as DI pending the author's call, ADR 0016, 2026-11-03: this is a burden that stays, not one that moves; a cleaner home is Perverse incentive): some married wife owns her earnings and is still bound to the household's care (the implicit R3 unchanged). Reachable from the earnings act on; open before (preregistered 2026-11-03).",
   "formal": "(exists ((h agent) (w agent)) (and (married h w t) (owns_earnings w t) (provides_care w h t)))"
  },
  {
   "name": "creditor_shield",
-  "gloss": "Dark twin (DT) check: a husband has conveyed property to his wife, still manages it, and no creditor can attach it. Reachable in the 1839-50 exemption form and under narrow construction; open once the property act removes the husband's management (preregistered 2026-11-03).",
+  "gloss": "Capture check (filed as dark twin (DT) until ADR 0016, 2026-11-03): a husband has conveyed property to his wife, still manages it, and no creditor can attach it. Reachable in the 1839-50 exemption form and under narrow construction; open once the property act removes the husband's management (preregistered 2026-11-03).",
   "formal": "(exists ((h agent) (w agent)) (and (married h w t) (transferred h w t) (controls_property h w t) (not (exists ((c agent)) (can_attach c w t)))))"
  },
  {
   "name": "backlash",
-  "gloss": "Backlash (BL) check: a court has construed the property act narrowly as to a propertied wife, the husband controls her property again and she does not. Reachable only where a narrowing power exists (preregistered 2026-11-03).",
+  "gloss": "Erosion check (filed as backlash (BL) until ADR 0016, 2026-11-03; property name kept, it is a preregistered identifier): a court has construed the property act narrowly as to a propertied wife, the husband controls her property again and she does not. Reachable only where a narrowing power exists (preregistered 2026-11-03).",
   "formal": "(exists ((h agent) (w agent)) (and (married h w t) (acquired_property w t) (narrowed w t) (controls_property h w t) (not (controls_own_property w t))))"
  },
  {
