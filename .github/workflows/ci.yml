@@ -9,6 +9,8 @@ on:
 #   $GITHUB_WORKSPACE/computational-liberation   (this repo)
 #   $GITHUB_WORKSPACE/philosophy-engine          (the engine)
 # Every uv command runs from inside computational-liberation so the engine resolves data/ from here.
+# The engine is checked out at the commit in ENGINE_PIN (one line, full SHA), so a dataset result is
+# reproducible against the engine it was produced with; the pin must be pushed in philosophy-engine first.
 
 jobs:
   test:
@@ -21,10 +23,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: computational-liberation
+      - id: pin
+        run: echo "sha=$(cat ENGINE_PIN)" >> "$GITHUB_OUTPUT"   # engine commit this dataset was run against; bump with each "Sync dataset"
       - uses: actions/checkout@v4
         with:
           repository: reeswrites/philosophy-engine
           path: philosophy-engine
+          ref: ${{ steps.pin.outputs.sha }}
       - uses: astral-sh/setup-uv@v5
       - run: uv python install 3.14
       - run: uv sync --python 3.14
@@ -42,10 +47,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: computational-liberation
+      - id: pin
+        run: echo "sha=$(cat ENGINE_PIN)" >> "$GITHUB_OUTPUT"   # engine commit this dataset was run against; bump with each "Sync dataset"
       - uses: actions/checkout@v4
         with:
           repository: reeswrites/philosophy-engine
           path: philosophy-engine
+          ref: ${{ steps.pin.outputs.sha }}
       - uses: astral-sh/setup-uv@v5
       - run: uv python install 3.14
       - run: uv sync --python 3.14
