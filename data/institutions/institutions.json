@@ -9218,5 +9218,588 @@
    "acquired_property",
    "earns"
   ]
+ },
+ {
+  "id": "footbinding",
+  "name": "Footbinding as a marriage-market convention (Mackie 1996), with pledge associations",
+  "roles": [
+   {
+    "name": "family",
+    "gloss": "the household deciding for a daughter (Mackie's 'parents' who bind, or pledge not to); the institutional sort, not a demographic (ADR 0011)"
+   },
+   {
+    "name": "daughter",
+    "gloss": "the subject: the girl whose feet are bound or left unbound; bound in childhood, so she decides nothing"
+   },
+   {
+    "name": "suitor",
+    "gloss": "the family of a prospective groom: the marriage-market counterparty whose expectations hold the convention"
+   }
+  ],
+  "fluents": [
+   {
+    "name": "is_subject",
+    "arity": 1,
+    "gloss": "x is the institution's subject: the dependent, detainee, child or animal the rules act on",
+    "arg_roles": [
+     "daughter"
+    ]
+   },
+   {
+    "name": "can_exit",
+    "arity": 1,
+    "gloss": "x has a permitted, unsanctioned way out of the relation (see property scope)",
+    "params": [
+     "d"
+    ],
+    "derived": "(enabled refuse_binding d)",
+    "arg_roles": [
+     "daughter"
+    ]
+   },
+   {
+    "name": "bound",
+    "arity": 1,
+    "gloss": "d's feet are bound (the practice is in force for the current cohort)",
+    "arg_roles": [
+     "daughter"
+    ]
+   },
+   {
+    "name": "pledged",
+    "arity": 1,
+    "gloss": "f has joined a pledge association: its daughters are not bound and its sons marry only unbound women",
+    "arg_roles": [
+     "family"
+    ]
+   },
+   {
+    "name": "married",
+    "arity": 1,
+    "gloss": "d has been married off",
+    "arg_roles": [
+     "daughter"
+    ]
+   },
+   {
+    "name": "marriageable",
+    "arity": 2,
+    "gloss": "f can marry off d on the marriage market (bound, or unbound inside a pledge association)",
+    "params": [
+     "f",
+     "d"
+    ],
+    "derived": "(enabled marry_off f d)",
+    "arg_roles": [
+     "family",
+     "daughter"
+    ]
+   }
+  ],
+  "actions": [
+   {
+    "name": "bind",
+    "args": [
+     "family",
+     "daughter"
+    ],
+    "effects": [
+     {
+      "fluent": "bound",
+      "args": [
+       "daughter"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "leave_unbound",
+    "args": [
+     "family",
+     "daughter"
+    ],
+    "effects": [
+     {
+      "fluent": "bound",
+      "args": [
+       "daughter"
+      ],
+      "value": false
+     }
+    ]
+   },
+   {
+    "name": "leave_unbound_pledge",
+    "args": [
+     "family",
+     "daughter"
+    ],
+    "effects": [
+     {
+      "fluent": "pledged",
+      "args": [
+       "family"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "marry_off",
+    "args": [
+     "family",
+     "daughter"
+    ],
+    "effects": [
+     {
+      "fluent": "married",
+      "args": [
+       "daughter"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "reject_match",
+    "args": [
+     "suitor",
+     "daughter"
+    ],
+    "effects": []
+   },
+   {
+    "name": "accept_match",
+    "args": [
+     "suitor",
+     "daughter"
+    ],
+    "effects": [
+     {
+      "fluent": "married",
+      "args": [
+       "daughter"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "refuse_binding",
+    "args": [
+     "daughter"
+    ],
+    "effects": []
+   }
+  ],
+  "rules": [
+   {
+    "id": "R1",
+    "attribute": "family",
+    "deontic": "may",
+    "aim": "(bind family daughter)",
+    "conditions": "(is_subject daughter)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] (the practice; each step is a cohort decision, so the rule stays enabled while a subject exists). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule: no text says a family 'may' bind, the convention presupposes it"
+   },
+   {
+    "id": "R2",
+    "attribute": "family",
+    "deontic": "may",
+    "aim": "(leave_unbound family daughter)",
+    "conditions": "(is_subject daughter)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": true,
+    "source": "implicit: leaving a daughter unbound is always physically open to the family; R3 is what sanctions it. Per ADR 0015 A6 every action an agent may take needs a may rule. UNVERIFIED (reconstructed from the convention account; no primary text opened)"
+   },
+   {
+    "id": "R3",
+    "attribute": "family",
+    "deontic": "must_not",
+    "aim": "(leave_unbound family daughter)",
+    "conditions": "(is_subject daughter)",
+    "or_else": "R5",
+    "strand": "tying",
+    "implicit": true,
+    "source": "SANCTIONED NORM (implicit; a convention, not a written rule): a family that leaves a daughter unbound loses her on the marriage market: Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]. or_else R5 (the suitor's rejection) is the market sanction; the norm is stated unconditionally because it is the wider society's expectation, and it is the SANCTION (R5) that a pledge association lifts, not the norm. Tying: binding is tied to marriage, which is Mackie's whole point"
+   },
+   {
+    "id": "R4",
+    "attribute": "family",
+    "deontic": "may",
+    "aim": "(leave_unbound_pledge family daughter)",
+    "conditions": "(is_subject daughter)",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "source": "the anti-footbinding pledge (ADR 0015 A3 stand-in: `leave_unbound_pledge` is the pledge for `leave_unbound`): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(family). The son half of the pledge (no bound bride) is folded into R5/R6's (pledged family) condition rather than a second pledge action, so the dataset has one pledge; the association's own marriage pool is what R6 reads. Superadditive: the pledge pays only in numbers (Mackie: the pledge associations' 'critical mass')"
+   },
+   {
+    "id": "R5",
+    "attribute": "suitor",
+    "deontic": "may",
+    "aim": "(reject_match suitor daughter)",
+    "conditions": "(and (is_subject daughter) (not (bound daughter)) (not (pledged family)))",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": true,
+    "source": "implicit: the marriage market refuses an unbound bride (R3's or_else), 'maintained by interdependent expectations on the marriage market' (Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]); NOT enabled once the family has pledged, because pledged families' sons marry only unbound women (Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F])): that lapse of the sanction is the mechanism. Rival: a match refused here is a match made elsewhere. UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule"
+   },
+   {
+    "id": "R6",
+    "attribute": "suitor",
+    "deontic": "may",
+    "aim": "(accept_match suitor daughter)",
+    "conditions": "(and (is_subject daughter) (or (bound daughter) (pledged family)))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "the convention from the groom's side: a bound daughter is acceptable; an unbound one only inside the pledge association (Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]; Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F])). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule"
+   },
+   {
+    "id": "R7",
+    "attribute": "family",
+    "deontic": "may",
+    "aim": "(marry_off family daughter)",
+    "conditions": "(and (is_subject daughter) (or (bound daughter) (pledged family)))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "the marriage condition: Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] ('interdependent expectations on the marriage market'); Brown, Bossen, Gates & Satterthwaite-Phillips, 'Marriage Mobility and Footbinding in Pre-1949 Rural China', J. Asian Studies 71(4):1035-1067 (2012), abstract only (search snippet, 2026-11-04, [R]): in a sample of 7,314 rural women footbinding did not guarantee a better marriage (two-thirds did not marry up); the marriage-market reading is Mackie's, and this entry encodes it as the convention, not as a claim that binding bought mobility (the data qualify mobility, not marriageability as encoded). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] marriageable(f, d) = marry_off enabled (R7)"
+   },
+   {
+    "id": "R8",
+    "attribute": "daughter",
+    "deontic": "may",
+    "aim": "(refuse_binding daughter)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": true,
+    "source": "implicit: the physical possibility of refusal is always there; R9 removes it. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(d) = refuse_binding enabled (R8) and not barred (R9)"
+   },
+   {
+    "id": "R9",
+    "attribute": "daughter",
+    "deontic": "must_not",
+    "aim": "(refuse_binding daughter)",
+    "conditions": "(is_subject daughter)",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": false,
+    "source": "binding is done to a young girl by her family: she has no say. A disability (or_else null), the subject-side exit bar per ADR 0013. [ADR 0013: or_else -> null. The subject's exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] UNVERIFIED (reconstructed from the convention account; no primary text opened) (age at binding and the mother's role are general knowledge, no text opened)"
+   }
+  ],
+  "source_text": "'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market.' 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end.' 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end.' (Mackie 1996, abstract, via a search-index snippet 2026-11-04; the article was not opened.) Pledge associations: members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui' / 'Heavenly Foot Society', snippets, [R]).",
+  "expected_properties": {
+   "binding_practised": "persists",
+   "marriage_requires_binding": "holds_to_k",
+   "subject_cannot_exit": "reachable",
+   "dependent_cannot_exit": "reachable"
+  },
+  "isomorphic_to": [],
+  "not_isomorphic_to": [
+   "coverture-household",
+   "police-crisis",
+   "cps"
+  ],
+  "minimal_pair_of": null,
+  "payoffs": {
+   "bind": 1.0,
+   "leave_unbound": 1.0
+  },
+  "coordinated": [
+   "bind",
+   "leave_unbound"
+  ],
+  "notes": "Layer-2 gate (a) institution. Mackie's convention: a family binds because every other family binds and suitors expect it (R3 sanctioned norm, R5 the market's refusal, R6/R7 the marriage condition); the campaign's pledge associations (R4) create a marriage pool in which an unbound daughter is marriageable, so the sanction R5 lapses for pledged families and leave_unbound (R2) becomes costless once enough neighbours pledge. Deviations from the task sketch: no matchmaker/community role (no source gives one a rule); a `suitor` role instead, because the sanction needs an actor and Mackie's sanction is the other side of the market; the pledge's son half is a condition on R5/R6, not a second pledge action; marriageable is derived (ADR 0013) from R7 rather than asserted; R3 is unconditional and R5 carries the (not pledged) condition, so that the pledge changes nothing at layer 1 (the preregistration the gate pair needs). Sources: every text was read as a search snippet, none as a page (network closed in this session); the abstract sentences are verbatim from the index, everything else is [R] or UNVERIFIED and says so per rule. PREREGISTERED (2026-11-04, before any run; layer 1 under init declared, strict compliance, step one): binding_practised PERSISTS in footbinding AND in footbinding-no-pledge (bound(daughter) is initial; the only action that clears it, leave_unbound, is forbidden by the sanctioned norm R3, which strict compliance never breaches; the pledge R4 changes nothing at layer 1 because the norm R3 is unconditional and only the sanction R5 reads pledged). marriage_requires_binding HOLDS_TO_K in both (R7 is the only marry_off rule and its condition is bound-or-pledged; non-vacuous because marriageable(family, daughter) is true at t=0). subject_cannot_exit and dependent_cannot_exit REACHABLE in both (t=0: is_subject(daughter) and R9 bars refuse_binding). The pair's layer-1 verdicts are IDENTICAL (minimal_pair_of.differs_on is null on purpose: the pair differs only at layer 2). Expected warnings: can_sanction, provides_care, has_standing, can_claim_for undeclared (no care or standing here); care_and_sanction_same_role is not expected (it would be vacuous: no provides_care). Isomorphism: not_isomorphic_to the care+control cluster (no carer, no sanctioner over a cared-for subject; the sanction here is a counterparty's refusal); isomorphic_to nothing (no entry has the convention shape). Information only, not an expectation: under --compliance sanctioned binding_practised should FAIL in both (leave_unbound may fire and pay the sanction). LAYER 2 (for the engine's coordination module, which is a stub at writing): the actions the module should treat as `coordinated` are bind and leave_unbound (a family's choice pays only when enough neighbouring families choose the same, Mackie's marriage-market assurance game); the pledge is leave_unbound_pledge (A3 naming convention, counts as adoption of leave_unbound for neighbours' thresholds). philengine has no action tag for this yet (ActionDecl has no `tags`), so the entry carries an ASSUMED extra field `coordinated: [bind, leave_unbound]` that pydantic ignores. Two things the engine agent should know: (1) state is role-level (A2 deferred), so `pledged(family)` flips for every family when one agent pledges and `Reference.successor` lets set-true beat set-false, so bound(daughter) stays true while any family still binds: collapse of binding_practised needs every family to leave unbound in one step; the gate's collapse reading should probably use the adoption share of leave_unbound instead, or the module should read pledges per agent; (2) `payoffs` sets bind and leave_unbound both to 1.0 (the A1 default made explicit) so the gate can sweep them; the sanction R5 is what the material run prices.",
+  "initial": [
+   "(is_subject daughter)",
+   "(bound daughter)"
+  ]
+ },
+ {
+  "id": "footbinding-no-pledge",
+  "name": "Footbinding without the pledge action (minimal pair for gate (a))",
+  "roles": [
+   {
+    "name": "family",
+    "gloss": "the household deciding for a daughter (Mackie's 'parents' who bind, or pledge not to); the institutional sort, not a demographic (ADR 0011)"
+   },
+   {
+    "name": "daughter",
+    "gloss": "the subject: the girl whose feet are bound or left unbound; bound in childhood, so she decides nothing"
+   },
+   {
+    "name": "suitor",
+    "gloss": "the family of a prospective groom: the marriage-market counterparty whose expectations hold the convention"
+   }
+  ],
+  "fluents": [
+   {
+    "name": "is_subject",
+    "arity": 1,
+    "gloss": "x is the institution's subject: the dependent, detainee, child or animal the rules act on",
+    "arg_roles": [
+     "daughter"
+    ]
+   },
+   {
+    "name": "can_exit",
+    "arity": 1,
+    "gloss": "x has a permitted, unsanctioned way out of the relation (see property scope)",
+    "params": [
+     "d"
+    ],
+    "derived": "(enabled refuse_binding d)",
+    "arg_roles": [
+     "daughter"
+    ]
+   },
+   {
+    "name": "bound",
+    "arity": 1,
+    "gloss": "d's feet are bound (the practice is in force for the current cohort)",
+    "arg_roles": [
+     "daughter"
+    ]
+   },
+   {
+    "name": "pledged",
+    "arity": 1,
+    "gloss": "f has joined a pledge association: its daughters are not bound and its sons marry only unbound women",
+    "arg_roles": [
+     "family"
+    ]
+   },
+   {
+    "name": "married",
+    "arity": 1,
+    "gloss": "d has been married off",
+    "arg_roles": [
+     "daughter"
+    ]
+   },
+   {
+    "name": "marriageable",
+    "arity": 2,
+    "gloss": "f can marry off d on the marriage market (bound, or unbound inside a pledge association)",
+    "params": [
+     "f",
+     "d"
+    ],
+    "derived": "(enabled marry_off f d)",
+    "arg_roles": [
+     "family",
+     "daughter"
+    ]
+   }
+  ],
+  "actions": [
+   {
+    "name": "bind",
+    "args": [
+     "family",
+     "daughter"
+    ],
+    "effects": [
+     {
+      "fluent": "bound",
+      "args": [
+       "daughter"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "leave_unbound",
+    "args": [
+     "family",
+     "daughter"
+    ],
+    "effects": [
+     {
+      "fluent": "bound",
+      "args": [
+       "daughter"
+      ],
+      "value": false
+     }
+    ]
+   },
+   {
+    "name": "marry_off",
+    "args": [
+     "family",
+     "daughter"
+    ],
+    "effects": [
+     {
+      "fluent": "married",
+      "args": [
+       "daughter"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "reject_match",
+    "args": [
+     "suitor",
+     "daughter"
+    ],
+    "effects": []
+   },
+   {
+    "name": "accept_match",
+    "args": [
+     "suitor",
+     "daughter"
+    ],
+    "effects": [
+     {
+      "fluent": "married",
+      "args": [
+       "daughter"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "refuse_binding",
+    "args": [
+     "daughter"
+    ],
+    "effects": []
+   }
+  ],
+  "rules": [
+   {
+    "id": "R1",
+    "attribute": "family",
+    "deontic": "may",
+    "aim": "(bind family daughter)",
+    "conditions": "(is_subject daughter)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] (the practice; each step is a cohort decision, so the rule stays enabled while a subject exists). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule: no text says a family 'may' bind, the convention presupposes it"
+   },
+   {
+    "id": "R2",
+    "attribute": "family",
+    "deontic": "may",
+    "aim": "(leave_unbound family daughter)",
+    "conditions": "(is_subject daughter)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": true,
+    "source": "implicit: leaving a daughter unbound is always physically open to the family; R3 is what sanctions it. Per ADR 0015 A6 every action an agent may take needs a may rule. UNVERIFIED (reconstructed from the convention account; no primary text opened)"
+   },
+   {
+    "id": "R3",
+    "attribute": "family",
+    "deontic": "must_not",
+    "aim": "(leave_unbound family daughter)",
+    "conditions": "(is_subject daughter)",
+    "or_else": "R5",
+    "strand": "tying",
+    "implicit": true,
+    "source": "SANCTIONED NORM (implicit; a convention, not a written rule): a family that leaves a daughter unbound loses her on the marriage market: Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]. or_else R5 (the suitor's rejection) is the market sanction; the norm is stated unconditionally because it is the wider society's expectation, and it is the SANCTION (R5) that a pledge association lifts, not the norm. Tying: binding is tied to marriage, which is Mackie's whole point"
+   },
+   {
+    "id": "R5",
+    "attribute": "suitor",
+    "deontic": "may",
+    "aim": "(reject_match suitor daughter)",
+    "conditions": "(and (is_subject daughter) (not (bound daughter)) (not (pledged family)))",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": true,
+    "source": "implicit: the marriage market refuses an unbound bride (R3's or_else), 'maintained by interdependent expectations on the marriage market' (Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]); NOT enabled once the family has pledged, because pledged families' sons marry only unbound women (Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F])): that lapse of the sanction is the mechanism. Rival: a match refused here is a match made elsewhere. UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule"
+   },
+   {
+    "id": "R6",
+    "attribute": "suitor",
+    "deontic": "may",
+    "aim": "(accept_match suitor daughter)",
+    "conditions": "(and (is_subject daughter) (or (bound daughter) (pledged family)))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "the convention from the groom's side: a bound daughter is acceptable; an unbound one only inside the pledge association (Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]; Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F])). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule"
+   },
+   {
+    "id": "R7",
+    "attribute": "family",
+    "deontic": "may",
+    "aim": "(marry_off family daughter)",
+    "conditions": "(and (is_subject daughter) (or (bound daughter) (pledged family)))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "the marriage condition: Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] ('interdependent expectations on the marriage market'); Brown, Bossen, Gates & Satterthwaite-Phillips, 'Marriage Mobility and Footbinding in Pre-1949 Rural China', J. Asian Studies 71(4):1035-1067 (2012), abstract only (search snippet, 2026-11-04, [R]): in a sample of 7,314 rural women footbinding did not guarantee a better marriage (two-thirds did not marry up); the marriage-market reading is Mackie's, and this entry encodes it as the convention, not as a claim that binding bought mobility (the data qualify mobility, not marriageability as encoded). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] marriageable(f, d) = marry_off enabled (R7)"
+   },
+   {
+    "id": "R8",
+    "attribute": "daughter",
+    "deontic": "may",
+    "aim": "(refuse_binding daughter)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": true,
+    "source": "implicit: the physical possibility of refusal is always there; R9 removes it. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(d) = refuse_binding enabled (R8) and not barred (R9)"
+   },
+   {
+    "id": "R9",
+    "attribute": "daughter",
+    "deontic": "must_not",
+    "aim": "(refuse_binding daughter)",
+    "conditions": "(is_subject daughter)",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": false,
+    "source": "binding is done to a young girl by her family: she has no say. A disability (or_else null), the subject-side exit bar per ADR 0013. [ADR 0013: or_else -> null. The subject's exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] UNVERIFIED (reconstructed from the convention account; no primary text opened) (age at binding and the mother's role are general knowledge, no text opened)"
+   }
+  ],
+  "source_text": "Construction: footbinding with the pledge action leave_unbound_pledge and its rule R4 deleted; pledged(family) stays declared but nothing sets it. Historically the pre-1874 situation (no pledge associations).",
+  "expected_properties": {
+   "binding_practised": "persists",
+   "marriage_requires_binding": "holds_to_k",
+   "subject_cannot_exit": "reachable",
+   "dependent_cannot_exit": "reachable"
+  },
+  "isomorphic_to": [],
+  "not_isomorphic_to": [
+   "coverture-household",
+   "police-crisis",
+   "cps"
+  ],
+  "minimal_pair_of": {
+   "id": "footbinding",
+   "rule": "R4",
+   "differs_on": null
+  },
+  "payoffs": {
+   "bind": 1.0,
+   "leave_unbound": 1.0
+  },
+  "coordinated": [
+   "bind",
+   "leave_unbound"
+  ],
+  "notes": "PREREGISTERED (2026-11-04, before any run): the same four verdicts as footbinding (persists, holds_to_k, reachable, reachable): pledges change nothing at layer 1. The pair is the gate (a) 'pledge actions exist' half: crit_a reads _has_pledges on `footbinding` itself, so this entry is the dataset's record of what the no-pledge world looks like and `differs_on` is null by design (no layer-1 property separates them). At layer 2 the preregistration is the plan's: binding persists here under every module.",
+  "initial": [
+   "(is_subject daughter)",
+   "(bound daughter)"
+  ]
  }
 ]
