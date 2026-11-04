@@ -411,7 +411,8 @@
   ],
   "not_isomorphic_to_control": [
    "lease",
-   "public-library"
+   "public-library",
+   "naming-convention"
   ],
   "minimal_pair_of": null,
   "notes": "Care + control: the husband both maintains (R2, provides_care h w) and may chastise/restrain (R5, can_sanction h w) the same subject. That is the sub-signature matched against police-crisis and cps; the wife's own labour (R3) is implicit and runs the other way (provides_care w h), which is why care_and_sanction_same_role is restricted to care received by is_subject, and why care_assigned_by_sex is 'violated' rather than 'holds' (the husband's maintenance also counts as care). Pitfalls: (1) an encoder that drops R3 loses the household-labour strand and reports the wife as purely a recipient of care; (2) R4 and R7 are disabilities (or_else null) and should not be lowered as sanctioned prohibitions; (3) no_standing is 'reachable' not 'holds_to_k' because before marry() the woman has standing (feme sole); the iso with the animal entries on 'cannot sue in own name' holds only post-marriage and is structural, not a claim of equal status. Rival reading: equity courts' separate estates (not encoded) gave propertied wives a partial exit from R1; recorded here, not in the rules. ADR 0009: R2 and R3 are state obligations (must-be provides_care); as per-step action obligations they filled the one action slot at every married step and made marriage unsatisfiable (care_assigned_by_sex held vacuously)."
@@ -859,7 +860,8 @@
   ],
   "not_isomorphic_to_control": [
    "lease",
-   "public-library"
+   "public-library",
+   "naming-convention"
   ],
   "minimal_pair_of": null,
   "notes": "The same role (officer) is bound to care (R2, assess) and empowered to detain (R3) and use force (R5): care_and_sanction_same_role. subject_cannot_exit is reachable with scope=interaction only (the 72-hour hold), not institution; report the scope. Pitfalls: (1) R1 is the implicit rule that makes this police-crisis rather than crisis-team; the statute itself also names mobile crisis teams as holders of the 5150 power, so an encoder reading only the statute will not see why armed officers are the ones who come; (2) a trivial encoding that ignores or_else on R4 will cluster this with crisis-team (plan: worked pitfall); (3) no_standing is unreachable_open, not 'safe': the subject keeps has_standing via R8, but the bound k=6 says nothing beyond it. Armed status (R6) is a tying strand: it is not required by 5150 and is what the crisis-team reform removes. ADR 0009: R2 is a state obligation ('on an ongoing basis' is a state); R1 stays an action obligation but dispatch consumes the call. Exogenous triggers (call_received, in_crisis, danger, resists) are initial_free, since under init=declared a fluent no action sets would otherwise be pinned false and no call could ever arrive.",
@@ -1483,7 +1485,8 @@
   ],
   "not_isomorphic_to_control": [
    "lease",
-   "public-library"
+   "public-library",
+   "naming-convention"
   ],
   "minimal_pair_of": null,
   "notes": "Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (assess + detain) and coverture (maintain + chastise). R7 is the court-reassigns-on-best-interest rule that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists 'fails' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) 'reachable' for subject_cannot_exit is permission, not frequency. Only WIC 306 was read; R1, R2, R7, R8 cite sections from memory and are marked UNVERIFIED in source. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, immediate_danger, parent, female, best_interest) are initial_free.",
@@ -4852,6 +4855,129 @@
   "initial": [],
   "initial_free": [
    "disruptive"
+  ]
+ },
+ {
+  "id": "naming-convention",
+  "name": "Naming convention (Centola et al. 2018 naming game; layer-2 gate (b) calibration control)",
+  "roles": [
+   {
+    "name": "member",
+    "gloss": "a participant in the naming game; everyone is a peer (one role, ADR 0006/0011: an institutional sort, not a population)"
+   }
+  ],
+  "fluents": [
+   {
+    "name": "uses_old",
+    "arity": 1,
+    "gloss": "m uses the established (old) name for the object",
+    "arg_roles": [
+     "member"
+    ]
+   },
+   {
+    "name": "uses_new",
+    "arity": 1,
+    "gloss": "m uses the new name for the object (the one the committed minority introduces)",
+    "arg_roles": [
+     "member"
+    ]
+   }
+  ],
+  "actions": [
+   {
+    "name": "use_old",
+    "args": [
+     "m"
+    ],
+    "effects": [
+     {
+      "fluent": "uses_old",
+      "args": [
+       "m"
+      ],
+      "value": true
+     },
+     {
+      "fluent": "uses_new",
+      "args": [
+       "m"
+      ],
+      "value": false
+     }
+    ]
+   },
+   {
+    "name": "use_new",
+    "args": [
+     "m"
+    ],
+    "effects": [
+     {
+      "fluent": "uses_new",
+      "args": [
+       "m"
+      ],
+      "value": true
+     },
+     {
+      "fluent": "uses_old",
+      "args": [
+       "m"
+      ],
+      "value": false
+     }
+    ]
+   }
+  ],
+  "rules": [
+   {
+    "id": "R1",
+    "attribute": "member",
+    "deontic": "may",
+    "aim": "(use_old m)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "source": "Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] "
+   },
+   {
+    "id": "R2",
+    "attribute": "member",
+    "deontic": "may",
+    "aim": "(use_new m)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "source": "Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation (as R1: the alternative name; the committed minority holds it regardless of payoff, which is a model parameter, not a rule). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] "
+   }
+  ],
+  "payoffs": {
+   "use_old": 1.0,
+   "use_new": 1.0,
+   "coordinated": [
+    "use_old",
+    "use_new"
+   ],
+   "committed_action": "use_new",
+   "initial_practice": "use_old"
+  },
+  "source_text": "From memory, NOT a verified quotation (the page could not be opened from this session): the experiment ran online groups of 20-30 participants who, in randomly paired rounds, each proposed a name for a pictured object and were paid a small reward when the two names matched and charged a small penalty when they did not; once a group had converged on one name, a committed minority instructed to use a different name was added, and minorities of about 25% of the group overturned the established name while smaller ones (around 20% and below) did not. The abstract (as recalled) reports 'direct empirical demonstration of the existence of a tipping point in the dynamics of changing social conventions' and that minority groups that reached the critical mass 'were consistently able to overturn the established behavior'. Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation",
+  "expected_properties": {
+   "new_convention_adopted": "reachable"
+  },
+  "isomorphic_to": [],
+  "not_isomorphic_to": [
+   "coverture-household",
+   "police-crisis",
+   "cps"
+  ],
+  "minimal_pair_of": null,
+  "notes": "Calibration / control entry for layer-2 gate (b) (plans/layer2-abm.md; philengine/abm/gate.py crit_b reads id `naming-convention`, the payoffs-block key `committed_action`, parameter `committed_minority`; the property `new_convention_adopted` was its placeholder reading until engine slice 4, see the drift note). A pure coordination game, not a liberation case: no subject, no care, no sanction, no exit; the only question it serves is whether the coordination module's tipping location emerges from the sweep rather than from a constant. committed_minority: share of agents holding `use_new` regardless of payoff; Centola's observed tipping band ~ 25% (the experiment's threshold was between 21% and 31% of the group). Recorded here, not asserted by the model. Payoffs (A1): both actions 1.0, because the coordination module pays only on matching, so the payoff IS the matching reward and the two names are symmetric; the gate sweeps committed_minority, not payoffs. Rules: two `may` with condition true (ADR 0015 A6 strict enabledness: every action needs a may) and no must or must_not (the game has no sanction: a mismatch forgoes the reward, it breaks no rule). Fluents: `uses_old` / `uses_new` are two fluents rather than one, because the ABM's state is role-level and shared (A2 deferred) and `Reference.successor` lets set-true win over set-false, so when members fire both names in one step both atoms are true; the property therefore asks for new-and-not-old, which on the shared state reads 'some member fired use_new and no member fired use_old this step', i.e. the convention has switched. `initial: (uses_old member)` records the established convention at layer 1. The payoffs block also carries the three RESERVED keys the engine's slice-4 coordination module reads (philengine/abm/model.py RESERVED_PAYOFF_KEYS, ASSUMED, added by the engine agent concurrently on 2026-11-04 after the first material-only run here showed the agents bootstrapping practice from a payoff tie by rng and ignoring `initial`): `coordinated: [use_old, use_new]` (both names are assurance-gated: a name pays only when the agent's same-role neighbour share of it meets its threshold), `committed_action: use_new` (what the committed_minority holds whatever it pays), `initial_practice: use_old` (every uncommitted member starts on the old name, so an established convention exists for the minority to tip). These keys are hand inputs, like the numbers (A1); nothing in them names a tipping location. Layer 2 with the coordination module (information, not a dataset verdict; written before the first (b) run): some adjacent pair of sweep points 0.05..0.50 is expected to show an adoption jump > 0.5 (crit_b PASS) and the location is NOT preregistered: the gate's own point is that the dataset records Centola's band and the model does not assert it. DRIFT, recorded not edited (2026-11-04, after the run): the engine's slice-4 crit_b no longer reads `new_convention_adopted` (its review finding 6: a property mean cannot express a population share under shared role state) but the member role's last-step share of `committed_action`; at 30 seeds that share by committed_minority 0.05..0.50 is [0.05, 0.10, 0.15, 0.20, 0.35, 0.54, 0.70, 0.80, 0.90, 0.97]: equal to the committed share through 0.20 (no uncommitted member converts), above it from 0.25 on, so the tipping begins at the 0.20 -> 0.25 boundary, inside Centola's band, but the curve is graded and the max adjacent jump is 0.19, not > 0.5: crit_b FAIL under both coordination configurations. The location was not set by the dataset (the entry carries no threshold); whether the sharpness criterion, the threshold draw U(0, threshold_max) or the 20-agent graph is what grades the curve is an engine question, not a dataset one. `new_convention_adopted` stays the layer-1 property (reachable, as preregistered) and an information line at layer 2. Negative control in spirit: it is listed in CONTROLS (`not_isomorphic_to_control` on the three care+control cluster members, ADR 0007 / ADR 0013) because it must match nothing: PREREGISTERED none@guard+strands against coverture-household, police-crisis and cps (no must, no rival may, no subject). PREREGISTERED (2026-11-04, before any run): new_convention_adopted reachable (one use_new step from the declared initial state); persists / holds_to_k are not claimed and would read fails / violated (use_old is always permitted); no inert rule (both are may); no vacuity flag (no invariant claimed); layer-1 gate unchanged except the three new control pairs reading none. Layer 2, material only (information, no verdict): with equal payoffs, imitation never fires (no neighbour out-earns) and the step-0 bootstrap splits practice by rng, so the property's last-step rate over seeds is expected to be coin-flip-shaped (neither ~0 nor ~1), not a tipping curve; crit_b stays BLOCKED until the coordination module and committed_minority exist. Deviations from the plan sketch: no `coordinated(member)` derived fluent (nothing reads it; the coordination module tags actions by the payoffs block, A1); source not fetched (network), so every figure is marked UNVERIFIED. Sources: Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation.",
+  "initial": [
+   "(uses_old member)"
   ]
  },
  {

@@ -2,10 +2,11 @@
 
 Hand-reconstructed institutions for the Phase 0 institutions family (`plans/institutions-phase0.md`).
 
-- `institutions.json`: list of 14 entries (`coverture-household`, `police-crisis`, `cps`, `crisis-team`,
+- `institutions.json`: list of 21 entries (`coverture-household`, `police-crisis`, `cps`, `crisis-team`,
   `paternity-quota`, `transferable-leave`, `companion-ownership`, `companion-guardianship`,
-  `companion-guardian-renamed`, the two negative controls `lease`, `public-library`, and the gate (d) pair
-  `kibbutz-childrens-house`, `kibbutz-childrens-house-no-implicit`, and the expected-match control `airline-flight`). Each has `roles`, `fluents`, `actions` (with effects as fluent literals),
+  `companion-guardian-renamed`, the negative controls `lease`, `public-library` and `naming-convention`, the gate (d) pair
+  `kibbutz-childrens-house`, `kibbutz-childrens-house-no-implicit`, the expected-match control `airline-flight`, and the
+  six-entry MWPA chain `mwpa-*`). Each has `roles`, `fluents`, `actions` (with effects as fluent literals),
   ADICO `rules`, `source_text`, `expected_properties`, `isomorphic_to`, `not_isomorphic_to`, `minimal_pair_of`, `notes`.
 - `properties.json`: named properties reused across entries. The plan's nine plus one extra,
   `leave_reserved_for_non_birthing_parent`, added so the paternity-quota / transferable-leave pair gets
@@ -231,3 +232,35 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
 - Not expressed: a ranking of failure modes (the plan's "top-ranked risk" criterion; the engine returns verdicts, not
   ranks); dower trade-offs (RB, [R]); divorce reform (`can_exit` is unchanged by construction); the trace floor
   (`control_property` still fires in traces after R1 is deleted, with no power behind it, ADR 0013 amendment).
+
+## Layer-2 gate (b): `naming-convention` (2026-11-04)
+
+- Centola, Becker, Brackbill & Baronchelli 2018 (Science 360(6393):1116-1119) naming game, encoded as the calibration
+  entry `philengine/abm/gate.py` crit_b reads: one role `member`, fluents `uses_old` / `uses_new`, actions `use_old` /
+  `use_new`, two `may ... when true` rules (ADR 0015 A6), no must / must_not (the game has no sanction), `payoffs`
+  block `{use_old: 1.0, use_new: 1.0}` (A1: the payoff is the matching reward, so the names are symmetric),
+  `initial (uses_old member)`. A pure coordination game, not a liberation case and not a historical institution
+  (ADR 0004: no forward claim; ADR 0011: the agents stand in for experimental subjects, not a real population).
+  `committed_minority` is a model parameter the entry's notes record (Centola's band ~ 25%, threshold between 21% and
+  31%), never a rule. The paper could not be opened from the encoding session (every host refused), so its figures
+  and quotations are marked UNVERIFIED in the entry.
+- New property `new_convention_adopted`: `(forall m (and (uses_new m t) (not (uses_old m t))))`, new-and-not-old so
+  that a committed minority's own use of the new name does not read as adoption on the ABM's shared role-level state
+  (where set-true wins over set-false in the successor).
+- Added to `CONTROLS` (`not_isomorphic_to_control` on the three care+control members): it must match nothing.
+- **Preregistered before the first run** (entry notes): reachable; none@guard+strands against all three cluster
+  members; no inert rule; layer-2 material-only rate coin-flip-shaped. Result: all as preregistered (check-all 107/107,
+  `phil rules gate` PASS with the three new control pairs none@guard+strands, 15 tests pass; `phil abm run --seeds 5`
+  material only, before the reserved keys below: last-step `use_new` share 0.8 / 0.4 / 0.9 / 0.7 / 0.0 over seeds,
+  mean 0.56, a coin flip as expected; with `initial_practice: use_old` every member stays on the old name, 5/5 seeds).
+- The payoffs block also carries the engine's slice-4 RESERVED keys (`philengine/abm/model.py RESERVED_PAYOFF_KEYS`,
+  ASSUMED; added concurrently on 2026-11-04 after the first material-only run showed agents bootstrapping practice
+  from a payoff tie by rng and ignoring `initial`): `coordinated: [use_old, use_new]`, `committed_action: use_new`,
+  `initial_practice: use_old`. Hand inputs like the numbers (A1); none names a tipping location.
+- **Layer-2 drift, recorded not edited.** Engine slice-4 crit_b reads the member role's last-step share of
+  `committed_action` (not the property: a property mean cannot express a population share under shared role state).
+  At 30 seeds, share by `committed_minority` 0.05..0.50 = [0.05, 0.10, 0.15, 0.20, 0.35, 0.54, 0.70, 0.80, 0.90, 0.97]:
+  equal to the committed share through 0.20, above it from 0.25 on (tipping begins at 0.20 -> 0.25, inside Centola's
+  band), but graded: max adjacent jump 0.19, not > 0.5, so (b) FAILs under both coordination configurations. The
+  entry carries no threshold; what grades the curve (the > 0.5 criterion, thresholds U(0, threshold_max), the 20-agent
+  graph) is an engine question. `new_convention_adopted` stays the layer-1 property (reachable, as preregistered).
