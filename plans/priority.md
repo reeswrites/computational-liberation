@@ -142,3 +142,9 @@ Predictions:
 6. Rediscovery is not claimed for this revision; the five test entries' expected tops are unchanged and the run is a consistency check of the convention, not evidence (claims L21).
 
 Drift from 1-6 is recorded in plans/priority-slice1-results.md, never edited to match.
+
+### Slice 1 revision 4b: prohibit-variant label on default-capacity actions (preregistered 2026-11-04 local, before the edit)
+
+Author decision (2026-11-04, after docs/reviews/2026-11-04-capacity-convention-rev4-review.md item 2): the `offcondition_free` label is skipped for a `may` on a default-capacity action, because "free off-condition" is that action's baseline, so the prohibit variant is a clean "add a disability" row and ranks normally.
+
+Predictions: (1) exactly one row changes status across the dataset: mwpa-suit `R16~prohibit` leaves `offcondition_free_not_ranked` and ranks with a freedom_down flip (no_standing), load_freedom_up 0; (2) no entry's top set changes; (3) all other rows byte-identical to the revision-4 run apart from timing; (4) layer 1 untouched (no diff run needed; rules_ablate only).
