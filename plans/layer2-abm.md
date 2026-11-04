@@ -9,7 +9,20 @@ often, and which mechanism a change needed (`docs/intent.md`, "How change happen
 The question this phase answers: **given verified rules, which mechanism module is needed to reproduce a known
 collapse, persistence or regendering, and do the rankings survive random seeds?**
 
-Status: plan only (2026-11-03). No code until the handoff decisions are accepted.
+Status: slices 1-3 built in philosophy-engine (2026-11-03/04; ADR 0015 A1-A8). `phil abm run`, `sweep`, `score`, `gate` exist; `material` module only, `coordination` and `imagination` are stubs. Gate run below.
+
+## Gate run 2026-11-04 (engine 59ee9f7, `phil abm gate --seeds 100`, material only)
+
+| letter | status | detail |
+| --- | --- | --- |
+| (a) footbinding | BLOCKED | no footbinding institution in the dataset; coordination module is a stub |
+| (b) committed minority | BLOCKED | no naming-convention institution; coordination stub; `committed_minority` not a parameter |
+| (c) kibbutz | PASS | two-axis sweep (sanction_weight {0, 0.25, 0.5, 1, 2, 4} × payoff of `assign(committee,male_member)` {1, 1.5, 2, 3}, 50 seeds per point, read off the committee's late-window adoption share). kibbutz-childrens-house: the forbidden assignment is excluded at every sanction_weight ≥ 0.25 for every payoff (100% of seeds) and adopted at sanction_weight 0 wherever it out-pays (100%). no-implicit pair: adopted at every sanction_weight wherever it out-pays (100%). Preregistered from the choice rule before the run; matched exactly. |
+| (d) seed stability | PASS | Spearman 0.966 over 20 institutions, halves 50/50, 0 errors; necessary not sufficient (freedom components are static per role on this dataset) |
+
+Overall: BLOCKED (exit 2) until (a) and (b) can run. What (c) demonstrates: the sanctioned norm R2 governs whether the committee assigns a man (graduated escalation evicts the forbidden assignment within a few steps at any positive weight on the grid, even when it pays 3×; with R2 removed it is adopted at every weight). The collapse region is only sanction_weight 0 on this grid, so the demonstration is that sanctions bite, not where the threshold lies. The earlier property-trace reading (property true at t=0, pair broken at step 1 by a bootstrap draw) was the layer-1 verdict replayed and is now an information line only (docs/reviews/2026-11-04-abm-slice3-review.md). Reviews: docs/reviews/2026-11-04-abm-state-obligations-review.md, 2026-11-04-abm-slice3-review.md; both fix passes landed (engine 313b508, 59ee9f7).
+
+Resolved open questions: payoffs live in an optional `payoffs` block on the dataset entry, keys may name an action, an action instance (`assign(committee,male_member)`, A1 extension 2026-11-04, ASSUMED) or an income fluent; pledges are a `_pledge` naming convention (A3).
 
 ## Handoff decisions
 
