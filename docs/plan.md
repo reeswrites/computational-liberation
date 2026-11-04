@@ -8,7 +8,7 @@ Compute liberation: given institutions as rules and candidate changes, say which
 ## Thin path (do these in order; everything else waits)
 1. doing — Layer 1 passes the second skeptical review (power derived from rules, breakers for every obligation, negative controls, gate reads precommitted levels). Owner: build agent + council.
 2. done — Added kibbutz-childrens-house and hit gate (d) (PASS); third review weakened the claim (L6) and R2 is now a sanctioned norm.
-3. todo — One backtest end to end: Married Women's Property Acts (plans/backtest-data-inventory.md), chosen because it can land both of the author's falsifiers (docs/intent.md). Verify dates first.
+3. doing — One backtest end to end: Married Women's Property Acts (layer 1 run 2026-11-03: direction PASS, every preregistered flip matched; failure modes reachable but unranked, so inconclusive until layer 2; ordering test needs layer 2 + state dates) (plans/backtest-data-inventory.md), chosen because it can land both of the author's falsifiers (docs/intent.md). Verify dates first.
 4. todo — First priority computation on the institutions already encoded; report per-module (freedom, flourishing) and combined.
 
 ## Parked (written, not started; revisit after step 3)
@@ -36,5 +36,6 @@ Compute liberation: given institutions as rules and candidate changes, say which
 - Encoding reviewer for Phase 0 (ADR 0012): the author, until there is someone else.
 
 ## Log
+- 2026-11-03 (evening) — Third council review: (a),(b) supported; (c),(d) weakened (strand/implicit tags are human inputs). Kibbutz R2 re-encoded as a norm; airline control added; interpretation guide; claims register tested in CI; MWPA backtest designed with sources and run at layer 1. Agent costs this batch: ~1.0M tokens across 8 agents.
 - 2026-11-03 — Theory, intent, ADRs 0001–0013, institutions family built end to end, first gate "passed", skeptical review retracted the care+control claim; rebuild in progress. Repo prepared for public release.
 - 2026-11-03 — Batch 2 kibbutz + third review + fix. Agent costs: kibbutz build ~167k tokens / 12 min; third review ~152k / 6 min; this fix (norm re-encode, airline control, docs) cost not metered inside the agent, see the session record. Gate (d) still PASS after re-encode; check-all 47/47; claims L6 weakened, L19 added.

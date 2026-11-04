@@ -11,6 +11,7 @@ uv run phil rules gate             # informational for now
 ## Adding an institution
 1. Edit the generator in `data/institutions/` (`_gen_institutions.py`, `_gen_properties.py`); never hand-edit the generated JSON.
 2. Write the expected verdicts **before** running anything. They are preregistrations.
+   - docs/claims.md is tested: a supported claim must cite a passing test, gate criterion or review.
 3. Cite sources for every rule (statute, charter, bylaw). Mark anything you could not confirm `UNVERIFIED`.
 4. Rerun the generator, then the checks and tests.
 5. Do not edit expected verdicts to match results. If the engine disagrees, record the disagreement (and why) instead.
