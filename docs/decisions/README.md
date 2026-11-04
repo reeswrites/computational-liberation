@@ -26,7 +26,7 @@ A decision is changed by a new ADR that supersedes the old one, not by rewriting
 | [0007](0007-dataset-clusters-pairs-and-gate.md) | Dataset as clusters and minimal pairs, with a rediscovery gate | accepted |
 | [0008](0008-guardrails.md) | Guardrails on populations and contested history | accepted |
 | [0010](0010-iso-abstraction-levels.md) | Isomorphism abstraction level is precommitted per claim | accepted |
-| [0011](0011-dual-use-and-scope-limits.md) | Dual use and scope limits | proposed |
+| [0011](0011-dual-use-and-scope-limits.md) | Dual use and scope limits | accepted |
 | [0012](0012-participation-in-encoding.md) | Participation in encoding | proposed |
 | [0014](0014-review-council.md) | Review council after every batch | accepted |
 | [0015](0015-layer2-abm-design.md) | Layer 2 ABM design choices (A1–A7) | accepted |
