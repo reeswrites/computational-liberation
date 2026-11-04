@@ -223,3 +223,16 @@ Preregistration: plans/priority.md "Slice 1 revision 4" (a7ca980, before the dat
 | 6 | No rediscovery claim | none made |
 
 Engine for the ablation: 7dc108c (spawn-parallel, `--workers 4`, 86 s wall for 25 entries at k=6,8). Two engine commits were used for this revision: faefef1 for the layer-1 diff and gate, 7dc108c for the ablation; the layer-1 semantics (rules_lower, rules_reference, rules_checks, sexpr) are identical between them (the source hash the baseline records did not change). The first diff run exited 1 after printing "0 changed, 0 added, 0 removed" because the scoreboard append raised on a prose header; the cached rerun exited 0. The scoreboard rows marked `dirty+` were written while other builders' uncommitted edits (abm/, rules_ablate.py) sat in the engine tree, none of them in the layer-1 semantics. Drift from the revision-4 preregistration: none. Clauses that could not fail as written, per docs/reviews/2026-11-04-capacity-convention-rev4-review.md item 7: prediction 5's "the deleted ids leave the not-ranked lists" (a deleted rule cannot appear in any list), prediction 6 (a disclaimer, not a prediction), and prediction 2's airline clause (airline-flight has no `isomorphic_to` expectation, so "still matches" was never checked by the gate). They are recorded as not testable rather than held. Reproduction: `cd computational-liberation && uv run phil rules ablate --k 6,8 --workers 4 --json ablate-25-v6.json --summary ablate-25-v6-summary.json`.
+
+## Revision 4b run (2026-11-04 local; engine 21ec685)
+
+Preregistration: plans/priority.md "Slice 1 revision 4b" (f12b061, before the engine edit).
+
+| # | Prediction | Result |
+|---|---|---|
+| 1 | Exactly one row changes: mwpa-suit `R16~prohibit` leaves `offcondition_free_not_ranked`, ranks with a freedom_down flip on no_standing, up 0 | **held**: row-by-row diff against the revision-4 output finds that one row; `offcondition_free` false, down 1, up 0, flip no_standing freedom_down |
+| 2 | No top set changes | **held**: scoreboard top_rule_changes 0 |
+| 3 | All other rows identical apart from timing | **held** (334 of 335 rows per k identical) |
+| 4 | Layer 1 untouched | not run; the change is in rules_ablate only (the layer-1 source hash is unchanged) |
+
+Council item 7 (docs/reviews/2026-11-04-capacity-convention-rev4-review.md): the spawn-equality test now covers a default-capacity action and a non-true-condition `may`; no serial artefact is kept. Reproduction: `uv run phil rules ablate --k 6,8 --workers 4 --json ablate-25-v8.json --summary ablate-25-v8-summary.json --prev ablate-25-v7-summary.json --scoreboard docs/scoreboard-ablate.md`.
