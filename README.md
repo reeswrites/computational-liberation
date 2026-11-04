@@ -167,6 +167,7 @@ Expectations are written and committed before any run and never edited to match 
 **Theory**
 - [Theory](docs/theory.md) (snapshot of the canonical Claude doc; edit there, not here): core thesis, how oppression forms, how liberation starts, prioritizing, downstream consequences, precedents, non-human liberation.
 - [Priority plan](plans/priority.md): the ablation design, loads, cut sets, the disagreement locator and the preregistered slices.
+- [Connections](docs/connections.md): where the feminist, abolitionist, animal, disability, race and anarchist cases meet at the rule level; the forms-by-literature matrix with its holes; composition and voice as the missing pieces; four preregistered connection claims.
 - [Plan](docs/plan.md): the thin path, what is parked, standing process, and a dated log of every batch.
 
 **Evidence and process**
