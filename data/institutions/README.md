@@ -31,6 +31,10 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
 - `or_else: null` on a `must_not` means a disability (no power exists), not an unenforced prohibition
   (coverture R4/R7, crisis-team R4, companion-ownership R9, and since ADR 0013 every subject-side exit bar:
   coverture R6, police-crisis R4, cps R10, companion R6). Lowering should not invent a sanctioner.
+- A capacity a person of that kind holds by default (leave, sue, sleep_home, refuse_binding, contract) is not written
+  as an implicit `may ... when true`: the action carries `default_capacity: true`, it is enabled unless an express
+  disability (`must_not`, `or_else` null) bars it, and a sanctioned `must_not` only punishes its exercise. Powers are
+  conferred by `may`/`must`. See "Default-capacity actions (revision 4)" below.
 - Minimal pairs: `crisis-team` ~ `police-crisis` (R3), `transferable-leave` ~ `paternity-quota` (R2),
   `companion-guardianship` ~ `companion-ownership` (R9). `companion-guardian-renamed` is ownership under
   the bijection owner -> guardian.
@@ -95,9 +99,10 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
   *vacuous* (antecedent unreachable: nobody holds sanction power), which check-all flags. Before the fix both
   deletions left the verdicts unchanged, because an action no rule named counted as always enabled (second review,
   items 1-2).
-- **Exit is a may + a disability.** Each subject gets an implicit `may leave when true` (coverture R8, police R9,
-  cps R9, companion R12; crisis-team R5 and public-library R4 already had it) and the bar is a `must_not leave`
-  with `or_else: null`. The old `or_else` links (coverture R6 -> R5, police R4 -> R5, companion R6 -> R7) duplicated
+- **Exit is a default capacity + a disability** (revised 2026-11-04, revision 4; originally an implicit `may leave
+  when true` per subject: coverture R8, police R9, cps R9, companion R12, which revision 4 deleted). `leave` is flagged
+  `default_capacity` on the action, and the bar is a `must_not leave` with `or_else: null`; crisis-team R5 and
+  public-library R4 keep their sourced `may leave` (see the revision 4 section). The old `or_else` links (coverture R6 -> R5, police R4 -> R5, companion R6 -> R7) duplicated
   the sanction rule's own trigger (`resists`, `at_large`) and are dropped; companion R6 is conditioned on
   `is_subject`, not `owns`, because reassign / abandon clear `owns` in the one-owner domain and would otherwise read
   as giving the animal an exit. `enabled` ignores sanctioned prohibitions (see the schema request on `permitted`).
@@ -175,7 +180,7 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
   "was always a woman's role"); R3 metapelet `must (provides_care metapelet child) when assigned` (must-be,
   load_bearing, breaker `neglect`, or_else R6); R4 child `must_not sleep_home` (disability: communal sleeping);
   R5 male_member `may visit`; R6 committee `may reprimand` (implicit, UNVERIFIED); R7 child `may sleep_home`
-  (implicit; carries `can_exit`). Derived: `can_assign := (enabled assign c x)`, `can_sanction := (enabled reprimand
+  (implicit; carried `can_exit`; deleted in revision 4: `sleep_home` is now a `default_capacity` action). Derived: `can_assign := (enabled assign c x)`, `can_sanction := (enabled reprimand
   c x)`, `can_exit := (enabled sleep_home s)`. `female` has `arg_roles [metapelet]`.
 - Sources opened: Wikipedia (nanny "always a woman's role"; communal sleeping; 2-3 h/day with parents); JTA
   1997-06-16 (Baram, the last children's house, closed June 1997); SCMP 1997 (first closures ~20 years earlier;
@@ -243,7 +248,7 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
   suitor may accept_match_pledge (the pledge's son half, effect `pledged(suitor)`; added 2026-11-04, encoding review
   finding 2); R5 suitor may reject_match while unbound and neither side pledged (the market sanction, which either
   pledge lifts); R6 suitor may accept_match when bound or either side pledged; R7 family may marry_off when bound or pledged (`marriageable(f, d)` is derived
-  from it, ADR 0013); R8/R9 the daughter's exit (may refuse_binding, barred by a disability: `can_exit`). `initial`:
+  from it, ADR 0013); R9 the daughter's exit bar (a disability on `refuse_binding`, a `default_capacity` action since revision 4; the implicit R8 `may refuse_binding` is deleted): `can_exit`. `initial`:
   `is_subject(daughter)`, `bound(daughter)`, so `binding_practised` holds at t=0 (the ABM gate excludes seeds where it
   does not).
 - New properties: `binding_practised` (exists a bound subject; the gate's `A_PROP`) and `marriage_requires_binding`
@@ -386,23 +391,50 @@ New property `female_parent_care_persists` (kind `freedom`, check `persists`): f
 
 **New property `care_duty_on_women`** (kind `freedom`, family `care_duty_on_women`, `check: invariant`; slice 1 revision 2 (d)), so that ectogenesis R5 carries a freedom property. Formula: for every step t, child c and previous step t0 with succ(t0, t): if c was a subject with a female parent at t0, then a female parent of c provides care at t. It is a one-step-grace invariant, not the plain "female parent of a born child provides care" form: under strict compliance a `must` fires in the same step its condition first holds and its effect lands one step later, so the plain form is violated at that step in every trace and cannot flip. Read on the entries (k=6 and 8): ectogenesis and gestational-surrogacy `holds_to_k`; delete R5 gives `violated` in both; delete R4 stays `holds_to_k` (R5's must still enables and forces care). Not in any `expected_properties`; `check-all` stays 123/123. Two engine-side items, not done here: the engine reads no `check` key from properties (an unexpected property falls back to `reachable`, or `persists` for names ending _persists), and `care_duty_on_women` is not in `rules_ablate.UNFREEDOM`, so its flips read `unsigned`.
 
-## Liberty actions (2026-11-05, plans/priority.md slice 1 revision 3, ADR 0013 amendment 3)
+## Default-capacity actions (revision 4, 2026-11-04)
 
-An action declaration may carry `liberty: true`. A liberty action's derived power `(enabled a ...)` is true
-whenever no disability (`must_not`, `or_else` null) on it holds, whether or not a `may`/`must` names it; a power
-action (the default) is enabled only by a `may`/`must` and reads constant false when nameless (ADR 0013, 2026-11-03).
-Trace semantics are the same for both: a nameless action fires freely. The flag is an encoder's judgment, made
-before any run and recorded here: mark a liberty only where the institution withholds by prohibition something
-people do by default, never to make a verdict come out.
+Supersedes the "Liberty actions" section (slice 1 revision 3). plans/priority.md, "Slice 1 revision 4: one convention
+for default capacities"; author decisions of 2026-11-04 after docs/reviews/2026-11-05-liberty-flag-rev3-review.md.
 
-Flagged: `contract` in `coverture-household`, inherited by every `mwpa-*` entry through `_mwpa`. Reason: Blackstone's
-R7 is a disability on contracting, which an unmarried woman could do; the encoding withholds it by prohibition, not
-by silence. Left as powers: `keep_earnings`, `hold_property`, `control_property`, `sue`, `reassign` (the acts GRANT
-these; under coverture the wife has no such power and no rule needs to say so). Known unfaithful reading, recorded
-(docs/reviews/2026-11-05-liberty-flag-rev3-review.md, item 4): under Blackstone a feme sole held property by default and
-coverture passed it to the husband, so `hold_property` is a restored capacity, not a granted power; it stays a power
-because the preregistered `financial_dependence` verdicts depend on it (the global experiment showed they flip). The
-same review notes that `leave`, `sleep_home`, `refuse_binding` and `sue` are default capacities encoded by the older
-implicit `may ... when true` convention, so two encodings of one idea coexist; which to keep is an open author
-decision (plans/priority-slice1-results.md). The generator sets the field
-(`A(..., liberty=True)`); no other action is flagged in this batch.
+**Convention.** An action declaration may carry `default_capacity: true` (renamed from `liberty`; the engine accepts
+both keys, this is the one that stays; generator kwarg `A(..., default_capacity=True)`). The flag marks a capacity a
+person of that kind holds by default, removed only by an express disability. Its derived power `(enabled a ...)` is
+true whenever no disability (`must_not`, `or_else` null) on it holds, whether or not a `may`/`must` names it. A power
+action (no flag) is enabled only by a `may`/`must` and reads constant false when nameless (ADR 0013, 2026-11-03):
+powers are conferred by `may`/`must`. Only a disability removes a default capacity; a sanctioned `must_not` punishes
+its exercise and does not remove it. Trace semantics are identical for both kinds (a nameless action fires freely).
+The flag is an encoder's judgment made before any run: mark a default capacity only where the institution withholds
+by prohibition something people do by default, never to make a verdict come out. There is now one convention; the
+implicit `may X when true` rows that encoded it are deleted.
+
+**Flagged actions (35 entry-action pairs, verified against the spec by script).**
+- `leave` (15 entries): coverture-household, mwpa-creditor-exemption, mwpa-property, mwpa-earnings, mwpa-sole-trader,
+  mwpa-suit, mwpa-property-narrowed, police-crisis, cps, crisis-team, companion-ownership, companion-guardianship,
+  companion-guardian-renamed, public-library, airline-flight.
+- `sue` (9 entries): the coverture chain (coverture-household and the six mwpa-*), police-crisis, crisis-team. NOT
+  companion-*: there R11 (`animal must_not sue`) is a personhood statement and the power reading is faithful.
+- `sleep_home` (2): kibbutz-childrens-house, kibbutz-childrens-house-no-implicit.
+- `refuse_binding` (2): footbinding, footbinding-no-pledge.
+- `contract` (7, unchanged): coverture-household and the six mwpa-*. Coverture withholds it by prohibition (R7).
+
+**Deleted rules (24; ids are NOT renumbered, the gaps stay).** Each only encoded the capacity:
+- `may leave when true`, a restatement of the default (it is R6/R4/R10 etc. that remove it): coverture R8 (x7: the
+  coverture entry and the six mwpa-* copies), police-crisis R9, cps R9, companion R12 (x3), airline-flight R5.
+- `may sleep_home when true`, kibbutz R7 (x2): the physical possibility of sleeping at home is always there; R4 removes it.
+- `may refuse_binding when true`, footbinding R8 (x2): refusal is always possible; R9 removes it.
+- `may sue when (not married)`, coverture R9 (x7): the complement of the R4 prohibition, not an act; "no R4
+  disability holds" is exactly its condition.
+Glosses that cited a deleted id were rewritten to say the capacity is a default capacity and the disability removes
+it (`can_exit(w) = leave enabled (a default capacity), which this disability makes false while married`, and so on);
+coverture R4 now carries `has_standing(w) = sue enabled (a default capacity), which this disability removes while
+married`; mwpa-suit R16's gloss and the mwpa-suit and kibbutz notes were reworded. No `expected_properties` changed.
+
+**Kept explicit permissions on capacity actions.** They are the institution's own sourced text or the historical act,
+redundant for enablement under the flag: crisis-team R5 (`may leave`) and R9 (`may sue`), police-crisis R10 (`may sue`),
+public-library R4 (`may leave`), mwpa-sole-trader and mwpa-suit R15 (`may contract`), mwpa-suit R16 (`may sue when
+married`). Their ablation rows should read load 0 (and, once the engine change is in, not `deregulated`).
+
+**Known unfaithful reading, recorded** (docs/reviews/2026-11-05-liberty-flag-rev3-review.md, item 4): under Blackstone
+a feme sole held property by default and coverture passed it to the husband, so `hold_property` is a restored
+capacity, not a granted power; it stays a power because the preregistered `financial_dependence` verdicts depend on
+it (the global experiment showed they flip). Also left as powers: `keep_earnings`, `control_property`, `reassign`.
