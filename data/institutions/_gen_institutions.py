@@ -596,8 +596,8 @@ inst.append({
 # ---------------------------------------------------------------- MWPA backtest chain (plans/backtest-mwpa.md, 2026-11-03)
 # A path of minimal pairs out of coverture-household, one plan delta per step; every entry shares coverture's roles,
 # fluents and actions and differs from the previous one only by the rules named in its minimal_pair_of. The plan's
-# predicted failure modes are entries of their own (DT: the 1839-50 creditor-exemption act, which is the chain's first
-# historical step; BL: courts narrowing the property act). PREREGISTERED verdicts are in each entry's expected_properties
+# predicted failure modes are entries of their own (DT (Capture per ADR 0016): the 1839-50 creditor-exemption act, which is the chain's first
+# historical step; BL (Erosion per ADR 0016): courts narrowing the property act). PREREGISTERED verdicts are in each entry's expected_properties
 # and in the plan's "Layer-1 run" section, written before the first run; they are not edited to match.
 GLT = "Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md]"
 KHAN = "Khan 1996, Married Women's Property Laws and Female Commercial Activity, Table 1 (sole-trader dates; the 1839-50 wave as debt relief); https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf [F, via plans/backtest-mwpa.md]"
@@ -626,7 +626,7 @@ def _mwpa(id, name, prev, drop, add, expected, pair, source_text, notes, roles_e
     e.pop("initial", None); e.pop("initial_free", None); e.pop("defaults", None)
     return e
 MWPA_BASE_EXP = {"subject_cannot_exit":"reachable","care_and_sanction_same_role":"holds_to_k"}
-# Step DT (1839-50 debtor-relief wave): coverture + a creditor who may levy on the household's property (baseline,
+# Step DT (Capture per ADR 0016) (1839-50 debtor-relief wave): coverture + a creditor who may levy on the household's property (baseline,
 # implicit) but must not reach the wife's acquired property (the exemption), + the husband may convey to his wife.
 # R1 (husband manages) is KEPT: that is the dark twin (the plan: 'creditor must_not attach wife_property, husband's
 # management kept'); the task's shield reading (husband conveys to wife to put assets beyond creditors) is R12.

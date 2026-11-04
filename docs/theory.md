@@ -69,14 +69,25 @@ Care is a strong entry point because it touches the floor, power and imagination
 
 ## Predicting downstream consequences
 
-Every proposed change gets checked against four standard failure modes, then tested in simulation before anyone trusts it.
+Every proposed change gets checked against the failure modes (ADR 0016), then tested in simulation before anyone trusts it.
 
 **Failure modes**
 
-- **Dark twin:** who unbundles? Capital can rebundle a freed strand into a new product, as the gig economy did with jobs.
-- **Displacement:** does the burden move to someone with less power? The global care chain is the model case.
-- **Backlash:** does it threaten an equilibrium enough to provoke reaction?
-- **Rebundling:** do people retreat to another stronghold, making the remaining bonds more load-bearing?
+Who pays / Rule / Time; see ADR 0016.
+
+| Axis | Mode | What it is | Lowest layer |
+| --- | --- | --- | --- |
+| Who pays | Dark twin | Capital rebundles the freed strand into a product | 3 |
+| Who pays | Displacement | The burden moves to someone with less power | 3 |
+| Who pays | Backlash | The change threatens an equilibrium enough to provoke active reaction | 2 |
+| Who pays | Rebundling | People retreat to another stronghold; remaining bonds become more load-bearing | 3 |
+| Rule | Capture | A party the change was not for gains the new power or shelter | 1 |
+| Rule | Perverse incentive | The rule's payoffs reward behaviour that undermines what it secured | 2 |
+| Rule | Cosmetic | Renaming or a revocable exit; nothing structural changes | 1 |
+| Time | Dead letter | The rule passes; adoption never crosses threshold | 2 |
+| Time | Erosion | Practice drifts back while the rule stays on the books | 2 |
+| Time | Enforcement decay | `or_else` exists but stops firing | 2 (needs the breach model) |
+| Time | Lock-in | The change succeeds and then cannot be revised | 3 |
 
 **Simulation approach** (from the solidarity-modeling thread)
 
@@ -182,7 +193,7 @@ The goal is a tool that, given a set of institutions and a set of candidate chan
 | 2. Frequency | How often outcomes occur under a rule set | Agent-based model: adaptive agents, trust variable, threshold joining; veil-of-ignorance scoring | Reproduces footbinding collapse via pledge associations and the Centola-style threshold without hand-tuning | Spec exists (solidarity thread) |
 | 3. Backtest | Whether layers 1–2 predict known history | Encode 6–8 cases with known outcomes (footbinding, Quebec quota, Dutch buyouts, whaling, cage-free pledges, kibbutz) | Blind runs match recorded outcomes on direction and on which failure mode fired | Not started |
 | 4. Priority | Which change scores highest now | Six tests (leverage, bottleneck, power shift, durability, margins first, surplus) scored from layers 1–2, not by hand | Ranking is stable across random starts and agrees with backtested cases | Not started |
-| 5. Sequence | What order to make changes in | Compose reforms, check `persists` and the four failure modes across orders | Finds that floor-before-standing beats standing-before-floor in backtests | Not started |
+| 5. Sequence | What order to make changes in | Compose reforms, check `persists` and the failure modes (ADR 0016) across orders | Finds that floor-before-standing beats standing-before-floor in backtests | Not started |
 
 **Rule:** no forward claim from the tool until layer 3 passes. Until then it is a theory-checker, not a planner.
 

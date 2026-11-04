@@ -1,6 +1,6 @@
 # 0016. Failure modes on three axes
 
-Status: proposed 2026-11-03 (author to accept after reading). Until accepted, the dataset and the canonical theory doc keep the four-mode list.
+Status: accepted 2026-11-03.
 
 ## Context
 docs/theory.md lists four failure modes every proposed change is checked against: dark twin, displacement, backlash, rebundling. All four answer one question — *who absorbs the cost when a bundle is unbundled* (capital, someone weaker, the threatened equilibrium, the people themselves). Three things show the list is incomplete:

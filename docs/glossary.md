@@ -17,7 +17,13 @@ Wording follows `plans/institutions-phase0.md`. Structural terms describe encodi
 - **displacement**: control or burden moved to another party or place rather than removed.
 - **backlash**: a rule added to reinforce the existing bundle against a change or substitute.
 - **rebundling**: the same strands recombined under new names or roles, so the structure returns.
-- **cosmetic reform**: a change (such as a role rename) that leaves the structure isomorphic to the original.
+- **capture**: a party the change was not written for gains the new power or shelter (MWPA `creditor_shield`: husbands moving assets to wives to dodge creditors). Rule axis, ADR 0016.
+- **perverse incentive**: the payoffs a rule creates reward behaviour that undermines the property it was meant to secure (compliance theatre). Rule axis, ADR 0016.
+- **dead letter**: the rule passes and adoption never crosses threshold. Time axis, ADR 0016.
+- **erosion**: practice drifts back while the rule stays on the books (courts construing a statute narrowly). Time axis, ADR 0016.
+- **enforcement decay**: the `or_else` exists but stops firing, so a sanctioned norm becomes unsanctioned (kibbutz). Time axis, ADR 0016.
+- **lock-in**: the change succeeds and then cannot be revised; Ostrom's self-revising-rules principle is the guard. Time axis, ADR 0016.
+- **cosmetic reform** (a Rule-axis failure mode, ADR 0016): a change (such as a role rename) that leaves the structure isomorphic to the original.
 - **implicit rule**: a norm nobody writes down (`implicit: true`), encoded because it is often the one worth contesting.
 - **ADICO**: Ostrom's Institutional Grammar statement form: Attribute, Deontic, aIm, Conditions, Or else.
 - **fluent**: a state predicate that varies over time, written `Holds(fluent, args, t)`.

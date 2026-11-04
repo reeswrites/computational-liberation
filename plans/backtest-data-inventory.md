@@ -1,6 +1,6 @@
 # Backtest data inventory (2026-11-03, revised for ordering tests)
 
-Tags: [F] = confirmed on a page I opened; [R] = recalled, verify before building. Failure modes: DT dark twin, DI displacement, BL backlash, RB rebundling.
+Tags: [F] = confirmed on a page I opened; [R] = recalled, verify before building. Failure modes: DT dark twin, DI displacement, BL backlash, RB rebundling; since ADR 0016 also Capture, Perverse incentive, Cosmetic, Dead letter, Erosion, Enforcement decay, Lock-in (MWPA `creditor_shield` DT -> Capture, `narrowed` BL -> Erosion).
 Two blows to land: (A) do rules trail material/tech/price change? (B) did standing precede any material floor and the gain persist?
 
 ## Cases (ordering = which came first)

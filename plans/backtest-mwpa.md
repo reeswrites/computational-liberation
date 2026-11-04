@@ -74,3 +74,12 @@ Every verdict matched its preregistration (36 MWPA rows + 5 new coverture rows).
 Caveats. (1) Rules are reconstructed from GLT, Khan and Chused 1984; no statute text was opened, so every MWPA rule is UNVERIFIED as a reading of a statute. (2) The DT entry is at distance 3, not 1 (R10 exists so that the exemption removes a granted power rather than a constant). (3) The matcher pairs exemption R1 with property R12 (same skeleton) and prints R12 vs R13 as the differing rules; the distance is 1 as intended. (4) This is one encoder's chain checked against that encoder's predictions written minutes earlier; it tests that the engine reads the deltas as the plan says, not that the plan is right about history.
 
 Engine test note (resolved 2026-11-03, engine commit 0a9c01e): `tests/test_rules_meta.py::test_removing_a_may_never_adds_reachable_dataset` failed on `mwpa-suit` (drop R16 -> `no_standing` goes open -> reachable) because the law assumed removing a `may` only shrinks reachability. A property over a negated derived power (`not has_standing`) is anti-monotone in enablement. The engine now splits properties by polarity (`is_monotone_in_enablement` / `is_antimonotone_in_enablement`): monotone properties keep the old law, anti-monotone ones get the mirror law (reachable stays reachable). Verdicts unchanged; 141/141 in that file.
+
+## Drift note (2026-11-03, ADR 0016)
+
+Added after the layer-1 run; the preregistered text above is unchanged. ADR 0016 (accepted) reorganises failure modes on three axes, which relabels preregistered cases. No rule, property or verdict changes.
+- `creditor_shield` (mwpa-creditor-exemption): DT -> Capture.
+- `narrowed` branch (`backlash` property): BL -> Erosion (a court narrowing a statute while it stands is drift, not active reaction).
+- `double_burden`: DI unchanged (the author did not relabel it; Perverse incentive is the noted cleaner home).
+
+Section 4 failure-mode condition, restated in the new labels beneath the original ("pass if DT is the engine's top-ranked risk for the 1839-50 wave and BL for 1860-80; fail if it ranks DI or RB first with no historical trace"): pass if Capture is the top-ranked risk for 1839-50 and Erosion for 1860-80; fail if it ranks DI or RB first with no historical trace. The layer-1 outcome (inconclusive: verdicts, not a ranking) is unchanged.

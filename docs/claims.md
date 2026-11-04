@@ -28,6 +28,7 @@ A claim is `supported` only if a check that could have failed passed and the rev
 | L17 | The dark twin: a gig platform keeps exit cheap and strips insurance and voice (`worker_uninsured` reachable, `rules_revisable_by_subject` open). | plan dataset table; batch 2 §4 | preregistered, not encoded | untested | 2026-11-03 |
 | L18 | Ostrom's fishery makes rule revision reachable by the users, not only by the state. | plan dataset table; batch 2 §5 | preregistered, not encoded | untested | 2026-11-03 |
 | L19 | The engine identifies which single rule carries an outcome given human encodings; it does not discover implicitness or draw the care/control line itself. | README "What the engine does and doesn't do"; third review | third review (R2 carries gate (d) given the encoding; `implicit` and strand tags are human inputs reported back; airline-flight match) | supported | 2026-11-03 |
+| L20 | The original four-failure-mode list (dark twin, displacement, backlash, rebundling) was incomplete; the first backtest (MWPA) exposed it. | ADR 0016; theory.md Failure modes | ADR 0016, plans/backtest-mwpa.md; MWPA backtest failure-modes review (2026-11-03-mwpa-backtest-failure-modes.md) | weakened | 2026-11-03 |
 
 ## Prior-work and method claims
 
@@ -57,4 +58,4 @@ A claim is `supported` only if a check that could have failed passed and the rev
 
 ## Status counts
 
-supported 6 · supported (encoding level) 1 · weakened 8 · refuted 1 · untested 19 · retracted 0 (35 rows).
+supported 6 · supported (encoding level) 1 · weakened 9 · refuted 1 · untested 19 · retracted 0 (36 rows).

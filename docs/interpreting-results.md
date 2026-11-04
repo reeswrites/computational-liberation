@@ -56,6 +56,10 @@ coverture-household ~ police-crisis: iso=False ... matched=5/9|10 strands=on con
 
 Read the "findings (true, not counted)" under the verdict first.
 
+Failure modes. Anywhere this guide or a gate letter refers to "the failure modes" or to DT/DI/BL/RB as the full set, read the eleven modes on three axes (who pays / rule / time) in `docs/decisions/0016-failure-mode-axes.md`, not a closed list of four. DT, DI, BL and RB are its "who pays" axis. Each mode carries the lowest layer that can detect it; layer 1 can only fire Capture and Cosmetic.
+
+Standing caveats (ADR 0016). Two things the model cannot see apply to every result and are not modes. Illegibility: a rule that conditions on a fact the state cannot observe (Scott) is encoded as if the fact were visible. Encoding misread: a constitutive strand encoded as tying makes unbundling look free; the council's encoding-faithfulness axis exists to catch it, and the engine cannot.
+
 ## 5. Three worked readings
 
 **Coverture vs police.** The output in section 3. Sayable: under these encodings both give one party a care duty, a control permission and an exit bar over the same subject (husband maps to officer). Not sayable: that policing is coverture.
