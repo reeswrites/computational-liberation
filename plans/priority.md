@@ -71,5 +71,17 @@ Settled 2026-11-04 (late) with the author:
 2. **k bound:** ablation runs at k=6 and k=8; any verdict disagreement between them is reported per rule, never averaged.
 3. **`may` deletion:** ablation deletes the rule (permission removed, labelled "permission removed" in the output); no prohibit variant in slice 1. Revisit only if a `may` deletion tops a ranking.
 4. **Second goods encoder (ADR 0012):** a fresh agent that never saw the first encoding writes its own goods properties; disagreements fill `contested`; every report says "second encoder: agent, not someone living under the institution".
-5. **Slice-1 preregistered ranking table:** still open; the author names, before the run, the rule expected to carry the highest load_freedom in coverture-household, kibbutz-childrens-house, footbinding, mwpa-property and ectogenesis. Note found while settling: no freedom property currently reads ectogenesis R5 (care_assigned_by_sex is already `violated` there because R4 permits male care), so the T3 expectation "R5 is next" needs a property R5 actually carries (e.g. a `persists`-shaped care duty on female intended parents) written and preregistered in slice 1, or the expectation reads load 0 by construction.
+5. **Slice-1 preregistered ranking table:** filled 2026-11-04 (late), before any ablation run. These are the assistant's guesses, endorsed by the author as the preregistration ("use your guesses"); labelled as such so a hit is not read as the author's intuition confirmed.
+
+| entry | rule expected to carry the highest load_freedom | why |
+| --- | --- | --- |
+| coverture-household | R6 wife must_not leave | flips subject_cannot_exit and its persists twin; R4 (sue) and R7 (contract) each carry one property |
+| kibbutz-childrens-house | R2 committee must_not assign male_member | the one rule gate (d) already showed carries care_assigned_by_sex |
+| footbinding | R3 family must_not leave_unbound | carries binding_practised and marriage_requires_binding; R1 (may bind) is a permission, deleting it is labelled not ranked |
+| mwpa-property | R11 creditor must_not attach | the creditor shield is what the act changed; R13 (may hold_property) is a permission |
+| ectogenesis | R5 intended_parent must provide_care (tying, implicit) | only once `female_parent_care_persists` (plans/ectogenesis.md v2 §5) is in the dataset; without it R5 reads load 0 by construction, and that reading is itself the T3 test |
+
+Ties are expected (several rules carry exactly one property); a tie with the named rule counts as a hit, a different top rule counts as a miss.
+
+   Original statement of the decision: the author names, before the run, the rule expected to carry the highest load_freedom in coverture-household, kibbutz-childrens-house, footbinding, mwpa-property and ectogenesis. Note found while settling: no freedom property currently reads ectogenesis R5 (care_assigned_by_sex is already `violated` there because R4 permits male care), so the T3 expectation "R5 is next" needs a property R5 actually carries (e.g. a `persists`-shaped care duty on female intended parents) written and preregistered in slice 1, or the expectation reads load 0 by construction.
 6. **Ectogenesis drift 1:** fix under a v2 preregistration (start_gestation and implant merged; surrogacy `birth_labor_rival` preregistered holds_to_k), committed before the rerun.
