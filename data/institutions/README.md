@@ -396,8 +396,8 @@ New property `female_parent_care_persists` (kind `freedom`, check `persists`): f
 Supersedes the "Liberty actions" section (slice 1 revision 3). plans/priority.md, "Slice 1 revision 4: one convention
 for default capacities"; author decisions of 2026-11-04 after docs/reviews/2026-11-05-liberty-flag-rev3-review.md.
 
-**Convention.** An action declaration may carry `default_capacity: true` (renamed from `liberty`; the engine accepts
-both keys, this is the one that stays; generator kwarg `A(..., default_capacity=True)`). The flag marks a capacity a
+**Convention.** An action declaration may carry `default_capacity: true` (renamed from `liberty` 2026-11-04; the engine
+accepted both keys until the dataset sync, now only this one; generator kwarg `A(..., default_capacity=True)`). The flag marks a capacity a
 person of that kind holds by default, removed only by an express disability. Its derived power `(enabled a ...)` is
 true whenever no disability (`must_not`, `or_else` null) on it holds, whether or not a `may`/`must` names it. A power
 action (no flag) is enabled only by a `may`/`must` and reads constant false when nameless (ADR 0013, 2026-11-03):
@@ -438,3 +438,13 @@ married`). Their ablation rows should read load 0 (and, once the engine change i
 a feme sole held property by default and coverture passed it to the husband, so `hold_property` is a restored
 capacity, not a granted power; it stays a power because the preregistered `financial_dependence` verdicts depend on
 it (the global experiment showed they flip). Also left as powers: `keep_earnings`, `control_property`, `reassign`.
+
+**Evidence for the `sue` and `contract` flags** (docs/reviews/2026-11-04-capacity-convention-rev4-review.md, item 1): Blackstone,
+Commentaries I.15: by marriage "the very being or legal existence of the woman is suspended"; a feme sole sues, is sued and
+contracts in her own name; the wife "cannot ... sue or be sued without making the husband a defendant" and her contracts are
+void. The deleted R9 (`may sue when (not married)`) carried this citation; it now lives here and in the chain entries' notes,
+not only in git history.
+
+**`petition` (cps) is a conferred power, not a default capacity** (same review, item 6): a minor's claim runs through counsel
+or a guardian ad litem and exists because a rule grants it, where an adult's `sue` is held by default. cps R11 (the child's
+`must_not petition` bar) is therefore never ranked by the ablation; recorded, not an oversight.
