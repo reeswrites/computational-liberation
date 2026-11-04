@@ -1,0 +1,22 @@
+[project]
+name = "computational-liberation"
+version = "0.1.0"
+description = "A general theory of liberation, made checkable: theory, claims register, decisions and the institutions dataset, run on philosophy-engine."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [{name = "Rees Draminski"}]
+requires-python = ">=3.12"
+dependencies = [
+    "philosophy-engine",
+]
+
+[tool.uv.sources]
+philosophy-engine = { path = "../philosophy-engine", editable = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.uv]
+package = false   # this repo is data and documents; the code is philosophy-engine

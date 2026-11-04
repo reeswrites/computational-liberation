@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "computational-liberation: a general theory of liberation, made checkable"
+type: software
+authors:
+  - family-names: Draminski
+    given-names: Rees
+license: Apache-2.0
+date-released: "2026-11-03"  # TODO: set to the actual release date
+version: 0.1.0
+# TODO: confirm GitHub handle (assumed reeshuffled) before publishing
+repository-code: "https://github.com/reeshuffled/computational-liberation"

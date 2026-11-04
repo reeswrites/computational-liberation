@@ -1,0 +1,61 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+# This repo has no Python package of its own: it is data (data/institutions) and documents,
+# run through philosophy-engine, which pyproject.toml pins as an editable path dependency at
+# ../philosophy-engine. CI therefore checks out both repos as siblings under the runner workspace:
+#   $GITHUB_WORKSPACE/computational-liberation   (this repo)
+#   $GITHUB_WORKSPACE/philosophy-engine          (the engine)
+# Every uv command runs from inside computational-liberation so the engine resolves data/ from here.
+
+jobs:
+  test:
+    name: test (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - python-version: "3.12"
+            experimental: false
+          - python-version: "3.14"
+            experimental: true   # z3-solver wheels may lag on 3.14
+    defaults:
+      run:
+        working-directory: computational-liberation
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: computational-liberation
+      - uses: actions/checkout@v4
+        with:
+          repository: reeshuffled/philosophy-engine
+          path: philosophy-engine
+      - uses: astral-sh/setup-uv@v5
+      - run: uv python install ${{ matrix.python-version }}
+      - run: uv sync --python ${{ matrix.python-version }}
+      - run: uv run pytest -q -m "not llm" ../philosophy-engine/tests
+      - run: uv run phil rules check-all
+
+  gate:
+    name: gate (informational)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    defaults:
+      run:
+        working-directory: computational-liberation
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: computational-liberation
+      - uses: actions/checkout@v4
+        with:
+          repository: reeshuffled/philosophy-engine
+          path: philosophy-engine
+      - uses: astral-sh/setup-uv@v5
+      - run: uv python install 3.12
+      - run: uv sync --python 3.12
+      - run: uv run phil rules gate
