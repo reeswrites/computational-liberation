@@ -9666,6 +9666,7 @@
    "bind",
    "leave_unbound"
   ],
+  "initial_practice": "bind",
   "notes": "Layer-2 gate (a) institution. Mackie's convention: a family binds because every other family binds and suitors expect it (R3 sanctioned norm, R5 the market's refusal, R6/R7 the marriage condition); the campaign's pledge associations (R4) create a marriage pool in which an unbound daughter is marriageable, so the sanction R5 lapses for pledged families and leave_unbound (R2) becomes costless once enough neighbours pledge. Deviations from the task sketch: no matchmaker/community role (no source gives one a rule); a `suitor` role instead, because the sanction needs an actor and Mackie's sanction is the other side of the market; the pledge's son half is a second pledge action R10 accept_match_pledge (suitor) read by R5/R6 (until 2026-11-04 it was folded into the family's pledge; encoding review finding 2); marriageable is derived (ADR 0013) from R7 rather than asserted; R3 is unconditional and R5 carries the (not pledged) condition, so that the pledge changes nothing at layer 1 (the preregistration the gate pair needs). Sources: every text was read as a search snippet, none as a page (network closed in this session); the abstract sentences are verbatim from the index, everything else is [R] or UNVERIFIED and says so per rule. PREREGISTERED (2026-11-04, before any run; layer 1 under init declared, strict compliance, step one): binding_practised PERSISTS in footbinding AND in footbinding-no-pledge (bound(daughter) is initial; the only action that clears it, leave_unbound, is forbidden by the sanctioned norm R3, which strict compliance never breaches; the pledge R4 changes nothing at layer 1 because the norm R3 is unconditional and only the sanction R5 reads pledged). marriage_requires_binding HOLDS_TO_K in both (R7 is the only marry_off rule and its condition is bound-or-pledged; non-vacuous because marriageable(family, daughter) is true at t=0). subject_cannot_exit and dependent_cannot_exit REACHABLE in both (t=0: is_subject(daughter) and R9 bars refuse_binding). The pair's layer-1 verdicts are IDENTICAL (minimal_pair_of.differs_on is null on purpose: the pair differs only at layer 2). Expected warnings: can_sanction, provides_care, has_standing, can_claim_for undeclared (no care or standing here); care_and_sanction_same_role is not expected (it would be vacuous: no provides_care). Isomorphism: not_isomorphic_to the care+control cluster (no carer, no sanctioner over a cared-for subject; the sanction here is a counterparty's refusal); isomorphic_to nothing (no entry has the convention shape). Information only, not an expectation: under --compliance sanctioned binding_practised should FAIL in both (leave_unbound may fire and pay the sanction). PREREGISTERED (2026-11-04, encoding review finding 2, written and committed before the first run with the suitor pledge): adding accept_match_pledge(suitor, daughter) [effect pledged(suitor)] with rule R10 suitor may accept_match_pledge, and reading (pledged suitor) in R5 (and-not) and R6 (or), changes NO layer-1 verdict in footbinding or footbinding-no-pledge: binding_practised persists, marriage_requires_binding holds_to_k, subject_cannot_exit and dependent_cannot_exit reachable in both; the new pledge only lifts the sanction R5 (and widens R6), R3 is unconditional, R7 is untouched, and pledged is a fluent per role (footbinding-no-pledge strips BOTH pledge actions and both pledge rules R4 and R10, so nothing sets pledged(suitor) there). Iso: still none at every level against the care+control cluster; isomorphic_to nothing. Expected warnings unchanged (can_sanction, provides_care, has_standing, can_claim_for undeclared). Layer 2 (information, not an expectation): pledged(suitor) is role-level too (A2), so one suitor's pledge lifts R5 for every suitor, the same coarseness as pledged(family): the A2 caveat now applies on both sides; gate (a)'s _has_pledges reading is unchanged (true via either pledge) and ablate_pledges strips both. If any verdict flips, the drift is recorded here and the expectations are not edited. RESULT (2026-11-04, after the run, commit b6f48aa preceding it): no drift. check-all 115/115 with all four verdicts as preregistered in both entries; `phil rules gate` PASS; pytest 15 passed; no warning printed for either entry (none was printed before the change either). ABM information, `--seeds 5 --steps 60 --modules material,coordination`: bound 1.0 in every seed (persistence), pledged 0.667 over seeds, i.e. true on the family and the suitor role tuple and not the daughter's: the A2 caveat on both sides, as the preregistration said; breach, sanction and unavoidable rates 0. Drift 2026-11-04 (encoding review finding 3): marriage_requires_binding is by construction (marriageable is derived from R7's enabledness and R7's condition is bound-or-pledged, so the property restates the rule); kept in expected_properties for the record, not evidence; the property carries by_construction: true, which the engine ignores. Layer 1 has one cohort (encoding review 2026-11-04 finding 4): one daughter, bound at t=0, and `married` never clears, so no trace shows a per-cohort binding decision before the market; a `new_cohort` action clearing bound/married is deferred to the author. LAYER 2 (for the engine's coordination module, which is a stub at writing): the actions the module should treat as `coordinated` are bind and leave_unbound (a family's choice pays only when enough neighbouring families choose the same, Mackie's marriage-market assurance game); the pledge is leave_unbound_pledge (A3 naming convention, counts as adoption of leave_unbound for neighbours' thresholds). philengine has no action tag for this yet (ActionDecl has no `tags`), so the entry carries an ASSUMED extra field `coordinated: [bind, leave_unbound]` that pydantic ignores. Two things the engine agent should know: (1) state is role-level (A2 deferred), so `pledged(family)` flips for every family when one agent pledges and `Reference.successor` lets set-true beat set-false, so bound(daughter) stays true while any family still binds: collapse of binding_practised needs every family to leave unbound in one step; the gate's collapse reading should probably use the adoption share of leave_unbound instead, or the module should read pledges per agent; (2) `payoffs` sets bind and leave_unbound both to 1.0 (the A1 default made explicit) so the gate can sweep them; the sanction R5 is what the material run prices.",
   "initial": [
    "(is_subject daughter)",
@@ -9943,10 +9944,623 @@
    "bind",
    "leave_unbound"
   ],
+  "initial_practice": "bind",
   "notes": "PREREGISTERED (2026-11-04, before any run): the same four verdicts as footbinding (persists, holds_to_k, reachable, reachable): pledges change nothing at layer 1. The pair is the gate (a) 'pledge actions exist' half: crit_a reads _has_pledges on `footbinding` itself, so this entry is the dataset's record of what the no-pledge world looks like and `differs_on` is null by design (no layer-1 property separates them). At layer 2 the preregistration is the plan's: binding persists here under every module. PREREGISTERED (2026-11-04, encoding review finding 2, written and committed before the first run with the suitor pledge): adding accept_match_pledge(suitor, daughter) [effect pledged(suitor)] with rule R10 suitor may accept_match_pledge, and reading (pledged suitor) in R5 (and-not) and R6 (or), changes NO layer-1 verdict in footbinding or footbinding-no-pledge: binding_practised persists, marriage_requires_binding holds_to_k, subject_cannot_exit and dependent_cannot_exit reachable in both; the new pledge only lifts the sanction R5 (and widens R6), R3 is unconditional, R7 is untouched, and pledged is a fluent per role (footbinding-no-pledge strips BOTH pledge actions and both pledge rules R4 and R10, so nothing sets pledged(suitor) there). Iso: still none at every level against the care+control cluster; isomorphic_to nothing. Expected warnings unchanged (can_sanction, provides_care, has_standing, can_claim_for undeclared). Layer 2 (information, not an expectation): pledged(suitor) is role-level too (A2), so one suitor's pledge lifts R5 for every suitor, the same coarseness as pledged(family): the A2 caveat now applies on both sides; gate (a)'s _has_pledges reading is unchanged (true via either pledge) and ablate_pledges strips both. If any verdict flips, the drift is recorded here and the expectations are not edited. RESULT (2026-11-04, after the run, commit b6f48aa preceding it): no drift. check-all 115/115 with all four verdicts as preregistered in both entries; `phil rules gate` PASS; pytest 15 passed; no warning printed for either entry (none was printed before the change either). ABM information, `--seeds 5 --steps 60 --modules material,coordination`: bound 1.0 in every seed (persistence), pledged 0.667 over seeds, i.e. true on the family and the suitor role tuple and not the daughter's: the A2 caveat on both sides, as the preregistration said; breach, sanction and unavoidable rates 0. Drift 2026-11-04 (encoding review finding 3): marriage_requires_binding is by construction (marriageable is derived from R7's enabledness and R7's condition is bound-or-pledged, so the property restates the rule); kept in expected_properties for the record, not evidence; the property carries by_construction: true, which the engine ignores. Layer 1 has one cohort (encoding review 2026-11-04 finding 4): one daughter, bound at t=0, and `married` never clears, so no trace shows a per-cohort binding decision before the market; a `new_cohort` action clearing bound/married is deferred to the author.",
   "initial": [
    "(is_subject daughter)",
    "(bound daughter)"
+  ]
+ },
+ {
+  "id": "ectogenesis",
+  "name": "Ectogenesis (artificial womb; Firestone 1970): gestation in a device, no birthing parent",
+  "roles": [
+   {
+    "name": "intended_parent",
+    "gloss": "the person or couple who will raise the child; the carer; the institutional sort, not a demographic (ADR 0011)"
+   },
+   {
+    "name": "child",
+    "gloss": "the subject: the child, a subject only once born (is_subject is set only by a birth action)"
+   },
+   {
+    "name": "provider",
+    "gloss": "the clinic or lab that starts, transfers, implants or decants gestation"
+   },
+   {
+    "name": "registry",
+    "gloss": "vital records / court: registers parentage and reprimands"
+   }
+  ],
+  "fluents": [
+   {
+    "name": "is_subject",
+    "arity": 1,
+    "gloss": "x is the institution's subject: the dependent, detainee, child or animal the rules act on",
+    "arg_roles": [
+     "child"
+    ]
+   },
+   {
+    "name": "provides_care",
+    "arity": 2,
+    "gloss": "x provides care (maintenance, assessment, treatment, services, feeding) to y",
+    "arg_roles": [
+     "intended_parent",
+     "child"
+    ]
+   },
+   {
+    "name": "female",
+    "arity": 1,
+    "gloss": "x is female (sex as assigned by the institution's own records)",
+    "arg_roles": [
+     "intended_parent"
+    ]
+   },
+   {
+    "name": "parent",
+    "arity": 2,
+    "gloss": "p is a parent of c",
+    "arg_roles": [
+     "intended_parent",
+     "child"
+    ]
+   },
+   {
+    "name": "birthing_parent",
+    "arity": 2,
+    "gloss": "p gave birth to c",
+    "arg_roles": [
+     "intended_parent",
+     "child"
+    ]
+   },
+   {
+    "name": "in_gestation",
+    "arity": 1,
+    "gloss": "c is being carried or incubated, anywhere",
+    "arg_roles": [
+     "child"
+    ]
+   },
+   {
+    "name": "gestated_ex_utero",
+    "arity": 1,
+    "gloss": "c is in a device (ectogenesis only; exists to mark an absence of a body)",
+    "arg_roles": [
+     "child"
+    ]
+   }
+  ],
+  "actions": [
+   {
+    "name": "start_gestation",
+    "args": [
+     "provider",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "in_gestation",
+      "args": [
+       "child"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "register_parentage",
+    "args": [
+     "registry",
+     "intended_parent",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "parent",
+      "args": [
+       "intended_parent",
+       "child"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "provide_care",
+    "args": [
+     "intended_parent",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "provides_care",
+      "args": [
+       "intended_parent",
+       "child"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "reprimand",
+    "args": [
+     "registry",
+     "x"
+    ],
+    "effects": []
+   },
+   {
+    "name": "transfer_to_device",
+    "args": [
+     "provider",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "gestated_ex_utero",
+      "args": [
+       "child"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "decant",
+    "args": [
+     "provider",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "is_subject",
+      "args": [
+       "child"
+      ],
+      "value": true
+     },
+     {
+      "fluent": "in_gestation",
+      "args": [
+       "child"
+      ],
+      "value": false
+     },
+     {
+      "fluent": "gestated_ex_utero",
+      "args": [
+       "child"
+      ],
+      "value": false
+     }
+    ]
+   }
+  ],
+  "rules": [
+   {
+    "id": "R1",
+    "attribute": "provider",
+    "deontic": "may",
+    "aim": "(start_gestation provider child)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": false,
+    "source": "Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) (the technology that makes gestation a service; for surrogacy, the clinic's role in assisted conception)"
+   },
+   {
+    "id": "R2",
+    "attribute": "provider",
+    "deontic": "may",
+    "aim": "(transfer_to_device provider child)",
+    "conditions": "(in_gestation child)",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "source": "Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04; plan section 5c): the rival input is deleted, not redistributed, and no strand value says 'no strand'."
+   },
+   {
+    "id": "R3",
+    "attribute": "provider",
+    "deontic": "must",
+    "aim": "(decant provider child)",
+    "conditions": "(gestated_ex_utero child)",
+    "or_else": "R6",
+    "strand": "superadditive",
+    "implicit": false,
+    "source": "Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). The birth duty moves from a body to a device operator; decant never sets birthing_parent. Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04)."
+   },
+   {
+    "id": "R4",
+    "attribute": "intended_parent",
+    "deontic": "may",
+    "aim": "(provide_care intended_parent child)",
+    "conditions": "(and (parent intended_parent child) (is_subject child))",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "source": "care by any registered parent of a born child is permitted, men included; nothing here bars it. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+   },
+   {
+    "id": "R5",
+    "attribute": "intended_parent",
+    "deontic": "must",
+    "aim": "(provide_care intended_parent child)",
+    "conditions": "(and (parent intended_parent child) (is_subject child) (female intended_parent))",
+    "or_else": "R6",
+    "strand": "tying",
+    "implicit": true,
+    "source": "implicit sanctioned norm (a care-norm, not a written rule): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+   },
+   {
+    "id": "R6",
+    "attribute": "registry",
+    "deontic": "may",
+    "aim": "(reprimand registry x)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "the registry's sanction for R3 and R5 (or_else target). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+   },
+   {
+    "id": "R7",
+    "attribute": "registry",
+    "deontic": "may",
+    "aim": "(register_parentage registry intended_parent child)",
+    "conditions": "(is_subject child)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+   }
+  ],
+  "source_text": "Firestone, The Dialectic of Sex (1970), ch.1 and ch.10: the demand to free women from the tyranny of their reproductive biology by artificial reproduction and to spread child-bearing and child-rearing across society. ALL UNVERIFIED: wording from memory, no page opened (plans/ectogenesis.md section 2). The mechanism is a thought-experiment technology; no statute exists.",
+  "expected_properties": {
+   "birth_labor_rival": "violated",
+   "care_decoupled_from_birth": "reachable",
+   "solo_care_by_non_birthing_parent": "reachable",
+   "care_assigned_by_sex": "violated"
+  },
+  "isomorphic_to": [
+   {
+    "id": "gestational-surrogacy",
+    "level": "guard",
+    "sub_signature": []
+   }
+  ],
+  "not_isomorphic_to": [
+   "gestational-surrogacy",
+   "coverture-household",
+   "police-crisis",
+   "cps",
+   "kibbutz-childrens-house"
+  ],
+  "minimal_pair_of": {
+   "id": "gestational-surrogacy",
+   "rule": "R2,R3",
+   "differs_on": "birth_labor_rival"
+  },
+  "notes": "Firestone's claim: ectogenesis removes the rival input itself (one body, a short window), where transferable-leave and kibbutz-childrens-house redistribute the care obligation around it. Substitution pair with gestational-surrogacy: R2 (transfer_to_device vs implant) and R3 (decant vs give_birth) swapped; everything else is shared. ASSUMED author decisions (2026-11-04, from the encoder's brief, not from the plan file): R2+R3 substituted counts as a minimal pair; E R2/R3 tagged `superadditive` by hand (no new strand value; claim L11 is refuted for this reason, plan section 5c); R7 has no birthing_parent condition; R5 triggers on female(p) (role not body: Kleven, docs/theory.md); no leave action, so the plan's leave_reserved_for_non_birthing_parent row is dropped; neither entry is in CONTROLS (ectogenesis is not registered as a care-without-control control); gestator consent is out of scope. BY CONSTRUCTION, flagged in advance (plan section 5): birth_labor_rival in ectogenesis restates R2's effect list (gestates is never set there), and care_decoupled_from_birth in ectogenesis is reachable because decant omits birthing_parent (the only non-trivial leg is R7's missing birth condition); both properties carry by_construction: true, which the engine ignores. Treat those two verdicts as information, as marriage_requires_binding was, not as evidence; non-circular evidence needs layer 2/3. Also by construction: gestated_ex_utero exists only to mark an absence. PREREGISTERED (plans/ectogenesis.md section 3, before any run; layer 1, init declared, strict compliance, k=6). gestational-surrogacy: birth_labor_rival holds_to_k; care_decoupled_from_birth unreachable_open; solo_care_by_non_birthing_parent reachable; care_assigned_by_sex violated. ectogenesis: birth_labor_rival violated; care_decoupled_from_birth reachable; solo_care_by_non_birthing_parent reachable; care_assigned_by_sex violated. Headline difference: birth_labor_rival. Iso (ADR 0010, about 65% confident): ectogenesis ~ surrogacy iso at guard, not iso at guard+strands (R2/R3 rival to superadditive tag flip), not iso at exact; ectogenesis not iso coverture-household / police-crisis / cps / kibbutz-childrens-house (no control permission over the subject, no exit bar, so the care+control sub-signature fails); vs transferable-leave / paternity-quota a guess of partial at guard+strands, two legs (R5~R7 implicit must-care by attribute; R4~R5 may care), about 40% confident. Failure modes (ADR 0016): surrogacy Displacement (layer 3); ectogenesis Dark twin (layer 3), Capture (needs a new rule), Dead letter (layer 2); R5 surviving is partial reform, no mode. Layer 2 not required.",
+  "initial": [],
+  "initial_free": [
+   "female"
+  ]
+ },
+ {
+  "id": "gestational-surrogacy",
+  "name": "Gestational surrogacy: the rival input moves to another body (control for ectogenesis)",
+  "roles": [
+   {
+    "name": "intended_parent",
+    "gloss": "the person or couple who will raise the child; the carer; the institutional sort, not a demographic (ADR 0011)"
+   },
+   {
+    "name": "child",
+    "gloss": "the subject: the child, a subject only once born (is_subject is set only by a birth action)"
+   },
+   {
+    "name": "provider",
+    "gloss": "the clinic or lab that starts, transfers, implants or decants gestation"
+   },
+   {
+    "name": "registry",
+    "gloss": "vital records / court: registers parentage and reprimands"
+   },
+   {
+    "name": "gestator",
+    "gloss": "the surrogate whose body carries the child; the rival input (one body, a short window; docs/theory.md 'Pregnancy, birth, nursing')"
+   }
+  ],
+  "fluents": [
+   {
+    "name": "is_subject",
+    "arity": 1,
+    "gloss": "x is the institution's subject: the dependent, detainee, child or animal the rules act on",
+    "arg_roles": [
+     "child"
+    ]
+   },
+   {
+    "name": "provides_care",
+    "arity": 2,
+    "gloss": "x provides care (maintenance, assessment, treatment, services, feeding) to y",
+    "arg_roles": [
+     "intended_parent",
+     "child"
+    ]
+   },
+   {
+    "name": "female",
+    "arity": 1,
+    "gloss": "x is female (sex as assigned by the institution's own records)",
+    "arg_roles": [
+     "intended_parent"
+    ]
+   },
+   {
+    "name": "parent",
+    "arity": 2,
+    "gloss": "p is a parent of c",
+    "arg_roles": [
+     "intended_parent",
+     "child"
+    ]
+   },
+   {
+    "name": "birthing_parent",
+    "arity": 2,
+    "gloss": "p gave birth to c",
+    "arg_roles": [
+     "gestator",
+     "child"
+    ]
+   },
+   {
+    "name": "in_gestation",
+    "arity": 1,
+    "gloss": "c is being carried or incubated, anywhere",
+    "arg_roles": [
+     "child"
+    ]
+   },
+   {
+    "name": "gestates",
+    "arity": 2,
+    "gloss": "x's body carries c (surrogacy only)",
+    "arg_roles": [
+     "gestator",
+     "child"
+    ]
+   }
+  ],
+  "actions": [
+   {
+    "name": "start_gestation",
+    "args": [
+     "provider",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "in_gestation",
+      "args": [
+       "child"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "register_parentage",
+    "args": [
+     "registry",
+     "intended_parent",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "parent",
+      "args": [
+       "intended_parent",
+       "child"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "provide_care",
+    "args": [
+     "intended_parent",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "provides_care",
+      "args": [
+       "intended_parent",
+       "child"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "reprimand",
+    "args": [
+     "registry",
+     "x"
+    ],
+    "effects": []
+   },
+   {
+    "name": "implant",
+    "args": [
+     "provider",
+     "gestator",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "gestates",
+      "args": [
+       "gestator",
+       "child"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "give_birth",
+    "args": [
+     "gestator",
+     "child"
+    ],
+    "effects": [
+     {
+      "fluent": "birthing_parent",
+      "args": [
+       "gestator",
+       "child"
+      ],
+      "value": true
+     },
+     {
+      "fluent": "is_subject",
+      "args": [
+       "child"
+      ],
+      "value": true
+     },
+     {
+      "fluent": "in_gestation",
+      "args": [
+       "child"
+      ],
+      "value": false
+     },
+     {
+      "fluent": "gestates",
+      "args": [
+       "gestator",
+       "child"
+      ],
+      "value": false
+     }
+    ]
+   }
+  ],
+  "rules": [
+   {
+    "id": "R1",
+    "attribute": "provider",
+    "deontic": "may",
+    "aim": "(start_gestation provider child)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": false,
+    "source": "Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) (the technology that makes gestation a service; for surrogacy, the clinic's role in assisted conception)"
+   },
+   {
+    "id": "R2",
+    "attribute": "provider",
+    "deontic": "may",
+    "aim": "(implant provider gestator child)",
+    "conditions": "(in_gestation child)",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": false,
+    "source": "gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened."
+   },
+   {
+    "id": "R3",
+    "attribute": "gestator",
+    "deontic": "must",
+    "aim": "(give_birth gestator child)",
+    "conditions": "(gestates gestator child)",
+    "or_else": "R6",
+    "strand": "rival",
+    "implicit": false,
+    "source": "the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04)."
+   },
+   {
+    "id": "R4",
+    "attribute": "intended_parent",
+    "deontic": "may",
+    "aim": "(provide_care intended_parent child)",
+    "conditions": "(and (parent intended_parent child) (is_subject child))",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "source": "care by any registered parent of a born child is permitted, men included; nothing here bars it. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+   },
+   {
+    "id": "R5",
+    "attribute": "intended_parent",
+    "deontic": "must",
+    "aim": "(provide_care intended_parent child)",
+    "conditions": "(and (parent intended_parent child) (is_subject child) (female intended_parent))",
+    "or_else": "R6",
+    "strand": "tying",
+    "implicit": true,
+    "source": "implicit sanctioned norm (a care-norm, not a written rule): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+   },
+   {
+    "id": "R6",
+    "attribute": "registry",
+    "deontic": "may",
+    "aim": "(reprimand registry x)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "the registry's sanction for R3 and R5 (or_else target). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+   },
+   {
+    "id": "R7",
+    "attribute": "registry",
+    "deontic": "may",
+    "aim": "(register_parentage registry intended_parent child)",
+    "conditions": "(is_subject child)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+   }
+  ],
+  "source_text": "Construction, not a statute: gestational surrogacy as the control for ectogenesis (plans/ectogenesis.md section 1). Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened.",
+  "expected_properties": {
+   "birth_labor_rival": "holds_to_k",
+   "care_decoupled_from_birth": "unreachable_open",
+   "solo_care_by_non_birthing_parent": "reachable",
+   "care_assigned_by_sex": "violated"
+  },
+  "isomorphic_to": [
+   {
+    "id": "ectogenesis",
+    "level": "guard",
+    "sub_signature": []
+   }
+  ],
+  "not_isomorphic_to": [
+   "ectogenesis",
+   "coverture-household",
+   "police-crisis",
+   "cps",
+   "kibbutz-childrens-house"
+  ],
+  "minimal_pair_of": null,
+  "notes": "Control: the rival input moves to a weaker party (failure mode Displacement; the model case is the global care chain; layer 3). The minimal pair is recorded on ectogenesis. ASSUMED author decisions (2026-11-04, from the encoder's brief, not from the plan file): R2+R3 substituted counts as a minimal pair; E R2/R3 tagged `superadditive` by hand (no new strand value; claim L11 is refuted for this reason, plan section 5c); R7 has no birthing_parent condition; R5 triggers on female(p) (role not body: Kleven, docs/theory.md); no leave action, so the plan's leave_reserved_for_non_birthing_parent row is dropped; neither entry is in CONTROLS (ectogenesis is not registered as a care-without-control control); gestator consent is out of scope. BY CONSTRUCTION, flagged in advance (plan section 5): birth_labor_rival in ectogenesis restates R2's effect list (gestates is never set there), and care_decoupled_from_birth in ectogenesis is reachable because decant omits birthing_parent (the only non-trivial leg is R7's missing birth condition); both properties carry by_construction: true, which the engine ignores. Treat those two verdicts as information, as marriage_requires_binding was, not as evidence; non-circular evidence needs layer 2/3. Also by construction: gestated_ex_utero exists only to mark an absence. PREREGISTERED (plans/ectogenesis.md section 3, before any run; layer 1, init declared, strict compliance, k=6). gestational-surrogacy: birth_labor_rival holds_to_k; care_decoupled_from_birth unreachable_open; solo_care_by_non_birthing_parent reachable; care_assigned_by_sex violated. ectogenesis: birth_labor_rival violated; care_decoupled_from_birth reachable; solo_care_by_non_birthing_parent reachable; care_assigned_by_sex violated. Headline difference: birth_labor_rival. Iso (ADR 0010, about 65% confident): ectogenesis ~ surrogacy iso at guard, not iso at guard+strands (R2/R3 rival to superadditive tag flip), not iso at exact; ectogenesis not iso coverture-household / police-crisis / cps / kibbutz-childrens-house (no control permission over the subject, no exit bar, so the care+control sub-signature fails); vs transferable-leave / paternity-quota a guess of partial at guard+strands, two legs (R5~R7 implicit must-care by attribute; R4~R5 may care), about 40% confident. Failure modes (ADR 0016): surrogacy Displacement (layer 3); ectogenesis Dark twin (layer 3), Capture (needs a new rule), Dead letter (layer 2); R5 surviving is partial reform, no mode. Layer 2 not required.",
+  "initial": [],
+  "initial_free": [
+   "female"
   ]
  }
 ]

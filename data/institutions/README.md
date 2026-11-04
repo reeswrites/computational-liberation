@@ -2,12 +2,12 @@
 
 Hand-reconstructed institutions for the Phase 0 institutions family (`plans/institutions-phase0.md`).
 
-- `institutions.json`: list of 23 entries (`coverture-household`, `police-crisis`, `cps`, `crisis-team`,
+- `institutions.json`: list of 25 entries (`coverture-household`, `police-crisis`, `cps`, `crisis-team`,
   `paternity-quota`, `transferable-leave`, `companion-ownership`, `companion-guardianship`,
   `companion-guardian-renamed`, the negative controls `lease`, `public-library` and `naming-convention`, the gate (d) pair
   `kibbutz-childrens-house`, `kibbutz-childrens-house-no-implicit`, the expected-match control `airline-flight`,
   the six-entry MWPA chain `mwpa-creditor-exemption`, `mwpa-property`, `mwpa-earnings`, `mwpa-sole-trader`,
-  `mwpa-suit`, `mwpa-property-narrowed`, and the layer-2 gate (a) pair `footbinding`, `footbinding-no-pledge`). Each has `roles`, `fluents`, `actions` (with effects as fluent literals),
+  `mwpa-suit`, `mwpa-property-narrowed`, the layer-2 gate (a) pair `footbinding`, `footbinding-no-pledge`, and the ectogenesis pair `ectogenesis`, `gestational-surrogacy`). Each has `roles`, `fluents`, `actions` (with effects as fluent literals),
   ADICO `rules`, `source_text`, `expected_properties`, `isomorphic_to`, `not_isomorphic_to`, `minimal_pair_of`, `notes`.
 - `properties.json`: named properties reused across entries. The plan's nine plus one extra,
   `leave_reserved_for_non_birthing_parent`, added so the paternity-quota / transferable-leave pair gets
@@ -305,3 +305,47 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
   band), but graded: max adjacent jump 0.19, not > 0.5, so (b) FAILs under both coordination configurations. The
   entry carries no threshold; what grades the curve (the > 0.5 criterion, thresholds U(0, threshold_max), the 20-agent
   graph) is an engine question. `new_convention_adopted` stays the layer-1 property (reachable, as preregistered).
+
+## Ectogenesis pair (2026-11-04)
+
+- `ectogenesis` (Firestone 1970: gestation in a device, nobody is the birthing parent) and `gestational-surrogacy`
+  (control: the rival input moves to another body), encoded from the preregistration `plans/ectogenesis.md` (never edited).
+  Roles `intended_parent`, `child` (subject), `provider`, `registry`; `gestator` in surrogacy only. Seven rules each, five
+  shared (R1 provider may start_gestation; R4 parent may provide_care; **R5 implicit tying must provide_care when
+  `female(p)`, or_else R6**; R6 registry may reprimand; R7 registry may register_parentage with no birth condition). R2/R3
+  are the substitution: surrogacy `implant` (may) and `give_birth` (gestator must, or_else R6), ectogenesis
+  `transfer_to_device` (may) and `decant` (provider must, or_else R6), both hand-tagged `superadditive`. `initial_free`
+  `female` (so a non-female carer is reachable); `is_subject` is set only by a birth action.
+- New properties `birth_labor_rival` and `care_decoupled_from_birth`, formulas as in the plan, both flagged
+  `by_construction: true` in advance (the same mechanism as `marriage_requires_binding`: a property key plus a `history`
+  line; the engine ignores it). The flag was written before any run.
+- **ASSUMED author decisions** (from the encoder's brief, recorded in both entries' notes): R2+R3 substitution counts as a
+  minimal pair (recorded on `ectogenesis`, `differs_on birth_labor_rival`); R2/R3 tagged `superadditive`; R7 no birth
+  condition; R5 on `female(p)`; no leave action, so the plan's `leave_reserved_for_non_birthing_parent` row is dropped;
+  neither entry in `CONTROLS`; gestator consent out of scope.
+- Deviations from the plan: `gestates` is not declared in `ectogenesis` (plan: surrogacy only), so the property lowers it
+  as constant false and the engine warns; `reprimand(registry, x)` has an untyped `x` (as kibbutz R6); source_text and
+  statute citations are UNVERIFIED throughout (no page opened).
+- **Verdicts, observed vs preregistered** (layer 1, k=6, strict, init declared): 7 of 8 as preregistered.
+  ectogenesis: `birth_labor_rival` violated, `care_decoupled_from_birth` reachable, `solo_care_by_non_birthing_parent`
+  reachable, `care_assigned_by_sex` violated. gestational-surrogacy: `care_decoupled_from_birth` unreachable_open,
+  `solo_care_by_non_birthing_parent` reachable, `care_assigned_by_sex` violated.
+- **DRIFT 1 (verdict, recorded not edited):** `gestational-surrogacy` `birth_labor_rival` is **violated**, preregistered
+  holds_to_k. The plan's own skeleton causes it: `start_gestation` (R1) sets `in_gestation(c)` before `implant` sets
+  `gestates`, so the first step after R1 has a gestation held by no body (trace: start_gestation, implant, give_birth,
+  start_gestation). The invariant therefore does not separate the pair: it is violated in both, and the headline
+  difference the plan names (`differs_on birth_labor_rival`) does not appear at layer 1 as encoded. Cause is the
+  property/skeleton pairing, not the engine. Not tuned; a repaired property (guard on implant having fired) or a combined
+  start-and-implant action would be a new preregistration.
+- **DRIFT 2 (iso, recorded not edited):** ectogenesis ~ surrogacy was preregistered iso at `guard`; observed NOT iso at
+  guard, with strands on or off (distance 2, matched 5 of 7: R2 and R3 unmatched). So it is not the strand tag that
+  separates them, as the plan guessed: the aim skeletons differ (surrogacy `implant` and `give_birth` have a gestator
+  argument; the role-vs-variable aim pattern differs from `transfer_to_device` / `decant`). Not iso at exact, as
+  preregistered. Against `coverture-household` (distance 9, matched 0), `police-crisis` (10, 0), `cps` (11, 0),
+  `kibbutz-childrens-house` (guard 5, matched 3; guard+strands 6, matched 2): not iso, as preregistered, for both entries.
+  Against `transferable-leave` / `paternity-quota`: preregistered a guess of partial at guard+strands (about 40%); observed
+  none, matched 0, distance 9, at every level, for both entries (no `partial` claim is expressible in `isomorphic_to`, so
+  this is in the notes and here only).
+- Checks: `phil rules check-all` 122/123 (was 115/115; the one miss is DRIFT 1); `phil rules gate` PASS (criteria a to f;
+  25 institutions, 0 inert); pytest 15 passed. `phil abm gate` not run (a full run was in progress elsewhere).
+- Layer 2 not required by the plan. Failure modes (ADR 0016) as in the plan section 5.

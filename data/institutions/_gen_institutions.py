@@ -857,6 +857,7 @@ inst.append({
  "minimal_pair_of":None,
  "payoffs":{"bind":1.0,"leave_unbound":1.0},
  "coordinated":["bind","leave_unbound"],
+ "initial_practice":"bind",
  "notes":("Layer-2 gate (a) institution. Mackie's convention: a family binds because every other family binds and suitors expect it "
    "(R3 sanctioned norm, R5 the market's refusal, R6/R7 the marriage condition); the campaign's pledge associations (R4) create a "
    "marriage pool in which an unbound daughter is marriageable, so the sanction R5 lapses for pledged families and leave_unbound "
@@ -882,11 +883,109 @@ inst.append({
  "minimal_pair_of":{"id":"footbinding","rule":"R4,R10","differs_on":None},
  "payoffs":{"bind":1.0,"leave_unbound":1.0},
  "coordinated":["bind","leave_unbound"],
+ "initial_practice":"bind",
  "notes":("PREREGISTERED (2026-11-04, before any run): the same four verdicts as footbinding (persists, holds_to_k, reachable, "
    "reachable): pledges change nothing at layer 1. The pair is the gate (a) 'pledge actions exist' half: crit_a reads "
    "_has_pledges on `footbinding` itself, so this entry is the dataset's record of what the no-pledge world looks like and "
    "`differs_on` is null by design (no layer-1 property separates them). At layer 2 the preregistration is the plan's: "
    "binding persists here under every module."+FB_PREREG2+FB_RESULT2+FB_DRIFT3+FB_COHORT)
+})
+
+# ---------------------------------------------------------------- ectogenesis / gestational-surrogacy (plans/ectogenesis.md)
+# Encoded 2026-11-04 from the preregistration plans/ectogenesis.md (committed before this block, CONTRIBUTING step 2).
+# Author decisions, all ASSUMED (given to the encoder in chat 2026-11-04, not in the plan file): (1) the R2+R3 substitution
+# counts as a minimal pair; (2) E's R2/R3 are tagged `superadditive`, no new strand value; (3) R7 has no birth condition;
+# (4) R5 triggers on female(p); (5) no leave action, the leave property rows are dropped; (6) neither entry is added to
+# CONTROLS; (7) gestator consent is out of scope.
+ECTO_UNV = ("UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; "
+  "the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)")
+FIRESTONE = ("Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' "
+  "and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 "
+  "'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). "+ECTO_UNV)
+SURR_UNV = "Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened."
+ECTO_DECISIONS = ("ASSUMED author decisions (2026-11-04, from the encoder's brief, not from the plan file): R2+R3 substituted counts as a minimal "
+  "pair; E R2/R3 tagged `superadditive` by hand (no new strand value; claim L11 is refuted for this reason, plan section 5c); R7 has no "
+  "birthing_parent condition; R5 triggers on female(p) (role not body: Kleven, docs/theory.md); no leave action, so the plan's "
+  "leave_reserved_for_non_birthing_parent row is dropped; neither entry is in CONTROLS (ectogenesis is not registered as a "
+  "care-without-control control); gestator consent is out of scope. BY CONSTRUCTION, flagged in advance (plan section 5): birth_labor_rival "
+  "in ectogenesis restates R2's effect list (gestates is never set there), and care_decoupled_from_birth in ectogenesis is reachable "
+  "because decant omits birthing_parent (the only non-trivial leg is R7's missing birth condition); both properties carry "
+  "by_construction: true, which the engine ignores. Treat those two verdicts as information, as marriage_requires_binding was, not as "
+  "evidence; non-circular evidence needs layer 2/3. Also by construction: gestated_ex_utero exists only to mark an absence.")
+ECTO_PREREG = ("PREREGISTERED (plans/ectogenesis.md section 3, before any run; layer 1, init declared, strict compliance, k=6). "
+  "gestational-surrogacy: birth_labor_rival holds_to_k; care_decoupled_from_birth unreachable_open; solo_care_by_non_birthing_parent "
+  "reachable; care_assigned_by_sex violated. ectogenesis: birth_labor_rival violated; care_decoupled_from_birth reachable; "
+  "solo_care_by_non_birthing_parent reachable; care_assigned_by_sex violated. Headline difference: birth_labor_rival. Iso (ADR 0010, "
+  "about 65% confident): ectogenesis ~ surrogacy iso at guard, not iso at guard+strands (R2/R3 rival to superadditive tag flip), not iso at "
+  "exact; ectogenesis not iso coverture-household / police-crisis / cps / kibbutz-childrens-house (no control permission over the subject, "
+  "no exit bar, so the care+control sub-signature fails); vs transferable-leave / paternity-quota a guess of partial at guard+strands, two "
+  "legs (R5~R7 implicit must-care by attribute; R4~R5 may care), about 40% confident. Failure modes (ADR 0016): surrogacy Displacement "
+  "(layer 3); ectogenesis Dark twin (layer 3), Capture (needs a new rule), Dead letter (layer 2); R5 surviving is partial reform, no mode. "
+  "Layer 2 not required.")
+ECTO_ROLES = [{"name":"intended_parent","gloss":"the person or couple who will raise the child; the carer; the institutional sort, not a demographic (ADR 0011)"},
+              {"name":"child","gloss":"the subject: the child, a subject only once born (is_subject is set only by a birth action)"},
+              {"name":"provider","gloss":"the clinic or lab that starts, transfers, implants or decants gestation"},
+              {"name":"registry","gloss":"vital records / court: registers parentage and reprimands"}]
+SURR_ROLES = ECTO_ROLES + [{"name":"gestator","gloss":"the surrogate whose body carries the child; the rival input (one body, a short window; docs/theory.md 'Pregnancy, birth, nursing')"}]
+ECTO_FLUENTS_COMMON = fl("is_subject","provides_care","female","parent","birthing_parent") + [
+   F("in_gestation",1,"c is being carried or incubated, anywhere")]
+ECTO_FLUENTS = ECTO_FLUENTS_COMMON + [
+   F("gestated_ex_utero",1,"c is in a device (ectogenesis only; exists to mark an absence of a body)")]
+SURR_FLUENTS = ECTO_FLUENTS_COMMON + [
+   F("gestates",2,"x's body carries c (surrogacy only)")]
+_ECTO_SHARED_ACTIONS = [
+   A("start_gestation",["provider","child"],[E("in_gestation",["child"],True)]),
+   A("register_parentage",["registry","intended_parent","child"],[E("parent",["intended_parent","child"],True)]),
+   A("provide_care",["intended_parent","child"],[E("provides_care",["intended_parent","child"],True)]),
+   A("reprimand",["registry","x"],[])]
+ECTO_ACTIONS = _ECTO_SHARED_ACTIONS + [
+   A("transfer_to_device",["provider","child"],[E("gestated_ex_utero",["child"],True)]),
+   A("decant",["provider","child"],[E("is_subject",["child"],True),E("in_gestation",["child"],False),E("gestated_ex_utero",["child"],False)])]
+SURR_ACTIONS = _ECTO_SHARED_ACTIONS + [
+   A("implant",["provider","gestator","child"],[E("gestates",["gestator","child"],True)]),
+   A("give_birth",["gestator","child"],[E("birthing_parent",["gestator","child"],True),E("is_subject",["child"],True),
+                                        E("in_gestation",["child"],False),E("gestates",["gestator","child"],False)])]
+def _ecto_common_rules():
+    return {
+     "R1":R("R1","provider","may","(start_gestation provider child)","true",None,"rival",False,FIRESTONE+" (the technology that makes gestation a service; for surrogacy, the clinic's role in assisted conception)"),
+     "R4":R("R4","intended_parent","may","(provide_care intended_parent child)","(and (parent intended_parent child) (is_subject child))",None,"superadditive",False,"care by any registered parent of a born child is permitted, men included; nothing here bars it. "+ECTO_UNV),
+     "R5":R("R5","intended_parent","must","(provide_care intended_parent child)","(and (parent intended_parent child) (is_subject child) (female intended_parent))","R6","tying",True,
+            "implicit sanctioned norm (a care-norm, not a written rule): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. "+ECTO_UNV),
+     "R6":R("R6","registry","may","(reprimand registry x)","true",None,"tying",False,"the registry's sanction for R3 and R5 (or_else target). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). "+ECTO_UNV),
+     "R7":R("R7","registry","may","(register_parentage registry intended_parent child)","(is_subject child)",None,"tying",False,"parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E). "+ECTO_UNV)}
+_c = _ecto_common_rules()
+ECTO_RULES = [_c["R1"],
+  R("R2","provider","may","(transfer_to_device provider child)","(in_gestation child)",None,"superadditive",False,FIRESTONE+". Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04; plan section 5c): the rival input is deleted, not redistributed, and no strand value says 'no strand'."),
+  R("R3","provider","must","(decant provider child)","(gestated_ex_utero child)","R6","superadditive",False,FIRESTONE+". The birth duty moves from a body to a device operator; decant never sets birthing_parent. Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04)."),
+  _c["R4"],_c["R5"],_c["R6"],_c["R7"]]
+_c = _ecto_common_rules()
+SURR_RULES = [_c["R1"],
+  R("R2","provider","may","(implant provider gestator child)","(in_gestation child)",None,"rival",False,"gestational surrogacy: the clinic implants an embryo in the gestator. "+SURR_UNV),
+  R("R3","gestator","must","(give_birth gestator child)","(gestates gestator child)","R6","rival",False,"the gestator carries to term and gives birth; the rival input sits in one body. "+SURR_UNV+" Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04)."),
+  _c["R4"],_c["R5"],_c["R6"],_c["R7"]]
+inst.append({
+ "id":"ectogenesis",
+ "name":"Ectogenesis (artificial womb; Firestone 1970): gestation in a device, no birthing parent",
+ "roles":ECTO_ROLES,"fluents":ECTO_FLUENTS,"actions":ECTO_ACTIONS,"rules":ECTO_RULES,
+ "source_text":"Firestone, The Dialectic of Sex (1970), ch.1 and ch.10: the demand to free women from the tyranny of their reproductive biology by artificial reproduction and to spread child-bearing and child-rearing across society. ALL UNVERIFIED: wording from memory, no page opened (plans/ectogenesis.md section 2). The mechanism is a thought-experiment technology; no statute exists.",
+ "expected_properties":{"birth_labor_rival":"violated","care_decoupled_from_birth":"reachable",
+                        "solo_care_by_non_birthing_parent":"reachable","care_assigned_by_sex":"violated"},
+ "isomorphic_to":[{"id":"gestational-surrogacy","level":"guard","sub_signature":[]}],
+ "not_isomorphic_to":["gestational-surrogacy","coverture-household","police-crisis","cps","kibbutz-childrens-house"],
+ "minimal_pair_of":{"id":"gestational-surrogacy","rule":"R2,R3","differs_on":"birth_labor_rival"},
+ "notes":("Firestone's claim: ectogenesis removes the rival input itself (one body, a short window), where transferable-leave and kibbutz-childrens-house redistribute the care obligation around it. Substitution pair with gestational-surrogacy: R2 (transfer_to_device vs implant) and R3 (decant vs give_birth) swapped; everything else is shared. "+ECTO_DECISIONS+" "+ECTO_PREREG),
+})
+inst.append({
+ "id":"gestational-surrogacy",
+ "name":"Gestational surrogacy: the rival input moves to another body (control for ectogenesis)",
+ "roles":SURR_ROLES,"fluents":SURR_FLUENTS,"actions":SURR_ACTIONS,"rules":SURR_RULES,
+ "source_text":"Construction, not a statute: gestational surrogacy as the control for ectogenesis (plans/ectogenesis.md section 1). "+SURR_UNV,
+ "expected_properties":{"birth_labor_rival":"holds_to_k","care_decoupled_from_birth":"unreachable_open",
+                        "solo_care_by_non_birthing_parent":"reachable","care_assigned_by_sex":"violated"},
+ "isomorphic_to":[{"id":"ectogenesis","level":"guard","sub_signature":[]}],
+ "not_isomorphic_to":["ectogenesis","coverture-household","police-crisis","cps","kibbutz-childrens-house"],
+ "minimal_pair_of":None,
+ "notes":("Control: the rival input moves to a weaker party (failure mode Displacement; the model case is the global care chain; layer 3). The minimal pair is recorded on ectogenesis. "+ECTO_DECISIONS+" "+ECTO_PREREG),
 })
 
 def L(f,*a): return "(%s %s)" % (f, " ".join(a))
@@ -930,6 +1029,8 @@ EXTRA = {
  "footbinding":({"is_subject":["daughter"],"can_exit":["daughter"],"bound":["daughter"],"married":["daughter"],"marriageable":["family","daughter"]},[L("is_subject","daughter"),L("bound","daughter")],[]),
  "footbinding-no-pledge":({"is_subject":["daughter"],"can_exit":["daughter"],"bound":["daughter"],"married":["daughter"],"marriageable":["family","daughter"]},[L("is_subject","daughter"),L("bound","daughter")],[]),
  "public-library":({"is_subject":["patron"],"can_exit":["patron"],"open":["librarian"],"present":["patron"],"served":["librarian","patron"],"suspended":["patron"],"disruptive":["patron"]},[],["disruptive"]),
+ "ectogenesis":({"is_subject":["child"],"provides_care":["intended_parent","child"],"female":["intended_parent"],"parent":["intended_parent","child"],"birthing_parent":["intended_parent","child"],"in_gestation":["child"],"gestated_ex_utero":["child"]},[],["female"]),
+ "gestational-surrogacy":({"is_subject":["child"],"provides_care":["intended_parent","child"],"female":["intended_parent"],"parent":["intended_parent","child"],"birthing_parent":["gestator","child"],"in_gestation":["child"],"gestates":["gestator","child"]},[],["female"]),
  "naming-convention":({"uses_old":["member"],"uses_new":["member"]},[L("uses_old","member")],[]),
 }
 for mid in MWPA_IDS:
