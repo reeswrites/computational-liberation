@@ -37,6 +37,7 @@ jobs:
       - uses: astral-sh/setup-uv@v5
       - run: uv python install ${{ matrix.python-version }}
       - run: uv sync --python ${{ matrix.python-version }}
+      - run: uv run pytest -q                      # this repo's own tests (tests/: dataset claims)
       - run: uv run pytest -q -m "not llm" ../philosophy-engine/tests
       - run: uv run phil rules check-all
 
