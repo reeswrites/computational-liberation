@@ -178,7 +178,7 @@ The goal is a tool that, given a set of institutions and a set of candidate chan
 
 | Layer | Computes | Method | Pass test | Status |
 | --- | --- | --- | --- | --- |
-| 1. Entailment | What a rule set forces or permits | ADICO rules, Z3 bounded checks, isomorphism (philosophy-engine, institutions family) | Gate (b)–(f): care+control cluster, one-rule minimal pairs, kibbutz and Happy failures via implicit rules, cosmetic-reform detection | Built 2026-11-03: 9 institutions encoded, 36/36 verdicts match, gate passes (kibbutz test deferred), 313 tests incl. independent reference semantics; care+control iso holds only at guard+strands level (ADR 0010); skeptical review (docs/reviews/) verdict: not yet. Minimal pairs and cosmetic-reform detection hold; care+control rediscovery is built in (power fluents asserted in effects, not derived from rules; a 5-rule lease matches at the same level; gate ignored the precommitted level). Fixes in progress: derived power fluents, breakers for every must-be, negative controls, gate reads precommitted level |
+| 1. Entailment | What a rule set forces or permits | ADICO rules, Z3 bounded checks, isomorphism (philosophy-engine, institutions family) | Gate (b)–(f): care+control cluster, one-rule minimal pairs, kibbutz and Happy failures via implicit rules, cosmetic-reform detection | Current status: docs/claims.md (tally) and docs/plan.md (log) |
 | 2. Frequency | How often outcomes occur under a rule set | Agent-based model: adaptive agents, trust variable, threshold joining; veil-of-ignorance scoring | Reproduces footbinding collapse via pledge associations and the Centola-style threshold without hand-tuning | Spec exists (solidarity thread) |
 | 3. Backtest | Whether layers 1–2 predict known history | Encode 6–8 cases with known outcomes (footbinding, Quebec quota, Dutch buyouts, whaling, cage-free pledges, kibbutz) | Blind runs match recorded outcomes on direction and on which failure mode fired | Not started |
 | 4. Priority | Which change scores highest now | Six tests (leverage, bottleneck, power shift, durability, margins first, surplus) scored from layers 1–2, not by hand | Ranking is stable across random starts and agrees with backtested cases | Not started |
@@ -186,9 +186,7 @@ The goal is a tool that, given a set of institutions and a set of candidate chan
 
 **Rule:** no forward claim from the tool until layer 3 passes. Until then it is a theory-checker, not a planner.
 
-**Done today: the layer-1 path end to end (see Status). Two semantics findings came out of it: the floor ("you can walk away unless a rule stops you") had to be encoded as a default, and ADICO needed state obligations (must-be) alongside action obligations (ADR 0009). Originally planned:** write `data/institutions/institutions.json` for the care+control cluster and the two minimal pairs; add `schemas_rules.py` and the step-indexed lowering; run `consistent` and one `reachable` check end to end on `coverture-household`. Check whether an existing Institutional Grammar 2.0 parser can replace hand-encoding.
-
-**Next:** the remaining institutions, the iso stage over roles, the gate; then the agent-based model as a separate module reading the same JSON.
+Current status: docs/claims.md (tally) and docs/plan.md (log).
 
 **Verifying the verifier.** Three gaps, each checked by something of a different kind than itself, so the regress ends.
 

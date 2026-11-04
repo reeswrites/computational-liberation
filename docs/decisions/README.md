@@ -29,6 +29,7 @@ A decision is changed by a new ADR that supersedes the old one, not by rewriting
 | [0011](0011-dual-use-and-scope-limits.md) | Dual use and scope limits | proposed |
 | [0012](0012-participation-in-encoding.md) | Participation in encoding | proposed |
 | [0014](0014-review-council.md) | Review council after every batch | accepted |
+| [0015](0015-layer2-abm-design.md) | Layer 2 ABM design choices (A1–A7) | accepted |
 
 ## In philosophy-engine (engine mechanics)
 
