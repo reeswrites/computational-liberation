@@ -840,6 +840,11 @@ FB_DRIFT3 = (" Drift 2026-11-04 (encoding review finding 3): marriage_requires_b
 FB_COHORT = (" Layer 1 has one cohort (encoding review 2026-11-04 finding 4): one daughter, bound at t=0, and `married` never "
   "clears, so no trace shows a per-cohort binding decision before the market; a `new_cohort` action clearing bound/married "
   "is deferred to the author.")
+FB_RESULT2 = (" RESULT (2026-11-04, after the run, commit b6f48aa preceding it): no drift. check-all 115/115 with all four "
+  "verdicts as preregistered in both entries; `phil rules gate` PASS; pytest 15 passed; no warning printed for either entry "
+  "(none was printed before the change either). ABM information, `--seeds 5 --steps 60 --modules material,coordination`: "
+  "bound 1.0 in every seed (persistence), pledged 0.667 over seeds, i.e. true on the family and the suitor role tuple and "
+  "not the daughter's: the A2 caveat on both sides, as the preregistration said; breach, sanction and unavoidable rates 0.")
 inst.append({
  "id":"footbinding",
  "name":"Footbinding as a marriage-market convention (Mackie 1996), with pledge associations",
@@ -861,7 +866,7 @@ inst.append({
    "from R7 rather than asserted; R3 is unconditional and R5 carries the (not pledged) condition, so that the pledge changes "
    "nothing at layer 1 (the preregistration the gate pair needs). Sources: every text was read as a search snippet, none as a "
    "page (network closed in this session); the abstract sentences are verbatim from the index, everything else is [R] or "
-   "UNVERIFIED and says so per rule. "+FB_PREREG+FB_PREREG2+FB_DRIFT3+FB_COHORT+FB_NOTES_COORD)
+   "UNVERIFIED and says so per rule. "+FB_PREREG+FB_PREREG2+FB_RESULT2+FB_DRIFT3+FB_COHORT+FB_NOTES_COORD)
 })
 inst.append({
  "id":"footbinding-no-pledge",
@@ -881,7 +886,7 @@ inst.append({
    "reachable): pledges change nothing at layer 1. The pair is the gate (a) 'pledge actions exist' half: crit_a reads "
    "_has_pledges on `footbinding` itself, so this entry is the dataset's record of what the no-pledge world looks like and "
    "`differs_on` is null by design (no layer-1 property separates them). At layer 2 the preregistration is the plan's: "
-   "binding persists here under every module."+FB_PREREG2+FB_DRIFT3+FB_COHORT)
+   "binding persists here under every module."+FB_PREREG2+FB_RESULT2+FB_DRIFT3+FB_COHORT)
 })
 
 def L(f,*a): return "(%s %s)" % (f, " ".join(a))

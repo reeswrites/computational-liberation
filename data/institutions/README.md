@@ -262,6 +262,14 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
   under `--compliance sanctioned` `binding_practised` fails in both (leave_unbound fires and pays R5), as the notes said
   it should; `phil abm run --inst footbinding --seeds 5 --steps 60` (material only) keeps `bound` at 1.0 in every seed
   (persistence), with `pledged` flipping to 1.0 role-wide as soon as one family pledges (the A2 coarseness noted above).
+- **Encoding review 2026-11-04** (`docs/reviews/2026-11-04-footbinding-naming-encoding-review.md`): the suitor pledge R10
+  was preregistered and committed (b6f48aa) before its first run: no layer-1 verdict changes in either entry. Result: no
+  drift (check-all 115/115, gate PASS, 15 tests); ABM information run (material+coordination, 5 seeds, 60 steps): `bound`
+  1.0 in every seed, `pledged` 0.667 (true on the family and suitor role tuples, the A2 coarseness now on both sides).
+  Also from the review: `marriage_requires_binding` flagged by construction (finding 3, kept for the record); one-cohort
+  note and a deferred `new_cohort` action (finding 4); R9 implicit, rival tags on R5/R8/R9 marked as by analogy (finding
+  6); the naming band reworded (finding 9); source_text notes that plans/layer2-abm.md lists Mackie and Centola as opened
+  by the planning session.
 - Extra fields the engine ignores: `payoffs` (bind and leave_unbound 1.0, the A1 default made explicit so the gate can
   sweep them) and an ASSUMED `coordinated: [bind, leave_unbound]` list, because `ActionDecl` has no action tag yet; the
   notes tell the coordination-module author which actions are coordinated and that role-level `pledged` plus set-true-wins
