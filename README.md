@@ -14,15 +14,15 @@ A general theory of liberation, made checkable. Liberation is turning imposed bu
 - [Decisions (ADRs)](docs/decisions/): theory and process decisions; engine-mechanics ADRs are indexed there and live in philosophy-engine.
 - [Plans](plans/): institutions Phase 0, batch 2, backtest data inventory, layer 2 agent-based model.
 - [Glossary](docs/glossary.md).
-- [philosophy-engine](https://github.com/reeshuffled/philosophy-engine): the engine that formalizes, checks (Z3) and compares arguments and institutions. This repo supplies the theory and the `data/institutions` family; the engine supplies the code.
+- [philosophy-engine](https://github.com/reeswrites/philosophy-engine): the engine that formalizes, checks (Z3) and compares arguments and institutions. This repo supplies the theory and the `data/institutions` family; the engine supplies the code.
 
 ## Run
 
 This repo has no code of its own. It depends on philosophy-engine as an editable uv path dependency at `../philosophy-engine`, so check both out as siblings:
 
 ```
-git clone https://github.com/reeshuffled/philosophy-engine
-git clone https://github.com/reeshuffled/computational-liberation
+git clone https://github.com/reeswrites/philosophy-engine
+git clone https://github.com/reeswrites/computational-liberation
 cd computational-liberation
 uv sync
 uv run phil families            # lists data/*/ families found here

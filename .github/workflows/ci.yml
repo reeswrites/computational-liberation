@@ -32,7 +32,7 @@ jobs:
           path: computational-liberation
       - uses: actions/checkout@v4
         with:
-          repository: reeshuffled/philosophy-engine
+          repository: reeswrites/philosophy-engine
           path: philosophy-engine
       - uses: astral-sh/setup-uv@v5
       - run: uv python install ${{ matrix.python-version }}
@@ -53,7 +53,7 @@ jobs:
           path: computational-liberation
       - uses: actions/checkout@v4
         with:
-          repository: reeshuffled/philosophy-engine
+          repository: reeswrites/philosophy-engine
           path: philosophy-engine
       - uses: astral-sh/setup-uv@v5
       - run: uv python install 3.12
