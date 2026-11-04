@@ -41,8 +41,8 @@ Layer 2 is frozen after today's gate record. The `imagination` module is not bui
 ## Decisions waiting on the author
 - Encoding reviewer for Phase 0 (ADR 0012): the author, until there is someone else.
 - (All 2026-11-04 decisions accepted by the author in-session; see the log and ADR 0016's council amendment.)
-- From plans/priority.md: freedom vs goods property lists, k bound for ablation, whether deleting a `may` rule is a cut or a prohibition, the slice-1 preregistered ranking table, who the second goods encoder is.
-- From plans/ectogenesis.md drift 1: fix the start_gestation/implant skeleton under a v2 preregistration, or leave as recorded.
+- From plans/priority.md: settled 2026-11-04 late (kinds, k=6+8, may=delete, fresh-agent second encoder); the slice-1 preregistered ranking table is the one still open.
+- From plans/ectogenesis.md drift 1: settled, v2 preregistration (merge start_gestation/implant) before rerun.
 
 ## Restart list (2026-11-04, evening; in order)
 1. done — Engine fix pass landed, uncommitted at time of writing: 493 tests; (a) now reads either pledge action via its base, step-0 share guard, crit_c band condition, child rng for committed minority, (b) report carries the implicit-0.5 caveat and the Centola-band information line, verdict unchanged.

@@ -65,8 +65,11 @@ Each slice: a pass test, a preregistration committed before the run, and a counc
 
 ## Decisions waiting on the author
 
-1. **Which properties count as freedom and which as goods.** Needs the `kind` field filled for all 18 properties in `properties.json`, or a rule for writing new ones.
-2. **The k bound for ablation.** Default 6 (`run_all`); propose slice 1 at k=6 and k=8 with disagreement reported.
-3. **Whether deleting a `may` rule is a cut or a prohibition.** Deleting `may` removes a permission under the engine's reading (the action is then not enabled), which differs from adding `must_not`. Proposal: ablation deletes; a separate `prohibit` variant is out of scope, and results on `may` rules are labelled "permission removed".
-4. The placeholder ranking table for slice 1, before the run.
-5. Who the second goods encoder is (ADR 0012).
+Settled 2026-11-04 (late) with the author:
+
+1. **Property kinds** (`kind` field on every property, added in slice 1): `freedom` (counted in load_freedom): dependent_cannot_exit, subject_cannot_exit, subject_cannot_exit_persists, no_standing, no_standing_persists, financial_dependence, financial_dependence_unpropertied, cannot_contract, worker_uninsured, binding_practised, marriage_requires_binding, care_assigned_by_sex, reproduction_controlled_by_owner, offspring_owned. `goods` (counted in load_goods): none yet; slice 2 writes them. `structure` (diagnostic, listed not counted): care_and_sanction_same_role, solo_care_by_non_birthing_parent, leave_reserved_for_non_birthing_parent, new_convention_adopted, birth_labor_rival, care_decoupled_from_birth. `failure_mode` (listed not counted): double_burden, creditor_shield, backlash.
+2. **k bound:** ablation runs at k=6 and k=8; any verdict disagreement between them is reported per rule, never averaged.
+3. **`may` deletion:** ablation deletes the rule (permission removed, labelled "permission removed" in the output); no prohibit variant in slice 1. Revisit only if a `may` deletion tops a ranking.
+4. **Second goods encoder (ADR 0012):** a fresh agent that never saw the first encoding writes its own goods properties; disagreements fill `contested`; every report says "second encoder: agent, not someone living under the institution".
+5. **Slice-1 preregistered ranking table:** still open; the author names, before the run, the rule expected to carry the highest load_freedom in coverture-household, kibbutz-childrens-house, footbinding, mwpa-property and ectogenesis. Note found while settling: no freedom property currently reads ectogenesis R5 (care_assigned_by_sex is already `violated` there because R4 permits male care), so the T3 expectation "R5 is next" needs a property R5 actually carries (e.g. a `persists`-shaped care duty on female intended parents) written and preregistered in slice 1, or the expectation reads load 0 by construction.
+6. **Ectogenesis drift 1:** fix under a v2 preregistration (start_gestation and implant merged; surrogacy `birth_labor_rival` preregistered holds_to_k), committed before the rerun.

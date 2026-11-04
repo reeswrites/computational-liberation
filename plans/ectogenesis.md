@@ -74,3 +74,42 @@ Mostly layer-1 only. A gate-letter question appears only if R5 becomes a sanctio
 5. Drop the leave property rows, or add a leave action?
 6. Add ectogenesis to `CONTROLS`?
 7. Consent for the gestator in surrogacy (omitted here): in scope?
+
+## Revision 2 (2026-11-04, preregistered before the rerun)
+
+v1 above is unedited. Its observed drift (data/institutions/README.md, "Ectogenesis pair", DRIFT 1 and 2) stays in the record; this section is a new preregistration, never an edit of v1.
+
+### 1. Change (author decision: fix the encoding artifact)
+
+DRIFT 1 cause: in `gestational-surrogacy`, `start_gestation` (R1) sets `in_gestation(c)` one step before `implant` sets `gestates(x,c)`, so a step exists where a gestation has no body and `birth_labor_rival` is violated (trace: start_gestation, implant, give_birth, start_gestation). That is an artifact of the two-action skeleton, not of surrogacy.
+
+Change, `gestational-surrogacy` only:
+- Remove R1 (`provider may start_gestation`) and the `start_gestation` action from this entry.
+- Redefine `implant(provider, gestator, child)` with effects `in_gestation(child)` and `gestates(gestator, child)` in one step. No bodiless step is reachable.
+- R2 keeps its id, attribute and strand (`provider may implant`, rival), but its condition changes from `(in_gestation child)` to `true`, since nothing now precedes it.
+- Surrogacy has six rules (R2 to R7); R3 to R7 unchanged. `register_parentage`, `provide_care`, `reprimand` unchanged.
+
+Ectogenesis is left as is: its `start_gestation` then `transfer_to_device` sequence is the point of the entry (a gestation with no body). The symmetric merge is not needed to keep the pair a substitution; it would erase the very difference `birth_labor_rival` measures. The pair stops being a pure R2+R3 swap: it becomes R1 removed plus R2 and R3 swapped, with R4 to R7 shared. The author's v1 decision 1 is not reopened; the `minimal_pair_of` rule list is extended to "R1,R2,R3".
+
+### 2. v2 verdict table (layer 1, k=6, strict, init declared)
+
+| Property | surrogacy v2 | ectogenesis v2 |
+|---|---|---|
+| `birth_labor_rival` (invariant) | **holds_to_k** | violated |
+| `care_decoupled_from_birth` (reachable) | unreachable_open | reachable |
+| `solo_care_by_non_birthing_parent` (reachable) | reachable | reachable |
+| `care_assigned_by_sex` (invariant) | violated | violated |
+
+Everything except the first cell equals v1 observed. `by_construction` flags are unchanged: `birth_labor_rival` and `care_decoupled_from_birth` stay flagged on both entries; surrogacy holding is now by construction too (the merged `implant` sets both fluents).
+
+### 3. v2 iso expectation
+
+v1 observed: not iso at guard, strands on or off; distance 2; matched 5 of 7; R2 and R3 unmatched (action shapes: gestator argument, role-vs-variable aim pattern). v2 preregistered: **not iso at guard, guard+strands and exact**. The merge adds a mismatch (rule count 6 vs 7) so the distance should rise, to about 3 (R1 unmatched, R2 and R3 unmatched), with matched 4 (R4 to R7). About 60% confident on the exact distance; the not-iso verdicts are about 90%. Against coverture-household, police-crisis, cps, kibbutz-childrens-house, transferable-leave, paternity-quota: unchanged from v1 observed.
+
+### 4. R5 and slice 1 of plans/priority.md
+
+No freedom property currently reads ectogenesis R5. `care_assigned_by_sex` is already violated there because R4 permits male care, so deleting R5 cannot flip it. Proposed ONE persists-shaped property for slice 1 to preregister (not added to the dataset):
+
+`female_parent_care_persists`: `(and (exists ((p agent) (c agent)) (and (is_subject c t) (parent p c t) (female p t))) (forall ((p agent) (c agent)) (=> (and (is_subject c t) (parent p c t) (female p t)) (provides_care p c t))))`
+
+Gloss: a born child has a female registered parent, and every such parent provides care; once true, it should stay true. R5 is the rule that forces care into the forall leg. The `exists` guard prevents pre-birth vacuity. Its ablation verdict is for the author to preregister in the slice 1 table; I do not predict it here.
