@@ -117,7 +117,7 @@ Research in progress, 2026-11-04.
 The honest summary is the [claims register](docs/claims.md); its tally line reads: supported 6, supported (encoding level) 1, weakened 9, refuted 1, untested 19, retracted 0 (36 rows).
 The theory-level claims (layers 2 to 5) are untested by design, since no forward claim is made before layer 3; the one exception, T5 (cosmetic reform), is supported at the encoding level only.
 
-The layer-1 gate (`phil rules gate`, criteria (a) to (f)) passes on the current 23-entry dataset.
+The layer-1 gate (`phil rules gate`, criteria (a) to (f)) passes on the current 25-entry dataset (including the ectogenesis pair).
 The first gate claim, that the engine rediscovers the care+control cluster from the rules alone, was weakened after the skeptical review (claim L1): the match depends on strand tags a human assigned.
 The layer-2 gate (`phil abm gate`, criteria (a) to (d)) is recorded in [plans/layer2-abm.md](plans/layer2-abm.md): (c) kibbutz and (d) seed stability PASS; (a) footbinding and (b) committed minority were BLOCKED on a missing coordination module and two missing encodings, which are the slice now in progress ([docs/plan.md](docs/plan.md), "Next slice").
 One backtest, the Married Women's Property Acts (MWPA), has run at layer 1: direction passed, every preregistered flip matched, failure modes reachable but unranked, so inconclusive until layer 2 ([plans/backtest-mwpa.md](plans/backtest-mwpa.md)).
@@ -145,7 +145,7 @@ Apache-2.0.
 - [Plans](plans/): institutions Phase 0, batch 2, backtest data inventory, the MWPA backtest, layer 2 agent-based model. Working documents, dated.
 
 **Data**
-- [Institutions dataset README](data/institutions/README.md): the 23 encodings, conventions, every revision and why. For anyone reading or adding an encoding.
+- [Institutions dataset README](data/institutions/README.md): the 25 encodings, conventions, every revision and why. For anyone reading or adding an encoding.
 
 **Engine**
 - [philosophy-engine](https://github.com/reeswrites/philosophy-engine): the engine that formalizes, checks (Z3) and compares arguments and institutions. This repo supplies the theory and the `data/institutions` family; the engine supplies the code. Its README has the command table and the module diagram.
@@ -170,7 +170,7 @@ uv run phil abm gate --seeds 100                               # layer-2 gate, c
 `phil rules check --inst ID --trace` prints the counterexample trace for one institution;
 `phil abm sweep` and `phil abm score` are described in the engine README.
 The engine resolves `data/` and `runs/` from the current working directory (`PHIL_DATA_DIR` / `PHIL_RUNS_DIR` override), so run `uv run phil ...` from inside this repo.
-The dataset lives in `data/institutions/` here (23 entries); the engine repo carries a synced copy (it has "Sync dataset" commits).
+The dataset lives in `data/institutions/` here (25 entries); the engine repo carries a synced copy (it has "Sync dataset" commits).
 Sync direction: see [data/institutions/README.md](data/institutions/README.md).
 
 ## What the engine does and doesn't do
