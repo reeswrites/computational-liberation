@@ -31,3 +31,36 @@ Wording follows `plans/institutions-phase0.md`. Structural terms describe encodi
 - **minimal pair**: two institutions differing by one rule, used to test that near-identical encodings are told apart.
 - **gate**: the set of criteria an encoding run must pass, including rediscovery of known findings, before results are used.
 - **backtest**: checking the engine's verdicts against historical cases with known outcomes before any forward claim.
+
+## Gate
+
+Source: `docs/interpreting-results.md` section 4. "Phase 0 test" numbers are from `docs/theory.md` line ~171.
+
+| Letter | What it checks | Phase 0 test |
+|---|---|---|
+| (a) | The 14 institutions load; no load-bearing must-be rule is inert. | none |
+| (b) | The care+control trio matches at its precommitted level; `lease` and `public-library` do not; the crisis team matches nothing. | (1) cluster police, CPS, coverture household; exclude the crisis team |
+| (c) | The minimal pair is one rule apart and differs on the named property. | (2) separate paternity quota from transferable leave |
+| (d) | `care_assigned_by_sex` persists with implicit R2 and fails without it. | (3) the kibbutz failure |
+| (e) | Verdicts agree with preregistered expectations (minimum 60%). | none |
+| (f) | A pure rename is detected (`pure_rename`) and guardianship is not ownership. | none numbered (claims L3 ties (c)/(f) to test (2); L5 covers rename) |
+
+## Further terms
+
+- **precommitted**: fixed in the dataset entry before the run; applies to the iso level per claim (`docs/decisions/0010-iso-abstraction-levels.md`, `docs/interpreting-results.md` section 3).
+- **preregistered**: expected verdicts written before any run and never edited to match results (`CONTRIBUTING.md`, `docs/plan.md`).
+- **care+control cluster**: police-crisis, CPS and the coverture household, which share a care duty, a control permission on the same subject, and an exit bar (`docs/decisions/0010-iso-abstraction-levels.md`).
+- **council**: fresh reviewer agents, never the builder, convened after every batch with four seats (`docs/decisions/0014-review-council.md`).
+- **load-bearing**: a must-be rule the gate counts on to constrain behaviour; gate (a) fails if one is inert (`docs/interpreting-results.md`).
+- **inert**: a must-be rule no compliant trace can breach within k, so it constrains nothing (`docs/interpreting-results.md` section 2).
+- **vacuous**: a `holds_to_k` that is true only because the antecedent never occurs (`docs/interpreting-results.md` section 2).
+- **must-be**: an ADICO aim that is a fluent (state obligation) rather than an action (philosophy-engine ADR 0009, `../philosophy-engine/docs/decisions/0009-state-obligations.md`).
+- **guard / strands / level**: iso switches. Level is `exact` (literal conditions) or `guard` (conditions reduced to conditional or unconditional); strands adds the human-assigned rival/superadditive/tying tags (`docs/interpreting-results.md` section 3).
+- **power fluent**: a fluent derived from what the rules enable, `(enabled ACTION ...)`, never asserted as an effect (philosophy-engine ADR 0013, `../philosophy-engine/docs/decisions/0013-derived-power-fluents.md`).
+- **negative control**: an institution (`lease`, `public-library`) that must not match a cluster at its precommitted level (`docs/decisions/0010-iso-abstraction-levels.md`, `docs/interpreting-results.md` section 4).
+- **expected-match control**: an institution preregistered to match structurally, `airline-flight` (in-flight custody); gate (b) has no mode for it yet (`docs/interpreting-results.md` section 4, `docs/plan.md`).
+- **post hoc**: a property or expectation chosen or edited after seeing verdicts; must be marked as such (`docs/interpreting-results.md` section 6, claims M4, L15).
+- **sanctioned norm**: an implicit rule encoded as a `must_not` with an `or_else` sanction, as kibbutz R2 (`docs/interpreting-results.md` section 5, `data/institutions/README.md`).
+- **assurance**: what lets people leave a bundle together; solidarity as a stag hunt (`docs/theory.md`, "How liberation starts").
+- **surplus**: slack that makes room to see a bundle as a bundle (`docs/theory.md`, "How liberation starts").
+- **Layer 1-5**: the roadmap layers: 1 Entailment, 2 Frequency, 3 Backtest, 4 Priority, 5 Sequence (`docs/theory.md`, roadmap table). TODO author: one-line definitions of layers 2-5 beyond the table.

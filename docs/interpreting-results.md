@@ -1,6 +1,6 @@
 # Interpreting engine output
 
-For anyone who will see `phil rules ...` output and must not over-read it. Output below was run 2026-11-03 (z3 4.15.4, k=6). ADRs 0003, 0004, 0009, 0013 are in philosophy-engine `docs/decisions/`; 0010 is in `docs/decisions/` here.
+For anyone who will see `phil rules ...` output and must not over-read it. Output below was run 2026-11-03 (z3 4.15.4, k=6). ADRs 0003, 0004, 0009, 0013 are in philosophy-engine `docs/decisions/` (`../philosophy-engine/docs/decisions/` when checked out as a sibling); 0010 is in `docs/decisions/` here.
 
 ## 1. What a check answers
 

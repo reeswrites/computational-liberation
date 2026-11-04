@@ -32,12 +32,14 @@ A decision is changed by a new ADR that supersedes the old one, not by rewriting
 
 ## In philosophy-engine (engine mechanics)
 
+ADRs 0002, 0003, 0004, 0009, 0013 live in philosophy-engine `docs/decisions/`.
+
 | # | Title | Status |
 |---|---|---|
 | [0002](https://github.com/reeswrites/philosophy-engine/blob/main/docs/decisions/0002-rule-format-adico-json.md) | Rule format: ADICO as our own JSON, IG Script tags borrowed | accepted |
 | [0003](https://github.com/reeswrites/philosophy-engine/blob/main/docs/decisions/0003-time-by-bounded-unrolling.md) | Time by bounded unrolling in Z3 (k=6) | accepted |
 | [0004](https://github.com/reeswrites/philosophy-engine/blob/main/docs/decisions/0004-entailment-not-prediction.md) | Entailment, not prediction | accepted |
 | [0009](https://github.com/reeswrites/philosophy-engine/blob/main/docs/decisions/0009-state-obligations.md) | State obligations: an aim can be a fluent (must-be), not only an action | accepted |
-| [0013](https://github.com/reeswrites/philosophy-engine/blob/main/docs/decisions/0013-derived-power-fluents.md) | Power fluents are derived from what the rules enable, never asserted as effects | accepted |
+| [0013](https://github.com/reeswrites/philosophy-engine/blob/main/docs/decisions/0013-derived-power-fluents.md) (`philosophy-engine/docs/decisions/0013-derived-power-fluents.md`) | Power fluents are derived from what the rules enable, never asserted as effects | accepted |
 
 ADR 0010 here cites ADR 0013 (engine) for the gate fix; ADR 0013 and the claims register cite 0010 for the precommitted level.

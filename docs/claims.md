@@ -1,6 +1,6 @@
 # Claims register
 
-One row per claim the project makes or plans to make. Status ∈ {supported, weakened, refuted, untested, retracted}.
+One row per claim the project makes or plans to make. Status ∈ {supported, supported (encoding level), weakened, refuted, untested, retracted}; `supported (encoding level)` means the check passed on the encoding only, not on the institution (T5).
 Evidence names a test, gate criterion or review; "none" means nothing checks it yet. Last checked 2026-11-03, after the
 skeptical review (`docs/reviews/2026-11-03-phase0-skeptical-review.md`) and before the ADR 0013 re-encode completes.
 A claim is `supported` only if a check that could have failed passed and the review did not undercut it.
@@ -57,4 +57,4 @@ A claim is `supported` only if a check that could have failed passed and the rev
 
 ## Status counts
 
-supported 7 · weakened 9 · refuted 1 · untested 18 · retracted 0 (35 rows).
+supported 6 · supported (encoding level) 1 · weakened 8 · refuted 1 · untested 19 · retracted 0 (35 rows).
