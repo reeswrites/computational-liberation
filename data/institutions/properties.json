@@ -87,7 +87,9 @@
  },
  {
   "name": "marriage_requires_binding",
-  "gloss": "Mackie's convention: whenever a family can marry off a subject, she is bound or the family has pledged (an unbound daughter is marriageable only inside a pledge association). holds_to_k in both footbinding entries (preregistered 2026-11-04). Non-vacuous: marriageable(family, daughter) is true at t=0.",
+  "by_construction": true,
+  "history": "2026-11-04, encoding review finding 3 (red, by construction): analytic from R7. marriageable(f, d) is derived from R7's enabledness (ADR 0013) and R7's condition is exactly (or bound pledged), so the formula restates the rule and holds_to_k cannot fail; 'non-vacuous at t=0' does not rescue it. Kept in both footbinding entries' expected_properties as the 2026-11-04 preregistration for the record, not as evidence; a redefinition via `married` is the author's call, not made here. The engine ignores this key (pydantic drops unknown fields; the gate reads `postregistered` only on minimal_pair_of).",
+  "gloss": "Mackie's convention: whenever a family can marry off a subject, she is bound or the family has pledged (an unbound daughter is marriageable only inside a pledge association). holds_to_k in both footbinding entries (preregistered 2026-11-04) BY CONSTRUCTION, see history: information, not a verdict. Non-vacuous: marriageable(family, daughter) is true at t=0.",
   "formal": "(forall ((f agent) (d agent)) (=> (and (is_subject d t) (marriageable f d t)) (or (bound d t) (pledged f t))))"
  },
  {

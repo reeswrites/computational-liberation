@@ -495,6 +495,7 @@ inst.append({
 # game, not for any real population. The paper could NOT be opened from this session (science.org, PubMed, Crossref,
 # Europe PMC, Semantic Scholar all refused), so the citation and figures are from memory and UNVERIFIED as quotations.
 CENTOLA = "Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation"
+CONSIST = " plans/layer2-abm.md records these sources as opened on 2026-11-03 by the planning session; this entry's encoder could not reopen them on 2026-11-04."
 COORD = "[coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] "
 inst.append({
  "id":"naming-convention",
@@ -510,7 +511,7 @@ inst.append({
    R("R1","member","may","(use_old m)","true",None,"superadditive",False,CENTOLA+" (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). "+COORD),
    R("R2","member","may","(use_new m)","true",None,"superadditive",False,CENTOLA+" (as R1: the alternative name; the committed minority holds it regardless of payoff, which is a model parameter, not a rule). "+COORD)],
  "payoffs":{"use_old":1.0,"use_new":1.0,"coordinated":["use_old","use_new"],"committed_action":"use_new","initial_practice":"use_old"},
- "source_text":"From memory, NOT a verified quotation (the page could not be opened from this session): the experiment ran online groups of 20-30 participants who, in randomly paired rounds, each proposed a name for a pictured object and were paid a small reward when the two names matched and charged a small penalty when they did not; once a group had converged on one name, a committed minority instructed to use a different name was added, and minorities of about 25% of the group overturned the established name while smaller ones (around 20% and below) did not. The abstract (as recalled) reports 'direct empirical demonstration of the existence of a tipping point in the dynamics of changing social conventions' and that minority groups that reached the critical mass 'were consistently able to overturn the established behavior'. "+CENTOLA,
+ "source_text":"From memory, NOT a verified quotation (the page could not be opened from this session): the experiment ran online groups of 20-30 participants who, in randomly paired rounds, each proposed a name for a pictured object and were paid a small reward when the two names matched and charged a small penalty when they did not; once a group had converged on one name, a committed minority instructed to use a different name was added, and minorities of about 25% of the group overturned the established name while smaller ones (around 20% and below) did not. The abstract (as recalled) reports 'direct empirical demonstration of the existence of a tipping point in the dynamics of changing social conventions' and that minority groups that reached the critical mass 'were consistently able to overturn the established behavior'. "+CENTOLA+CONSIST,
  "expected_properties":{"new_convention_adopted":"reachable"},
  "isomorphic_to":[],
  "not_isomorphic_to":["coverture-household","police-crisis","cps"],
@@ -754,6 +755,7 @@ BROWN = ("Brown, Bossen, Gates & Satterthwaite-Phillips, 'Marriage Mobility and 
   "women footbinding did not guarantee a better marriage (two-thirds did not marry up); the marriage-market reading is "
   "Mackie's, and this entry encodes it as the convention, not as a claim that binding bought mobility")
 FB_UNV = "UNVERIFIED (reconstructed from the convention account; no primary text opened)"
+ANALOGY = " Strand tag by analogy with the house exit pattern, not from the source (encoding review 2026-11-04 finding 6)."
 FB_ROLES = [{"name":"family","gloss":"the household deciding for a daughter (Mackie's 'parents' who bind, or pledge not to); the institutional sort, not a demographic (ADR 0011)"},
             {"name":"daughter","gloss":"the subject: the girl whose feet are bound or left unbound; bound in childhood, so she decides nothing"},
             {"name":"suitor","gloss":"the family of a prospective groom: the marriage-market counterparty whose expectations hold the convention"}]
@@ -820,6 +822,24 @@ FB_NOTES_COORD = (" LAYER 2 (for the engine's coordination module, which is a st
   "use the adoption share of leave_unbound instead, or the module should read pledges per agent; (2) `payoffs` sets bind and "
   "leave_unbound both to 1.0 (the A1 default made explicit) so the gate can sweep them; the sanction R5 is what the material "
   "run prices.")
+FB_PREREG2 = (" PREREGISTERED (2026-11-04, encoding review finding 2, written and committed before the first run with the suitor "
+  "pledge): adding accept_match_pledge(suitor, daughter) [effect pledged(suitor)] with rule R10 suitor may accept_match_pledge, "
+  "and reading (pledged suitor) in R5 (and-not) and R6 (or), changes NO layer-1 verdict in footbinding or footbinding-no-pledge: "
+  "binding_practised persists, marriage_requires_binding holds_to_k, subject_cannot_exit and dependent_cannot_exit reachable "
+  "in both; the new pledge only lifts the sanction R5 (and widens R6), R3 is unconditional, R7 is untouched, and pledged is a "
+  "fluent per role (footbinding-no-pledge strips BOTH pledge actions and both pledge rules R4 and R10, so nothing sets "
+  "pledged(suitor) there). Iso: still none at every level against the care+control cluster; isomorphic_to nothing. Expected "
+  "warnings unchanged (can_sanction, provides_care, has_standing, can_claim_for undeclared). Layer 2 (information, not an "
+  "expectation): pledged(suitor) is role-level too (A2), so one suitor's pledge lifts R5 for every suitor, the same "
+  "coarseness as pledged(family): the A2 caveat now applies on both sides; gate (a)'s _has_pledges reading is unchanged "
+  "(true via either pledge) and ablate_pledges strips both. If any verdict flips, the drift is recorded here and the "
+  "expectations are not edited.")
+FB_DRIFT3 = (" Drift 2026-11-04 (encoding review finding 3): marriage_requires_binding is by construction (marriageable is "
+  "derived from R7's enabledness and R7's condition is bound-or-pledged, so the property restates the rule); kept in "
+  "expected_properties for the record, not evidence; the property carries by_construction: true, which the engine ignores.")
+FB_COHORT = (" Layer 1 has one cohort (encoding review 2026-11-04 finding 4): one daughter, bound at t=0, and `married` never "
+  "clears, so no trace shows a per-cohort binding decision before the market; a `new_cohort` action clearing bound/married "
+  "is deferred to the author.")
 inst.append({
  "id":"footbinding",
  "name":"Footbinding as a marriage-market convention (Mackie 1996), with pledge associations",
@@ -841,7 +861,7 @@ inst.append({
    "from R7 rather than asserted; R3 is unconditional and R5 carries the (not pledged) condition, so that the pledge changes "
    "nothing at layer 1 (the preregistration the gate pair needs). Sources: every text was read as a search snippet, none as a "
    "page (network closed in this session); the abstract sentences are verbatim from the index, everything else is [R] or "
-   "UNVERIFIED and says so per rule. "+FB_PREREG+PREREG2+DRIFT3+COHORT+FB_NOTES_COORD)
+   "UNVERIFIED and says so per rule. "+FB_PREREG+FB_PREREG2+FB_DRIFT3+FB_COHORT+FB_NOTES_COORD)
 })
 inst.append({
  "id":"footbinding-no-pledge",
@@ -861,7 +881,7 @@ inst.append({
    "reachable): pledges change nothing at layer 1. The pair is the gate (a) 'pledge actions exist' half: crit_a reads "
    "_has_pledges on `footbinding` itself, so this entry is the dataset's record of what the no-pledge world looks like and "
    "`differs_on` is null by design (no layer-1 property separates them). At layer 2 the preregistration is the plan's: "
-   "binding persists here under every module."+PREREG2+DRIFT3+COHORT)
+   "binding persists here under every module."+FB_PREREG2+FB_DRIFT3+FB_COHORT)
 })
 
 def L(f,*a): return "(%s %s)" % (f, " ".join(a))

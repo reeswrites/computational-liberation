@@ -238,16 +238,18 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
 ## Footbinding (2026-11-04, layer-2 gate (a); `plans/layer2-abm.md`, ADR 0015 A1/A3/A6)
 
 - `footbinding` (Mackie 1996, the marriage-market convention) and its pair `footbinding-no-pledge` (same entry minus the
-  pledge action `leave_unbound_pledge` and its rule R4). Roles `family`, `daughter` (subject), `suitor` (the market
+  pledge actions `leave_unbound_pledge` / `accept_match_pledge` and their rules R4 / R10). Roles `family`, `daughter` (subject), `suitor` (the market
   counterparty). Rules: R1 family may bind; R2 family may leave_unbound (implicit); **R3 family must_not leave_unbound,
-  or_else R5, implicit, tying** (the sanctioned norm); R4 may leave_unbound_pledge (A3 stand-in, effect `pledged`); R5
-  suitor may reject_match while unbound and not pledged (the market sanction, which the pledge lifts); R6 suitor may
-  accept_match when bound or pledged; R7 family may marry_off when bound or pledged (`marriageable(f, d)` is derived
+  or_else R5, implicit, tying** (the sanctioned norm); R4 may leave_unbound_pledge (A3 stand-in, effect `pledged(family)`); R10
+  suitor may accept_match_pledge (the pledge's son half, effect `pledged(suitor)`; added 2026-11-04, encoding review
+  finding 2); R5 suitor may reject_match while unbound and neither side pledged (the market sanction, which either
+  pledge lifts); R6 suitor may accept_match when bound or either side pledged; R7 family may marry_off when bound or pledged (`marriageable(f, d)` is derived
   from it, ADR 0013); R8/R9 the daughter's exit (may refuse_binding, barred by a disability: `can_exit`). `initial`:
   `is_subject(daughter)`, `bound(daughter)`, so `binding_practised` holds at t=0 (the ABM gate excludes seeds where it
   does not).
 - New properties: `binding_practised` (exists a bound subject; the gate's `A_PROP`) and `marriage_requires_binding`
-  (marriageable implies bound or pledged).
+  (marriageable implies bound or pledged; flagged `by_construction` 2026-11-04 after the encoding review, finding 3: it
+  restates R7, so its holds_to_k is information, kept as the preregistration for the record).
 - **Sources: no page could be opened from the session** (jstor paywalled; semanticscholar, wikipedia, cambridge.org and
   two PDF mirrors unreachable). Mackie's abstract sentences came back verbatim in a search-index snippet and are quoted
   as [F]; the pledge wording (daughters not bound, sons not married to bound women; Heavenly Foot Society 1874, Tian Zu
@@ -272,8 +274,8 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
   block `{use_old: 1.0, use_new: 1.0}` (A1: the payoff is the matching reward, so the names are symmetric),
   `initial (uses_old member)`. A pure coordination game, not a liberation case and not a historical institution
   (ADR 0004: no forward claim; ADR 0011: the agents stand in for experimental subjects, not a real population).
-  `committed_minority` is a model parameter the entry's notes record (Centola's band ~ 25%, threshold between 21% and
-  31%), never a rule. The paper could not be opened from the encoding session (every host refused), so its figures
+  `committed_minority` is a model parameter the entry's notes record (Centola's band ~ 25%: largest failing minority ~21%,
+  smallest succeeding ~25%, UNVERIFIED, from memory; reworded 2026-11-04 per the encoding review), never a rule. The paper could not be opened from the encoding session (every host refused), so its figures
   and quotations are marked UNVERIFIED in the entry.
 - New property `new_convention_adopted`: `(forall m (and (uses_new m t) (not (uses_old m t))))`, new-and-not-old so
   that a committed minority's own use of the new name does not read as adoption on the ABM's shared role-level state
