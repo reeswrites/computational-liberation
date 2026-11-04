@@ -42,7 +42,9 @@ Compute liberation: given institutions as rules and candidate changes, say which
 ## Next slice (2026-11-04, accepted): gate (a) and (b)
 1. doing — Encode `footbinding` (Mackie 1996; pledge actions per A3) and `naming-convention` (Centola 2018; `committed_minority` recorded, not asserted) with preregistered verdicts; properties `binding_practised`, `new_convention_adopted`.
 2. doing — Engine `coordination` module (assurance payoff, pledge flip, committed minority, `necessary_modules`); `imagination` stays a stub.
-3. todo — Run `phil abm gate` on the new entries; council review of both encodings (encoding-faithfulness seat) and the module.
+3. todo — Engine performance pass (accepted 2026-11-04): process pool over seeds in `phil abm run|sweep|gate` (seeds are independent; ~4x on 4 cores), pytest-xdist, per-letter and per-institution wall-clock in the gate report, memoize `breaches()` per step and role (profile: 22k calls per run). Builders iterate on targeted tests and small seed counts; full suite and 100-seed gate once at the end.
+4. todo — Run `phil abm gate` on the new entries; council review of both encodings (encoding-faithfulness seat) and the module.
+5. doing — README cold-visitor pass with diagrams (docs/overview.md, both READMEs).
 
 ## Log
 - 2026-11-04 (afternoon) — Author accepted every pending decision: ADR 0016 council reds (the `narrowed` branch is Backlash again, Section 4 test exhaustive, "for whom" = the preregistered liberated role, orthogonality criterion, per-mode sweep criteria, provisional-taxonomy sentence); ADR 0015 A8 and the A1 per-instance-payoff extension accepted; kibbutz: R6 guarded (preregistered, revert on any flip), the coverture iso disagreement recorded not edited, R8 step-0 reading documented; L20 reworded, T11 evidence refreshed. Next slice opened: footbinding + naming-convention encodings and the coordination module.
