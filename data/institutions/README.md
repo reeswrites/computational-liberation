@@ -224,6 +224,8 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
 - New properties: `financial_dependence`, `financial_dependence_unpropertied`, `cannot_contract` (invariants),
   `double_burden` (DI), `creditor_shield` (DT), `backlash` (BL) (reachability). All verdicts PREREGISTERED in the
   generator's notes and in the plan before the first run; check-all 106/106, gate PASS, no vacuity flags.
+  Relabelled by ADR 0016 (2026-11-03): `creditor_shield` DT -> Capture, the `narrowed` branch BL -> Erosion; property
+  names and verdicts unchanged (the 2026-11-04 council disputes the Erosion relabel, see `docs/reviews/`).
 - Matcher note: on `mwpa-creditor-exemption ~ mwpa-property` the matcher pairs the exemption's R1 with the property
   act's R12 (same skeleton: husband may X when married) and reports R12 vs R13 unmatched; the distance is 1 either way.
 - Not expressed: a ranking of failure modes (the plan's "top-ranked risk" criterion; the engine returns verdicts, not

@@ -26,3 +26,20 @@ Layer 2 results inherit hand-set payoffs and parameters, so a sceptic can say nu
 
 ## Status
 accepted (2026-11-03)
+
+## Amendment 2026-11-04: A8. State obligations
+The slice-2 review found that every sanctionable `must` in the dataset is a state obligation (ADR 0009 `aim_kind ==
+"state"`, e.g. kibbutz R3 `metapelet must (provides_care metapelet child) when (assigned metapelet)`), while the ABM
+read only action-aimed musts, so breach, sanction and trust never fired on a real institution. **A8.** A `must-be P
+when C` rule whose C holds obliges each agent in the rule's attribute role to choose an action whose effects leave P
+true in the successor state, read through `Reference.successor` on the current shared state plus that agent's own
+action alone (choosing nothing keeps P iff P already holds; the reading is local because state is role-level and
+shared, A2 deferred). Breach is charged exactly as an action-rule breach (A4: `or_else`, `sanction_weight`,
+escalation) and moves trust under A5 through the fluent's declared `arg_roles`. Strict enabledness (A6, ADR 0013)
+stands: the agent keeps P only through actions available to it, and a must-be no available action can keep is an
+unavoidable breach, counted and reported once per run as an encoder warning rather than silently absorbed. Reason:
+it is the plan's recommendation, reuses the reference's successor rather than a second rule semantics, and gives
+the gate institutions live sanction and trust dynamics without a schema change. Forecloses: reading a must-be as an
+obligation on a specific named action (the "establishing action" stays a dataset convention, not a rule field), and
+a global reading that would see other agents' same-step effects. Status: ASSUMED accepted (the plan's
+recommendation); the author can reverse.

@@ -5766,7 +5766,7 @@
  },
  {
   "id": "mwpa-creditor-exemption",
-  "name": "Married women's property, 1839-50 form: creditor exemption only (dark twin)",
+  "name": "Married women's property, 1839-50 form: creditor exemption only (dark twin; Capture per ADR 0016)",
   "roles": [
    {
     "name": "husband",
@@ -6311,7 +6311,7 @@
    "rule": "R10,R11,R12",
    "differs_on": "creditor_shield"
   },
-  "notes": "DARK TWIN (DT) of the property act, encoded as the plan says: the creditor may not reach the wife's acquired property (R11) but the husband's management (R1) stands, so nothing on the wife's side changes. PREREGISTERED (2026-11-03, before any run): financial_dependence and financial_dependence_unpropertied holds_to_k (unchanged from coverture); creditor_shield REACHABLE (marry, transfer_to_wife: the husband's property sits in his wife's name, under his management, beyond his creditors); no_standing reachable, cannot_contract holds, double_burden open, backlash open (no court here). Distance 3 from coverture (R10 baseline, R11 exemption, R12 conveyance): not a one-rule pair; R10 exists only so that can_attach is a granted power the exemption removes rather than a constant. Displacement: the plan names no burden moving to another role in this wave; none is encoded.",
+  "notes": "DARK TWIN (DT; relabelled Capture by ADR 0016, 2026-11-03, verdicts unchanged) of the property act, encoded as the plan says: the creditor may not reach the wife's acquired property (R11) but the husband's management (R1) stands, so nothing on the wife's side changes. PREREGISTERED (2026-11-03, before any run): financial_dependence and financial_dependence_unpropertied holds_to_k (unchanged from coverture); creditor_shield REACHABLE (marry, transfer_to_wife: the husband's property sits in his wife's name, under his management, beyond his creditors); no_standing reachable, cannot_contract holds, double_burden open, backlash open (no court here). Distance 3 from coverture (R10 baseline, R11 exemption, R12 conveyance): not a one-rule pair; R10 exists only so that can_attach is a granted power the exemption removes rather than a constant. Displacement: the plan names no burden moving to another role in this wave; none is encoded.",
   "initial": [],
   "initial_free": [
    "female",
@@ -8612,7 +8612,7 @@
  },
  {
   "id": "mwpa-property-narrowed",
-  "name": "Property act under narrow construction (backlash: court reinstates the husband's control)",
+  "name": "Property act under narrow construction (backlash, relabelled Erosion per ADR 0016: court reinstates the husband's control)",
   "roles": [
    {
     "name": "husband",
@@ -9211,7 +9211,7 @@
    "rule": "R17,R18",
    "differs_on": "backlash"
   },
-  "notes": "BACKLASH (BL) entry: mwpa-property plus a court that may construe the act narrowly (R17, sets narrowed(w)), which re-disables the wife's R13 power (its condition carries (not narrowed)) and reinstates R1 as R18 under narrowed. PREREGISTERED (2026-11-03, before any run): backlash REACHABLE (marry, construe_narrowly: the husband controls again, the wife does not); financial_dependence still VIOLATED (the court may but need not narrow, and before it does the wife holds); creditor_shield REACHABLE again (marry, transfer_to_wife, construe_narrowly: with his management reinstated the conveyance is a shield once more); everything else as mwpa-property. Distance 2 from mwpa-property (the narrowing power and the reinstated R1 are two rules). Not a chain step: a branch off mwpa-property.",
+  "notes": "BACKLASH (BL; relabelled Erosion by ADR 0016, 2026-11-03, verdicts unchanged; the correctness seat of the 2026-11-04 council disputes the relabel, see docs/reviews/2026-11-04-adr0016-council.md) entry: mwpa-property plus a court that may construe the act narrowly (R17, sets narrowed(w)), which re-disables the wife's R13 power (its condition carries (not narrowed)) and reinstates R1 as R18 under narrowed. PREREGISTERED (2026-11-03, before any run): backlash REACHABLE (marry, construe_narrowly: the husband controls again, the wife does not); financial_dependence still VIOLATED (the court may but need not narrow, and before it does the wife holds); creditor_shield REACHABLE again (marry, transfer_to_wife, construe_narrowly: with his management reinstated the conveyance is a shield once more); everything else as mwpa-property. Distance 2 from mwpa-property (the narrowing power and the reinstated R1 are two rules). Not a chain step: a branch off mwpa-property.",
   "initial": [],
   "initial_free": [
    "female",

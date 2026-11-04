@@ -22,6 +22,9 @@ R4 {A:child,       D:must_not, I:(sleep_home child), C:true, O:R6, strand:rival,
 R5 {A:male_member, D:may,      I:(visit male_member child), C:true, O:null, strand:superadditive, src:wiki}
 R6 {A:committee,   D:may,      I:(reprimand committee x), C:(or violated_R3 violated_R4), O:null, strand:rival, implicit:true, UNVERIFIED}
 ```
+(Draft rule list; the encoding in `data/institutions/_gen_institutions.py` deviates as its notes state, and adds R7
+`child may sleep_home` [implicit] and, 2026-11-04 per ADR 0015 A6, R8 `metapelet may neglect when (assigned metapelet)`
+[implicit, superadditive]: the breaker of R3 as an enabled action for layer 2. See `data/institutions/README.md`, Batch 2.)
 Initial: `(female metapelet)`, `(is_subject child)`, `(provides_care metapelet child)`.
 Expected: `care_assigned_by_sex`: **persists / holds_to_k**; `subject_cannot_exit`: reachable (R4);
 `care_and_sanction_same_role`: violated (committee sanctions, does not care). Ablation the judge must run: drop R2 →
