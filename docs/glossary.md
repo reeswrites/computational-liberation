@@ -44,7 +44,7 @@ Source: `docs/interpreting-results.md` section 4. "Phase 0 test" numbers are fro
 
 | Letter | What it checks | Phase 0 test |
 |---|---|---|
-| (a) | The 14 institutions load; no load-bearing must-be rule is inert. | none |
+| (a) | All institutions load (23 at 2026-11-04); no load-bearing must-be rule is inert. | none |
 | (b) | The care+control trio matches at its precommitted level; `lease` and `public-library` do not; the crisis team matches nothing. | (1) cluster police, CPS, coverture household; exclude the crisis team |
 | (c) | The minimal pair is one rule apart and differs on the named property. | (2) separate paternity quota from transferable leave |
 | (d) | `care_assigned_by_sex` persists with implicit R2 and fails without it. | (3) the kibbutz failure |

@@ -47,11 +47,11 @@ coverture-household ~ police-crisis: iso=False ... matched=5/9|10 strands=on con
 
 `gate --verbose` prints `GATE PASS (deferred criteria do not fail the gate)`. A pass proves only the following.
 
-- **(a)** The 14 institutions load; no load-bearing must-be rule is inert.
+- **(a)** All institutions load (23 at 2026-11-04); no load-bearing must-be rule is inert.
 - **(b)** The care+control trio matches at its precommitted level and `lease` and `public-library` do not, and the crisis team matches nothing. Not that the engine found the care/control line itself, and not that the controls are enough: `airline-flight` is excluded from the control list because gate (b) cannot hold an expected-match mode (dataset README).
 - **(c)** The minimal pair is one rule apart (`paternity-quota:R2 vs transferable-leave:R2`) and differs on the named property.
 - **(d)** `care_assigned_by_sex` persists with implicit R2 and fails without it; R2 is the one separating rule. Not that the engine detected implicitness.
-- **(e)** Agreement 47/47 against expectations (minimum 60%). See the caveat in section 2.
+- **(e)** Agreement against expectations (115/115 at 2026-11-04; minimum 60%). See the caveat in section 2.
 - **(f)** Rename is detected (`companion-ownership ~ companion-guardian-renamed: iso=True pure_rename=True`) and guardianship is not ownership (distance 1).
 
 Read the "findings (true, not counted)" under the verdict first.
