@@ -40,6 +40,36 @@ Compute liberation: given institutions as rules and candidate changes, say which
 - (All 2026-11-04 decisions accepted by the author in-session; see the log and ADR 0016's council amendment.)
 
 ## Next slice (2026-11-04, accepted): gate (a) and (b)
+1. done — `footbinding` + `footbinding-no-pledge` (Mackie 1996; sources mostly UNVERIFIED, network refused every page) and `naming-convention` (Centola 2018, cited from memory, UNVERIFIED) encoded with preregistered layer-1 verdicts; check-all 115/115, layer-1 gate PASS, 23 entries. Encoding-faithfulness review owed.
+2. done — Engine `coordination` module (slice 4, engine 20f60d7, 479 tests): assurance payoff, pledge flip, `committed_minority`, `initial_practice`, sanction-in-force reading, `necessary_modules`; gate runs six configurations. Correctness review owed.
+3. todo — Performance pass (see below) BEFORE the next full gate: the 50-seed six-configuration gate took 45 min single-core.
+4. todo — Full `phil abm gate --seeds 100` on the 23 entries with the merged naming entry; record in plans/layer2-abm.md. Early results (engine 20f60d7, 50 seeds, before naming merged): (a) FAIL at every grid point; (c) PASS under all three configs; (d) Spearman 0.805 over 22 (was 0.966 over 20), needs the 100-seed rerun; (b) BLOCKED then, now runnable; the toy sweep shows a smooth rise (max adjacent jump 0.20), so the plan's "jump > 0.5" will likely FAIL.
+5. todo — Council: correctness seat on slice 4, encoding-faithfulness seat on the two new entries.
+6. todo — Engine performance pass: process pool over seeds in `phil abm run|sweep|gate` (~4x on 4 cores), pytest-xdist, per-letter and per-institution wall-clock in the gate report, memoize `breaches()` per step and role.
+7. done — README cold-visitor pass with diagrams (README.md, docs/overview.md, engine README).
+
+## Decisions waiting on the author (from slice 4)
+- **A2 per-agent pledge state.** Gate (a) fails honestly: with role-level state one family's pledge sets `pledged(family)` for all and lifts the marriage sanction R5 for everyone, so `material` alone reproduces collapse once leaving unbound out-pays binding (100%), while `coordination` alone gives 48%. Mackie's mechanism (assurance among pledgers) needs per-agent `pledged`, which is the deferred A2. Decide: per-agent state for pledge fluents now, or accept (a) as not testable on shared state.
+- **Sanction-in-force reading** (slice 4 ASSUMED 7): an `or_else` lands only if some instance of the named rule has its condition true in the successor; kibbutz unchanged, cps R3 and paternity-quota R3 now deferred until their trigger holds. Keep or revert.
+- **Gate (b) criterion.** Threshold dynamics give a sigmoid, not Centola's step; "adoption jumps > 0.5 between adjacent sweep points" will fail. Options: keep the criterion and record the failure; or restate (b) as "the crossing location is inside Centola's 21-31% band and moves with thresholds/graph, no constant sets it". Not tuned.
+- Reserved `payoffs`-block keys (`coordinated`, `committed_action`, `initial_practice`) as the declaration mechanism (slice 4 ASSUMED 1).
+
+## Standing process
+- Preregistration: expected verdicts are written before runs and never edited to match; drift is recorded (CONTRIBUTING.md).
+- Council after every batch (docs/decisions/0014-review-council.md): correctness, consistency, scope, encoding faithfulness; fresh agents, never the builder. Reports go in docs/reviews/.
+- docs/claims.md is the honest summary; README points to it. CI fails if a `supported` claim has no passing evidence (todo).
+- This file is revised at the end of each batch.
+
+## Housekeeping after the split (2026-11-03)
+- todo — Decouple philosophy-engine tests from data/institutions (move dataset-dependent tests here, or skip when PHIL_DATA_DIR has no institutions), then delete from philosophy-engine: data/institutions/, docs/theory.md, intent.md, plan.md, claims.md, docs/reviews/, plans/, ADRs 0001/0005/0006/0007/0008/0010/0011/0012/0014 (rebuild its index). Keep glossary and CONTRIBUTING in both.
+- todo — Split ADR 0007 and 0010 into theory/process halves (here) and engine halves (there).
+- todo — Re-export docs/theory.md from the Claude doc when the theory changes; make this file canonical once it stabilises.
+
+## Decisions waiting on the author
+- Encoding reviewer for Phase 0 (ADR 0012): the author, until there is someone else.
+- (All 2026-11-04 decisions accepted by the author in-session; see the log and ADR 0016's council amendment.)
+
+## Next slice (2026-11-04, accepted): gate (a) and (b)
 1. doing — Encode `footbinding` (Mackie 1996; pledge actions per A3) and `naming-convention` (Centola 2018; `committed_minority` recorded, not asserted) with preregistered verdicts; properties `binding_practised`, `new_convention_adopted`.
 2. doing — Engine `coordination` module (assurance payoff, pledge flip, committed minority, `necessary_modules`); `imagination` stays a stub.
 3. todo — Engine performance pass (accepted 2026-11-04): process pool over seeds in `phil abm run|sweep|gate` (seeds are independent; ~4x on 4 cores), pytest-xdist, per-letter and per-institution wall-clock in the gate report, memoize `breaches()` per step and role (profile: 22k calls per run). Builders iterate on targeted tests and small seed counts; full suite and 100-seed gate once at the end.
@@ -47,6 +77,7 @@ Compute liberation: given institutions as rules and candidate changes, say which
 5. doing — README cold-visitor pass with diagrams (docs/overview.md, both READMEs).
 
 ## Log
+- 2026-11-04 (evening, spun down at the author's request until the session reset) — Next slice: footbinding + naming-convention encoded (branches merged, 23 entries, 115/115), coordination module built (479 tests), gate (a) runs and fails honestly (shared state lets one pledge lift the sanction for all), README pass with five Mermaid diagrams and docs/overview.md. Kibbutz R6 guard tried and reverted (flips care_and_sanction_same_role to vacuous). All 2026-11-04 decisions applied. Agent costs this stretch: ~1.0M tokens across 6 agents (docs 109k, kibbutz 119k, footbinding 169k, naming 178k, coordination 242k, README 202k). Day total ~2.3M across 15 agents.
 - 2026-11-04 (afternoon) — Author accepted every pending decision: ADR 0016 council reds (the `narrowed` branch is Backlash again, Section 4 test exhaustive, "for whom" = the preregistered liberated role, orthogonality criterion, per-mode sweep criteria, provisional-taxonomy sentence); ADR 0015 A8 and the A1 per-instance-payoff extension accepted; kibbutz: R6 guarded (preregistered, revert on any flip), the coverture iso disagreement recorded not edited, R8 step-0 reading documented; L20 reworded, T11 evidence refreshed. Next slice opened: footbinding + naming-convention encodings and the coordination module.
 - 2026-11-04 (later) — Slice 3 built, reviewed (weakened: gate (c) replayed the layer-1 verdict), fixed (two-axis sweep on the forbidden instance, preregistered and matched), and the A8 slice reviewed (weakened: breach rate mixed chosen and forced breach) and fixed (separate `unavoidable` series, diagnostics once per step). Engine tests 445 -> 467. Agent costs this stretch: ~830k tokens across 5 agents (slice 3 205k, two reviews 135k + 145k, two fix passes 143k + 200k). Batch total ~1.3M tokens across 9 agents.
 - 2026-11-04 — Orchestrated batch, four agents in parallel then two: engine A8 + slice-2 fixes (435 -> 445 tests), kibbutz R8 (no flips), ADR 0016 council (correctness weakened, scope supported, consistency fixed). Commit hygiene slip: R8 and the A8 amendment were swept into neighbouring commits (d4dbd26, 72eded9) by a blanket add; history is correct, messages are not. Agent costs so far: ~460k tokens across 4 agents (engine 157k, kibbutz 116k, council 92k + 94k).
