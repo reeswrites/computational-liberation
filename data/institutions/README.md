@@ -24,9 +24,8 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
   `exists t`, `invariant` / `persists` with `forall t`. Fluent applications carry `t` as last argument
   (`Holds(f, args, t)` in the plan). Sorts used: `agent`, `step`. `offspring_owned` uses `succ(t, t2)`
   for t+1 because the grammar has no arithmetic.
-- Rule `conditions` use the plan's grammar. `true` appears as a condition (as in the plan's examples) but
-  `philengine/sexpr.py` currently lists `true` as FORBIDDEN; the schema request for `schemas_rules` should
-  admit it or the loader should rewrite it to an empty conjunction.
+- Rule `conditions` use the plan's grammar; a bare `true` is accepted by `schemas_rules.Rule.conditions`
+  (the early note that `sexpr.py` forbade it is obsolete).
 - Rule variables (`h w`, `o s`, `p q c`, `o a o2`) are bound by the rule's attribute role and the action's
   argument list, not by an explicit quantifier; the formalize stage adds the quantifiers.
 - `or_else: null` on a `must_not` means a disability (no power exists), not an unenforced prohibition
