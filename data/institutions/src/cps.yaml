@@ -174,7 +174,7 @@ actions:
     value: true
 rules:
 - id: R1
-  plain: ''
+  plain: 'The social worker must investigate the child''s case when a report about the child has been received.'
   attribute: social_worker
   deontic: must
   aim: (investigate w c)
@@ -187,7 +187,7 @@ rules:
     w: social_worker
     c: child
 - id: R2
-  plain: ''
+  plain: 'The social worker may provide services to the child when the case is open (Cal. WIC 16501).'
   attribute: social_worker
   deontic: may
   aim: (provide_services w c)
@@ -200,7 +200,7 @@ rules:
     w: social_worker
     c: child
 - id: R3
-  plain: ''
+  plain: 'The social worker may remove the child when the case is open and the child is in immediate danger (Cal. WIC 306).'
   attribute: social_worker
   deontic: may
   aim: (remove w c)
@@ -213,7 +213,7 @@ rules:
     w: social_worker
     c: child
 - id: R4
-  plain: ''
+  plain: 'The social worker having considered keeping the child at home must hold when the case is open and the child is in immediate danger (Cal. WIC 306).'
   attribute: social_worker
   deontic: must
   aim: (in_home_considered w c)
@@ -227,7 +227,7 @@ rules:
     w: social_worker
     c: child
 - id: R5
-  plain: ''
+  plain: '(practice, not written) The parent cooperating with the case must hold when the case is open, or else the social worker may remove the child (R3).'
   attribute: parent
   deontic: must
   aim: (cooperates p c)
@@ -240,7 +240,7 @@ rules:
     c: child
     p: parent
 - id: R6
-  plain: ''
+  plain: '(practice, not written) The social worker must contact the mother when the case is open, she is the child''s parent, and she has not yet been contacted.'
   attribute: social_worker
   deontic: must
   aim: (contact_mother w p)
@@ -254,7 +254,7 @@ rules:
     c: child
     p: parent
 - id: R7
-  plain: ''
+  plain: 'The court may reassign custody of the child when the case is open and the parent''s custody is not in the child''s best interest (Cal. WIC 361).'
   attribute: court
   deontic: may
   aim: (reassign_custody court p c)
@@ -267,7 +267,7 @@ rules:
     c: child
     p: parent
 - id: R8
-  plain: ''
+  plain: 'The child having appointed counsel must hold when the case is open (Cal. WIC 317).'
   attribute: court
   deontic: must
   aim: (counsel_appointed c)
@@ -280,7 +280,7 @@ rules:
   var_roles:
     c: child
 - id: R10
-  plain: ''
+  plain: 'The child cannot leave while in custody: no such power exists (Cal. WIC 306).'
   attribute: child
   deontic: must_not
   aim: (leave c)
@@ -292,7 +292,7 @@ rules:
   var_roles:
     c: child
 - id: R11
-  plain: ''
+  plain: 'The child may petition in its own name when counsel has been appointed for the child (Cal. WIC 317(e)).'
   attribute: child
   deontic: may
   aim: (petition c)

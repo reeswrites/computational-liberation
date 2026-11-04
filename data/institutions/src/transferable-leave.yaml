@@ -3,7 +3,7 @@ name: Transferable parental leave (paternity-quota with one rule changed)
 extends: paternity-quota
 rules_replace:
 - id: R2
-  plain: ''
+  plain: 'The non-birthing parent may transfer reserved weeks to another parent of the child when holding reserved weeks (minimal-pair construction: reserved block made shareable).'
   attribute: non_birthing_parent
   deontic: may
   aim: (transfer_reserved p q)

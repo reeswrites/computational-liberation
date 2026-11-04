@@ -103,7 +103,7 @@ actions:
     value: false
 rules:
 - id: R1
-  plain: ''
+  plain: 'The non-birthing parent may take reserved leave for the child when they are a parent of the child, not the birthing parent, and have reserved weeks available (QPIP s. 9).'
   attribute: non_birthing_parent
   deontic: may
   aim: (take_reserved_leave p c)
@@ -113,7 +113,7 @@ rules:
   implicit: false
   source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: maximum of five weeks of paternity benefits or exclusive benefits for the non-birthing parent)'
 - id: R2
-  plain: ''
+  plain: 'The non-birthing parent must not transfer reserved weeks to another parent at any time, or else the plan may forfeit the weeks (R3) (QPIP ss. 9, 16, 17).'
   attribute: non_birthing_parent
   deontic: must_not
   aim: (transfer_reserved p q)
@@ -125,7 +125,7 @@ rules:
   var_roles:
     q: birthing_parent
 - id: R3
-  plain: ''
+  plain: 'The plan may forfeit a parent''s reserved weeks when reserved weeks remain and the child''s benefit period has ended (use-it-or-lose-it, QPIP s. 9).'
   attribute: plan
   deontic: may
   aim: (forfeit plan p)
@@ -135,7 +135,7 @@ rules:
   implicit: false
   source: Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (unused exclusive weeks lapse; use-it-or-lose-it)
 - id: R4
-  plain: ''
+  plain: 'The birthing parent may take shareable leave for the child when they are a parent of the child and have shareable weeks available (QPIP ss. 10, 16).'
   attribute: birthing_parent
   deontic: may
   aim: (take_shareable_leave p c)
@@ -145,7 +145,7 @@ rules:
   implicit: false
   source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 10: 32 shareable weeks; s. 16: may be taken by either parent or shared)'
 - id: R5
-  plain: ''
+  plain: 'The non-birthing parent may take shareable leave for the child when they are a parent of the child and have shareable weeks available (QPIP s. 16).'
   attribute: non_birthing_parent
   deontic: may
   aim: (take_shareable_leave p c)
@@ -155,7 +155,7 @@ rules:
   implicit: false
   source: Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16)
 - id: R6
-  plain: ''
+  plain: 'The birthing parent may transfer shareable weeks to another parent of the child when she has shareable weeks available (QPIP s. 16).'
   attribute: birthing_parent
   deontic: may
   aim: (transfer_shareable p q)
@@ -167,7 +167,7 @@ rules:
   var_roles:
     q: non_birthing_parent
 - id: R7
-  plain: ''
+  plain: '(practice, not written) The birthing parent must take shareable leave for the child when she is a female parent of the child and has shareable weeks available.'
   attribute: birthing_parent
   deontic: must
   aim: (take_shareable_leave p c)
@@ -177,7 +177,7 @@ rules:
   implicit: true
   source: 'implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened)'
 - id: R8
-  plain: ''
+  plain: 'The plan may grant reserved weeks to a parent of the child who is not the birthing parent (QPIP s. 9).'
   attribute: plan
   deontic: may
   aim: (grant_reserved plan p)
@@ -189,7 +189,7 @@ rules:
   var_roles:
     p: non_birthing_parent
 - id: R9
-  plain: ''
+  plain: '(practice, not written) The birthing parent may take reserved leave for the child when they are a parent of the child and have reserved weeks available.'
   attribute: birthing_parent
   deontic: may
   aim: (take_reserved_leave p c)

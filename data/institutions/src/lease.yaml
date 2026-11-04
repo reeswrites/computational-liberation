@@ -88,7 +88,7 @@ actions:
     value: false
 rules:
 - id: R1
-  plain: ''
+  plain: 'The landlord may lease to the tenant when the premises are not already leased to the tenant.'
   attribute: landlord
   deontic: may
   aim: (lease_to l t)
@@ -98,7 +98,7 @@ rules:
   implicit: false
   source: a lease is formed by agreement. UNVERIFIED (general knowledge; no source opened)
 - id: R2
-  plain: ''
+  plain: 'The premises being habitable must hold when leased to the tenant, the landlord being bound (Cal. Civ. Code 1941).'
   attribute: landlord
   deontic: must
   aim: (habitable l t)
@@ -108,7 +108,7 @@ rules:
   implicit: false
   source: 'Cal. Civ. Code s. 1941 (''The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it'
 - id: R3
-  plain: ''
+  plain: 'The landlord may evict the tenant when the premises are leased and rent has not been paid (Cal. Code Civ. Proc. 1161).'
   attribute: landlord
   deontic: may
   aim: (evict l t)
@@ -118,7 +118,7 @@ rules:
   implicit: false
   source: Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161
 - id: R4
-  plain: ''
+  plain: 'The tenant may vacate when the premises are leased to the tenant (Cal. Civ. Code 1946).'
   attribute: tenant
   deontic: may
   aim: (vacate t)
@@ -128,7 +128,7 @@ rules:
   implicit: false
   source: 'Cal. Civ. Code s. 1946 (a hiring of real property for an unspecified term is terminated by either party''s written notice); https://california.public.law/codes/ca_civ_code_section_1946 (either party may terminate by notice; the tenant''s exit is permitted and unsanctioned). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(t) = vacate enabled'
 - id: R5
-  plain: ''
+  plain: 'Rent being paid must hold for the tenant when the premises are leased, or else the landlord may evict (R3) (Cal. Code Civ. Proc. 1161).'
   attribute: tenant
   deontic: must
   aim: (rent_paid t)

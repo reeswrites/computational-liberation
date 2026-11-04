@@ -33,7 +33,7 @@ actions:
     value: false
 rules:
 - id: R1
-  plain: ''
+  plain: 'A member may use the old name at any time (Centola et al. 2018).'
   attribute: member
   deontic: may
   aim: (use_old m)
@@ -43,7 +43,7 @@ rules:
   implicit: false
   source: 'Centola, Becker, Brackbill & Baronchelli, ''Experimental evidence for tipping points in social convention'', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session''s allowed network); cited from memory, UNVERIFIED as a quotation (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] '
 - id: R2
-  plain: ''
+  plain: 'A member may use the new name at any time (Centola et al. 2018).'
   attribute: member
   deontic: may
   aim: (use_new m)

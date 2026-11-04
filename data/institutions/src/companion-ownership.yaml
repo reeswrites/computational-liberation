@@ -152,7 +152,7 @@ actions:
     value: false
 rules:
 - id: R1
-  plain: ''
+  plain: 'The owner may transfer the animal to another when the owner owns it (Cal. Penal Code 597s).'
   attribute: owner
   deontic: may
   aim: (transfer o a o2)
@@ -162,7 +162,7 @@ rules:
   implicit: false
   source: 'property status of companion animals; Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
 - id: R2
-  plain: ''
+  plain: 'The owner may have the animal euthanized when the owner owns it.'
   attribute: owner
   deontic: may
   aim: (euthanize o a)
@@ -172,7 +172,7 @@ rules:
   implicit: false
   source: 'owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
 - id: R3
-  plain: ''
+  plain: 'The owner must not abandon the animal when the owner owns it, or else the state may prosecute (R4) (Cal. Penal Code 597s).'
   attribute: owner
   deontic: must_not
   aim: (abandon o a)
@@ -182,7 +182,7 @@ rules:
   implicit: false
   source: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor')
 - id: R4
-  plain: ''
+  plain: 'The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s).'
   attribute: state
   deontic: may
   aim: (prosecute state o)
@@ -192,7 +192,7 @@ rules:
   implicit: false
   source: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/
 - id: R5
-  plain: ''
+  plain: 'The owner providing care to the animal must hold when the owner owns it (Cal. Penal Code 597(b)).'
   attribute: owner
   deontic: must
   aim: (provides_care o a)
@@ -203,7 +203,7 @@ rules:
   source: 'Cal. Penal Code 597(b) failure to provide food/water/shelter. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] acquire (and the initial state) establishes provides_care; feed restores it, neglect breaks it'
   load_bearing: true
 - id: R6
-  plain: ''
+  plain: '(practice, not written) The animal cannot leave while it is a companion animal: no such power exists.'
   attribute: animal
   deontic: must_not
   aim: (leave a)
@@ -213,7 +213,7 @@ rules:
   implicit: true
   source: 'implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state''s power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal''s status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false'
 - id: R7
-  plain: ''
+  plain: 'The state may impound the animal when it is at large.'
   attribute: state
   deontic: may
   aim: (impound state a)
@@ -223,7 +223,7 @@ rules:
   implicit: false
   source: local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)
 - id: R8
-  plain: ''
+  plain: 'The owner may breed or sterilize the animal when the owner owns it.'
   attribute: owner
   deontic: may
   aim: (breed_or_sterilize o a)
@@ -233,7 +233,7 @@ rules:
   implicit: false
   source: 'incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled'
 - id: R9
-  plain: ''
+  plain: '(practice, not written) The court cannot reassign custody of the animal at any time: no such power exists.'
   attribute: court
   deontic: must_not
   aim: (reassign court o a)
@@ -243,7 +243,7 @@ rules:
   implicit: true
   source: 'implicit: no role may start a claim in the animal''s own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false'
 - id: R10
-  plain: ''
+  plain: 'The owner may feed the animal when the owner owns it and is not currently providing it care.'
   attribute: owner
   deontic: may
   aim: (feed o a)
@@ -253,7 +253,7 @@ rules:
   implicit: false
   source: feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)
 - id: R11
-  plain: ''
+  plain: '(practice, not written) The animal cannot sue in its own name at any time: no such power exists.'
   attribute: animal
   deontic: must_not
   aim: (sue a)

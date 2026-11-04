@@ -4,7 +4,7 @@ extends: mwpa-earnings
 rules_drop: [R7]
 rules_add:
 - id: R15
-  plain: ''
+  plain: 'The wife may contract in her own name at any time (sole-trader acts, Khan 1996).'
   attribute: wife
   deontic: may
   aim: (contract w)

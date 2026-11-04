@@ -13,7 +13,7 @@ actions_add:
     value: true
 rules_add:
 - id: R17
-  plain: ''
+  plain: 'The court may construe the act narrowly when the wife is married and has acquired property (Chused 1984).'
   attribute: court
   deontic: may
   aim: (construe_narrowly court w)
@@ -26,7 +26,7 @@ rules_add:
     w: wife
     h: husband
 - id: R18
-  plain: ''
+  plain: 'The husband may control his wife''s property when married and the act has been narrowly construed (R1 reinstated, Chused 1984).'
   attribute: husband
   deontic: may
   aim: (control_property h w)

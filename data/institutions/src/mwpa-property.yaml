@@ -4,7 +4,7 @@ extends: mwpa-creditor-exemption
 rules_drop: [R1]
 rules_add:
 - id: R13
-  plain: ''
+  plain: 'The wife may hold property in her own right when married, she has acquired property, and the act has not been narrowly construed (NY MWPA 1848).'
   attribute: wife
   deontic: may
   aim: (hold_property w)

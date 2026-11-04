@@ -59,7 +59,7 @@ actions_add:
     value: true
 rules_add:
 - id: R10
-  plain: ''
+  plain: '(practice, not written) A creditor may attach the wife''s property when she is married (it reaches what the husband holds).'
   attribute: creditor
   deontic: may
   aim: (attach c w)
@@ -73,7 +73,7 @@ rules_add:
     w: wife
     h: husband
 - id: R11
-  plain: ''
+  plain: 'A creditor cannot attach the wife''s property while she is married and has acquired property: no such power exists (Chused 1984).'
   attribute: creditor
   deontic: must_not
   aim: (attach c w)
@@ -87,7 +87,7 @@ rules_add:
     w: wife
     h: husband
 - id: R12
-  plain: ''
+  plain: '(practice, not written) The husband may transfer property to his wife when they are married (Chused 1984).'
   attribute: husband
   deontic: may
   aim: (transfer_to_wife h w)

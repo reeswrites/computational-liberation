@@ -1,0 +1,46 @@
+# crisis-team
+
+**Unarmed crisis response team, referral only (Denver STAR model)**
+
+> Denver's STAR pilot 'dispatches a mental health clinician and a paramedic to low-level emergencies' instead of police; since June 2020 it 'has responded to more than 600 calls ... many of them related to homelessness, mental illness and substance abuse — not criminal activity.' The team is described as unarmed; in one case it picked up a woman's medication and 'connected her with housing'. KUNC...
+
+## Roles
+
+- **responder**: clinician + paramedic team; unarmed, no custody power
+- **subject**: the person in crisis
+- **dispatcher**: 911 dispatch; routes eligible calls to the team
+- **officer**: police, called only if the responder requests
+
+## Rules
+
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
+|---|---|---|---|---|---|---|---|---|
+| R1 | dispatcher | must | `(dispatch_team d r s)` | `(and (call_received s) (eligible s))` | none | tying | The dispatcher must dispatch a team to the subject when a call about the subject has been received and the subject is eligible (Denver STAR). | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.... https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
+| R2 | responder | must | `(provides_care r s)` | `(and (responding r s) (in_crisis s))` | none | superadditive | The responder providing care to the subject must hold when the responder is responding to the subject and the subject is in crisis (Denver STAR). | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.... https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police. |
+| R3 | responder | may | `(refer r s)` | `(responding r s)` | none | superadditive | The responder may refer the subject (for example to medication pick-up or housing) when responding to the subject (Denver STAR). | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.... https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
+| R4 | responder | must not (disability) | `(detain r s)` | `true` | none | rival | The responder cannot detain the subject at any time: no such power exists (Denver STAR). | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.... https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
+| R5 | subject | may | `(leave s)` | `true` | none | rival | The subject may leave at any time (Denver STAR, voluntary encounter). | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.... https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
+| R6 | responder | must not (disability) | `(carry_weapon r)` | `true` | none | tying | The responder cannot carry a weapon at any time: no such power exists (Denver STAR, unarmed). | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.... https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
+| R7 | responder | may (implicit) | `(request_police r o s)` | `(and (responding r s) (danger s))` | none | tying | (practice, not written) The responder may request police for the subject when responding to the subject and there is danger. | implicit rebundling path: the team can call police when a scene turns violent; p... |
+| R8 | officer | may (implicit) | `(detain o s)` | `(and (responding o s) (danger s))` | none | rival | (practice, not written) The officer may detain the subject when responding to the subject and there is danger (Cal. WIC 5150). | Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_... https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
+| R9 | subject | may | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | an adult keeps legal capacity to sue in their own name; a voluntary encounter do... |
+
+**Default capacities** (enabled unless an express disability bars them): leave, sue
+
+## Expected properties
+
+| property | kind | expected | meaning |
+|---|---|---|---|
+| care_and_sanction_same_role | structure | violated | Whoever provides care to a subject also holds sanction power over that subject (care + control bundled in o... |
+| subject_cannot_exit | freedom | unreachable_open | No exit action is available to the subject, or every exit is sanctioned. scope=interaction: exit from the c... |
+| dependent_cannot_exit | freedom | unreachable_open | Some subject of the institution (the dependent party) has no permitted exit at step t. Alias of subject_can... |
+| no_standing | freedom | unreachable_open | No role may start a claim whose condition refers to the subject's interest and whose effect changes the sub... |
+
+## Pairs
+
+Minimal pair of [police-crisis](police-crisis.md), differing in rule R3.
+Not isomorphic to: police-crisis, cps, coverture-household
+
+## Notes
+
+Same care rules as police-crisis (R2 assess, R3 refer) with the sanction rule R3-of-police replaced by R4 (must_not detain). So care_and_sanction_same_role is violated (care without can_sanction) and subject_cannot_exit is unreachable within k, which must be reported as 'open', never 'safe'. Pitfalls: (1) a trivial encoding that ignores or_else and deontics will see 'assess' in both and cluster them (plan: worked pitfall); (2) R7 is the implicit rebundling path: with it, a compliant trace exists in which an officer with can_sanction enters the scene, so care_and_sanction_same_role can hold again at a later step for the officer, though not for the responder; the check must report which role; (3) R4 has or_else null by design, it is an absence of power; lowering it as a sanctioned prohibition would invent a sanctioner. minimal_pair_of points at police-crisis R3 because that is the one rule whose replacement flips the verdict; the armed/unarmed and dispatch-eligibility differences (R1, R6) are tying-strand differences, not the sanction difference. ADR 0009: R2 is a state obligation, mirroring police-crisis R2; exogenous triggers (call_received, eligible, in_crisis, danger) are initial_free.

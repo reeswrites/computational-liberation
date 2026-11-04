@@ -125,7 +125,7 @@ actions:
   default_capacity: true
 rules:
 - id: R1
-  plain: ''
+  plain: 'The husband may control his wife''s property when they are married (Blackstone I.15).'
   attribute: husband
   deontic: may
   aim: (control_property h w)
@@ -135,7 +135,7 @@ rules:
   implicit: false
   source: Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband and wife are one person in law; her property passes to him)
 - id: R2
-  plain: ''
+  plain: 'The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15).'
   attribute: husband
   deontic: must
   aim: (provides_care h w)
@@ -146,7 +146,7 @@ rules:
   source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it'
   load_bearing: true
 - id: R3
-  plain: ''
+  plain: '(practice, not written) The wife providing care to her husband (household labour) must hold when they are married, or else the husband may chastise her (R5).'
   attribute: wife
   deontic: must
   aim: (provides_care w h)
@@ -157,7 +157,7 @@ rules:
   source: 'implicit norm: household labour is the wife''s; not in Blackstone''s text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)'
   load_bearing: true
 - id: R4
-  plain: ''
+  plain: 'The wife cannot sue in her own name while married: no such power exists (Blackstone I.15).'
   attribute: wife
   deontic: must_not
   aim: (sue w)
@@ -167,7 +167,7 @@ rules:
   implicit: false
   source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married'
 - id: R5
-  plain: ''
+  plain: 'The husband may chastise his wife (moderate correction, restraint of her liberty) when they are married (Blackstone I.15).'
   attribute: husband
   deontic: may
   aim: (chastise h w)
@@ -177,7 +177,7 @@ rules:
   implicit: false
   source: Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the old law allowed the husband 'moderate correction' and to restrain her liberty for gross misbehaviour)
 - id: R6
-  plain: ''
+  plain: 'The wife cannot leave the marriage while married: no such power exists (Blackstone I.15).'
   attribute: wife
   deontic: must_not
   aim: (leave w)
@@ -187,7 +187,7 @@ rules:
   implicit: false
   source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (restraint of liberty; no unilateral divorce). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married'
 - id: R7
-  plain: ''
+  plain: 'The wife cannot contract in her own name while married: no such power exists (Blackstone I.15).'
   attribute: wife
   deontic: must_not
   aim: (contract w)

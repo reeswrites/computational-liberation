@@ -8,7 +8,7 @@ roles_set:
     gloss: court with power to reassign custody in the animal's interest
 rules_replace:
 - id: R9
-  plain: ''
+  plain: 'The court may reassign custody of the animal when the owner owns it and the arrangement is not in the animal''s best interest (Alaska Stat. 25.24.160(a)(5)).'
   attribute: court
   deontic: may
   aim: (reassign court o a)

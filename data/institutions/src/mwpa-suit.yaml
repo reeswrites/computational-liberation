@@ -4,7 +4,7 @@ extends: mwpa-sole-trader
 rules_drop: [R4]
 rules_add:
 - id: R16
-  plain: ''
+  plain: 'The wife may sue in her own name when married (Geddes et al. 2007).'
   attribute: wife
   deontic: may
   aim: (sue w)

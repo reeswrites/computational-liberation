@@ -130,7 +130,7 @@ actions:
     value: true
 rules:
 - id: R1
-  plain: ''
+  plain: '(practice, not written) The dispatcher must dispatch an officer to a subject when a call about that subject has been received.'
   attribute: dispatcher
   deontic: must
   aim: (dispatch_officer d o s)
@@ -140,7 +140,7 @@ rules:
   implicit: true
   source: 'implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call]'
 - id: R2
-  plain: ''
+  plain: 'The officer providing care to the subject must hold when the officer is responding to the subject and the subject is in crisis (Cal. WIC 5150).'
   attribute: officer
   deontic: must
   aim: (provides_care o s)
@@ -151,7 +151,7 @@ rules:
   source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (assessment, evaluation and crisis intervention ''shall be conducted and provided on an ongoing basis''). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch establishes provides_care(o, s); assess restores it, withdraw (the officer stops attending) breaks it'
   load_bearing: true
 - id: R3
-  plain: ''
+  plain: 'The officer may detain the subject when responding to a subject who is in crisis and there is danger (Cal. WIC 5150).'
   attribute: officer
   deontic: may
   aim: (detain o s)
@@ -161,7 +161,7 @@ rules:
   implicit: false
   source: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (a peace officer may, upon probable cause, take the person into custody for up to 72 hours)
 - id: R4
-  plain: ''
+  plain: 'The subject cannot leave while in custody: no such power exists (Cal. WIC 5150).'
   attribute: subject
   deontic: must_not
   aim: (leave s)
@@ -171,7 +171,7 @@ rules:
   implicit: false
   source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (custody for up to 72 hours). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(s) = leave enabled (a default capacity), which this disability makes false in custody'
 - id: R5
-  plain: ''
+  plain: 'The officer may use force on the subject when the subject is in custody and resists.'
   attribute: officer
   deontic: may
   aim: (use_force o s)
@@ -181,7 +181,7 @@ rules:
   implicit: false
   source: use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened)
 - id: R6
-  plain: ''
+  plain: 'The officer may carry a weapon at any time.'
   attribute: officer
   deontic: may
   aim: (carry_weapon o)
@@ -191,7 +191,7 @@ rules:
   implicit: false
   source: officers respond armed; standard equipment policy. UNVERIFIED (general knowledge; no source opened)
 - id: R7
-  plain: ''
+  plain: 'The officer must release the subject when the subject is in custody and there is no danger (Cal. WIC 5150).'
   attribute: officer
   deontic: must
   aim: (release o s)
@@ -201,7 +201,7 @@ rules:
   implicit: false
   source: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (hold is limited to assessment/evaluation; release when criteria no longer met)
 - id: R8
-  plain: ''
+  plain: 'The subject may petition for review of the hold when the subject is in custody (Cal. WIC 5275).'
   attribute: subject
   deontic: may
   aim: (petition_review s)
@@ -211,7 +211,7 @@ rules:
   implicit: false
   source: Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened)
 - id: R10
-  plain: ''
+  plain: 'The subject may sue in their own name at any time.'
   attribute: subject
   deontic: may
   aim: (sue s)

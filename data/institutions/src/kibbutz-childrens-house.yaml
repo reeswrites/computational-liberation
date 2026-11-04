@@ -87,7 +87,7 @@ actions:
   effects: []
 rules:
 - id: R1
-  plain: ''
+  plain: 'The committee may assign a member to the children''s house when that person is a member.'
   attribute: committee
   deontic: may
   aim: (assign committee x)
@@ -97,7 +97,7 @@ rules:
   implicit: false
   source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children''s house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it'
 - id: R2
-  plain: ''
+  plain: '(practice, not written) The committee must not assign a male member to the children''s house, or else the committee may reprimand (R6).'
   attribute: committee
   deontic: must_not
   aim: (assign committee male_member)
@@ -108,7 +108,7 @@ rules:
   source: 'SANCTIONED NORM encoding a documented PRACTICE, not a written rule (third review 2026-11-03: the sources support a practice, not a committee disability): the nanny ''was always a woman''s role'' (WIKI_KIB); no kibbutz by-law said so, the rota simply never put a man in the children''s house, and Tiger & Shepher, Women in the Kibbutz (Harcourt Brace Jovanovich, 1975): women concentrated in child care, education and services despite formal equality. Cited by WIKI_KIB (pp. 41, 167); book and sample (34,040 members) confirmed via Kirkus review https://www.kirkusreviews.com/book-reviews/lionel-joseph-shepher-tiger/women-in-the-kibbutz/ ; the assignment finding itself NOT read directly: UNVERIFIED reports women concentrated in child care as a pattern (the finding is framed there as women''s own choice). Encoded as a prohibition the committee answers for (or_else R6, the implicit reprimand), not as a disability; under strict compliance the effect on traces is the same, which is what gate (d) reads. Earlier draft (disability, or_else null) retired by the third review'
   load_bearing: true
 - id: R3
-  plain: ''
+  plain: 'The metapelet caring for the child must hold when the metapelet is assigned, or else the committee may reprimand (R6).'
   attribute: metapelet
   deontic: must
   aim: (provides_care metapelet child)
@@ -119,7 +119,7 @@ rules:
   source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children''s house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment'
   load_bearing: true
 - id: R4
-  plain: ''
+  plain: 'The child cannot sleep at home at any time: no such power exists (communal sleeping in the children''s house).'
   attribute: child
   deontic: must_not
   aim: (sleep_home child)
@@ -129,7 +129,7 @@ rules:
   implicit: false
   source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (communal sleeping: the children lived and slept in the children''s house). A disability (or_else null), as every subject-side exit bar since ADR 0013; the draft''s or_else R6 is dropped for the same reason as coverture R6. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(child) = sleep_home enabled (a default capacity) and not barred (R4)'
 - id: R5
-  plain: ''
+  plain: 'A male member may visit the child at any time.'
   attribute: male_member
   deontic: may
   aim: (visit male_member child)
@@ -139,7 +139,7 @@ rules:
   implicit: false
   source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children ''visited their parents for 2-3 hours a day''; the father''s relation to the children''s house is the visit, not care)'
 - id: R6
-  plain: ''
+  plain: '(practice, not written) The committee may reprimand a member at any time (the sanction for R3 and R2).'
   attribute: committee
   deontic: may
   aim: (reprimand committee x)
@@ -149,7 +149,7 @@ rules:
   implicit: true
   source: 'implicit: the committee / general assembly disciplines a member who neglects the rota (R3''s or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(committee, x) = reprimand enabled (R6)'
 - id: R8
-  plain: ''
+  plain: '(practice, not written) The metapelet may neglect the child when assigned to the children''s house.'
   attribute: metapelet
   deontic: may
   aim: (neglect metapelet child)

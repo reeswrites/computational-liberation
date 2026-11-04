@@ -80,7 +80,7 @@ actions:
     value: false
 rules:
 - id: R1
-  plain: ''
+  plain: 'A provider may start gestation of a child at any time (Firestone 1970).'
   attribute: provider
   deontic: may
   aim: (start_gestation provider child)
@@ -90,7 +90,7 @@ rules:
   implicit: false
   source: 'Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from ''the tyranny of their reproductive biology'' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 ''The Ultimate Revolution'' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) (the technology that makes gestation a service; for surrogacy, the clinic''s role in assisted conception)'
 - id: R2
-  plain: ''
+  plain: 'The provider may transfer the child to the device when the child is in gestation (Firestone 1970).'
   attribute: provider
   deontic: may
   aim: (transfer_to_device provider child)
@@ -100,7 +100,7 @@ rules:
   implicit: false
   source: 'Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from ''the tyranny of their reproductive biology'' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 ''The Ultimate Revolution'' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04; plan section 5c): the rival input is deleted, not redistributed, and no strand value says ''no strand''.'
 - id: R3
-  plain: ''
+  plain: 'The provider must decant the child when the child has been gestated ex utero, or else the registry may reprimand (R6) (Firestone 1970).'
   attribute: provider
   deontic: must
   aim: (decant provider child)
@@ -110,7 +110,7 @@ rules:
   implicit: false
   source: 'Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from ''the tyranny of their reproductive biology'' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 ''The Ultimate Revolution'' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). The birth duty moves from a body to a device operator; decant never sets birthing_parent. Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04).'
 - id: R4
-  plain: ''
+  plain: 'An intended parent may provide care for the child when a registered parent of the child and the child is a born subject.'
   attribute: intended_parent
   deontic: may
   aim: (provide_care intended_parent child)
@@ -120,7 +120,7 @@ rules:
   implicit: false
   source: 'care by any registered parent of a born child is permitted, men included; nothing here bars it. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
 - id: R5
-  plain: ''
+  plain: '(practice, not written) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject, or else the registry may reprimand (R6).'
   attribute: intended_parent
   deontic: must
   aim: (provide_care intended_parent child)
@@ -130,7 +130,7 @@ rules:
   implicit: true
   source: 'implicit sanctioned norm (a care-norm, not a written rule): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so ''the tying strand outlives the rival input'' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
 - id: R6
-  plain: ''
+  plain: 'The registry may reprimand at any time (the sanction for R3 and R5).'
   attribute: registry
   deontic: may
   aim: (reprimand registry x)
@@ -140,7 +140,7 @@ rules:
   implicit: false
   source: 'the registry''s sanction for R3 and R5 (or_else target). Condition ''true'' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
 - id: R7
-  plain: ''
+  plain: 'The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition.'
   attribute: registry
   deontic: may
   aim: (register_parentage registry intended_parent child)

@@ -87,7 +87,7 @@ actions:
   effects: []
 rules:
 - id: R1
-  plain: ''
+  plain: 'The crew may board the passenger when the passenger is not aboard.'
   attribute: crew
   deontic: may
   aim: (board c p)
@@ -100,7 +100,7 @@ rules:
     c: crew
     p: passenger
 - id: R2
-  plain: ''
+  plain: 'The crew providing care to the passenger must hold when the passenger is aboard (14 CFR 91.11 / 121.580, unverified).'
   attribute: crew
   deontic: must
   aim: (provides_care c p)
@@ -114,7 +114,7 @@ rules:
     c: crew
     p: passenger
 - id: R3
-  plain: ''
+  plain: 'The crew may restrain the passenger when the passenger is aboard and disruptive (14 CFR 91.11 / 121.580, unverified).'
   attribute: crew
   deontic: may
   aim: (restrain c p)
@@ -127,7 +127,7 @@ rules:
     c: crew
     p: passenger
 - id: R4
-  plain: ''
+  plain: 'The passenger cannot leave while aboard: no such power exists (14 CFR 91.11 / 121.580, unverified).'
   attribute: passenger
   deontic: must_not
   aim: (leave p)
@@ -137,7 +137,7 @@ rules:
   implicit: false
   source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger cannot leave in flight). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(p) = leave enabled (a default capacity), which this disability makes false aboard'
 - id: R6
-  plain: ''
+  plain: 'The passenger may complain at any time.'
   attribute: passenger
   deontic: may
   aim: (complain p)

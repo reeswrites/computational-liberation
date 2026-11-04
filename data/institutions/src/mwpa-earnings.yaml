@@ -3,7 +3,7 @@ name: Married women's earnings act (property act plus may keep_earnings)
 extends: mwpa-property
 rules_add:
 - id: R14
-  plain: ''
+  plain: 'The wife may keep her earnings as her own when married and she earns wages outside the household (earnings acts, Geddes et al. 2007).'
   attribute: wife
   deontic: may
   aim: (keep_earnings w)
