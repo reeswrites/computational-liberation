@@ -56,7 +56,7 @@ coverture-household ~ police-crisis: iso=False ... matched=5/9|10 strands=on con
 
 Read the "findings (true, not counted)" under the verdict first.
 
-Failure modes. Anywhere this guide or a gate letter refers to "the failure modes" or to DT/DI/BL/RB as the full set, read the eleven modes on three axes (who pays / rule / time) in `docs/decisions/0016-failure-mode-axes.md`, not a closed list of four. DT, DI, BL and RB are its "who pays" axis. Each mode carries the lowest layer that can detect it; layer 1 can only fire Capture and Cosmetic.
+Failure modes. Anywhere this guide or a gate letter refers to "the failure modes" or to DT/DI/BL/RB as the full set, read the eleven modes on three axes (who pays / rule / time) in `docs/decisions/0016-failure-mode-axes.md`, not a closed list of four. DT, DI, BL and RB are its "who pays" axis. Each mode carries the lowest layer that can detect it; layer 1 can only fire Capture, Cosmetic and Backlash when the reaction is encoded as a branch (MWPA `narrowed`, which adds rules R17 and R18; its 2026-11-03 relabel to Erosion was reverted by the ADR's 2026-11-04 amendment). Erosion is practice drift and needs layer 2.
 
 Standing caveats (ADR 0016). Two things the model cannot see apply to every result and are not modes. Illegibility: a rule that conditions on a fact the state cannot observe (Scott) is encoded as if the fact were visible. Encoding misread: a constitutive strand encoded as tying makes unbundling look free; the council's encoding-faithfulness axis exists to catch it, and the engine cannot.
 

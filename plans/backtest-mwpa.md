@@ -1,6 +1,6 @@
 # Backtest: Married Women's Property Acts (preregistered, 2026-11-03)
 
-Tags as in `backtest-data-inventory.md`: [F] opened; [R] recalled, verify. Failure modes DT/DI/BL/RB as planned; relabelled under ADR 0016 in the drift log below (DT -> Capture, BL -> Erosion). Blows: (A) do rules trail material change? (B) did standing precede any floor and persist?
+Tags as in `backtest-data-inventory.md`: [F] opened; [R] recalled, verify. Failure modes DT/DI/BL/RB as planned; relabelled under ADR 0016 in the drift log below (DT -> Capture, BL -> Erosion; the BL -> Erosion relabel was reverted 2026-11-04, second drift note). Blows: (A) do rules trail material change? (B) did standing precede any floor and persist?
 
 ## 1. Timeline and ordering
 
@@ -42,7 +42,7 @@ Layer 1 (rules engine). Encode `mwpa-household` as four separable deltas on `cov
 - `earnings`: add `wife may keep_earnings`; flips `financial_dependence` for wage-earning wives. Predicted DI: care obligation R3 (implicit) unchanged, so a wife now carries wages and housework.
 - `sole-trader`: delete R7 disability on `contract`. Flips `can_contract`; `can_exit` still false (R6 stands).
 - `suit`: delete R4; R9 enabled, so `has_standing` flips true. `can_exit` flips only with divorce reform, not here: the engine should say standing before exit.
-Failure modes: DT, the 1839-50 acts protect family assets from husbands' creditors (Khan, Chused), encode as `creditor must_not attach wife_property`, husband's management kept; BL, courts "narrowly construing" the acts to keep husbands' control during marriage (Chused 1984 citing Chused 1983 at 1400 [F]), encode as a reinstated R1 under `narrow_construction`; RB, dower trade-offs [R].
+Failure modes: DT, the 1839-50 acts protect family assets from husbands' creditors (Khan, Chused), encode as `creditor must_not attach wife_property`, husband's management kept; BL, courts "narrowly construing" the acts to keep husbands' control during marriage (Chused 1984 citing Chused 1983 at 1400 [F]), encode as a reinstated R1 under `narrow_construction`; RB, dower trade-offs [R]. (Added 2026-11-04, ADR 0016 council finding 3, preregistered text otherwise unchanged: the liberated role for every failure-mode case here is the wife, so "a party the change was not for" means any role other than the wife.)
 
 Ordering (layer 3). Floor-first predicts acts after a labour or wealth floor; the author expects rules to lead. Author's prediction: property and suit rights precede measured married-women's LFP and patenting in >= 8 of 10 early states (blow B lands); but wealth, urbanisation and TFP precede adoption (blow A lands too, on the adoption margin). Against floor-first: standing (suit, contract) arriving before married LFP exceeds 10%, with gains persisting (GLT schooling, HWZ deposits). Against rules-lead: a state-level deposit or patenting pre-trend rising 10-20 years before the act.
 
@@ -50,6 +50,7 @@ Ordering (layer 3). Floor-first predicts acts after a labour or wealth floor; th
 
 - Direction: engine flips `financial_dependence`, `has_standing` in the stated per-delta order; `can_exit` does not flip. Pass if verdicts match; fail if `suit` leaves `has_standing` false or `property` alone flips `can_exit`.
 - Failure mode: pass if DT is the engine's top-ranked risk for the 1839-50 wave and BL for 1860-80; fail if it ranks DI or RB first with no historical trace.
+  - Restated 2026-11-04 in ADR 0016's labels (council pass, finding 2; the original line above is unchanged, see the drift notes below): pass iff Capture ranks first for 1839-50 and Backlash for 1860-80; fail if any other mode ranks first in either window.
 - Ordering: pass if the per-state table shows rule before measured material series for the property/suit deltas and material-before-rule on adoption predictors; fail if deposit/patenting pre-trends rise 10+ years before passage in most states; inconclusive if the 1880-90 gap in LFP leaves >3 states undecidable.
 
 ## 5. Difficulty and data gaps
@@ -83,3 +84,11 @@ Added after the layer-1 run; the preregistered text above is unchanged. ADR 0016
 - `double_burden`: DI unchanged (the author did not relabel it; Perverse incentive is the noted cleaner home).
 
 Section 4 failure-mode condition, restated in the new labels beneath the original ("pass if DT is the engine's top-ranked risk for the 1839-50 wave and BL for 1860-80; fail if it ranks DI or RB first with no historical trace"): pass if Capture is the top-ranked risk for 1839-50 and Erosion for 1860-80; fail if it ranks DI or RB first with no historical trace. The layer-1 outcome (inconclusive: verdicts, not a ranking) is unchanged.
+
+## Drift note (2026-11-04, ADR 0016 council pass)
+
+Drift on drift, logged, nothing above deleted. The author accepted the council's recommendations (docs/reviews/2026-11-04-adr0016-council.md); ADR 0016 is amended the same day. No rule, property or verdict changes.
+- `narrowed` branch (`backlash` property): the 2026-11-03 relabel BL -> Erosion is reverted; it is BL (Backlash) again. The branch adds rules (R17, R18), which is active reaction, not practice drift; Erosion has no MWPA case. The 2026-11-03 line above stands as history.
+- `double_burden`: DI -> "partial reform (no mode)" (ADR 0016 orthogonality criterion: nothing rewards undermining the property, R3 is simply untouched); the Perverse-incentive reading noted on 2026-11-03 is dropped. DI stays in the property gloss as history.
+- Section 4 failure-mode condition, restated exhaustively (replacing the 2026-11-03 restatement above, which left seven modes neither pass nor fail): pass iff Capture ranks first for 1839-50 and Backlash for 1860-80; fail if any other mode ranks first in either window. The layer-1 outcome (inconclusive: verdicts, not a ranking) is unchanged.
+- Liberated role: the wife, for every MWPA failure-mode case (ADR 0016 finding 3; one sentence added to Section 3, dated).

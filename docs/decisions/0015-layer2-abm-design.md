@@ -41,5 +41,13 @@ unavoidable breach, counted and reported once per run as an encoder warning rath
 it is the plan's recommendation, reuses the reference's successor rather than a second rule semantics, and gives
 the gate institutions live sanction and trust dynamics without a schema change. Forecloses: reading a must-be as an
 obligation on a specific named action (the "establishing action" stays a dataset convention, not a rule field), and
-a global reading that would see other agents' same-step effects. Status: ASSUMED accepted (the plan's
-recommendation); the author can reverse.
+a global reading that would see other agents' same-step effects. Status: accepted 2026-11-04 (applied as ASSUMED on
+the plan's recommendation, engine deb6a31; the author accepted it on 2026-11-04).
+
+## Amendment 2026-11-04: A1 extended (per-instance payoff keys)
+A `payoffs` key may name an action instance (`assign(committee,male_member)`), overriding the action-name key for that
+instance only, or an income fluent. Needed because the choice rule admits a forbidden instance only when its net
+strictly beats the best lawful net, so with name-level payoffs two instances of one action can never differ and gate
+(c)'s sanction sweep is flat by construction (docs/reviews/2026-11-04-abm-slice3-review.md, finding 1). Swept, not
+calibrated, as A1 says. Status: accepted 2026-11-04 (applied as ASSUMED in engine 59ee9f7; the author accepted it on
+2026-11-04).

@@ -79,14 +79,14 @@ Who pays / Rule / Time; see ADR 0016.
 | --- | --- | --- | --- |
 | Who pays | Dark twin | Capital rebundles the freed strand into a product | 3 |
 | Who pays | Displacement | The burden moves to someone with less power | 3 |
-| Who pays | Backlash | The change threatens an equilibrium enough to provoke active reaction | 2 |
+| Who pays | Backlash | The change threatens an equilibrium enough to provoke active reaction | 3 (1 when encoded as a branch) |
 | Who pays | Rebundling | People retreat to another stronghold; remaining bonds become more load-bearing | 3 |
 | Rule | Capture | A party the change was not for gains the new power or shelter | 1 |
 | Rule | Perverse incentive | The rule's payoffs reward behaviour that undermines what it secured | 2 |
 | Rule | Cosmetic | Renaming or a revocable exit; nothing structural changes | 1 |
 | Time | Dead letter | The rule passes; adoption never crosses threshold | 2 |
 | Time | Erosion | Practice drifts back while the rule stays on the books | 2 |
-| Time | Enforcement decay | `or_else` exists but stops firing | 2 (needs the breach model) |
+| Time | Enforcement decay | `or_else` exists but stops firing | 3 (no mechanism yet makes `or_else` stop firing) |
 | Time | Lock-in | The change succeeds and then cannot be revised | 3 |
 
 **Simulation approach** (from the solidarity-modeling thread)

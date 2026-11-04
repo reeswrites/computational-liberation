@@ -22,7 +22,7 @@ Status: slices 1-3 built in philosophy-engine (2026-11-03/04; ADR 0015 A1-A8). `
 
 Overall: BLOCKED (exit 2) until (a) and (b) can run. What (c) demonstrates: the sanctioned norm R2 governs whether the committee assigns a man (graduated escalation evicts the forbidden assignment within a few steps at any positive weight on the grid, even when it pays 3×; with R2 removed it is adopted at every weight). The collapse region is only sanction_weight 0 on this grid, so the demonstration is that sanctions bite, not where the threshold lies. The earlier property-trace reading (property true at t=0, pair broken at step 1 by a bootstrap draw) was the layer-1 verdict replayed and is now an information line only (docs/reviews/2026-11-04-abm-slice3-review.md). Reviews: docs/reviews/2026-11-04-abm-state-obligations-review.md, 2026-11-04-abm-slice3-review.md; both fix passes landed (engine 313b508, 59ee9f7).
 
-Resolved open questions: payoffs live in an optional `payoffs` block on the dataset entry, keys may name an action, an action instance (`assign(committee,male_member)`, A1 extension 2026-11-04, ASSUMED) or an income fluent; pledges are a `_pledge` naming convention (A3).
+Resolved open questions: payoffs live in an optional `payoffs` block on the dataset entry, keys may name an action, an action instance (`assign(committee,male_member)`, A1 extension, accepted 2026-11-04) or an income fluent; pledges are a `_pledge` naming convention (A3).
 
 ## Handoff decisions
 

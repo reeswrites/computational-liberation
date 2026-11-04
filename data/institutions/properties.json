@@ -67,7 +67,7 @@
  },
  {
   "name": "double_burden",
-  "gloss": "Displacement (DI) check for the MWPA chain (left as DI pending the author's call, ADR 0016, 2026-11-03: this is a burden that stays, not one that moves; a cleaner home is Perverse incentive): some married wife owns her earnings and is still bound to the household's care (the implicit R3 unchanged). Reachable from the earnings act on; open before (preregistered 2026-11-03).",
+  "gloss": "Partial reform (no mode) check for the MWPA chain (filed as displacement (DI) until 2026-11-04; ADR 0016's 2026-11-03 note kept it DI, its 2026-11-04 council-pass amendment relabelled it: a burden that stays, not one that moves, and nothing rewards undermining the property, so neither DI nor Perverse incentive; property name kept, it is a preregistered identifier): some married wife owns her earnings and is still bound to the household's care (the implicit R3 unchanged). Reachable from the earnings act on; open before (preregistered 2026-11-03).",
   "formal": "(exists ((h agent) (w agent)) (and (married h w t) (owns_earnings w t) (provides_care w h t)))"
  },
  {
@@ -77,7 +77,7 @@
  },
  {
   "name": "backlash",
-  "gloss": "Erosion check (filed as backlash (BL) until ADR 0016, 2026-11-03; property name kept, it is a preregistered identifier): a court has construed the property act narrowly as to a propertied wife, the husband controls her property again and she does not. Reachable only where a narrowing power exists (preregistered 2026-11-03).",
+  "gloss": "Backlash (BL) check (filed Erosion 2026-11-03 by ADR 0016, reverted 2026-11-04 by its council pass: the branch adds rules R17 and R18, which is active reaction; property name is a preregistered identifier): a court has construed the property act narrowly as to a propertied wife, the husband controls her property again and she does not. Reachable only where a narrowing power exists (preregistered 2026-11-03).",
   "formal": "(exists ((h agent) (w agent)) (and (married h w t) (acquired_property w t) (narrowed w t) (controls_property h w t) (not (controls_own_property w t))))"
  },
  {

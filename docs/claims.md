@@ -28,7 +28,7 @@ A claim is `supported` only if a check that could have failed passed and the rev
 | L17 | The dark twin: a gig platform keeps exit cheap and strips insurance and voice (`worker_uninsured` reachable, `rules_revisable_by_subject` open). | plan dataset table; batch 2 §4 | preregistered, not encoded | untested | 2026-11-03 |
 | L18 | Ostrom's fishery makes rule revision reachable by the users, not only by the state. | plan dataset table; batch 2 §5 | preregistered, not encoded | untested | 2026-11-03 |
 | L19 | The engine identifies which single rule carries an outcome given human encodings; it does not discover implicitness or draw the care/control line itself. | README "What the engine does and doesn't do"; third review | third review (R2 carries gate (d) given the encoding; `implicit` and strand tags are human inputs reported back; airline-flight match) | supported | 2026-11-03 |
-| L20 | The original four-failure-mode list (dark twin, displacement, backlash, rebundling) was incomplete; the first backtest (MWPA) exposed it. | ADR 0016; theory.md Failure modes | ADR 0016, plans/backtest-mwpa.md; MWPA backtest failure-modes review (2026-11-03-mwpa-backtest-failure-modes.md) | weakened | 2026-11-03 |
+| L20 | The four who-pays modes (dark twin, displacement, backlash, rebundling) are the complete failure-mode set. | theory.md Failure modes (original four-mode paragraph); ADR 0006 | ADR 0016 (three axes, eleven modes; the first backtest, MWPA, misfiled `creditor_shield`); ADR 0016 council review (2026-11-04-adr0016-council.md); MWPA backtest failure-modes review (2026-11-03-mwpa-backtest-failure-modes.md) | weakened | 2026-11-04 |
 
 ## Prior-work and method claims
 
@@ -54,7 +54,7 @@ A claim is `supported` only if a check that could have failed passed and the rev
 | T8 | Rules lead change rather than trail it (the planner reading of the theory). | intent "would surprise the author"; roadmap "Rule" | backtest inventory: whaling, footbinding, Norway quota recorded as rules-trailed; not yet run | untested | 2026-11-03 |
 | T9 | The three mechanisms (material, coordination, imagination) separate and can be switched. | intent; layer 2 plan | none | untested | 2026-11-03 |
 | T10 | Freedom and flourishing add rather than conflict. | intent | none; layer 2 reports disagreement rows | untested | 2026-11-03 |
-| T11 | The "who pays" failure modes (dark twin, displacement, backlash, rebundling; the full list is ADR 0016's eleven) can be written as checkable properties. | ADR 0006; plan Checks | `worker_uninsured` (dark twin), `double_burden` (DI) and `creditor_shield` / `backlash` (filed DT/BL, relabelled Capture/Erosion by ADR 0016) exist in `properties.json`; no rebundling property | untested | 2026-11-03 |
+| T11 | The "who pays" failure modes (dark twin, displacement, backlash, rebundling; the full list is ADR 0016's eleven) can be written as checkable properties. | ADR 0006; plan Checks | Four properties exist in `properties.json`: `worker_uninsured` (dark twin), `backlash` (backlash; filed Erosion 2026-11-03 by ADR 0016, reverted 2026-11-04 by its council pass), `double_burden` (filed DI, relabelled partial reform (no mode) 2026-11-04) and `creditor_shield` (Capture, filed DT); 3 of 4 who-pays modes written (DT, DI, BL), RB missing: no rebundling property | untested | 2026-11-04 |
 
 ## Status counts
 

@@ -13,14 +13,14 @@ Wording follows `plans/institutions-phase0.md`. Structural terms describe encodi
 - **equal standing (exit, voice, recognition)**: a subject can leave (exit), contest rules (voice), and be counted as a party to claims (recognition).
 - **real freedom**: the practical ability to act on a permitted option, not only its formal permission.
 - **non-domination**: no party holds a rule-backed power to interfere arbitrarily with another's choices.
-- **dark twin**: unbundling done by capital rather than by the subject: the labor is kept and the protections stripped (the gig economy for jobs; agribusiness owning the meat substitutes).
-- **displacement**: control or burden moved to another party or place rather than removed.
-- **backlash**: a rule added to reinforce the existing bundle against a change or substitute.
-- **rebundling**: the same strands recombined under new names or roles, so the structure returns.
+- **dark twin**: capital rebundles the freed strand into a product: unbundling done by capital rather than by the subject, the labor kept and the protections stripped (the gig economy for jobs; agribusiness owning the meat substitutes). Who-pays axis, ADR 0016.
+- **displacement**: control or burden moved to another party or place rather than removed. Who-pays axis, ADR 0016.
+- **backlash**: the change threatens an equilibrium enough to provoke active reaction, typically a rule added to reinforce the existing bundle against a change or substitute (MWPA `narrowed` branch: a court power that reinstates the husband's control). Who-pays axis, ADR 0016.
+- **rebundling**: the same strands recombined under new names or roles, so the structure returns. Who-pays axis, ADR 0016.
 - **capture**: a party the change was not written for gains the new power or shelter (MWPA `creditor_shield`: husbands moving assets to wives to dodge creditors). Rule axis, ADR 0016.
 - **perverse incentive**: the payoffs a rule creates reward behaviour that undermines the property it was meant to secure (compliance theatre). Rule axis, ADR 0016.
 - **dead letter**: the rule passes and adoption never crosses threshold. Time axis, ADR 0016.
-- **erosion**: practice drifts back while the rule stays on the books (courts construing a statute narrowly). Time axis, ADR 0016.
+- **erosion**: practice drifts back while the rule stays on the books; a narrowing encoded as a court power is backlash, not erosion (ADR 0016 amendment 2026-11-04). Time axis, ADR 0016.
 - **enforcement decay**: the `or_else` exists but stops firing, so a sanctioned norm becomes unsanctioned (kibbutz). Time axis, ADR 0016.
 - **lock-in**: the change succeeds and then cannot be revised; Ostrom's self-revising-rules principle is the guard. Time axis, ADR 0016.
 - **cosmetic reform** (a Rule-axis failure mode, ADR 0016): a change (such as a role rename) that leaves the structure isomorphic to the original.
