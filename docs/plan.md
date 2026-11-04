@@ -46,7 +46,7 @@ Layer 2 is frozen after today's gate record. The `imagination` module is not bui
 
 ## Restart list (2026-11-04, evening; in order)
 1. done — Engine fix pass landed, uncommitted at time of writing: 493 tests; (a) now reads either pledge action via its base, step-0 share guard, crit_c band condition, child rng for committed minority, (b) report carries the implicit-0.5 caveat and the Centola-band information line, verdict unchanged.
-2. running (serial, macOS) — Then rerun `phil abm gate --seeds 100` and record. Result: to be filled in.
+2. done — Gate rerun (engine 0abf7a4, 100 seeds, serial on macOS, 23 entries loaded before the ecto regeneration): (a) FAIL (no longer BLOCKED), (b) FAIL (jump 0.18), (c) PASS, (d) PASS 0.96. Recorded in plans/layer2-abm.md; layer 2 frozen here.
 3. done — Council consistency seat: docs/reviews/2026-11-04-consistency-council.md.
 4. done — Footbinding + naming-convention encoded, reviewed (faithful with reservations), fixes applied with preregistration committed before the run (b6f48aa → 584ef7d); `marriage_requires_binding` flagged by construction.
 5. done — Coordination module (engine 20f60d7), reviewed weakened; performance pass (engine 8e246b7): 45 min → 5 min gate, 3.3 min → 1 min tests, outputs identical.

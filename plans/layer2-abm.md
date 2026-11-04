@@ -9,7 +9,18 @@ often, and which mechanism a change needed (`docs/intent.md`, "How change happen
 The question this phase answers: **given verified rules, which mechanism module is needed to reproduce a known
 collapse, persistence or regendering, and do the rankings survive random seeds?**
 
-Status: slices 1-3 built in philosophy-engine (2026-11-03/04; ADR 0015 A1-A8). `phil abm run`, `sweep`, `score`, `gate` exist; `material` module only, `coordination` and `imagination` are stubs. Gate run below.
+Status: slices 1-3 built in philosophy-engine (2026-11-03/04; ADR 0015 A1-A8). `phil abm run`, `sweep`, `score`, `gate` exist; `material` and `coordination` built, `imagination` a stub; frozen 2026-11-04 (docs/plan.md). Gate run below.
+
+## Gate run 2026-11-04, late (engine 0abf7a4 slice-4 fix pass, `phil abm gate --seeds 100 --workers 4`; serial on macOS since `parallel.py` does not fork under darwin, ; 23 entries: the dataset was loaded before the ectogenesis pair was regenerated)
+
+| letter | status | detail |
+| --- | --- | --- |
+| (a) footbinding | FAIL | iff pattern holds at NONE of 9 grid points (sanction_weight x payoff of leave_unbound); sanction band NONE; persistence never collapses below a band. No longer BLOCKED: either pledge action is read as a collapse signal through its base (`leave_unbound@family`; `accept_match@suitor` is lawful and reported only); step-0 share guard did not fire (`initial_practice: bind` is set). The A2 per-agent pledge state and the pledge-cost decision remain the named causes; not pursued (layer 2 frozen, docs/plan.md) |
+| (b) committed minority | FAIL | max adjacent jump 0.1845 at [0.3, 0.35] under both coordination configurations (plan criterion > 0.5, unchanged). Information only: midpoint 0.325 is outside the ASSUMED Centola band 21-31%; the max-share threshold rule carries an implicit 0.5 (review finding 7), so "no constant sets the location" is not claimed |
+| (c) kibbutz | PASS | all three configurations; sanction band [0.25..4.0] excludes the forbidden assignment at every payoff, adopted at weight 0 where it out-pays; no-implicit pair adopted everywhere it out-pays |
+| (d) seed stability | PASS | Spearman 0.963 / 0.958 / 0.957 over 23 institutions; caveat as before (necessary, not sufficient) |
+
+Overall FAIL (exit 1). Not tuned. This is the layer-2 record at the freeze: the frequency layer reproduces the kibbutz result and is seed-stable, and does not reproduce Mackie's collapse or Centola's step as encoded.
 
 ## Gate run 2026-11-04, evening (engine 8e246b7 slice 4 + performance, `phil abm gate --seeds 100 --workers 4`, six configurations, 23 entries, 289 s)
 
