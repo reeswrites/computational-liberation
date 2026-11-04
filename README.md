@@ -61,14 +61,14 @@ The theory names three conditions of equal standing and the dataset turns each i
 |---|---|---|---|
 | **Exit** | You could leave and be all right | `subject_cannot_exit`, `dependent_cannot_exit`, `..._persists` | Delete the disability on leaving (coverture R6, police R4, CPS R10); add a floor so leaving is survivable |
 | **Standing** | You can act in your own name: sue, contract, hold | `no_standing`, `cannot_contract` | Delete the disability (coverture R7) or add the grant (sole-trader R15, suit act R16) |
-| **Material independence** | Your resources are under your own control | `financial_dependence`, `financial_dependence_unpropertied` | Grant the power to hold property and keep earnings; delete the other party's power to control them |
+| **Material independence** | The means of your life are not held at another's will | `financial_dependence`, `financial_dependence_unpropertied` | Two routes: title (grant the power to hold property and keep earnings, delete the other party's control: the MWPA route) or a floor (the institution must provide, no title needed). Only the title route is encoded so far |
 | **Bodily and reproductive autonomy** | Your body is not someone else's input | `binding_practised`, `marriage_requires_binding`, `reproduction_controlled_by_owner`, `offspring_owned` | Delete the rule that ties marriageability to the practice; delete the owner's power over breeding |
 | **Care decoupled from sex and birth** | Who cares is chosen, not assigned by body | `care_assigned_by_sex`, `care_duty_on_women`, `female_parent_care_persists`, `care_decoupled_from_birth` | Delete the implicit sex rule (kibbutz R2); substitute the rival input (ectogenesis); reassign the obligation |
 | **Non-domination** | No one can interfere at will, whether or not they do | `care_and_sanction_same_role` (structure), derived powers `can_sanction`, `can_claim_for` | Separate care from the power to sanction; make the carer's power conditional on the subject |
 | **Recognition** | Care counts as work | not yet encoded | Needs goods properties and a value strand; slice 2 of [plans/priority.md](plans/priority.md) |
 | **Voice** | Real say, including in rare high-stakes decisions | not yet encoded | Needs rules about who may change rules (Ostrom) |
 
-Exit, standing and material independence are the liberties and powers of a single subject. Care decoupling and non-domination are about the shape of the bundle itself. Recognition and voice are the theory's gaps in the dataset, and they are where the next encodings go.
+Exit, standing and material independence are the liberties and powers of a single subject. Material independence is not property: the MWPA chain reached it through title because title was the vehicle on offer, and the theory's own sequence puts a decommodified floor ahead of it. Whether the floor route leaves fewer load-bearing strands than the title route is a cut-set question the dataset cannot yet ask, because no floor variant is encoded. Care decoupling and non-domination are about the shape of the bundle itself. Recognition and voice are the theory's gaps in the dataset, and they are where the next encodings go.
 
 ## Rules and what follows from them
 

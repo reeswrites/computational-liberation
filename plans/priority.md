@@ -118,3 +118,7 @@ Predictions, written before the engine change or the dataset change:
 5. Monotonicity laws (tests/test_rules_meta.py, `enablement_polarity`): a `must_not` on a liberty action is the only rule that moves it; "removing a may never adds reachability" still holds for liberty actions because a `may` on a liberty is redundant. Prediction: the existing metamorphic tests pass unchanged.
 
 Drift from any of 1-5 is recorded in plans/priority-slice1-results.md, never edited to match.
+
+### Candidate for slice 2: floor route vs title route (noted 2026-11-05)
+
+Author's point: MWPA reached material independence through private title, which is the vehicle on offer, not the goal; the theory's sequence puts a decommodified floor ahead of it. Candidate encoding `coverture-floor`: coverture plus a state obligation on the institution (`must provide_subsistence w when (is_subject w)`), no property grant. Preregister before any run: `financial_dependence` and `financial_dependence_unpropertied` violated with no R13/R14; `double_burden` still reachable (the floor does not touch the care rule); `creditor_shield` open. Then compare cut sets for the same freedom: title route (R1 deleted, R13+R14 added) against floor route (one rule added). The question is which leaves fewer load-bearing strands behind. Not scheduled; author decides at slice 2 go/no-go.
