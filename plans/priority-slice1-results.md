@@ -81,3 +81,5 @@ e. Re-preregister the five tops under a to d as revision 2; v1 stays in the reco
 `cd /Users/rees/Documents/computational-liberation && uv run phil rules ablate --k 6,8 --json ablate-25-v2.json --summary ablate-25-summary.json > ablate-25-v2.txt`
 
 Outputs from this run: `/private/tmp/claude-501/-Users-rees-Documents/3aaae34a-2247-402e-bd6d-424feea4d706/scratchpad/ablate-25-v2.{txt,json}` and `ablate-25-summary.json`.
+
+Decisions (a)-(e) settled 2026-11-05: families, freedom-up ranking, prohibit variant, `care_duty_on_women`, revision-2 preregistration. Recorded in plans/priority.md "Slice 1 revision 2".

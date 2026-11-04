@@ -83,5 +83,23 @@ Settled 2026-11-04 (late) with the author:
 
 Ties are expected (several rules carry exactly one property); a tie with the named rule counts as a hit, a different top rule counts as a miss.
 
+
+### Slice 1 revision 2 (settled 2026-11-05 with the author, preregistered before the rerun)
+
+Decisions from plans/priority-slice1-results.md, all accepted:
+- (a) **Property families.** Each property carries a `family` (default: its own id). A flip counts once per family per rule. `dependent_cannot_exit` / `subject_cannot_exit` / `subject_cannot_exit_persists` are one family (`cannot_exit`); `no_standing` / `no_standing_persists` one (`no_standing`); `financial_dependence` / `financial_dependence_unpropertied` one (`financial_dependence`).
+- (b) **Ranking on freedom-up only.** `load_freedom_up` ranks; `load_freedom_down` is shown beside it and names the rule a load-bearing protection, never a cut.
+- (c) **Prohibit variant.** Every `may` rule is ablated twice: deleted (deregulates when it is the sole regulator; listed, not ranked) and replaced by `must_not` with the same attribute, aim and conditions (a real cut of the permission; ranked, labelled `prohibited`).
+- (d) **R5 property.** `care_duty_on_women` (kind freedom, family `care_duty_on_women`, invariant-shaped): whenever a subject is born and has a female parent, some female parent provides care; written so that ectogenesis R5 carries it and R4 does not.
+- (e) **Revision-2 preregistered tops**, the assistant's guesses endorsed by the author before the rerun; v1 (1/5) stays in the record. A tie with the named rule is a hit; ties are expected now that families collapse the exit twins.
+
+| entry | expected top (load_freedom_up) | why |
+| --- | --- | --- |
+| coverture-household | R6 wife must_not leave (tie with R4, R7 expected) | one family each: cannot_exit, no_standing, cannot_contract |
+| kibbutz-childrens-house | R2 committee must_not assign male_member (tie with R4 expected) | care_assigned_by_sex vs cannot_exit, one family each |
+| footbinding | R3 family must_not leave_unbound | binding_practised and marriage_requires_binding are two families; R9 carries cannot_exit once |
+| mwpa-property | R7 wife must_not contract | the act's own strand; R6 ties at one family; R11 still expected 0 (its property is failure_mode kind) |
+| ectogenesis | R5 intended_parent must provide_care | only via care_duty_on_women; the T3 test is informative only if R5 > 0 and R4's prohibit variant reads 0 |
+
    Original statement of the decision: the author names, before the run, the rule expected to carry the highest load_freedom in coverture-household, kibbutz-childrens-house, footbinding, mwpa-property and ectogenesis. Note found while settling: no freedom property currently reads ectogenesis R5 (care_assigned_by_sex is already `violated` there because R4 permits male care), so the T3 expectation "R5 is next" needs a property R5 actually carries (e.g. a `persists`-shaped care duty on female intended parents) written and preregistered in slice 1, or the expectation reads load 0 by construction.
 6. **Ectogenesis drift 1:** fix under a v2 preregistration (start_gestation and implant merged; surrogacy `birth_labor_rival` preregistered holds_to_k), committed before the rerun.
