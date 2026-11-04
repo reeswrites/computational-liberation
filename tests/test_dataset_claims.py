@@ -148,7 +148,7 @@ def test_deleting_police_sanction_rules_removes_the_bundled_power():
     holds to violated, and the current shape (no one but the carer sanctions) from a non-vacuous holds_to_k to a
     vacuous one (its antecedent, some sanction power, is unreachable)."""
     inst, props = _dataset_inst("police-crisis")
-    old = Property(name="old_shape", formal="(forall ((x agent) (y agent)) (=> (and (provides_care x y t) (is_subject y t)) (can_sanction x y t)))")
+    old = Property(name="old_shape", kind="structure", formal="(forall ((x agent) (y agent)) (=> (and (provides_care x y t) (is_subject y t)) (can_sanction x y t)))")
     cur = props["care_and_sanction_same_role"]
     ps = {"old_shape": old, cur.name: cur}
     which = {n: ["invariant"] for n in ps}
