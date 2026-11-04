@@ -1,0 +1,122 @@
+id: mwpa-creditor-exemption
+name: 'Married women''s property, 1839-50 form: creditor exemption only (dark twin; Capture per ADR 0016)'
+extends: coverture-household
+roles_add:
+- name: creditor
+  gloss: a creditor of the husband
+fluents_set:
+  is_subject:
+    arg_roles: [wife]
+  female:
+    arg_roles: [wife]
+  can_sanction:
+    arg_roles: [husband, wife]
+  can_exit:
+    arg_roles: [wife]
+  has_standing:
+    arg_roles: [wife]
+  married:
+    arg_roles: [husband, wife]
+  controls_property:
+    arg_roles: [husband, wife]
+  controls_own_property:
+    arg_roles: [wife]
+  owns_earnings:
+    arg_roles: [wife]
+  can_contract:
+    arg_roles: [wife]
+  acquired_property:
+    arg_roles: [wife]
+  earns:
+    arg_roles: [wife]
+fluents_add:
+- name: transferred
+  arity: 2
+  gloss: h has conveyed property of his to w
+  arg_roles: [husband, wife]
+- name: narrowed
+  arity: 1
+  gloss: a court has construed the property act narrowly as to w (keeps the husband's control during marriage)
+  arg_roles: [wife]
+- name: can_attach
+  arity: 2
+  gloss: creditor c holds the power to attach (levy on) property in w's hands for the husband's debts
+  params: [c, w]
+  derived: (enabled attach c w)
+  arg_roles: [creditor, wife]
+actions_add:
+- name: attach
+  args: [c, w]
+  effects: []
+- name: transfer_to_wife
+  args: [h, w]
+  effects:
+  - fluent: acquired_property
+    args: [w]
+    value: true
+  - fluent: transferred
+    args: [h, w]
+    value: true
+rules_add:
+- id: R10
+  plain: ''
+  attribute: creditor
+  deontic: may
+  aim: (attach c w)
+  conditions: (married h w)
+  or_else: null
+  strand: rival
+  implicit: true
+  source: 'implicit baseline: a husband''s creditors reach the property the husband holds, which under R1 includes his wife''s. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)'
+  var_roles:
+    c: creditor
+    w: wife
+    h: husband
+- id: R11
+  plain: ''
+  attribute: creditor
+  deontic: must_not
+  aim: (attach c w)
+  conditions: (and (married h w) (acquired_property w))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED); Khan 1996, Married Women''s Property Laws and Female Commercial Activity, Table 1 (sole-trader dates; the 1839-50 wave as debt relief); https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf [F, via plans/backtest-mwpa.md] (Mississippi 1839 shielded property from husbands'' creditors; Khan excludes it as debt relief). A disability (or_else null): the exemption removes the creditor''s power, no sanction is involved'
+  var_roles:
+    c: creditor
+    w: wife
+    h: husband
+- id: R12
+  plain: ''
+  attribute: husband
+  deontic: may
+  aim: (transfer_to_wife h w)
+  conditions: (married h w)
+  or_else: null
+  strand: tying
+  implicit: true
+  source: 'implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone''s bar on grants between spouses is read as lifted by the exemption acts for property so conveyed'
+  var_roles:
+    h: husband
+    w: wife
+source_text: The 1839-1850 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands', passed after the panics (Chused 1984, citing Chused 1983). Mississippi's 1839 act shielded (slave) property from husbands' creditors; Khan 1996 excludes it as debt relief. Both via plans/backtest-mwpa.md.
+expected_properties:
+  subject_cannot_exit: reachable
+  care_and_sanction_same_role: holds_to_k
+  financial_dependence: holds_to_k
+  financial_dependence_unpropertied: holds_to_k
+  cannot_contract: holds_to_k
+  no_standing: reachable
+  double_burden: unreachable_open
+  creditor_shield: reachable
+  backlash: unreachable_open
+isomorphic_to: []
+not_isomorphic_to: []
+not_isomorphic_to_control: []
+minimal_pair_of:
+  id: coverture-household
+  rule: R10,R11,R12
+  differs_on: creditor_shield
+notes: 'DARK TWIN (DT; relabelled Capture by ADR 0016, 2026-11-03, verdicts unchanged) of the property act, encoded as the plan says: the creditor may not reach the wife''s acquired property (R11) but the husband''s management (R1) stands, so nothing on the wife''s side changes. PREREGISTERED (2026-11-03, before any run): financial_dependence and financial_dependence_unpropertied holds_to_k (unchanged from coverture); creditor_shield REACHABLE (marry, transfer_to_wife: the husband''s property sits in his wife''s name, under his management, beyond his creditors); no_standing reachable, cannot_contract holds, double_burden open, backlash open (no court here). Distance 3 from coverture (R10 baseline, R11 exemption, R12 conveyance): not a one-rule pair; R10 exists only so that can_attach is a granted power the exemption removes rather than a constant. Displacement: the plan names no burden moving to another role in this wave; none is encoded.'
+initial: []
+initial_free: [female, acquired_property, earns]

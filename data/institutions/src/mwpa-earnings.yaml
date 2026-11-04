@@ -1,0 +1,33 @@
+id: mwpa-earnings
+name: Married women's earnings act (property act plus may keep_earnings)
+extends: mwpa-property
+rules_add:
+- id: R14
+  plain: ''
+  attribute: wife
+  deontic: may
+  aim: (keep_earnings w)
+  conditions: (and (married h w) (earns w))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (earnings acts: NY 1860, MA 1846/1874, PA 1872, ...: a married woman''s wages are her separate property). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] owns_earnings(w) = keep_earnings enabled (R14)'
+  var_roles:
+    w: wife
+    h: husband
+source_text: 'Earnings acts (GLT Table 1): a married woman''s earnings from her own labour are her separate property. Statute texts not opened ([R]); via plans/backtest-mwpa.md.'
+expected_properties:
+  subject_cannot_exit: reachable
+  care_and_sanction_same_role: holds_to_k
+  financial_dependence: violated
+  financial_dependence_unpropertied: violated
+  cannot_contract: holds_to_k
+  no_standing: reachable
+  double_burden: reachable
+  creditor_shield: unreachable_open
+  backlash: unreachable_open
+minimal_pair_of:
+  id: mwpa-property
+  rule: R14
+  differs_on: financial_dependence_unpropertied
+notes: 'Plan delta `earnings`: add wife may keep_earnings (R14). PREREGISTERED (2026-11-03, before any run): financial_dependence_unpropertied VIOLATED (a wage-earning wife without property is no longer dependent); DISPLACEMENT (plan''s DI): the implicit care obligation R3 is unchanged, so double_burden (a wife who owns her wages and still must keep house) becomes REACHABLE here and was open before; no burden moves to another role (the plan names none). cannot_contract holds, no_standing reachable, exit unchanged.'

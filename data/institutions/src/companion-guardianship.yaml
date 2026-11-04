@@ -1,0 +1,31 @@
+id: companion-guardianship
+name: 'Companion animal guardianship: ownership plus court reassignment on best-interest grounds'
+extends: companion-ownership
+roles_set:
+  owner:
+    gloss: the custodian (role name kept as 'owner' so the pair differs by one rule, not a rename)
+  court:
+    gloss: court with power to reassign custody in the animal's interest
+rules_replace:
+- id: R9
+  plain: ''
+  attribute: court
+  deontic: may
+  aim: (reassign court o a)
+  conditions: (and (owns o a) (not (best_interest o a)))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal ''taking into consideration the well-being of the animal''); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail'
+source_text: '''(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal.'' Alaska Stat. s. 25.24.160(a)(5), enacted SLA 2016 ch. 60 s. 19, effective 2017-01-17, read at https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment. Alaska was the first state to direct a court to weigh the animal''s own well-being when assigning it; the entry generalises that one rule beyond divorce, which Alaska does not.'
+expected_properties:
+  no_standing_persists: fails
+  subject_cannot_exit_persists: persists
+  reproduction_controlled_by_owner: holds_to_k
+  care_and_sanction_same_role: holds_to_k
+isomorphic_to: [cps]
+not_isomorphic_to: [companion-ownership, companion-guardian-renamed]
+minimal_pair_of:
+  id: companion-ownership
+  rule: R9
+notes: 'Differs from companion-ownership by exactly R9: court must_not reassign (implicit disability) becomes court may reassign when not best_interest. That one rule creates a claim whose condition refers to the subject''s interest and whose effect changes custody, so no_standing is violated even though has_standing(a) stays false: the property is about claims on the subject''s behalf, not the subject''s own capacity. Everything else (no exit, owner controls reproduction, care + sanction in one role) is unchanged, which is the point: a best-interest rule is not an exit. Iso with cps is partial, on R9 alone (cps R7, court reassigns a dependent on best-interest grounds); the report must list it as a sub-signature and must not read it as equivalence of children and animals. reassign(court, o, a) takes the same three arguments as cps reassign_custody(court, p, c) so that the one-rule analogue can map; with one agent per role there is no second custodian to name, so the move-to-new-owner effects live on transfer only. Pitfalls: (1) Alaska''s rule applies only at divorce and still calls the result ''ownership''; the generalisation is the entry''s, flagged UNVERIFIED; (2) an encoder tempted to rename owner->guardian here as well would conflate this with companion-guardian-renamed; keep the role name. ADR 0009: R5 as in companion-ownership. ADR 0013: can_claim_for(court, a) is derived from R9''s enabledness (no initial literal), so no_standing_persists fails on the claim path R9 opens and on nothing else; remove R9 and it persists.'

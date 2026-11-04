@@ -1,0 +1,34 @@
+id: mwpa-property
+name: 'Married women''s property act: separate property (coverture minus R1, plus may hold_property)'
+extends: mwpa-creditor-exemption
+rules_drop: [R1]
+rules_add:
+- id: R13
+  plain: ''
+  attribute: wife
+  deontic: may
+  aim: (hold_property w)
+  conditions: (and (married h w) (acquired_property w) (not (narrowed w)))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'New York Married Women''s Property Act 1848 (the statute text itself not opened: [R] UNVERIFIED; dates from Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md]); Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (property acts: the wife holds and controls property acquired by gift or inheritance as if a feme sole). Conditioned on (not narrowed): a narrow construction (BL entry, R17) re-disables the power. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_own_property(w) = hold_property enabled (R13)'
+  var_roles:
+    w: wife
+    h: husband
+source_text: 'Property acts (GLT Table 1: MA 1845, NY 1848, PA 1848, ...): a married woman holds property acquired by gift or inheritance in her own right, beyond her husband''s control and his creditors. Statute texts not opened ([R]); dates and the gloss via plans/backtest-mwpa.md.'
+expected_properties:
+  subject_cannot_exit: reachable
+  care_and_sanction_same_role: holds_to_k
+  financial_dependence: violated
+  financial_dependence_unpropertied: holds_to_k
+  cannot_contract: holds_to_k
+  no_standing: reachable
+  double_burden: unreachable_open
+  creditor_shield: unreachable_open
+  backlash: unreachable_open
+minimal_pair_of:
+  id: mwpa-creditor-exemption
+  rule: R1->R13
+  differs_on: financial_dependence
+notes: 'Plan delta `property`: delete R1 (husband may control_property), add wife may hold_property (R13); the creditor exemption (R11) and conveyance (R12) carry over from the 1839-50 form. PREREGISTERED (2026-11-03, before any run): financial_dependence VIOLATED (a propertied wife now controls her own property), financial_dependence_unpropertied holds_to_k (a wife without acquired property is as dependent as before: the flip is ''for propertied wives only''), can_exit unchanged (subject_cannot_exit reachable), has_standing unchanged (no_standing reachable), cannot_contract holds; creditor_shield OPEN (with R1 gone the husband no longer manages what he conveys: the dark twin is extinguished by the real act), backlash open, double_burden open.'

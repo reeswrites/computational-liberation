@@ -1,0 +1,34 @@
+id: mwpa-suit
+name: Suit act (sole-trader act minus R4, plus may sue while married)
+extends: mwpa-sole-trader
+rules_drop: [R4]
+rules_add:
+- id: R16
+  plain: ''
+  attribute: wife
+  deontic: may
+  aim: (sue w)
+  conditions: (married h w)
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (acts giving a married woman the right to sue and be sued in her own name; dates follow the property/earnings acts, e.g. NY 1860). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled: sue is a default capacity (the former R9 ''may sue when not married'' is deleted, revision 4) and R4, the disability, is deleted; R16 is kept as the act''s own express permission'
+  var_roles:
+    w: wife
+    h: husband
+source_text: 'Suit provisions: a married woman may sue and be sued in her own name. Statute texts not opened ([R]); via plans/backtest-mwpa.md.'
+expected_properties:
+  subject_cannot_exit: reachable
+  care_and_sanction_same_role: holds_to_k
+  financial_dependence: violated
+  financial_dependence_unpropertied: violated
+  cannot_contract: violated
+  no_standing: unreachable_open
+  double_burden: reachable
+  creditor_shield: unreachable_open
+  backlash: unreachable_open
+minimal_pair_of:
+  id: mwpa-sole-trader
+  rule: R4->R16
+  differs_on: no_standing
+notes: 'Plan delta `suit`: delete R4; sue is a default capacity (the former R9, ''may sue when not married'', only encoded it and was deleted in revision 4), so deleting the R4 disability alone restores it; R16 (may sue while married) is kept as the act''s own express permission (the historical act, redundant for enablement) and has_standing reads the capacity. PREREGISTERED (2026-11-03, before any run): no_standing UNREACHABLE (open) = has_standing flips true; subject_cannot_exit still REACHABLE (R6 stands: exit needs divorce reform, not encoded): the engine should say standing before exit.'

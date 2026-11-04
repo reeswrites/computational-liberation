@@ -1,5 +1,7 @@
 # data/institutions
 
+Since 2026-11-04 the generator (`_gen_institutions.py`, `_gen_properties.py`) is replaced by YAML sources and `build.py`; older revision sections below still say "generator" for what is now the YAML.
+
 Hand-reconstructed institutions for the Phase 0 institutions family (`plans/institutions-phase0.md`).
 
 - `institutions.json`: list of 25 entries (`coverture-household`, `police-crisis`, `cps`, `crisis-team`,
@@ -12,7 +14,12 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
 - `properties.json`: named properties reused across entries. The plan's nine plus one extra,
   `leave_reserved_for_non_birthing_parent`, added so the paternity-quota / transferable-leave pair gets
   different verdicts (gate c); `solo_care_by_non_birthing_parent` is reachable in both.
-- `_gen_*.py`: the scripts that wrote the two JSON files. Edit the script, rerun, do not hand-edit the JSON.
+- `src/*.yaml` is the source (one file per entry, `src/properties.yaml`, entry order in `src/_order.yaml`);
+  `build.py` writes the JSON (`build.py --check` is the CI gate); never hand-edit the JSON. Edit the YAML, run
+  `uv run python data/institutions/build.py`. An entry may `extends` another and state only its delta
+  (`rules_drop` / `rules_replace` / `rules_add`, `<list>_drop|set|add`, overrides); each rule carries `plain` (one
+  sentence, filled by a later pass) and optional `choices`, which the build strips. `migrate_to_yaml.py` is the
+  one-off that derived the YAML from the JSON.
 
 ## Conventions
 

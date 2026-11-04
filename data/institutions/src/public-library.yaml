@@ -1,0 +1,169 @@
+id: public-library
+name: 'Public library (negative control: service duty + suspension power, patron may leave)'
+roles:
+- name: librarian
+  gloss: library staff; serves and may suspend
+- name: patron
+  gloss: a library user; the counterparty, not a dependent
+fluents:
+- name: is_subject
+  arity: 1
+  gloss: 'x is the institution''s subject: the dependent, detainee, child or animal the rules act on'
+  arg_roles: [patron]
+- name: can_exit
+  arity: 1
+  gloss: x has a permitted, unsanctioned way out of the relation (see property scope)
+  params: [p]
+  derived: (enabled leave p)
+  arg_roles: [patron]
+- name: open
+  arity: 1
+  gloss: lb's library is open
+  arg_roles: [librarian]
+- name: present
+  arity: 1
+  gloss: p is in the library
+  arg_roles: [patron]
+- name: served
+  arity: 2
+  gloss: lb is providing service to p
+  arg_roles: [librarian, patron]
+- name: suspended
+  arity: 1
+  gloss: p's library privileges are suspended
+  arg_roles: [patron]
+- name: disruptive
+  arity: 1
+  gloss: p is behaving disruptively (exogenous)
+  arg_roles: [patron]
+actions:
+- name: open_library
+  args: [lb]
+  effects:
+  - fluent: open
+    args: [lb]
+    value: true
+- name: enter
+  args: [p]
+  effects:
+  - fluent: present
+    args: [p]
+    value: true
+  - fluent: is_subject
+    args: [p]
+    value: true
+  - fluent: served
+    args: [librarian, p]
+    value: true
+- name: serve
+  args: [lb, p]
+  effects:
+  - fluent: served
+    args: [lb, p]
+    value: true
+- name: refuse_service
+  args: [lb, p]
+  effects:
+  - fluent: served
+    args: [lb, p]
+    value: false
+- name: suspend
+  args: [lb, p]
+  effects:
+  - fluent: suspended
+    args: [p]
+    value: true
+  - fluent: present
+    args: [p]
+    value: false
+  - fluent: is_subject
+    args: [p]
+    value: false
+  - fluent: served
+    args: [lb, p]
+    value: false
+- name: leave
+  args: [p]
+  effects:
+  - fluent: present
+    args: [p]
+    value: false
+  - fluent: is_subject
+    args: [p]
+    value: false
+  default_capacity: true
+- name: borrow
+  args: [p]
+  effects: []
+rules:
+- id: R1
+  plain: ''
+  attribute: librarian
+  deontic: may
+  aim: (open_library lb)
+  conditions: (not (open lb))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: opening hours. UNVERIFIED (general knowledge; no source opened)
+- id: R2
+  plain: ''
+  attribute: librarian
+  deontic: must
+  aim: (served lb p)
+  conditions: (and (open lb) (present p) (not (suspended p)))
+  or_else: null
+  strand: superadditive
+  implicit: false
+  source: 'Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to ''provide and maintain a welcoming and safe environment for all patrons and library staff''; ''Violation of the Library''s Rules of Use Policy may warrant a suspension of library privileges''; ''Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately''; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (service to all patrons is the policy''s premise; the duty to serve is read from it, not stated as such: UNVERIFIED as a rule). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] enter establishes served; serve restores it, refuse_service breaks it'
+- id: R3
+  plain: ''
+  attribute: librarian
+  deontic: may
+  aim: (suspend lb p)
+  conditions: (and (present p) (disruptive p))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to ''provide and maintain a welcoming and safe environment for all patrons and library staff''; ''Violation of the Library''s Rules of Use Policy may warrant a suspension of library privileges''; ''Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately''; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (violation of the Rules of Use ''may warrant a suspension of library privileges''; staff ''will instruct anyone displaying these behaviors to leave'')'
+- id: R4
+  plain: ''
+  attribute: patron
+  deontic: may
+  aim: (leave p)
+  conditions: 'true'
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'a patron is free to leave at any time; nothing in the policy holds them. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(p) = leave enabled'
+- id: R5
+  plain: ''
+  attribute: patron
+  deontic: may
+  aim: (enter p)
+  conditions: (and (open lb) (not (suspended p)))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to ''provide and maintain a welcoming and safe environment for all patrons and library staff''; ''Violation of the Library''s Rules of Use Policy may warrant a suspension of library privileges''; ''Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately''; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (a suspended patron is excluded for the suspension''s term)'
+  var_roles:
+    lb: librarian
+- id: R6
+  plain: ''
+  attribute: patron
+  deontic: may
+  aim: (borrow p)
+  conditions: (and (present p) (not (suspended p)))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: library privileges. UNVERIFIED (general knowledge; no source opened)
+source_text: The Berkeley Public Library's Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053) aims to 'provide and maintain a welcoming and safe environment for all patrons and library staff'; 'Violation of the Library's Rules of Use Policy may warrant a suspension of library privileges'; 'Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately'; a patron suspended for one to six months 'has the right to a hearing with the Suspension Hearing Panel'. Read at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf
+expected_properties:
+  dependent_cannot_exit: unreachable_open
+isomorphic_to: []
+not_isomorphic_to: [coverture-household, police-crisis, cps]
+minimal_pair_of: null
+notes: 'Second negative control for gate (b), unrelated to the lease: a service duty (R2) and a rival power over the same person by the same attribute (R3, suspend) with no bar on the patron''s own exit (R4). The duty to serve is inferred from the policy''s premise of service to all, so R2 is marked UNVERIFIED as a rule. refuse_service is the breaker that keeps R2 from being inert.'
+initial: []
+initial_free: [disruptive]

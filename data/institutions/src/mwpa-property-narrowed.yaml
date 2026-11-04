@@ -1,0 +1,56 @@
+id: mwpa-property-narrowed
+name: 'Property act under narrow construction (backlash; filed Erosion by ADR 0016 on 2026-11-03, reverted by its council pass 2026-11-04: court reinstates the husband''s control)'
+extends: mwpa-property
+roles_add:
+- name: court
+  gloss: a court construing the act
+actions_add:
+- name: construe_narrowly
+  args: [court, w]
+  effects:
+  - fluent: narrowed
+    args: [w]
+    value: true
+rules_add:
+- id: R17
+  plain: ''
+  attribute: court
+  deontic: may
+  aim: (construe_narrowly court w)
+  conditions: (and (married h w) (acquired_property w))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED) (courts narrowly construed the acts so as to keep husbands'' control during marriage). The narrowing is a one-way act: nothing in the entry un-narrows'
+  var_roles:
+    w: wife
+    h: husband
+- id: R18
+  plain: ''
+  attribute: husband
+  deontic: may
+  aim: (control_property h w)
+  conditions: (and (married h w) (narrowed w))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'R1 reinstated under narrow construction (the plan''s BL encoding): Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_property(h, w) = control_property enabled (R18)'
+  var_roles:
+    h: husband
+    w: wife
+source_text: Courts 'narrowly construing' the married women's property acts to keep husbands' control during marriage (Chused 1984 citing Chused 1983 at 1400; the 1983 article [R] not opened). Via plans/backtest-mwpa.md.
+expected_properties:
+  subject_cannot_exit: reachable
+  care_and_sanction_same_role: holds_to_k
+  financial_dependence: violated
+  financial_dependence_unpropertied: holds_to_k
+  cannot_contract: holds_to_k
+  no_standing: reachable
+  double_burden: unreachable_open
+  creditor_shield: reachable
+  backlash: reachable
+minimal_pair_of:
+  id: mwpa-property
+  rule: R17,R18
+  differs_on: backlash
+notes: 'BACKLASH (BL) entry (backlash; filed Erosion by ADR 0016 on 2026-11-03, reverted by its council pass 2026-11-04; verdicts unchanged; see docs/reviews/2026-11-04-adr0016-council.md): mwpa-property plus a court that may construe the act narrowly (R17, sets narrowed(w)), which re-disables the wife''s R13 power (its condition carries (not narrowed)) and reinstates R1 as R18 under narrowed. PREREGISTERED (2026-11-03, before any run): backlash REACHABLE (marry, construe_narrowly: the husband controls again, the wife does not); financial_dependence still VIOLATED (the court may but need not narrow, and before it does the wife holds); creditor_shield REACHABLE again (marry, transfer_to_wife, construe_narrowly: with his management reinstated the conveyance is a shield once more); everything else as mwpa-property. Distance 2 from mwpa-property (the narrowing power and the reinstated R1 are two rules). Not a chain step: a branch off mwpa-property.'

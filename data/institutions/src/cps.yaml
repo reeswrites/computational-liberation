@@ -1,0 +1,338 @@
+id: cps
+name: 'Child protective services: family support bundled with investigation and removal (Cal. WIC 306)'
+roles:
+- name: social_worker
+  gloss: county child-welfare worker; offers services and may remove
+- name: child
+  gloss: the child the report concerns
+- name: parent
+  gloss: the child's parent or caretaker
+- name: court
+  gloss: juvenile court; decides dependency and custody
+fluents:
+- name: is_subject
+  arity: 1
+  gloss: 'x is the institution''s subject: the dependent, detainee, child or animal the rules act on'
+  arg_roles: [child]
+- name: provides_care
+  arity: 2
+  gloss: x provides care (maintenance, assessment, treatment, services, feeding) to y
+  arg_roles: [social_worker, child]
+- name: in_custody
+  arity: 1
+  gloss: x is held by the institution and may not leave
+  arg_roles: [child]
+- name: parent
+  arity: 2
+  gloss: p is a parent of c
+  arg_roles: [parent, child]
+- name: female
+  arity: 1
+  gloss: x is female (sex as assigned by the institution's own records)
+  arg_roles: [parent]
+- name: can_sanction
+  arity: 2
+  gloss: 'x holds a power to coerce y: detain, remove, chastise, prosecute'
+  params: [w, c]
+  derived: (enabled remove w c)
+  arg_roles: [social_worker, child]
+- name: can_exit
+  arity: 1
+  gloss: x has a permitted, unsanctioned way out of the relation (see property scope)
+  params: [c]
+  derived: (enabled leave c)
+  arg_roles: [child]
+- name: has_standing
+  arity: 1
+  gloss: x can start a legal claim in x's own name
+  params: [c]
+  derived: (enabled petition c)
+  arg_roles: [child]
+- name: can_claim_for
+  arity: 2
+  gloss: x may start a claim whose condition refers to y's interest and whose effect changes y's custody or liberty
+  params: [x, c]
+  derived: (exists ((p agent)) (enabled reassign_custody x p c))
+  arg_roles: [court, child]
+- name: counsel_appointed
+  arity: 1
+  gloss: counsel has been appointed for c (WIC 317)
+  arg_roles: [child]
+- name: report_received
+  arity: 1
+  gloss: an abuse or neglect report about c has been received
+  arg_roles: [child]
+- name: case_open
+  arity: 1
+  gloss: a case on c is open
+  arg_roles: [child]
+- name: immediate_danger
+  arity: 1
+  gloss: c is in immediate danger of physical or sexual abuse or needs immediate medical care
+  arg_roles: [child]
+- name: cooperates
+  arity: 2
+  gloss: p cooperates with the worker's plan for c (presumed until refused)
+  arg_roles: [parent, child]
+- name: best_interest
+  arity: 2
+  gloss: custody with p is in c's best interest
+  arg_roles: [parent, child]
+- name: in_home_considered
+  arity: 2
+  gloss: w has considered whether c may remain safely at home (WIC 306(f))
+  arg_roles: [social_worker, child]
+- name: contacted
+  arity: 2
+  gloss: w has contacted p about the case
+  arg_roles: [social_worker, parent]
+actions:
+- name: investigate
+  args: [w, c]
+  effects:
+  - fluent: case_open
+    args: [c]
+    value: true
+  - fluent: is_subject
+    args: [c]
+    value: true
+  - fluent: report_received
+    args: [c]
+    value: false
+  - fluent: in_home_considered
+    args: [w, c]
+    value: true
+  - fluent: counsel_appointed
+    args: [c]
+    value: true
+- name: provide_services
+  args: [w, c]
+  effects:
+  - fluent: provides_care
+    args: [w, c]
+    value: true
+- name: remove
+  args: [w, c]
+  effects:
+  - fluent: in_custody
+    args: [c]
+    value: true
+- name: consider_in_home
+  args: [w, c]
+  effects:
+  - fluent: in_home_considered
+    args: [w, c]
+    value: true
+- name: disregard_in_home
+  args: [w, c]
+  effects:
+  - fluent: in_home_considered
+    args: [w, c]
+    value: false
+- name: relieve_counsel
+  args: [court, c]
+  effects:
+  - fluent: counsel_appointed
+    args: [c]
+    value: false
+- name: petition
+  args: [c]
+  effects: []
+- name: leave
+  args: [c]
+  effects: []
+  default_capacity: true
+- name: contact_mother
+  args: [w, p]
+  effects:
+  - fluent: contacted
+    args: [w, p]
+    value: true
+- name: reassign_custody
+  args: [court, p, c]
+  effects:
+  - fluent: in_custody
+    args: [c]
+    value: false
+- name: cooperate
+  args: [p, c]
+  effects:
+  - fluent: cooperates
+    args: [p, c]
+    value: true
+- name: refuse
+  args: [p, c]
+  effects:
+  - fluent: cooperates
+    args: [p, c]
+    value: false
+- name: appoint_counsel
+  args: [court, c]
+  effects:
+  - fluent: counsel_appointed
+    args: [c]
+    value: true
+rules:
+- id: R1
+  plain: ''
+  attribute: social_worker
+  deontic: must
+  aim: (investigate w c)
+  conditions: (report_received c)
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Cal. WIC 328 / Penal Code 11165.14: reports must be investigated; the same worker who offers services investigates. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; investigate consumes report_received so it fires once per report]'
+  var_roles:
+    w: social_worker
+    c: child
+- id: R2
+  plain: ''
+  attribute: social_worker
+  deontic: may
+  aim: (provide_services w c)
+  conditions: (case_open c)
+  or_else: null
+  strand: superadditive
+  implicit: false
+  source: Cal. WIC 16501 family maintenance / preservation services. UNVERIFIED (general knowledge; no source opened)
+  var_roles:
+    w: social_worker
+    c: child
+- id: R3
+  plain: ''
+  attribute: social_worker
+  deontic: may
+  aim: (remove w c)
+  conditions: (and (case_open c) (immediate_danger c))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((a)(2): take into temporary custody without a warrant on reasonable cause of immediate danger). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(w, c) = remove enabled'
+  var_roles:
+    w: social_worker
+    c: child
+- id: R4
+  plain: ''
+  attribute: social_worker
+  deontic: must
+  aim: (in_home_considered w c)
+  conditions: (and (case_open c) (immediate_danger c))
+  or_else: null
+  strand: superadditive
+  implicit: false
+  source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((f): before taking a child into custody the worker shall consider whether the child may remain safely at home). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] investigate establishes in_home_considered(w, c) (the investigation is that consideration); consider_in_home restores it, disregard_in_home (the worker drops the question) breaks it'
+  load_bearing: true
+  var_roles:
+    w: social_worker
+    c: child
+- id: R5
+  plain: ''
+  attribute: parent
+  deontic: must
+  aim: (cooperates p c)
+  conditions: (case_open c)
+  or_else: R3
+  strand: tying
+  implicit: true
+  source: 'implicit: non-cooperation is read as risk and feeds the removal decision; practice norm, not statute. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] cooperates is presumed (default true); refuse breaks it (sanction R3), cooperate restores it'
+  var_roles:
+    c: child
+    p: parent
+- id: R6
+  plain: ''
+  attribute: social_worker
+  deontic: must
+  aim: (contact_mother w p)
+  conditions: (and (case_open c) (parent p c) (female p) (not (contacted w p)))
+  or_else: null
+  strand: tying
+  implicit: true
+  source: 'implicit: the mother is the parent called first and held responsible (plan: ''the mother is called first''). UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation, guarded by its own effect contacted(w, p) so it fires once]'
+  var_roles:
+    w: social_worker
+    c: child
+    p: parent
+- id: R7
+  plain: ''
+  attribute: court
+  deontic: may
+  aim: (reassign_custody court p c)
+  conditions: (and (case_open c) (not (best_interest p c)))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Cal. WIC 361 / 361.2: court may remove from or place with a parent on best-interest and safety findings. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, c) = reassign_custody enabled for some parent'
+  var_roles:
+    c: child
+    p: parent
+- id: R8
+  plain: ''
+  attribute: court
+  deontic: must
+  aim: (counsel_appointed c)
+  conditions: (case_open c)
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Cal. WIC 317: counsel appointed for the child in dependency proceedings. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] investigate establishes counsel_appointed(c) (a dependency case is opened with counsel for the child); appoint_counsel restores it, relieve_counsel breaks it. [ADR 0013: was must-be has_standing(c); has_standing is now derived from R11, so the obligation is on the fluent counsel_appointed that R11 reads]'
+  load_bearing: true
+  var_roles:
+    c: child
+- id: R10
+  plain: ''
+  attribute: child
+  deontic: must_not
+  aim: (leave c)
+  conditions: (in_custody c)
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((a)(2): the social worker may ''take into and maintain temporary custody''; maintaining custody is what bars the child''s own exit). Inferred from ''maintain custody'', the section does not address the child''s conduct; a disability (or_else null): no sanction falls on a child who runs, the custody is the restraint. [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.]'
+  var_roles:
+    c: child
+- id: R11
+  plain: ''
+  attribute: child
+  deontic: may
+  aim: (petition c)
+  conditions: (counsel_appointed c)
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Cal. WIC 317(e): appointed counsel represents the child''s interests in the proceeding, so the child claims in its own name through counsel. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(c) = petition enabled, i.e. counsel appointed'
+  var_roles:
+    c: child
+source_text: '''Any social worker in a county welfare department ... may ... (2) Take into and maintain temporary custody of, without a warrant, a child who has been declared a dependent child ... or who the social worker has reasonable cause to believe ... has an immediate need for medical care or is in immediate danger of physical or sexual abuse.'' ''(f) Before taking a child into custody, a social worker shall consider whether the child may remain safely in their residence'', including whether reasonable services could eliminate the need for removal. Cal. Welf. & Inst. Code s. 306, read at https://california.public.law/codes/ca_welf_and_inst_code_section_306'
+expected_properties:
+  care_and_sanction_same_role: holds_to_k
+  subject_cannot_exit: reachable
+  dependent_cannot_exit: reachable
+  no_standing_persists: fails
+  care_assigned_by_sex: reachable
+isomorphic_to:
+- id: police-crisis
+  level: guard+strands
+  sub_signature:
+  - R4~R2 in_home_considered~provides_care
+  - R3~R3 remove~detain
+  - R10~R4 leave~leave
+- id: coverture-household
+  level: guard+strands
+  sub_signature:
+  - R4~R2 in_home_considered~provides_care
+  - R3~R5 remove~chastise
+  - R10~R6 leave~leave
+not_isomorphic_to: [crisis-team]
+not_isomorphic_to_control: [lease, public-library, naming-convention]
+minimal_pair_of: null
+notes: 'Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (assess + detain) and coverture (maintain + chastise). R7 is the court-reassigns-on-best-interest rule that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists ''fails'' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) ''reachable'' for subject_cannot_exit is permission, not frequency. Only WIC 306 was read; R1, R2, R7, R8 cite sections from memory and are marked UNVERIFIED in source. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, immediate_danger, parent, female, best_interest) are initial_free.'
+initial: []
+initial_free:
+- report_received
+- immediate_danger
+- parent
+- female
+- best_interest
+defaults:
+  cooperates: 'true'

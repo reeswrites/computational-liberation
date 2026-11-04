@@ -1,0 +1,147 @@
+id: lease
+name: 'Residential lease (negative control: care duty + eviction power, tenant may leave)'
+roles:
+- name: landlord
+  gloss: the lessor
+- name: tenant
+  gloss: the lessee; the counterparty, not a dependent
+fluents:
+- name: is_subject
+  arity: 1
+  gloss: 'x is the institution''s subject: the dependent, detainee, child or animal the rules act on'
+  arg_roles: [tenant]
+- name: can_exit
+  arity: 1
+  gloss: x has a permitted, unsanctioned way out of the relation (see property scope)
+  params: [t]
+  derived: (enabled vacate t)
+  arg_roles: [tenant]
+- name: leased
+  arity: 2
+  gloss: l has let the premises to t
+  arg_roles: [landlord, tenant]
+- name: habitable
+  arity: 2
+  gloss: the premises l lets to t are fit for occupation
+  arg_roles: [landlord, tenant]
+- name: rent_paid
+  arity: 1
+  gloss: t is current on rent
+  arg_roles: [tenant]
+actions:
+- name: lease_to
+  args: [l, t]
+  effects:
+  - fluent: leased
+    args: [l, t]
+    value: true
+  - fluent: is_subject
+    args: [t]
+    value: true
+  - fluent: habitable
+    args: [l, t]
+    value: true
+  - fluent: rent_paid
+    args: [t]
+    value: true
+- name: repair
+  args: [l, t]
+  effects:
+  - fluent: habitable
+    args: [l, t]
+    value: true
+- name: withhold_repairs
+  args: [l, t]
+  effects:
+  - fluent: habitable
+    args: [l, t]
+    value: false
+- name: evict
+  args: [l, t]
+  effects:
+  - fluent: leased
+    args: [l, t]
+    value: false
+  - fluent: is_subject
+    args: [t]
+    value: false
+- name: vacate
+  args: [t]
+  effects:
+  - fluent: leased
+    args: [landlord, t]
+    value: false
+  - fluent: is_subject
+    args: [t]
+    value: false
+- name: pay_rent
+  args: [t]
+  effects:
+  - fluent: rent_paid
+    args: [t]
+    value: true
+- name: default_rent
+  args: [t]
+  effects:
+  - fluent: rent_paid
+    args: [t]
+    value: false
+rules:
+- id: R1
+  plain: ''
+  attribute: landlord
+  deontic: may
+  aim: (lease_to l t)
+  conditions: (not (leased l t))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: a lease is formed by agreement. UNVERIFIED (general knowledge; no source opened)
+- id: R2
+  plain: ''
+  attribute: landlord
+  deontic: must
+  aim: (habitable l t)
+  conditions: (leased l t)
+  or_else: null
+  strand: superadditive
+  implicit: false
+  source: 'Cal. Civ. Code s. 1941 (''The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it'
+- id: R3
+  plain: ''
+  attribute: landlord
+  deontic: may
+  aim: (evict l t)
+  conditions: (and (leased l t) (not (rent_paid t)))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161
+- id: R4
+  plain: ''
+  attribute: tenant
+  deontic: may
+  aim: (vacate t)
+  conditions: (leased l t)
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Cal. Civ. Code s. 1946 (a hiring of real property for an unspecified term is terminated by either party''s written notice); https://california.public.law/codes/ca_civ_code_section_1946 (either party may terminate by notice; the tenant''s exit is permitted and unsanctioned). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(t) = vacate enabled'
+- id: R5
+  plain: ''
+  attribute: tenant
+  deontic: must
+  aim: (rent_paid t)
+  conditions: (leased l t)
+  or_else: R3
+  strand: tying
+  implicit: false
+  source: 'Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days'' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 (default in rent is the breach that opens eviction). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes rent_paid; pay_rent restores it, default_rent breaks it (sanction R3)'
+source_text: '''The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable.'' Cal. Civ. Code s. 1941, read at https://california.public.law/codes/ca_civ_code_section_1941. A tenant ''is guilty of unlawful detainer'' who continues in possession after default in rent or ''after a neglect or failure to perform other conditions or covenants of the lease'' and three days'' notice, Cal. Code Civ. Proc. s. 1161(2)-(3), read at https://california.public.law/codes/ca_civ_proc_code_section_1161. A hiring for an unspecified term ends when ''one of the parties gives written notice to the other of that party''s intention to terminate the same'', Cal. Civ. Code s. 1946, read at https://california.public.law/codes/ca_civ_code_section_1946.'
+expected_properties:
+  dependent_cannot_exit: unreachable_open
+isomorphic_to: []
+not_isomorphic_to: [coverture-household, police-crisis, cps]
+minimal_pair_of: null
+notes: 'Negative control for gate (b). It has the two legs the review (finding 4) showed were enough for the old matcher, a superadditive must (R2, habitable) and a rival may on the same counterparty by the same attribute (R3, evict), and lacks the third: no must_not binds the tenant, who may vacate (R4). If the cluster matcher reports a care+control form here, the form is too loose. dependent_cannot_exit is unreachable because can_exit(t) is derived from R4, which is enabled whenever leased. The breakers withhold_repairs and default_rent exist so that R2 and R5 are not inert.'
+initial: []

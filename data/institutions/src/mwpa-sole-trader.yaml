@@ -1,0 +1,33 @@
+id: mwpa-sole-trader
+name: Sole-trader act (earnings act minus R7, plus may contract)
+extends: mwpa-earnings
+rules_drop: [R7]
+rules_add:
+- id: R15
+  plain: ''
+  attribute: wife
+  deontic: may
+  aim: (contract w)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Khan 1996, Married Women''s Property Laws and Female Commercial Activity, Table 1 (sole-trader dates; the 1839-50 wave as debt relief); https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf [F, via plans/backtest-mwpa.md] (sole-trader provisions: a married woman may carry on trade and contract in her own name; ME 1844, MA 1860, NY 1860, ...). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_contract(w) = contract enabled (R15), no longer barred (R7 deleted)'
+  var_roles:
+    w: wife
+source_text: 'Sole-trader acts (Khan 1996 Table 1): a married woman may trade and contract in her own name. Statute texts not opened ([R]); via plans/backtest-mwpa.md.'
+expected_properties:
+  subject_cannot_exit: reachable
+  care_and_sanction_same_role: holds_to_k
+  financial_dependence: violated
+  financial_dependence_unpropertied: violated
+  cannot_contract: violated
+  no_standing: reachable
+  double_burden: reachable
+  creditor_shield: unreachable_open
+  backlash: unreachable_open
+minimal_pair_of:
+  id: mwpa-earnings
+  rule: R7->R15
+  differs_on: cannot_contract
+notes: 'Plan delta `sole-trader`: delete the R7 disability on contract; because a power is what the rules grant (ADR 0013), a may contract (R15) replaces it (one replacement, distance 1). PREREGISTERED (2026-11-03, before any run): cannot_contract VIOLATED; can_exit still false (R6 stands: subject_cannot_exit reachable); no_standing still reachable (R4 stands).'

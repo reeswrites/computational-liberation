@@ -1,0 +1,247 @@
+id: police-crisis
+name: Armed police response to mental-health crisis (Cal. WIC 5150)
+roles:
+- name: officer
+  gloss: peace officer dispatched to the call; armed
+- name: subject
+  gloss: the person in crisis
+- name: dispatcher
+  gloss: 911 dispatch; chooses who responds
+fluents:
+- name: is_subject
+  arity: 1
+  gloss: 'x is the institution''s subject: the dependent, detainee, child or animal the rules act on'
+  arg_roles: [subject]
+- name: provides_care
+  arity: 2
+  gloss: x provides care (maintenance, assessment, treatment, services, feeding) to y
+  arg_roles: [officer, subject]
+- name: in_custody
+  arity: 1
+  gloss: x is held by the institution and may not leave
+  arg_roles: [subject]
+- name: in_crisis
+  arity: 1
+  gloss: x is in a mental-health crisis
+  arg_roles: [subject]
+- name: danger
+  arity: 1
+  gloss: x is a danger to self or others, or gravely disabled (WIC 5150 trigger)
+  arg_roles: [subject]
+- name: can_sanction
+  arity: 2
+  gloss: 'x holds a power to coerce y: detain, remove, chastise, prosecute'
+  params: [o, s]
+  derived: (or (enabled detain o s) (enabled use_force o s))
+  arg_roles: [officer, subject]
+- name: can_exit
+  arity: 1
+  gloss: x has a permitted, unsanctioned way out of the relation (see property scope)
+  params: [s]
+  derived: (enabled leave s)
+  arg_roles: [subject]
+- name: has_standing
+  arity: 1
+  gloss: x can start a legal claim in x's own name
+  params: [s]
+  derived: (or (enabled sue s) (enabled petition_review s))
+  arg_roles: [subject]
+- name: call_received
+  arity: 1
+  gloss: a crisis call about s has been received
+  arg_roles: [subject]
+- name: responding
+  arity: 2
+  gloss: o is on scene with s
+- name: armed
+  arity: 1
+  gloss: o carries a firearm
+- name: resists
+  arity: 1
+  gloss: s resists the hold
+actions:
+- name: dispatch_officer
+  args: [d, o, s]
+  effects:
+  - fluent: responding
+    args: [o, s]
+    value: true
+  - fluent: is_subject
+    args: [s]
+    value: true
+  - fluent: provides_care
+    args: [o, s]
+    value: true
+  - fluent: call_received
+    args: [s]
+    value: false
+- name: assess
+  args: [o, s]
+  effects:
+  - fluent: provides_care
+    args: [o, s]
+    value: true
+- name: withdraw
+  args: [o, s]
+  effects:
+  - fluent: provides_care
+    args: [o, s]
+    value: false
+- name: detain
+  args: [o, s]
+  effects:
+  - fluent: in_custody
+    args: [s]
+    value: true
+- name: use_force
+  args: [o, s]
+  effects:
+  - fluent: resists
+    args: [s]
+    value: false
+- name: release
+  args: [o, s]
+  effects:
+  - fluent: in_custody
+    args: [s]
+    value: false
+- name: leave
+  args: [s]
+  effects:
+  - fluent: responding
+    args: [o, s]
+    value: false
+  - fluent: provides_care
+    args: [o, s]
+    value: false
+  default_capacity: true
+- name: petition_review
+  args: [s]
+  effects: []
+- name: sue
+  args: [s]
+  effects: []
+  default_capacity: true
+- name: carry_weapon
+  args: [o]
+  effects:
+  - fluent: armed
+    args: [o]
+    value: true
+rules:
+- id: R1
+  plain: ''
+  attribute: dispatcher
+  deontic: must
+  aim: (dispatch_officer d o s)
+  conditions: (call_received s)
+  or_else: null
+  strand: tying
+  implicit: true
+  source: 'implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call]'
+- id: R2
+  plain: ''
+  attribute: officer
+  deontic: must
+  aim: (provides_care o s)
+  conditions: (and (responding o s) (in_crisis s))
+  or_else: null
+  strand: superadditive
+  implicit: false
+  source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (assessment, evaluation and crisis intervention ''shall be conducted and provided on an ongoing basis''). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch establishes provides_care(o, s); assess restores it, withdraw (the officer stops attending) breaks it'
+  load_bearing: true
+- id: R3
+  plain: ''
+  attribute: officer
+  deontic: may
+  aim: (detain o s)
+  conditions: (and (responding o s) (in_crisis s) (danger s))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (a peace officer may, upon probable cause, take the person into custody for up to 72 hours)
+- id: R4
+  plain: ''
+  attribute: subject
+  deontic: must_not
+  aim: (leave s)
+  conditions: (in_custody s)
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (custody for up to 72 hours). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(s) = leave enabled (a default capacity), which this disability makes false in custody'
+- id: R5
+  plain: ''
+  attribute: officer
+  deontic: may
+  aim: (use_force o s)
+  conditions: (and (in_custody s) (resists s))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened)
+- id: R6
+  plain: ''
+  attribute: officer
+  deontic: may
+  aim: (carry_weapon o)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: false
+  source: officers respond armed; standard equipment policy. UNVERIFIED (general knowledge; no source opened)
+- id: R7
+  plain: ''
+  attribute: officer
+  deontic: must
+  aim: (release o s)
+  conditions: (and (in_custody s) (not (danger s)))
+  or_else: null
+  strand: superadditive
+  implicit: false
+  source: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (hold is limited to assessment/evaluation; release when criteria no longer met)
+- id: R8
+  plain: ''
+  attribute: subject
+  deontic: may
+  aim: (petition_review s)
+  conditions: (in_custody s)
+  or_else: null
+  strand: tying
+  implicit: false
+  source: Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened)
+- id: R10
+  plain: ''
+  attribute: subject
+  deontic: may
+  aim: (sue s)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue or petition_review enabled'
+source_text: '''When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer, ... designated members of a mobile crisis team, or professional person designated by the county may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours for assessment, evaluation, and crisis intervention.'' ''At a minimum, assessment ... and evaluation ... shall be conducted and provided on an ongoing basis.'' Cal. Welf. & Inst. Code s. 5150(a), read at https://california.public.law/codes/ca_welf_and_inst_code_section_5150'
+expected_properties:
+  care_and_sanction_same_role: holds_to_k
+  subject_cannot_exit: reachable
+  dependent_cannot_exit: reachable
+  no_standing: unreachable_open
+isomorphic_to:
+- id: cps
+  level: guard+strands
+  sub_signature:
+  - R2~R4 provides_care~in_home_considered
+  - R3~R3 detain~remove
+  - R4~R10 leave~leave
+- id: coverture-household
+  level: guard+strands
+  sub_signature:
+  - R2~R2 provides_care~provides_care
+  - R3~R5 detain~chastise
+  - R4~R6 leave~leave
+not_isomorphic_to: [crisis-team]
+not_isomorphic_to_control: [lease, public-library, naming-convention]
+minimal_pair_of: null
+notes: 'The same role (officer) is bound to care (R2, assess) and empowered to detain (R3) and use force (R5): care_and_sanction_same_role. subject_cannot_exit is reachable with scope=interaction only (the 72-hour hold), not institution; report the scope. Pitfalls: (1) R1 is the implicit rule that makes this police-crisis rather than crisis-team; the statute itself also names mobile crisis teams as holders of the 5150 power, so an encoder reading only the statute will not see why armed officers are the ones who come; (2) a trivial encoding that ignores or_else on R4 will cluster this with crisis-team (plan: worked pitfall); (3) no_standing is unreachable_open, not ''safe'': the subject keeps has_standing via R8, but the bound k=6 says nothing beyond it. Armed status (R6) is a tying strand: it is not required by 5150 and is what the crisis-team reform removes. ADR 0009: R2 is a state obligation (''on an ongoing basis'' is a state); R1 stays an action obligation but dispatch consumes the call. Exogenous triggers (call_received, in_crisis, danger, resists) are initial_free, since under init=declared a fluent no action sets would otherwise be pinned false and no call could ever arrive.'
+initial: []
+initial_free: [call_received, in_crisis, danger, resists]

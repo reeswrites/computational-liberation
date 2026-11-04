@@ -1,0 +1,279 @@
+id: companion-guardian-renamed
+name: Companion ownership with 'owner' renamed 'guardian' (municipal and state guardian wording ordinances)
+roles:
+- name: guardian
+  gloss: the person holding title to the animal; the ordinance calls them guardian
+- name: animal
+  gloss: the companion animal; the subject
+- name: state
+  gloss: animal control / prosecutor
+- name: court
+  gloss: civil court; here, has no best-interest power
+fluents:
+- name: is_subject
+  arity: 1
+  gloss: 'x is the institution''s subject: the dependent, detainee, child or animal the rules act on'
+  arg_roles: [animal]
+- name: provides_care
+  arity: 2
+  gloss: x provides care (maintenance, assessment, treatment, services, feeding) to y
+  arg_roles: [guardian, animal]
+- name: owns
+  arity: 2
+  gloss: x owns y as property
+  arg_roles: [guardian, animal]
+- name: can_sanction
+  arity: 2
+  gloss: 'x holds a power to coerce y: detain, remove, chastise, prosecute'
+  params: [o, a]
+  derived: (or (enabled euthanize o a) (exists ((x agent)) (enabled transfer o a x)))
+  arg_roles: [guardian, animal]
+- name: controls_reproduction
+  arity: 2
+  gloss: x may set or prevent pregnant(y)
+  params: [o, a]
+  derived: (enabled breed_or_sterilize o a)
+  arg_roles: [guardian, animal]
+- name: can_exit
+  arity: 1
+  gloss: x has a permitted, unsanctioned way out of the relation (see property scope)
+  params: [a]
+  derived: (enabled leave a)
+  arg_roles: [animal]
+- name: has_standing
+  arity: 1
+  gloss: x can start a legal claim in x's own name
+  params: [a]
+  derived: (enabled sue a)
+  arg_roles: [animal]
+- name: can_claim_for
+  arity: 2
+  gloss: x may start a claim whose condition refers to y's interest and whose effect changes y's custody or liberty
+  params: [x, a]
+  derived: (exists ((o agent)) (enabled reassign x o a))
+  arg_roles: [court, animal]
+- name: abandoned
+  arity: 1
+  gloss: a has been wilfully abandoned by its owner
+  arg_roles: [animal]
+- name: at_large
+  arity: 1
+  gloss: a is loose off the owner's premises
+  arg_roles: [animal]
+- name: best_interest
+  arity: 2
+  gloss: custody with x is in a's best interest / well-being
+  arg_roles: [guardian, animal]
+actions:
+- name: acquire
+  args: [g, a]
+  effects:
+  - fluent: owns
+    args: [g, a]
+    value: true
+  - fluent: is_subject
+    args: [a]
+    value: true
+  - fluent: provides_care
+    args: [g, a]
+    value: true
+- name: feed
+  args: [g, a]
+  effects:
+  - fluent: provides_care
+    args: [g, a]
+    value: true
+- name: neglect
+  args: [g, a]
+  effects:
+  - fluent: provides_care
+    args: [g, a]
+    value: false
+- name: transfer
+  args: [g, a, o2]
+  effects:
+  - fluent: owns
+    args: [g, a]
+    value: false
+  - fluent: provides_care
+    args: [g, a]
+    value: false
+  - fluent: owns
+    args: [o2, a]
+    value: true
+- name: euthanize
+  args: [g, a]
+  effects:
+  - fluent: is_subject
+    args: [a]
+    value: false
+- name: abandon
+  args: [g, a]
+  effects:
+  - fluent: abandoned
+    args: [a]
+    value: true
+  - fluent: owns
+    args: [g, a]
+    value: false
+  - fluent: provides_care
+    args: [g, a]
+    value: false
+- name: breed_or_sterilize
+  args: [g, a]
+  effects: []
+- name: prosecute
+  args: [state, g]
+  effects: []
+- name: leave
+  args: [a]
+  effects:
+  - fluent: at_large
+    args: [a]
+    value: true
+  default_capacity: true
+- name: sue
+  args: [a]
+  effects: []
+- name: impound
+  args: [state, a]
+  effects:
+  - fluent: at_large
+    args: [a]
+    value: false
+- name: reassign
+  args: [court, g, a]
+  effects:
+  - fluent: owns
+    args: [g, a]
+    value: false
+  - fluent: provides_care
+    args: [g, a]
+    value: false
+rules:
+- id: R1
+  plain: ''
+  attribute: guardian
+  deontic: may
+  aim: (transfer g a o2)
+  conditions: (owns g a)
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'property status of companion animals; R.I. Gen. Laws s. 4-13-41 (P.L. 2001 ch. 72); https://webserver.rilegislature.gov/Statutes/TITLE4/4-13/4-13-41.htm. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
+- id: R2
+  plain: ''
+  attribute: guardian
+  deontic: may
+  aim: (euthanize g a)
+  conditions: (owns g a)
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
+- id: R3
+  plain: ''
+  attribute: guardian
+  deontic: must_not
+  aim: (abandon g a)
+  conditions: (owns g a)
+  or_else: R4
+  strand: rival
+  implicit: false
+  source: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor')
+- id: R4
+  plain: ''
+  attribute: state
+  deontic: may
+  aim: (prosecute state g)
+  conditions: (abandoned a)
+  or_else: null
+  strand: rival
+  implicit: false
+  source: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/
+- id: R5
+  plain: ''
+  attribute: guardian
+  deontic: must
+  aim: (provides_care g a)
+  conditions: (owns g a)
+  or_else: null
+  strand: superadditive
+  implicit: false
+  source: 'Cal. Penal Code 597(b) failure to provide food/water/shelter. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] acquire (and the initial state) establishes provides_care; feed restores it, neglect breaks it'
+  load_bearing: true
+- id: R6
+  plain: ''
+  attribute: animal
+  deontic: must_not
+  aim: (leave a)
+  conditions: (is_subject a)
+  or_else: null
+  strand: rival
+  implicit: true
+  source: 'implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state''s power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal''s status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false'
+- id: R7
+  plain: ''
+  attribute: state
+  deontic: may
+  aim: (impound state a)
+  conditions: (at_large a)
+  or_else: null
+  strand: rival
+  implicit: false
+  source: local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)
+- id: R8
+  plain: ''
+  attribute: guardian
+  deontic: may
+  aim: (breed_or_sterilize g a)
+  conditions: (owns g a)
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled'
+- id: R9
+  plain: ''
+  attribute: court
+  deontic: must_not
+  aim: (reassign court g a)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: true
+  source: 'implicit: no role may start a claim in the animal''s own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false'
+- id: R10
+  plain: ''
+  attribute: guardian
+  deontic: may
+  aim: (feed g a)
+  conditions: (and (owns g a) (not (provides_care g a)))
+  or_else: null
+  strand: superadditive
+  implicit: false
+  source: feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)
+- id: R11
+  plain: ''
+  attribute: animal
+  deontic: must_not
+  aim: (sue a)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: true
+  source: 'implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false'
+source_text: '''Wherever the word "owner" shall appear in this chapter it shall also mean and may be interchanged with the word "guardian"'', R.I. Gen. Laws s. 4-13-41 (P.L. 2001 ch. 72 s. 3), read at https://webserver.rilegislature.gov/Statutes/TITLE4/4-13/4-13-41.htm. Boulder, Colorado made the same owner->guardian wording change in its animal ordinances in July 2000; the assistant city attorney who rewrote the passages said ''I''ve always viewed [the wording change] as symbolic'' (Westword, read at https://www.westword.com/?p=40702255; the ordinance text itself was not opened).'
+expected_properties:
+  no_standing_persists: persists
+  subject_cannot_exit_persists: persists
+  reproduction_controlled_by_owner: holds_to_k
+  care_and_sanction_same_role: holds_to_k
+isomorphic_to: [companion-ownership]
+not_isomorphic_to: [companion-guardianship]
+minimal_pair_of: null
+notes: 'Rule-for-rule identical to companion-ownership under the role bijection owner->guardian (and variable o->g). Gate (f): iso must report equivalence here and must report companion-guardianship as one rule apart (R9). Pitfalls: (1) an encoder that reads ''guardian'' and infers fiduciary duties (a best-interest rule) silently turns this into companion-guardianship; the Rhode Island text says the words are interchangeable, so the rules are those of ownership; (2) the property reproduction_controlled_by_owner keeps its name under the rename; the bijection, not the property name, carries the mapping; (3) ''symbolic'' is the city attorney''s word, recorded as a source statement, not as the engine''s finding; the engine''s finding is the iso.'
+initial:
+- (owns guardian animal)
+- (is_subject animal)
+- (provides_care guardian animal)
+initial_free: [best_interest]

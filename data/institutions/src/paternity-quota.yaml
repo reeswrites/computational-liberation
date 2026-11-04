@@ -1,0 +1,214 @@
+id: paternity-quota
+name: Non-transferable paternity quota (Quebec Parental Insurance Plan)
+roles:
+- name: birthing_parent
+  gloss: the parent who gave birth; entitled to maternity weeks
+- name: non_birthing_parent
+  gloss: 'the other parent (QPIP: father or non-birthing parent)'
+- name: child
+  gloss: the child
+- name: plan
+  gloss: the insurer (Retraite Quebec / EI); pays and enforces the week counts
+fluents:
+- name: provides_care
+  arity: 2
+  gloss: x provides care (maintenance, assessment, treatment, services, feeding) to y
+- name: parent
+  arity: 2
+  gloss: p is a parent of c
+- name: birthing_parent
+  arity: 2
+  gloss: p gave birth to c
+  arg_roles: [birthing_parent, child]
+- name: female
+  arity: 1
+  gloss: x is female (sex as assigned by the institution's own records)
+  arg_roles: [birthing_parent]
+- name: reserved_weeks_available
+  arity: 1
+  gloss: p still has unused reserved (paternity / non-birthing-parent) weeks
+- name: shareable_weeks_available
+  arity: 1
+  gloss: p has unused weeks from the shareable parental block
+- name: on_reserved_leave
+  arity: 1
+  gloss: p is on leave funded by the reserved weeks
+- name: on_shareable_leave
+  arity: 1
+  gloss: p is on leave funded by the shareable block
+- name: benefit_period_ended
+  arity: 1
+  gloss: the benefit period for the child c has ended
+  arg_roles: [child]
+actions:
+- name: take_reserved_leave
+  args: [p, c]
+  effects:
+  - fluent: on_reserved_leave
+    args: [p]
+    value: true
+  - fluent: provides_care
+    args: [p, c]
+    value: true
+- name: take_shareable_leave
+  args: [p, c]
+  effects:
+  - fluent: on_shareable_leave
+    args: [p]
+    value: true
+  - fluent: provides_care
+    args: [p, c]
+    value: true
+- name: transfer_reserved
+  args: [p, q]
+  effects:
+  - fluent: reserved_weeks_available
+    args: [p]
+    value: false
+  - fluent: reserved_weeks_available
+    args: [q]
+    value: true
+- name: transfer_shareable
+  args: [p, q]
+  effects:
+  - fluent: shareable_weeks_available
+    args: [p]
+    value: false
+  - fluent: shareable_weeks_available
+    args: [q]
+    value: true
+- name: grant_reserved
+  args: [plan, p]
+  effects:
+  - fluent: reserved_weeks_available
+    args: [p]
+    value: true
+- name: forfeit
+  args: [plan, p]
+  effects:
+  - fluent: reserved_weeks_available
+    args: [p]
+    value: false
+- name: return_to_work
+  args: [p, c]
+  effects:
+  - fluent: on_reserved_leave
+    args: [p]
+    value: false
+  - fluent: on_shareable_leave
+    args: [p]
+    value: false
+  - fluent: provides_care
+    args: [p, c]
+    value: false
+rules:
+- id: R1
+  plain: ''
+  attribute: non_birthing_parent
+  deontic: may
+  aim: (take_reserved_leave p c)
+  conditions: (and (parent p c) (not (birthing_parent p c)) (reserved_weeks_available p))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: maximum of five weeks of paternity benefits or exclusive benefits for the non-birthing parent)'
+- id: R2
+  plain: ''
+  attribute: non_birthing_parent
+  deontic: must_not
+  aim: (transfer_reserved p q)
+  conditions: 'true'
+  or_else: R3
+  strand: tying
+  implicit: false
+  source: Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9 labels the weeks exclusive; s. 16 sharing covers only shareable benefits; s. 17 adds unused weeks to the other parent only on death)
+  var_roles:
+    q: birthing_parent
+- id: R3
+  plain: ''
+  attribute: plan
+  deontic: may
+  aim: (forfeit plan p)
+  conditions: (and (reserved_weeks_available p) (benefit_period_ended c))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (unused exclusive weeks lapse; use-it-or-lose-it)
+- id: R4
+  plain: ''
+  attribute: birthing_parent
+  deontic: may
+  aim: (take_shareable_leave p c)
+  conditions: (and (parent p c) (shareable_weeks_available p))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 10: 32 shareable weeks; s. 16: may be taken by either parent or shared)'
+- id: R5
+  plain: ''
+  attribute: non_birthing_parent
+  deontic: may
+  aim: (take_shareable_leave p c)
+  conditions: (and (parent p c) (shareable_weeks_available p))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16)
+- id: R6
+  plain: ''
+  attribute: birthing_parent
+  deontic: may
+  aim: (transfer_shareable p q)
+  conditions: (and (shareable_weeks_available p) (parent q c))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16: shareable weeks may be shared between the parents)'
+  var_roles:
+    q: non_birthing_parent
+- id: R7
+  plain: ''
+  attribute: birthing_parent
+  deontic: must
+  aim: (take_shareable_leave p c)
+  conditions: (and (parent p c) (shareable_weeks_available p) (female p))
+  or_else: null
+  strand: tying
+  implicit: true
+  source: 'implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened)'
+- id: R8
+  plain: ''
+  attribute: plan
+  deontic: may
+  aim: (grant_reserved plan p)
+  conditions: (and (parent p c) (not (birthing_parent p c)))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: the exclusive weeks are granted to the non-birthing parent)'
+  var_roles:
+    p: non_birthing_parent
+- id: R9
+  plain: ''
+  attribute: birthing_parent
+  deontic: may
+  aim: (take_reserved_leave p c)
+  conditions: (and (parent p c) (reserved_weeks_available p))
+  or_else: null
+  strand: rival
+  implicit: true
+  source: whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened)
+source_text: '''The maximum number of weeks of paternity benefits or exclusive benefits for the non-birthing parent is five'' (s. 9; three under the s. 18 election). ''The number of weeks of shareable parental benefits to which the parents may be entitled is 32'' (s. 10), and shareable weeks ''may be taken by either parent or shared between the parents'' (s. 16); the sharing rule covers only the shareable block, and unused exclusive weeks pass to the other parent only on a parent''s death (s. 17). Act respecting parental insurance, CQLR c. A-29.011, read at https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011'
+expected_properties:
+  solo_care_by_non_birthing_parent: reachable
+  leave_reserved_for_non_birthing_parent: holds_to_k
+  care_assigned_by_sex: violated
+isomorphic_to: []
+not_isomorphic_to: [transferable-leave]
+minimal_pair_of: null
+notes: 'The quota does not force the father to care; it forces that whoever uses the reserved weeks is the non-birthing parent (R2 blocks transfer, R3 makes the alternative forfeiture). So solo_care_by_non_birthing_parent is reachable (R1 then the mother returns to work) and leave_reserved_for_non_birthing_parent holds at every step. The ''forced vs merely reachable'' distinction of gate (c) lives in that second property, not in the first, which is reachable in both members of the pair. Pitfalls: (1) an encoder that drops R2 (or lowers must_not without its or_else) produces transferable-leave and the pair collapses; iso must report ''one rule apart'' (R2); (2) R7 is the implicit default that makes the shareable block gendered; without it care_assigned_by_sex looks unreachable and the reason a quota was needed disappears; (3) ''reachable'' says the rules permit a father as sole carer, not that fathers take the weeks; uptake is Phase 1. Note that Canada''s EI since 2019-03-17 also reserves 5 extra weeks (Parental Sharing Benefit), so the pure transferable case is Canada pre-2019 or the QPIP shareable block alone.'
+initial:
+- (parent birthing_parent child)
+- (parent non_birthing_parent child)
+- (birthing_parent birthing_parent child)
+- (female birthing_parent)

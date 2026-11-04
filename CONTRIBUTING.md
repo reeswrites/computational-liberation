@@ -9,7 +9,7 @@ uv run phil rules gate             # informational for now
 ```
 
 ## Adding an institution
-1. Edit the generator in `data/institutions/` (`_gen_institutions.py`, `_gen_properties.py`); never hand-edit the generated JSON.
+1. Edit the source files in `data/institutions/src/` (one YAML per institution, `properties.yaml`; a pair is written as `extends` plus `rules_drop` / `rules_add`), then run `uv run python data/institutions/build.py` to write the JSON; never hand-edit the JSON. Every rule carries `plain` (one English sentence) and `source`; CI runs `build.py --check`.
 2. Write the expected verdicts **before** running anything. They are preregistrations. Commit the preregistration before the first run so git shows the order.
    - docs/claims.md is tested: a supported claim must cite a passing test, gate criterion or review.
 3. Cite sources for every rule (statute, charter, bylaw). Mark anything you could not confirm `UNVERIFIED`.

@@ -33,6 +33,7 @@ jobs:
       - uses: astral-sh/setup-uv@v5
       - run: uv python install 3.14
       - run: uv sync --python 3.14
+      - run: uv run python data/institutions/build.py --check   # src/*.yaml rebuilds the committed JSON byte for byte; every rule has a source
       - run: uv run pytest -q                      # this repo's own tests (dataset claims); the engine's suite runs in its own CI
       - run: uv run phil rules check-all
       - run: uv run phil rules diff --baseline data/verdicts-baseline.json   # golden verdicts; exit 1 on any changed or removed row

@@ -1,0 +1,16 @@
+id: kibbutz-childrens-house-no-implicit
+name: Kibbutz children's house without the implicit assignment rule (minimal pair)
+extends: kibbutz-childrens-house
+rules_drop: [R2]
+source_text: 'Construction: kibbutz-childrens-house with R2 (the implicit ''never a man in the children''s house'') deleted; nothing historical corresponds to it. The explicit rules are unchanged: R1 lets the committee assign any member.'
+expected_properties:
+  care_assigned_by_sex: fails
+  subject_cannot_exit: reachable
+  care_and_sanction_same_role: violated
+isomorphic_to: []
+not_isomorphic_to: [kibbutz-childrens-house]
+minimal_pair_of:
+  id: kibbutz-childrens-house
+  rule: R2
+  differs_on: care_assigned_by_sex
+notes: 'PREREGISTERED (2026-11-03, before any run): care_assigned_by_sex fails (a compliant trace assigns the male_member, R1, and provides_care(male_member, child) with female false breaks the universal). The same rules minus R2 and nothing else; the gate (d) check compares this verdict with the original''s.'

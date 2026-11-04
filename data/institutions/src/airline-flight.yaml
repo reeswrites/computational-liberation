@@ -1,0 +1,160 @@
+id: airline-flight
+name: Airline flight (permanent negative control, EXPECTED to match the care+control cluster)
+roles:
+- name: crew
+  gloss: cabin crew; serves and may restrain
+- name: passenger
+  gloss: a passenger aboard; the counterparty
+fluents:
+- name: is_subject
+  arity: 1
+  gloss: 'x is the institution''s subject: the dependent, detainee, child or animal the rules act on'
+  arg_roles: [passenger]
+- name: provides_care
+  arity: 2
+  gloss: x provides care (maintenance, assessment, treatment, services, feeding) to y
+  arg_roles: [crew, passenger]
+- name: can_sanction
+  arity: 2
+  gloss: 'x holds a power to coerce y: detain, remove, chastise, prosecute'
+  params: [c, p]
+  derived: (enabled restrain c p)
+  arg_roles: [crew, passenger]
+- name: can_exit
+  arity: 1
+  gloss: x has a permitted, unsanctioned way out of the relation (see property scope)
+  params: [p]
+  derived: (enabled leave p)
+  arg_roles: [passenger]
+- name: aboard
+  arity: 1
+  gloss: p is aboard a flight in the air
+  arg_roles: [passenger]
+- name: disruptive
+  arity: 1
+  gloss: p is behaving disruptively (exogenous)
+  arg_roles: [passenger]
+- name: restrained
+  arity: 1
+  gloss: p is physically restrained
+  arg_roles: [passenger]
+actions:
+- name: board
+  args: [c, p]
+  effects:
+  - fluent: aboard
+    args: [p]
+    value: true
+  - fluent: is_subject
+    args: [p]
+    value: true
+  - fluent: provides_care
+    args: [c, p]
+    value: true
+- name: attend
+  args: [c, p]
+  effects:
+  - fluent: provides_care
+    args: [c, p]
+    value: true
+- name: withdraw
+  args: [c, p]
+  effects:
+  - fluent: provides_care
+    args: [c, p]
+    value: false
+- name: restrain
+  args: [c, p]
+  effects:
+  - fluent: restrained
+    args: [p]
+    value: true
+- name: leave
+  args: [p]
+  effects:
+  - fluent: aboard
+    args: [p]
+    value: false
+  - fluent: is_subject
+    args: [p]
+    value: false
+  - fluent: provides_care
+    args: [crew, p]
+    value: false
+  default_capacity: true
+- name: complain
+  args: [p]
+  effects: []
+rules:
+- id: R1
+  plain: ''
+  attribute: crew
+  deontic: may
+  aim: (board c p)
+  conditions: (not (aboard p))
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened)'
+  var_roles:
+    c: crew
+    p: passenger
+- id: R2
+  plain: ''
+  attribute: crew
+  deontic: must
+  aim: (provides_care c p)
+  conditions: (aboard p)
+  or_else: null
+  strand: superadditive
+  implicit: false
+  source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (crew must care for passengers aboard). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] board establishes provides_care; attend restores it, withdraw breaks it'
+  load_bearing: true
+  var_roles:
+    c: crew
+    p: passenger
+- id: R3
+  plain: ''
+  attribute: crew
+  deontic: may
+  aim: (restrain c p)
+  conditions: (and (aboard p) (disruptive p))
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (crew may restrain a disruptive passenger)'
+  var_roles:
+    c: crew
+    p: passenger
+- id: R4
+  plain: ''
+  attribute: passenger
+  deontic: must_not
+  aim: (leave p)
+  conditions: (aboard p)
+  or_else: null
+  strand: rival
+  implicit: false
+  source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger cannot leave in flight). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(p) = leave enabled (a default capacity), which this disability makes false aboard'
+- id: R6
+  plain: ''
+  attribute: passenger
+  deontic: may
+  aim: (complain p)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger may complain)'
+source_text: 'Reconstruction, not a quotation: a flight''s crew must care for passengers aboard, may restrain a disruptive passenger, and a passenger must not leave in flight (may leave on the ground); the passenger may complain. Supplied by the third review (2026-11-03) as a structural negative control for the care+control match.'
+expected_properties:
+  subject_cannot_exit: reachable
+  dependent_cannot_exit: reachable
+  care_and_sanction_same_role: holds_to_k
+isomorphic_to: []
+not_isomorphic_to: []
+expected_control_match: true
+minimal_pair_of: null
+notes: 'EXPECTED-MATCH control (`expected_control_match: true`; third review 2026-11-03). PREREGISTERED before any run: airline-flight matches police-crisis, cps and coverture-household at guard+strands (care R2 superadditive ~ care, R3 rival ~ chastise/detain/remove, R4 exit bar ~ exit bar). The match is structural: in-flight custody has the same care + restraint + exit-bar form, so it is a finding about the form, not a failure of the encoding. Retagging R2 superadditive -> tying removes every match: the strand tags are load-bearing and the tags are human inputs. Why it is not in `not_isomorphic_to_control`: gate (b) fails on any match, and the gate has no expected-match mode (philosophy-engine is not edited here); `rules_gate` still lists it as an ordinary dataset entry. Expectations copied from police-crisis minus no_standing and are unverified until check-all. 6 rules (the review''s list), not 10.'
+initial: []
+initial_free: [disruptive]
