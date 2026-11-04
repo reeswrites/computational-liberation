@@ -217,4 +217,9 @@ Preregistration: plans/priority.md "Slice 1 revision 4" (a7ca980, before the dat
 |---|---|---|
 | 1 | Zero layer-1 verdict flips | **held**: `phil rules diff --baseline data/verdicts-baseline.json --no-cache`: 0 changed, 0 added, 0 removed of 123 |
 | 2 | Gate (a)-(f) passes; care+control cluster, airline control and crisis-team exclusion unchanged | **held**: GATE PASS; (b) the three pairs partial(care+control) at guard+strands, crisis-team none at every level, controls none; (c) distance 1; (d) kibbutz; (e) 123/123; (f) rename detected |
-| 3-5 | Ablation | pending the engine's `deregulated` skip for default-capacity actions (in progress with the spawn-parallel change) |
+| 3 | R4 (`must_not sue` when married) deletion flips `no_standing` reachable -> open in six entries; `no_standing_persists` does not flip; load_freedom_up 1; not deregulated | **held**: exactly that in coverture-household, mwpa-creditor-exemption, mwpa-property, mwpa-property-narrowed, mwpa-earnings, mwpa-sole-trader; `families_up` = [no_standing] only; `deregulated` false; `k_disagreement` empty |
+| 4 | Tops {R4, R6, R7} in five chain entries, {R4, R6} in mwpa-sole-trader, {R6} in mwpa-suit; all 18 other entries unchanged from revision 3 | **held**, every entry |
+| 5 | 48 fewer rows per k; the deleted ids leave the not-ranked lists; inconsistent_after 0, uncounted 0 | **held**: 383 -> 335 rows per k; totals 0 / 0. The kept explicit permissions (crisis-team R5/R9, police R10, public-library R4, mwpa R15/R16) are absent from `deregulated_not_ranked`, as the default-capacity skip intends |
+| 6 | No rediscovery claim | none made |
+
+Engine for the ablation: 7dc108c (spawn-parallel, `--workers 4`, 86 s wall for 25 entries at k=6,8). Drift from the revision-4 preregistration: none. Reproduction: `cd computational-liberation && uv run phil rules ablate --k 6,8 --workers 4 --json ablate-25-v6.json --summary ablate-25-v6-summary.json`.
