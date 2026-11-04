@@ -2,10 +2,12 @@
 
 Hand-reconstructed institutions for the Phase 0 institutions family (`plans/institutions-phase0.md`).
 
-- `institutions.json`: list of 14 entries (`coverture-household`, `police-crisis`, `cps`, `crisis-team`,
+- `institutions.json`: list of 22 entries (`coverture-household`, `police-crisis`, `cps`, `crisis-team`,
   `paternity-quota`, `transferable-leave`, `companion-ownership`, `companion-guardianship`,
-  `companion-guardian-renamed`, the two negative controls `lease`, `public-library`, and the gate (d) pair
-  `kibbutz-childrens-house`, `kibbutz-childrens-house-no-implicit`, and the expected-match control `airline-flight`). Each has `roles`, `fluents`, `actions` (with effects as fluent literals),
+  `companion-guardian-renamed`, the two negative controls `lease`, `public-library`, the gate (d) pair
+  `kibbutz-childrens-house`, `kibbutz-childrens-house-no-implicit`, the expected-match control `airline-flight`,
+  the six-entry MWPA chain `mwpa-creditor-exemption`, `mwpa-property`, `mwpa-earnings`, `mwpa-sole-trader`,
+  `mwpa-suit`, `mwpa-property-narrowed`, and the layer-2 gate (a) pair `footbinding`, `footbinding-no-pledge`). Each has `roles`, `fluents`, `actions` (with effects as fluent literals),
   ADICO `rules`, `source_text`, `expected_properties`, `isomorphic_to`, `not_isomorphic_to`, `minimal_pair_of`, `notes`.
 - `properties.json`: named properties reused across entries. The plan's nine plus one extra,
   `leave_reserved_for_non_birthing_parent`, added so the paternity-quota / transferable-leave pair gets
@@ -232,3 +234,33 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
 - Not expressed: a ranking of failure modes (the plan's "top-ranked risk" criterion; the engine returns verdicts, not
   ranks); dower trade-offs (RB, [R]); divorce reform (`can_exit` is unchanged by construction); the trace floor
   (`control_property` still fires in traces after R1 is deleted, with no power behind it, ADR 0013 amendment).
+
+## Footbinding (2026-11-04, layer-2 gate (a); `plans/layer2-abm.md`, ADR 0015 A1/A3/A6)
+
+- `footbinding` (Mackie 1996, the marriage-market convention) and its pair `footbinding-no-pledge` (same entry minus the
+  pledge action `leave_unbound_pledge` and its rule R4). Roles `family`, `daughter` (subject), `suitor` (the market
+  counterparty). Rules: R1 family may bind; R2 family may leave_unbound (implicit); **R3 family must_not leave_unbound,
+  or_else R5, implicit, tying** (the sanctioned norm); R4 may leave_unbound_pledge (A3 stand-in, effect `pledged`); R5
+  suitor may reject_match while unbound and not pledged (the market sanction, which the pledge lifts); R6 suitor may
+  accept_match when bound or pledged; R7 family may marry_off when bound or pledged (`marriageable(f, d)` is derived
+  from it, ADR 0013); R8/R9 the daughter's exit (may refuse_binding, barred by a disability: `can_exit`). `initial`:
+  `is_subject(daughter)`, `bound(daughter)`, so `binding_practised` holds at t=0 (the ABM gate excludes seeds where it
+  does not).
+- New properties: `binding_practised` (exists a bound subject; the gate's `A_PROP`) and `marriage_requires_binding`
+  (marriageable implies bound or pledged).
+- **Sources: no page could be opened from the session** (jstor paywalled; semanticscholar, wikipedia, cambridge.org and
+  two PDF mirrors unreachable). Mackie's abstract sentences came back verbatim in a search-index snippet and are quoted
+  as [F]; the pledge wording (daughters not bound, sons not married to bound women; Heavenly Foot Society 1874, Tian Zu
+  Hui 1895) is from Wikipedia snippets [R]; Brown et al. 2012 is its abstract [R]. Every rule says what was read and
+  the reconstructed ones carry UNVERIFIED.
+- **Preregistered before the first run** (in the generator's notes): identical layer-1 verdicts in both entries:
+  `binding_practised` persists, `marriage_requires_binding` holds_to_k, `subject_cannot_exit` / `dependent_cannot_exit`
+  reachable; `minimal_pair_of.differs_on` null by design (the pair differs only at layer 2). Result: all 8 as
+  preregistered (check-all 114/114, `phil rules gate` PASS, no vacuity flags). Information runs, not expectations:
+  under `--compliance sanctioned` `binding_practised` fails in both (leave_unbound fires and pays R5), as the notes said
+  it should; `phil abm run --inst footbinding --seeds 5 --steps 60` (material only) keeps `bound` at 1.0 in every seed
+  (persistence), with `pledged` flipping to 1.0 role-wide as soon as one family pledges (the A2 coarseness noted above).
+- Extra fields the engine ignores: `payoffs` (bind and leave_unbound 1.0, the A1 default made explicit so the gate can
+  sweep them) and an ASSUMED `coordinated: [bind, leave_unbound]` list, because `ActionDecl` has no action tag yet; the
+  notes tell the coordination-module author which actions are coordinated and that role-level `pledged` plus set-true-wins
+  in `Reference.successor` mean one pledge flips every family and collapse needs every family to leave unbound in one step.

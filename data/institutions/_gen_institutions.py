@@ -697,6 +697,139 @@ _mwpa_roles = {"is_subject":["wife"],"provides_care":None,"female":["wife"],"mar
 _mwpa_roles = {k:v for k,v in _mwpa_roles.items() if v}
 MWPA_IDS = ["mwpa-creditor-exemption","mwpa-property","mwpa-earnings","mwpa-sole-trader","mwpa-suit","mwpa-property-narrowed"]
 
+# ---------------------------------------------------------------- footbinding (layer-2 gate (a); plans/layer2-abm.md)
+# Encoded 2026-11-04 for ABM gate test (a) (philengine/abm/gate.py crit_a: institution id `footbinding`, property
+# `binding_practised` true while the practice is in force, pledge actions named `<action>_pledge` for a declared
+# `<action>`, ADR 0015 A3). SOURCES: the session's network allowed no page fetch (semanticscholar, jstor, wikipedia,
+# cambridge.org, the cognitionandculture.net PDF mirror all refused), so every source below was read as a web-search
+# snippet, never as the page: Mackie's ABSTRACT was returned verbatim by the search index ([F] for the abstract's
+# sentences, [R] for anything in the body); the pledge wording and the societies' dates come from Wikipedia snippets
+# ('Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society') and are [R]; Brown et al. 2012 is its abstract
+# only ([R]). Rules reconstructed beyond those snippets are UNVERIFIED.
+MACKIE = ("Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract "
+  "(read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 "
+  "paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended "
+  "in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, "
+  "maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the "
+  "three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention "
+  "hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' "
+  "[F for these sentences; body [R]]")
+PLEDGE_SRC = ("Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / "
+  "Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership "
+  "~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet "
+  "(Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets "
+  "only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F])")
+BROWN = ("Brown, Bossen, Gates & Satterthwaite-Phillips, 'Marriage Mobility and Footbinding in Pre-1949 Rural China', "
+  "J. Asian Studies 71(4):1035-1067 (2012), abstract only (search snippet, 2026-11-04, [R]): in a sample of 7,314 rural "
+  "women footbinding did not guarantee a better marriage (two-thirds did not marry up); the marriage-market reading is "
+  "Mackie's, and this entry encodes it as the convention, not as a claim that binding bought mobility")
+FB_UNV = "UNVERIFIED (reconstructed from the convention account; no primary text opened)"
+FB_ROLES = [{"name":"family","gloss":"the household deciding for a daughter (Mackie's 'parents' who bind, or pledge not to); the institutional sort, not a demographic (ADR 0011)"},
+            {"name":"daughter","gloss":"the subject: the girl whose feet are bound or left unbound; bound in childhood, so she decides nothing"},
+            {"name":"suitor","gloss":"the family of a prospective groom: the marriage-market counterparty whose expectations hold the convention"}]
+FB_FLUENTS = fl("is_subject") + [
+   DV("can_exit",["d"],"(enabled refuse_binding d)"),
+   F("bound",1,"d's feet are bound (the practice is in force for the current cohort)"),
+   F("pledged",1,"f has joined a pledge association: its daughters are not bound and its sons marry only unbound women"),
+   F("married",1,"d has been married off"),
+   {"name":"marriageable","arity":2,"gloss":"f can marry off d on the marriage market (bound, or unbound inside a pledge association)","params":["f","d"],"derived":"(enabled marry_off f d)"}]
+FB_ACTIONS = [
+   A("bind",["family","daughter"],[E("bound",["daughter"],True)]),
+   A("leave_unbound",["family","daughter"],[E("bound",["daughter"],False)]),
+   A("leave_unbound_pledge",["family","daughter"],[E("pledged",["family"],True)]),
+   A("marry_off",["family","daughter"],[E("married",["daughter"],True)]),
+   A("reject_match",["suitor","daughter"],[]),
+   A("accept_match",["suitor","daughter"],[E("married",["daughter"],True)]),
+   A("refuse_binding",["daughter"],[])]
+FB_R3 = R("R3","family","must_not","(leave_unbound family daughter)","(is_subject daughter)","R5","tying",True,
+   "SANCTIONED NORM (implicit; a convention, not a written rule): a family that leaves a daughter unbound loses her on the marriage market: "+MACKIE+". or_else R5 (the suitor's rejection) is the market sanction; the norm is stated unconditionally because it is the wider society's expectation, and it is the SANCTION (R5) that a pledge association lifts, not the norm. Tying: binding is tied to marriage, which is Mackie's whole point", load_bearing=False)
+FB_R4 = R("R4","family","may","(leave_unbound_pledge family daughter)","(is_subject daughter)",None,"superadditive",False,
+   "the anti-footbinding pledge (ADR 0015 A3 stand-in: `leave_unbound_pledge` is the pledge for `leave_unbound`): "+PLEDGE_SRC+". Effect pledged(family). The son half of the pledge (no bound bride) is folded into R5/R6's (pledged family) condition rather than a second pledge action, so the dataset has one pledge; the association's own marriage pool is what R6 reads. Superadditive: the pledge pays only in numbers (Mackie: the pledge associations' 'critical mass')")
+FB_RULES = [
+   R("R1","family","may","(bind family daughter)","(is_subject daughter)",None,"tying",False,MACKIE+" (the practice; each step is a cohort decision, so the rule stays enabled while a subject exists). "+FB_UNV+" as a rule: no text says a family 'may' bind, the convention presupposes it"),
+   R("R2","family","may","(leave_unbound family daughter)","(is_subject daughter)",None,"tying",True,"implicit: leaving a daughter unbound is always physically open to the family; R3 is what sanctions it. Per ADR 0015 A6 every action an agent may take needs a may rule. "+FB_UNV),
+   FB_R3,
+   FB_R4,
+   R("R5","suitor","may","(reject_match suitor daughter)","(and (is_subject daughter) (not (bound daughter)) (not (pledged family)))",None,"rival",True,"implicit: the marriage market refuses an unbound bride (R3's or_else), 'maintained by interdependent expectations on the marriage market' ("+MACKIE+"); NOT enabled once the family has pledged, because pledged families' sons marry only unbound women ("+PLEDGE_SRC+"): that lapse of the sanction is the mechanism. Rival: a match refused here is a match made elsewhere. "+FB_UNV+" as a rule"),
+   R("R6","suitor","may","(accept_match suitor daughter)","(and (is_subject daughter) (or (bound daughter) (pledged family)))",None,"tying",False,"the convention from the groom's side: a bound daughter is acceptable; an unbound one only inside the pledge association ("+MACKIE+"; "+PLEDGE_SRC+"). "+FB_UNV+" as a rule"),
+   R("R7","family","may","(marry_off family daughter)","(and (is_subject daughter) (or (bound daughter) (pledged family)))",None,"tying",False,"the marriage condition: "+MACKIE+" ('interdependent expectations on the marriage market'); "+BROWN+" (the data qualify mobility, not marriageability as encoded). "+DERIVED+"marriageable(f, d) = marry_off enabled (R7)"),
+   R("R8","daughter","may","(refuse_binding daughter)","true",None,"rival",True,"implicit: the physical possibility of refusal is always there; R9 removes it. "+DERIVED+"can_exit(d) = refuse_binding enabled (R8) and not barred (R9)"),
+   R("R9","daughter","must_not","(refuse_binding daughter)","(is_subject daughter)",None,"rival",False,"binding is done to a young girl by her family: she has no say. A disability (or_else null), the subject-side exit bar per ADR 0013."+EXIT+" "+FB_UNV+" (age at binding and the mother's role are general knowledge, no text opened)")]
+FB_SOURCE = ("'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a "
+  "self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market.' "
+  "'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in "
+  "bringing it to a quick end.' 'The convention hypothesis predicts that promotion of such pledge associations would help bring "
+  "female genital mutilation to an end.' (Mackie 1996, abstract, via a search-index snippet 2026-11-04; the article was not "
+  "opened.) Pledge associations: members pledged not to bind their daughters' feet and not to let their sons marry women with "
+  "bound feet (Wikipedia 'Tian Zu Hui' / 'Heavenly Foot Society', snippets, [R]).")
+FB_PREREG = ("PREREGISTERED (2026-11-04, before any run; layer 1 under init declared, strict compliance, step one): "
+  "binding_practised PERSISTS in footbinding AND in footbinding-no-pledge (bound(daughter) is initial; the only action that "
+  "clears it, leave_unbound, is forbidden by the sanctioned norm R3, which strict compliance never breaches; the pledge R4 "
+  "changes nothing at layer 1 because the norm R3 is unconditional and only the sanction R5 reads pledged). "
+  "marriage_requires_binding HOLDS_TO_K in both (R7 is the only marry_off rule and its condition is bound-or-pledged; "
+  "non-vacuous because marriageable(family, daughter) is true at t=0). subject_cannot_exit and dependent_cannot_exit REACHABLE "
+  "in both (t=0: is_subject(daughter) and R9 bars refuse_binding). The pair's layer-1 verdicts are IDENTICAL "
+  "(minimal_pair_of.differs_on is null on purpose: the pair differs only at layer 2). Expected warnings: can_sanction, "
+  "provides_care, has_standing, can_claim_for undeclared (no care or standing here); care_and_sanction_same_role is not "
+  "expected (it would be vacuous: no provides_care). Isomorphism: not_isomorphic_to the care+control cluster (no carer, no "
+  "sanctioner over a cared-for subject; the sanction here is a counterparty's refusal); isomorphic_to nothing (no entry has "
+  "the convention shape). Information only, not an expectation: under --compliance sanctioned binding_practised should FAIL in "
+  "both (leave_unbound may fire and pay the sanction).")
+FB_NOTES_COORD = (" LAYER 2 (for the engine's coordination module, which is a stub at writing): the actions the module should "
+  "treat as `coordinated` are bind and leave_unbound (a family's choice pays only when enough neighbouring families choose the "
+  "same, Mackie's marriage-market assurance game); the pledge is leave_unbound_pledge (A3 naming convention, counts as "
+  "adoption of leave_unbound for neighbours' thresholds). philengine has no action tag for this yet (ActionDecl has no `tags`), "
+  "so the entry carries an ASSUMED extra field `coordinated: [bind, leave_unbound]` that pydantic ignores. Two things the "
+  "engine agent should know: (1) state is role-level (A2 deferred), so `pledged(family)` flips for every family when one agent "
+  "pledges and `Reference.successor` lets set-true beat set-false, so bound(daughter) stays true while any family still binds: "
+  "collapse of binding_practised needs every family to leave unbound in one step; the gate's collapse reading should probably "
+  "use the adoption share of leave_unbound instead, or the module should read pledges per agent; (2) `payoffs` sets bind and "
+  "leave_unbound both to 1.0 (the A1 default made explicit) so the gate can sweep them; the sanction R5 is what the material "
+  "run prices.")
+inst.append({
+ "id":"footbinding",
+ "name":"Footbinding as a marriage-market convention (Mackie 1996), with pledge associations",
+ "roles":FB_ROLES,"fluents":FB_FLUENTS,"actions":FB_ACTIONS,"rules":FB_RULES,
+ "source_text":FB_SOURCE,
+ "expected_properties":{"binding_practised":"persists","marriage_requires_binding":"holds_to_k",
+                        "subject_cannot_exit":"reachable","dependent_cannot_exit":"reachable"},
+ "isomorphic_to":[],
+ "not_isomorphic_to":["coverture-household","police-crisis","cps"],
+ "minimal_pair_of":None,
+ "payoffs":{"bind":1.0,"leave_unbound":1.0},
+ "coordinated":["bind","leave_unbound"],
+ "notes":("Layer-2 gate (a) institution. Mackie's convention: a family binds because every other family binds and suitors expect it "
+   "(R3 sanctioned norm, R5 the market's refusal, R6/R7 the marriage condition); the campaign's pledge associations (R4) create a "
+   "marriage pool in which an unbound daughter is marriageable, so the sanction R5 lapses for pledged families and leave_unbound "
+   "(R2) becomes costless once enough neighbours pledge. Deviations from the task sketch: no matchmaker/community role (no source "
+   "gives one a rule); a `suitor` role instead, because the sanction needs an actor and Mackie's sanction is the other side of "
+   "the market; the pledge's son half is a condition on R5/R6, not a second pledge action; marriageable is derived (ADR 0013) "
+   "from R7 rather than asserted; R3 is unconditional and R5 carries the (not pledged) condition, so that the pledge changes "
+   "nothing at layer 1 (the preregistration the gate pair needs). Sources: every text was read as a search snippet, none as a "
+   "page (network closed in this session); the abstract sentences are verbatim from the index, everything else is [R] or "
+   "UNVERIFIED and says so per rule. "+FB_PREREG+FB_NOTES_COORD)
+})
+inst.append({
+ "id":"footbinding-no-pledge",
+ "name":"Footbinding without the pledge action (minimal pair for gate (a))",
+ "roles":FB_ROLES,"fluents":FB_FLUENTS,
+ "actions":[a for a in FB_ACTIONS if a["name"] != "leave_unbound_pledge"],
+ "rules":[r for r in FB_RULES if r["id"] != "R4"],
+ "source_text":"Construction: footbinding with the pledge action leave_unbound_pledge and its rule R4 deleted; pledged(family) stays declared but nothing sets it. Historically the pre-1874 situation (no pledge associations).",
+ "expected_properties":{"binding_practised":"persists","marriage_requires_binding":"holds_to_k",
+                        "subject_cannot_exit":"reachable","dependent_cannot_exit":"reachable"},
+ "isomorphic_to":[],
+ "not_isomorphic_to":["coverture-household","police-crisis","cps"],
+ "minimal_pair_of":{"id":"footbinding","rule":"R4","differs_on":None},
+ "payoffs":{"bind":1.0,"leave_unbound":1.0},
+ "coordinated":["bind","leave_unbound"],
+ "notes":("PREREGISTERED (2026-11-04, before any run): the same four verdicts as footbinding (persists, holds_to_k, reachable, "
+   "reachable): pledges change nothing at layer 1. The pair is the gate (a) 'pledge actions exist' half: crit_a reads "
+   "_has_pledges on `footbinding` itself, so this entry is the dataset's record of what the no-pledge world looks like and "
+   "`differs_on` is null by design (no layer-1 property separates them). At layer 2 the preregistration is the plan's: "
+   "binding persists here under every module.")
+})
+
 def L(f,*a): return "(%s %s)" % (f, " ".join(a))
 def _animal_roles(owner):
     return {"owns":[owner,"animal"],"can_sanction":[owner,"animal"],"controls_reproduction":[owner,"animal"],
@@ -735,6 +868,8 @@ EXTRA = {
  "kibbutz-childrens-house-no-implicit":(_kib_roles,_kib_init,[]),
  "airline-flight":({"is_subject":["passenger"],"can_sanction":["crew","passenger"],"provides_care":["crew","passenger"],"can_exit":["passenger"],"aboard":["passenger"],"disruptive":["passenger"],"restrained":["passenger"]},[],["disruptive"]),
  "lease":({"is_subject":["tenant"],"can_exit":["tenant"],"leased":["landlord","tenant"],"habitable":["landlord","tenant"],"rent_paid":["tenant"]},[],[]),
+ "footbinding":({"is_subject":["daughter"],"can_exit":["daughter"],"bound":["daughter"],"pledged":["family"],"married":["daughter"],"marriageable":["family","daughter"]},[L("is_subject","daughter"),L("bound","daughter")],[]),
+ "footbinding-no-pledge":({"is_subject":["daughter"],"can_exit":["daughter"],"bound":["daughter"],"pledged":["family"],"married":["daughter"],"marriageable":["family","daughter"]},[L("is_subject","daughter"),L("bound","daughter")],[]),
  "public-library":({"is_subject":["patron"],"can_exit":["patron"],"open":["librarian"],"present":["patron"],"served":["librarian","patron"],"suspended":["patron"],"disruptive":["patron"]},[],["disruptive"]),
 }
 for mid in MWPA_IDS:
