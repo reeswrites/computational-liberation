@@ -122,7 +122,13 @@ shares, final fluent rates, score vectors, `necessary_modules`. Seed 0 default; 
 - Where do payoffs live? Proposal: a `payoffs` block on the dataset entry, not on `InstitutionJSON`.
 - Pledge actions: dataset convention or a first-class `ActionDecl` flag?
 
-## Sources opened
+## Sources cited (not verified as opened)
+
+Status corrected 2026-11-04 (consistency council). This section previously read "Sources opened". The dataset entries
+(`footbinding`, `footbinding-no-pledge`, `naming-convention` in data/institutions/institutions.json) record that the
+Mackie 1996 and Centola 2018 articles were never opened by the encoder (search-index snippets only; every host refused
+or was outside the allowed network) and mark their figures UNVERIFIED. This plan has no record of which of the works
+below were actually read, so treat all as cited, not verified; the entries are the source of truth.
 
 Granovetter, "Threshold Models of Collective Behavior", AJS 1978. Centola, Becker, Brackbill, Baronchelli,
 "Experimental evidence for tipping points in social convention", Science 360(6393):1116–1119, 2018. Mackie, "Ending
