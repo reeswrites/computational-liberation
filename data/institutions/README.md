@@ -398,5 +398,11 @@ people do by default, never to make a verdict come out.
 Flagged: `contract` in `coverture-household`, inherited by every `mwpa-*` entry through `_mwpa`. Reason: Blackstone's
 R7 is a disability on contracting, which an unmarried woman could do; the encoding withholds it by prohibition, not
 by silence. Left as powers: `keep_earnings`, `hold_property`, `control_property`, `sue`, `reassign` (the acts GRANT
-these; under coverture the wife has no such power and no rule needs to say so). The generator sets the field
+these; under coverture the wife has no such power and no rule needs to say so). Known unfaithful reading, recorded
+(docs/reviews/2026-11-05-liberty-flag-rev3-review.md, item 4): under Blackstone a feme sole held property by default and
+coverture passed it to the husband, so `hold_property` is a restored capacity, not a granted power; it stays a power
+because the preregistered `financial_dependence` verdicts depend on it (the global experiment showed they flip). The
+same review notes that `leave`, `sleep_home`, `refuse_binding` and `sue` are default capacities encoded by the older
+implicit `may ... when true` convention, so two encodings of one idea coexist; which to keep is an open author
+decision (plans/priority-slice1-results.md). The generator sets the field
 (`A(..., liberty=True)`); no other action is flagged in this batch.

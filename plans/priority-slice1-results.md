@@ -177,7 +177,7 @@ Options:
 
 Recommendation: (c).
 
-## Revision 3 run (2026-11-05, engine 9cf3672, liberty flag)
+## Revision 3 run (2026-11-04 local, headed 2026-11-05; engine 9cf3672, liberty flag)
 
 Preregistration: plans/priority.md "Slice 1 revision 3" (commit 98ae2f2, before the engine or dataset change). Dataset change: `liberty: true` on `contract` in coverture-household, inherited by six mwpa-* entries (7 entries, 7 JSON lines). Engine: ADR 0013 amendment 2026-11-05.
 
@@ -189,7 +189,19 @@ Preregistration: plans/priority.md "Slice 1 revision 3" (commit 98ae2f2, before 
 | 4 | Non-liberty entries byte-identical to revision 2 apart from timing | **held**: 18 of 18 identical after stripping timing fields |
 | 5 | Metamorphic tests pass unchanged | **held**: 536 pass, no test touched |
 
-Totals: 25 entries, inconsistent_after 0, uncounted 0, k_disagreement empty on every R7 row. Drift: none.
+Totals: 25 entries, inconsistent_after 0, uncounted 0, k_disagreement empty on every R7 row. Drift from the revision-3 preregistration: none.
+
+**Calibration disclosure (added after docs/reviews/2026-11-05-liberty-flag-rev3-review.md, item 5).** The fifth hit is not a blind hit. The sequence was: revision-2 miss on mwpa-property R7; diagnosis of the engine's blind spot on that item; a full-dataset experiment that computed which verdicts move under each semantics; a preregistration of a semantics that, by construction, turns that item into a hit; the run. Prediction 3 could not have failed short of a coding error. The flag was applied to the one action that missed. The honest score history is 1/5 blind (v1), 4/5 after fixes that saw the misses (revision 2), 5/5 after a semantics change motivated by the remaining miss (revision 3). "5/5" is a calibration result: the instrument now does what it was told to do on a known-answer item. It is not rediscovery evidence and is not cited as such in docs/claims.md (L21, weakened). Any future rediscovery claim needs an entry set the semantics was not tuned on.
+
+**Date convention.** Headings and review file names dated 2026-11-05 in this batch were written late on 2026-11-04 local time (EST); commit timestamps are authoritative. From here on, dates follow the local commit date.
+
+**ABM effect (review item 2).** `philengine/abm/model.py` gates an agent's available actions on `Reference.power`, so after the liberty flag `contract w` is a lawful candidate for every unmarried wife agent in the seven coverture-chain entries. It has no effects and zero payoff, but the random-lawful-candidate draw changes RNG consumption, so the frozen layer-2 gate record (engine 0abf7a4) is not guaranteed to reproduce on those entries. Recorded in ADR 0013 and plans/layer2-abm.md; the gate has not been rerun.
+
+**Author decisions from the revision-3 review** (docs/reviews/2026-11-05-liberty-flag-rev3-review.md):
+1. One convention for default capacities. The dataset now has two: the `liberty` flag (contract only) and an implicit universal `may ... when true` (leave in six entries, sleep_home, refuse_binding, and sue via R9's complement). The implicit-may convention would have produced the same R7 flip with no engine change. Options: (i) flag sue, leave, sleep_home, refuse_binding and delete the implicit `may` rows (R4 `sue` starts to score in the coverture chain; implicit-may rows leave the ablation denominators); (ii) un-flag contract and give it `may contract when true` like leave; (iii) keep both and write the rule for which to use. Either (i) or (ii) needs a preregistered blast radius first.
+2. Rename `liberty`. The reviewer is right that contracting is a Hohfeldian power and the mechanism is "default capacity of that kind of agent, removed only by an express disability" vs "power conferred by a rule". Proposed name: `default_capacity`. One-commit-old field, cheap now.
+3. Sanctioned `must_not` on a flagged action: code ignores it (only disabilities bar the capacity); the ADR gloss implies it should bar. Under the "capacity" reading the code is right (capacity exists, exercise is punished). Pin with a test either way.
+4. Layer 2: rerun the gate on the seven coverture-chain entries once the spawn-parallel engine change lands, or accept the record as not reproducing on those entries.
 
 Honest limits: the flag is an encoder's judgment and this run flagged exactly one action; the result shows the semantics does what the preregistration said, not that `contract` is the right and only liberty in the dataset. A council seat should check the flag against Blackstone (encoding faithfulness) and look for other prohibition-withheld liberties the encoder left as powers (`sue` under companion-*? `leave`?).
 

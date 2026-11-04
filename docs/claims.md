@@ -1,7 +1,7 @@
 # Claims register
 
 One row per claim the project makes or plans to make. Status ∈ {supported, supported (encoding level), weakened, refuted, untested, retracted}; `supported (encoding level)` means the check passed on the encoding only, not on the institution (T5).
-Evidence names a test, gate criterion or review; "none" means nothing checks it yet. Last checked 2026-11-03, after the
+Evidence names a test, gate criterion or review; "none" means nothing checks it yet. Last checked 2026-11-04 (slice 1 revision 3 rows L21-L23), earlier rows 2026-11-03 after the
 skeptical review (`docs/reviews/2026-11-03-phase0-skeptical-review.md`) and before the ADR 0013 re-encode completes.
 A claim is `supported` only if a check that could have failed passed and the review did not undercut it.
 
@@ -29,6 +29,9 @@ A claim is `supported` only if a check that could have failed passed and the rev
 | L18 | Ostrom's fishery makes rule revision reachable by the users, not only by the state. | plan dataset table; batch 2 §5 | preregistered, not encoded | untested | 2026-11-03 |
 | L19 | The engine identifies which single rule carries an outcome given human encodings; it does not discover implicitness or draw the care/control line itself. | README "What the engine does and doesn't do"; third review | third review (R2 carries gate (d) given the encoding; `implicit` and strand tags are human inputs reported back; airline-flight match) | supported | 2026-11-03 |
 | L20 | The four who-pays modes (dark twin, displacement, backlash, rebundling) are the complete failure-mode set. | theory.md Failure modes (original four-mode paragraph); ADR 0006 | ADR 0016 (three axes, eleven modes; the first backtest, MWPA, misfiled `creditor_shield`); ADR 0016 council review (2026-11-04-adr0016-council.md); MWPA backtest failure-modes review (2026-11-03-mwpa-backtest-failure-modes.md) | weakened | 2026-11-04 |
+| L21 | Rule ablation rediscovers the preregistered top rule of each test entry (slice 1 rediscovery test, 5 entries). | plans/priority.md slice 1; plans/priority-slice1-results.md | 1/5 blind (v1), 4/5 after fixes that saw the misses (revision 2, 2026-11-05-ablation-slice1-rev2-review.md), 5/5 after a semantics change motivated by the remaining miss (revision 3); 2026-11-05-liberty-flag-rev3-review.md item 5: the fifth hit is calibrated, not blind | weakened | 2026-11-04 |
+| L22 | Lowering derived power false for a nameless action makes prohibition-only strands invisible to `load_freedom`, and flipping it globally breaks the MWPA backtest (14 preregistered verdicts move). | plans/priority-slice1-results.md "Derived-power decision: evidence" | full-dataset experiment 2026-11-04 (patched engine, `check-all --no-cache` diff, reverted); 2026-11-05-liberty-flag-rev3-review.md item 1 confirms both lowerings agree | supported (encoding level) | 2026-11-04 |
+| L23 | A per-action default-capacity flag (`liberty`) changes no layer-1 verdict on the 25 entries and lets the deletion of a sole disability score on a derived-power property. | ADR 0013 amendment 2026-11-05 | `test_reference_agrees_with_the_z3_lowering` and tests/test_rules_liberty.py; zero-flip diff (revision 3 prediction 1); 2026-11-05-liberty-flag-rev3-review.md: correct, but two conventions for one concept now coexist (item 4) and the ABM reads the change (item 2) | supported (encoding level) | 2026-11-04 |
 
 ## Prior-work and method claims
 
@@ -37,7 +40,7 @@ A claim is `supported` only if a check that could have failed passed and the rev
 | M1 | A one-afternoon survey found no prior work running a solver over Institutional Grammar statements; a systematic search has not been done. | ADR 0001, 0002 | docs/decisions/0001-institutions-as-second-data-family.md (survey: IG-Parser, arXiv 2505.13393, arXiv 1711.06128; Symboleo/nuXmv and SPINdle nearest analogues per ADR 0003) | untested | 2026-11-03 |
 | M2 | Few have combined economic-planning and norm simulation around liberation itself. | theory Precedents | precedents table; no systematic search | untested | 2026-11-03 |
 | M3 | Bounded unrolling at k=6 is enough for the Phase 0 properties. | ADR 0003 | no recorded case where raising k changed a verdict; metamorphic test "raising k never removes reachable" | untested | 2026-11-03 |
-| M4 | Expectations are written before runs (preregistration). | intent; CONTRIBUTING 2, 5 | batch 2 preregistered; dataset README records expectation edits after check-all (review 5, 2026-11-03-phase0-skeptical-review.md; 2026-11-03-consistency.md finding 6) | weakened | 2026-11-03 |
+| M4 | Expectations are written before runs (preregistration). | intent; CONTRIBUTING 2, 5 | batch 2 preregistered; dataset README records expectation edits after check-all (review 5, 2026-11-03-phase0-skeptical-review.md; 2026-11-03-consistency.md finding 6); slice 1 revision 3 preregistered a semantics change after computing its effect on the known-answer item (2026-11-05-liberty-flag-rev3-review.md items 3, 5): sequence held, independence did not | weakened | 2026-11-04 |
 | M5 | Encodings are reviewed by people who live under the institution. | ADR 0012 (proposed); CONTRIBUTING | none; no `contested` field; all entries author-encoded | untested | 2026-11-03 |
 
 ## Theory-level claims (Layers 2–5; no forward claim until layer 3 passes)
@@ -58,4 +61,4 @@ A claim is `supported` only if a check that could have failed passed and the rev
 
 ## Status counts
 
-supported 6 · supported (encoding level) 1 · weakened 9 · refuted 1 · untested 19 · retracted 0 (36 rows).
+supported 6 · supported (encoding level) 3 · weakened 10 · refuted 1 · untested 19 · retracted 0 (39 rows).

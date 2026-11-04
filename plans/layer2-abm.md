@@ -119,6 +119,10 @@ shares, final fluent rates, score vectors, `necessary_modules`. Seed 0 default; 
 (d) **Seed stability**: Spearman rank of institutions by summed score ≥ 0.9 between disjoint halves of ≥ 100
     seeds, for every switch set.
 
+## Note 2026-11-04: frozen record may not reproduce on the coverture chain
+
+ADR 0013 amendment 3 (liberty flag, engine 9cf3672) changes `Reference.power`, which `abm/model.py` uses to gate an agent's available actions. `contract` is now a lawful candidate for unmarried wife agents in coverture-household and the six mwpa-* entries; it has no effects and zero payoff but changes the random-lawful-candidate draw, so the gate record above (engine 0abf7a4) is not guaranteed to reproduce on those seven entries. Not rerun. See plans/priority-slice1-results.md "Revision 3 run".
+
 ## Non-goals
 
 - No LLM agents in Phase 1; rule-based policies until (d) passes.
