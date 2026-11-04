@@ -158,3 +158,21 @@ The test requires: deterministic and stable across `k` and across `step_mode`; r
 `cd /Users/rees/Documents/computational-liberation && uv run phil rules ablate --k 6,8 --json ablate-25-v4.json --summary ablate-25-v4-summary.json`
 
 Outputs: `/private/tmp/claude-501/-Users-rees-Documents/3aaae34a-2247-402e-bd6d-424feea4d706/scratchpad/ablate-25-v4.{txt,json}` and `ablate-25-v4-summary.json`.
+
+## Derived-power decision: evidence (2026-11-05)
+
+Question: `(enabled a ...)` is constant false for an action no `may`/`must` names (ADR 0013 amendment 2026-11-03), so cutting a sole prohibition never moves a power property (mwpa-property R7 scores 0 on `cannot_contract`).
+
+Experiment: patched `rules_lower.py` so a nameless action reads enabled (disabilities still subtract), ran `phil rules check-all --json --no-cache` on all 25 entries, reverted. Diff against the committed semantics (`base.json`/`alt.json` in the session scratchpad; not kept):
+
+- 14 preregistered layer-1 verdicts flip. `financial_dependence` and `financial_dependence_unpropertied` go holds_to_k -> violated under coverture itself (a coverture wife "owns earnings" because nothing names `keep_earnings`); `double_burden` reachable from coverture on; `creditor_shield` reachable in four MWPA entries. That is the 2026-11-03 MWPA backtest broken at its root, plus the police/guardianship falsifier the amendment was written for.
+- 18 derived fluents across the dataset read a nameless action: `contract`, `keep_earnings`, `hold_property`, `control_property`, `sue`, `reassign`. All are liberties the encoding withholds by silence, not powers a rule grants.
+- Side note: the uncached run reports 7 rows the cached baseline lacks (`dependent_cannot_exit` on six entries, `subject_cannot_exit` on coverture); applicability, not verdicts. Cache may be stale; check before slice 2.
+
+Options:
+
+(a) Keep false. Cost: prohibition-only strands are invisible to `load_freedom` through derived powers. Document as a known blind spot; mwpa R7 stays a miss.
+(b) Flip to true. Rejected by the experiment: 14 flips, coverture reads liberal.
+(c) Per-action `liberty` flag (encoder choice, preregistered). A liberty action is enabled whenever no disability on it holds, granted or not; a power action keeps the amendment's semantics. Initially only `contract` in the coverture chain is a liberty (R7 is a disability on something people do by default; R15 then grants it anyway). Predicted layer-1 blast radius: zero flips (R7 holds through mwpa-earnings; R15 covers sole-trader on). Predicted ablation change: R7 scores on `cannot_contract` in coverture, mwpa-property, mwpa-earnings, mwpa-property-narrowed; coverture top may become a three-way tie R6/R7/R4. Needs: schema field on action decls, both lowerings (`rules_lower`, `rules_reference`), ADR 0013 amendment 3, tests, re-preregistration of the coverture-chain ablation tops before rerun, and the ADR 0013 monotonicity polarity rule re-checked for liberty actions (a `must_not` on a liberty is now the only thing that moves it).
+
+Recommendation: (c).
