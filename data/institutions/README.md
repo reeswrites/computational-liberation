@@ -386,3 +386,18 @@ New property `female_parent_care_persists` (kind `freedom`, check `persists`): f
 **Families (2026-11-05, plans/priority.md slice 1 revision 2 (a)).** Every property also carries a `family`; the ablation counts a flip once per family per rule. `cannot_exit`: dependent_cannot_exit, subject_cannot_exit, subject_cannot_exit_persists. `no_standing`: no_standing, no_standing_persists. `financial_dependence`: financial_dependence, financial_dependence_unpropertied. Every other property is its own family (written explicitly in the JSON).
 
 **New property `care_duty_on_women`** (kind `freedom`, family `care_duty_on_women`, `check: invariant`; slice 1 revision 2 (d)), so that ectogenesis R5 carries a freedom property. Formula: for every step t, child c and previous step t0 with succ(t0, t): if c was a subject with a female parent at t0, then a female parent of c provides care at t. It is a one-step-grace invariant, not the plain "female parent of a born child provides care" form: under strict compliance a `must` fires in the same step its condition first holds and its effect lands one step later, so the plain form is violated at that step in every trace and cannot flip. Read on the entries (k=6 and 8): ectogenesis and gestational-surrogacy `holds_to_k`; delete R5 gives `violated` in both; delete R4 stays `holds_to_k` (R5's must still enables and forces care). Not in any `expected_properties`; `check-all` stays 123/123. Two engine-side items, not done here: the engine reads no `check` key from properties (an unexpected property falls back to `reachable`, or `persists` for names ending _persists), and `care_duty_on_women` is not in `rules_ablate.UNFREEDOM`, so its flips read `unsigned`.
+
+## Liberty actions (2026-11-05, plans/priority.md slice 1 revision 3, ADR 0013 amendment 3)
+
+An action declaration may carry `liberty: true`. A liberty action's derived power `(enabled a ...)` is true
+whenever no disability (`must_not`, `or_else` null) on it holds, whether or not a `may`/`must` names it; a power
+action (the default) is enabled only by a `may`/`must` and reads constant false when nameless (ADR 0013, 2026-11-03).
+Trace semantics are the same for both: a nameless action fires freely. The flag is an encoder's judgment, made
+before any run and recorded here: mark a liberty only where the institution withholds by prohibition something
+people do by default, never to make a verdict come out.
+
+Flagged: `contract` in `coverture-household`, inherited by every `mwpa-*` entry through `_mwpa`. Reason: Blackstone's
+R7 is a disability on contracting, which an unmarried woman could do; the encoding withholds it by prohibition, not
+by silence. Left as powers: `keep_earnings`, `hold_property`, `control_property`, `sue`, `reassign` (the acts GRANT
+these; under coverture the wife has no such power and no rule needs to say so). The generator sets the field
+(`A(..., liberty=True)`); no other action is flagged in this batch.

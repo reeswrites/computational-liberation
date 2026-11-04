@@ -176,3 +176,23 @@ Options:
 (c) Per-action `liberty` flag (encoder choice, preregistered). A liberty action is enabled whenever no disability on it holds, granted or not; a power action keeps the amendment's semantics. Initially only `contract` in the coverture chain is a liberty (R7 is a disability on something people do by default; R15 then grants it anyway). Predicted layer-1 blast radius: zero flips (R7 holds through mwpa-earnings; R15 covers sole-trader on). Predicted ablation change: R7 scores on `cannot_contract` in coverture, mwpa-property, mwpa-earnings, mwpa-property-narrowed; coverture top may become a three-way tie R6/R7/R4. Needs: schema field on action decls, both lowerings (`rules_lower`, `rules_reference`), ADR 0013 amendment 3, tests, re-preregistration of the coverture-chain ablation tops before rerun, and the ADR 0013 monotonicity polarity rule re-checked for liberty actions (a `must_not` on a liberty is now the only thing that moves it).
 
 Recommendation: (c).
+
+## Revision 3 run (2026-11-05, engine 9cf3672, liberty flag)
+
+Preregistration: plans/priority.md "Slice 1 revision 3" (commit 98ae2f2, before the engine or dataset change). Dataset change: `liberty: true` on `contract` in coverture-household, inherited by six mwpa-* entries (7 entries, 7 JSON lines). Engine: ADR 0013 amendment 2026-11-05.
+
+| # | Prediction | Result |
+|---|---|---|
+| 1 | Zero layer-1 verdict changes across 25 entries | **held**: 0 flips, row by row against the committed-semantics baseline (`check-all --no-cache`) |
+| 2 | R7 deletion flips `cannot_contract` holds_to_k -> violated (freedom up) in five entries; not deregulated; no prohibit variant | **held**: load_freedom_up 1 at k=6 and k=8 in coverture-household, mwpa-creditor-exemption, mwpa-property, mwpa-property-narrowed, mwpa-earnings; `deregulated` false, `sole_rule` true; no R7~prohibit row |
+| 3 | coverture and mwpa-property tops become {R6, R7}; kibbutz R2, footbinding R3, ectogenesis R5 unchanged; rediscovery 5/5 | **held**: tops exactly {R6, R7} in all five chain entries (R4 did not join); other 20 entries' tops unchanged; 5/5 |
+| 4 | Non-liberty entries byte-identical to revision 2 apart from timing | **held**: 18 of 18 identical after stripping timing fields |
+| 5 | Metamorphic tests pass unchanged | **held**: 536 pass, no test touched |
+
+Totals: 25 entries, inconsistent_after 0, uncounted 0, k_disagreement empty on every R7 row. Drift: none.
+
+Honest limits: the flag is an encoder's judgment and this run flagged exactly one action; the result shows the semantics does what the preregistration said, not that `contract` is the right and only liberty in the dataset. A council seat should check the flag against Blackstone (encoding faithfulness) and look for other prohibition-withheld liberties the encoder left as powers (`sue` under companion-*? `leave`?).
+
+Found while running: the layer-1 result cache returns 116 rows where an uncached run returns 123 (`dependent_cannot_exit` on six entries, `subject_cannot_exit` on coverture). The cache key does not include the entry's expected-properties list, so adding an expected property to an entry does not invalidate its cached row set. Verdicts agree where both report. Engine fix needed; until then use `--no-cache` for any diff.
+
+Reproduction: `cd computational-liberation && uv run phil rules check-all --json --no-cache` and `uv run phil rules ablate --k 6,8 --json ablate-25-v5.json --summary ablate-25-v5-summary.json`. Outputs in the session scratchpad, not kept.

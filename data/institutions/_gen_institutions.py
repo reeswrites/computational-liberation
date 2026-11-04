@@ -8,7 +8,10 @@ def R(id, attribute, deontic, aim, conditions, or_else, strand, implicit, source
     if var_roles: d["var_roles"] = dict(var_roles)
     return d
 def F(name, arity, gloss): return {"name":name,"arity":arity,"gloss":gloss}
-def A(name, args, effects): return {"name":name,"args":args,"effects":effects}
+def A(name, args, effects, liberty=False):
+    d = {"name":name,"args":args,"effects":effects}
+    if liberty: d["liberty"] = True  # ADR 0013 amendment 2026-11-05: enabled unless a disability bars it
+    return d
 def E(fluent, args, value): return {"fluent":fluent,"args":args,"value":value}
 
 # ---- shared fluent glossary (same names => same meaning; iso is matched on them)
@@ -90,7 +93,7 @@ inst.append({
    A("chastise",["h","w"],[]),
    A("leave",["w"],[]),
    A("sue",["w"],[]),
-   A("contract",["w"],[])],
+   A("contract",["w"],[],liberty=True)],  # liberty: coverture withholds contracting by prohibition (R7), not by silence
  "rules":[
    R("R1","husband","may","(control_property h w)","(married h w)",None,"tying",False,BLACKSTONE+" (the husband and wife are one person in law; her property passes to him)"),
    R("R2","husband","must","(provides_care h w)","(married h w)",None,"superadditive",False,BLACKSTONE+" (the husband is bound to provide his wife with necessaries). "+STATE+"marry establishes provides_care(h, w); maintain restores it, neglect breaks it", load_bearing=LB),
