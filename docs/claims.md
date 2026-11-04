@@ -9,12 +9,12 @@ A claim is `supported` only if a check that could have failed passed and the rev
 
 | # | Claim | Where stated | Evidence | Status | Last checked |
 |---|---|---|---|---|---|
-| L1 | The engine rediscovers the care+control cluster (police, CPS, coverture household) from the rules alone. | theory.md rules-engine table, Phase 0 test (1); plan gate (b); ADR 0007 | gate (b) after re-encode (lease, public-library match nothing; gate reads precommitted level); second review: unregulated actions count as always enabled, strand tags still load-bearing, a 6-rule airline-flight matches | weakened | 2026-11-03 |
+| L1 | The engine rediscovers the care+control cluster (police, CPS, coverture household) from the rules alone. | theory.md rules-engine table, Phase 0 test (1); plan gate (b); ADR 0007 | gate (b) after re-encode (lease, public-library match nothing; gate reads precommitted level); second review: unregulated actions count as always enabled, strand tags still load-bearing, a 6-rule airline-flight matches; third review + dataset `airline-flight`: matches police-crisis, cps and coverture at guard+strands (preregistered expected match, structural); retagging its care rule superadditive to tying removes every match, so strand tags are load-bearing | weakened | 2026-11-03 |
 | L2 | The unarmed crisis team is excluded from the care+control cluster. | plan gate (b); theory Phase 0 test (1) | gate (b) after re-encode; second review: crisis-team `none` at every level; but `enabled` default means deleting permissions strengthens power claims | weakened | 2026-11-03 |
 | L3 | One-rule minimal pairs are told apart at the iso level (reported "one rule apart"). | plan gate (c)/(f); theory Phase 0 test (2); roadmap | gate (c), (f); `test_rules_iso.py`; review: "Iso distance 1 is syntactic and real" | supported | 2026-11-03 |
 | L4 | One-rule minimal pairs get different *verdicts* on the preregistered property. | plan gate (c); ADR 0013 | gate (c) via `differs_on`; second review: loader now rejects initial literals on derived fluents; guardianship verdict rests on R9 (disability vs may); swapped property disclosed as post hoc | supported | 2026-11-03 |
 | L5 | Cosmetic reform (owner→guardian rename) is detected: renamed ≅ ownership, guardianship ≠ ownership. | plan gate (f); ADR 0007; theory "The rules engine now tests for it" | gate (f) `pure_rename`; review: "cosmetic rename is detected" | supported | 2026-11-03 |
-| L6 | The kibbutz children's house regendered care via an implicit assignment rule, and the engine finds it (`care_assigned_by_sex` persists, implicit rule flagged). | plan gate (d); ADR 0007; intent kill switch; theory Phase 0 test (3) | gate (d) is `deferred`; institution not encoded (batch 2 draft, preregistered) | untested | 2026-11-03 |
+| L6 | The kibbutz children's house regendered care via an implicit assignment rule, and the engine finds it (`care_assigned_by_sex` persists, implicit rule flagged). | plan gate (d); ADR 0007; intent kill switch; theory Phase 0 test (3) | gate (d) PASS (persists; R2 the one rule separating the pair), re-run after the sanctioned-norm re-encode; third review: R2 does the work and is not vacuous, but "implicit" is a hand tag the engine reports back (`implicit: false` changes no verdict) and the ablation bites only because R1 was written sex-blind; sources support a practice, not a committee disability, so R2 was over-strong (now `must_not`, or_else R6); a weaker encoding still passes (d) | weakened | 2026-11-03 |
 | L7 | Happy the elephant's habeas denial is a second implicit-rule failure (remedy must be immediate release). | ADR 0007; plan extension 4 | none (not encoded; sources partly unconfirmed) | untested | 2026-11-03 |
 | L8 | The floor ("you can walk away unless a rule stops you") had to be encoded as a default (`defaults: can_exit: true`), not as a rule. | theory roadmap "Done today"; plan schema-builder appendix | dataset convention; no test isolates it; review 5c notes `no_standing` trivially unreachable on police-crisis for the same reason | weakened | 2026-11-03 |
 | L9 | ADICO needs state obligations (must-be) alongside action obligations. | ADR 0009; theory roadmap | check-all 29/36 → 36/36 under `one`; `test_rules_lower.py`; review 3: four must-be rules are inert, including the cps "care" leg | weakened | 2026-11-03 |
@@ -27,6 +27,7 @@ A claim is `supported` only if a check that could have failed passed and the rev
 | L16 | Unreachable within k is reported `open`, never `safe`; `reachable` is permission, not prediction. | ADR 0003, 0004; glossary; plan | `test_rules_checks.py`; verdict vocabulary | supported | 2026-11-03 |
 | L17 | The dark twin: a gig platform keeps exit cheap and strips insurance and voice (`worker_uninsured` reachable, `rules_revisable_by_subject` open). | plan dataset table; batch 2 §4 | preregistered, not encoded | untested | 2026-11-03 |
 | L18 | Ostrom's fishery makes rule revision reachable by the users, not only by the state. | plan dataset table; batch 2 §5 | preregistered, not encoded | untested | 2026-11-03 |
+| L19 | The engine identifies which single rule carries an outcome given human encodings; it does not discover implicitness or draw the care/control line itself. | README "What the engine does and doesn't do"; third review | third review (R2 carries gate (d) given the encoding; `implicit` and strand tags are human inputs reported back; airline-flight match) | supported | 2026-11-03 |
 
 ## Prior-work and method claims
 
@@ -56,4 +57,4 @@ A claim is `supported` only if a check that could have failed passed and the rev
 
 ## Status counts
 
-supported 6 · weakened 8 · refuted 1 · untested 19 · retracted 0 (34 rows).
+supported 7 · weakened 9 · refuted 1 · untested 18 · retracted 0 (35 rows).

@@ -32,6 +32,14 @@ uv run phil rules gate          # rediscovery gate (informational while re-encod
 
 The engine resolves `data/` and `runs/` from the current working directory (`PHIL_DATA_DIR` / `PHIL_RUNS_DIR` override), so run `uv run phil ...` from inside this repo. `data/institutions/` is a placeholder until the re-encoded dataset moves here from the engine.
 
+## What the engine does and doesn't do
+
+- It identifies which single rule carries an outcome, given encodings that people wrote (third review, claims L19).
+- It does not discover that a rule is implicit; `implicit` is a hand tag the engine hands back.
+- It does not draw the care/control line itself; the cluster match reads strand tags a human assigned.
+- Strand and implicit tags are human inputs the engine reports back, and the care/control match depends on them (an `airline-flight` control also matches; retagging its care rule removes every match).
+- A kibbutz or cluster verdict is a statement about the encoding, not about the institution.
+
 ## Process
 
 Expected verdicts are preregistered before any run and never edited to match results; disagreement is recorded ([CONTRIBUTING.md](CONTRIBUTING.md)). After every batch a council of fresh agents, never the builder, reviews correctness, consistency, scope and encoding faithfulness ([ADR 0014](docs/decisions/0014-review-council.md)); its reports go in [docs/reviews/](docs/reviews/) and the claims register is updated from them.
