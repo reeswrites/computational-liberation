@@ -19,6 +19,8 @@ Compute liberation: given institutions as rules and candidate changes, say which
 - Methods write-up and blog posts (after step 3).
 - Launch checklist (after step 3; gate: one falsifiable result that survived or failed honestly). Blog post first, thread second, repo in reply. Lead with the MWPA preregistered-verdicts table, not the theory; claims-register tally as the differentiator; one ask ("encoding reviewer wanted"). Prep now, cheap: README cold-visitor pass (one agreed headline across README/theory/claims), a current Status line, demo gif of `phil rules gate`.
 - Weekly scheduled consistency review.
+- Parked by the ADR 0016 scope seat until the layer 2 gate exists: mode tagging in ABM reports, Enforcement decay, Lock-in, the mechanism tag; preregistrations name only modes at or below the run's layer.
+- Footbinding and naming-convention encodings (gate (a), (b)) and the coordination/imagination modules: next layer-2 slice.
 - Airline control: gate support for expected-match controls (engine change), then move `airline-flight` into the cluster's control list as an expected-match check.
 - Strand-tag redesign: strand tags are hand inputs the cluster match depends on (third review); find a derivation or a robustness test.
 
@@ -34,17 +36,23 @@ Compute liberation: given institutions as rules and candidate changes, say which
 - todo — Re-export docs/theory.md from the Claude doc when the theory changes; make this file canonical once it stabilises.
 
 ## Decisions waiting on the author
+- ADR 0016 council reds (docs/reviews/2026-11-04-adr0016-council.md, findings 1-2): the `narrowed` branch adds rules (R17, R18), which is the glossary's backlash, and layer 1 fired it, which the ADR's table says Erosion cannot; either revert `narrowed` to Backlash or amend the table ("Erosion: 1 when encoded as a construing power"). And restate the MWPA Section 4 test so a mode outside Capture/Erosion/Backlash ranking first is a fail. Ambers 3-5, 7-8 go in the same amendment.
+- ADR 0015 A8 (state obligations in the ABM) was applied on the plan's recommendation without a fresh accept; confirm or reverse.
+- Kibbutz `isomorphic_to: coverture-household` (guard+strands) reads NO today and is untested by the gate: drop the claim, retag, or add kibbutz to a cluster.
+- Kibbutz R6 `may reprimand` has condition `true`, so in the ABM the committee reprimands random members about half the time; harmless at layer 1, noise at layer 2. Guard it on breach (`violated_R3`) or leave and note.
+- claims.md L20 wording (council: category error) and T11 status.
 - Encoding reviewer for Phase 0 (ADR 0012): the author, until there is someone else.
 - Ten open decisions with options and recommendations: docs/decisions-pending.md (layer 2 design A1–A7; theory.md source B1; ADR 0011 status B2; ADR 0010 amendment B3).
 
-## Tomorrow (2026-11-04), in order
-1. Decide: state obligations in the ABM (ADR 0009 must-be). Reviewer found every sanctionable `must` in the dataset is state-aimed and the ABM reads only action-aimed ones, so breach/sanction/trust never fire on real institutions (engine `philengine/abm/model.py` `_readings`). Recommended: a `must-be P` obliges the actions whose effects make P true. Then fix + dataset-level breach test.
-2. Remaining slice-2 review items (engine): sanction priced one step but charged `sanction_steps` (agent.py ~135); A5 bearing-on-me must use `arg_roles`, not instance values (agent.py ~166); validate `payoff.<action>` sweep axes against declared actions; two conflicting musts leave no lawful action — flag as inconsistent encoding?
-3. Kibbutz encoding: add `may neglect` (ADR 0015 A6); run check-all + gate (d); do not commit if any verdict flips without a logged reason.
-4. Council pass on ADR 0016 (owed; see docs/reviews/2026-11-03-mwpa-backtest-failure-modes.md). `_gen_properties.py` gloss strings still say DT/BL (changing them changes properties.json; do it with the council pass).
-5. Then layer 2 slice 3: veil-of-ignorance scorer + `phil abm gate` with the four gate tests.
+## Today (2026-11-04) status
+1. done — State obligations in the ABM: ADR 0015 A8 (ASSUMED accepted: the plan's recommendation; engine deb6a31). On kibbutz, metapelet breach rate is 1.0 at sanction_weight 0 and 0.0 at the default: breach, sanction and trust now fire on a real institution and the sanction governs it.
+2. done — Slice-2 review items (engine deb6a31): sanction priced over its window, A5 bearing from declared arg_roles, `payoff.<action>` axes validated, no-lawful-action and unavoidable-breach warnings. Correctness review of the slice: in progress (report to docs/reviews/).
+3. done — Kibbutz R8 `may neglect` (ADR 0015 A6). Preregistered no verdict change; check-all 106/106 and gate (d) byte-identical before and after. Found while baselining: the entry's `isomorphic_to: coverture-household` at guard+strands already read NO (matched 0, distance 9) and nothing tests it (kibbutz is outside the cluster) — author's call, below.
+4. done — Council pass on ADR 0016: docs/reviews/2026-11-04-adr0016-council.md. Correctness weakened (two reds), scope supported with parks, consistency drift fixed (glosses now Capture/Erosion; T11, phase-0 plan, MWPA header, entry titles, dataset README).
+5. doing — Slice 3: veil-of-ignorance scorer + `phil abm gate`. Scoped: (c) kibbutz and (d) seed stability run on the material module; (a) footbinding and (b) committed minority report BLOCKED (no footbinding / naming-convention institution encoded; coordination module is a stub). Encoding those two institutions and the coordination module is the next slice, not opened today.
 
 ## Log
+- 2026-11-04 — Orchestrated batch, four agents in parallel then two: engine A8 + slice-2 fixes (435 -> 445 tests), kibbutz R8 (no flips), ADR 0016 council (correctness weakened, scope supported, consistency fixed). Commit hygiene slip: R8 and the A8 amendment were swept into neighbouring commits (d4dbd26, 72eded9) by a blanket add; history is correct, messages are not. Agent costs so far: ~460k tokens across 4 agents (engine 157k, kibbutz 116k, council 92k + 94k).
 - 2026-11-03 (late) — Author accepted all pending decisions → ADR 0015 (layer 2 design), ADR 0010 amended, ADR 0011 index fixed, theory status split (Claude doc + local). Failure-mode axes added → ADR 0016 (3 axes, 11 modes, layer tags), MWPA relabels logged as drift, claim L20 weakened + review file. Engine slice 2: breach, directed trust, pledge, `phil abm sweep` (435 tests). Review: 2 red (one fixed in-session, one to tomorrow item 1). Agent costs this stretch: ~700k tokens across 6 agents. Stopped at 86% of the 5-hour window.
 - 2026-11-03 (night) — Orchestrated batch: docs clarity audit + 7 fixes (claims tally corrected to 6/1/8/1/19; glossary gate table and 18 terms; README links); mwpa-suit test note resolved (engine 0a9c01e); layer 2 slice 1 + review + fix (1 bug: ABM availability stricter than ADR 0013, fixed to equal `Reference.power`). Builder reordered agent choice priority (payoff switch before threshold) to make the payoff test pass — a design choice made under test pressure, listed ASSUMED, needs a look. Decisions memo written. Agent costs: ~600k tokens across 6 agents.
 - 2026-11-03 (evening) — Third council review: (a),(b) supported; (c),(d) weakened (strand/implicit tags are human inputs). Kibbutz R2 re-encoded as a norm; airline control added; interpretation guide; claims register tested in CI; MWPA backtest designed with sources and run at layer 1. Agent costs this batch: ~1.0M tokens across 8 agents.
