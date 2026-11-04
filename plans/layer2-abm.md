@@ -11,7 +11,7 @@ collapse, persistence or regendering, and do the rankings survive random seeds?*
 
 Status: slices 1-3 built in philosophy-engine (2026-11-03/04; ADR 0015 A1-A8). `phil abm run`, `sweep`, `score`, `gate` exist; `material` and `coordination` built, `imagination` a stub; frozen 2026-11-04 (docs/plan.md). Gate run below.
 
-## Gate run 2026-11-04, late (engine 0abf7a4 slice-4 fix pass, `phil abm gate --seeds 100 --workers 4`; serial on macOS since `parallel.py` does not fork under darwin, ; 23 entries: the dataset was loaded before the ectogenesis pair was regenerated)
+## Gate run 2026-11-04, late (engine 0abf7a4 slice-4 fix pass, `phil abm gate --seeds 100 --workers 4`; serial on macOS since `parallel.py` does not fork under darwin: 1132 s wall clock, 1 worker, 18800 runs; 23 entries: the dataset was loaded before the ectogenesis pair was regenerated)
 
 | letter | status | detail |
 | --- | --- | --- |
