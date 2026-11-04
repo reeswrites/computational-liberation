@@ -208,3 +208,13 @@ Honest limits: the flag is an encoder's judgment and this run flagged exactly on
 Found while running: a cached `check-all` printed 116 distinct (institution, property) rows where an uncached run printed 123. Diagnosed by a builder: not the cache key (it already covers the full entry, the property's formal text and check kind, k, init, compliance, step_mode, engine source hash and z3 version) but a cache hit that kept the stored property NAME. `subject_cannot_exit` and `dependent_cannot_exit` have identical formal text and share an entry, so a hit returned the twin's name and the two rows collapsed under one key in the diff script. Verdicts were never wrong. Fixed in the engine (`res.property = name` on hit, tests in tests/test_rules_cache.py); the uncached diffs above are unaffected.
 
 Reproduction: `cd computational-liberation && uv run phil rules check-all --json --no-cache` and `uv run phil rules ablate --k 6,8 --json ablate-25-v5.json --summary ablate-25-v5-summary.json`. Outputs in the session scratchpad, not kept.
+
+## Revision 4 run (2026-11-04 local; engine faefef1 for layer 1)
+
+Preregistration: plans/priority.md "Slice 1 revision 4" (a7ca980, before the dataset edit 2d83419 and the engine rename faefef1).
+
+| # | Prediction | Result |
+|---|---|---|
+| 1 | Zero layer-1 verdict flips | **held**: `phil rules diff --baseline data/verdicts-baseline.json --no-cache`: 0 changed, 0 added, 0 removed of 123 |
+| 2 | Gate (a)-(f) passes; care+control cluster, airline control and crisis-team exclusion unchanged | **held**: GATE PASS; (b) the three pairs partial(care+control) at guard+strands, crisis-team none at every level, controls none; (c) distance 1; (d) kibbutz; (e) 123/123; (f) rename detected |
+| 3-5 | Ablation | pending the engine's `deregulated` skip for default-capacity actions (in progress with the spawn-parallel change) |
