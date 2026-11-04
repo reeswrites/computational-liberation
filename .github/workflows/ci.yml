@@ -35,6 +35,7 @@ jobs:
       - run: uv sync --python 3.14
       - run: uv run pytest -q                      # this repo's own tests (dataset claims); the engine's suite runs in its own CI
       - run: uv run phil rules check-all
+      - run: uv run phil rules diff --baseline data/verdicts-baseline.json   # golden verdicts; exit 1 on any changed or removed row
 
   gate:
     name: gate (informational)

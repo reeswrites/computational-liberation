@@ -1,0 +1,751 @@
+{
+ "engine_hash": "d6ca9db976d2270816292490ce9a3908570b8b3184f1699b7650eec20d1ba227",
+ "format": 1,
+ "params": {
+  "compliance": "strict",
+  "init": null,
+  "k": 6,
+  "step_mode": "one"
+ },
+ "rows": [
+  {
+   "check": "invariant",
+   "institution": "airline-flight",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "airline-flight",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "airline-flight",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "companion-guardian-renamed",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "persists",
+   "institution": "companion-guardian-renamed",
+   "property": "no_standing_persists",
+   "verdict": "persists"
+  },
+  {
+   "check": "invariant",
+   "institution": "companion-guardian-renamed",
+   "property": "reproduction_controlled_by_owner",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "persists",
+   "institution": "companion-guardian-renamed",
+   "property": "subject_cannot_exit_persists",
+   "verdict": "persists"
+  },
+  {
+   "check": "invariant",
+   "institution": "companion-guardianship",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "persists",
+   "institution": "companion-guardianship",
+   "property": "no_standing_persists",
+   "verdict": "fails"
+  },
+  {
+   "check": "invariant",
+   "institution": "companion-guardianship",
+   "property": "reproduction_controlled_by_owner",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "persists",
+   "institution": "companion-guardianship",
+   "property": "subject_cannot_exit_persists",
+   "verdict": "persists"
+  },
+  {
+   "check": "invariant",
+   "institution": "companion-ownership",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "persists",
+   "institution": "companion-ownership",
+   "property": "no_standing_persists",
+   "verdict": "persists"
+  },
+  {
+   "check": "invariant",
+   "institution": "companion-ownership",
+   "property": "reproduction_controlled_by_owner",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "persists",
+   "institution": "companion-ownership",
+   "property": "subject_cannot_exit_persists",
+   "verdict": "persists"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-household",
+   "property": "cannot_contract",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-household",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-household",
+   "property": "care_assigned_by_sex",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household",
+   "property": "creditor_shield",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household",
+   "property": "double_burden",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-household",
+   "property": "financial_dependence",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-household",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "cps",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "cps",
+   "property": "care_assigned_by_sex",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "cps",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "persists",
+   "institution": "cps",
+   "property": "no_standing_persists",
+   "verdict": "fails"
+  },
+  {
+   "check": "reachable",
+   "institution": "cps",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "crisis-team",
+   "property": "care_and_sanction_same_role",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "crisis-team",
+   "property": "dependent_cannot_exit",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "crisis-team",
+   "property": "no_standing",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "crisis-team",
+   "property": "subject_cannot_exit",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "ectogenesis",
+   "property": "birth_labor_rival",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "ectogenesis",
+   "property": "care_assigned_by_sex",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "ectogenesis",
+   "property": "care_decoupled_from_birth",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "ectogenesis",
+   "property": "solo_care_by_non_birthing_parent",
+   "verdict": "reachable"
+  },
+  {
+   "check": "persists",
+   "institution": "footbinding",
+   "property": "binding_practised",
+   "verdict": "persists"
+  },
+  {
+   "check": "reachable",
+   "institution": "footbinding",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "footbinding",
+   "property": "marriage_requires_binding",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "footbinding",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "persists",
+   "institution": "footbinding-no-pledge",
+   "property": "binding_practised",
+   "verdict": "persists"
+  },
+  {
+   "check": "reachable",
+   "institution": "footbinding-no-pledge",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "footbinding-no-pledge",
+   "property": "marriage_requires_binding",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "footbinding-no-pledge",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "gestational-surrogacy",
+   "property": "birth_labor_rival",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "gestational-surrogacy",
+   "property": "care_assigned_by_sex",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "gestational-surrogacy",
+   "property": "care_decoupled_from_birth",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "gestational-surrogacy",
+   "property": "solo_care_by_non_birthing_parent",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "kibbutz-childrens-house",
+   "property": "care_and_sanction_same_role",
+   "verdict": "violated"
+  },
+  {
+   "check": "persists",
+   "institution": "kibbutz-childrens-house",
+   "property": "care_assigned_by_sex",
+   "verdict": "persists"
+  },
+  {
+   "check": "reachable",
+   "institution": "kibbutz-childrens-house",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "kibbutz-childrens-house-no-implicit",
+   "property": "care_and_sanction_same_role",
+   "verdict": "violated"
+  },
+  {
+   "check": "persists",
+   "institution": "kibbutz-childrens-house-no-implicit",
+   "property": "care_assigned_by_sex",
+   "verdict": "fails"
+  },
+  {
+   "check": "reachable",
+   "institution": "kibbutz-childrens-house-no-implicit",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "lease",
+   "property": "dependent_cannot_exit",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-creditor-exemption",
+   "property": "backlash",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-creditor-exemption",
+   "property": "cannot_contract",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-creditor-exemption",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-creditor-exemption",
+   "property": "creditor_shield",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-creditor-exemption",
+   "property": "double_burden",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-creditor-exemption",
+   "property": "financial_dependence",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-creditor-exemption",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-creditor-exemption",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-creditor-exemption",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-earnings",
+   "property": "backlash",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-earnings",
+   "property": "cannot_contract",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-earnings",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-earnings",
+   "property": "creditor_shield",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-earnings",
+   "property": "double_burden",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-earnings",
+   "property": "financial_dependence",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-earnings",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-earnings",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-earnings",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property",
+   "property": "backlash",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-property",
+   "property": "cannot_contract",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-property",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property",
+   "property": "creditor_shield",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property",
+   "property": "double_burden",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-property",
+   "property": "financial_dependence",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-property",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property-narrowed",
+   "property": "backlash",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-property-narrowed",
+   "property": "cannot_contract",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-property-narrowed",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property-narrowed",
+   "property": "creditor_shield",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property-narrowed",
+   "property": "double_burden",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-property-narrowed",
+   "property": "financial_dependence",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-property-narrowed",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property-narrowed",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-property-narrowed",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-sole-trader",
+   "property": "backlash",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-sole-trader",
+   "property": "cannot_contract",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-sole-trader",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-sole-trader",
+   "property": "creditor_shield",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-sole-trader",
+   "property": "double_burden",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-sole-trader",
+   "property": "financial_dependence",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-sole-trader",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-sole-trader",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-sole-trader",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-suit",
+   "property": "backlash",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-suit",
+   "property": "cannot_contract",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-suit",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-suit",
+   "property": "creditor_shield",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-suit",
+   "property": "double_burden",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-suit",
+   "property": "financial_dependence",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "mwpa-suit",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-suit",
+   "property": "no_standing",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-suit",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "naming-convention",
+   "property": "new_convention_adopted",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "paternity-quota",
+   "property": "care_assigned_by_sex",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "paternity-quota",
+   "property": "leave_reserved_for_non_birthing_parent",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "paternity-quota",
+   "property": "solo_care_by_non_birthing_parent",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "police-crisis",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "police-crisis",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "police-crisis",
+   "property": "no_standing",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "police-crisis",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "public-library",
+   "property": "dependent_cannot_exit",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "transferable-leave",
+   "property": "care_assigned_by_sex",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "transferable-leave",
+   "property": "leave_reserved_for_non_birthing_parent",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "transferable-leave",
+   "property": "solo_care_by_non_birthing_parent",
+   "verdict": "reachable"
+  }
+ ],
+ "z3": "5.3.3"
+}
