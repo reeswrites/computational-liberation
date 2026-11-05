@@ -79,10 +79,16 @@ Report-only until migration is reviewed (warn, then promote to hard):
 4. Every rule has `provenance`.
 5. A `supported` claim in `docs/claims.md` whose `sources` cell names a rule row below `opened`.
 
+## Which rows the care+control match reads (drop-one, 2026-11-05)
+
+Each rule of coverture-household, police-crisis and cps deleted in turn, `phil rules gate` criterion (b) rerun (engine at ENGINE_PIN, dataset at this branch). Gate (b) FAILs on deleting exactly nine rules: coverture R2, R5, R6; police-crisis R2, R3, R4; cps R3, R4, R10. Deleting any other rule, including every UNVERIFIED police/cps practice norm (police R1, R5, R6, R8, R10; cps R1, R2, R5, R6, R8, R11), leaves (b) PASS.
+
+So L1 rests on nine rows, and the only one carrying `UNVERIFIED` is **coverture R6** (the wife's exit bar, sourced to Shanley/Stone on England's Matrimonial Causes Act 1857, not opened). The handoff's "police/CPS implicit norms R1, R5, R6 the match reads" does not hold for the match; those rows still matter for other properties (cps R6 makes `care_assigned_by_sex` reachable) and for L24. Verification order adjusted: coverture R6 first (it is also the inherited exit bar of all six mwpa-* entries and the jurisdiction mismatch), then the eight other match rows to `opened` with excerpts, then the remaining police/CPS rows. Script: `scripts/drop_one_match.py <tmpdir>`; the method is "delete one rule from institutions.json, run `phil rules gate --institutions <copy> --json`, read criterion b".
+
 ## Order of work
 
 1. done/doing: this file; bibliography + provenance + migration script (`data/institutions/migrate_provenance.py`) + build strip + cards + checks; ADR 0017 (sourcing standard); `sources` column in `docs/claims.md`.
-2. MWPA verification worklist (`plans/sourcing-worklist-mwpa.md`) and ground-truth file; open sources; resolve ME/MA/IL/MD; replace English sources in the US chain or split UK entries; record drift if any rule changes.
+2. Coverture R6 (load-bearing for L1 and inherited by every mwpa-* entry; see above). MWPA verification worklist (`plans/sourcing-worklist-mwpa.md`) and ground-truth file; open sources; resolve ME/MA/IL/MD; replace English sources in the US chain or split UK entries; record drift if any rule changes.
 3. Police / CPS practice norms (R1, R5, R6 the match reads); kibbutz (Spiro, Gavron); footbinding (Mackie), naming-convention (Centola); `docs/theory.md` uncited facts (`plans/sourcing-worklist-other.md`).
 4. Council: honesty of the migration (no row upgraded), and after verification a sampled check of `opened` rows against their excerpts.
 5. Promote checks 4-5 to hard; drop the free-text `source` once every row has provenance.
