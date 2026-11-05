@@ -115,40 +115,40 @@
   note: "chapters cited: ch. 1 and ch. 10 'The Ultimate Revolution'; URL not in repo text; cited from memory (plans/ectogenesis.md section 2)"
 - id: geddes-lueck-tennyson-2007
   type: secondary
-  title: null
-  author: [Geddes, Lueck, Tennyson]
+  title: Human Capital Accumulation and the Expansion of Women's Economic Rights (conference draft)
+  author: [Geddes, Rick, Lueck, Dean, Tennyson, Sharon]
   year: 2007
-  container: null
+  container: ISNIE 2007 annual conference papers
   jurisdiction: null
   url: https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf
-  note: "2007 draft (ISNIE archive); title not in repo text; Table 1 dates of property / earnings acts; corrected dates in Geddes & Tennyson 2013 (paywalled, per plans/backtest-mwpa.md)"
+  note: '2007 draft (ISNIE archive); title not in repo text; Table 1 dates of property / earnings acts; corrected dates in Geddes & Tennyson 2013 (paywalled, per plans/backtest-mwpa.md) | merged from glt-2007-isnie-draft (backtest bibliography): Draft whose Table 1 gives the plan''s property/earnings dates (opened per plans/backtest-mwpa.md [F]). Title of the draft assumed equal to the 2012 article''s: not confirmed. Dates superseded by Geddes & Tennyson 2013 (corrected) and the 2012 published version.'
 - id: khan-1996
   type: secondary
-  title: "Married Women's Property Laws and Female Commercial Activity"
-  author: [Khan]
+  title: 'Married Women''s Property Laws and Female Commercial Activity: Evidence from United States Patent Records, 1790-1895'
+  author: [Khan, B. Zorina]
   year: 1996
-  container: null
+  container: 'Journal of Economic History 56(2): 356-388'
   jurisdiction: null
   url: https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf
-  note: "Table 1 (sole-trader dates); container (journal) and given name not in repo text"
+  note: 'Table 1 (sole-trader dates); container (journal) and given name not in repo text | merged from khan-1996-jeh-patents (backtest bibliography): Table 1 = sole-trader dates and the ME 1844 / MA 1874 / IL 1861 alternatives (opened per plans/backtest-mwpa.md [F]). Container/pages from RePEc lead; DOI 10.1017/S002205070001648X.'
 - id: chused-1984
   type: secondary
-  title: null
-  author: [Chused]
+  title: '[Chused 1984, article on the Oregon Donation Act and federal married women''s property law; exact title unconfirmed]'
+  author: [Chused, Richard H.]
   year: 1984
   container: null
   jurisdiction: null
   url: https://core.ac.uk/download/230496986.pdf
-  note: "title and container not in repo text"
+  note: 'title and container not in repo text | merged from chused-1984-oregon-donation (backtest bibliography): Opened per plans/backtest-mwpa.md [F] (1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; cites Chused 1983 at 1400). A lead describes it as Chused''s 1984 article on the Oregon Donation Act / federal married women''s property law; title and container (recalled: Law and History Review 2) not confirmed: null.'
 - id: chused-1983
   type: secondary
-  title: null
-  author: [Chused]
+  title: 'Married Women''s Property Law: 1800-1850'
+  author: [Chused, Richard H.]
   year: 1983
-  container: null
+  container: 'Georgetown Law Journal 71: 1359'
   jurisdiction: null
-  url: null
-  note: "title, container and URL not in repo text; cited via Chused 1984 (at 1400); PDF refused"
+  url: https://digitalcommons.nyls.edu/fac_articles_chapters/280
+  note: 'title, container and URL not in repo text; cited via Chused 1984 (at 1400); PDF refused | merged from chused-1983-geo-lj (backtest bibliography): Not opened (PDF refused in an earlier session). Citation from several agreeing leads; the NYLS repository page (a lead) dates it 1982 and may host a PDF. Pin needed: p. 1400 (courts ''narrowly construing'' the acts), cited by Chused 1984.'
 
 # ---------------------------------------------------------------- web pages and policies
 - id: wikipedia-kibbutz-communal-child-rearing

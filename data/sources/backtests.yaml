@@ -6,15 +6,6 @@
 # works, merge to one entry (one entry per work).
 
 # ---------------------------------------------------------------- secondary works
-- id: glt-2007-isnie-draft
-  type: secondary
-  title: "Human Capital Accumulation and the Expansion of Women's Economic Rights (conference draft)"
-  author: [Geddes, Rick, Lueck, Dean, Tennyson, Sharon]
-  year: 2007
-  container: "ISNIE 2007 annual conference papers"
-  jurisdiction: null
-  url: https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf
-  note: "Draft whose Table 1 gives the plan's property/earnings dates (opened per plans/backtest-mwpa.md [F]). Title of the draft assumed equal to the 2012 article's: not confirmed. Dates superseded by Geddes & Tennyson 2013 (corrected) and the 2012 published version."
 
 - id: glt-2012-jle
   type: secondary
@@ -36,15 +27,6 @@
   url: https://ideas.repec.org/h/eme/rehizz/s0363-3268(2013)0000029007.html
   note: "Corrected passage dates for 48 states (RePEc abstract opened per plans/backtest-data-inventory.md [F]); full text paywalled at https://emerald.com/insight/content/doi/10.1108/S0363-3268(2013)0000029007. Page range from search leads. No open copy found."
 
-- id: khan-1996-jeh-patents
-  type: secondary
-  title: "Married Women's Property Laws and Female Commercial Activity: Evidence from United States Patent Records, 1790-1895"
-  author: [Khan, B. Zorina]
-  year: 1996
-  container: "Journal of Economic History 56(2): 356-388"
-  jurisdiction: null
-  url: https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf
-  note: "Table 1 = sole-trader dates and the ME 1844 / MA 1874 / IL 1861 alternatives (opened per plans/backtest-mwpa.md [F]). Container/pages from RePEc lead; DOI 10.1017/S002205070001648X."
 
 - id: geddes-lueck-2002-self-ownership
   type: secondary
@@ -56,25 +38,7 @@
   url: https://sfu.ca/~allen/LueckGeddes.PDF
   note: "Opened per plans/backtest-mwpa.md [F] (adoption model: wealth, urbanisation; 0/27 states 1840, 30/38 by 1880). Title from a search-result title; container recalled as American Economic Review 92(4), not confirmed: null until checked."
 
-- id: chused-1983-geo-lj
-  type: secondary
-  title: "Married Women's Property Law: 1800-1850"
-  author: [Chused, Richard H.]
-  year: 1983
-  container: "Georgetown Law Journal 71: 1359"
-  jurisdiction: null
-  url: https://digitalcommons.nyls.edu/fac_articles_chapters/280
-  note: "Not opened (PDF refused in an earlier session). Citation from several agreeing leads; the NYLS repository page (a lead) dates it 1982 and may host a PDF. Pin needed: p. 1400 (courts 'narrowly construing' the acts), cited by Chused 1984."
 
-- id: chused-1984-oregon-donation
-  type: secondary
-  title: "[Chused 1984, article on the Oregon Donation Act and federal married women's property law; exact title unconfirmed]"
-  author: [Chused, Richard H.]
-  year: 1984
-  container: null
-  jurisdiction: null
-  url: https://core.ac.uk/download/230496986.pdf
-  note: "Opened per plans/backtest-mwpa.md [F] (1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; cites Chused 1983 at 1400). A lead describes it as Chused's 1984 article on the Oregon Donation Act / federal married women's property law; title and container (recalled: Law and History Review 2) not confirmed: null."
 
 - id: goldin-1986-nber-c9688
   type: secondary

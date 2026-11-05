@@ -20,8 +20,8 @@ Order: the items that settle the most events first.
 
 ### 2. GLT 2007 draft and Khan 1996: re-open and keep excerpts — upgrades every `recalled` item
 
-- [ ] https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf, Table 1. Record an excerpt (the table row) per state on each `glt-2007-isnie-draft` item. For MD, look at the page image, not the text layer: is the earnings year really 1842? (resolves the "OCR-suspect" flag on MD-earnings).
-- [ ] https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf, Table 1 and its notes. Excerpt per state on each `khan-1996-jeh-patents` item. Look for: whether ME 1844 codes the 1844 property act as a sole-trader act (ME-sole_trader note); what Khan's MA 1874 and IL 1861 earnings dates refer to; Khan's MS treatment of 1839 (MS-property); whether PA's 1718 feme-sole-trader act is excluded by design (PA-sole_trader note; recalled, not searched).
+- [ ] https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf, Table 1. Record an excerpt (the table row) per state on each `geddes-lueck-tennyson-2007` item. For MD, look at the page image, not the text layer: is the earnings year really 1842? (resolves the "OCR-suspect" flag on MD-earnings).
+- [ ] https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf, Table 1 and its notes. Excerpt per state on each `khan-1996` item. Look for: whether ME 1844 codes the 1844 property act as a sole-trader act (ME-sole_trader note); what Khan's MA 1874 and IL 1861 earnings dates refer to; Khan's MS treatment of 1839 (MS-property); whether PA's 1718 feme-sole-trader act is excluded by design (PA-sole_trader note; recalled, not searched).
 - Settles: nothing alone (both are secondary and they disagree where it matters), but turns `recalled` into `opened` so that item 1 plus one of these can settle the non-conflict events.
 
 ### 3. Maine (ME-property conflict 1855 vs 1844; ME-earnings; ME-sole_trader)

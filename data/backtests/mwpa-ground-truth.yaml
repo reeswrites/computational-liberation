@@ -13,7 +13,7 @@ events:
   date_used: 1871
   status: conflict
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-MS
     effective_date: null
@@ -23,7 +23,7 @@ events:
     url: null
     note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
     date_reported: 1871
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-MS
     effective_date: null
@@ -44,7 +44,7 @@ events:
   date_used: 1871
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-MS
     effective_date: null
@@ -60,7 +60,7 @@ events:
   date_used: 1871
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-MS
     effective_date: null
@@ -76,7 +76,7 @@ events:
   date_used: 1855
   status: conflict
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-ME
     effective_date: null
@@ -86,7 +86,7 @@ events:
     url: null
     note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
     date_reported: 1855
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-ME
     effective_date: null
@@ -138,7 +138,7 @@ events:
   date_used: 1857
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-ME
     effective_date: null
@@ -172,7 +172,7 @@ events:
   date_used: 1844
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-ME
     effective_date: null
@@ -190,7 +190,7 @@ events:
   date_used: 1845
   status: conflict
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-MA
     effective_date: null
@@ -239,7 +239,7 @@ events:
   date_used: 1846
   status: conflict
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-MA
     effective_date: null
@@ -249,7 +249,7 @@ events:
     url: null
     note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
     date_reported: 1846
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-MA
     effective_date: null
@@ -297,7 +297,7 @@ events:
   date_used: 1860
   status: conflict
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-MA
     effective_date: null
@@ -329,7 +329,7 @@ events:
   date_used: 1848
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-NY
     effective_date: null
@@ -359,7 +359,7 @@ events:
   date_used: 1860
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-NY
     effective_date: null
@@ -390,7 +390,7 @@ events:
   date_used: 1860
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-NY
     effective_date: null
@@ -419,7 +419,7 @@ events:
   date_used: 1860
   status: conflict
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-NY
     effective_date: null
@@ -471,7 +471,7 @@ events:
   date_used: 1848
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-PA
     effective_date: null
@@ -503,7 +503,7 @@ events:
   date_used: 1872
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-PA
     effective_date: null
@@ -533,7 +533,7 @@ events:
   date_used: null
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-PA
     effective_date: null
@@ -552,7 +552,7 @@ events:
   date_used: 1850
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-WI
     effective_date: null
@@ -568,7 +568,7 @@ events:
   date_used: 1872
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-WI
     effective_date: null
@@ -584,7 +584,7 @@ events:
   date_used: null
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-WI
     effective_date: null
@@ -601,7 +601,7 @@ events:
   date_used: 1852
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-NJ
     effective_date: null
@@ -617,7 +617,7 @@ events:
   date_used: 1874
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-NJ
     effective_date: null
@@ -633,7 +633,7 @@ events:
   date_used: 1874
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-NJ
     effective_date: null
@@ -649,7 +649,7 @@ events:
   date_used: 1860
   status: conflict
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-MD
     effective_date: null
@@ -700,7 +700,7 @@ events:
   date_used: 1842
   status: conflict
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-MD
     effective_date: null
@@ -749,7 +749,7 @@ events:
   date_used: 1860
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-MD
     effective_date: null
@@ -770,7 +770,7 @@ events:
   date_used: 1861
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-OH
     effective_date: null
@@ -787,7 +787,7 @@ events:
   date_used: 1861
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-OH
     effective_date: null
@@ -803,7 +803,7 @@ events:
   date_used: null
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-OH
     effective_date: null
@@ -820,7 +820,7 @@ events:
   date_used: 1861
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-IL
     effective_date: null
@@ -852,7 +852,7 @@ events:
   date_used: 1869
   status: conflict
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-IL
     effective_date: null
@@ -862,7 +862,7 @@ events:
     url: null
     note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
     date_reported: 1869
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-IL
     effective_date: null
@@ -897,7 +897,7 @@ events:
   date_used: 1874
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-IL
     effective_date: null
@@ -928,7 +928,7 @@ events:
   date_used: 1872
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-CA
     effective_date: null
@@ -945,7 +945,7 @@ events:
   date_used: 1872
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-CA
     effective_date: null
@@ -961,7 +961,7 @@ events:
   date_used: 1872
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-CA
     effective_date: null
@@ -977,7 +977,7 @@ events:
   date_used: 1879
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-IN
     effective_date: null
@@ -993,7 +993,7 @@ events:
   date_used: 1879
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-IN
     effective_date: null
@@ -1009,7 +1009,7 @@ events:
   date_used: null
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-IN
     effective_date: null
@@ -1026,7 +1026,7 @@ events:
   date_used: 1913
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-TX
     effective_date: null
@@ -1043,7 +1043,7 @@ events:
   date_used: 1913
   status: unresolved
   provenance:
-  - source_id: glt-2007-isnie-draft
+  - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: US-TX
     effective_date: null
@@ -1059,7 +1059,7 @@ events:
   date_used: null
   status: unresolved
   provenance:
-  - source_id: khan-1996-jeh-patents
+  - source_id: khan-1996
     pin: Table 1
     jurisdiction: US-TX
     effective_date: null
