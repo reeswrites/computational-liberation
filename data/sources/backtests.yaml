@@ -3,7 +3,8 @@
 # Fields are filled only where an earlier opened read (plans/backtest-mwpa.md [F]) or several
 # agreeing search leads support them; otherwise null with a note. Ids carry a distinguishing
 # tail so they do not collide with ids in rules.yaml; if rules.yaml also lists one of these
-# works, merge to one entry (one entry per work).
+# works, merge to one entry (one entry per work). Merged into rules.yaml so far: GLT 2007 draft,
+# Khan 1996, Chused 1983, Chused 1984, NY Laws 1848 ch. 200 (now ny-mwpa-1848).
 
 # ---------------------------------------------------------------- secondary works
 
@@ -114,15 +115,6 @@
   jurisdiction: US-MA
   url: null
   note: "Lead. St. 1874 c. 184 s. 1 (presumption that a married woman's labour for others is on her separate account) per Hawkins v. Providence & Worcester R.R., 119 Mass. 596 (1876): https://hallapproved.com/ma/cases/supreme/1876/6544714/."
-
-- id: us-ny-laws-1848-ch200
-  type: statute
-  title: "An Act for the more effectual protection of the property of married women"
-  year: 1848
-  container: "Laws of the State of New York, 71st session, 1848"
-  jurisdiction: US-NY
-  url: https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-chap-200.pdf
-  note: "Lead. Passed 7 April 1848 per several summaries; the title wording varies between the published title and page header. Transcription (course site); official scan candidate: NY State Archives https://digitalcollections.archives.nysed.gov/index.php/Detail/objects/10821."
 
 - id: us-ny-laws-1860-ch90
   type: statute

@@ -64,7 +64,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `cal-civ-655` (s. 655; US-CA; date n/a): **opened** 2026-11-04: "There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals"
 - `cal-civ-663` (s. 663; US-CA; date n/a): **opened** 2026-11-04: "Every kind of property that is not real is personal"
 - `cal-civ-658` (s. 658; US-CA; date n/a): **recalled**
-- `ri-gen-laws-4-13-41` (s. 4-13-41; US-RI; date 2001): **recalled**
+- `ri-gen-laws-4-13-41` (s. 4-13-41; US-RI; date n/a): **recalled**
 
 **R2**
 

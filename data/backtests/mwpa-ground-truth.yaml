@@ -5,13 +5,15 @@
 # (summaries, not source text) and sit at `unverified`; they add no weight, they only say
 # where to look and flag conflicts. No event is `settled`. Worklist: plans/sourcing-worklist-mwpa.md.
 # date_used = the date the backtest currently uses (the plan's table); null where the plan has none.
+# An item's `jurisdiction` names the state whose date the item reports (for a secondary work's table
+# row too); in rule provenance a secondary work's jurisdiction is null (it governs nothing).
 backtest: mwpa
 events:
 - id: MS-property
   jurisdiction: US-MS
   event: property
   date_used: 1871
-  status: conflict
+  status: unresolved
   provenance:
   - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
@@ -32,12 +34,15 @@ events:
     accessed: null
     url: null
     note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded; the plan records that Khan names
-      the 1839 act (it shielded slave property from husbands' creditors) and excludes it as debt relief;
-      Khan's own MS property date is not recorded in the plan
-    date_reported: 1839
-  conflict_note: 'Classification, not a misprint: 1839 is the creditor-exemption form (Capture; entry
-    mwpa-creditor-exemption), 1871 (GLT) the property act proper (mwpa-property). The backtest uses 1871.
-    Open GLT/G&T and Khan to confirm both readings.'
+      the 1839 act (it shielded slave property from husbands' creditors) and excludes it as debt relief,
+      so 1839 is not a date Khan reports for a property act; Khan's own MS property date is not recorded
+      in the plan (open Table 1 to fill date_reported)
+    date_reported: null
+  note: 'Was `conflict` (1871 vs 1839) until the 2026-11-05 review (finding 5): 1839 was attributed to
+    Khan, who excludes it. Only GLT reports a date, so the event is unresolved, not settled. Candidate
+    reading kept for the worklist: 1839 is the creditor-exemption form (Capture; entry mwpa-creditor-exemption),
+    1871 (GLT) the property act proper (mwpa-property). The backtest uses 1871. Open GLT/G&T and Khan
+    Table 1 to confirm.'
 - id: MS-earnings
   jurisdiction: US-MS
   event: earnings
@@ -339,7 +344,7 @@ events:
     url: null
     note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
     date_reported: 1848
-  - source_id: us-ny-laws-1848-ch200
+  - source_id: ny-mwpa-1848
     pin: ch. 200
     jurisdiction: US-NY
     effective_date: null

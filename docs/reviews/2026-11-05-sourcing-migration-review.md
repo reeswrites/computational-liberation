@@ -120,3 +120,40 @@ Mechanical checks:
   - Its claim "no row was upgraded" holds at row level but not at item level (finding 1).
 
 The migration did what the standard asks in the part that matters most: every level is read off the row's own words and nothing was lifted from memory. The new problems are in the layer meant to make that checkable. A hand-override table described as "lower only" contains raises, and one of them is not licensed by its string. An `opened` label on the kibbutz rows certifies an excerpt that does not state the rule. The CI cannot see a non-verbatim excerpt, a silent conflict, or two authorless works "agreeing". Fix 1-5 in the data, and add tests for 7a, 7b, 7c and 7e before checks 4 and 5 are promoted to hard. Promotion makes `opened` count toward `supported`, and that is where these gaps would start to change claims.
+
+## Fix pass (2026-11-05)
+
+Done in the working tree of the same branch, offline (network fetches blocked), so nothing was opened and no level was raised from a reading. Data changes go through `migrate_provenance.py` (OVERRIDES / RAISES) and a rerun; the rerun is idempotent, `build.py --check` passes, `institutions.json` is unchanged, cards rebuilt, `uv run pytest -q` passes.
+
+1. **Fixed.** footbinding R4 and R10: `mackie-1996` is `recalled`, `accessed: null`, no excerpt; the note quotes the row's "abstract [F]" clause. On R10 this is still above the heuristic's `unverified`, and is listed in RAISES (the UNVERIFIED belongs to the reconstructed rule, which has its own null item).
+2. **Fixed.** kibbutz-childrens-house: R4 keeps `opened` with its own excerpt ("lived in the children's house, where they had communal sleeping arrangements"). R1, R3 and R5 are `recalled` for the rule: the page was read, but no quoted passage states the rule. The quotes are kept in the note. R1 (the committee's assignment) and R5 (a male member's visit; the quote runs the other way) each gain a `source_id: null` unverified item. No passage in the strings states R1, R3 or R5. Own rows whose weakest item is `opened`: 7 -> 4.
+3. **Fixed.** The docstring now says what the hand layer does. A new `RAISES` table in the script lists the 11 items in 6 rows that hand settings set above the heuristic, each with the licensing clause of its row's string: police R7 5150(a) (absent -> recalled), companion-ownership and companion-guardian-renamed R1 Civ. 655 and 663, kibbutz R2 Wikipedia and Kirkus, airline R2 121.571, footbinding R10 two Wikipedia pages and Mackie. `main()` computes the raises and refuses to write if they differ from the table. `--summary` prints them. The migration report has an "Items raised above the heuristic" table, marks each raise in the override table, and has recomputed counts:
+   - own rows: opened 4, recalled 40, unverified 77; 176 items, 57 null;
+   - resolved rows: opened 12, recalled 66, unverified 133; 325 items.
+4. **Fixed.**
+   - Merged into `ny-mwpa-1848` (rules.yaml). The other id was not clearly better named. The merged entry takes the lead-filled title, container (ch. 200) and URL, with a "merged from us-ny-laws-1848-ch200" note.
+   - The backtests.yaml entry is removed. The ground-truth NY-property item and `plans/sourcing-worklist-mwpa.md` now use `ny-mwpa-1848`.
+   - Scan for other duplicates: same url, same (type, year, normalised title), same title alone, same surname set and year. No other pair found. glt-2012-jle and the GLT 2007 draft are two versions, kept apart.
+5. **Fixed.** MS-property: Khan `date_reported: null`, and the note says Khan names the 1839 act and excludes it. Only GLT reports a date, so the status is `unresolved`, not settled. The old conflict text moves to an event `note`. The ground truth is now 8 conflict and 32 unresolved; the worklist and plans/sourcing.md counts are updated.
+6. **Fixed.**
+   - ectogenesis R5 gets a `source_id: null` unverified item for the Kleven finding. The string gives no citation; the lead for one is in plans/sourcing-worklist-other.md, and no entry is added until it is opened.
+   - mwpa-creditor-exemption R11 gets a null item for the Mississippi 1839 act, through a new `append` override that keeps the heuristic's items.
+7. **Fixed.** tests/test_sources.py adds:
+   - (a) every fragment of an `opened` rule excerpt is verbatim, whitespace-normalised, in the rule's `source`. Ground truth is skipped, since it has no source string.
+   - (b) items reporting different dates (a year and a full date in that year count as the same) require `conflict` plus a `conflict_note`.
+   - (c) independence uses normalised surname sets. A string author is one name. A list entry contributes its part before a comma, or its first element if the entry is itself a list. A missing author is never independent.
+   - (d) a primary item settles only an event of its own jurisdiction (the item's, else the entry's), and the event must name one.
+   - (e) a warning, not a failure, on the same url or the same (type, year, normalised title).
+
+   Each has a synthetic fixture test. One caveat on (c): the repo's flat `[Surname, Given, ...]` author lists put given names into the set. That only makes the check stricter. A list-of-lists author format would remove the ambiguity, and is left for the author to decide.
+8. **Fixed.** `effective_date` is null for uk-mwpa-1882 (R16), ny-mwpa-1848 (R13) and ri-gen-laws-4-13-41 (companion-guardian-renamed R1), because the strings give short-title or session-law years. The Alaska date stays: its string says "eff. 2017-01-17".
+9. **Partly.** uk-mwpa-1882 stays `UK`, because its citation (ukpga) names the UK and Blackstone's names England. The convention ("the jurisdiction the citation names") is now stated in the report, and the item note says "UK act" instead of "English (UK)". The Act's territorial extent is not in repo text and was not changed from memory.
+10. **Fixed.** airline R2 `cfr-14-121-391` is `recalled` with the quote and URL in the note. The string records "read at <url>" but no date, and 121.571's date is not borrowed. This is added to the cheapest-upgrade list.
+11. **Fixed.** police-crisis R7's excerpt now includes "The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment".
+12. **Not changed (documented).** In ground truth, an item's `jurisdiction` names the state whose date it reports, for a secondary work's table row too. The ground-truth header now says so. NY-suit's GLT 1860 was already disclosed in its note.
+13. **Fixed.** The rules.yaml header now says the five merged entries carry lead-filled fields. The notes that said "not in repo text" next to a filled field now say it was filled at the merge. The report's "Bibliography gaps" list is corrected, with a separate list of lead-filled fields.
+14. **Partly.**
+    - kibbutz R6 gets a null item for the implicit rule.
+    - creditor-exemption R12's Blackstone pin is null, with "Bk I ch 15" noted as inferred.
+    - The Berkeley policy's type and jurisdiction are not changed: choosing a type and jurisdiction for a city library policy is the author's call, and no level depends on it.
+15. **Not changed, as asked.** Upgrades need a re-open. The list is copied into plans/sourcing-verify-session.md as "Cheapest upgrades", plus the rows this pass lowered: airline R2 121.391, kibbutz R1, R3, R5, and Mackie on footbinding R4 and R10.

@@ -179,6 +179,15 @@ rules:
     accessed: null
     url: null
     note: 'no work named for this rule; rationale: implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED dec...'
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: '''the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it)'': the reason for the female trigger; the row gives no citation and none is in the bibliography (a search lead for it is in plans/sourcing-worklist-other.md: add an entry and upgrade when opened)'
   choices: 'Until 2026-11-04 the or_else was R6 (the registry reprimands a non-caring mother): a sanction invented by the encoder on 2026-11-04 with nothing behind it, removed on the card-seat finding. Under strict compliance the verdicts do not depend on it.'
 - id: R6
   plain: 'The registry may reprimand at any time (the sanction for R3).'

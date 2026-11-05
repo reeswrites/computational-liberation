@@ -101,19 +101,20 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `chused-1984` (date n/a): **recalled**
 - `chused-1983` (at 1400; date n/a): **unverified**
 - `khan-1996` (Table 1; date n/a): **recalled**
+- no work named: **unverified** (the Mississippi 1839 act the row names ('Mississippi 1839 shielded property from husbands' creditors; Khan excludes it as debt relief') is named only through Khan 1996; statute text not opened; no bibliography entry)
 
 <a id="src-r12"></a>
 **R12**: implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed
 
 - `chused-1984` (date n/a): **recalled**
 - `chused-1983` (at 1400; date n/a): **unverified**
-- `blackstone-1765-bk1-ch15` (Bk I ch 15; England; date n/a): **recalled**
+- `blackstone-1765-bk1-ch15` (England; date n/a): **recalled**
 - no work named: **unverified** (the conveyance to the wife as a rule of the 1839-50 acts: UNVERIFIED (general knowledge; no source opened))
 
 <a id="src-r13"></a>
 **R13**: New York Married Women's Property Act 1848 (the statute text itself not opened: [R] UNVERIFIED; dates from Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md]); Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (property acts: the wife holds and controls property acquired by gift or inheritance as if a feme sole). Conditioned on (not narrowed): a narrow construction (BL entry, R17) re-disables the power. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_own_property(w) = hold_property enabled (R13)
 
-- `ny-mwpa-1848` (US-NY; date 1848): **unverified**
+- `ny-mwpa-1848` (US-NY; date n/a): **unverified**
 - `geddes-lueck-tennyson-2007` (Table 1; date n/a): **recalled**
 
 <a id="src-r17"></a>

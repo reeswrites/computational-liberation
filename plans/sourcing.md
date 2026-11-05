@@ -72,10 +72,11 @@ events:
 
 Hard (fail now):
 1. Every `source_id` in rule provenance and ground truth exists in `data/sources/`; bibliography ids unique; required fields present; `type` and `verification` in the vocabularies.
-2. `opened` requires a non-empty `excerpt`.
-3. A ground-truth event with `status: settled` has a `date_used` backed by one `opened` item reporting that date, or two `opened` items from independent secondary works agreeing on it. Conflicts stay `conflict`, recorded, not silently resolved.
+2. `opened` requires a non-empty `excerpt`; on a rule, the excerpt (each " ... " fragment) appears verbatim, whitespace-normalised, in the rule's `source` string.
+3. A ground-truth event with `status: settled` has a `date_used` backed by one `opened` primary item of the event's jurisdiction reporting that date, or two `opened` items from independent secondary works agreeing on it (independent: both name authors, no shared surname; a work with no author is never independent). Conflicts stay `conflict`, recorded, not silently resolved: an event whose items report different dates must be `conflict` with a `conflict_note`.
 
 Report-only until migration is reviewed (warn, then promote to hard):
+- (1e) two bibliography entries with the same url, or the same type, year and normalised title (one work under two ids).
 4. Every rule has `provenance`.
 5. A `supported` claim in `docs/claims.md` whose `sources` cell names a rule row below `opened`.
 
@@ -87,7 +88,7 @@ So L1 rests on nine rows, and the only one carrying `UNVERIFIED` is **coverture 
 
 ## Order of work
 
-1. done 2026-11-05: this file; bibliography (`data/sources/rules.yaml` 49 works, `backtests.yaml` 21 more); provenance on every rule via `data/institutions/migrate_provenance.py` (resolved rows: opened 18, snippet 0, recalled 64, unverified 129; nothing upgraded; report `data/institutions/provenance-migration-report.md`); build strip + cards; `tests/test_sources.py`; ADR 0017 (proposed); `Sources` column in `docs/claims.md`; MWPA ground truth (40 events: 9 conflict, 31 unresolved); worklists; `plans/sourcing-verify-session.md` (the brief for a session that can open pages).
+1. done 2026-11-05: this file; bibliography (`data/sources/rules.yaml` 49 works, `backtests.yaml` 21 more, 20 after the NY 1848 merge); provenance on every rule via `data/institutions/migrate_provenance.py` (resolved rows: opened 18, snippet 0, recalled 64, unverified 129; nothing upgraded; after the council review's fix pass, `docs/reviews/2026-11-05-sourcing-migration-review.md`: opened 12, snippet 0, recalled 66, unverified 133; report `data/institutions/provenance-migration-report.md`); build strip + cards; `tests/test_sources.py`; ADR 0017 (proposed); `Sources` column in `docs/claims.md`; MWPA ground truth (40 events: 9 conflict, 31 unresolved; 8 / 32 after the review fix to MS-property); worklists; `plans/sourcing-verify-session.md` (the brief for a session that can open pages).
 2. Coverture R6 (load-bearing for L1 and inherited by every mwpa-* entry; see above). MWPA verification worklist (`plans/sourcing-worklist-mwpa.md`) and ground-truth file; open sources; resolve ME/MA/IL/MD; replace English sources in the US chain or split UK entries; record drift if any rule changes.
 3. Police / CPS practice norms (R1, R5, R6 the match reads); kibbutz (Spiro, Gavron); footbinding (Mackie), naming-convention (Centola); `docs/theory.md` uncited facts (`plans/sourcing-worklist-other.md`).
 4. Council: honesty of the migration (no row upgraded), and after verification a sampled check of `opened` rows against their excerpts.

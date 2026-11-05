@@ -2,6 +2,11 @@
 # Contract: plans/sourcing.md (one entry per work; ids unique across every data/sources/*.yaml).
 # Built 2026-11-05 from the repo's own text only: nothing here was opened in that session. A field the repo text
 # does not give (a given name, a title, a URL, a year) is null, and the note says "not in repo text".
+# Exception: the five entries merged from data/sources/backtests.yaml (geddes-lueck-tennyson-2007, khan-1996,
+# chused-1984, chused-1983, ny-mwpa-1848) carry fields that backtests.yaml filled from search leads or an earlier
+# batch's [F] read (titles, given names, containers, pages, URLs). Their notes say which, after "| merged from";
+# where a note's first part says "not in repo text", the field was filled at the merge from that lead, not from repo
+# text. A lead is not a reading: treat those fields as unconfirmed until the work is opened.
 # Author lists give surnames only where the repo gives no given name.
 
 # ---------------------------------------------------------------- treatises and secondary works
@@ -121,7 +126,7 @@
   container: ISNIE 2007 annual conference papers
   jurisdiction: null
   url: https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf
-  note: '2007 draft (ISNIE archive); title not in repo text; Table 1 dates of property / earnings acts; corrected dates in Geddes & Tennyson 2013 (paywalled, per plans/backtest-mwpa.md) | merged from glt-2007-isnie-draft (backtest bibliography): Draft whose Table 1 gives the plan''s property/earnings dates (opened per plans/backtest-mwpa.md [F]). Title of the draft assumed equal to the 2012 article''s: not confirmed. Dates superseded by Geddes & Tennyson 2013 (corrected) and the 2012 published version.'
+  note: '2007 draft (ISNIE archive); title not in repo text (filled at the merge, assumed from the 2012 article: see below); Table 1 dates of property / earnings acts; corrected dates in Geddes & Tennyson 2013 (paywalled, per plans/backtest-mwpa.md) | merged from glt-2007-isnie-draft (backtest bibliography): Draft whose Table 1 gives the plan''s property/earnings dates (opened per plans/backtest-mwpa.md [F]). Title of the draft assumed equal to the 2012 article''s: not confirmed. Dates superseded by Geddes & Tennyson 2013 (corrected) and the 2012 published version.'
 - id: khan-1996
   type: secondary
   title: 'Married Women''s Property Laws and Female Commercial Activity: Evidence from United States Patent Records, 1790-1895'
@@ -130,7 +135,7 @@
   container: 'Journal of Economic History 56(2): 356-388'
   jurisdiction: null
   url: https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf
-  note: 'Table 1 (sole-trader dates); container (journal) and given name not in repo text | merged from khan-1996-jeh-patents (backtest bibliography): Table 1 = sole-trader dates and the ME 1844 / MA 1874 / IL 1861 alternatives (opened per plans/backtest-mwpa.md [F]). Container/pages from RePEc lead; DOI 10.1017/S002205070001648X.'
+  note: 'Table 1 (sole-trader dates); container (journal) and given name not in repo text (filled at the merge from a RePEc lead: see below) | merged from khan-1996-jeh-patents (backtest bibliography): Table 1 = sole-trader dates and the ME 1844 / MA 1874 / IL 1861 alternatives (opened per plans/backtest-mwpa.md [F]). Container/pages from RePEc lead; DOI 10.1017/S002205070001648X.'
 - id: chused-1984
   type: secondary
   title: '[Chused 1984, article on the Oregon Donation Act and federal married women''s property law; exact title unconfirmed]'
@@ -139,7 +144,7 @@
   container: null
   jurisdiction: null
   url: https://core.ac.uk/download/230496986.pdf
-  note: 'title and container not in repo text | merged from chused-1984-oregon-donation (backtest bibliography): Opened per plans/backtest-mwpa.md [F] (1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; cites Chused 1983 at 1400). A lead describes it as Chused''s 1984 article on the Oregon Donation Act / federal married women''s property law; title and container (recalled: Law and History Review 2) not confirmed: null.'
+  note: 'title and container not in repo text (title is descriptive; container null; given name filled at the merge from leads) | merged from chused-1984-oregon-donation (backtest bibliography): Opened per plans/backtest-mwpa.md [F] (1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; cites Chused 1983 at 1400). A lead describes it as Chused''s 1984 article on the Oregon Donation Act / federal married women''s property law; title and container (recalled: Law and History Review 2) not confirmed: null.'
 - id: chused-1983
   type: secondary
   title: 'Married Women''s Property Law: 1800-1850'
@@ -148,7 +153,7 @@
   container: 'Georgetown Law Journal 71: 1359'
   jurisdiction: null
   url: https://digitalcommons.nyls.edu/fac_articles_chapters/280
-  note: 'title, container and URL not in repo text; cited via Chused 1984 (at 1400); PDF refused | merged from chused-1983-geo-lj (backtest bibliography): Not opened (PDF refused in an earlier session). Citation from several agreeing leads; the NYLS repository page (a lead) dates it 1982 and may host a PDF. Pin needed: p. 1400 (courts ''narrowly construing'' the acts), cited by Chused 1984.'
+  note: 'title, container and URL not in repo text (filled at the merge from several agreeing leads: see below); cited via Chused 1984 (at 1400); PDF refused | merged from chused-1983-geo-lj (backtest bibliography): Not opened (PDF refused in an earlier session). Citation from several agreeing leads; the NYLS repository page (a lead) dates it 1982 and may host a PDF. Pin needed: p. 1400 (courts ''narrowly construing'' the acts), cited by Chused 1984.'
 
 # ---------------------------------------------------------------- web pages and policies
 - id: wikipedia-kibbutz-communal-child-rearing
@@ -418,9 +423,9 @@
   note: "a UK Public General Act (ukpga); territorial extent not in repo text. Cited in the US MWPA chain (mwpa-suit R16): jurisdiction mismatch, see data/institutions/provenance-migration-report.md"
 - id: ny-mwpa-1848
   type: statute
-  title: "New York Married Women's Property Act 1848"
+  title: "An Act for the more effectual protection of the property of married women"
   year: 1848
-  container: null
+  container: "Laws of the State of New York, 71st session, 1848, ch. 200"
   jurisdiction: US-NY
-  url: null
-  note: "title as cited in repo text; chapter number and URL not in repo text; statute text not opened"
+  url: https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-chap-200.pdf
+  note: "cited in repo text as 'New York Married Women's Property Act 1848'; title, chapter and URL not in repo text (filled at the merge from leads: see below); statute text not opened | merged from us-ny-laws-1848-ch200 (backtest bibliography): Lead. Passed 7 April 1848 per several summaries; the title wording varies between the published title and page header. Transcription (course site); official scan candidate: NY State Archives https://digitalcollections.archives.nysed.gov/index.php/Detail/objects/10821."

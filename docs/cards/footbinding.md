@@ -75,7 +75,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `wikipedia-tian-zu-hui` (date n/a): **recalled**
 - `wikipedia-heavenly-foot-society` (date n/a): **recalled**
 - `wikipedia-foot-emancipation-society` (date n/a): **recalled**
-- `mackie-1996` (abstract; date n/a): **snippet** 2026-11-04
+- `mackie-1996` (abstract; date n/a): **recalled**
 
 <a id="src-r10"></a>
 **R10**: the son half of the anti-footbinding pledge (ADR 0015 A3 stand-in: `accept_match_pledge` is the pledge for `accept_match`, i.e. the suitor family commits to marry its sons to unbound women): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(suitor), read by R5 (lifts the rejection) and R6 (accepts the unbound bride). Added 2026-11-04 after the encoding review (finding 2: Mackie's pool is made by pledged SUITOR families). implicit: the rule is reconstructed, no text says a suitor 'may' pledge. Superadditive like R4. UNVERIFIED (reconstructed from the convention account; no primary text opened)
@@ -83,7 +83,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `wikipedia-tian-zu-hui` (date n/a): **recalled**
 - `wikipedia-heavenly-foot-society` (date n/a): **recalled**
 - `wikipedia-foot-emancipation-society` (date n/a): **recalled**
-- `mackie-1996` (abstract; date n/a): **snippet** 2026-11-04
+- `mackie-1996` (abstract; date n/a): **recalled**
 - no work named: **unverified** (implicit: no text says a suitor 'may' pledge; reconstructed from the convention account: UNVERIFIED)
 
 <a id="src-r5"></a>

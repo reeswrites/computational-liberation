@@ -268,7 +268,7 @@ rules:
     jurisdiction: US-CA
     effective_date: null
     verification: opened
-    excerpt: A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted ... A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment
+    excerpt: A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted ... The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment ... A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment
     accessed: '2026-11-04'
     url: https://california.public.law/codes/ca_welf_and_inst_code_section_5152
     note: leginfo.legislature.ca.gov returned 403

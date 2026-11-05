@@ -20,4 +20,13 @@ Order:
 4. Police/CPS rows flagged as possibly wrong: cps R1 (Penal Code 11165.14 pin), cps R8 (counsel appointed on petition, not investigation; 317(c)(1) exception), cps R11 (WIC 388(a)(1) "himself or herself"), police R8 (WIC 5275 as amended 2023; set effective_date).
 5. Kibbutz R2/R6, footbinding (Mackie 1996), naming-convention (Centola et al. 2018), theory.md items.
 
+Cheapest upgrades (rows rated lower than their string arguably supports, from the council review of 2026-11-05, `docs/reviews/2026-11-05-sourcing-migration-review.md` finding 15; each is correct under the strict row-only rule, and each costs one re-open, so do them while the page is open for the order above):
+- coverture-household R2, R4, R7: Bk I ch 15 is `recalled`, though the entry's `source_text` quotes it and says it was checked. R2 is one of the nine rows L1 rests on.
+- kibbutz-childrens-house R2: Wikipedia is `recalled`, though the row quotes the sentence R1's row records reading on 2026-11-03 (load-bearing).
+- companion-guardianship R9: Alaska 25.24.160(a)(5) is `unverified` though the row quotes the statute; the row's UNVERIFIED covers the generalisation, which has its own null item, so the statute item can go up once the quote is confirmed.
+- public-library R2, R3, R5: the Berkeley policy is `recalled` (quotes, no read date in the row).
+- naming-convention R1, R2: Centola et al. is `unverified` ("cited from memory" means `recalled`; "UNVERIFIED as a quotation" governs a quote the row does not use).
+- Rows that quote with a URL but no read date: companion R3/R4 (Penal 597s), cps R3/R4/R10 (WIC 306), police R2/R3/R4 (WIC 5150), lease R2 (Civ. 1941). L24 says 597s and 5150 were fetched in an earlier batch.
+- Added by the fix pass (2026-11-05): airline-flight R2, 14 CFR 121.391 (quoted with a URL, no read date: now `recalled`); kibbutz-childrens-house R1, R3, R5 (Wikipedia read 2026-11-03, but the quoted passages do not state these rules: quote a passage that does, or leave them `recalled`); footbinding R4 / R10 (Mackie: open the article body for the "two-part pledge" and "critical mass" readings).
+
 Finish with: per-level counts before/after, the faithfulness findings, any preregistered rule change and its run, and a council seat (fresh agent) that samples ten `opened` rows at random and checks each excerpt against the source.

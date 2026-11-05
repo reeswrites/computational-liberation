@@ -17,12 +17,12 @@ rules_add:
   - source_id: uk-mwpa-1882
     pin: s. 1(2)
     jurisdiction: UK
-    effective_date: '1882'
+    effective_date: null
     verification: opened
     excerpt: A married woman shall be capable of entering into and rendering herself liable in respect of and to the extent of her separate property on any contract, and of suing and being sued, either in contract or in tort ... in all respects as if she were a feme sole
     accessed: '2026-11-04'
     url: null
-    note: 'an English (UK) act cited in a US chain: jurisdiction mismatch, see the migration report'
+    note: 'a UK act (jurisdiction as its citation, ukpga, names it; territorial extent not in repo text) cited in a US chain: jurisdiction mismatch, see the migration report; effective date not in the string (1882 is the short-title year)'
   - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: null

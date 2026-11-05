@@ -142,11 +142,11 @@ rules:
     pin: s. 121.391
     jurisdiction: US
     effective_date: null
-    verification: opened
-    excerpt: to provide the most effective egress of passengers
+    verification: recalled
+    excerpt: null
     accessed: null
     url: https://www.law.cornell.edu/cfr/text/14/121.391
-    note: read in the same batch as 121.571 (the string gives no separate date); only sets the number of flight attendants
+    note: 'the string says ''read at <url>'' and quotes ''to provide the most effective egress of passengers'' but gives no read date for this section (121.571''s date is not borrowed): recalled, re-open to upgrade (review 2026-11-05, finding 10); only sets the number of flight attendants'
   - source_id: null
     pin: null
     jurisdiction: null

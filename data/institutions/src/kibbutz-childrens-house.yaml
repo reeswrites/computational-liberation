@@ -101,11 +101,20 @@ rules:
     pin: null
     jurisdiction: null
     effective_date: null
-    verification: opened
-    excerpt: The nanny position was always a woman's role. Teacher positions were both for women and men. ... lived in the children's house, where they had communal sleeping arrangements ... visited their parents for 2-3 hours a day
-    accessed: '2026-11-03'
+    verification: recalled
+    excerpt: null
+    accessed: null
     url: null
-    note: ''
+    note: the row records reading the page ('read 2026-11-03') and quotes 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; none of these passages mentions a committee or an assignment, so the page is recalled for this rule (it was read, the rule is not in what was quoted); re-open and quote a passage on staffing the children's house to upgrade
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'the committee''s power to assign a member to the children''s house: stated only in the encoder''s parenthesis (''members are assigned to the children''s house by the committee''); no quoted text states it'
 - id: R2
   plain: '(practice, not written) The committee must not assign a male member to the children''s house, or else the committee may reprimand (R6).'
   attribute: committee
@@ -160,11 +169,11 @@ rules:
     pin: null
     jurisdiction: null
     effective_date: null
-    verification: opened
-    excerpt: The nanny position was always a woman's role. Teacher positions were both for women and men. ... lived in the children's house, where they had communal sleeping arrangements ... visited their parents for 2-3 hours a day
-    accessed: '2026-11-03'
+    verification: recalled
+    excerpt: null
+    accessed: null
     url: null
-    note: ''
+    note: 'the row records reading the page (''read 2026-11-03'') and quotes ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; the quotes say a nanny position existed, not that the assigned metapelet must care for the child (''the metapelet runs the children''s house'' is the encoder''s parenthesis): recalled for this rule; re-open and quote a passage on the metapelet''s duties to upgrade'
   load_bearing: true
 - id: R4
   plain: 'The child cannot sleep at home at any time: no such power exists (communal sleeping in the children''s house).'
@@ -182,7 +191,7 @@ rules:
     jurisdiction: null
     effective_date: null
     verification: opened
-    excerpt: The nanny position was always a woman's role. Teacher positions were both for women and men. ... lived in the children's house, where they had communal sleeping arrangements ... visited their parents for 2-3 hours a day
+    excerpt: lived in the children's house, where they had communal sleeping arrangements
     accessed: '2026-11-03'
     url: null
     note: ''
@@ -201,11 +210,20 @@ rules:
     pin: null
     jurisdiction: null
     effective_date: null
-    verification: opened
-    excerpt: The nanny position was always a woman's role. Teacher positions were both for women and men. ... lived in the children's house, where they had communal sleeping arrangements ... visited their parents for 2-3 hours a day
-    accessed: '2026-11-03'
+    verification: recalled
+    excerpt: null
+    accessed: null
     url: null
-    note: ''
+    note: 'the row records reading the page (''read 2026-11-03'') and quotes ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; ''visited their parents for 2-3 hours a day'' says the children visited the parents, not that a male member may visit the child: recalled for this rule; re-open to upgrade'
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'a male member''s visit to the child (the father''s relation to the children''s house is the visit, not care): the encoder''s reading in the parenthesis; the quoted passage states the reverse direction'
 - id: R6
   plain: '(practice, not written; unverified) The committee may reprimand a member at any time (the sanction for R3 and R2).'
   attribute: committee
@@ -235,6 +253,15 @@ rules:
     accessed: null
     url: null
     note: not opened 2026-11-04 (archive.org 403, Google Books API 429)
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'the rule itself: ''implicit: the committee / general assembly disciplines a member who neglects the rota'' ... UNVERIFIED (general knowledge; no source opened)'
 - id: R8
   plain: '(practice, not written) The metapelet may neglect the child when assigned to the children''s house.'
   attribute: metapelet

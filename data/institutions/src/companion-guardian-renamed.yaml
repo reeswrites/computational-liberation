@@ -192,12 +192,12 @@ rules:
   - source_id: ri-gen-laws-4-13-41
     pin: s. 4-13-41
     jurisdiction: US-RI
-    effective_date: '2001'
+    effective_date: null
     verification: recalled
     excerpt: null
     accessed: null
     url: null
-    note: cited for the role name only, not for this rule; no read record in this row (the entry source_text says read)
+    note: cited for the role name only, not for this rule; no read record in this row (the entry source_text says read); 'P.L. 2001 ch. 72' is the session law, not an effective date
 - id: R2
   plain: 'The guardian may have the animal euthanized when the guardian owns it.'
   attribute: guardian

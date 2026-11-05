@@ -53,7 +53,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 **R2**: 14 CFR 121.571 'Briefing passengers before takeoff', read 2026-11-04 at https://www.law.cornell.edu/cfr/text/14/121.571 (ecfr.gov redirected to a block page): (a) 'shall insure that all passengers are orally briefed by the appropriate crewmember'; (a)(3) a required crewmember assigned to the flight must individually brief each person who may need another person's help to reach an exit. That is a crew duty toward passengers aboard, but narrower than the rule's provides_care (maintenance, services): the general in-flight care duty is UNVERIFIED (no text opened states it; 14 CFR 121.391, read at https://www.law.cornell.edu/cfr/text/14/121.391, only sets the number of flight attendants 'to provide the most effective egress of passengers'). 14 CFR 91.11 / 121.580 dropped 2026-11-04: they only forbid interference with crew. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] board establishes provides_care; attend restores it, withdraw breaks it
 
 - `cfr-14-121-571` (s. 121.571(a), (a)(3); US; date n/a): **opened** 2026-11-04: "shall insure that all passengers are orally briefed by the appropriate crewmember"
-- `cfr-14-121-391` (s. 121.391; US; date n/a): **opened**: "to provide the most effective egress of passengers"
+- `cfr-14-121-391` (s. 121.391; US; date n/a): **recalled**
 - no work named: **unverified** (the general in-flight care duty: UNVERIFIED (no text opened states it))
 
 <a id="src-r3"></a>

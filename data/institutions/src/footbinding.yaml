@@ -200,11 +200,11 @@ rules:
     pin: abstract
     jurisdiction: null
     effective_date: null
-    verification: snippet
+    verification: recalled
     excerpt: null
-    accessed: '2026-11-04'
+    accessed: null
     url: null
-    note: abstract [F] (search-index snippet); this row quotes none of it (the abstract's pledge-association sentence is recorded in R1's source and the entry source_text); the 'two-part pledge' and 'critical mass' readings are from the body, [R]
+    note: 'the row says only ''Mackie 1996 names the same two-part pledge ..., abstract [F]'': an [F] tag relayed with no quote and no read date in this row -> recalled (review 2026-11-05, finding 1; the abstract''s pledge-association sentence is recorded in R1''s source and the entry source_text); the ''two-part pledge'' and ''critical mass'' readings are from the body, [R]'
 - id: R10
   plain: '(practice, not written) A suitor may take the pledge to accept an unbound bride (the sons'' half of the pledge) when the daughter is a subject.'
   attribute: suitor
@@ -247,11 +247,11 @@ rules:
     pin: abstract
     jurisdiction: null
     effective_date: null
-    verification: snippet
+    verification: recalled
     excerpt: null
-    accessed: '2026-11-04'
+    accessed: null
     url: null
-    note: abstract [F] (search-index snippet); this row quotes none of it (the abstract's pledge-association sentence is recorded in R1's source and the entry source_text); the 'two-part pledge' and 'critical mass' readings are from the body, [R]
+    note: 'the row says only ''Mackie 1996 names the same two-part pledge ..., abstract [F]'': an [F] tag relayed with no quote and no read date in this row -> recalled (review 2026-11-05, finding 1; the abstract''s pledge-association sentence is recorded in R1''s source and the entry source_text); the ''two-part pledge'' and ''critical mass'' readings are from the body, [R]'
   - source_id: null
     pin: null
     jurisdiction: null
