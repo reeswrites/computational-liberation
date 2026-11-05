@@ -22,6 +22,25 @@ rules_add:
   strand: rival
   implicit: false
   source: 'Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED) (courts narrowly construed the acts so as to keep husbands'' control during marriage). The narrowing is a one-way act: nothing in the entry un-narrows'
+  provenance:
+  - source_id: chused-1984
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; quote recorded: ''generally contained nothing more than statements exempting married women''s property from the debts of husbands'' ... ''narrowly construing''; re-open to upgrade'
+  - source_id: chused-1983
+    pin: at 1400
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   var_roles:
     w: wife
     h: husband
@@ -35,6 +54,25 @@ rules_add:
   strand: tying
   implicit: false
   source: 'R1 reinstated under narrow construction (the plan''s BL encoding): Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_property(h, w) = control_property enabled (R18)'
+  provenance:
+  - source_id: chused-1984
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; quote recorded: ''generally contained nothing more than statements exempting married women''s property from the debts of husbands'' ... ''narrowly construing''; re-open to upgrade'
+  - source_id: chused-1983
+    pin: at 1400
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   var_roles:
     h: husband
     w: wife

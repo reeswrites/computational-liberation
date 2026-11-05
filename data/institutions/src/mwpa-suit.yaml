@@ -13,6 +13,34 @@ rules_add:
   strand: tying
   implicit: false
   source: 'Married Women''s Property Act 1882 (45 & 46 Vict. c. 75) s. 1(2), read 2026-11-04 at https://www.legislation.gov.uk/ukpga/Vict/45-46/75/section/1/enacted: ''A married woman shall be capable of entering into and rendering herself liable in respect of and to the extent of her separate property on any contract, and of suing and being sued, either in contract or in tort ... in all respects as if she were a feme sole''. Earlier pointer kept: Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (acts giving a married woman the right to sue and be sued in her own name; dates follow the property/earnings acts, e.g. NY 1860). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled: sue is a default capacity (the former R9 ''may sue when not married'' is deleted, revision 4) and R4, the disability, is deleted; R16 is kept as the act''s own express permission'
+  provenance:
+  - source_id: uk-mwpa-1882
+    pin: s. 1(2)
+    jurisdiction: UK
+    effective_date: '1882'
+    verification: opened
+    excerpt: A married woman shall be capable of entering into and rendering herself liable in respect of and to the extent of her separate property on any contract, and of suing and being sued, either in contract or in tort ... in all respects as if she were a feme sole
+    accessed: '2026-11-04'
+    url: null
+    note: 'an English (UK) act cited in a US chain: jurisdiction mismatch, see the migration report'
+  - source_id: geddes-lueck-tennyson-2007
+    pin: Table 1
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade'
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: the US suit provisions the row encodes (e.g. NY 1860) are named only through GLT; statute texts not opened ([R]); no bibliography entry
   var_roles:
     w: wife
     h: husband

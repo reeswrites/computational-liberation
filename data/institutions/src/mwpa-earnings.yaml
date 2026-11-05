@@ -12,6 +12,25 @@ rules_add:
   strand: tying
   implicit: false
   source: 'Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (earnings acts: NY 1860, MA 1846/1874, PA 1872, ...: a married woman''s wages are her separate property). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] owns_earnings(w) = keep_earnings enabled (R14)'
+  provenance:
+  - source_id: geddes-lueck-tennyson-2007
+    pin: Table 1
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade'
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: the statutes the row encodes are named only through the secondary work; statute texts not opened ([R]); no bibliography entry
   var_roles:
     w: wife
     h: husband

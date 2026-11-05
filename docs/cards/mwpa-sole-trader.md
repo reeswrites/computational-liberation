@@ -23,19 +23,19 @@
 
 ## Rules
 
-| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
-|---|---|---|---|---|---|---|---|---|
-| R2 | husband | must | `(provides_care h w)` | `(married h w)` | none | superadditive | The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15). | [full source under Sources, R2](#src-r2) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
-| R3 | wife | must (implicit) | `(provides_care w h)` | `(married h w)` | R5 `(chastise h w)` | superadditive | (practice, not written) The wife providing care to her husband (household labour) must hold when they are married, or else the husband may chastise her (R5). | [full source under Sources, R3](#src-r3) |
-| R4 | wife | must not (disability) | `(sue w)` | `(married h w)` | none | tying | The wife cannot sue in her own name while married: no such power exists (Blackstone I.15). | [full source under Sources, R4](#src-r4) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
-| R5 | husband | may | `(chastise h w)` | `(and (married h w) (misbehaves w))` | none | rival | The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15). | [full source under Sources, R5](#src-r5) https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: |
-| R6 | wife | must not (disability) | `(leave w)` | `(married h w)` | none | rival | The wife cannot leave the marriage while married: no such power exists (no unilateral exit before the Matrimonial Causes Act 1857; unverified). | [full source under Sources, R6](#src-r6) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
-| R10 | creditor | may (implicit) | `(attach c w)` | `(married h w)` | none | rival | (practice, not written) A creditor may attach the wife's property when she is married (it reaches what the husband holds). | [full source under Sources, R10](#src-r10) |
-| R11 | creditor | must not (disability) | `(attach c w)` | `(and (married h w) (acquired_property w))` | none | tying | A creditor cannot attach the wife's property while she is married and has acquired property: no such power exists (Chused 1984). | [full source under Sources, R11](#src-r11) https://core.ac.uk/download/230496986.pdf |
-| R12 | husband | may (implicit) | `(transfer_to_wife h w)` | `(married h w)` | none | tying | (practice, not written) The husband may transfer property to his wife when they are married (Chused 1984). | [full source under Sources, R12](#src-r12) https://core.ac.uk/download/230496986.pdf |
-| R13 | wife | may | `(hold_property w)` | `(and (married h w) (acquired_property w) (not (narrowed w)))` | none | tying | The wife may hold property in her own right when married, she has acquired property, and the act has not been narrowly construed (NY MWPA 1848). | [full source under Sources, R13](#src-r13) https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf |
-| R14 | wife | may | `(keep_earnings w)` | `(and (married h w) (earns w))` | none | tying | The wife may keep her earnings as her own when married and she earns wages outside the household (earnings acts, Geddes et al. 2007). | [full source under Sources, R14](#src-r14) https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf |
-| R15 (added) | wife | may | `(contract w)` | `true` | none | tying | The wife may contract in her own name at any time (sole-trader acts, Khan 1996). | [full source under Sources, R15](#src-r15) https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf |
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
+|---|---|---|---|---|---|---|---|---|---|
+| R2 | husband | must | `(provides_care h w)` | `(married h w)` | none | superadditive | The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15). | recalled | [full source under Sources, R2](#src-r2) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R3 | wife | must (implicit) | `(provides_care w h)` | `(married h w)` | R5 `(chastise h w)` | superadditive | (practice, not written) The wife providing care to her husband (household labour) must hold when they are married, or else the husband may chastise her (R5). | unverified | [full source under Sources, R3](#src-r3) |
+| R4 | wife | must not (disability) | `(sue w)` | `(married h w)` | none | tying | The wife cannot sue in her own name while married: no such power exists (Blackstone I.15). | recalled | [full source under Sources, R4](#src-r4) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R5 | husband | may | `(chastise h w)` | `(and (married h w) (misbehaves w))` | none | rival | The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15). | opened | [full source under Sources, R5](#src-r5) https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: |
+| R6 | wife | must not (disability) | `(leave w)` | `(married h w)` | none | rival | The wife cannot leave the marriage while married: no such power exists (no unilateral exit before the Matrimonial Causes Act 1857; unverified). | unverified | [full source under Sources, R6](#src-r6) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R10 | creditor | may (implicit) | `(attach c w)` | `(married h w)` | none | rival | (practice, not written) A creditor may attach the wife's property when she is married (it reaches what the husband holds). | unverified | [full source under Sources, R10](#src-r10) |
+| R11 | creditor | must not (disability) | `(attach c w)` | `(and (married h w) (acquired_property w))` | none | tying | A creditor cannot attach the wife's property while she is married and has acquired property: no such power exists (Chused 1984). | unverified | [full source under Sources, R11](#src-r11) https://core.ac.uk/download/230496986.pdf |
+| R12 | husband | may (implicit) | `(transfer_to_wife h w)` | `(married h w)` | none | tying | (practice, not written) The husband may transfer property to his wife when they are married (Chused 1984). | unverified | [full source under Sources, R12](#src-r12) https://core.ac.uk/download/230496986.pdf |
+| R13 | wife | may | `(hold_property w)` | `(and (married h w) (acquired_property w) (not (narrowed w)))` | none | tying | The wife may hold property in her own right when married, she has acquired property, and the act has not been narrowly construed (NY MWPA 1848). | unverified | [full source under Sources, R13](#src-r13) https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf |
+| R14 | wife | may | `(keep_earnings w)` | `(and (married h w) (earns w))` | none | tying | The wife may keep her earnings as her own when married and she earns wages outside the household (earnings acts, Geddes et al. 2007). | unverified | [full source under Sources, R14](#src-r14) https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf |
+| R15 (added) | wife | may | `(contract w)` | `true` | none | tying | The wife may contract in her own name at any time (sole-trader acts, Khan 1996). | unverified | [full source under Sources, R15](#src-r15) https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue, contract
 
@@ -55,38 +55,71 @@
 
 ## Sources
 
+Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
+
 <a id="src-r2"></a>
 **R2**: Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it
+
+- `blackstone-1765-bk1-ch15` (Bk I ch 15; England; date n/a): **recalled**
 
 <a id="src-r3"></a>
 **R3**: implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)
 
+- no work named: **unverified** (rationale: implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it)
+
 <a id="src-r4"></a>
 **R4**: Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married
+
+- `blackstone-1765-bk1-ch15` (Bk I ch 15; England; date n/a): **recalled**
 
 <a id="src-r5"></a>
 **R5**: Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.
 
+- `blackstone-1765-bk1-ch15` (Bk I ch 15; England; date n/a): **opened** 2026-11-04: "The husband also (by the old law) might give his wife moderate correction ... the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour"
+
 <a id="src-r6"></a>
 **R6**: UNVERIFIED (not opened 2026-11-04): Shanley, Feminism, Marriage and the Law in Victorian England, 1850-1895 (1989), and Stone, Road to Divorce: England 1530-1987 (1990), on restitution of conjugal rights and the absence of any unilateral exit from marriage before the Matrimonial Causes Act 1857 (archive.org search-inside returned 403 and the Google Books API 429, two tries each). Re-sourced 2026-11-04: Blackstone Book I ch. 15 (https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/), cited before, contains no exit bar (its nearest passage: an eloping wife forfeits necessaries) and is no longer cited for this rule. [ADR 0013: or_else -> null. The subject's exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married
+
+- `shanley-1989` (date n/a): **unverified**
+- `stone-1990` (date n/a): **unverified**
 
 <a id="src-r10"></a>
 **R10**: implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)
 
+- no work named: **unverified** (rationale: implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's)
+
 <a id="src-r11"></a>
 **R11**: Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED); Khan 1996, Married Women's Property Laws and Female Commercial Activity, Table 1 (sole-trader dates; the 1839-50 wave as debt relief); https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf [F, via plans/backtest-mwpa.md] (Mississippi 1839 shielded property from husbands' creditors; Khan excludes it as debt relief). A disability (or_else null): the exemption removes the creditor's power, no sanction is involved
+
+- `chused-1984` (date n/a): **recalled**
+- `chused-1983` (at 1400; date n/a): **unverified**
+- `khan-1996` (Table 1; date n/a): **recalled**
 
 <a id="src-r12"></a>
 **R12**: implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed
 
+- `chused-1984` (date n/a): **recalled**
+- `chused-1983` (at 1400; date n/a): **unverified**
+- `blackstone-1765-bk1-ch15` (Bk I ch 15; England; date n/a): **recalled**
+- no work named: **unverified** (the conveyance to the wife as a rule of the 1839-50 acts: UNVERIFIED (general knowledge; no source opened))
+
 <a id="src-r13"></a>
 **R13**: New York Married Women's Property Act 1848 (the statute text itself not opened: [R] UNVERIFIED; dates from Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md]); Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (property acts: the wife holds and controls property acquired by gift or inheritance as if a feme sole). Conditioned on (not narrowed): a narrow construction (BL entry, R17) re-disables the power. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_own_property(w) = hold_property enabled (R13)
+
+- `ny-mwpa-1848` (US-NY; date 1848): **unverified**
+- `geddes-lueck-tennyson-2007` (Table 1; date n/a): **recalled**
 
 <a id="src-r14"></a>
 **R14**: Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (earnings acts: NY 1860, MA 1846/1874, PA 1872, ...: a married woman's wages are her separate property). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] owns_earnings(w) = keep_earnings enabled (R14)
 
+- `geddes-lueck-tennyson-2007` (Table 1; date n/a): **recalled**
+- no work named: **unverified** (the statutes the row encodes are named only through the secondary work; statute texts not opened ([R]); no bibliography entry)
+
 <a id="src-r15"></a>
 **R15**: Khan 1996, Married Women's Property Laws and Female Commercial Activity, Table 1 (sole-trader dates; the 1839-50 wave as debt relief); https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf [F, via plans/backtest-mwpa.md] (sole-trader provisions: a married woman may carry on trade and contract in her own name; ME 1844, MA 1860, NY 1860, ...). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_contract(w) = contract enabled (R15), no longer barred (R7 deleted)
+
+- `khan-1996` (Table 1; date n/a): **recalled**
+- no work named: **unverified** (the statutes the row encodes are named only through the secondary work; statute texts not opened ([R]); no bibliography entry)
 
 
 ## Expected properties

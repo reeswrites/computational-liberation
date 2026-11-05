@@ -22,13 +22,13 @@
 
 ## Rules
 
-| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
-|---|---|---|---|---|---|---|---|---|
-| R1 | landlord | may | `(lease_to l t)` | `(not (leased l t))` | none | tying | The landlord may lease to the tenant when the premises are not already leased to the tenant. | a lease is formed by agreement. UNVERIFIED (general knowledge; no source opened) |
-| R2 | landlord | must | `(habitable l t)` | `(leased l t)` | none | superadditive | The premises being habitable must hold when leased to the tenant, the landlord being bound (Cal. Civ. Code 1941). | [full source under Sources, R2](#src-r2) https://california.public.law/codes/ca_civ_code_section_1941. |
-| R3 | landlord | may | `(evict l t)` | `(and (leased l t) (not (rent_paid t)))` | none | rival | The landlord may evict the tenant when the premises are leased and rent has not been paid (Cal. Code Civ. Proc. 1161). | Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 |
-| R4 | tenant | may | `(vacate t)` | `(leased l t)` | none | rival | The tenant may vacate when the premises are leased to the tenant (Cal. Civ. Code 1946). | [full source under Sources, R4](#src-r4) https://california.public.law/codes/ca_civ_code_section_1946 |
-| R5 | tenant | must | `(rent_paid t)` | `(leased l t)` | R3 `(evict l t)` | tying | Rent being paid must hold for the tenant when the premises are leased, or else the landlord may evict (R3) (Cal. Code Civ. Proc. 1161). | [full source under Sources, R5](#src-r5) https://california.public.law/codes/ca_civ_proc_code_section_1161 |
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
+|---|---|---|---|---|---|---|---|---|---|
+| R1 | landlord | may | `(lease_to l t)` | `(not (leased l t))` | none | tying | The landlord may lease to the tenant when the premises are not already leased to the tenant. | unverified | a lease is formed by agreement. UNVERIFIED (general knowledge; no source opened) |
+| R2 | landlord | must | `(habitable l t)` | `(leased l t)` | none | superadditive | The premises being habitable must hold when leased to the tenant, the landlord being bound (Cal. Civ. Code 1941). | recalled | [full source under Sources, R2](#src-r2) https://california.public.law/codes/ca_civ_code_section_1941. |
+| R3 | landlord | may | `(evict l t)` | `(and (leased l t) (not (rent_paid t)))` | none | rival | The landlord may evict the tenant when the premises are leased and rent has not been paid (Cal. Code Civ. Proc. 1161). | recalled | Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 |
+| R4 | tenant | may | `(vacate t)` | `(leased l t)` | none | rival | The tenant may vacate when the premises are leased to the tenant (Cal. Civ. Code 1946). | recalled | [full source under Sources, R4](#src-r4) https://california.public.law/codes/ca_civ_code_section_1946 |
+| R5 | tenant | must | `(rent_paid t)` | `(leased l t)` | R3 `(evict l t)` | tying | Rent being paid must hold for the tenant when the premises are leased, or else the landlord may evict (R3) (Cal. Code Civ. Proc. 1161). | recalled | [full source under Sources, R5](#src-r5) https://california.public.law/codes/ca_civ_proc_code_section_1161 |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): none
 
@@ -42,14 +42,30 @@
 
 ## Sources
 
+Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
+
+**R1**
+
+- no work named: **unverified** (rationale: a lease is formed by agreement)
+
 <a id="src-r2"></a>
 **R2**: Cal. Civ. Code s. 1941 ('The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable'); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it
+
+- `cal-civ-1941` (s. 1941; US-CA; date n/a): **recalled**
+
+**R3**
+
+- `cal-ccp-1161` (s. 1161(2)-(3); US-CA; date n/a): **recalled**
 
 <a id="src-r4"></a>
 **R4**: Cal. Civ. Code s. 1946 (a hiring of real property for an unspecified term is terminated by either party's written notice); https://california.public.law/codes/ca_civ_code_section_1946 (either party may terminate by notice; the tenant's exit is permitted and unsanctioned). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(t) = vacate enabled
 
+- `cal-civ-1946` (s. 1946; US-CA; date n/a): **recalled**
+
 <a id="src-r5"></a>
 **R5**: Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 (default in rent is the breach that opens eviction). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes rent_paid; pay_rent restores it, default_rent breaks it (sanction R3)
+
+- `cal-ccp-1161` (s. 1161(2)-(3); US-CA; date n/a): **recalled**
 
 
 ## Expected properties

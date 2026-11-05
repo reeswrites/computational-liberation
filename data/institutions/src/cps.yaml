@@ -183,6 +183,25 @@ rules:
   strand: tying
   implicit: false
   source: 'Cal. WIC 328 / Penal Code 11165.14: reports must be investigated; the same worker who offers services investigates. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; investigate consumes report_received so it fires once per report]'
+  provenance:
+  - source_id: cal-wic-328
+    pin: s. 328
+    jurisdiction: US-CA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: no marker next to the citation; the lowest marker later in the string reads unverified
+  - source_id: cal-pen-11165-14
+    pin: s. 11165.14
+    jurisdiction: US-CA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   var_roles:
     w: social_worker
     c: child
@@ -196,6 +215,16 @@ rules:
   strand: superadditive
   implicit: false
   source: Cal. WIC 16501 family maintenance / preservation services. UNVERIFIED (general knowledge; no source opened)
+  provenance:
+  - source_id: cal-wic-16501
+    pin: s. 16501
+    jurisdiction: US-CA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   var_roles:
     w: social_worker
     c: child
@@ -209,6 +238,16 @@ rules:
   strand: rival
   implicit: false
   source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((a)(2): take into temporary custody without a warrant on reasonable cause of immediate danger). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(w, c) = remove enabled'
+  provenance:
+  - source_id: cal-wic-306
+    pin: (a)(2)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: cited with no record of reading in this row's source; re-open to upgrade
   var_roles:
     w: social_worker
     c: child
@@ -222,6 +261,16 @@ rules:
   strand: superadditive
   implicit: false
   source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((f): before taking a child into custody the worker shall consider whether the child may remain safely at home). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] investigate establishes in_home_considered(w, c) (the investigation is that consideration); consider_in_home restores it, disregard_in_home (the worker drops the question) breaks it'
+  provenance:
+  - source_id: cal-wic-306
+    pin: (f)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: cited with no record of reading in this row's source; re-open to upgrade
   load_bearing: true
   var_roles:
     w: social_worker
@@ -236,6 +285,16 @@ rules:
   strand: tying
   implicit: true
   source: 'implicit: non-cooperation is read as risk and feeds the removal decision; practice norm, not statute. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] cooperates is presumed (default true); refuse breaks it (sanction R3), cooperate restores it'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: implicit: non-cooperation is read as risk and feeds the removal decision; practice norm, not statute'
   var_roles:
     c: child
     p: parent
@@ -249,6 +308,16 @@ rules:
   strand: tying
   implicit: true
   source: 'implicit: the mother is the parent called first and held responsible (plan: ''the mother is called first''). UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation, guarded by its own effect contacted(w, p) so it fires once]'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: implicit: the mother is the parent called first and held responsible (plan: ''the mother is called first'')'
   var_roles:
     w: social_worker
     c: child
@@ -263,6 +332,16 @@ rules:
   strand: tying
   implicit: false
   source: 'Cal. Welf. & Inst. Code s. 361(c)(1), read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_361 (leginfo.legislature.ca.gov returned 403): a dependent child may not be taken from the custody of the parent ''unless the juvenile court finds clear and convincing evidence of any of the following circumstances'': (1) ''substantial danger to the physical health, safety, protection, or physical or emotional well-being of the minor'' and ''there are no reasonable means by which the minor''s physical health can be protected without removing'' the minor. The fluent substantial_danger is that finding, exogenous (initial_free). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, c) = reassign_custody enabled for some parent'
+  provenance:
+  - source_id: cal-wic-361
+    pin: s. 361(c)(1)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: opened
+    excerpt: unless the juvenile court finds clear and convincing evidence of any of the following circumstances ... substantial danger to the physical health, safety, protection, or physical or emotional well-being of the minor
+    accessed: '2026-11-04'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_361
+    note: leginfo.legislature.ca.gov returned 403
   var_roles:
     c: child
     p: parent
@@ -277,6 +356,16 @@ rules:
   strand: tying
   implicit: false
   source: 'Cal. WIC 317: counsel appointed for the child in dependency proceedings. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] investigate establishes counsel_appointed(c) (a dependency case is opened with counsel for the child); appoint_counsel restores it, relieve_counsel breaks it. [ADR 0013: was must-be has_standing(c); has_standing is now derived from R11, so the obligation is on the fluent counsel_appointed that R11 reads]'
+  provenance:
+  - source_id: cal-wic-317
+    pin: s. 317
+    jurisdiction: US-CA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   load_bearing: true
   var_roles:
     c: child
@@ -290,6 +379,16 @@ rules:
   strand: rival
   implicit: false
   source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((a)(2): the social worker may ''take into and maintain temporary custody''; maintaining custody is what bars the child''s own exit). Inferred from ''maintain custody'', the section does not address the child''s conduct; a disability (or_else null): no sanction falls on a child who runs, the custody is the restraint. [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.]'
+  provenance:
+  - source_id: cal-wic-306
+    pin: (a)(2)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'cited with no record of reading in this row''s source; quote in the old string (no read date): ''take into and maintain temporary custody'' ... ''maintain custody''; re-open to upgrade'
   var_roles:
     c: child
 - id: R11
@@ -302,6 +401,16 @@ rules:
   strand: tying
   implicit: false
   source: 'Cal. WIC 317(e): appointed counsel represents the child''s interests in the proceeding, so the child claims in its own name through counsel. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(c) = petition enabled, i.e. counsel appointed'
+  provenance:
+  - source_id: cal-wic-317
+    pin: s. 317(e)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   var_roles:
     c: child
 source_text: '''Any social worker in a county welfare department ... may ... (2) Take into and maintain temporary custody of, without a warrant, a child who has been declared a dependent child ... or who the social worker has reasonable cause to believe ... has an immediate need for medical care or is in immediate danger of physical or sexual abuse.'' ''(f) Before taking a child into custody, a social worker shall consider whether the child may remain safely in their residence'', including whether reasonable services could eliminate the need for removal. Cal. Welf. & Inst. Code s. 306, read at https://california.public.law/codes/ca_welf_and_inst_code_section_306'

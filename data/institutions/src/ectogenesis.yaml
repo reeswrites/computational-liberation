@@ -89,6 +89,16 @@ rules:
   strand: rival
   implicit: false
   source: 'Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from ''the tyranny of their reproductive biology'' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 ''The Ultimate Revolution'' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) (the technology that makes gestation a service; for surrogacy, the clinic''s role in assisted conception)'
+  provenance:
+  - source_id: firestone-1970
+    pin: ch. 1; ch. 10
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'UNVERIFIED: no text opened; wording from memory (plans/ectogenesis.md section 2)'
 - id: R2
   plain: 'The provider may transfer the child to the device when the child is in gestation (Firestone 1970).'
   attribute: provider
@@ -99,6 +109,16 @@ rules:
   strand: superadditive
   implicit: false
   source: 'Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from ''the tyranny of their reproductive biology'' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 ''The Ultimate Revolution'' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04; plan section 5c): the rival input is deleted, not redistributed, and no strand value says ''no strand''.'
+  provenance:
+  - source_id: firestone-1970
+    pin: ch. 1; ch. 10
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'UNVERIFIED: no text opened; wording from memory (plans/ectogenesis.md section 2)'
 - id: R3
   plain: 'The provider must decant the child when the child has been gestated ex utero, or else the registry may reprimand (R6) (Firestone 1970).'
   attribute: provider
@@ -109,6 +129,16 @@ rules:
   strand: superadditive
   implicit: false
   source: 'Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from ''the tyranny of their reproductive biology'' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 ''The Ultimate Revolution'' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). The birth duty moves from a body to a device operator; decant never sets birthing_parent. Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04).'
+  provenance:
+  - source_id: firestone-1970
+    pin: ch. 1; ch. 10
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'UNVERIFIED: no text opened; wording from memory (plans/ectogenesis.md section 2)'
 - id: R4
   plain: 'An intended parent may provide care for the child when a registered parent of the child and the child is a born subject.'
   attribute: intended_parent
@@ -119,6 +149,16 @@ rules:
   strand: superadditive
   implicit: false
   source: 'care by any registered parent of a born child is permitted, men included; nothing here bars it. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named for this rule; rationale: care by any registered parent of a born child is permitted, men included; nothing here bars it'
 - id: R5
   plain: '(practice, not written) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached.'
   attribute: intended_parent
@@ -129,6 +169,16 @@ rules:
   strand: tying
   implicit: true
   source: 'implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so ''the tying strand outlives the rival input'' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named for this rule; rationale: implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED dec...'
   choices: 'Until 2026-11-04 the or_else was R6 (the registry reprimands a non-caring mother): a sanction invented by the encoder on 2026-11-04 with nothing behind it, removed on the card-seat finding. Under strict compliance the verdicts do not depend on it.'
 - id: R6
   plain: 'The registry may reprimand at any time (the sanction for R3).'
@@ -140,6 +190,16 @@ rules:
   strand: tying
   implicit: false
   source: 'the registry''s sanction for R3 (or_else target; R5''s link removed 2026-11-04). Condition ''true'' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named for this rule; rationale: the registry''s sanction for R3 (or_else target; R5''s link removed 2026-11-04). Condition ''true'' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule)'
 - id: R7
   plain: 'The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition.'
   attribute: registry
@@ -150,6 +210,16 @@ rules:
   strand: tying
   implicit: false
   source: 'parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named for this rule; rationale: parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E)'
 source_text: 'Firestone, The Dialectic of Sex (1970), ch.1 and ch.10: the demand to free women from the tyranny of their reproductive biology by artificial reproduction and to spread child-bearing and child-rearing across society. ALL UNVERIFIED: wording from memory, no page opened (plans/ectogenesis.md section 2). The mechanism is a thought-experiment technology; no statute exists.'
 expected_properties:
   birth_labor_rival: violated

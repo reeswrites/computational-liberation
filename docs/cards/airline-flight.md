@@ -22,13 +22,13 @@
 
 ## Rules
 
-| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
-|---|---|---|---|---|---|---|---|---|
-| R1 | crew | may | `(board c p)` | `(not (aboard p))` | none | tying | The crew may board the passenger when the passenger is not aboard. | Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) |
-| R2 | crew | must | `(provides_care c p)` | `(aboard p)` | none | superadditive | The crew providing care to the passenger must hold when the passenger is aboard (14 CFR 121.571 supports only a briefing and assistance duty; the general in-flight care duty is unverified). | [full source under Sources, R2](#src-r2) https://www.law.cornell.edu/cfr/text/14/121.571 |
-| R3 | crew | may | `(restrain c p)` | `(and (aboard p) (disruptive p))` | none | rival | The crew may restrain the passenger when the passenger is aboard and disruptive (14 CFR 91.11 / 121.580, unverified). | [full source under Sources, R3](#src-r3) |
-| R4 | passenger | must not (disability) | `(leave p)` | `(aboard p)` | none | rival | The passenger cannot leave while aboard: no such power exists (14 CFR 91.11 / 121.580, unverified). | [full source under Sources, R4](#src-r4) |
-| R6 | passenger | may | `(complain p)` | `true` | none | tying | The passenger may complain at any time. | Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger may complain) |
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
+|---|---|---|---|---|---|---|---|---|---|
+| R1 | crew | may | `(board c p)` | `(not (aboard p))` | none | tying | The crew may board the passenger when the passenger is not aboard. | unverified | Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) |
+| R2 | crew | must | `(provides_care c p)` | `(aboard p)` | none | superadditive | The crew providing care to the passenger must hold when the passenger is aboard (14 CFR 121.571 supports only a briefing and assistance duty; the general in-flight care duty is unverified). | unverified | [full source under Sources, R2](#src-r2) https://www.law.cornell.edu/cfr/text/14/121.571 |
+| R3 | crew | may | `(restrain c p)` | `(and (aboard p) (disruptive p))` | none | rival | The crew may restrain the passenger when the passenger is aboard and disruptive (14 CFR 91.11 / 121.580, unverified). | unverified | [full source under Sources, R3](#src-r3) |
+| R4 | passenger | must not (disability) | `(leave p)` | `(aboard p)` | none | rival | The passenger cannot leave while aboard: no such power exists (14 CFR 91.11 / 121.580, unverified). | unverified | [full source under Sources, R4](#src-r4) |
+| R6 | passenger | may | `(complain p)` | `true` | none | tying | The passenger may complain at any time. | unverified | Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger may complain) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave
 
@@ -42,14 +42,36 @@
 
 ## Sources
 
+Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
+
+**R1**
+
+- `cfr-14-91-11` (US; date n/a): **unverified**
+- `cfr-14-121-580` (US; date n/a): **unverified**
+
 <a id="src-r2"></a>
 **R2**: 14 CFR 121.571 'Briefing passengers before takeoff', read 2026-11-04 at https://www.law.cornell.edu/cfr/text/14/121.571 (ecfr.gov redirected to a block page): (a) 'shall insure that all passengers are orally briefed by the appropriate crewmember'; (a)(3) a required crewmember assigned to the flight must individually brief each person who may need another person's help to reach an exit. That is a crew duty toward passengers aboard, but narrower than the rule's provides_care (maintenance, services): the general in-flight care duty is UNVERIFIED (no text opened states it; 14 CFR 121.391, read at https://www.law.cornell.edu/cfr/text/14/121.391, only sets the number of flight attendants 'to provide the most effective egress of passengers'). 14 CFR 91.11 / 121.580 dropped 2026-11-04: they only forbid interference with crew. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] board establishes provides_care; attend restores it, withdraw breaks it
+
+- `cfr-14-121-571` (s. 121.571(a), (a)(3); US; date n/a): **opened** 2026-11-04: "shall insure that all passengers are orally briefed by the appropriate crewmember"
+- `cfr-14-121-391` (s. 121.391; US; date n/a): **opened**: "to provide the most effective egress of passengers"
+- no work named: **unverified** (the general in-flight care duty: UNVERIFIED (no text opened states it))
 
 <a id="src-r3"></a>
 **R3**: Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (crew may restrain a disruptive passenger)
 
+- `cfr-14-91-11` (US; date n/a): **unverified**
+- `cfr-14-121-580` (US; date n/a): **unverified**
+
 <a id="src-r4"></a>
 **R4**: Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger cannot leave in flight). [ADR 0013: or_else -> null. The subject's exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(p) = leave enabled (a default capacity), which this disability makes false aboard
+
+- `cfr-14-91-11` (US; date n/a): **unverified**
+- `cfr-14-121-580` (US; date n/a): **unverified**
+
+**R6**
+
+- `cfr-14-91-11` (US; date n/a): **unverified**
+- `cfr-14-121-580` (US; date n/a): **unverified**
 
 
 ## Expected properties

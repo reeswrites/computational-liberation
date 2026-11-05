@@ -1,0 +1,536 @@
+"""Draft a `provenance:` list on every rule in src/*.yaml from its free-text `source` (plans/sourcing.md).
+
+Re-runnable: an existing `provenance:` block is replaced, `source` is left unchanged, and nothing else in the file
+moves (the block is inserted as text right after the rule's `source:` line, dumped with build.dump_yaml, so the
+diff of a src file is only the inserted lines). Only rules written in a file are touched: `rules`, and in an
+`extends` entry `rules_add` / `rules_replace`; inherited rules are not duplicated.
+
+Classification is conservative and never upgrades (levels, strongest first: opened > snippet > recalled > unverified):
+- each work the string names (WORKS, matched by regex) gets one item, classified from the text between its mention
+  and the next work's mention (its window); several mentions of one work are merged;
+- `UNVERIFIED` -> unverified; `[R]`, "from memory", "recalled", "general knowledge" -> recalled; a search snippet
+  or abstract -> snippet; `opened` only when the window says the work was read (a date or a URL) and quotes a
+  passage after that, which becomes `excerpt`; a read claim with no quote, or an earlier batch's `[F]` (fetched)
+  tag relayed second-hand, -> recalled with a note; a window with no marker takes the first marker after it, or
+  recalled ("cited with no record of reading") when the string has none;
+- "UNVERIFIED ... as a rule" and "Statute texts not opened" add an item with source_id null (the rule itself, or
+  the unnamed statutes, rest on no identified work);
+- a string naming no work (an implicit norm, a general-knowledge rule) gets one item: source_id null, unverified,
+  note quoting the rationale.
+OVERRIDES holds the rows set by hand after reviewing the heuristic's output, each with its reason (listed in
+provenance-migration-report.md). Hand settings only ever lower a level or add a lower item.
+
+`jurisdiction` is filled for statutes / regulations / treatises whose citation names the jurisdiction (it is part of
+the cited title); `effective_date` only where the string states a date for the act (EFFECTIVE). Both null otherwise.
+
+Usage (from the comp-lib root):  uv run python data/institutions/migrate_provenance.py [--dry-run] [--summary]
+"""
+from __future__ import annotations
+
+import argparse
+import re
+import sys
+from collections import Counter
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import build  # noqa: E402
+
+SRC = HERE / "src"
+SOURCES = HERE.parent / "sources"
+LEVELS = ("opened", "snippet", "recalled", "unverified")
+RULE_LISTS = ("rules", "rules_add", "rules_replace")
+
+# (source_id, regex naming the work in a source string). Order matters only for overlapping matches (first wins).
+WORKS = [
+    ("blackstone-1766-bk2-ch29", r"Book II ch\. 29"),
+    ("blackstone-1765-bk1-ch15", r"Blackstone, Commentaries on the Laws of England, Book I ch\. 15|Blackstone's bar on grants"),
+    ("shanley-1989", r"Shanley, Feminism"),
+    ("stone-1990", r"Stone, Road to Divorce"),
+    ("cal-wic-5150", r"(?:Welf\. & Inst\. Code s\. |WIC )5150(?:\(a\))?"),
+    ("cal-wic-5152", r"Welf\. & Inst\. Code s\. 5152"),
+    ("cal-wic-5275", r"WIC 5275"),
+    ("cal-wic-306", r"Welf\. & Inst\. Code s\. 306"),
+    ("cal-wic-361", r"Welf\. & Inst\. Code s\. 361"),
+    ("cal-wic-328", r"WIC 328"),
+    ("cal-wic-317", r"WIC 317"),
+    ("cal-wic-16501", r"WIC 16501"),
+    ("cal-pen-11165-14", r"Penal Code 11165\.14"),
+    ("cal-pen-597s", r"Penal Code s\. 597s"),
+    ("cal-pen-597", r"Penal Code 597\(b\)"),
+    ("cal-civ-655", r"Civ\. Code s\. 655"),
+    ("cal-civ-663", r"s\. 663:"),
+    ("cal-civ-658", r"s\. 658 defines"),
+    ("cal-civ-1941", r"Civ\. Code s\. 1941"),
+    ("cal-civ-1946", r"Civ\. Code s\. 1946"),
+    ("cal-ccp-1161", r"Civ\. Proc\. s\. 1161"),
+    ("canada-ei-maternity-parental", r"Employment Insurance maternity and parental benefits"),
+    ("qc-cqlr-a-29-011", r"Act respecting parental insurance, CQLR c\. A-29\.011"),
+    ("ak-stat-25-24-160", r"Alaska Stat\. s\. 25\.24\.160"),
+    ("ri-gen-laws-4-13-41", r"R\.I\. Gen\. Laws s\. 4-13-41"),
+    ("cfr-14-121-571", r"14 CFR 121\.571"),
+    ("cfr-14-121-391", r"14 CFR 121\.391"),
+    ("cfr-14-91-11", r"14 CFR 91\.11(?! / 121\.580 dropped)"),
+    ("cfr-14-121-580", r"(?<=91\.11 / )121\.580(?! dropped)"),
+    ("uk-mwpa-1882", r"Married Women's Property Act 1882"),
+    ("ny-mwpa-1848", r"New York Married Women's Property Act 1848"),
+    ("geddes-lueck-tennyson-2007", r"Geddes, Lueck & Tennyson 2007"),
+    ("khan-1996", r"Khan 1996"),
+    ("chused-1984", r"Chused 1984"),
+    ("chused-1983", r"Chused 1983"),
+    ("centola-becker-brackbill-baronchelli-2018", r"Centola, Becker"),
+    ("mackie-1996", r"Mackie, 'Ending Footbinding|Mackie 1996"),
+    ("brown-bossen-gates-satterthwaite-phillips-2012", r"Marriage Mobility and Footbinding"),
+    ("wikipedia-tian-zu-hui", r"Wikipedia 'Tian Zu Hui'"),
+    ("wikipedia-heavenly-foot-society", r"(?<=, )'Heavenly Foot Society'"),
+    ("wikipedia-foot-emancipation-society", r"'Foot Emancipation Society'"),
+    ("wikipedia-kibbutz-communal-child-rearing", r"Wikipedia, 'Kibbutz communal child rearing|WIKI_KIB"),
+    ("tiger-shepher-1975", r"Tiger & Shepher"),
+    ("kirkus-tiger-shepher-women-in-the-kibbutz", r"kirkusreviews\.com"),
+    ("spiro-1956", r"Spiro, Kibbutz"),
+    ("gavron-2000", r"Gavron, The Kibbutz"),
+    ("firestone-1970", r"Firestone, The Dialectic of Sex"),
+    ("kunc-2020-denver-star", r"KUNC 2020-11-17"),
+    ("berkeley-public-library-2018-patron-suspension-policy", r"Berkeley Public Library, Patron Suspension Policy"),
+]
+
+# Fixed pins by work (a pin read from the window, PIN_RE, takes precedence).
+PIN = {
+    "blackstone-1765-bk1-ch15": "Bk I ch 15", "blackstone-1766-bk2-ch29": "Bk II ch 29",
+    "geddes-lueck-tennyson-2007": "Table 1", "khan-1996": "Table 1", "chused-1983": "at 1400",
+    "mackie-1996": "abstract", "brown-bossen-gates-satterthwaite-phillips-2012": "abstract",
+    "firestone-1970": "ch. 1; ch. 10", "qc-cqlr-a-29-011": "ss. 9, 10, 16, 17", "uk-mwpa-1882": "s. 1(2)",
+    "cfr-14-121-571": "s. 121.571(a)", "ak-stat-25-24-160": "(a)(5)",
+}
+PIN_RE = r"\((s\. \d+)[:)]|s\. (\d[\w.]*(?:\([a-z0-9]+\))+(?:-\([a-z0-9]+\))?)|\(\(([a-z0-9]\)(?:\([a-z0-9]+\))?)|\b(\d{3,5}(?:\([a-z0-9]+\))+)"
+
+# The jurisdiction the cited text governs, filled only where the citation names it (statute codes, "Laws of England").
+JURIS = {
+    "blackstone-1765-bk1-ch15": "England", "blackstone-1766-bk2-ch29": "England", "uk-mwpa-1882": "UK",
+    "ny-mwpa-1848": "US-NY", "qc-cqlr-a-29-011": "CA-QC", "ak-stat-25-24-160": "US-AK", "ri-gen-laws-4-13-41": "US-RI",
+}
+# effective dates the strings state for the act a row encodes
+EFFECTIVE = {"ak-stat-25-24-160": "2017-01-17", "ny-mwpa-1848": "1848", "uk-mwpa-1882": "1882"}
+
+QUOTE = re.compile(r"(?:(?<=^)|(?<=[\s(:;,]))'((?:[^']|'(?=[a-z]))+?)'(?=[\s.,;:)\]]|$)")
+READ = re.compile(r"\bread (?:(\d{4}-\d{2}-\d{2})\b)?(?: ?at (https?://[^\s;:)]+))?")
+DATE = re.compile(r"\b(\d{4}-\d{2}-\d{2})\b")
+M_UNVER = re.compile(r"UNVERIFIED")
+M_RECALL = re.compile(r"\[R\]|from memory|\brecalled\b|general knowledge")
+M_SNIP = re.compile(r"snippet|abstract|search result", re.I)
+M_NOTOPEN = re.compile(r"NOT OPENED|not opened|NOT read|no text opened|no statute opened|no source opened")
+M_F = re.compile(r"\[F\b")
+AS_RULE = re.compile(r"UNVERIFIED(?: \([^)]*\))? as a rule|UNVERIFIED as a rule")
+NO_STATUTE = re.compile(r"Statute texts not opened \(\[R\]\)")
+NOISE = re.compile(r"\[ADR [^\]]*\]|\[coordination:[^\]]*\]|\[F for these sentences; body \[R\]\]")
+
+
+def item(source_id=None, verification="unverified", pin=None, jurisdiction=None, effective_date=None, excerpt=None,
+         accessed=None, url=None, note=""):
+    """One provenance item, keys in the contract's order (plans/sourcing.md)."""
+    return {"source_id": source_id, "pin": pin, "jurisdiction": jurisdiction, "effective_date": effective_date,
+            "verification": verification, "excerpt": excerpt, "accessed": accessed, "url": url, "note": note}
+
+
+def clean(src: str) -> str:
+    return " ".join(NOISE.sub(" ", " ".join(str(src).split())).split())
+
+
+def mentions(text):
+    """[(start, end, source_id)] for every work mention, earliest first, overlaps dropped."""
+    found = []
+    for sid, rx in WORKS:
+        for m in re.finditer(rx, text):
+            found.append((m.start(), m.end(), sid))
+    found.sort()
+    out = []
+    for f in found:
+        if out and f[0] < out[-1][1]:
+            continue
+        out.append(f)
+    return out
+
+
+def windows(text, ms):
+    """{source_id: [window text, ...]}; a window runs from a mention to the next mention of a different work."""
+    out = {}
+    for i, (s, _, sid) in enumerate(ms):
+        j = i + 1
+        while j < len(ms) and ms[j][2] == sid:
+            j += 1
+        end = ms[j][0] if j < len(ms) else len(text)
+        if i and ms[i - 1][2] == sid:
+            continue
+        out.setdefault(sid, []).append(text[s:end])
+    return out
+
+
+def _quotes_after(w, pos):
+    return list(dict.fromkeys(q for q in QUOTE.findall(w[pos:]) if len(q) >= 12))
+
+
+def classify(w, rest):
+    """(level, excerpt, accessed, url, note) for one work from its window w; rest is the text after the window."""
+    w_ = NO_STATUTE.sub(" ", AS_RULE.sub(" ", w))
+    if M_UNVER.search(w_):
+        return "unverified", None, None, None, "old source string says UNVERIFIED"
+    if M_RECALL.search(w_):
+        return "recalled", None, None, None, "old source string: cited from memory / general knowledge / [R]"
+    if M_SNIP.search(w_):
+        m = M_SNIP.search(w_)
+        qs = _quotes_after(w_, m.start())
+        d = DATE.search(w_[m.start():])
+        return "snippet", " ... ".join(qs[:1]) or None, d.group(1) if d else None, None, \
+            "old source string: only a search snippet / abstract was read"
+    if M_NOTOPEN.search(w_):
+        return "recalled", None, None, None, "old source string: not opened"
+    r = READ.search(w_)
+    if r and (r.group(1) or r.group(2)):
+        qs = _quotes_after(w_, r.end())
+        if qs:
+            return "opened", " ... ".join(qs), r.group(1), r.group(2), ""
+        return "recalled", None, None, None, "earlier batch reports reading; no excerpt recorded; re-open to upgrade"
+    if M_F.search(w_):
+        qs = QUOTE.findall(w_)
+        q = ("; quote recorded: '" + "' ... '".join(qs) + "'") if qs else "; no excerpt recorded"
+        return "recalled", None, None, None, ("[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; "
+                                              "relayed second-hand, no access date" + q + "; re-open to upgrade")
+    # no marker in the window: the first marker after it decides, else "cited, no record of reading"
+    rest_ = AS_RULE.sub(" ", rest)
+    found = [lvl for rx, lvl in ((M_UNVER, "unverified"), (M_RECALL, "recalled"), (M_NOTOPEN, "recalled"))
+             if rx.search(rest_)]
+    if found:
+        lvl = max(found, key=LEVELS.index)
+        return lvl, None, None, None, f"no marker next to the citation; the lowest marker later in the string reads {lvl}"
+    qs = QUOTE.findall(w_)
+    q = ("; quote in the old string (no read date): '" + "' ... '".join(qs) + "'") if qs else ""
+    return "recalled", None, None, None, "cited with no record of reading in this row's source" + q + "; re-open to upgrade"
+
+
+def pin_of(sid, w):
+    m = re.search(PIN_RE, w)
+    if sid in ("qc-cqlr-a-29-011",):
+        p = re.search(r"\((s\. \d+)[:)]", w)
+        return p.group(1) if p else PIN[sid]
+    if sid in PIN:
+        return PIN[sid]
+    if m and sid.startswith(("cal-", "ri-", "ak-")):
+        g = next(x for x in m.groups() if x)
+        return g if g.startswith("s.") else ("s. " + g if g[0].isdigit() else "(" + g)
+    t = re.search(r"s\. ([\d.]+)$", (_bib().get(sid) or {}).get("title") or "")
+    return "s. " + t.group(1) if t else None
+
+
+def rationale(text):
+    t = re.split(r"\s*UNVERIFIED\b", text)[0].strip(" .;")
+    return t[:300] + ("..." if len(t) > 300 else "")
+
+
+def heuristic(rule):
+    text = clean(rule["source"])
+    ms = mentions(text)
+    items = []
+    if not ms:
+        items.append(item(note="no work named; rationale: " + rationale(text)))
+        return items
+    wins = windows(text, ms)
+    for sid, ws in wins.items():
+        w = " ".join(ws)
+        last_end = text.rfind(ws[-1]) + len(ws[-1])
+        lvl, ex, acc, url, note = classify(w, text[last_end:])
+        if url and url == (_bib().get(sid) or {}).get("url"):
+            url = None
+        items.append(item(sid, lvl, pin_of(sid, w), JURIS.get(sid) or _bib_juris(sid), EFFECTIVE.get(sid),
+                          ex, acc, url, note))
+    if AS_RULE.search(text):
+        items.append(item(note="the rule itself: " + AS_RULE.search(text).group(0) + " (no text states it)"))
+    if NO_STATUTE.search(text):
+        items.append(item(note="the statutes the row encodes are named only through the secondary work; "
+                               "statute texts not opened ([R]); no bibliography entry"))
+    return items
+
+
+_BIB = {}
+
+
+def _bib():
+    if not _BIB:
+        for p in sorted(SOURCES.glob("*.yaml")):
+            for e in build.load_yaml(p) or []:
+                _BIB[e["id"]] = e
+    return _BIB
+
+
+def _bib_juris(sid):
+    """A statute's or regulation's own jurisdiction (its citation names it), from the bibliography."""
+    e = _bib().get(sid, {})
+    return e.get("jurisdiction") if e.get("type") in ("statute", "regulation", "case") else None
+
+
+# ---------------------------------------------------------------- hand settings after review
+WAMS = "https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/"
+TIAN = ("wikipedia-tian-zu-hui", "wikipedia-heavenly-foot-society", "wikipedia-foot-emancipation-society")
+WIKI_SNIP = "seen as search snippets only (2026-11-04), pages not opened, tagged [R]"
+
+
+def _wiki_pledge():
+    return [item(s, "recalled", note=WIKI_SNIP) for s in TIAN]
+
+
+OVERRIDES = {}  # (entry id, rule id) -> (items, reason); filled below
+
+
+def override(eid, rid, reason, *items):
+    OVERRIDES[(eid, rid)] = (list(items), reason)
+
+
+override("coverture-household", "R1",
+         "the string also names Bk I ch 15 as the citation it replaced ('did not support this rule'); only Bk II ch 29 supports the row",
+         item("blackstone-1766-bk2-ch29", "opened", "Bk II ch 29", "England", None,
+              "which belonged formerly to the wife, are by act of law vested in the husband ... the husband hath therein an immediate and absolute property, devolved to him by the marriage",
+              "2026-11-04", None, "long s modernised from the OCR"))
+override("coverture-household", "R5",
+         "the earlier WAMS pointer is the same work (Bk I ch 15), not a second one; one opened item, excerpt both quoted passages",
+         item("blackstone-1765-bk1-ch15", "opened", "Bk I ch 15", "England", None,
+              "The husband also (by the old law) might give his wife moderate correction ... the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour",
+              "2026-11-04", None, "long s modernised from the OCR; earlier pointer " + WAMS))
+override("coverture-household", "R6",
+         "the string names Bk I ch 15 only to say it is no longer cited; Shanley and Stone each UNVERIFIED",
+         item("shanley-1989", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429); cited for restitution of conjugal rights and no unilateral exit before the Matrimonial Causes Act 1857"),
+         item("stone-1990", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429); same point as Shanley"))
+for _r in ("R2", "R4", "R7"):
+    override("coverture-household", _r,
+             "WAMS URL is the copy read for Bk I ch 15 (provenance url); no read claim or quote in the row: recalled",
+             item("blackstone-1765-bk1-ch15", "recalled", "Bk I ch 15", "England", url=WAMS,
+                  note="cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade"))
+override("police-crisis", "R7",
+         "s. 5150(a) is cited for the absence of an officer release duty (recalled), s. 5152 is the opened source",
+         item("cal-wic-5152", "opened", "s. 5152(a), (b)", "US-CA", None,
+              "A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted ... A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment",
+              "2026-11-04", "https://california.public.law/codes/ca_welf_and_inst_code_section_5152",
+              "leginfo.legislature.ca.gov returned 403"),
+         item("cal-wic-5150", "recalled", "s. 5150(a)", "US-CA",
+              note="cited for what it lacks (no release duty on the officer); no read record for this use"))
+override("police-crisis", "R1",
+         "implicit: the string names WIC 5150 only to say it does not require police dispatch; no work supports the row",
+         item(note="no work named for this rule (WIC 5150 is cited as not requiring it); rationale: implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does"))
+override("cps", "R7", "pin and excerpt tidied (the heuristic's excerpt joined the two quoted fragments of (c)(1))",
+         item("cal-wic-361", "opened", "s. 361(c)(1)", "US-CA", None,
+              "unless the juvenile court finds clear and convincing evidence of any of the following circumstances ... substantial danger to the physical health, safety, protection, or physical or emotional well-being of the minor",
+              "2026-11-04", "https://california.public.law/codes/ca_welf_and_inst_code_section_361",
+              "leginfo.legislature.ca.gov returned 403"))
+for _e in ("companion-ownership", "companion-guardian-renamed"):
+    _items = [item("cal-civ-655", "opened", "s. 655", "US-CA", None,
+                   "There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals",
+                   "2026-11-04", "https://codes.findlaw.com/ca/civil-code/civ-sect-655/",
+                   "leginfo.legislature.ca.gov and law.justia.com returned 403"),
+              item("cal-civ-663", "opened", "s. 663", "US-CA", None, "Every kind of property that is not real is personal",
+                   "2026-11-04", "https://codes.findlaw.com/ca/civil-code/civ-sect-663/"),
+              item("cal-civ-658", "recalled", "s. 658", "US-CA",
+                   note="cited (defines real property) with no record of reading; re-open to upgrade")]
+    if _e == "companion-guardian-renamed":
+        _items.append(item("ri-gen-laws-4-13-41", "recalled", "s. 4-13-41", "US-RI", "2001",
+                           note="cited for the role name only, not for this rule; no read record in this row (the entry source_text says read)"))
+    override(_e, "R1", "Penal Code 597s is named only as the citation dropped from this row; s. 658 is cited without a read record",
+             *_items)
+override("companion-guardianship", "R9",
+         "the row's UNVERIFIED is for the generalisation beyond divorce, but it also says 'no source opened'; kept unverified (lower) and the generalisation gets its own item",
+         item("ak-stat-25-24-160", "unverified", "(a)(5)", "US-AK", "2017-01-17", None, None, None,
+              "the row says UNVERIFIED (general knowledge; no source opened) though it quotes 'taking into consideration the well-being of the animal'; the entry source_text says read at animallaw.info; re-open to upgrade"),
+         item(note="the generalisation from divorce to any custody claim: no jurisdiction does this (the entry's construction)"))
+override("public-library", "R2",
+         "the duty to serve is 'UNVERIFIED as a rule' (read from the policy's premise); the policy itself is cited with quotes but no read date",
+         item("berkeley-public-library-2018-patron-suspension-policy", "recalled",
+              note="quotes in the old string, no read date in the row (the entry source_text says read at the URL); re-open to upgrade"),
+         item(note="the rule (a duty to serve) is read from the policy's premise, not stated: UNVERIFIED as a rule"))
+override("naming-convention", "R1", "'cited from memory' and 'UNVERIFIED as a quotation' together: the lower level",
+         item("centola-becker-brackbill-baronchelli-2018", "unverified",
+              note="NOT OPENED 2026-11-04; cited from memory, UNVERIFIED as a quotation (plans/layer2-abm.md lists it as opened; not relied on)"))
+override("naming-convention", "R2", "as R1",
+         item("centola-becker-brackbill-baronchelli-2018", "unverified",
+              note="NOT OPENED 2026-11-04; cited from memory, UNVERIFIED as a quotation (plans/layer2-abm.md lists it as opened; not relied on)"))
+override("kibbutz-childrens-house", "R2",
+         "three works at three levels: the WIKI_KIB quote is not read in this row (recalled), Kirkus confirms the book (claimed, no quote), Tiger & Shepher's finding not read",
+         item("wikipedia-kibbutz-communal-child-rearing", "recalled",
+              note="quotes 'was always a woman's role'; this row records no read (R1's row read the page 2026-11-03); re-open or copy the read record to upgrade"),
+         item("tiger-shepher-1975", "unverified", "pp. 41, 167",
+              note="the assignment finding itself NOT read directly: UNVERIFIED; cited by WIKI_KIB"),
+         item("kirkus-tiger-shepher-women-in-the-kibbutz", "recalled",
+              note="earlier batch reports confirming the book and sample (34,040 members) via this review; no excerpt recorded; re-open to upgrade"))
+override("kibbutz-childrens-house", "R6", "two named works, each not opened (UNVERIFIED); the heuristic dropped neither but put the generic note on both",
+         item("spiro-1956", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429); 1958 ed. also cited"),
+         item("gavron-2000", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429)"))
+override("airline-flight", "R2",
+         "the string says the general in-flight care duty is UNVERIFIED (no text opened states it); 121.391 read with a quote but supports egress only",
+         item("cfr-14-121-571", "opened", "s. 121.571(a), (a)(3)", "US", None,
+              "shall insure that all passengers are orally briefed by the appropriate crewmember", "2026-11-04",
+              "https://www.law.cornell.edu/cfr/text/14/121.571",
+              "ecfr.gov redirected to a block page; supports a briefing duty, narrower than the rule's provides_care"),
+         item("cfr-14-121-391", "opened", "s. 121.391", "US", None, "to provide the most effective egress of passengers",
+              None, "https://www.law.cornell.edu/cfr/text/14/121.391",
+              "read in the same batch as 121.571 (the string gives no separate date); only sets the number of flight attendants"),
+         item(note="the general in-flight care duty: UNVERIFIED (no text opened states it)"))
+override("mwpa-creditor-exemption", "R12",
+         "Chused works as in R11; Blackstone's bar on grants is a reading of the inherited R7 source; the rule itself 'UNVERIFIED as a rule of the 1839-50 acts'",
+         item("chused-1984", "recalled", note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; quote recorded: 'generally contained nothing more than statements exempting married women's property from the debts of husbands' ... 'narrowly construing'; re-open to upgrade"),
+         item("chused-1983", "unverified", "at 1400", note="[R], PDF refused: UNVERIFIED"),
+         item("blackstone-1765-bk1-ch15", "recalled", "Bk I ch 15", "England",
+              note="cited for the bar on grants between spouses, read as lifted; English treatise in a US chain"),
+         item(note="the conveyance to the wife as a rule of the 1839-50 acts: UNVERIFIED (general knowledge; no source opened)"))
+override("mwpa-property", "R13",
+         "GLT is named twice, once as the source of the statute's date; the statute text not opened ([R] UNVERIFIED)",
+         item("ny-mwpa-1848", "unverified", None, "US-NY", "1848", note="the statute text itself not opened: [R] UNVERIFIED; date from GLT Table 1"),
+         item("geddes-lueck-tennyson-2007", "recalled", "Table 1",
+              note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade"))
+override("mwpa-suit", "R16",
+         "the heuristic lifted the old R9 wording ('may sue when not married') into GLT's note; GLT carries no quote here",
+         item("uk-mwpa-1882", "opened", "s. 1(2)", "UK", "1882",
+              "A married woman shall be capable of entering into and rendering herself liable in respect of and to the extent of her separate property on any contract, and of suing and being sued, either in contract or in tort ... in all respects as if she were a feme sole",
+              "2026-11-04", None, "an English (UK) act cited in a US chain: jurisdiction mismatch, see the migration report"),
+         item("geddes-lueck-tennyson-2007", "recalled", "Table 1",
+              note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade"),
+         item(note="the US suit provisions the row encodes (e.g. NY 1860) are named only through GLT; statute texts not opened ([R]); no bibliography entry"))
+override("footbinding", "R1",
+         "Mackie abstract quotes as a search-index snippet (snippet), the rule itself 'UNVERIFIED as a rule'",
+         item("mackie-1996", "snippet", "abstract", None, None,
+              "Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market",
+              "2026-11-04", None, "abstract read as a search-index snippet; the article itself not opened (jstor paywalled); body [R]"),
+         item(note="the rule (a family 'may' bind) is reconstructed from the convention account; no primary text opened: UNVERIFIED as a rule"))
+_MACKIE_SNIP = item("mackie-1996", "snippet", "abstract", None, None,
+                    "maintained by interdependent expectations on the marriage market", "2026-11-04", None,
+                    "abstract read as a search-index snippet; the article itself not opened (jstor paywalled); body [R]")
+_MACKIE_PLEDGE = item("mackie-1996", "snippet", "abstract", None, None, None, "2026-11-04", None,
+                      "abstract [F] (search-index snippet); this row quotes none of it (the abstract's pledge-association "
+                      "sentence is recorded in R1's source and the entry source_text); the 'two-part pledge' and "
+                      "'critical mass' readings are from the body, [R]")
+override("footbinding", "R3", "Mackie abstract as a snippet; the norm is implicit (a convention, not a written rule)",
+         _MACKIE_SNIP, item(note="implicit sanctioned norm: a convention, not a written rule; the abstract supports the convention, no text states the norm"))
+override("footbinding", "R4", "Wikipedia pledge pages: 'search snippets only, pages not opened: [R]' -> recalled (the lower of snippet and [R]); Mackie abstract snippet",
+         *_wiki_pledge(), _MACKIE_PLEDGE)
+override("footbinding", "R10", "as R4, plus the rule itself reconstructed (UNVERIFIED)",
+         *_wiki_pledge(), _MACKIE_PLEDGE,
+         item(note="implicit: no text says a suitor 'may' pledge; reconstructed from the convention account: UNVERIFIED"))
+override("footbinding", "R5", "as R4, plus 'UNVERIFIED ... as a rule'",
+         _MACKIE_SNIP, *_wiki_pledge(),
+         item(note="implicit: the market's refusal of an unbound bride, reconstructed from the convention account: UNVERIFIED as a rule"))
+override("footbinding", "R6", "as R5",
+         _MACKIE_SNIP, *_wiki_pledge(),
+         item(note="the groom-side convention, reconstructed from the convention account: UNVERIFIED as a rule"))
+override("footbinding", "R7", "Mackie snippet; Brown et al. abstract-only snippet tagged [R] -> recalled",
+         _MACKIE_SNIP,
+         item("brown-bossen-gates-satterthwaite-phillips-2012", "recalled", "abstract",
+              note="abstract only, as a search snippet (2026-11-04), tagged [R]; no quote recorded; qualifies mobility, not marriageability"))
+for _r in ("R1", "R2", "R3"):
+    override("ectogenesis", _r, "Firestone cited from memory and marked UNVERIFIED: the lower level",
+             item("firestone-1970", "unverified", "ch. 1; ch. 10",
+                  note="UNVERIFIED: no text opened; wording from memory (plans/ectogenesis.md section 2)"))
+for _r in ("R4", "R5", "R6", "R7"):
+    override("ectogenesis", _r, "Firestone is named only in the boilerplate ('no text opened for this rule'); no work supports the row",
+             item(note="no work named for this rule; rationale: " + "{rationale}"))
+
+
+def migrate_rule(eid, rule):
+    key = (eid, rule["id"])
+    if key in OVERRIDES:
+        items, _ = OVERRIDES[key]
+        out = []
+        for it in items:
+            it = dict(it)
+            if "{rationale}" in (it["note"] or ""):
+                it["note"] = it["note"].replace("{rationale}", rationale(clean(rule["source"])))
+            out.append(it)
+        return out, True
+    return heuristic(rule), False
+
+
+# ---------------------------------------------------------------- text-level rewrite of src/*.yaml
+TOP = re.compile(r"^([A-Za-z_]+):")
+
+
+def rewrite(text: str, provs: dict) -> str:
+    """Insert/replace `  provenance:` after each own rule's `  source:` line. provs: (list key, rule id) -> items."""
+    lines = text.split("\n")
+    out, key, rid, i = [], None, None, 0
+    while i < len(lines):
+        ln = lines[i]
+        m = TOP.match(ln)
+        if m:
+            key, rid = m.group(1), None
+        elif ln.startswith("- id: ") and key in RULE_LISTS:
+            rid = ln[len("- id: "):].strip().strip("'\"")
+        elif not ln.startswith(" ") and not ln.startswith("- "):
+            rid = None
+        if ln.startswith("  provenance:") and rid is not None and key in RULE_LISTS:
+            i += 1
+            while i < len(lines) and (lines[i].startswith("  - ") or lines[i].startswith("    ")):
+                i += 1
+            continue
+        out.append(ln)
+        if ln.startswith("  source:") and rid is not None and key in RULE_LISTS and (key, rid) in provs:
+            block = build.dump_yaml({"provenance": provs[(key, rid)]}).rstrip("\n").split("\n")
+            out += ["  " + b for b in block]
+        i += 1
+    return "\n".join(out)
+
+
+def _strip_prov(obj):
+    if isinstance(obj, dict):
+        return {k: _strip_prov(v) for k, v in obj.items() if k != "provenance"}
+    if isinstance(obj, list):
+        return [_strip_prov(x) for x in obj]
+    return obj
+
+
+def weakest(items):
+    return max((it["verification"] for it in items), key=LEVELS.index)
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--dry-run", action="store_true", help="print the drafted provenance, write nothing")
+    ap.add_argument("--summary", action="store_true", help="print per-level counts and the hand-set rows")
+    a = ap.parse_args(argv)
+    order, raws = build.load_sources()
+    hand, rows = [], []
+    for eid in order:
+        path = SRC / f"{eid}.yaml"
+        raw = raws[eid]
+        provs = {}
+        for key in RULE_LISTS:
+            for r in raw.get(key, ()) or ():
+                items, by_hand = migrate_rule(eid, r)
+                provs[(key, r["id"])] = items
+                rows.append((eid, r["id"], items))
+                if by_hand:
+                    hand.append((eid, r["id"], OVERRIDES[(eid, r["id"])][1]))
+        if a.dry_run:
+            for (k, rid), items in provs.items():
+                print(f"== {eid} {rid}")
+                print(build.dump_yaml(items))
+            continue
+        old = path.read_text(encoding="utf-8")
+        new = rewrite(old, provs)
+        after = build.yaml.safe_load(new)
+        if _strip_prov(after) != _strip_prov(build.yaml.safe_load(old)):
+            raise SystemExit(f"{path.name}: rewrite changed data other than provenance")
+        for key in RULE_LISTS:
+            for r in after.get(key, ()) or ():
+                if r.get("provenance") != provs[(key, r["id"])]:
+                    raise SystemExit(f"{path.name} {r['id']}: provenance did not round-trip")
+        if new != old:
+            path.write_text(new, encoding="utf-8")
+    if a.summary or not a.dry_run:
+        rc = Counter(weakest(i) for _, _, i in rows)
+        ic = Counter(it["verification"] for _, _, i in rows for it in i)
+        print(f"{len(rows)} own rules; weakest item per row: " + ", ".join(f"{l} {rc[l]}" for l in LEVELS))
+        print(f"{sum(ic.values())} items: " + ", ".join(f"{l} {ic[l]}" for l in LEVELS))
+        print(f"{len(hand)} rows set by hand (OVERRIDES)")
+        if a.summary:
+            for eid, rid, why in hand:
+                print(f"  {eid} {rid}: {why}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

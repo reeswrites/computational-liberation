@@ -49,7 +49,15 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
   rules reconstructed from general knowledge. Verified at writing time: Blackstone I.15 (via NYHS WAMS),
   Cal. WIC 5150 and 306, Cal. Penal Code 597s, QPIP A-29.011 ss. 9/10/16/17, canada.ca EI parental benefits
   and Parental Sharing Benefit, Alaska Stat. 25.24.160(a)(5), R.I. Gen. Laws 4-13-41, Denver STAR (KUNC),
-  Boulder 2000 wording change (Westword, secondary).
+  Boulder 2000 wording change (Westword, secondary). Since 2026-11-05 (`plans/sourcing.md`) each rule also carries
+  `provenance:`, a list of items (`source_id`, `pin`, `jurisdiction`, `effective_date`, `verification`, `excerpt`,
+  `accessed`, `url`, `note`); `source_id` names a work in the bibliography `data/sources/*.yaml` (one entry per work;
+  `data/sources/rules.yaml` holds the works the rule sources cite) and `verification` is, strongest first,
+  `opened` (excerpt required), `snippet`, `recalled`, `unverified`. The build strips `provenance` from the JSON (the engine never sees it);
+  cards show the weakest level per rule and every item under Sources. `migrate_provenance.py` drafted the lists
+  from the free-text `source` (conservative, re-runnable; hand settings in its `OVERRIDES`), reviewed in
+  `provenance-migration-report.md`; `tests/test_sources.py` checks ids, vocabularies and excerpts. The free-text
+  `source` stays until the migration is reviewed; never raise a level without opening the source.
 
 ## Revisions (dataset fixes after the first check-all, 21/36)
 

@@ -1,0 +1,426 @@
+# Bibliography for the works cited by rule `source` strings in data/institutions/src/*.yaml.
+# Contract: plans/sourcing.md (one entry per work; ids unique across every data/sources/*.yaml).
+# Built 2026-11-05 from the repo's own text only: nothing here was opened in that session. A field the repo text
+# does not give (a given name, a title, a URL, a year) is null, and the note says "not in repo text".
+# Author lists give surnames only where the repo gives no given name.
+
+# ---------------------------------------------------------------- treatises and secondary works
+- id: blackstone-1765-bk1-ch15
+  type: treatise
+  title: "Commentaries on the Laws of England, Book I, ch. 15: Of Husband and Wife"
+  author: [Blackstone, William]
+  year: 1765
+  container: null
+  jurisdiction: England
+  url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
+  note: "Oxford: Clarendon (per coverture-household source_text). Earlier rows cite the NYHS WAMS coverture page (https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/) as the copy read; that URL goes in a provenance item's `url`."
+- id: blackstone-1766-bk2-ch29
+  type: treatise
+  title: "Commentaries on the Laws of England, Book II, ch. 29: Of Title by Succession, Marriage, and Judgment"
+  author: [Blackstone, William]
+  year: 1766
+  container: null
+  jurisdiction: England
+  url: https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp
+  note: ""
+- id: shanley-1989
+  type: secondary
+  title: "Feminism, Marriage and the Law in Victorian England, 1850-1895"
+  author: [Shanley]
+  year: 1989
+  container: null
+  jurisdiction: null
+  url: null
+  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04)"
+- id: stone-1990
+  type: secondary
+  title: "Road to Divorce: England 1530-1987"
+  author: [Stone]
+  year: 1990
+  container: null
+  jurisdiction: null
+  url: null
+  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04)"
+- id: spiro-1956
+  type: secondary
+  title: "Kibbutz: Venture in Utopia"
+  author: [Spiro]
+  year: 1956
+  container: null
+  jurisdiction: null
+  url: null
+  note: "1958 edition also cited (plans/readability.md says 'Spiro 1958'); given name and URL not in repo text; not opened"
+- id: gavron-2000
+  type: secondary
+  title: "The Kibbutz: Awakening from Utopia"
+  author: [Gavron]
+  year: 2000
+  container: null
+  jurisdiction: null
+  url: null
+  note: "given name and URL not in repo text; not opened"
+- id: tiger-shepher-1975
+  type: secondary
+  title: "Women in the Kibbutz"
+  author: [Tiger, Shepher]
+  year: 1975
+  container: null
+  jurisdiction: null
+  url: null
+  note: "Harcourt Brace Jovanovich; sample of 34,040 members per the Kirkus review; pp. 41, 167 as cited by the Wikipedia kibbutz page; given names and URL not in repo text"
+- id: kirkus-tiger-shepher-women-in-the-kibbutz
+  type: web
+  title: "[Kirkus Reviews review of Tiger & Shepher, Women in the Kibbutz]"
+  author: null
+  year: null
+  container: Kirkus Reviews
+  jurisdiction: null
+  url: https://www.kirkusreviews.com/book-reviews/lionel-joseph-shepher-tiger/women-in-the-kibbutz/
+  note: "descriptive title (page title not in repo text); year not in repo text"
+- id: mackie-1996
+  type: secondary
+  title: "Ending Footbinding and Infibulation: A Convention Account"
+  author: [Mackie]
+  year: 1996
+  container: "ASR 61(6):999-1017"
+  jurisdiction: null
+  url: https://www.jstor.org/stable/2096305
+  note: "container as abbreviated in repo text; given name not in repo text; jstor paywalled, only the abstract seen as a search-index snippet (2026-11-04)"
+- id: brown-bossen-gates-satterthwaite-phillips-2012
+  type: secondary
+  title: "Marriage Mobility and Footbinding in Pre-1949 Rural China"
+  author: [Brown, Bossen, Gates, Satterthwaite-Phillips]
+  year: 2012
+  container: "J. Asian Studies 71(4):1035-1067"
+  jurisdiction: null
+  url: null
+  note: "URL not in repo text; abstract only, as a search snippet (2026-11-04, tagged [R])"
+- id: centola-becker-brackbill-baronchelli-2018
+  type: secondary
+  title: "Experimental evidence for tipping points in social convention"
+  author: [Centola, Becker, Brackbill, Baronchelli]
+  year: 2018
+  container: "Science 360(6393):1116-1119"
+  jurisdiction: null
+  url: null
+  note: "doi:10.1126/science.aas8827; published 8 June 2018; not opened (2026-11-04)"
+- id: firestone-1970
+  type: secondary
+  title: "The Dialectic of Sex"
+  author: [Firestone, Shulamith]
+  year: 1970
+  container: null
+  jurisdiction: null
+  url: null
+  note: "chapters cited: ch. 1 and ch. 10 'The Ultimate Revolution'; URL not in repo text; cited from memory (plans/ectogenesis.md section 2)"
+- id: geddes-lueck-tennyson-2007
+  type: secondary
+  title: null
+  author: [Geddes, Lueck, Tennyson]
+  year: 2007
+  container: null
+  jurisdiction: null
+  url: https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf
+  note: "2007 draft (ISNIE archive); title not in repo text; Table 1 dates of property / earnings acts; corrected dates in Geddes & Tennyson 2013 (paywalled, per plans/backtest-mwpa.md)"
+- id: khan-1996
+  type: secondary
+  title: "Married Women's Property Laws and Female Commercial Activity"
+  author: [Khan]
+  year: 1996
+  container: null
+  jurisdiction: null
+  url: https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf
+  note: "Table 1 (sole-trader dates); container (journal) and given name not in repo text"
+- id: chused-1984
+  type: secondary
+  title: null
+  author: [Chused]
+  year: 1984
+  container: null
+  jurisdiction: null
+  url: https://core.ac.uk/download/230496986.pdf
+  note: "title and container not in repo text"
+- id: chused-1983
+  type: secondary
+  title: null
+  author: [Chused]
+  year: 1983
+  container: null
+  jurisdiction: null
+  url: null
+  note: "title, container and URL not in repo text; cited via Chused 1984 (at 1400); PDF refused"
+
+# ---------------------------------------------------------------- web pages and policies
+- id: wikipedia-kibbutz-communal-child-rearing
+  type: web
+  title: "Kibbutz communal child rearing and collective education"
+  author: null
+  year: null
+  container: Wikipedia
+  jurisdiction: null
+  url: https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education
+  note: "abbreviated WIKI_KIB in some rule sources"
+- id: wikipedia-tian-zu-hui
+  type: web
+  title: "Tian Zu Hui"
+  author: null
+  year: null
+  container: Wikipedia
+  jurisdiction: null
+  url: null
+  note: "URL not in repo text; seen as search snippets only (2026-11-04), page not opened"
+- id: wikipedia-heavenly-foot-society
+  type: web
+  title: "Heavenly Foot Society"
+  author: null
+  year: null
+  container: Wikipedia
+  jurisdiction: null
+  url: null
+  note: "URL not in repo text; seen as search snippets only (2026-11-04), page not opened"
+- id: wikipedia-foot-emancipation-society
+  type: web
+  title: "Foot Emancipation Society"
+  author: null
+  year: null
+  container: Wikipedia
+  jurisdiction: null
+  url: null
+  note: "URL not in repo text; seen as search snippets only (2026-11-04), page not opened"
+- id: kunc-2020-denver-star
+  type: web
+  title: "In Denver, unarmed mental health workers respond to hundreds of 911 calls instead of police"
+  author: null
+  year: 2020
+  container: KUNC
+  jurisdiction: null
+  url: https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police
+  note: "published 2020-11-17; on Denver STAR (Support Team Assisted Response)"
+- id: berkeley-public-library-2018-patron-suspension-policy
+  type: regulation
+  title: "Berkeley Public Library, Patron Suspension Policy"
+  author: null
+  year: 2018
+  container: null
+  jurisdiction: null
+  url: https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf
+  note: "an institution's own policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053); jurisdiction not stated in the rule sources"
+- id: canada-ei-maternity-parental
+  type: web
+  title: "Employment Insurance maternity and parental benefits"
+  author: null
+  year: null
+  container: canada.ca
+  jurisdiction: null
+  url: https://www.canada.ca/en/services/benefits/ei/ei-maternity-parental.html
+  note: "Government of Canada service page (the Canadian EI regime); year not in repo text"
+
+# ---------------------------------------------------------------- statutes and regulations
+- id: qc-cqlr-a-29-011
+  type: statute
+  title: "Act respecting parental insurance, CQLR c. A-29.011"
+  year: null
+  container: Compilation of Quebec Laws and Regulations
+  jurisdiction: CA-QC
+  url: https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011
+  note: "sections cited: 9, 10, 16, 17 (pin them in provenance); enactment year not in repo text"
+- id: cal-wic-306
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 306"
+  year: null
+  container: California Welfare and Institutions Code
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_306
+  note: ""
+- id: cal-wic-317
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 317"
+  year: null
+  container: California Welfare and Institutions Code
+  jurisdiction: US-CA
+  url: null
+  note: "URL not in repo text; cited from general knowledge"
+- id: cal-wic-328
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 328"
+  year: null
+  container: California Welfare and Institutions Code
+  jurisdiction: US-CA
+  url: null
+  note: "URL not in repo text; cited from general knowledge"
+- id: cal-wic-361
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 361"
+  year: null
+  container: California Welfare and Institutions Code
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_361
+  note: "leginfo.legislature.ca.gov returned 403 on 2026-11-04"
+- id: cal-wic-5150
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 5150"
+  year: null
+  container: California Welfare and Institutions Code
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_5150
+  note: ""
+- id: cal-wic-5152
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 5152"
+  year: null
+  container: California Welfare and Institutions Code
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_5152
+  note: "leginfo.legislature.ca.gov returned 403 on 2026-11-04"
+- id: cal-wic-5275
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 5275"
+  year: null
+  container: California Welfare and Institutions Code
+  jurisdiction: US-CA
+  url: null
+  note: "URL not in repo text; cited from general knowledge (certification review / habeas)"
+- id: cal-wic-16501
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 16501"
+  year: null
+  container: California Welfare and Institutions Code
+  jurisdiction: US-CA
+  url: null
+  note: "URL not in repo text; cited from general knowledge (family maintenance / preservation services)"
+- id: cal-pen-597
+  type: statute
+  title: "Cal. Penal Code s. 597"
+  year: null
+  container: California Penal Code
+  jurisdiction: US-CA
+  url: null
+  note: "URL not in repo text; s. 597(b) cited from general knowledge"
+- id: cal-pen-597s
+  type: statute
+  title: "Cal. Penal Code s. 597s"
+  year: null
+  container: California Penal Code
+  jurisdiction: US-CA
+  url: https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/
+  note: "the URL is Justia's 2015 edition"
+- id: cal-pen-11165-14
+  type: statute
+  title: "Cal. Penal Code s. 11165.14"
+  year: null
+  container: California Penal Code
+  jurisdiction: US-CA
+  url: null
+  note: "URL not in repo text; cited from general knowledge"
+- id: cal-civ-655
+  type: statute
+  title: "Cal. Civ. Code s. 655"
+  year: null
+  container: California Civil Code
+  jurisdiction: US-CA
+  url: https://codes.findlaw.com/ca/civil-code/civ-sect-655/
+  note: "leginfo.legislature.ca.gov and law.justia.com returned 403 on 2026-11-04"
+- id: cal-civ-658
+  type: statute
+  title: "Cal. Civ. Code s. 658"
+  year: null
+  container: California Civil Code
+  jurisdiction: US-CA
+  url: null
+  note: "URL not in repo text; cited (defines real property) without a record of reading"
+- id: cal-civ-663
+  type: statute
+  title: "Cal. Civ. Code s. 663"
+  year: null
+  container: California Civil Code
+  jurisdiction: US-CA
+  url: https://codes.findlaw.com/ca/civil-code/civ-sect-663/
+  note: ""
+- id: cal-civ-1941
+  type: statute
+  title: "Cal. Civ. Code s. 1941"
+  year: null
+  container: California Civil Code
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_civ_code_section_1941
+  note: ""
+- id: cal-civ-1946
+  type: statute
+  title: "Cal. Civ. Code s. 1946"
+  year: null
+  container: California Civil Code
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_civ_code_section_1946
+  note: ""
+- id: cal-ccp-1161
+  type: statute
+  title: "Cal. Code Civ. Proc. s. 1161"
+  year: null
+  container: California Code of Civil Procedure
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_civ_proc_code_section_1161
+  note: ""
+- id: ak-stat-25-24-160
+  type: statute
+  title: "Alaska Stat. s. 25.24.160"
+  year: 2016
+  container: Alaska Statutes
+  jurisdiction: US-AK
+  url: https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment
+  note: "(a)(5) enacted SLA 2016 ch. 60 s. 19, effective 2017-01-17; the URL is the Animal Legal & Historical Center copy (animallaw.info)"
+- id: ri-gen-laws-4-13-41
+  type: statute
+  title: "R.I. Gen. Laws s. 4-13-41"
+  year: 2001
+  container: General Laws of Rhode Island
+  jurisdiction: US-RI
+  url: https://webserver.rilegislature.gov/Statutes/TITLE4/4-13/4-13-41.htm
+  note: "P.L. 2001 ch. 72"
+- id: cfr-14-91-11
+  type: regulation
+  title: "14 CFR 91.11"
+  year: null
+  container: Code of Federal Regulations, Title 14
+  jurisdiction: US
+  url: null
+  note: "URL not in repo text; named by the third review from general knowledge (interference with crew)"
+- id: cfr-14-121-391
+  type: regulation
+  title: "14 CFR 121.391"
+  year: null
+  container: Code of Federal Regulations, Title 14
+  jurisdiction: US
+  url: https://www.law.cornell.edu/cfr/text/14/121.391
+  note: "sets the number of flight attendants"
+- id: cfr-14-121-571
+  type: regulation
+  title: "14 CFR 121.571 Briefing passengers before takeoff"
+  year: null
+  container: Code of Federal Regulations, Title 14
+  jurisdiction: US
+  url: https://www.law.cornell.edu/cfr/text/14/121.571
+  note: "ecfr.gov redirected to a block page on 2026-11-04"
+- id: cfr-14-121-580
+  type: regulation
+  title: "14 CFR 121.580"
+  year: null
+  container: Code of Federal Regulations, Title 14
+  jurisdiction: US
+  url: null
+  note: "URL not in repo text; named by the third review from general knowledge (interference with crew)"
+- id: uk-mwpa-1882
+  type: statute
+  title: "Married Women's Property Act 1882 (45 & 46 Vict. c. 75)"
+  year: 1882
+  container: null
+  jurisdiction: UK
+  url: https://www.legislation.gov.uk/ukpga/Vict/45-46/75/section/1/enacted
+  note: "a UK Public General Act (ukpga); territorial extent not in repo text. Cited in the US MWPA chain (mwpa-suit R16): jurisdiction mismatch, see data/institutions/provenance-migration-report.md"
+- id: ny-mwpa-1848
+  type: statute
+  title: "New York Married Women's Property Act 1848"
+  year: 1848
+  container: null
+  jurisdiction: US-NY
+  url: null
+  note: "title as cited in repo text; chapter number and URL not in repo text; statute text not opened"

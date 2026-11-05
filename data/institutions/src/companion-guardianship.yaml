@@ -17,6 +17,25 @@ rules_replace:
   strand: tying
   implicit: false
   source: 'Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal ''taking into consideration the well-being of the animal''); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail'
+  provenance:
+  - source_id: ak-stat-25-24-160
+    pin: (a)(5)
+    jurisdiction: US-AK
+    effective_date: '2017-01-17'
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: the row says UNVERIFIED (general knowledge; no source opened) though it quotes 'taking into consideration the well-being of the animal'; the entry source_text says read at animallaw.info; re-open to upgrade
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'the generalisation from divorce to any custody claim: no jurisdiction does this (the entry''s construction)'
   choices: 'Broader than Alaska Stat. 25.24.160(a)(5) on both when and standard: the statute lets a divorce court assign ownership ''taking into consideration the well-being of the animal''; the rule makes it a standing power at any time while owned, on ''not best interest''. Kept as the plan''s reading (the generalisation is the entry''s point, flagged UNVERIFIED in source); no formal change 2026-11-04.'
 source_text: '''(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal.'' Alaska Stat. s. 25.24.160(a)(5), enacted SLA 2016 ch. 60 s. 19, effective 2017-01-17, read at https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment. Alaska was the first state to direct a court to weigh the animal''s own well-being when assigning it; the entry generalises that one rule beyond divorce, which Alaska does not.'
 expected_properties:

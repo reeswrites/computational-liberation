@@ -24,17 +24,17 @@
 
 ## Rules
 
-| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
-|---|---|---|---|---|---|---|---|---|
-| R1 | dispatcher | must | `(dispatch_team d r s)` | `(and (call_received s) (eligible s))` | none | tying | The dispatcher must dispatch a team to the subject when a call about the subject has been received and the subject is eligible (Denver STAR). | [full source under Sources, R1](#src-r1) https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
-| R2 | responder | must | `(provides_care r s)` | `(and (responding r s) (in_crisis s))` | none | superadditive | The responder providing care to the subject must hold when the responder is responding to the subject and the subject is in crisis (Denver STAR). | [full source under Sources, R2](#src-r2) https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police. |
-| R3 | responder | may | `(refer r s)` | `(responding r s)` | none | superadditive | The responder may refer the subject (for example to medication pick-up or housing) when responding to the subject (Denver STAR). | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (medication pick-up, housing connection; referral is the output) |
-| R4 | responder | must not (disability) | `(detain r s)` | `true` | none | rival | The responder cannot detain the subject at any time: no such power exists (Denver STAR). | [full source under Sources, R4](#src-r4) https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
-| R5 | subject | may | `(leave s)` | `true` | none | rival | The subject may leave at any time (Denver STAR, voluntary encounter). | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (voluntary encounter) |
-| R6 | responder | must not (disability) | `(carry_weapon r)` | `true` | none | tying | The responder cannot carry a weapon at any time: no such power exists (Denver STAR, unarmed). | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (unarmed) |
-| R7 | responder | may (implicit) | `(request_police r o s)` | `(and (responding r s) (danger s))` | none | tying | (practice, not written) The responder may request police for the subject when responding to the subject and there is danger. | implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read. UNVERIFIED (general knowledge; no source opened) |
-| R8 | officer | may (implicit) | `(detain o s)` | `(and (responding o s) (danger s))` | none | rival | (practice, not written) The officer may detain the subject when responding to the subject and there is danger (Cal. WIC 5150). | [full source under Sources, R8](#src-r8) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
-| R9 | subject | may | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | an adult keeps legal capacity to sue in their own name; a voluntary encounter does not touch it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue enabled |
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
+|---|---|---|---|---|---|---|---|---|---|
+| R1 | dispatcher | must | `(dispatch_team d r s)` | `(and (call_received s) (eligible s))` | none | tying | The dispatcher must dispatch a team to the subject when a call about the subject has been received and the subject is eligible (Denver STAR). | recalled | [full source under Sources, R1](#src-r1) https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
+| R2 | responder | must | `(provides_care r s)` | `(and (responding r s) (in_crisis s))` | none | superadditive | The responder providing care to the subject must hold when the responder is responding to the subject and the subject is in crisis (Denver STAR). | recalled | [full source under Sources, R2](#src-r2) https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police. |
+| R3 | responder | may | `(refer r s)` | `(responding r s)` | none | superadditive | The responder may refer the subject (for example to medication pick-up or housing) when responding to the subject (Denver STAR). | recalled | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (medication pick-up, housing connection; referral is the output) |
+| R4 | responder | must not (disability) | `(detain r s)` | `true` | none | rival | The responder cannot detain the subject at any time: no such power exists (Denver STAR). | recalled | [full source under Sources, R4](#src-r4) https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
+| R5 | subject | may | `(leave s)` | `true` | none | rival | The subject may leave at any time (Denver STAR, voluntary encounter). | recalled | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (voluntary encounter) |
+| R6 | responder | must not (disability) | `(carry_weapon r)` | `true` | none | tying | The responder cannot carry a weapon at any time: no such power exists (Denver STAR, unarmed). | recalled | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (unarmed) |
+| R7 | responder | may (implicit) | `(request_police r o s)` | `(and (responding r s) (danger s))` | none | tying | (practice, not written) The responder may request police for the subject when responding to the subject and there is danger. | unverified | implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read. UNVERIFIED (general knowledge; no source opened) |
+| R8 | officer | may (implicit) | `(detain o s)` | `(and (responding o s) (danger s))` | none | rival | (practice, not written) The officer may detain the subject when responding to the subject and there is danger (Cal. WIC 5150). | recalled | [full source under Sources, R8](#src-r8) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
+| R9 | subject | may | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | unverified | an adult keeps legal capacity to sue in their own name; a voluntary encounter does not touch it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue enabled |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue
 
@@ -52,17 +52,47 @@
 
 ## Sources
 
+Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
+
 <a id="src-r1"></a>
 **R1**: Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (low-level calls involving mental illness, homelessness, substance use are routed to the clinician-paramedic van). [ADR 0009: one-off action obligation; dispatch consumes call_received]
+
+- `kunc-2020-denver-star` (date n/a): **recalled**
 
 <a id="src-r2"></a>
 **R2**: Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch_team establishes provides_care(r, s); assess restores it, withdraw breaks it
 
+- `kunc-2020-denver-star` (date n/a): **recalled**
+
+**R3**
+
+- `kunc-2020-denver-star` (date n/a): **recalled**
+
 <a id="src-r4"></a>
 **R4**: Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police ('non-police response'; the team holds no custody power; or_else null because this is an absence of power, not a prohibition with a penalty). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(responder, s) = detain enabled, which this disability makes false
 
+- `kunc-2020-denver-star` (date n/a): **recalled**
+
+**R5**
+
+- `kunc-2020-denver-star` (date n/a): **recalled**
+
+**R6**
+
+- `kunc-2020-denver-star` (date n/a): **recalled**
+
+**R7**
+
+- no work named: **unverified** (rationale: implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read)
+
 <a id="src-r8"></a>
 **R8**: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (the peace officer the team calls holds the 5150 custody power the team lacks; the rebundling path R7 opens). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(officer, s) = detain enabled
+
+- `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **recalled**
+
+**R9**
+
+- no work named: **unverified** (rationale: an adult keeps legal capacity to sue in their own name; a voluntary encounter does not touch it)
 
 
 ## Expected properties

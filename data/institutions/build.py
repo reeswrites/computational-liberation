@@ -15,11 +15,18 @@ sentence and optional `choices` note) or a delta:
     keys_drop: [initial]           # top-level keys the base has and this entry does not
     <any other key>: value         # overrides that key wholesale (name, notes, expected_properties, ...)
 
-Order of application: drops, then replaces/sets, then adds, then overrides. `plain` and `choices` are for
-human readers; the engine schema does not carry them, so the build strips them before writing JSON.
+Order of application: drops, then replaces/sets, then adds, then overrides. `plain`, `choices` and `provenance`
+are for human readers; the engine schema does not carry them, so the build strips them before writing JSON (the
+engine JSON, ENGINE_PIN and the verdict baseline do not change when provenance does).
+
+Each rule may carry `provenance:`, a list of items {source_id, pin, jurisdiction, effective_date, verification,
+excerpt, accessed, url, note}; `source_id` names an entry of the bibliography in data/sources/*.yaml and
+`verification` is opened | snippet | recalled | unverified (plans/sourcing.md; tests/test_sources.py checks both).
+The free-text `source` stays until the migration (migrate_provenance.py) is reviewed.
 
 `--cards` also writes docs/cards/<id>.md (one human-readable card per entry) and docs/cards/README.md, generated
-from the same resolved entries. `--check` rebuilds JSON and cards into a temp dir and fails on any difference, on a
+from the same resolved entries; a card's rule table has a `level` column (the weakest provenance item of the row)
+and its Sources section lists every provenance item (source id, pin, jurisdiction, date, level, excerpt). `--check` rebuilds JSON and cards into a temp dir and fails on any difference, on a
 rule with an empty `plain` or `source`, and on an `extends` cycle.
 
 Usage (from the comp-lib root):  uv run python data/institutions/build.py [--write] [--cards] | --check
@@ -40,7 +47,7 @@ import yaml
 HERE = Path(__file__).resolve().parent
 SRC = HERE / "src"
 CARDS = HERE.parent.parent / "docs" / "cards"
-STRIP_RULE_KEYS = ("plain", "choices")
+STRIP_RULE_KEYS = ("plain", "choices", "provenance")
 LISTS = ("roles", "fluents", "actions")
 RESERVED = {"extends", "rules_drop", "rules_replace", "rules_add", "keys_drop"} | {
     f"{l}_{v}" for l in LISTS for v in ("drop", "set", "add")}
@@ -243,6 +250,30 @@ def source_cell(r):
     return ptr + (" " + _cell(urls[0]) if urls else "")
 
 
+LEVELS = ("opened", "snippet", "recalled", "unverified")  # strongest first (plans/sourcing.md)
+
+
+def level_cell(r) -> str:
+    """The weakest verification level among the rule's provenance items; '-' when it has none."""
+    prov = r.get("provenance") or []
+    lv = [p.get("verification") for p in prov if p.get("verification") in LEVELS]
+    return max(lv, key=LEVELS.index) if lv else "-"
+
+
+def provenance_line(p) -> str:
+    sid = f"`{p['source_id']}`" if p.get("source_id") else "no work named"
+    meta = [x for x in (p.get("pin"), p.get("jurisdiction")) if x]
+    meta.append(f"date {p['effective_date']}" if p.get("effective_date") else "date n/a")
+    lvl = f"**{p.get('verification')}**" + (f" {p['accessed']}" if p.get("accessed") else "")
+    if not p.get("source_id"):
+        note = re.sub(r"^no work named(?: for this rule)?; ", "", _cell(p.get("note") or ""))
+        return f"- {sid}: {lvl}" + (f" ({note})" if note else "")
+    out = f"- {sid} ({'; '.join(_cell(m) for m in meta)}): {lvl}"
+    if p.get("excerpt"):
+        out += f": \"{_cell(p['excerpt'])}\""
+    return out
+
+
 def deontic_cell(r) -> str:
     d = r["deontic"].replace("_", " ")
     if r["deontic"] == "must_not" and r.get("or_else") is None:
@@ -391,13 +422,13 @@ def card(e, raws, resolved, props) -> str:
          LEGEND, "## Roles", ""]
     L += [f"- **{r['name']}**: {_cell(r.get('gloss', ''))}" for r in e["roles"]]
     L += ["", "## Rules", "",
-          "| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |",
-          "|---|---|---|---|---|---|---|---|---|"]
+          "| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |",
+          "|---|---|---|---|---|---|---|---|---|---|"]
     for r in e["rules"]:
         rid = r["id"] + (f" ({own[r['id']]})" if r["id"] in own else "")
         L.append("| " + " | ".join([
             rid, r["attribute"], deontic_cell(r), _code(r["aim"]), _code(r["conditions"]), or_else_cell(r, by_id),
-            r.get("strand") or "-", _cell(r["plain"]), source_cell(r)]) + " |")
+            r.get("strand") or "-", _cell(r["plain"]), level_cell(r), source_cell(r)]) + " |")
     dc = [a["name"] for a in e["actions"] if a.get("default_capacity")]
     L += ["", "**Default capacities** (an action a person of that kind can do unless an express disability removes it): "
           + (", ".join(dc) if dc else "none"), "", "## Variables", ""]
@@ -408,11 +439,20 @@ def card(e, raws, resolved, props) -> str:
             continue
         L.append(f"- {r['id']}: " + "; ".join(
             f"`{v}` = {role} ({via})" if role else f"`{v}` = unbound (encoder to fix)" for v, role, via in vs))
-    long = [r for r in e["rules"] if len(" ".join(str(r["source"]).split())) > SOURCE_INLINE_MAX]
-    if long:
-        L += ["", "## Sources", ""]
-        for r in long:
-            L += [f'<a id="src-{r["id"].lower()}"></a>', f"**{r['id']}**: " + " ".join(str(r["source"]).split()), ""]
+    listed = [r for r in e["rules"]
+              if len(" ".join(str(r["source"]).split())) > SOURCE_INLINE_MAX or r.get("provenance")]
+    if listed:
+        L += ["", "## Sources", "",
+              "Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in "
+              "`data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). "
+              "The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.", ""]
+        for r in listed:
+            src = " ".join(str(r["source"]).split())
+            if len(src) > SOURCE_INLINE_MAX:
+                L += [f'<a id="src-{r["id"].lower()}"></a>', f"**{r['id']}**: " + src]
+            else:
+                L += [f"**{r['id']}**"]
+            L += [""] + [provenance_line(p) for p in r.get("provenance") or ()] + [""]
     L += ["", "## Expected properties", "",
           "| property | kind | expected | meaning |", "|---|---|---|---|"]
     pm = {p["name"]: p for p in props}

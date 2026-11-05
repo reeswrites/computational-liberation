@@ -51,6 +51,16 @@ rules_replace:
   strand: rival
   implicit: false
   source: 'gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened.'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary)'
 - id: R3
   plain: 'The gestator must give birth to the child when she is gestating it, or else the registry may reprimand (R6).'
   attribute: gestator
@@ -61,6 +71,16 @@ rules_replace:
   strand: rival
   implicit: false
   source: 'the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04).'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary)'
 source_text: 'Construction, not a statute: gestational surrogacy as the control for ectogenesis (plans/ectogenesis.md section 1). Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened.'
 expected_properties:
   birth_labor_rival: holds_to_k

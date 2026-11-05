@@ -24,14 +24,14 @@
 
 ## Rules
 
-| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
-|---|---|---|---|---|---|---|---|---|
-| R1 | committee | may | `(assign committee x)` | `(member x)` | none | superadditive | The committee may assign a member to the children's house when that person is a member. | [full source under Sources, R1](#src-r1) https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education |
-| R3 | metapelet | must | `(provides_care metapelet child)` | `(assigned metapelet)` | R6 `(reprimand committee x)` | superadditive | The metapelet caring for the child must hold when the metapelet is assigned, or else the committee may reprimand (R6). | [full source under Sources, R3](#src-r3) https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education |
-| R4 | child | must not (disability) | `(sleep_home child)` | `true` | none | rival | The child cannot sleep at home at any time: no such power exists (communal sleeping in the children's house). | [full source under Sources, R4](#src-r4) https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education |
-| R5 | male_member | may | `(visit male_member child)` | `true` | none | superadditive | A male member may visit the child at any time. | [full source under Sources, R5](#src-r5) https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education |
-| R6 (replaced) | committee | may (implicit) | `(reprimand committee x)` | `true` | none | rival | (practice, not written) The committee may reprimand a member at any time (the sanction for R3). | [full source under Sources, R6](#src-r6) |
-| R8 | metapelet | may (implicit) | `(neglect metapelet child)` | `(assigned metapelet)` | none | superadditive | (practice, not written) The metapelet may neglect the child when assigned to the children's house. | [full source under Sources, R8](#src-r8) |
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
+|---|---|---|---|---|---|---|---|---|---|
+| R1 | committee | may | `(assign committee x)` | `(member x)` | none | superadditive | The committee may assign a member to the children's house when that person is a member. | opened | [full source under Sources, R1](#src-r1) https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education |
+| R3 | metapelet | must | `(provides_care metapelet child)` | `(assigned metapelet)` | R6 `(reprimand committee x)` | superadditive | The metapelet caring for the child must hold when the metapelet is assigned, or else the committee may reprimand (R6). | opened | [full source under Sources, R3](#src-r3) https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education |
+| R4 | child | must not (disability) | `(sleep_home child)` | `true` | none | rival | The child cannot sleep at home at any time: no such power exists (communal sleeping in the children's house). | opened | [full source under Sources, R4](#src-r4) https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education |
+| R5 | male_member | may | `(visit male_member child)` | `true` | none | superadditive | A male member may visit the child at any time. | opened | [full source under Sources, R5](#src-r5) https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education |
+| R6 (replaced) | committee | may (implicit) | `(reprimand committee x)` | `true` | none | rival | (practice, not written) The committee may reprimand a member at any time (the sanction for R3). | unverified | [full source under Sources, R6](#src-r6) |
+| R8 | metapelet | may (implicit) | `(neglect metapelet child)` | `(assigned metapelet)` | none | superadditive | (practice, not written) The metapelet may neglect the child when assigned to the children's house. | unverified | [full source under Sources, R8](#src-r8) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): sleep_home
 
@@ -46,23 +46,37 @@
 
 ## Sources
 
+Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
+
 <a id="src-r1"></a>
 **R1**: Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children's house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it
+
+- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **opened** 2026-11-03: "The nanny position was always a woman's role. Teacher positions were both for women and men. ... lived in the children's house, where they had communal sleeping arrangements ... visited their parents for 2-3 hours a day"
 
 <a id="src-r3"></a>
 **R3**: Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment
 
+- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **opened** 2026-11-03: "The nanny position was always a woman's role. Teacher positions were both for women and men. ... lived in the children's house, where they had communal sleeping arrangements ... visited their parents for 2-3 hours a day"
+
 <a id="src-r4"></a>
 **R4**: Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (communal sleeping: the children lived and slept in the children's house). A disability (or_else null), as every subject-side exit bar since ADR 0013; the draft's or_else R6 is dropped for the same reason as coverture R6. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(child) = sleep_home enabled (a default capacity) and not barred (R4)
+
+- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **opened** 2026-11-03: "The nanny position was always a woman's role. Teacher positions were both for women and men. ... lived in the children's house, where they had communal sleeping arrangements ... visited their parents for 2-3 hours a day"
 
 <a id="src-r5"></a>
 **R5**: Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care)
 
+- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **opened** 2026-11-03: "The nanny position was always a woman's role. Teacher positions were both for women and men. ... lived in the children's house, where they had communal sleeping arrangements ... visited their parents for 2-3 hours a day"
+
 <a id="src-r6"></a>
 **R6**: implicit: the committee / general assembly disciplines a member who neglects the rota (R3's or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(committee, x) = reprimand enabled (R6)
 
+- no work named: **unverified** (rationale: implicit: the committee / general assembly disciplines a member who neglects the rota (R3's or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous))
+
 <a id="src-r8"></a>
 **R8**: implicit, added 2026-11-04 per ADR 0015 A6 (strict enabledness at layer 2: an action needs a may/must rule) so that the breaker of R3 is an enabled action for the layer-2 ABM: the metapelet can always fail the children's house, and that is the choice R3's or_else R6 answers. Under layer 1 the permissive floor already let the unregulated neglect fire in traces, so no verdict should change; the rule makes neglect regulated, which narrows its firing to the assigned metapelet (the only bearer of R3). Condition mirrors R3: neglect is a breach only while assigned. Tagged superadditive as the care strand's own breach (R3), as companion R10 `may feed` is tagged for the restore. UNVERIFIED (general knowledge; no source opened)
+
+- no work named: **unverified** (rationale: implicit, added 2026-11-04 per ADR 0015 A6 (strict enabledness at layer 2: an action needs a may/must rule) so that the breaker of R3 is an enabled action for the layer-2 ABM: the metapelet can always fail the children's house, and that is the choice R3's or_else R6 answers. Under layer 1 the permis...)
 
 
 ## Expected properties

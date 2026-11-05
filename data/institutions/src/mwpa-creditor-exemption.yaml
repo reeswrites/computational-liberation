@@ -68,6 +68,16 @@ rules_add:
   strand: rival
   implicit: true
   source: 'implicit baseline: a husband''s creditors reach the property the husband holds, which under R1 includes his wife''s. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: implicit baseline: a husband''s creditors reach the property the husband holds, which under R1 includes his wife''s'
   var_roles:
     c: creditor
     w: wife
@@ -82,6 +92,34 @@ rules_add:
   strand: tying
   implicit: false
   source: 'Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED); Khan 1996, Married Women''s Property Laws and Female Commercial Activity, Table 1 (sole-trader dates; the 1839-50 wave as debt relief); https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf [F, via plans/backtest-mwpa.md] (Mississippi 1839 shielded property from husbands'' creditors; Khan excludes it as debt relief). A disability (or_else null): the exemption removes the creditor''s power, no sanction is involved'
+  provenance:
+  - source_id: chused-1984
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; quote recorded: ''generally contained nothing more than statements exempting married women''s property from the debts of husbands'' ... ''narrowly construing''; re-open to upgrade'
+  - source_id: chused-1983
+    pin: at 1400
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
+  - source_id: khan-1996
+    pin: Table 1
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade'
   var_roles:
     c: creditor
     w: wife
@@ -96,6 +134,43 @@ rules_add:
   strand: tying
   implicit: true
   source: 'implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone''s bar on grants between spouses is read as lifted by the exemption acts for property so conveyed'
+  provenance:
+  - source_id: chused-1984
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; quote recorded: ''generally contained nothing more than statements exempting married women''s property from the debts of husbands'' ... ''narrowly construing''; re-open to upgrade'
+  - source_id: chused-1983
+    pin: at 1400
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[R], PDF refused: UNVERIFIED'
+  - source_id: blackstone-1765-bk1-ch15
+    pin: Bk I ch 15
+    jurisdiction: England
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: cited for the bar on grants between spouses, read as lifted; English treatise in a US chain
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'the conveyance to the wife as a rule of the 1839-50 acts: UNVERIFIED (general knowledge; no source opened)'
   var_roles:
     h: husband
     w: wife
