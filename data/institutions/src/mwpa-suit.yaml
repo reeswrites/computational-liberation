@@ -1,10 +1,25 @@
 id: mwpa-suit
-name: Suit act (sole-trader act minus R4, plus may sue while married)
+name: Suit act (sole-trader act minus R4, plus may sue third parties while married; suits between spouses stay barred)
 extends: mwpa-sole-trader
+fluents_set:
+  has_standing:
+    gloss: x can start a legal claim in x's own name against anyone but her husband (third-party suits; in this entry suits against the husband are sue_spouse, read by has_standing_against_spouse)
+fluents_add:
+- name: has_standing_against_spouse
+  arity: 2
+  gloss: w can start a legal claim in w's own name against her husband h
+  params: [w, h]
+  derived: (enabled sue_spouse w h)
+  arg_roles: [wife, husband]
+actions_add:
+- name: sue_spouse
+  args: [w, h]
+  effects: []
+  default_capacity: true
 rules_drop: [R4]
 rules_add:
 - id: R16
-  plain: 'The wife may sue in her own name when married (Married Women''s Property Act 1882 s. 1(2)).'
+  plain: The wife may sue third parties in her own name when married (US suit acts, e.g. NY 1860 ch. 90 s. 7, MA 1855 c. 304 s. 3; unverified); suits against her husband stay barred (R19).
   attribute: wife
   deontic: may
   aim: (sue w)
@@ -12,17 +27,35 @@ rules_add:
   or_else: null
   strand: tying
   implicit: false
-  source: 'Married Women''s Property Act 1882 (45 & 46 Vict. c. 75) s. 1(2), read 2026-11-04 at https://www.legislation.gov.uk/ukpga/Vict/45-46/75/section/1/enacted: ''A married woman shall be capable of entering into and rendering herself liable in respect of and to the extent of her separate property on any contract, and of suing and being sued, either in contract or in tort ... in all respects as if she were a feme sole''. Earlier pointer kept: Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (acts giving a married woman the right to sue and be sued in her own name; dates follow the property/earnings acts, e.g. NY 1860). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled: sue is a default capacity (the former R9 ''may sue when not married'' is deleted, revision 4) and R4, the disability, is deleted; R16 is kept as the act''s own express permission'
+  source: 'UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked; plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch A): New York Laws 1860 ch. 90 s. 7 (may sue and be sued ''in all matters having relation to her property''), broadened by Laws 1862 ch. 172; Massachusetts St. 1855 c. 304 s. 3 (may sue and be sued as if sole, with a proviso against suits between husband and wife, R19). Read at the broader reading (NY 1862, MA 1855: as if sole, as to third parties); NY 1860''s scope to matters of her property is recorded here, not encoded. Earlier pointer kept: Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (acts giving a married woman the right to sue and be sued in her own name; dates follow the property/earnings acts, e.g. NY 1860). Re-sourced 2026-11-05 (plans/sourcing.md, A2): the Married Women''s Property Act 1882 (UK), cited until then, is an English act and is no longer cited here; no English chain is kept (A3 not taken). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled, where sue is a suit against anyone but her husband in this entry: sue is a default capacity (the former R9 ''may sue when not married'' is deleted, revision 4) and R4, the disability, is deleted; R16 is kept as the act''s own express permission'
   provenance:
-  - source_id: uk-mwpa-1882
-    pin: s. 1(2)
-    jurisdiction: UK
+  - source_id: us-ny-laws-1860-ch90
+    pin: s. 7
+    jurisdiction: US-NY
     effective_date: null
-    verification: opened
-    excerpt: A married woman shall be capable of entering into and rendering herself liable in respect of and to the extent of her separate property on any contract, and of suing and being sued, either in contract or in tort ... in all respects as if she were a feme sole
-    accessed: '2026-11-04'
+    verification: unverified
+    excerpt: null
+    accessed: null
     url: null
-    note: 'a UK act (jurisdiction as its citation, ukpga, names it; territorial extent not in repo text) cited in a US chain: jurisdiction mismatch, see the migration report; effective date not in the string (1882 is the short-title year)'
+    note: lead, not opened; s. 7 scoped to 'matters having relation to her property' (per summary); the encoding takes the broader reading
+  - source_id: us-ny-laws-1862-ch172
+    pin: null
+    jurisdiction: US-NY
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: lead, not opened; amends 1860 ch. 90, suit clause in broader terms (per summary)
+  - source_id: us-ma-acts-1855-ch304
+    pin: s. 3
+    jurisdiction: US-MA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: lead, not opened; sue and be sued as if sole (per case-law summary)
   - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: null
@@ -32,6 +65,38 @@ rules_add:
     accessed: null
     url: null
     note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade'
+  var_roles:
+    w: wife
+    h: husband
+- id: R19
+  plain: 'The wife cannot sue her husband while married: no such power exists (the suit acts leave suits between spouses barred, MA 1855 c. 304 s. 3; unverified).'
+  attribute: wife
+  deontic: must_not
+  aim: (sue_spouse w h)
+  conditions: (married h w)
+  or_else: null
+  strand: tying
+  implicit: false
+  source: 'UNVERIFIED (leads, not opened 2026-11-05; plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch A, option A2): Massachusetts St. 1855 c. 304 s. 3, proviso ''nothing herein contained shall authorize suits between husband and wife'' (quoted in the worklist from a case-law summary, not from the statute); New York Laws 1860 ch. 90 s. 7 as read in Longendyke v. Longendyke (N.Y. Sup. Ct. 1863, as summarised): not against her husband for assault or slander. The part of coverture''s R4 disability the acts leave standing: every US act found bars or omits suits between spouses. A disability (or_else null), not a sanctioned prohibition. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing_against_spouse(w, h) = sue_spouse enabled (a default capacity), which this disability removes while married'
+  provenance:
+  - source_id: us-ma-acts-1855-ch304
+    pin: s. 3
+    jurisdiction: US-MA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: lead, not opened; the proviso is quoted from a case-law summary, not from the statute
+  - source_id: us-ny-laws-1860-ch90
+    pin: s. 7
+    jurisdiction: US-NY
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: lead, not opened; read through Longendyke v. Longendyke (1863), as summarised
   - source_id: null
     pin: null
     jurisdiction: null
@@ -40,11 +105,11 @@ rules_add:
     excerpt: null
     accessed: null
     url: null
-    note: the US suit provisions the row encodes (e.g. NY 1860) are named only through GLT; statute texts not opened ([R]); no bibliography entry
+    note: Longendyke v. Longendyke (N.Y. Sup. Ct. 1863), named only as a summary in the worklist; no bibliography entry
   var_roles:
     w: wife
     h: husband
-source_text: 'Suit provisions: a married woman may sue and be sued in her own name. Statute texts not opened ([R]); via plans/backtest-mwpa.md.'
+source_text: 'Suit provisions of the US acts: a married woman may sue and be sued in her own name (NY 1860 ch. 90 s. 7, broadened 1862 ch. 172; MA 1855 c. 304 s. 3), but not her husband (''nothing herein contained shall authorize suits between husband and wife'', MA 1855 c. 304 s. 3, per a case-law summary). Statute texts not opened; leads in plans/sourcing-worklist-mwpa.md.'
 expected_properties:
   subject_cannot_exit: reachable
   care_and_sanction_same_role: holds_to_k
@@ -55,8 +120,9 @@ expected_properties:
   double_burden: reachable
   creditor_shield: unreachable_open
   backlash: unreachable_open
+  no_standing_against_spouse: reachable
 minimal_pair_of:
   id: mwpa-sole-trader
-  rule: R4->R16
+  rule: R4->R16,R19
   differs_on: no_standing
-notes: 'Plan delta `suit`: delete R4; sue is a default capacity (the former R9, ''may sue when not married'', only encoded it and was deleted in revision 4), so deleting the R4 disability alone restores it; R16 (may sue while married) is kept as the act''s own express permission (the historical act, redundant for enablement) and has_standing reads the capacity. PREREGISTERED (2026-11-03, before any run): no_standing UNREACHABLE (open) = has_standing flips true; subject_cannot_exit still REACHABLE (R6 stands: exit needs divorce reform, not encoded): the engine should say standing before exit.'
+notes: 'Plan delta `suit`: delete R4; sue is a default capacity (the former R9, ''may sue when not married'', only encoded it and was deleted in revision 4), so deleting the R4 disability alone restores it; R16 (may sue while married) is kept as the act''s own express permission (the historical act, redundant for enablement) and has_standing reads the capacity. PREREGISTERED (2026-11-03, before any run): no_standing UNREACHABLE (open) = has_standing flips true; subject_cannot_exit still REACHABLE (R6 stands: exit needs divorce reform, not encoded): the engine should say standing before exit. A2 (2026-11-05, preregistered in plans/sourcing.md ''Coverture split and US suit''): the US acts found let a wife sue third parties but bar or omit suits between spouses, so this entry splits the suit: `sue` is now a suit against anyone but the husband (has_standing reads it: third-party standing), and the new default capacity `sue_spouse w h` keeps the part of R4 the acts leave standing as R19 (has_standing_against_spouse; property no_standing_against_spouse, PREREGISTERED reachable). Before this entry `sue` stands for every suit in her own name, all barred by R4. The direction test''s ''has_standing flips true'' holds for third-party standing only. Distance to mwpa-sole-trader is 2 (R4 -> R16, R19). R16 is re-sourced to US leads (NY 1860/1862, MA 1855); the UK Married Women''s Property Act 1882 is no longer cited and no English chain is kept (A3 not taken).'

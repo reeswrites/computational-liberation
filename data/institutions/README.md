@@ -4,11 +4,11 @@ Since 2026-11-04 the generator (`_gen_institutions.py`, `_gen_properties.py`) is
 
 Hand-reconstructed institutions for the Phase 0 institutions family (`plans/institutions-phase0.md`).
 
-- `institutions.json`: list of 25 entries (`coverture-household`, `police-crisis`, `cps`, `crisis-team`,
+- `institutions.json`: list of 26 entries (`coverture-household` (English), `police-crisis`, `cps`, `crisis-team`,
   `paternity-quota`, `transferable-leave`, `companion-ownership`, `companion-guardianship`,
   `companion-guardian-renamed`, the negative controls `lease`, `public-library` and `naming-convention`, the gate (d) pair
   `kibbutz-childrens-house`, `kibbutz-childrens-house-no-implicit`, the expected-match control `airline-flight`,
-  the six-entry MWPA chain `mwpa-creditor-exemption`, `mwpa-property`, `mwpa-earnings`, `mwpa-sole-trader`,
+  the US base `coverture-household-us` and the six-entry MWPA chain on it `mwpa-creditor-exemption`, `mwpa-property`, `mwpa-earnings`, `mwpa-sole-trader`,
   `mwpa-suit`, `mwpa-property-narrowed`, the layer-2 gate (a) pair `footbinding`, `footbinding-no-pledge`, and the ectogenesis pair `ectogenesis`, `gestational-surrogacy`). Each has `roles`, `fluents`, `actions` (with effects as fluent literals),
   ADICO `rules`, `source_text`, `expected_properties`, `isomorphic_to`, `not_isomorphic_to`, `minimal_pair_of`, `notes`.
 - `properties.json`: named properties reused across entries. The plan's nine plus one extra,
@@ -230,7 +230,7 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
 
 ## MWPA backtest chain (2026-11-03, `plans/backtest-mwpa.md`)
 
-- Six entries off `coverture-household`, a path of pairs (`minimal_pair_of` with `differs_on`): `mwpa-creditor-exemption`
+- Six entries off `coverture-household` (since 2026-11-05 off `coverture-household-us`, see the last section), a path of pairs (`minimal_pair_of` with `differs_on`): `mwpa-creditor-exemption`
   (1839-50 debtor-relief form, the plan's dark twin: +R10 creditor may attach [implicit, UNVERIFIED], +R11 creditor
   must_not attach the wife's acquired property [disability; Chused 1984], +R12 husband may transfer_to_wife [implicit,
   UNVERIFIED]; R1 kept; distance 3), `mwpa-property` (R1 -> R13 wife may hold_property; distance 1), `mwpa-earnings`
@@ -393,9 +393,9 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
 
 ## Property kinds (2026-11-04, plans/priority.md slice 1)
 
-Every property in `properties.json` now carries a `kind` key (decision 1 of "Decisions waiting on the author"). The engine ignores it; the ablation reads it to decide what is counted. 25 properties (since 2026-11-05).
+Every property in `properties.json` now carries a `kind` key (decision 1 of "Decisions waiting on the author"). The engine ignores it; the ablation reads it to decide what is counted. 25 properties (since 2026-11-05); 26 with `no_standing_against_spouse` (2026-11-05, see the last section).
 
-- `freedom` (counted in load_freedom): dependent_cannot_exit, subject_cannot_exit, subject_cannot_exit_persists, no_standing, no_standing_persists, financial_dependence, financial_dependence_unpropertied, cannot_contract, worker_uninsured, binding_practised, marriage_requires_binding, care_assigned_by_sex, reproduction_controlled_by_owner, offspring_owned, and the new `female_parent_care_persists` (16 in all with `care_duty_on_women`).
+- `freedom` (counted in load_freedom): dependent_cannot_exit, subject_cannot_exit, subject_cannot_exit_persists, no_standing, no_standing_persists, financial_dependence, financial_dependence_unpropertied, cannot_contract, worker_uninsured, binding_practised, marriage_requires_binding, care_assigned_by_sex, reproduction_controlled_by_owner, offspring_owned, and the new `female_parent_care_persists` (16 in all with `care_duty_on_women`; 17 with `no_standing_against_spouse`, 2026-11-05).
 - `goods` (counted in load_goods): none yet; slice 2 writes them.
 - `structure` (diagnostic, listed not counted): care_and_sanction_same_role, solo_care_by_non_birthing_parent, leave_reserved_for_non_birthing_parent, new_convention_adopted, birth_labor_rival, care_decoupled_from_birth.
 - `failure_mode` (listed not counted): double_burden, creditor_shield, backlash.
@@ -463,3 +463,22 @@ not only in git history.
 **`petition` (cps) is a conferred power, not a default capacity** (same review, item 6): a minor's claim runs through counsel
 or a guardian ad litem and exists because a rule grants it, where an adult's `sue` is held by default. cps R11 (the child's
 `must_not petition` bar) is therefore never ranked by the ablation; recorded, not an oversight.
+
+## Coverture split and US suit (2026-11-05, plans/sourcing.md, B3 with B1 and A2)
+
+- New `coverture-household-us` (extends `coverture-household`): the US base of the MWPA chain. Same rules field for field
+  (so the same verdicts); R6 is read as "no exit at her own will" and cites US leads (Stevenson & Wolfers 2006; NY's 1787
+  divorce act), `unverified`, "lead, not opened"; R1, R2, R4, R5, R7 keep Blackstone (England) with a note that US
+  reception is assumed and unsourced (Kent's Commentaries is a lead). `coverture-household` (English) is unchanged byte for
+  byte and stays the care+control cluster member (claim L1). `mwpa-creditor-exemption` now extends the US base.
+- `mwpa-suit` (A2): the US acts found let a wife sue third parties but bar or omit suits between spouses (MA 1855 c. 304
+  s. 3). `sue` in this entry is a suit against anyone but the husband (`has_standing` = third-party standing); a new
+  default capacity `sue_spouse w h` (derived `has_standing_against_spouse`) is barred by the new disability R19, the part
+  of R4 the acts leave standing; new property `no_standing_against_spouse` (freedom, family no_standing), reachable
+  here. Before mwpa-suit, `sue` covers every suit in her own name. R16 now cites NY 1860 ch. 90 s. 7, 1862 ch. 172 and
+  MA 1855 c. 304 (leads, `unverified`); the UK Married Women's Property Act 1882 is no longer cited, and no English
+  chain is kept (A3 not taken). Distance mwpa-sole-trader -> mwpa-suit is now 2 (R4 -> R16, R19).
+- Verdicts: 11 rows added (10 for the US base, 1 for mwpa-suit), none changed; `data/verdicts-baseline.json` gained
+  exactly those rows. The ablation's freedom-direction table (engine `rules_ablate.UNFREEDOM`) does not list the new
+  property, so R19's flip is counted as unsigned, not freedom-up (drift recorded in plans/sourcing.md).
+

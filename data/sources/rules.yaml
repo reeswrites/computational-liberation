@@ -37,6 +37,23 @@
   jurisdiction: null
   url: null
   note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04)"
+- id: stevenson-wolfers-2006
+  type: secondary
+  title: "Bargaining in the Shadow of the Law: Divorce Laws and Family Distress"
+  author: [Stevenson, Wolfers]
+  year: 2006
+  container: "Quarterly Journal of Economics 121(1)"
+  jurisdiction: null
+  url: https://www.nber.org/system/files/working_papers/w10175/w10175.pdf
+  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): unilateral divorce adopted by US states from 1969; NBER working paper w10175. plans/backtest-data-inventory.md records an earlier fetch [F] of the NBER paper; not opened in the 2026-11-05 session. Cited by coverture-household-us R6."
+- id: us-ny-laws-1787-divorce
+  type: statute
+  title: "[New York divorce act 1787, absolute divorce for adultery only (descriptive; title unconfirmed)]"
+  year: 1787
+  container: "Laws of the State of New York, 1787"
+  jurisdiction: US-NY
+  url: null
+  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): absolute divorce for adultery only until the 1966 Divorce Reform Law, per https://en.wikipedia.org/wiki/New_York_divorce_law and a Law & History Review article on divorce in New York and Indiana 1815-1870 (search results, not opened). Chapter and title not confirmed. Cited by coverture-household-us R6."
 - id: stone-1990
   type: secondary
   title: "Road to Divorce: England 1530-1987"
@@ -420,7 +437,7 @@
   container: null
   jurisdiction: UK
   url: https://www.legislation.gov.uk/ukpga/Vict/45-46/75/section/1/enacted
-  note: "a UK Public General Act (ukpga); territorial extent not in repo text. Cited in the US MWPA chain (mwpa-suit R16): jurisdiction mismatch, see data/institutions/provenance-migration-report.md"
+  note: "a UK Public General Act (ukpga); territorial extent not in repo text. Was cited in the US MWPA chain (mwpa-suit R16) until 2026-11-05, a jurisdiction mismatch (data/institutions/provenance-migration-report.md); R16 now cites US leads (plans/sourcing.md, A2) and no rule cites this act. Kept as the source for an English MWPA chain if one is built (A3, not taken)."
 - id: ny-mwpa-1848
   type: statute
   title: "An Act for the more effectual protection of the property of married women"

@@ -163,3 +163,28 @@ Author decisions 2 and 3 above (B3 with B1 now; A2 inside the US entry). Nothing
 ### B2, recorded for later (not done now)
 
 B2 (fault divorce as a conditional exit in coverture-household-us: R6 conditioned on the husband's fault not proved, with a free action setting it, as R5 does with `misbehave`) is a later experiment, preregistered on its own before any edit. Expected direction, not a prediction yet: `subject_cannot_exit` / `dependent_cannot_exit` stay reachable (the bar holds before fault is proved) while a new exit-under-condition property becomes reachable; the chain's exit verdicts and "standing before exit" need restating.
+
+## Coverture split and US suit: results (2026-11-05, engine at ENGINE_PIN 27e24c0)
+
+Preregistration: the section above (commit 73f9c46, before any edit or run). It is not edited; drift is recorded here.
+
+| Prediction | Result |
+| --- | --- |
+| coverture-household unchanged byte for byte | **held**: YAML untouched; its engine JSON entry identical (only its card's "Pairs" line changes: extended by coverture-household-us instead of mwpa-creditor-exemption) |
+| mwpa-* engine JSON differs only in R6's `source` (and mwpa-suit's A2 fields, creditor-exemption's `minimal_pair_of`/notes) | **held** |
+| coverture-household-us: ten rows equal to coverture-household's | **held** |
+| five chain entries unchanged; mwpa-suit nine rows unchanged, no_standing_against_spouse reachable | **held** |
+| check-all 134/134 | **held** (`check-all --no-cache`) |
+| gate PASS; (a) 26, 0 inert; (b) unchanged; (e) 134/134; (f) gains the US base's cross pairs | **held**: verbose gate output differs from the pre-change dataset's only in the counts (25 -> 26, 123 -> 134, 66 -> 69 cross pairs), three new cross lines and R19 in mwpa-suit's unmatched lists; gate (b) pairs and sub-signatures identical |
+| iso: coverture-household~US iso, pure rename, 0; US~creditor-exemption 3; other links 1, 1, 1, 2 | **held** |
+| iso: sole-trader~suit distance 1 -> 2, unmatched_a [R4], unmatched_b [R16, R19] | **distance held; labels drift**: the matcher pairs sole-trader R4 with suit R6 (both `wife must_not <unary capacity> w` when married) and reports unmatched_a [R6]. It made the same pairing before the change (old output: distance 1, R4->R6, unmatched R6 / R16), so this is the matcher's tie-break between same-skeleton disabilities, not a change |
+| diff: 0 changed, 11 added, 0 removed, exit 0 | **held**; `data/verdicts-baseline.json` regenerated (`phil rules verdicts --k 6`) and checked to differ from the old one by exactly those 11 added rows (same engine hash, params, z3); the diff against it now reads 0/0/0 of 134 |
+| drop-one: gate (b) fails on exactly the nine rows | **held** (coverture R2, R5, R6; police R2, R3, R4; cps R3, R4, R10) |
+| ablation: US base rows = coverture-household's, top {R4, R6, R7} | **held** (k=6 and 8) |
+| ablation: five chain entries' rows and tops unchanged ({R4, R6, R7}; sole-trader {R4, R6}) | **held** for every load, flip and top; **bookkeeping drift**: each row's `not_applicable` list gains `no_standing_against_spouse` (and mwpa-suit's `applicable` count goes 12 -> 13). Compared row by row against an ablation of the pre-change dataset, ignoring those fields: identical |
+| ablation: mwpa-suit R19 flips no_standing_against_spouse reachable -> open, freedom up, load_freedom_up 1; top {R6, R19} | **drift**: the flip happens at k=6 and 8 as predicted, but is counted `unsigned` (load_freedom 1, load_freedom_up 0), so the top stays **{R6}** (revision 4's prediction 4 for mwpa-suit still reads true). Cause: the engine decides flip direction from a hand table of property names (`rules_ablate.UNFREEDOM`, "to be replaced by a `polarity` field on Property in slice 2"), not from `kind`/`family`; the new name is not in it. Making R19 rank needs that engine change (add the name, or the polarity field); not made here (engine off limits). Recorded, not fixed |
+| claims: no Sources cell text changes; L1 unchanged | **held**: L20, T8, T11 cite `mwpa-*:*`, which resolves to inherited rows (now the US base's); no claims row names coverture-household for an MWPA claim |
+
+Other checks: `build.py --check` ok (26 institutions, 26 properties, 27 cards); `pytest -q` 31 passed; `migrate_provenance.py` rerun leaves every `src/*.yaml` byte-identical (128 own rules; 47 hand rows; RAISES unchanged). Reproduction: `uv run phil rules ablate --k 6,8 --workers 4 --entry coverture-household --entry coverture-household-us --entry mwpa-creditor-exemption --entry mwpa-property --entry mwpa-earnings --entry mwpa-sole-trader --entry mwpa-suit --entry mwpa-property-narrowed`, and the same with `--institutions`/`--properties` pointing at the previous commit's JSON for the comparison.
+
+Owed elsewhere: a drift note in plans/backtest-mwpa.md (the direction test's "suit flips has_standing" now means third-party standing; standing against the husband stays barred, `no_standing_against_spouse` reachable; the mwpa-suit link is distance 2; the chain's base is `coverture-household-us`); a dataset sync to philosophy-engine; the engine's `UNFREEDOM` table if R19 should rank.

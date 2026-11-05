@@ -1,6 +1,6 @@
 id: mwpa-creditor-exemption
 name: 'Married women''s property, 1839-50 form: creditor exemption only (dark twin; Capture per ADR 0016)'
-extends: coverture-household
+extends: coverture-household-us
 roles_add:
 - name: creditor
   gloss: a creditor of the husband
@@ -198,9 +198,9 @@ isomorphic_to: []
 not_isomorphic_to: []
 not_isomorphic_to_control: []
 minimal_pair_of:
-  id: coverture-household
+  id: coverture-household-us
   rule: R10,R11,R12
   differs_on: creditor_shield
-notes: 'DARK TWIN (DT; relabelled Capture by ADR 0016, 2026-11-03, verdicts unchanged) of the property act, encoded as the plan says: the creditor may not reach the wife''s acquired property (R11) but the husband''s management (R1) stands, so nothing on the wife''s side changes. PREREGISTERED (2026-11-03, before any run): financial_dependence and financial_dependence_unpropertied holds_to_k (unchanged from coverture); creditor_shield REACHABLE (marry, transfer_to_wife: the husband''s property sits in his wife''s name, under his management, beyond his creditors); no_standing reachable, cannot_contract holds, double_burden open, backlash open (no court here). Distance 3 from coverture (R10 baseline, R11 exemption, R12 conveyance): not a one-rule pair; R10 exists only so that can_attach is a granted power the exemption removes rather than a constant. Displacement: the plan names no burden moving to another role in this wave; none is encoded.'
+notes: 'DARK TWIN (DT; relabelled Capture by ADR 0016, 2026-11-03, verdicts unchanged) of the property act, encoded as the plan says: the creditor may not reach the wife''s acquired property (R11) but the husband''s management (R1) stands, so nothing on the wife''s side changes. PREREGISTERED (2026-11-03, before any run): financial_dependence and financial_dependence_unpropertied holds_to_k (unchanged from coverture); creditor_shield REACHABLE (marry, transfer_to_wife: the husband''s property sits in his wife''s name, under his management, beyond his creditors); no_standing reachable, cannot_contract holds, double_burden open, backlash open (no court here). Distance 3 from coverture (R10 baseline, R11 exemption, R12 conveyance): not a one-rule pair; R10 exists only so that can_attach is a granted power the exemption removes rather than a constant. Displacement: the plan names no burden moving to another role in this wave; none is encoded. Base changed 2026-11-05 from coverture-household to coverture-household-us (same rules; US reading of R6 and US-reception notes on the Blackstone rows; plans/sourcing.md, B3 with B1): no verdict change predicted, distance 3 kept.'
 initial: []
 initial_free: [female, acquired_property, earns]

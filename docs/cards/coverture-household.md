@@ -101,8 +101,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 ## Pairs
 
-Extended by: [mwpa-creditor-exemption](mwpa-creditor-exemption.md)
-[mwpa-creditor-exemption](mwpa-creditor-exemption.md) is a minimal pair of this entry (rule R10,R11,R12).
+Extended by: [coverture-household-us](coverture-household-us.md)
 Isomorphic to: police-crisis (guard+strands), cps (guard+strands)
 Not isomorphic to: crisis-team
 Contrasts with controls: lease, public-library, naming-convention

@@ -164,3 +164,22 @@ were merged in (see the rules.yaml header; each note says which, after "| merged
 equal to the 2012 article's) and given names; Khan's given name, container and pages (RePEc lead); Chused's given
 name; Chused 1983's title, container and URL (several agreeing leads); NY 1848's title, chapter (ch. 200) and URL
 (merged from `us-ny-laws-1848-ch200`, which is retired). These are unconfirmed until the work is opened.
+
+## Addendum 2026-11-05: coverture split and US suit (plans/sourcing.md, B3 with B1 and A2)
+
+Rows added after the migration, by hand, each in `OVERRIDES` so a rerun of the script writes nothing (checked: the
+second run left every `src/*.yaml` byte-identical). No item is above the heuristic (no `RAISES` entry); nothing was
+opened.
+- `coverture-household-us` R1, R2, R4, R5, R7: coverture-household's items, Blackstone (England) at the same level,
+  note adding that US reception is assumed and unsourced (Kent's Commentaries a lead). R6: `stevenson-wolfers-2006`
+  and `us-ny-laws-1787-divorce` (both new in `data/sources/rules.yaml`), `unverified`, "lead, not opened".
+- `mwpa-suit` R16: re-sourced to `us-ny-laws-1860-ch90` (s. 7), `us-ny-laws-1862-ch172`, `us-ma-acts-1855-ch304`
+  (s. 3), each `unverified`, plus GLT 2007 `recalled` as before; the `opened` UK 1882 item is gone, so the US chain no
+  longer cites a UK statute and `uk-mwpa-1882` is cited by no rule (the "every one used" count above no longer holds
+  for it; kept for an English chain). New R19 (suits between spouses barred): MA 1855 c. 304 s. 3, NY 1860 ch. 90 s. 7
+  and a null item for Longendyke v. Longendyke (1863), all `unverified`.
+- The jurisdiction-mismatch list above: R6 in every mwpa-* entry and R16 are resolved as to jurisdiction (now US leads,
+  unverified); the Blackstone rows (R1, R2, R4, R5, R7, and R12's bar on grants) remain English citations in a US
+  chain, flagged on the item.
+- Script summary after the change: 128 own rules (weakest item: opened 6, recalled 43, unverified 79); 187 items; 47
+  rows set by hand; 11 raised items in 6 rows (unchanged).

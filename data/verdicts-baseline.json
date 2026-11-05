@@ -160,6 +160,66 @@
   },
   {
    "check": "invariant",
+   "institution": "coverture-household-us",
+   "property": "cannot_contract",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-household-us",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-household-us",
+   "property": "care_assigned_by_sex",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household-us",
+   "property": "creditor_shield",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household-us",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household-us",
+   "property": "double_burden",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-household-us",
+   "property": "financial_dependence",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-household-us",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household-us",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-household-us",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
    "institution": "cps",
    "property": "care_and_sanction_same_role",
    "verdict": "holds_to_k"
@@ -667,6 +727,12 @@
    "institution": "mwpa-suit",
    "property": "no_standing",
    "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "mwpa-suit",
+   "property": "no_standing_against_spouse",
+   "verdict": "reachable"
   },
   {
    "check": "reachable",

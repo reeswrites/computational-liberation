@@ -351,6 +351,18 @@ for _r in ("R2", "R4", "R7"):
              "WAMS URL is the copy read for Bk I ch 15 (provenance url); no read claim or quote in the row: recalled",
              item("blackstone-1765-bk1-ch15", "recalled", "Bk I ch 15", "England", url=WAMS,
                   note="cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade"))
+# coverture-household-us (2026-11-05, plans/sourcing.md "Coverture split and US suit", B3 with B1): the English rows'
+# items with a note that US reception of Blackstone is assumed and unsourced; R6 cites US leads, never above unverified.
+_US_RECEPTION = ("US entry: an English treatise cited for a US rule; US reception of Blackstone is assumed and "
+                 "unsourced; a US treatise (Kent, Commentaries on American Law) is a lead, not opened")
+for _r in ("R1", "R2", "R4", "R5", "R7"):
+    _items, _why, _ = OVERRIDES[("coverture-household", _r)]
+    override("coverture-household-us", _r, _why + "; US base: the same item, its note adds that US reception is assumed",
+             *[dict(_it, note=(_it["note"] + "; " if _it["note"] else "") + _US_RECEPTION) for _it in _items])
+override("coverture-household-us", "R6",
+         "US leads for 'no exit at her own will' (B1), not opened: lead level, never above unverified",
+         item("stevenson-wolfers-2006", "unverified", note="lead, not opened; cited for no unilateral divorce in any US state before 1969"),
+         item("us-ny-laws-1787-divorce", "unverified", None, "US-NY", note="lead, not opened; one state's fault statute (absolute divorce for adultery only until 1966)"))
 override("police-crisis", "R7",
          "s. 5150(a) is cited for the absence of an officer release duty (recalled), s. 5152 is the opened source; the excerpt keeps the release-only-if passage that (not (danger s)) stands for",
          item("cal-wic-5152", "opened", "s. 5152(a), (b)", "US-CA", None,
@@ -477,13 +489,17 @@ override("mwpa-property", "R13",
          item("geddes-lueck-tennyson-2007", "recalled", "Table 1",
               note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade"))
 override("mwpa-suit", "R16",
-         "the heuristic lifted the old R9 wording ('may sue when not married') into GLT's note; GLT carries no quote here",
-         item("uk-mwpa-1882", "opened", "s. 1(2)", "UK", None,
-              "A married woman shall be capable of entering into and rendering herself liable in respect of and to the extent of her separate property on any contract, and of suing and being sued, either in contract or in tort ... in all respects as if she were a feme sole",
-              "2026-11-04", None, "a UK act (jurisdiction as its citation, ukpga, names it; territorial extent not in repo text) cited in a US chain: jurisdiction mismatch, see the migration report; effective date not in the string (1882 is the short-title year)"),
+         "re-sourced 2026-11-05 to US leads (A2; the UK 1882 act no longer cited); each statute a lead, not opened; GLT carries no quote here",
+         item("us-ny-laws-1860-ch90", "unverified", "s. 7", "US-NY", note="lead, not opened; s. 7 scoped to 'matters having relation to her property' (per summary); the encoding takes the broader reading"),
+         item("us-ny-laws-1862-ch172", "unverified", None, "US-NY", note="lead, not opened; amends 1860 ch. 90, suit clause in broader terms (per summary)"),
+         item("us-ma-acts-1855-ch304", "unverified", "s. 3", "US-MA", note="lead, not opened; sue and be sued as if sole (per case-law summary)"),
          item("geddes-lueck-tennyson-2007", "recalled", "Table 1",
-              note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade"),
-         item(note="the US suit provisions the row encodes (e.g. NY 1860) are named only through GLT; statute texts not opened ([R]); no bibliography entry"))
+              note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade"))
+override("mwpa-suit", "R19",
+         "new 2026-11-05 (A2): the spousal-suit bar the US acts leave standing; leads, not opened",
+         item("us-ma-acts-1855-ch304", "unverified", "s. 3", "US-MA", note="lead, not opened; the proviso is quoted from a case-law summary, not from the statute"),
+         item("us-ny-laws-1860-ch90", "unverified", "s. 7", "US-NY", note="lead, not opened; read through Longendyke v. Longendyke (1863), as summarised"),
+         item(note="Longendyke v. Longendyke (N.Y. Sup. Ct. 1863), named only as a summary in the worklist; no bibliography entry"))
 override("footbinding", "R1",
          "Mackie abstract quotes as a search-index snippet (snippet), the rule itself 'UNVERIFIED as a rule'",
          item("mackie-1996", "snippet", "abstract", None, None,

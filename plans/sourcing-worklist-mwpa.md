@@ -77,6 +77,8 @@ WI, NJ, OH, CA, IN, TX property/earnings and the sole-trader events: settle from
 
 The US chain cites English law in two places. Both affect rules, so (unlike dates) they can change verdicts.
 
+Status 2026-11-05: B3 with B1 done (`coverture-household-us`, US leads on R6 at `unverified`) and A2 done (`mwpa-suit` R16 re-sourced to NY 1860/1862 and MA 1855, new R19 bars suits between spouses); A3 not taken; B2 later. Preregistration and results: plans/sourcing.md "Coverture split and US suit". The leads below still need opening to move any row above `unverified`.
+
 ### A. `mwpa-suit` R16 (may sue while married), now cited to the UK Married Women's Property Act 1882 s. 1(2)
 
 US candidates found (all leads):
