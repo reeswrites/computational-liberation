@@ -70,3 +70,9 @@ Source: `docs/interpreting-results.md` section 4. "Phase 0 test" numbers are fro
 - **assurance**: what lets people leave a bundle together; solidarity as a stag hunt (`docs/theory.md`, "How liberation starts").
 - **surplus**: slack that makes room to see a bundle as a bundle (`docs/theory.md`, "How liberation starts").
 - **Layer 1-5**: the roadmap layers: 1 Entailment, 2 Frequency, 3 Backtest, 4 Priority, 5 Sequence (`docs/theory.md`, roadmap table). TODO author: one-line definitions of layers 2-5 beyond the table.
+- **may / must / must not**: ADICO deontics. The rule permits, requires or forbids its aim for the attribute role when the conditions hold (`data/institutions/README.md`).
+- **disability**: a `must_not` with no `or_else`. The power does not exist; nothing enforces it, it is simply unavailable (philosophy-engine ADR 0013). Cards print it as "must not (disability)".
+- **implicit**: a practice no text states, tagged `implicit: true` by the encoder; its source cell gives a rationale, not a quotation. Cards print "(implicit)".
+- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it (`default_capacity: true` on the action; ADR 0015 A6 strict enabledness otherwise requires a `may` for every action).
+- **or else**: the sanction rule (by rule id) that applies when a `must` or `must_not` is breached.
+- **k**: the step bound of the check; `holds_to_k` means no trace of at most k steps violates the property.

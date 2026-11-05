@@ -2,6 +2,17 @@ id: kibbutz-childrens-house-no-implicit
 name: Kibbutz children's house without the implicit assignment rule (minimal pair)
 extends: kibbutz-childrens-house
 rules_drop: [R2]
+rules_replace:
+- id: R6
+  plain: (practice, not written) The committee may reprimand a member at any time (the sanction for R3).
+  attribute: committee
+  deontic: may
+  aim: (reprimand committee x)
+  conditions: 'true'
+  or_else: null
+  strand: rival
+  implicit: true
+  source: 'implicit: the committee / general assembly disciplines a member who neglects the rota (R3''s or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(committee, x) = reprimand enabled (R6)'
 source_text: 'Construction: kibbutz-childrens-house with R2 (the implicit ''never a man in the children''s house'') deleted; nothing historical corresponds to it. The explicit rules are unchanged: R1 lets the committee assign any member.'
 expected_properties:
   care_assigned_by_sex: fails
