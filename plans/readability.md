@@ -58,3 +58,27 @@ Checks
 - Council gets a "card-only" reviewer: reads the cards and sources, not
   the code, and judges whether each encoding is faithful. If that
   reviewer can't tell, the encoding isn't legible enough yet.
+
+## Faithfulness batch (from docs/reviews/2026-11-04-readability-cards.md; NOT started; needs the author and a preregistration)
+
+The card-only seat refuted claims L24: 24 of 211 rule rows are unfaithful to their cited source. The fixes are encoding changes, so they go through the usual loop: preregister the expected verdict changes against `data/verdicts-baseline.json` and the ablation tops, commit, then edit the YAML. Grouped by what the fix is:
+
+**Re-source only (no verdict change expected).**
+- coverture R1 (husband may control_property): Blackstone I.15 says "I speak not at present of the rights of property"; cite Book II (ch. 29, husband's rights in the wife's chattels and choses in action) or Bodichon 1854. Inherited by all six mwpa-* entries.
+- coverture R6 (wife cannot leave): not in I.15; cite the law of restitution of conjugal rights / no unilateral divorce before 1857 (Stone 1990 or Shanley 1989). Inherited by six.
+- companion R1 (owner owns the animal): Cal. Penal 597s is abandonment only; cite Cal. Civ. Code 655/658 (animals as personal property). Three entries.
+- airline R2 (crew must care): 14 CFR 91.11 is passenger interference; cite 14 CFR 121.571/121.391 or keep UNVERIFIED and say so in the plain line. R3 unsupported.
+- mwpa-suit R16: Geddes Table 1 does not cover suit provisions; cite Khan 1996 or the 1882 Act s.1(2).
+- kibbutz R6 sanction: unsourced ("cannot tell"); cite Spiro 1958 / Gavron 2000 on assembly discipline or tag the sanction `UNVERIFIED`.
+
+**Re-encode (verdicts may change; preregister each).**
+- coverture R5 (husband may chastise when married): Blackstone says moderate correction is "the old law" and restraint only "in case of any gross misbehaviour"; narrow the condition to `(and (married h w) (misbehaves w))` with a new fluent, or keep the broad reading and say in `choices` that the encoding takes the older law. Predicted: `care_and_sanction_same_role` may move from holds_to_k, and the care+control iso sub-signature R5~R3 is read by gate (b): a real risk to L1.
+- police R7 (officer must release when no danger): WIC 5150/5152 put release with the facility, not the officer; change attribute to a `facility` role or re-source. Predicted: `subject_cannot_exit` / `can_exit` rows may move.
+- cps R7 (court may reassign when not best interest): WIC 361 standard is clear-and-convincing substantial danger; rename the fluent or re-source to the best-interest provision actually used. Verdicts likely unchanged (condition fluent is free either way) but the gloss must match.
+- ectogenesis R5 (female parent must provide care, or else registry sanction): the sanction was invented by the encoder; drop to `or_else: null` state obligation or source it. Predicted: `care_duty_on_women` and the R5 ablation top (ectogenesis) may move; this is the rev-2 hit, so the change must be preregistered as a possible loss.
+- paternity-quota R2: encodes an absent power as must_not + forfeiture; under ADR 0013 a non-transferable week is a disability on `transfer`, `or_else: null`. Predicted: gate (c) pair still one rule apart; `leave_reserved_for_non_birthing_parent` unchanged.
+- companion-guardianship R9: broader than Alaska 25.24.160(a)(5) (well-being, at divorce); narrow or keep with a `choices` note. Predicted: gate (f) guardianship≠ownership unchanged.
+
+**Card gaps the seat named** (format pass, in progress, Builder C): full sources, legend, variable bindings, full property glosses, rename diff for companion-guardian-renamed, notes collapsed.
+
+Author decisions: (1) run the re-source group now (no preregistration needed beyond the golden diff reading 0); (2) which of the six re-encodes to take, each with its own preregistered prediction; (3) whether coverture R5 keeps the broad "old law" reading with a disclosed choice, since narrowing it may cost the care+control match that L1 rests on. Honest note: L1 was already weakened; if the match survives only on the broad reading of one rule, that is a finding to publish, not to avoid.
