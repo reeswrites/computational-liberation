@@ -1,0 +1,1072 @@
+# MWPA backtest ground truth. Contract: plans/sourcing.md (Backtest ground truth).
+# Built 2026-11-05 from the table in plans/backtest-mwpa.md section 1. Nothing here is
+# `opened`: GLT 2007 draft and Khan 1996 were opened in an earlier session but no excerpt
+# was recorded, so their items are `recalled`. Statute items are LEADS found by WebSearch
+# (summaries, not source text) and sit at `unverified`; they add no weight, they only say
+# where to look and flag conflicts. No event is `settled`. Worklist: plans/sourcing-worklist-mwpa.md.
+# date_used = the date the backtest currently uses (the plan's table); null where the plan has none.
+backtest: mwpa
+events:
+- id: MS-property
+  jurisdiction: US-MS
+  event: property
+  date_used: 1871
+  status: conflict
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-MS
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1871
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-MS
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded; the plan records that Khan names
+      the 1839 act (it shielded slave property from husbands' creditors) and excludes it as debt relief;
+      Khan's own MS property date is not recorded in the plan
+    date_reported: 1839
+  conflict_note: 'Classification, not a misprint: 1839 is the creditor-exemption form (Capture; entry
+    mwpa-creditor-exemption), 1871 (GLT) the property act proper (mwpa-property). The backtest uses 1871.
+    Open GLT/G&T and Khan to confirm both readings.'
+- id: MS-earnings
+  jurisdiction: US-MS
+  event: earnings
+  date_used: 1871
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-MS
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1871
+- id: MS-sole_trader
+  jurisdiction: US-MS
+  event: sole_trader
+  date_used: 1871
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-MS
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1871
+- id: ME-property
+  jurisdiction: US-ME
+  event: property
+  date_used: 1855
+  status: conflict
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-ME
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1855
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-ME
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1844
+  - source_id: us-me-laws-1844-ch117
+    pin: c. 117 (or c. 116 / ch. 93)
+    jurisdiction: US-ME
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://lldc.mainelegislature.org/Open/Laws/1844/1844_PL_c117.pdf
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Maine 1844 act married women
+      property "chapter 117" laws of Maine); the search summary is not the source and the statute text
+      was not read. Maine SJC opinions (e.g. Swift v. Luce, 1847) are summarised as citing ''the act of
+      March 22, 1844, c. 117'' giving married women the right to hold property in their own name; an 1852
+      act is said to add the power to dispose of it. The archive''s c117 PDF is summarised as carrying
+      other acts and its c116 PDF the married-women title; the Maine Legislative Index is summarised as
+      listing it as PL ch. 93. Chapter number unsettled.'
+    date_reported: 1844
+  - source_id: us-me-laws-1855-ch120
+    pin: c. 120
+    jurisdiction: US-ME
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://lldc.mainelegislature.org/Open/Laws/1855/1855_PL_c120.pdf
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Maine 1855 act "married women"
+      property rights chapter 120 OR "c. 120" laws of Maine 1855); the search summary is not the source
+      and the statute text was not read. Beale v. Knowles (Me. 1858) and Springer v. Berry (Me. 1860)
+      are summarised as quoting an 1855 provision letting a married woman ''seized and possessed in her
+      own right'' of real estate ''sell, convey and dispose of the same by her separate deed''; a treatise
+      snippet dates c. 120 to 12 Feb 1855. URL below is constructed from the archive''s file pattern,
+      not seen in results.'
+    date_reported: 1855
+  conflict_note: 'GLT 2007 draft 1855; Khan 1996 1844. Leads: 1844 c. 117 (hold property in own name)
+    and 1855 c. 120 (convey by separate deed) both exist; the dates may code different powers (holding
+    vs disposing). Which one R13 (''wife may hold_property ... as if a feme sole'') encodes decides the
+    date. G&T 2013 is the tiebreaker.'
+- id: ME-earnings
+  jurisdiction: US-ME
+  event: earnings
+  date_used: 1857
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-ME
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1857
+  - source_id: us-me-laws-1857-ch59
+    pin: c. 59
+    jurisdiction: US-ME
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://lldc.mainelegislature.org/Open/Laws/1857/1857_PL_c059.pdf
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Maine 1857 married women earnings
+      "personal labor" act chapter laws of Maine); the search summary is not the source and the statute
+      text was not read. Summarised as ''An act in relation to the rights of married women'', approved
+      15 April 1857, letting a married woman ''demand and receive the wages of her personal labor, performed
+      other than for her own family''. The same search also surfaced an 1854 act ''to secure to married
+      women their earnings'' (lawcat.berkeley.edu/record/1290883) whose state is not confirmed: if it
+      is Maine, this becomes a conflict.'
+    date_reported: 1857
+  note: Agrees with GLT on the lead; still unresolved because nothing is opened. Check the 1854 earnings
+    act lead (see worklist).
+- id: ME-sole_trader
+  jurisdiction: US-ME
+  event: sole_trader
+  date_used: 1844
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-ME
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1844
+  note: Khan's 1844 sole-trader date coincides with the 1844 property act (c. 117 lead); check whether
+    Khan codes one act twice.
+- id: MA-property
+  jurisdiction: US-MA
+  event: property
+  date_used: 1845
+  status: conflict
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-MA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1845
+  - source_id: us-ma-acts-1845-ch208
+    pin: c. 208
+    jurisdiction: US-MA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Massachusetts 1845 act "married
+      women" property chapter 208 Acts and Resolves 1845); the search summary is not the source and the
+      statute text was not read. Massachusetts SJC opinions (1848, 1861) are summarised as describing
+      St. 1845 c. 208 as letting a married woman hold property ''in pursuance of a written contract entered
+      into ... before the solemnization of the marriage'', through a court-appointed trustee: a marriage-settlement
+      act, not a general separate-property act.'
+    date_reported: 1845
+  - source_id: us-ma-acts-1855-ch304
+    pin: c. 304 s. 1
+    jurisdiction: US-MA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://archives.lib.state.ma.us/entities/archivalmaterial/ba76b66e-bf4d-4429-9a40-6a1846fa45b8
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Massachusetts 1855 chapter
+      304 "An Act to protect the property of married women" earnings "sue and be sued" text); the search
+      summary is not the source and the statute text was not read. Summarised (from Harmon v. Old Colony
+      and 1861 SJC opinions) as: s. 1 all real and personal property of a woman thereafter married, and
+      property later acquired by descent, devise or bequest, is her separate estate. Dated 5 May 1855
+      by a secondary source.'
+    date_reported: 1855
+  conflict_note: GLT 1845 vs lead 1855. If GLT's 1845 is St. 1845 c. 208 (pre-nuptial contract, trustee),
+    it is closer to a settlement act than to R13; the general separate-property act would be 1855 c. 304.
+    Classification conflict raised by leads; open GLT/G&T for which act each codes.
+- id: MA-earnings
+  jurisdiction: US-MA
+  event: earnings
+  date_used: 1846
+  status: conflict
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-MA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1846
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-MA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1874
+  - source_id: us-ma-acts-1855-ch304
+    pin: c. 304 s. 7
+    jurisdiction: US-MA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://archives.lib.state.ma.us/entities/archivalmaterial/ba76b66e-bf4d-4429-9a40-6a1846fa45b8
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Massachusetts 1855 chapter
+      304 "An Act to protect the property of married women" earnings "sue and be sued" text); the search
+      summary is not the source and the statute text was not read. Summarised as: s. 7 a married woman
+      may carry on trade or business and perform labour or services on her sole and separate account,
+      and her earnings are her separate property.'
+    date_reported: 1855
+  - source_id: us-ma-acts-1874-ch184
+    pin: c. 184 s. 1
+    jurisdiction: US-MA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://hallapproved.com/ma/cases/supreme/1876/6544714/
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Massachusetts 1874 chapter
+      184 married women earnings "separate property" act Acts 1874); the search summary is not the source
+      and the statute text was not read. Hawkins v. Providence & Worcester R.R. (Mass. 1876) is summarised
+      as applying St. 1874 c. 184 s. 1: work and labour of a married woman for others than her husband
+      and children ''shall ... be presumed to be on her separate account''.'
+    date_reported: 1874
+  conflict_note: 'GLT 2007 draft 1846; Khan 1996 1874; leads 1855 (c. 304 s. 7, earnings on her separate
+    account) and 1874 (c. 184, presumption that her labour is on her separate account). A search for an
+    1846 Massachusetts earnings act found nothing: 1846 may be a draft-table misprint. The three candidate
+    dates code different rules (no act / separate-account election / default presumption).'
+- id: MA-sole_trader
+  jurisdiction: US-MA
+  event: sole_trader
+  date_used: 1860
+  status: conflict
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-MA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1860
+  - source_id: us-ma-acts-1855-ch304
+    pin: c. 304 s. 7
+    jurisdiction: US-MA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://archives.lib.state.ma.us/entities/archivalmaterial/ba76b66e-bf4d-4429-9a40-6a1846fa45b8
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Massachusetts 1855 chapter
+      304 "An Act to protect the property of married women" earnings "sue and be sued" text); the search
+      summary is not the source and the statute text was not read. Summarised as: s. 7 a married woman
+      may carry on any trade or business on her sole and separate account and sue and be sued in relation
+      to it as if sole.'
+    date_reported: 1855
+  conflict_note: Khan 1860 vs lead 1855 (c. 304 s. 7). 1860 may be the General Statutes revision (not
+    checked) or a separate sole-trader registration act; open Khan's table notes.
+- id: NY-property
+  jurisdiction: US-NY
+  event: property
+  date_used: 1848
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-NY
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1848
+  - source_id: us-ny-laws-1848-ch200
+    pin: ch. 200
+    jurisdiction: US-NY
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-chap-200.pdf
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: New York Married Women''s
+      Property Act 1848 "chapter 200" laws of New York 1860 "chapter 90" earnings act text); the search
+      summary is not the source and the statute text was not read. Summarised as ''An Act for the more
+      effectual protection of the property of married women'', passed 7 April 1848. Transcriptions at
+      houseofrussell.com and the NY State Archives digital collection.'
+    date_reported: 1848
+- id: NY-earnings
+  jurisdiction: US-NY
+  event: earnings
+  date_used: 1860
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-NY
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1860
+  - source_id: us-ny-laws-1860-ch90
+    pin: ch. 90
+    jurisdiction: US-NY
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://www.houseofrussell.com/american-legal-history/assignments/laws-of-new-york-83d-sessio.html
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: New York Married Women''s
+      Property Act 1848 "chapter 200" laws of New York 1860 "chapter 90" earnings act text); the search
+      summary is not the source and the statute text was not read. Summarised as ''An Act concerning the
+      rights and liabilities of husband and wife'', passed 20 March 1860; makes her earnings from trade,
+      business, labour or services her sole and separate property (Birkbeck v. Ackroyd, N.Y. 1878: the
+      1848/1849 acts had not reached earnings).'
+    date_reported: 1860
+- id: NY-sole_trader
+  jurisdiction: US-NY
+  event: sole_trader
+  date_used: 1860
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-NY
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1860
+  - source_id: us-ny-laws-1860-ch90
+    pin: ch. 90
+    jurisdiction: US-NY
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://www.houseofrussell.com/american-legal-history/assignments/laws-of-new-york-83d-sessio.html
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: New York Married Women''s
+      Property Act 1848 "chapter 200" laws of New York 1860 "chapter 90" earnings act text); the search
+      summary is not the source and the statute text was not read. Same act as NY-earnings; the trade-on-own-account
+      section number not confirmed.'
+    date_reported: 1860
+- id: NY-suit
+  jurisdiction: US-NY
+  event: suit
+  date_used: 1860
+  status: conflict
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-NY
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: via the free-text source of rule mwpa-suit R16 ('dates follow the property/earnings acts, e.g.
+      NY 1860'), itself 'opened per plans/backtest-mwpa.md [F]'; no excerpt recorded. Not in the plan's
+      table.
+    date_reported: 1860
+  - source_id: us-ny-laws-1860-ch90
+    pin: ch. 90 s. 7
+    jurisdiction: US-NY
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://www.houseofrussell.com/american-legal-history/assignments/laws-of-new-york-83d-sessio.html
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: New York 1860 act "rights
+      and liabilities of husband and wife" section 7 "any married woman may" "sue and be sued" in all
+      matters having relation to her property); the search summary is not the source and the statute text
+      was not read. Summarised as s. 7: a married woman may sue and be sued in all matters having relation
+      to her property. Barton v. Beer (N.Y. 1861) is summarised as saying the Code already let a wife
+      sue alone over her separate estate, so s. 7 aligned procedure; Longendyke v. Longendyke (1863):
+      s. 7 did not let a wife sue her husband for assault or slander.'
+    date_reported: 1860
+  - source_id: us-ny-laws-1862-ch172
+    pin: ch. 172
+    jurisdiction: US-NY
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-85th-sessi.pdf
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: New York 1860 act "rights
+      and liabilities of husband and wife" section 7 "any married woman may" "sue and be sued" in all
+      matters having relation to her property); the search summary is not the source and the statute text
+      was not read. Summarised (Longendyke) as conferring the power to sue and be sued ''in somewhat broader
+      terms than the act of 1860''.'
+    date_reported: 1862
+  conflict_note: 1860 (ch. 90 s. 7, property matters only) vs 1862 (ch. 172, broader) vs an earlier Code-of-Procedure
+    route for suits over her separate estate (Barton v. Beer; not identified). R16 is unconditional ('may
+    sue while married'); the 1860 text is scoped to property matters and excludes suits against the husband.
+    Not in the plan's table; date_used is the one R16's source string names.
+- id: PA-property
+  jurisdiction: US-PA
+  event: property
+  date_used: 1848
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-PA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1848
+  - source_id: us-pa-laws-1848-act372
+    pin: P.L. 536, No. 372, s. 6
+    jurisdiction: US-PA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://crawfordcopa.com/court/mw
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Pennsylvania act "April 11,
+      1848" married women property P.L. 536; Pennsylvania act "April 3, 1872" married women earnings P.L.
+      35); the search summary is not the source and the statute text was not read. Cited as ''Act of 11
+      April 1848 (P.L. 536, No. 372), ss. 6-11'' (Crawford County court page); Holcomb v. Peoples'' Savings
+      Bank (Pa. 1880) is summarised as quoting ''shall continue to be the property of such woman''; an
+      1856 decision as saying it preserved married women''s estates but did not remove the disabilities
+      of marriage.'
+    date_reported: 1848
+- id: PA-earnings
+  jurisdiction: US-PA
+  event: earnings
+  date_used: 1872
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-PA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1872
+  - source_id: us-pa-laws-1872-act24
+    pin: P.L. 35, No. 24
+    jurisdiction: US-PA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://crawfordcopa.com/court/mw
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Pennsylvania act "April 11,
+      1848" married women property P.L. 536; Pennsylvania act "April 3, 1872" married women earnings P.L.
+      35); the search summary is not the source and the statute text was not read. Cited as ''Act of 3
+      April 1872 (P.L. 35, No. 24)''; Holcomb is summarised as treating it as the act that reached earnings
+      left to husbands by the 1848 act.'
+    date_reported: 1872
+- id: PA-sole_trader
+  jurisdiction: US-PA
+  event: sole_trader
+  date_used: null
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-PA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'opened per plans/backtest-mwpa.md [F]; no excerpt recorded; plan table: Khan Table 1 does not
+      list this state as having a sole-trader act'
+    date_reported: null
+  note: 'Recalled, not searched: Pennsylvania had a colonial feme-sole-trader act (1718) for wives of
+    absent mariners; if Khan omits it by design, record that.'
+- id: WI-property
+  jurisdiction: US-WI
+  event: property
+  date_used: 1850
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-WI
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1850
+- id: WI-earnings
+  jurisdiction: US-WI
+  event: earnings
+  date_used: 1872
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-WI
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1872
+- id: WI-sole_trader
+  jurisdiction: US-WI
+  event: sole_trader
+  date_used: null
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-WI
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'opened per plans/backtest-mwpa.md [F]; no excerpt recorded; plan table: Khan Table 1 does not
+      list this state as having a sole-trader act'
+    date_reported: null
+- id: NJ-property
+  jurisdiction: US-NJ
+  event: property
+  date_used: 1852
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-NJ
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1852
+- id: NJ-earnings
+  jurisdiction: US-NJ
+  event: earnings
+  date_used: 1874
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-NJ
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1874
+- id: NJ-sole_trader
+  jurisdiction: US-NJ
+  event: sole_trader
+  date_used: 1874
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-NJ
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1874
+- id: MD-property
+  jurisdiction: US-MD
+  event: property
+  date_used: 1860
+  status: conflict
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-MD
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1860
+  - source_id: us-md-laws-1842-ch293
+    pin: ch. 293 s. 1
+    jurisdiction: US-MD
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://msa.maryland.gov/megafile/msa/speccol/sc2900/sc2908/000001/000594/html/am594--254.html
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Maryland 1842 chapter 293
+      married women property act; Maryland 1860 married women earnings act laws of Maryland); the search
+      summary is not the source and the statute text was not read. Archives of Maryland session laws:
+      ''An act to regulate conjugal rights as they regard property'', 1842 session, summarised as passed
+      10 March 1843; s. 1 summarised as ''any married woman may become seized or possessed of any property,
+      real or of slaves''. Annotations (Six v. Shaner, 26 Md. 442) are summarised as saying it did not
+      give her a separate estate excluding the husband''s marital rights.'
+    date_reported: 1843
+  - source_id: us-md-code-1860-art45
+    pin: Art. 45
+    jurisdiction: US-MD
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Maryland Code 1860 Article
+      45 "Husband and Wife" married woman earnings "wages" separate property section; Maryland 1842 c.
+      293 "An act to regulate conjugal rights as they regard property"); the search summary is not the
+      source and the statute text was not read. Code of 1860 Art. 45 summarised as codifying married women''s
+      property (ss. 1-2, citing 1842 ch. 293) and holding ''all their property of every description for
+      their separate use'' (s. 4). Section wording in the summary may come from later code editions.'
+    date_reported: 1860
+  conflict_note: GLT 1860 vs lead 1842 session (passed 1843) c. 293. GLT may code the 1860 Code (which
+    the lead says gives 'separate use' of all property) and treat 1842 c. 293 as debt-relief/limited (the
+    husband's marital rights survived, per Six v. Shaner). Classification conflict; also bears on whether
+    MD belongs in the 1839-50 Capture window.
+- id: MD-earnings
+  jurisdiction: US-MD
+  event: earnings
+  date_used: 1842
+  status: conflict
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-MD
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded; the plan flags the printed 1842
+      as OCR-suspect (earnings act before the 1860 property act)
+    date_reported: 1842
+  - source_id: us-md-laws-1842-ch293
+    pin: ch. 293 s. 8
+    jurisdiction: US-MD
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://msa.maryland.gov/megafile/msa/speccol/sc2900/sc2908/000001/000594/html/am594--254.html
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Maryland 1842 chapter 293
+      married women property act; Maryland 1860 married women earnings act laws of Maryland); the search
+      summary is not the source and the statute text was not read. Code annotations summarised as citing
+      1842 ch. 293 s. 8 for a provision on a married woman''s property/proceeds; whether s. 8 reaches
+      earnings is unclear in the summary.'
+    date_reported: 1843
+  - source_id: us-md-code-1860-art45
+    pin: Art. 45 s. 3
+    jurisdiction: US-MD
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Maryland Code 1860 Article
+      45 "Husband and Wife" married woman earnings "wages" separate property section; Maryland 1842 c.
+      293 "An act to regulate conjugal rights as they regard property"); the search summary is not the
+      source and the statute text was not read. Code of 1860 Art. 45 s. 3 summarised as ''proceeds of
+      labor of married women protected'' (annotation heading).'
+    date_reported: 1860
+  conflict_note: GLT 2007 draft prints 1842, which the plan flags as OCR-suspect. Leads suggest 1842 may
+    be real (ch. 293, the 1842 session, enacted March 1843; s. 8) or the earnings date may be the 1860
+    Code (Art. 45 s. 3). Either way the printed digit is not obviously a misread 1862/1872. Open the GLT
+    PDF page image, then G&T 2013.
+- id: MD-sole_trader
+  jurisdiction: US-MD
+  event: sole_trader
+  date_used: 1860
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-MD
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1860
+  note: 'Lead (query: Maryland Code 1860 Article 45 "Husband and Wife" married woman earnings "wages"
+    separate property section; Maryland 1842 c. 293 "An act to regulate conjugal rights as they regard
+    property"): Code 1860 Art. 45 s. 5 summarised as letting a married woman engage in business and sue
+    on her contracts, but the same summary says an 1898 act added the power to engage in business. Unreliable;
+    check before adding as an item.'
+- id: OH-property
+  jurisdiction: US-OH
+  event: property
+  date_used: 1861
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-OH
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1861
+  note: HWZ event state per plan.
+- id: OH-earnings
+  jurisdiction: US-OH
+  event: earnings
+  date_used: 1861
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-OH
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1861
+- id: OH-sole_trader
+  jurisdiction: US-OH
+  event: sole_trader
+  date_used: null
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-OH
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'opened per plans/backtest-mwpa.md [F]; no excerpt recorded; plan table: Khan Table 1 does not
+      list this state as having a sole-trader act'
+    date_reported: null
+- id: IL-property
+  jurisdiction: US-IL
+  event: property
+  date_used: 1861
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-IL
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1861
+  - source_id: us-il-laws-1861-p143
+    pin: Laws 1861 p. 143 s. 1
+    jurisdiction: US-IL
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://syfert.com/caselaw/case.php?id=7053430
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Illinois 1861 married women
+      property act "February 21, 1861" separate property; Illinois 1869 act married women earnings "March
+      24, 1869"); the search summary is not the source and the statute text was not read. Illinois Supreme
+      Court opinion (syfert.com id 7053430) summarised as describing s. 1 of the act approved 21 Feb 1861
+      (Laws 1861 p. 143) as giving a married woman control of separate property acquired in good faith
+      from someone other than her husband.'
+    date_reported: 1861
+  note: HWZ event state per plan.
+- id: IL-earnings
+  jurisdiction: US-IL
+  event: earnings
+  date_used: 1869
+  status: conflict
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-IL
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1869
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-IL
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1861
+  - source_id: us-il-laws-1869-p255
+    pin: Laws 1869 p. 255 s. 1
+    jurisdiction: US-IL
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://syfert.com/caselaw/case.php?id=7053430
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Illinois 1861 married women
+      property act "February 21, 1861" separate property; Illinois 1869 act married women earnings "March
+      24, 1869"); the search summary is not the source and the statute text was not read. Same opinion
+      summarised as describing s. 1 of the act of 24 March 1869 (Laws 1869 p. 255) as giving her the right
+      to receive, use and possess her own earnings free from her husband and his creditors; Hanchett v.
+      Rice headnotes summarised as ''married women did not become entitled to their own earnings until
+      the 1869 act''; Howarth v. Warmser (1871): the 1861 act left the wife''s earnings to the husband.'
+    date_reported: 1869
+  conflict_note: GLT 2007 draft 1869; Khan 1996 1861. The leads (three Illinois opinions as summarised)
+    favour 1869 and say the 1861 act did not reach earnings; Khan's 1861 may code the property act's reach.
+    Not settled until the 1869 session law or G&T 2013 is opened.
+- id: IL-sole_trader
+  jurisdiction: US-IL
+  event: sole_trader
+  date_used: 1874
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-IL
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1874
+  - source_id: us-il-rs-1874-husband-wife
+    pin: R.S. 1874 p. 576
+    jurisdiction: US-IL
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://www.ilga.gov/ftp/ILCS/Ch%200750/Act%200065/075000650F.html
+    note: 'LEAD only, not evidence: located by WebSearch 2026-11-05 (query: Illinois "act to revise the
+      law in relation to husband and wife" 1874 married woman "may sue and be sued" contract own name
+      sole trader); the search summary is not the source and the statute text was not read. Summarised
+      as the act revising the law of husband and wife, approved 30 March 1874 (R.S. 1874 p. 576; now 750
+      ILCS 65): a married woman may sue and be sued as if single and may contract (including with her
+      husband). Sole-trader wording not confirmed.'
+    date_reported: 1874
+- id: CA-property
+  jurisdiction: US-CA
+  event: property
+  date_used: 1872
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1872
+  note: 'Community-property state: separate encoding needed (plan section 5).'
+- id: CA-earnings
+  jurisdiction: US-CA
+  event: earnings
+  date_used: 1872
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1872
+- id: CA-sole_trader
+  jurisdiction: US-CA
+  event: sole_trader
+  date_used: 1872
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1872
+- id: IN-property
+  jurisdiction: US-IN
+  event: property
+  date_used: 1879
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-IN
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1879
+- id: IN-earnings
+  jurisdiction: US-IN
+  event: earnings
+  date_used: 1879
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-IN
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1879
+- id: IN-sole_trader
+  jurisdiction: US-IN
+  event: sole_trader
+  date_used: null
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-IN
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'opened per plans/backtest-mwpa.md [F]; no excerpt recorded; plan table: Khan Table 1 does not
+      list this state as having a sole-trader act'
+    date_reported: null
+- id: TX-property
+  jurisdiction: US-TX
+  event: property
+  date_used: 1913
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-TX
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1913
+  note: Community-property state.
+- id: TX-earnings
+  jurisdiction: US-TX
+  event: earnings
+  date_used: 1913
+  status: unresolved
+  provenance:
+  - source_id: glt-2007-isnie-draft
+    pin: Table 1
+    jurisdiction: US-TX
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: opened per plans/backtest-mwpa.md [F]; no excerpt recorded
+    date_reported: 1913
+- id: TX-sole_trader
+  jurisdiction: US-TX
+  event: sole_trader
+  date_used: null
+  status: unresolved
+  provenance:
+  - source_id: khan-1996-jeh-patents
+    pin: Table 1
+    jurisdiction: US-TX
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'opened per plans/backtest-mwpa.md [F]; no excerpt recorded; plan table: ''none in 19th c.''
+      per Khan Table 1'
+    date_reported: null
