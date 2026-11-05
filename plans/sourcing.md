@@ -87,7 +87,7 @@ So L1 rests on nine rows, and the only one carrying `UNVERIFIED` is **coverture 
 
 ## Order of work
 
-1. done/doing: this file; bibliography + provenance + migration script (`data/institutions/migrate_provenance.py`) + build strip + cards + checks; ADR 0017 (sourcing standard); `sources` column in `docs/claims.md`.
+1. done 2026-11-05: this file; bibliography (`data/sources/rules.yaml` 49 works, `backtests.yaml` 21 more); provenance on every rule via `data/institutions/migrate_provenance.py` (resolved rows: opened 18, snippet 0, recalled 64, unverified 129; nothing upgraded; report `data/institutions/provenance-migration-report.md`); build strip + cards; `tests/test_sources.py`; ADR 0017 (proposed); `Sources` column in `docs/claims.md`; MWPA ground truth (40 events: 9 conflict, 31 unresolved); worklists; `plans/sourcing-verify-session.md` (the brief for a session that can open pages).
 2. Coverture R6 (load-bearing for L1 and inherited by every mwpa-* entry; see above). MWPA verification worklist (`plans/sourcing-worklist-mwpa.md`) and ground-truth file; open sources; resolve ME/MA/IL/MD; replace English sources in the US chain or split UK entries; record drift if any rule changes.
 3. Police / CPS practice norms (R1, R5, R6 the match reads); kibbutz (Spiro, Gavron); footbinding (Mackie), naming-convention (Centola); `docs/theory.md` uncited facts (`plans/sourcing-worklist-other.md`).
 4. Council: honesty of the migration (no row upgraded), and after verification a sampled check of `opened` rows against their excerpts.
@@ -96,3 +96,12 @@ So L1 rests on nine rows, and the only one carrying `UNVERIFIED` is **coverture 
 ## Parked: Part 2, lineage / phylogenetic sequencing
 
 Ancestral state reconstruction and correlated-evolution tests (Pagel 1994) as a check on the ABM's orderings; Holden & Mace 2003 as a rediscovery test; trait export from ADICO components; horizontal transmission edges; five claims to preregister (floor-first across countries; rule-vs-tech ordering within lineages; Lerner ordering, contested; lineage specificity; rival-strand priority) plus Smuts 1995 traits and Alesina, Giuliano & Nunn 2013 persistence; glossary entries for mechanism vocabulary. All references [R]. Depends on this plan (traits need sourced, dated, jurisdiction-specific codings) and on the thin path; not started.
+
+## Decisions for the author (raised 2026-11-05, nothing changed yet)
+
+1. Accept ADR 0017 (proposed).
+2. Coverture R6 / the US chain's exit bar: worklist options B1 (US sources, read R6 as "no unilateral exit", no rule change), B2 (encode fault divorce as a conditional exit; moves coverture baseline verdicts), B3 (split English and US entries). Leads: every US state but South Carolina had fault divorce in the period; unilateral divorce only from 1969.
+3. mwpa-suit R16: the US acts found grant suit over separate property and exclude suits between spouses (MA 1855 c.304); the unconditional R16 overstates US law. Option A2 scopes it (a rule change; preregister first).
+4. Plan backtest-mwpa.md section 3 says ">= 8 of 10 early states" but names nine; name the tenth (or restate as 9) before the ordering test runs, as a recorded amendment.
+5. Leads that suggest a rule is wrong, not only unsourced (verify before acting): cps R1 pin (Penal Code 11165.14 is not CPS investigation; WIC 328), cps R8 (counsel on petition, not investigation; 317(c)(1) exception), cps R11 (WIC 388(a)(1) lets the child petition), police R8 (WIC 5275 reach to 5150 detainees from 2023: effective_date). MWPA dates: MA earnings 1846 has no matching act in the leads; MD "1842" may be a real 1843 act of creditor-exemption form, not OCR.
+6. docs/theory.md statements the leads contradict: forager fertility ("despite high fertility"), whaling decline (kerosene vs falling lighting demand), Mullainathan & Shafir (contested replication), Kleven (equal in the long run, Denmark). theory.md is exported from the canonical Claude doc, so edit there.
