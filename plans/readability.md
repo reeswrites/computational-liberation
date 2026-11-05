@@ -106,6 +106,6 @@ Predictions:
 | 2 | Gate (a)-(f) PASS; care+control match persists under the narrow R5 and the police `facility` role | **held**: GATE PASS; (b) the three pairs partial(care+control) at guard+strands, crisis-team none, controls none; (c) distance 1 on R2; (f) rename detected |
 | 3 | Ablation tops unchanged; coverture R5 still deregulated; ectogenesis R5 still top | **held**: 0 top-rule changes against the revision-4b summary; deregulated lists identical; 335 rows |
 | 4 | build --check passes, cards regenerate with full sources | **held** |
-| 5 | Card-only re-review moves the edited rules to faithful | pending (docs/reviews/2026-11-04-faithfulness-batch-cards.md) |
+| 5 | Card-only re-review moves the edited rules to faithful | **held with two exceptions**: 22 of 24 unfaithful rows faithful; companion-guardianship R9 stays unfaithful by the disclosed choice; kibbutz-no-implicit R6 cannot tell (unsourced sanction). docs/reviews/2026-11-04-faithfulness-batch-cards.md |
 
 Drift: none. What the batch shows: the care+control match does not depend on the over-broad reading of coverture R5; it survives Blackstone's actual condition. Two rules stay UNVERIFIED (coverture R6, kibbutz R6) and one is partial (airline R2); they say so on their cards. Two encoder-named fluents remain (`misbehaves`, `substantial_danger`) with their glosses tied to the quoted text. The 85 unbound variable bindings on cards are the next readability pass.
