@@ -98,7 +98,10 @@ So L1 rests on nine rows, and the only one carrying `UNVERIFIED` is **coverture 
 
 Ancestral state reconstruction and correlated-evolution tests (Pagel 1994) as a check on the ABM's orderings; Holden & Mace 2003 as a rediscovery test; trait export from ADICO components; horizontal transmission edges; five claims to preregister (floor-first across countries; rule-vs-tech ordering within lineages; Lerner ordering, contested; lineage specificity; rival-strand priority) plus Smuts 1995 traits and Alesina, Giuliano & Nunn 2013 persistence; glossary entries for mechanism vocabulary. All references [R]. Depends on this plan (traits need sourced, dated, jurisdiction-specific codings) and on the thin path; not started.
 
-## Decisions for the author (raised 2026-11-05, nothing changed yet)
+## Decisions for the author (raised 2026-11-05)
+
+Settled 2026-11-05 (author took every recommendation): 1 accepted; 2 B3 with B1 now, B2 later as a preregistered experiment; 3 A2 inside the US entry; 4 ">= 8 of the 9 named" (amendment in plans/backtest-mwpa.md); 5 verify first (cps R1, police R8 provenance-only; cps R8, R11 rule changes, preregistered); 6 soften now (draft in docs/theory-softening-draft.md, for the canonical Claude doc).
+
 
 1. Accept ADR 0017 (proposed).
 2. Coverture R6 / the US chain's exit bar: worklist options B1 (US sources, read R6 as "no unilateral exit", no rule change), B2 (encode fault divorce as a conditional exit; moves coverture baseline verdicts), B3 (split English and US entries). Leads: every US state but South Carolina had fault divorce in the period; unilateral divorce only from 1969.

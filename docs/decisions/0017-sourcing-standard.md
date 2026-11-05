@@ -1,6 +1,6 @@
 # 0017. Sourcing standard: structured provenance, primary sources for ground truth
 
-Status: proposed 2026-11-05 (author to accept). Plan: plans/sourcing.md.
+Status: accepted 2026-11-05 (author, in session; the author-format amendment, a list of names each split into surname and given names, deferred). Plan: plans/sourcing.md.
 
 ## Context
 The "rediscover known findings" falsifier compares the engine against history. If the history is our own encoding of half-read sources, the test checks the engine against itself. A read-only audit (2026-11-05) found every rule has a free-text `source` and the `UNVERIFIED` convention (CONTRIBUTING §3) is followed, but 121 of 211 rule rows are UNVERIFIED, citations are pasted repeatedly with no bibliography, `docs/claims.md` records engine evidence only, and the facts the falsifier leans on are the weakest: MWPA dates come from a 2007 working-paper draft and three date lists disagree; the US MWPA chain ends in a rule sourced to the English Married Women's Property Act 1882 and inherits an exit bar sourced to England's Matrimonial Causes Act 1857; the police/CPS practice norms the care+control match reads are unsourced. L24 already showed that code-reading reviews miss what opening the source catches (24 unfaithful rows found only by fetching the texts).
