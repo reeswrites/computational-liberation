@@ -152,7 +152,7 @@ actions:
     value: false
 rules:
 - id: R1
-  plain: 'The guardian may transfer the animal to another when the guardian owns it (R.I. Gen. Laws 4-13-41).'
+  plain: 'The guardian may transfer the animal to another when the guardian owns it (Cal. Civ. Code 655, 663 for the power; R.I. Gen. Laws 4-13-41 for the name).'
   attribute: guardian
   deontic: may
   aim: (transfer g a o2)
@@ -160,7 +160,7 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: 'property status of companion animals; R.I. Gen. Laws s. 4-13-41 (P.L. 2001 ch. 72); https://webserver.rilegislature.gov/Statutes/TITLE4/4-13/4-13-41.htm. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
+  source: 'property status of companion animals: Cal. Civ. Code s. 655: ''There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals''; s. 663: ''Every kind of property that is not real is personal'' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. R.I. Gen. Laws s. 4-13-41 (P.L. 2001 ch. 72; https://webserver.rilegislature.gov/Statutes/TITLE4/4-13/4-13-41.htm) only makes ''owner'' and ''guardian'' interchangeable: it is the source of the role name, not of this rule. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
 - id: R2
   plain: 'The guardian may have the animal euthanized when the guardian owns it.'
   attribute: guardian

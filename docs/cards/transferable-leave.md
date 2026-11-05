@@ -67,7 +67,7 @@
 ## Pairs
 
 Extends [paternity-quota](paternity-quota.md); one line per change:
-- R2 replaced: was "The non-birthing parent must not transfer reserved weeks to another parent at any time, or else the plan may forfeit the weeks (R3) (QPIP ss. 9, 16, 17)." now "The non-birthing parent may transfer reserved weeks to another parent of the child when holding reserved weeks (minimal-pair construction: reserved block made shareable)."
+- R2 replaced: was "The non-birthing parent cannot transfer the reserved weeks to another parent: no such power exists (QPIP ss. 9, 16, 17)." now "The non-birthing parent may transfer reserved weeks to another parent of the child when holding reserved weeks (minimal-pair construction: reserved block made shareable)."
 - overrides expected_properties
 - overrides minimal_pair_of
 - overrides notes
@@ -76,6 +76,6 @@ Not isomorphic to: paternity-quota
 
 <details><summary>Encoder notes (engine internals)</summary>
 
-Identical to paternity-quota except R2: must_not transfer_reserved (with forfeiture as or_else) becomes may transfer_reserved (no or_else). solo_care_by_non_birthing_parent stays reachable (R1 is untouched) but leave_reserved_for_non_birthing_parent is violated: a compliant trace transfers the reserved weeks to the birthing parent, who then takes them, and with the implicit default R7 that is the trace the norm selects. Pitfalls: (1) the encoder must keep R3 (forfeiture) even though nothing now triggers it as a sanction; dropping it changes the rule count and the iso report should say 'one rule apart', not two; (2) expected care_assigned_by_sex is 'reachable' here versus 'violated' in the quota: that is the historical finding (transferable weeks go to mothers) stated as permission, not frequency; (3) the real present-day Canadian regime is itself a quota (5 reserved weeks), so cite it for the shareable 35, not as the pure transferable case.
+Identical to paternity-quota except R2: must_not transfer_reserved (a disability, or_else null since 2026-11-04; before that with forfeiture as or_else) becomes may transfer_reserved (no or_else). solo_care_by_non_birthing_parent stays reachable (R1 is untouched) but leave_reserved_for_non_birthing_parent is violated: a compliant trace transfers the reserved weeks to the birthing parent, who then takes them, and with the implicit default R7 that is the trace the norm selects. Pitfalls: (1) the encoder must keep R3 (forfeiture) even though nothing now triggers it as a sanction; dropping it changes the rule count and the iso report should say 'one rule apart', not two; (2) expected care_assigned_by_sex is 'reachable' here versus 'violated' in the quota: that is the historical finding (transferable weeks go to mothers) stated as permission, not frequency; (3) the real present-day Canadian regime is itself a quota (5 reserved weeks), so cite it for the shareable 35, not as the pure transferable case.
 
 </details>

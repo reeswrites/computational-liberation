@@ -74,9 +74,9 @@ fluents:
   arity: 2
   gloss: p cooperates with the worker's plan for c (presumed until refused)
   arg_roles: [parent, child]
-- name: best_interest
+- name: substantial_danger
   arity: 2
-  gloss: custody with p is in c's best interest
+  gloss: clear and convincing evidence of substantial danger to c's health or safety with no reasonable means to protect without removal (WIC 361(c)(1))
   arg_roles: [parent, child]
 - name: in_home_considered
   arity: 2
@@ -254,18 +254,19 @@ rules:
     c: child
     p: parent
 - id: R7
-  plain: 'The court may reassign custody of the child when the case is open and the parent''s custody is not in the child''s best interest (Cal. WIC 361).'
+  plain: 'The court may reassign custody of the child when the case is open and there is clear and convincing evidence of substantial danger to the child with no reasonable means of protection short of removal (Cal. WIC 361(c)(1)).'
   attribute: court
   deontic: may
   aim: (reassign_custody court p c)
-  conditions: (and (case_open c) (not (best_interest p c)))
+  conditions: (and (case_open c) (substantial_danger p c))
   or_else: null
   strand: tying
   implicit: false
-  source: 'Cal. WIC 361 / 361.2: court may remove from or place with a parent on best-interest and safety findings. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, c) = reassign_custody enabled for some parent'
+  source: 'Cal. Welf. & Inst. Code s. 361(c)(1), read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_361 (leginfo.legislature.ca.gov returned 403): a dependent child may not be taken from the custody of the parent ''unless the juvenile court finds clear and convincing evidence of any of the following circumstances'': (1) ''substantial danger to the physical health, safety, protection, or physical or emotional well-being of the minor'' and ''there are no reasonable means by which the minor''s physical health can be protected without removing'' the minor. The fluent substantial_danger is that finding, exogenous (initial_free). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, c) = reassign_custody enabled for some parent'
   var_roles:
     c: child
     p: parent
+  choices: 'Until 2026-11-04 the condition was (not (best_interest p c)) with a fluent best_interest; WIC 361 uses ''best interest'' only for educational decisions, so the fluent was renamed to the statute''s removal standard, substantial_danger (WIC 361(c)(1)), with the inverse polarity. No action set best_interest; nothing else used it.'
 - id: R8
   plain: 'The child having appointed counsel must hold when the case is open (Cal. WIC 317).'
   attribute: court
@@ -326,13 +327,13 @@ isomorphic_to:
 not_isomorphic_to: [crisis-team]
 not_isomorphic_to_control: [lease, public-library, naming-convention]
 minimal_pair_of: null
-notes: 'Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (assess + detain) and coverture (maintain + chastise). R7 is the court-reassigns-on-best-interest rule that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists ''fails'' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) ''reachable'' for subject_cannot_exit is permission, not frequency. Only WIC 306 was read; R1, R2, R7, R8 cite sections from memory and are marked UNVERIFIED in source. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, immediate_danger, parent, female, best_interest) are initial_free.'
+notes: 'Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (assess + detain) and coverture (maintain + chastise). R7 is the court-reassigns-the-dependent rule (on substantial danger here, WIC 361(c)(1); on best interest in companion-guardianship R9) that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists ''fails'' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) ''reachable'' for subject_cannot_exit is permission, not frequency. Only WIC 306 was read; R1, R2, R7, R8 cite sections from memory and are marked UNVERIFIED in source. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, immediate_danger, parent, female, substantial_danger) are initial_free.'
 initial: []
 initial_free:
 - report_received
 - immediate_danger
 - parent
 - female
-- best_interest
+- substantial_danger
 defaults:
   cooperates: 'true'

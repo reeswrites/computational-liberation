@@ -113,15 +113,16 @@ rules:
   implicit: false
   source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: maximum of five weeks of paternity benefits or exclusive benefits for the non-birthing parent)'
 - id: R2
-  plain: 'The non-birthing parent must not transfer reserved weeks to another parent at any time, or else the plan may forfeit the weeks (R3) (QPIP ss. 9, 16, 17).'
+  plain: 'The non-birthing parent cannot transfer the reserved weeks to another parent: no such power exists (QPIP ss. 9, 16, 17).'
   attribute: non_birthing_parent
   deontic: must_not
   aim: (transfer_reserved p q)
   conditions: 'true'
-  or_else: R3
+  or_else: null
   strand: tying
   implicit: false
-  source: Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9 labels the weeks exclusive; s. 16 sharing covers only shareable benefits; s. 17 adds unused weeks to the other parent only on death)
+  source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9 labels the weeks exclusive; s. 16 sharing covers only shareable benefits; s. 17 adds unused weeks to the other parent only on death). A disability (or_else null): the Act confers no power to transfer; forfeiture (R3) is the use-it-or-lose-it consequence of the benefit period ending, not a sanction for transferring'
+  choices: 'Until 2026-11-04: must_not with R3 (forfeiture) as or_else. ADR 0013 reads an absent power as a disability, so or_else is null; R3 is kept (its own trigger is the benefit period ending; nothing now points at it from R2). transferable-leave replaces R2 whole, so the pair still differs on exactly R2.'
   var_roles:
     q: birthing_parent
 - id: R3

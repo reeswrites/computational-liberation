@@ -27,7 +27,7 @@
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
 |---|---|---|---|---|---|---|---|---|
 | R1 | non_birthing_parent | may | `(take_reserved_leave p c)` | `(and (parent p c) (not (birthing_parent p c)) (reserved_weeks_available p))` | none | rival | The non-birthing parent may take reserved leave for the child when they are a parent of the child, not the birthing parent, and have reserved weeks available (QPIP s. 9). | Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: maximum of five weeks of paternity benefits or exclusive benefits for the non-birthing parent) |
-| R2 | non_birthing_parent | must not | `(transfer_reserved p q)` | `true` | R3 `(forfeit plan p)` | tying | The non-birthing parent must not transfer reserved weeks to another parent at any time, or else the plan may forfeit the weeks (R3) (QPIP ss. 9, 16, 17). | Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9 labels the weeks exclusive; s. 16 sharing covers only shareable benefits; s. 17 adds unused weeks to the other parent only on death) |
+| R2 | non_birthing_parent | must not (disability) | `(transfer_reserved p q)` | `true` | none | tying | The non-birthing parent cannot transfer the reserved weeks to another parent: no such power exists (QPIP ss. 9, 16, 17). | [full source under Sources, R2](#src-r2) https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 |
 | R3 | plan | may | `(forfeit plan p)` | `(and (reserved_weeks_available p) (benefit_period_ended c))` | none | rival | The plan may forfeit a parent's reserved weeks when reserved weeks remain and the child's benefit period has ended (use-it-or-lose-it, QPIP s. 9). | Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (unused exclusive weeks lapse; use-it-or-lose-it) |
 | R4 | birthing_parent | may | `(take_shareable_leave p c)` | `(and (parent p c) (shareable_weeks_available p))` | none | rival | The birthing parent may take shareable leave for the child when they are a parent of the child and have shareable weeks available (QPIP ss. 10, 16). | Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 10: 32 shareable weeks; s. 16: may be taken by either parent or shared) |
 | R5 | non_birthing_parent | may | `(take_shareable_leave p c)` | `(and (parent p c) (shareable_weeks_available p))` | none | rival | The non-birthing parent may take shareable leave for the child when they are a parent of the child and have shareable weeks available (QPIP s. 16). | Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16) |
@@ -49,6 +49,12 @@
 - R7: `p` = birthing_parent (fluent female); `c` = unbound (encoder to fix)
 - R8: `p` = non_birthing_parent (rule var_roles); `c` = child (fluent birthing_parent)
 - R9: `p` = unbound (encoder to fix); `c` = unbound (encoder to fix)
+
+## Sources
+
+<a id="src-r2"></a>
+**R2**: Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9 labels the weeks exclusive; s. 16 sharing covers only shareable benefits; s. 17 adds unused weeks to the other parent only on death). A disability (or_else null): the Act confers no power to transfer; forfeiture (R3) is the use-it-or-lose-it consequence of the benefit period ending, not a sanction for transferring
+
 
 ## Expected properties
 

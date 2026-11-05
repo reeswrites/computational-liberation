@@ -4,7 +4,7 @@ extends: mwpa-sole-trader
 rules_drop: [R4]
 rules_add:
 - id: R16
-  plain: 'The wife may sue in her own name when married (Geddes et al. 2007).'
+  plain: 'The wife may sue in her own name when married (Married Women''s Property Act 1882 s. 1(2)).'
   attribute: wife
   deontic: may
   aim: (sue w)
@@ -12,7 +12,7 @@ rules_add:
   or_else: null
   strand: tying
   implicit: false
-  source: 'Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (acts giving a married woman the right to sue and be sued in her own name; dates follow the property/earnings acts, e.g. NY 1860). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled: sue is a default capacity (the former R9 ''may sue when not married'' is deleted, revision 4) and R4, the disability, is deleted; R16 is kept as the act''s own express permission'
+  source: 'Married Women''s Property Act 1882 (45 & 46 Vict. c. 75) s. 1(2), read 2026-11-04 at https://www.legislation.gov.uk/ukpga/Vict/45-46/75/section/1/enacted: ''A married woman shall be capable of entering into and rendering herself liable in respect of and to the extent of her separate property on any contract, and of suing and being sued, either in contract or in tort ... in all respects as if she were a feme sole''. Earlier pointer kept: Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (acts giving a married woman the right to sue and be sued in her own name; dates follow the property/earnings acts, e.g. NY 1860). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled: sue is a default capacity (the former R9 ''may sue when not married'' is deleted, revision 4) and R4, the disability, is deleted; R16 is kept as the act''s own express permission'
   var_roles:
     w: wife
     h: husband

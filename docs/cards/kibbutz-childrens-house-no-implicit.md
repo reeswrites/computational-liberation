@@ -77,7 +77,7 @@
 
 Extends [kibbutz-childrens-house](kibbutz-childrens-house.md); one line per change:
 - R2 dropped: (practice, not written) The committee must not assign a male member to the children's house, or else the committee may reprimand (R6).
-- R6 replaced: was "(practice, not written) The committee may reprimand a member at any time (the sanction for R3 and R2)." now "(practice, not written) The committee may reprimand a member at any time (the sanction for R3)."
+- R6 replaced: was "(practice, not written; unverified) The committee may reprimand a member at any time (the sanction for R3 and R2)." now "(practice, not written) The committee may reprimand a member at any time (the sanction for R3)."
 - overrides expected_properties
 - overrides minimal_pair_of
 - overrides notes

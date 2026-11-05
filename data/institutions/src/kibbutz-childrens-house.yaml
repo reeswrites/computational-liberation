@@ -139,7 +139,7 @@ rules:
   implicit: false
   source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children ''visited their parents for 2-3 hours a day''; the father''s relation to the children''s house is the visit, not care)'
 - id: R6
-  plain: '(practice, not written) The committee may reprimand a member at any time (the sanction for R3 and R2).'
+  plain: '(practice, not written; unverified) The committee may reprimand a member at any time (the sanction for R3 and R2).'
   attribute: committee
   deontic: may
   aim: (reprimand committee x)
@@ -147,7 +147,7 @@ rules:
   or_else: null
   strand: rival
   implicit: true
-  source: 'implicit: the committee / general assembly disciplines a member who neglects the rota (R3''s or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(committee, x) = reprimand enabled (R6)'
+  source: 'UNVERIFIED (not opened 2026-11-04): Spiro, Kibbutz: Venture in Utopia (1956; 1958 ed.) and Gavron, The Kibbutz: Awakening from Utopia (2000), on the general assembly and public opinion as the kibbutz''s instrument of discipline over members (archive.org search-inside returned 403 and the Google Books API 429, two tries each). implicit: the committee / general assembly disciplines a member who neglects the rota (R3''s or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(committee, x) = reprimand enabled (R6)'
 - id: R8
   plain: '(practice, not written) The metapelet may neglect the child when assigned to the children''s house.'
   attribute: metapelet

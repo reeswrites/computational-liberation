@@ -59,6 +59,9 @@ fluents:
 - name: earns
   arity: 1
   gloss: w earns wages outside the household (exogenous)
+- name: misbehaves
+  arity: 1
+  gloss: w's conduct is what the old law called gross misbehaviour (the encoder's name for Blackstone's condition on restraint)
 actions:
 - name: marry
   args: [h, w]
@@ -111,6 +114,12 @@ actions:
 - name: chastise
   args: [h, w]
   effects: []
+- name: misbehave
+  args: [w]
+  effects:
+  - fluent: misbehaves
+    args: [w]
+    value: true
 - name: leave
   args: [w]
   effects: []
@@ -125,7 +134,7 @@ actions:
   default_capacity: true
 rules:
 - id: R1
-  plain: 'The husband may control his wife''s property when they are married (Blackstone I.15).'
+  plain: 'The husband may control his wife''s property when they are married (Blackstone II.29).'
   attribute: husband
   deontic: may
   aim: (control_property h w)
@@ -133,7 +142,7 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband and wife are one person in law; her property passes to him)
+  source: 'Blackstone, Commentaries on the Laws of England, Book II ch. 29 ''Of Title by Succession, Marriage, and Judgment'' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels ''which belonged formerly to the wife, are by act of law vested in the husband'' and ''the husband hath therein an immediate and absolute property, devolved to him by the marriage'' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says ''I speak not at present of the rights of property'' and so did not support this rule.'
 - id: R2
   plain: 'The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15).'
   attribute: husband
@@ -167,17 +176,18 @@ rules:
   implicit: false
   source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married'
 - id: R5
-  plain: 'The husband may chastise his wife (moderate correction, restraint of her liberty) when they are married (Blackstone I.15).'
+  plain: 'The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15).'
   attribute: husband
   deontic: may
   aim: (chastise h w)
-  conditions: (married h w)
+  conditions: (and (married h w) (misbehaves w))
   or_else: null
   strand: rival
   implicit: false
-  source: Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the old law allowed the husband 'moderate correction' and to restrain her liberty for gross misbehaviour)
+  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''The husband also (by the old law) might give his wife moderate correction'' ... ''the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour'' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder''s way to make Blackstone''s condition reachable.'
+  choices: 'Broad reading (the encoding until 2026-11-04): may chastise whenever married; the care+control match with police-crisis R3 (detain) and cps R3 (remove) was read on it. Narrow reading (chosen 2026-11-04): Blackstone''s text makes moderate correction ''the old law'' and permits restraint only ''in case of any gross misbehaviour''; the fluent misbehaves and the free action misbehave are the encoder''s device for that condition.'
 - id: R6
-  plain: 'The wife cannot leave the marriage while married: no such power exists (Blackstone I.15).'
+  plain: 'The wife cannot leave the marriage while married: no such power exists (no unilateral exit before the Matrimonial Causes Act 1857; unverified).'
   attribute: wife
   deontic: must_not
   aim: (leave w)
@@ -185,7 +195,7 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (restraint of liberty; no unilateral divorce). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married'
+  source: 'UNVERIFIED (not opened 2026-11-04): Shanley, Feminism, Marriage and the Law in Victorian England, 1850-1895 (1989), and Stone, Road to Divorce: England 1530-1987 (1990), on restitution of conjugal rights and the absence of any unilateral exit from marriage before the Matrimonial Causes Act 1857 (archive.org search-inside returned 403 and the Google Books API 429, two tries each). Re-sourced 2026-11-04: Blackstone Book I ch. 15 (https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/), cited before, contains no exit bar (its nearest passage: an eloping wife forfeits necessaries) and is no longer cited for this rule. [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married'
 - id: R7
   plain: 'The wife cannot contract in her own name while married: no such power exists (Blackstone I.15).'
   attribute: wife

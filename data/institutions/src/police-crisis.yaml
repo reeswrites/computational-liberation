@@ -7,6 +7,8 @@ roles:
   gloss: the person in crisis
 - name: dispatcher
   gloss: 911 dispatch; chooses who responds
+- name: facility
+  gloss: the designated facility that evaluates and releases under WIC 5150/5152
 fluents:
 - name: is_subject
   arity: 1
@@ -191,15 +193,16 @@ rules:
   implicit: false
   source: officers respond armed; standard equipment policy. UNVERIFIED (general knowledge; no source opened)
 - id: R7
-  plain: 'The officer must release the subject when the subject is in custody and there is no danger (Cal. WIC 5150).'
-  attribute: officer
+  plain: 'The facility must release the subject when the subject is in custody and there is no danger (Cal. WIC 5152).'
+  attribute: facility
   deontic: must
-  aim: (release o s)
+  aim: (release f s)
   conditions: (and (in_custody s) (not (danger s)))
   or_else: null
   strand: superadditive
   implicit: false
-  source: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (hold is limited to assessment/evaluation; release when criteria no longer met)
+  source: 'Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) ''A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted''; ''The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person''s treatment believes ... that the person no longer requires evaluation or treatment''; (b) ''A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment''. Release is the facility''s act (its treating psychiatrist or medical director), not the officer''s: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty.'
+  choices: 'Until 2026-11-04 the release duty sat on the officer (the one responder role); moved to the new role facility on the card-seat finding that WIC 5150 gives the officer no release duty and 5152 gives it to the facility. Condition and or_else unchanged; the aim variable is renamed o -> f (the attribute binds it).'
 - id: R8
   plain: 'The subject may petition for review of the hold when the subject is in custody (Cal. WIC 5275).'
   attribute: subject

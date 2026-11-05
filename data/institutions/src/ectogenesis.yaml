@@ -120,17 +120,18 @@ rules:
   implicit: false
   source: 'care by any registered parent of a born child is permitted, men included; nothing here bars it. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
 - id: R5
-  plain: '(practice, not written) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject, or else the registry may reprimand (R6).'
+  plain: '(practice, not written) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached.'
   attribute: intended_parent
   deontic: must
   aim: (provide_care intended_parent child)
   conditions: (and (parent intended_parent child) (is_subject child) (female intended_parent))
-  or_else: R6
+  or_else: null
   strand: tying
   implicit: true
-  source: 'implicit sanctioned norm (a care-norm, not a written rule): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so ''the tying strand outlives the rival input'' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
+  source: 'implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so ''the tying strand outlives the rival input'' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
+  choices: 'Until 2026-11-04 the or_else was R6 (the registry reprimands a non-caring mother): a sanction invented by the encoder on 2026-11-04 with nothing behind it, removed on the card-seat finding. Under strict compliance the verdicts do not depend on it.'
 - id: R6
-  plain: 'The registry may reprimand at any time (the sanction for R3 and R5).'
+  plain: 'The registry may reprimand at any time (the sanction for R3).'
   attribute: registry
   deontic: may
   aim: (reprimand registry x)
@@ -138,7 +139,7 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: 'the registry''s sanction for R3 and R5 (or_else target). Condition ''true'' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
+  source: 'the registry''s sanction for R3 (or_else target; R5''s link removed 2026-11-04). Condition ''true'' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
 - id: R7
   plain: 'The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition.'
   attribute: registry

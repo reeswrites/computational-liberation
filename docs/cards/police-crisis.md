@@ -20,6 +20,7 @@
 - **officer**: peace officer dispatched to the call; armed
 - **subject**: the person in crisis
 - **dispatcher**: 911 dispatch; chooses who responds
+- **facility**: the designated facility that evaluates and releases under WIC 5150/5152
 
 ## Rules
 
@@ -31,7 +32,7 @@
 | R4 | subject | must not (disability) | `(leave s)` | `(in_custody s)` | none | rival | The subject cannot leave while in custody: no such power exists (Cal. WIC 5150). | [full source under Sources, R4](#src-r4) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
 | R5 | officer | may | `(use_force o s)` | `(and (in_custody s) (resists s))` | none | rival | The officer may use force on the subject when the subject is in custody and resists. | use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened) |
 | R6 | officer | may | `(carry_weapon o)` | `true` | none | tying | The officer may carry a weapon at any time. | officers respond armed; standard equipment policy. UNVERIFIED (general knowledge; no source opened) |
-| R7 | officer | must | `(release o s)` | `(and (in_custody s) (not (danger s)))` | none | superadditive | The officer must release the subject when the subject is in custody and there is no danger (Cal. WIC 5150). | Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (hold is limited to assessment/evaluation; release when criteria no longer met) |
+| R7 | facility | must | `(release f s)` | `(and (in_custody s) (not (danger s)))` | none | superadditive | The facility must release the subject when the subject is in custody and there is no danger (Cal. WIC 5152). | [full source under Sources, R7](#src-r7) https://california.public.law/codes/ca_welf_and_inst_code_section_5152 |
 | R8 | subject | may | `(petition_review s)` | `(in_custody s)` | none | tying | The subject may petition for review of the hold when the subject is in custody (Cal. WIC 5275). | Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened) |
 | R10 | subject | may | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue or petition_review enabled |
 
@@ -45,7 +46,7 @@
 - R4: `s` = subject (action leave, effects)
 - R5: `o` = unbound (encoder to fix); `s` = subject (fluent in_custody)
 - R6: `o` = unbound (encoder to fix)
-- R7: `o` = unbound (encoder to fix); `s` = subject (action release, effects)
+- R7: `f` = unbound (encoder to fix); `s` = subject (action release, effects)
 - R8: `s` = subject (fluent in_custody)
 - R10: `s` = unbound (encoder to fix)
 
@@ -56,6 +57,9 @@
 
 <a id="src-r4"></a>
 **R4**: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (custody for up to 72 hours). [ADR 0013: or_else -> null. The subject's exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(s) = leave enabled (a default capacity), which this disability makes false in custody
+
+<a id="src-r7"></a>
+**R7**: Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) 'A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted'; 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment'; (b) 'A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment'. Release is the facility's act (its treating psychiatrist or medical director), not the officer's: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty.
 
 
 ## Expected properties
