@@ -97,3 +97,15 @@ Predictions:
 3. Ablation tops unchanged on all 25 entries; coverture R5 stays `deregulated` (sole may on chastise); ectogenesis R5 stays top.
 4. `build.py --check` passes; cards regenerate; every edited rule's card row shows the new source in full.
 5. Card-only seat re-review on the edited entries: coverture-household, police-crisis, cps, companion-*, airline-flight, mwpa-suit, kibbutz, ectogenesis, paternity-quota move from unfaithful/cannot-tell to faithful on the edited rules; the 85 unbound variables are NOT in scope here (next pass).
+
+### Faithfulness batch: run (2026-11-04 local, engine 83061ce; dataset 88a8f19; preregistration ab3abf6)
+
+| # | Prediction | Result |
+|---|---|---|
+| 1 | Golden diff 0 changed, 0 removed | **held**: 0 changed, 0 added, 0 removed of 123, uncached |
+| 2 | Gate (a)-(f) PASS; care+control match persists under the narrow R5 and the police `facility` role | **held**: GATE PASS; (b) the three pairs partial(care+control) at guard+strands, crisis-team none, controls none; (c) distance 1 on R2; (f) rename detected |
+| 3 | Ablation tops unchanged; coverture R5 still deregulated; ectogenesis R5 still top | **held**: 0 top-rule changes against the revision-4b summary; deregulated lists identical; 335 rows |
+| 4 | build --check passes, cards regenerate with full sources | **held** |
+| 5 | Card-only re-review moves the edited rules to faithful | pending (docs/reviews/2026-11-04-faithfulness-batch-cards.md) |
+
+Drift: none. What the batch shows: the care+control match does not depend on the over-broad reading of coverture R5; it survives Blackstone's actual condition. Two rules stay UNVERIFIED (coverture R6, kibbutz R6) and one is partial (airline R2); they say so on their cards. Two encoder-named fluents remain (`misbehaves`, `substantial_danger`) with their glosses tied to the quoted text. The 85 unbound variable bindings on cards are the next readability pass.
