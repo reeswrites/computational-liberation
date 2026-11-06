@@ -377,3 +377,16 @@ Author decision (in session, 2026-11-06): "Carer-also-sanctions", i.e. L1 is the
 - Not predicted, reported as found: airline-flight's match with police-crisis (L1 evidence, third review); police-crisis ablation and goods readings.
 
 Then: baseline regenerated (`phil rules verdicts`), L1 wording and Sources in docs/claims.md, theory.md table row 1 qualified; L1 status stays `weakened` pending a council seat on the re-encoded police card. A dataset sync to philosophy-engine is owed afterwards.
+
+### L1 landing: results (2026-11-06, engine at ENGINE_PIN c53d132)
+
+Dataset police-crisis logic checked identical to the P4 variant (fluents, actions, rules) before the run.
+
+- **Held:** `phil rules gate` PASS; (b) PASS, all six cluster pairs partial(care+control), controls none; (e) 146/146. iso: police~cps care R2~R4, control R11~R3, exit R4~R10 (4/10|10); police~coverture R2~R2, R11~R5, R4~R6 (3/10|7).
+- **Held:** `phil rules diff` against the old baseline: 1 changed (police-crisis care_and_sanction_same_role holds_to_k -> violated), 0 added, 0 removed of 146.
+- **Held:** `scripts/drop_one_match.py`: gate (b) fails on deleting exactly coverture R2, R5, R6; police-crisis R2, R4, R11; cps R3, R4, R10 (police R3 drops out of the match).
+- **Held:** build --check ok.
+- **Did not hold: pytest** (predicted 32 passed): 1 failed, `tests/test_dataset_claims.py::test_deleting_police_sanction_rules_removes_the_bundled_power`, a regression test pinned to the officer-as-carer encoding (it asserted the full entry holds). Drift recorded; the prediction is not edited. The test was rewritten after the run to the new reading, from values computed then: full entry violated (non-vacuous); R3 and R5 deleted: holds_to_k, non-vacuous (the facility is then the only sanctioner and the carer); R3, R5, R11 deleted: holds_to_k, vacuous; the old "care implies power" shape violated in all three. 32 passed after.
+- Reported as found (not predicted): airline-flight~police-crisis still matches, now care R2 ~ R2 (provides_care f s), control R3 (restrain) ~ R11 (hold), exit R4~R4.
+
+Then: `data/verdicts-baseline.json` regenerated (`phil rules verdicts --k 6 --no-cache`): the one row above changed, and engine_hash updated (the old baseline was written under an earlier engine, the "engine source hash differs" note on every diff run); diff against it 0 changed. docs/claims.md L1 restated (the author's wording above), Sources "match reads" updated to police R2, R4, R11, evidence appended, last checked 2026-11-06, status `weakened` (pending a council seat on the re-encoded police card). docs/theory.md table row 1 qualified. The cps and police `notes` updated. Owed: a dataset sync to philosophy-engine; a council seat (card-only) on police-crisis.

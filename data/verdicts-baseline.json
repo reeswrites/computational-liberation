@@ -1,5 +1,5 @@
 {
- "engine_hash": "d6ca9db976d2270816292490ce9a3908570b8b3184f1699b7650eec20d1ba227",
+ "engine_hash": "e43025b5a158baf07f33975a86b35a5accdea7afbcf776e42aea113ef1f37cfb",
  "format": 1,
  "params": {
   "compliance": "strict",
@@ -840,7 +840,7 @@
    "check": "invariant",
    "institution": "police-crisis",
    "property": "care_and_sanction_same_role",
-   "verdict": "holds_to_k"
+   "verdict": "violated"
   },
   {
    "check": "reachable",

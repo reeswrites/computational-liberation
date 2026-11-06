@@ -143,21 +143,25 @@ def test_coverture_dependent_cannot_exit():
 
 
 def test_deleting_police_sanction_rules_removes_the_bundled_power():
-    """With `enabled` false for an action no may/must rule names, deleting police R3 (may detain) and R5 (may
-    use_force) removes can_sanction: the old shape of care_and_sanction_same_role (care implies power) goes from
-    holds to violated, and the current shape (no one but the carer sanctions) from a non-vacuous holds_to_k to a
-    vacuous one (its antecedent, some sanction power, is unreachable)."""
+    """Police-crisis read to WIC 5150 (L1 landing 2026-11-06, plans/sourcing.md): the facility cares (R2) and may
+    hold (R11); the officer may detain (R3) and use force (R5). With `enabled` false for an action no may/must rule
+    names: the current shape of care_and_sanction_same_role (no one but the carer sanctions) is violated with the
+    officer's powers in place, holds non-vacuously once R3 and R5 are deleted (the facility is then the only
+    sanctioner and is the carer), and holds vacuously once R11 goes too (no sanction power is reachable). The old
+    shape (care implies power) stays violated throughout. Updated 2026-11-06 after the run: before the landing the
+    officer was the carer and the full entry held."""
     inst, props = _dataset_inst("police-crisis")
     old = Property(name="old_shape", kind="structure", formal="(forall ((x agent) (y agent)) (=> (and (provides_care x y t) (is_subject y t)) (can_sanction x y t)))")
     cur = props["care_and_sanction_same_role"]
     ps = {"old_shape": old, cur.name: cur}
     which = {n: ["invariant"] for n in ps}
-    before = {r.property: r for r in rc.run_all(inst, ps, k=6, which=which).results}
-    after = {r.property: r for r in rc.run_all(_without(inst, "R3", "R5"), ps, k=6, which=which).results}
-    assert before[cur.name].verdict == "holds_to_k" and not before[cur.name].vacuous
-    assert after[cur.name].verdict == "holds_to_k" and after[cur.name].vacuous and after[cur.name].antecedent_reachable is False
-    assert before["old_shape"].verdict == "violated"  # power only while danger holds; care persists
-    assert after["old_shape"].verdict == "violated"  # and never holds_to_k by an always-enabled unregulated action
+    full = {r.property: r for r in rc.run_all(inst, ps, k=6, which=which).results}
+    no_officer = {r.property: r for r in rc.run_all(_without(inst, "R3", "R5"), ps, k=6, which=which).results}
+    none = {r.property: r for r in rc.run_all(_without(inst, "R3", "R5", "R11"), ps, k=6, which=which).results}
+    assert full[cur.name].verdict == "violated" and not full[cur.name].vacuous
+    assert no_officer[cur.name].verdict == "holds_to_k" and not no_officer[cur.name].vacuous
+    assert none[cur.name].verdict == "holds_to_k" and none[cur.name].vacuous and none[cur.name].antecedent_reachable is False
+    assert all(d["old_shape"].verdict == "violated" for d in (full, no_officer, none))
     # what violates the current shape is a non-carer holding the power while someone else cares: crisis-team's R8
     ct, _ = _dataset_inst("crisis-team")
     rep = rc.run_all(ct, {cur.name: cur}, k=6, which={cur.name: ["invariant"]})
