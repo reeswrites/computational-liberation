@@ -95,7 +95,7 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children''s house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it'
+  source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children''s house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it Verification pass: re-read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): the page says ''Kibbutz members who were considered the most educated and esteemed got the position of educators'' and names no committee or assignment procedure.'
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
     pin: null
@@ -104,8 +104,8 @@ rules:
     verification: recalled
     excerpt: null
     accessed: null
-    url: null
-    note: the row records reading the page ('read 2026-11-03') and quotes 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; none of these passages mentions a committee or an assignment, so the page is recalled for this rule (it was read, the rule is not in what was quoted); re-open and quote a passage on staffing the children's house to upgrade
+    url: https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722
+    note: revision 1360699722 (2026-06-23), read as wikitext; the nearest passage, 'Kibbutz members who were considered the most educated and esteemed got the position of educators', names no committee or assignment procedure; Spiro or Gavron on the work-assignment committee would be the source to open
   - source_id: null
     pin: null
     jurisdiction: null
@@ -114,7 +114,7 @@ rules:
     excerpt: null
     accessed: null
     url: null
-    note: 'the committee''s power to assign a member to the children''s house: stated only in the encoder''s parenthesis (''members are assigned to the children''s house by the committee''); no quoted text states it'
+    note: 'the committee''s power to assign a member to the children''s house: stated only in the encoder''s parenthesis; no read text states it'
 - id: R2
   plain: '(practice, not written) The committee must not assign a male member to the children''s house, or else the committee may reprimand (R6).'
   attribute: committee
@@ -124,17 +124,17 @@ rules:
   or_else: R6
   strand: tying
   implicit: true
-  source: 'SANCTIONED NORM encoding a documented PRACTICE, not a written rule (third review 2026-11-03: the sources support a practice, not a committee disability): the nanny ''was always a woman''s role'' (WIKI_KIB); no kibbutz by-law said so, the rota simply never put a man in the children''s house, and Tiger & Shepher, Women in the Kibbutz (Harcourt Brace Jovanovich, 1975): women concentrated in child care, education and services despite formal equality. Cited by WIKI_KIB (pp. 41, 167); book and sample (34,040 members) confirmed via Kirkus review https://www.kirkusreviews.com/book-reviews/lionel-joseph-shepher-tiger/women-in-the-kibbutz/ ; the assignment finding itself NOT read directly: UNVERIFIED reports women concentrated in child care as a pattern (the finding is framed there as women''s own choice). Encoded as a prohibition the committee answers for (or_else R6, the implicit reprimand), not as a disability; under strict compliance the effect on traces is the same, which is what gate (d) reads. Earlier draft (disability, or_else null) retired by the third review'
+  source: 'SANCTIONED NORM encoding a documented PRACTICE, not a written rule (third review 2026-11-03: the sources support a practice, not a committee disability): the nanny ''was always a woman''s role'' (WIKI_KIB); no kibbutz by-law said so, the rota simply never put a man in the children''s house, and Tiger & Shepher, Women in the Kibbutz (Harcourt Brace Jovanovich, 1975): women concentrated in child care, education and services despite formal equality. Cited by WIKI_KIB (pp. 41, 167); book and sample (34,040 members) confirmed via Kirkus review https://www.kirkusreviews.com/book-reviews/lionel-joseph-shepher-tiger/women-in-the-kibbutz/ ; the assignment finding itself NOT read directly: UNVERIFIED reports women concentrated in child care as a pattern (the finding is framed there as women''s own choice). Encoded as a prohibition the committee answers for (or_else R6, the implicit reprimand), not as a disability; under strict compliance the effect on traces is the same, which is what gate (d) reads. Earlier draft (disability, or_else null) retired by the third review Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.'''
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
     pin: null
     jurisdiction: null
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: quotes 'was always a woman's role'; this row records no read (R1's row read the page 2026-11-03); re-open or copy the read record to upgrade
+    verification: opened
+    excerpt: The nanny position was always a woman's role. Teacher positions were both for women and men.
+    accessed: '2026-11-06'
+    url: https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722
+    note: revision 1360699722 (2026-06-23), read as wikitext; supports the practice the row encodes, not a committee prohibition (the row says so); the page cites no source for the sentence
   - source_id: tiger-shepher-1975
     pin: pp. 41, 167
     jurisdiction: null
@@ -163,17 +163,17 @@ rules:
   or_else: R6
   strand: superadditive
   implicit: false
-  source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children''s house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment'
+  source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children''s house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): ''A group of children, all about the same age, shared a children''s house and had a nanny who took care of their everyday needs.'''
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
     pin: null
     jurisdiction: null
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: 'the row records reading the page (''read 2026-11-03'') and quotes ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; the quotes say a nanny position existed, not that the assigned metapelet must care for the child (''the metapelet runs the children''s house'' is the encoder''s parenthesis): recalled for this rule; re-open and quote a passage on the metapelet''s duties to upgrade'
+    verification: opened
+    excerpt: A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.
+    accessed: '2026-11-06'
+    url: https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722
+    note: revision 1360699722 (2026-06-23), read as wikitext; states the care, not that it is owed on pain of reprimand (R6's link is the encoder's)
   load_bearing: true
 - id: R4
   plain: 'The child cannot sleep at home at any time: no such power exists (communal sleeping in the children''s house).'
@@ -204,17 +204,17 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children ''visited their parents for 2-3 hours a day''; the father''s relation to the children''s house is the visit, not care)'
+  source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children ''visited their parents for 2-3 hours a day''; the father''s relation to the children''s house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): ''Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment'' ... ''visited their parents for 2-3 hours a day'' (the page prints an en dash).'
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
     pin: null
     jurisdiction: null
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: 'the row records reading the page (''read 2026-11-03'') and quotes ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; ''visited their parents for 2-3 hours a day'' says the children visited the parents, not that a male member may visit the child: recalled for this rule; re-open to upgrade'
+    verification: opened
+    excerpt: Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment ... visited their parents for 2-3 hours a day
+    accessed: '2026-11-06'
+    url: https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722
+    note: revision 1360699722 (2026-06-23), read as wikitext; en dash in '2-3' normalised; the page has the children visit the parents for 2-3 hours a day, the row lets a male member visit the child 'at any time'
   - source_id: null
     pin: null
     jurisdiction: null
@@ -223,7 +223,7 @@ rules:
     excerpt: null
     accessed: null
     url: null
-    note: 'a male member''s visit to the child (the father''s relation to the children''s house is the visit, not care): the encoder''s reading in the parenthesis; the quoted passage states the reverse direction'
+    note: '''at any time'': the encoder''s reading; the read text gives a daily visiting time at the parents'' house'
 - id: R6
   plain: '(practice, not written; unverified) The committee may reprimand a member at any time (the sanction for R3 and R2).'
   attribute: committee

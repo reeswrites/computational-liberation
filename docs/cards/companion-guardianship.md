@@ -96,9 +96,9 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: incident of ownership)
 
 <a id="src-r9"></a>
-**R9**: Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal 'taking into consideration the well-being of the animal'); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail
+**R9**: Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal 'taking into consideration the well-being of the animal'); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail Verification pass: read 2026-11-06 at https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (the statute as reproduced there): '(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal.'
 
-- `ak-stat-25-24-160` ((a)(5); US-AK; date 2017-01-17): **unverified**
+- `ak-stat-25-24-160` ((a)(5); US-AK; date 2017-01-17): **opened** 2026-11-06: "(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal."
 - no work named: **unverified** (the generalisation from divorce to any custody claim: no jurisdiction does this (the entry's construction))
 
 **R10**

@@ -16,17 +16,17 @@ rules_replace:
   or_else: null
   strand: tying
   implicit: false
-  source: 'Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal ''taking into consideration the well-being of the animal''); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail'
+  source: 'Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal ''taking into consideration the well-being of the animal''); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail Verification pass: read 2026-11-06 at https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (the statute as reproduced there): ''(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal.'''
   provenance:
   - source_id: ak-stat-25-24-160
     pin: (a)(5)
     jurisdiction: US-AK
     effective_date: '2017-01-17'
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: the row says UNVERIFIED (general knowledge; no source opened) though it quotes 'taking into consideration the well-being of the animal'; the entry source_text says read at animallaw.info; re-open to upgrade
+    verification: opened
+    excerpt: (5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal.
+    accessed: '2026-11-06'
+    url: https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment
+    note: the page reproduces the amended section and gives 'effective January 17, 2017'; akleg.gov not opened; the statute decides ownership in a divorce, it does not reassign custody outside one
   - source_id: null
     pin: null
     jurisdiction: null

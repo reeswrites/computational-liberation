@@ -317,7 +317,8 @@ RAISES = {
     ("companion-guardian-renamed", "R1", "cal-civ-655"): "as companion-ownership R1 (same string)",
     ("companion-guardian-renamed", "R1", "cal-civ-663"): "as companion-ownership R1 (same string)",
     ("kibbutz-childrens-house", "R2", "wikipedia-kibbutz-communal-child-rearing"):
-        "the row quotes 'was always a woman's role' (WIKI_KIB) with no read record; the "
+        "'Verification pass: read 2026-11-06 at https://en.wikipedia.org/...oldid=1360699722 ...: 'The nanny position "
+        "was always a woman's role. ...'' (until 2026-11-06: the row quoted it with no read record); the "
         "row's UNVERIFIED belongs to the clause 'the assignment finding itself NOT read directly' (Tiger & Shepher)",
     ("kibbutz-childrens-house", "R2", "kirkus-tiger-shepher-women-in-the-kibbutz"):
         "'book and sample (34,040 members) confirmed via Kirkus review https://www.kirkusreviews.com/...'"
@@ -350,6 +351,14 @@ RAISES = {
         "'WIC 317 read 2026-11-06 at ...: (e)(1) ...'; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
     ("police-crisis", "R8", "cal-wic-5275"):
         "'WIC 5275 read 2026-11-06 at ...: 'Every person detained under this part ...''; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("companion-guardianship", "R9", "ak-stat-25-24-160"):
+        "'Verification pass: read 2026-11-06 at https://www.animallaw.info/...: '(5) if an animal is owned, ...''; the "
+        "row's 'UNVERIFIED (general knowledge; no source opened)' belongs to the generalisation (its own null item) "
+        "(verification pass 2026-11-06)",
+    ("public-library", "R2", "berkeley-public-library-2018-patron-suspension-policy"):
+        "'Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/...: 'In order to provide and "
+        "maintain ...''; the row's 'UNVERIFIED as a rule' belongs to the duty to serve (its own null item) "
+        "(verification pass 2026-11-06)",
     ("coverture-household", "R6", "uk-matrimonial-causes-act-1857"):
         "'enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/...: s. 2, ... s. 27, ...'; "
         "the heuristic's read regex is lower-case and the work is named before 'read' (verification pass 2026-11-06)",
@@ -763,6 +772,93 @@ for _r in ("R4", "R5", "R6", "R7"):
                           "the bibliography (a search lead for it is in plans/sourcing-worklist-other.md: add an entry "
                           "and upgrade when opened)")] if _r == "R5" else []))
 
+
+# ---------------------------------------------------------------- verification pass 2026-11-06, step 5 and the
+# cheapest upgrades (plans/sourcing-verify-session.md). Each call below supersedes the hand setting of the same row
+# above (override() replaces the row); the earlier reason is kept above for the history.
+_WK = ("https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education"
+       "&oldid=1360699722")
+_WKN = "revision 1360699722 (2026-06-23), read as wikitext; "
+_BP = ("https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/"
+       "patron_suspension_policy_approved_14nov2018.pdf")
+override("kibbutz-childrens-house", "R1",
+         "verification pass 2026-11-06: page re-read; still no passage states a committee's power to assign: recalled",
+         item("wikipedia-kibbutz-communal-child-rearing", "recalled", accessed=None, url=_WK,
+              note=_WKN + "the nearest passage, 'Kibbutz members who were considered the most educated and esteemed "
+                   "got the position of educators', names no committee or assignment procedure; Spiro or Gavron on the "
+                   "work-assignment committee would be the source to open"),
+         item(note="the committee's power to assign a member to the children's house: stated only in the encoder's "
+                   "parenthesis; no read text states it"))
+override("kibbutz-childrens-house", "R2",
+         "verification pass 2026-11-06: the WIKI_KIB sentence re-read with a date in this row: opened for the practice; "
+         "Tiger & Shepher's finding still not read",
+         item("wikipedia-kibbutz-communal-child-rearing", "opened", None, None, None,
+              "The nanny position was always a woman's role. Teacher positions were both for women and men.",
+              "2026-11-06", _WK, _WKN + "supports the practice the row encodes, not a committee prohibition (the row "
+              "says so); the page cites no source for the sentence"),
+         item("tiger-shepher-1975", "unverified", "pp. 41, 167",
+              note="the assignment finding itself NOT read directly: UNVERIFIED; cited by WIKI_KIB"),
+         item("kirkus-tiger-shepher-women-in-the-kibbutz", "recalled",
+              note="earlier batch reports confirming the book and sample (34,040 members) via this review; no excerpt "
+                   "recorded; re-open to upgrade"))
+override("kibbutz-childrens-house", "R3",
+         "verification pass 2026-11-06: a passage stating the nanny's care was found and quoted: opened",
+         item("wikipedia-kibbutz-communal-child-rearing", "opened", None, None, None,
+              "A group of children, all about the same age, shared a children's house and had a nanny who took care "
+              "of their everyday needs.", "2026-11-06", _WK,
+              _WKN + "states the care, not that it is owed on pain of reprimand (R6's link is the encoder's)"))
+override("kibbutz-childrens-house", "R5",
+         "verification pass 2026-11-06: a passage on fathers' time with children found: opened, with the 'at any time' "
+         "gap noted (faithfulness finding)",
+         item("wikipedia-kibbutz-communal-child-rearing", "opened", None, None, None,
+              "Fathers were supposed to bond with their children through quality time much more so than in a "
+              "non-kibbutz environment ... visited their parents for 2-3 hours a day", "2026-11-06", _WK,
+              _WKN + "en dash in '2-3' normalised; the page has the children visit the parents for 2-3 hours a day, "
+              "the row lets a male member visit the child 'at any time'"),
+         item(note="'at any time': the encoder's reading; the read text gives a daily visiting time at the parents' "
+                   "house"))
+override("public-library", "R2", "verification pass 2026-11-06: policy PDF opened; the duty to serve stays a reading",
+         item("berkeley-public-library-2018-patron-suspension-policy", "opened", "p. 1", None, None,
+              "In order to provide and maintain a welcoming and safe environment for all patrons and library staff",
+              "2026-11-06", _BP, "a purpose clause, not a duty to serve"),
+         item(note="the rule (a duty to serve) is read from the policy's premise, not stated: UNVERIFIED as a rule"))
+override("public-library", "R3", "verification pass 2026-11-06: policy PDF opened",
+         item("berkeley-public-library-2018-patron-suspension-policy", "opened", "p. 2, B.2", None, None,
+              "Continued disruption (same or different day): Library privileges will be suspended for the day by an "
+              "authorized staff-member and the patron will be asked to leave the Library building.",
+              "2026-11-06", _BP, "suspension follows an initial warning (B.1); the row's single-step suspension of a "
+              "disruptive patron skips the warning"))
+override("public-library", "R5", "verification pass 2026-11-06: policy PDF opened; entry read from the suspension's effect",
+         item("berkeley-public-library-2018-patron-suspension-policy", "opened", "p. 1", None, None,
+              "Suspension of library privileges will result in removal from, and denial of access to, all Berkeley "
+              "Public Library services and facilities for a designated period of time.",
+              "2026-11-06", _BP, "states that suspension denies access; the unsuspended patron's permission to enter "
+              "is the converse, not stated"))
+override("companion-guardianship", "R9",
+         "verification pass 2026-11-06: statute text read as reproduced on animallaw.info: opened; the generalisation "
+         "keeps its own null item",
+         item("ak-stat-25-24-160", "opened", "(a)(5)", "US-AK", "2017-01-17",
+              "(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration "
+              "the well-being of the animal.", "2026-11-06",
+              "https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment",
+              "the page reproduces the amended section and gives 'effective January 17, 2017'; akleg.gov not opened; "
+              "the statute decides ownership in a divorce, it does not reassign custody outside one"),
+         item(note="the generalisation from divorce to any custody claim: no jurisdiction does this (the entry's "
+                   "construction)"))
+override("airline-flight", "R2",
+         "verification pass 2026-11-06: 121.391 opened (supports egress staffing only); 121.571 as before; the general "
+         "care duty stays UNVERIFIED",
+         item("cfr-14-121-571", "opened", "s. 121.571(a), (a)(3)", "US", None,
+              "shall insure that all passengers are orally briefed by the appropriate crewmember", "2026-11-04",
+              "https://www.law.cornell.edu/cfr/text/14/121.571",
+              "ecfr.gov redirected to a block page; supports a briefing duty, narrower than the rule's provides_care"),
+         item("cfr-14-121-391", "opened", "s. 121.391(d)", "US", None,
+              "flight attendants required by this section shall be located as near as practicable to required floor "
+              "level exits and shall be uniformly distributed throughout the airplane in order to provide the most "
+              "effective egress of passengers in event of an emergency evacuation", "2026-11-06",
+              "https://www.law.cornell.edu/cfr/text/14/121.391",
+              "staffing and seating for evacuation; not an in-flight care duty"),
+         item(note="the general in-flight care duty: UNVERIFIED (no text opened states it)"))
 
 def migrate_rule(eid, rule):
     key = (eid, rule["id"])
