@@ -482,3 +482,7 @@ or a guardian ad litem and exists because a rule grants it, where an adult's `su
   exactly those rows. The ablation's freedom-direction table (engine `rules_ablate.UNFREEDOM`) does not list the new
   property, so R19's flip is counted as unsigned, not freedom-up (drift recorded in plans/sourcing.md).
 
+
+## Polarity (slice 1 revision 5, 2026-11-06)
+
+Every `kind: freedom` property carries `polarity: unfreedom`: the encoder's declaration that the property's holding is bad for the subject (no exit, no standing, no resources, ...). The engine's loader rejects a freedom property without it, and `rules_ablate` signs a flip from `kind` alone (freedom_up when the verdict moves from reachable / holds_to_k / persists to open / violated / fails), replacing the hand name table `rules_ablate.UNFREEDOM` (so the README notes above that a property "is not in UNFREEDOM" are history). Other kinds carry no polarity yet; slice 2 decides what goods properties carry. plans/priority.md "Slice 1 revision 5".
