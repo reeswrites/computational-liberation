@@ -409,3 +409,7 @@ From the card-only seat (docs/reviews/2026-11-06-police-crisis-card-review.md): 
 - `scripts/drop_one_match.py`: the match rows unchanged (coverture R2, R5, R6; police R2, R4, R11; cps R3, R4, R10).
 - build --check ok, pytest 32 passed.
 - Exploratory, no prediction: `phil rules ablate --entry police-crisis` (R7 and R12 loads; goods readings).
+
+### R7 re-encode: results (2026-11-06)
+
+Every prediction held; no drift. `phil rules diff --baseline data/verdicts-baseline.json --no-cache`: 0 changed, 0 added, 0 removed of 146. `phil rules gate`: PASS, (b) PASS with the same six partial(care+control) pairs, (e) 146/146. `scripts/drop_one_match.py`: (b) fails on deleting exactly coverture R2, R5, R6; police R2, R4, R11; cps R3, R4, R10. build --check ok; pytest 32 passed. Exploratory `phil rules ablate --entry police-crisis`: R7 (must_not) load 0; R12 (may) deregulated on deletion (release has no other may), load 0; R12~prohibit load 0; no goods change. Reading: the re-encode removes an unfaithful, unreachable rule and makes early release lawful in the worlds where the psychiatrist finds no further need, without moving any property this dataset checks; the exit properties are existential, so a reachable release does not change them. 5152(b) stays unencoded (no clock).

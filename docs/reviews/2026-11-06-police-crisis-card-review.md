@@ -50,3 +50,7 @@ Not acted on, with reasons:
 - For the author, each a rule change needing a preregistration: **R7** re-encode to 5152 (release only on the psychiatrist's judgement; referral and certification outcomes); **R2**'s window before delivery (condition on admission rather than custody?); a restraint power for the facility's hold; **R8**'s reach to a 72-hour hold (5275's procedure vs 5250/5256); unbound variables in R1, R5, R6, R7, R10 (var_roles); **(d)7** the cps pair's rename display (a card / iso-report issue, not data); (d)8, (d)9, (d)10 card text.
 
 L1: the seat confirms the carer-also-sanctions allocation as a fair reading of 5150; it finds one unfaithful police rule (R7) that is not one of the rows the match reads (R2, R4, R11). L1 stays `weakened` until the author takes the R7 decision; nothing in the seat's findings weakens the restated claim.
+
+### Follow-up (2026-11-06): R7
+
+Preregistered (d95af73) and re-encoded: R7 is now the prohibition side of 5152(a)'s "only if" (facility must not release early while the treating psychiatrist finds treatment still required; exogenous fluent `requires_treatment`), new R12 the permission side; 5152(b) not encoded (no clock). All predictions held: 0 verdict changes, gate PASS, match rows unchanged (plans/sourcing.md, "R7 re-encode: results"). The other rule-level items above stay open.

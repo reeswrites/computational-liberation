@@ -304,10 +304,6 @@ def override(eid, rid, reason, *items, append=False):
 # unverified), with the clause of the row's own string that licenses it. main() checks this list against the
 # computed raises on every run (review 2026-11-05, finding 3).
 RAISES = {
-    ("police-crisis", "R7", "cal-wic-5150"):
-        "'s. 5150(a) (https://california.public.law/...section_5150, cited here until 2026-11-04) "
-        "gives the officer custody and delivery (R3), no release duty'; the heuristic's regex misses the bare "
-        "'s. 5150(a)'; cited with a URL and no read record = recalled",
     ("companion-ownership", "R1", "cal-civ-655"):
         "'Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ ...' follows "
         "the quote 'There may be ownership of ... of all domestic animals'; the heuristic only looks for a quote after "
@@ -472,14 +468,22 @@ override("coverture-household-us", "R6",
               "petition, adultery the only ground; dissolution on the other spouse's fault (B2), not at her own will; "
               "the date is the passage date printed (OCR 'Passed the zoth of March, 1787', i.e. 30th), commencement not "
               "stated"))
+_P5152 = "https://california.public.law/codes/ca_welf_and_inst_code_section_5152"
+_ONLY_IF = ("The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible "
+            "for the person's treatment believes, as a result of the psychiatrist's personal observations, that the "
+            "person no longer requires evaluation or treatment.")
 override("police-crisis", "R7",
-         "s. 5150(a) is cited for the absence of an officer release duty (recalled), s. 5152 is the opened source; the excerpt keeps the release-only-if passage that (not (danger s)) stands for",
-         item("cal-wic-5152", "opened", "s. 5152(a), (b)", "US-CA", None,
-              "A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted ... The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment ... A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment",
-              "2026-11-04", "https://california.public.law/codes/ca_welf_and_inst_code_section_5152",
-              "leginfo.legislature.ca.gov returned 403"),
-         item("cal-wic-5150", "recalled", "s. 5150(a)", "US-CA",
-              note="cited for what it lacks (no release duty on the officer); no read record for this use"))
+         "re-encoded 2026-11-06 (preregistered): the prohibition side of 5152(a)'s 'only if'; 5150 is no longer cited "
+         "(it was cited for an officer release duty the re-encode does not need)",
+         item("cal-wic-5152", "opened", "s. 5152(a)", "US-CA", None, _ONLY_IF, "2026-11-06", _P5152,
+              "apostrophes straightened; the psychiatrist's belief is the exogenous fluent requires_treatment; first "
+              "opened 2026-11-04, when the row encoded a release duty on 'no danger' (unfaithful, card seat "
+              "2026-11-06); 5152(b)'s end-of-hold outcomes are not encoded (no clock)"))
+override("police-crisis", "R12", "added 2026-11-06 (preregistered): the permission side of 5152(a)'s 'only if'",
+         item("cal-wic-5152", "opened", "s. 5152(a)", "US-CA", None, _ONLY_IF, "2026-11-06", _P5152,
+              "apostrophes straightened; 'only if' gives a necessary condition, so the permission is the encoder's "
+              "reading of when release is lawful; 5152(b) (release, referral or certification at the end of the hold) "
+              "not encoded"))
 override("police-crisis", "R1",
          "implicit: the string names WIC 5150 only to say it does not require police dispatch; no work supports the row",
          item(note="no work named for this rule (WIC 5150 is cited as not requiring it); rationale: implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does"))

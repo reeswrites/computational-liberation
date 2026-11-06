@@ -498,6 +498,14 @@
     ]
    },
    {
+    "name": "requires_treatment",
+    "arity": 1,
+    "gloss": "the treating psychiatrist believes, as a result of the evaluation, that s still requires evaluation or treatment (WIC 5152(a)); exogenous",
+    "arg_roles": [
+     "subject"
+    ]
+   },
+   {
     "name": "can_sanction",
     "arity": 2,
     "gloss": "x holds a power to coerce y: detain, remove, chastise, prosecute",
@@ -822,13 +830,13 @@
    {
     "id": "R7",
     "attribute": "facility",
-    "deontic": "must",
+    "deontic": "must_not",
     "aim": "(release f s)",
-    "conditions": "(and (in_custody s) (not (danger s)))",
+    "conditions": "(and (in_custody s) (requires_treatment s))",
     "or_else": null,
-    "strand": "superadditive",
+    "strand": "rival",
     "implicit": false,
-    "source": "Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) 'A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted'; 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment'; (b) 'A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment'. Release is the facility's act (its treating psychiatrist or medical director), not the officer's: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty."
+    "source": "Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) 'A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted'; 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment'; (b) 'A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment'. Release is the facility's act (its treating psychiatrist or medical director), not the officer's: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty. Re-encoded 2026-11-06 (preregistered, plans/sourcing.md; card-only seat finding): read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment.' R7 is now the prohibition side of that 'only if' (no early release while treatment is still required, exogenous fluent requires_treatment); R12 is the permission side. The earlier duty to release on 'no danger' was unfaithful and unreachable (danger never changes; detain and hold require it)."
    },
    {
     "id": "R8",
@@ -862,6 +870,17 @@
     "strand": "rival",
     "implicit": false,
     "source": "Cal. Welf. & Inst. Code s. 5150(a), read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: the custody power belongs to 'a peace officer, professional person in charge of a facility designated by the county for evaluation and treatment, member of the attending staff' ... who 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'. Added 2026-11-06 (L1 landing, preregistered; faithfulness batch 2 P4): the facility holds the same custody power as the officer, and its hold establishes R2 (ADR 0009). [ADR 0013: power fluents are derived from rule enabledness; this rule is what can_sanction reads for the facility]"
+   },
+   {
+    "id": "R12",
+    "attribute": "facility",
+    "deontic": "may",
+    "aim": "(release f s)",
+    "conditions": "(and (in_custody s) (not (requires_treatment s)))",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "source": "Cal. Welf. & Inst. Code s. 5152, read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment.' Added 2026-11-06 (preregistered R7 re-encode, plans/sourcing.md): the permission side of the 'only if'; R7 is the prohibition side. 5152(b)'s end-of-hold outcomes (release, voluntary referral, certification for intensive treatment) are not encoded: the model has no clock for 72 hours (disclosed gap). Apostrophes straightened."
    }
   ],
   "source_text": "'When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer, ... designated members of a mobile crisis team, or professional person designated by the county may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours for assessment, evaluation, and crisis intervention.' 'At a minimum, assessment ... and evaluation ... shall be conducted and provided on an ongoing basis.' Cal. Welf. & Inst. Code s. 5150(a), read at https://california.public.law/codes/ca_welf_and_inst_code_section_5150",
@@ -906,7 +925,8 @@
    "call_received",
    "in_crisis",
    "danger",
-   "resists"
+   "resists",
+   "requires_treatment"
   ]
  },
  {

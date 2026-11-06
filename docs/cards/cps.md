@@ -123,18 +123,6 @@ Slice 2 revision 2 (plans/priority-slice2-results.md, "Revision 2"): goods as en
 
 ## Pairs
 
-Rule-by-rule against [police-crisis](police-crisis.md) under the rename officer->social_worker, subject->child, dispatcher->parent, facility->court (declared isomorphic); one line per rule that differs:
-- R1: attribute `dispatcher` -> `social_worker`; aim `(dispatch_officer d o s)` -> `(investigate w c)`; conditions `(call_received s)` -> `(report_received c)` (differs beyond the rename)
-- R2: attribute `facility` -> `social_worker`; aim `(provides_care f s)` -> `(provide_services w c)`; conditions `(in_custody s)` -> `(case_open c)` (differs beyond the rename)
-- R3: attribute `officer` -> `social_worker`; aim `(detain o f s)` -> `(remove w c)`; conditions `(and (responding o s) (in_crisis s) (danger s))` -> `(and (case_open c) (immediate_danger c))` (differs beyond the rename)
-- R4: attribute `subject` -> `social_worker`; aim `(leave s)` -> `(in_home_considered w c)`; conditions `(in_custody s)` -> `(and (case_open c) (immediate_danger c))` (differs beyond the rename)
-- R5: attribute `officer` -> `parent`; aim `(use_force o s)` -> `(cooperates p c)`; conditions `(and (in_custody s) (resists s))` -> `(case_open c)` (differs beyond the rename)
-- R6: attribute `officer` -> `social_worker`; aim `(carry_weapon o)` -> `(contact_mother w p)`; conditions `true` -> `(and (case_open c) (parent p c) (female p) (not (contacted w p)))` (differs beyond the rename)
-- R7: attribute `facility` -> `court`; aim `(release f s)` -> `(reassign_custody court p c)`; conditions `(and (in_custody s) (not (danger s)))` -> `(and (case_open c) (substantial_danger p c))` (differs beyond the rename)
-- R8: attribute `subject` -> `court`; aim `(petition_review s)` -> `(counsel_appointed c)`; conditions `(in_custody s)` -> `(and (case_open c) (not (would_not_benefit c)))` (differs beyond the rename)
-- R10: attribute `subject` -> `child`; aim `(sue s)` -> `(leave c)`; conditions `true` -> `(in_custody c)` (differs beyond the rename)
-- R11: attribute `facility` -> `child`; aim `(hold f s)` -> `(petition c)`; conditions `(and (in_crisis s) (danger s))` -> `(counsel_appointed c)` (differs beyond the rename)
-- the other 0 rules are identical in attribute, aim and conditions
 Isomorphic to: police-crisis (guard+strands), coverture-household (guard+strands)
 Not isomorphic to: crisis-team
 Contrasts with controls: lease, public-library, naming-convention

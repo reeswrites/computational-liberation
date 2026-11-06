@@ -32,10 +32,11 @@
 | R4 | subject | must not (disability) | `(leave s)` | `(in_custody s)` | none | rival | The subject cannot leave while in custody: no such power exists (Cal. WIC 5150). | opened | [full source under Sources, R4](#src-r4) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
 | R5 | officer | may | `(use_force o s)` | `(and (in_custody s) (resists s))` | none | rival | The officer may use force on the subject when the subject is in custody and resists. | unverified | use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened) |
 | R6 | officer | may | `(carry_weapon o)` | `true` | none | tying | The officer may carry a weapon at any time. | unverified | officers respond armed; standard equipment policy. UNVERIFIED (general knowledge; no source opened) |
-| R7 | facility | must | `(release f s)` | `(and (in_custody s) (not (danger s)))` | none | superadditive | The facility must release the subject when the subject is in custody and there is no danger (Cal. WIC 5152). | recalled | [full source under Sources, R7](#src-r7) https://california.public.law/codes/ca_welf_and_inst_code_section_5152 |
+| R7 | facility | must not (disability) | `(release f s)` | `(and (in_custody s) (requires_treatment s))` | none | rival | The facility must not release the subject early while the treating psychiatrist finds the subject still requires evaluation or treatment (Cal. WIC 5152(a)). | opened | [full source under Sources, R7](#src-r7) https://california.public.law/codes/ca_welf_and_inst_code_section_5152 |
 | R8 | subject | may | `(petition_review s)` | `(in_custody s)` | none | tying | The subject may petition for review of the hold when the subject is in custody (Cal. WIC 5275). | opened | [full source under Sources, R8](#src-r8) https://california.public.law/codes/ca_welf_and_inst_code_section_5275 |
 | R10 | subject | may | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | unverified | an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue or petition_review enabled |
 | R11 | facility | may | `(hold f s)` | `(and (in_crisis s) (danger s))` | none | rival | The facility may hold the subject when the subject is in crisis and there is danger (Cal. WIC 5150(a)). | opened | [full source under Sources, R11](#src-r11) https://california.public.law/codes/ca_welf_and_inst_code_section_5150: |
+| R12 | facility | may | `(release f s)` | `(and (in_custody s) (not (requires_treatment s)))` | none | superadditive | The facility may release the subject when the treating psychiatrist finds the subject no longer requires evaluation or treatment (Cal. WIC 5152(a)). | opened | [full source under Sources, R12](#src-r12) https://california.public.law/codes/ca_welf_and_inst_code_section_5152: |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue
 
@@ -51,6 +52,7 @@
 - R8: `s` = subject (fluent in_custody)
 - R10: `s` = unbound (encoder to fix)
 - R11: `f` = facility (action hold, effects); `s` = subject (action hold, effects)
+- R12: `f` = unbound (encoder to fix); `s` = subject (action release, effects)
 
 ## Sources
 
@@ -85,10 +87,9 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: officers respond armed; standard equipment policy)
 
 <a id="src-r7"></a>
-**R7**: Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) 'A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted'; 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment'; (b) 'A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment'. Release is the facility's act (its treating psychiatrist or medical director), not the officer's: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty.
+**R7**: Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) 'A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted'; 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment'; (b) 'A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment'. Release is the facility's act (its treating psychiatrist or medical director), not the officer's: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty. Re-encoded 2026-11-06 (preregistered, plans/sourcing.md; card-only seat finding): read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment.' R7 is now the prohibition side of that 'only if' (no early release while treatment is still required, exogenous fluent requires_treatment); R12 is the permission side. The earlier duty to release on 'no danger' was unfaithful and unreachable (danger never changes; detain and hold require it).
 
-- `cal-wic-5152` (s. 5152(a), (b); US-CA; date n/a): **opened** 2026-11-04: "A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted ... The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment ... A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment"
-- `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **recalled**
+- `cal-wic-5152` (s. 5152(a); US-CA; date n/a): **opened** 2026-11-06: "The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment."
 
 <a id="src-r8"></a>
 **R8**: Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened) Verification pass: WIC 5275 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5275 (text 'updated Jan. 1, 2024' per the page): 'Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release' (the request goes to the person delivering the certification notice or to the intensive-treatment staff).
@@ -103,6 +104,11 @@ Per rule: the full source where the table cell is cut, then each provenance item
 **R11**: Cal. Welf. & Inst. Code s. 5150(a), read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: the custody power belongs to 'a peace officer, professional person in charge of a facility designated by the county for evaluation and treatment, member of the attending staff' ... who 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'. Added 2026-11-06 (L1 landing, preregistered; faithfulness batch 2 P4): the facility holds the same custody power as the officer, and its hold establishes R2 (ADR 0009). [ADR 0013: power fluents are derived from rule enabledness; this rule is what can_sanction reads for the facility]
 
 - `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **opened** 2026-11-06: "a peace officer, professional person in charge of a facility designated by the county for evaluation and treatment, member of the attending staff ... may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours"
+
+<a id="src-r12"></a>
+**R12**: Cal. Welf. & Inst. Code s. 5152, read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment.' Added 2026-11-06 (preregistered R7 re-encode, plans/sourcing.md): the permission side of the 'only if'; R7 is the prohibition side. 5152(b)'s end-of-hold outcomes (release, voluntary referral, certification for intensive treatment) are not encoded: the model has no clock for 72 hours (disclosed gap). Apostrophes straightened.
+
+- `cal-wic-5152` (s. 5152(a); US-CA; date n/a): **opened** 2026-11-06: "The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment."
 
 
 ## Goods (slice 2)
@@ -120,18 +126,6 @@ Slice 2 revision 2 (plans/priority-slice2-results.md, "Revision 2"): goods as en
 
 ## Pairs
 
-Rule-by-rule against [cps](cps.md) under the rename social_worker->officer, child->subject, parent->dispatcher, court->facility (declared isomorphic); one line per rule that differs:
-- R1: attribute `social_worker` -> `dispatcher`; aim `(investigate w c)` -> `(dispatch_officer d o s)`; conditions `(report_received c)` -> `(call_received s)` (differs beyond the rename)
-- R2: attribute `social_worker` -> `facility`; aim `(provide_services w c)` -> `(provides_care f s)`; conditions `(case_open c)` -> `(in_custody s)` (differs beyond the rename)
-- R3: attribute `social_worker` -> `officer`; aim `(remove w c)` -> `(detain o f s)`; conditions `(and (case_open c) (immediate_danger c))` -> `(and (responding o s) (in_crisis s) (danger s))` (differs beyond the rename)
-- R4: attribute `social_worker` -> `subject`; aim `(in_home_considered w c)` -> `(leave s)`; conditions `(and (case_open c) (immediate_danger c))` -> `(in_custody s)` (differs beyond the rename)
-- R5: attribute `parent` -> `officer`; aim `(cooperates p c)` -> `(use_force o s)`; conditions `(case_open c)` -> `(and (in_custody s) (resists s))` (differs beyond the rename)
-- R6: attribute `social_worker` -> `officer`; aim `(contact_mother w p)` -> `(carry_weapon o)`; conditions `(and (case_open c) (parent p c) (female p) (not (contacted w p)))` -> `true` (differs beyond the rename)
-- R7: attribute `court` -> `facility`; aim `(reassign_custody court p c)` -> `(release f s)`; conditions `(and (case_open c) (substantial_danger p c))` -> `(and (in_custody s) (not (danger s)))` (differs beyond the rename)
-- R8: attribute `court` -> `subject`; aim `(counsel_appointed c)` -> `(petition_review s)`; conditions `(and (case_open c) (not (would_not_benefit c)))` -> `(in_custody s)` (differs beyond the rename)
-- R10: attribute `child` -> `subject`; aim `(leave c)` -> `(sue s)`; conditions `(in_custody c)` -> `true` (differs beyond the rename)
-- R11: attribute `child` -> `facility`; aim `(petition c)` -> `(hold f s)`; conditions `(counsel_appointed c)` -> `(and (in_crisis s) (danger s))` (differs beyond the rename)
-- the other 0 rules are identical in attribute, aim and conditions
 [crisis-team](crisis-team.md) is a minimal pair of this entry (rule R3).
 Isomorphic to: cps (guard+strands), coverture-household (guard+strands)
 Not isomorphic to: crisis-team
