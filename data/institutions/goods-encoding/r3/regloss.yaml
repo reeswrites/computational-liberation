@@ -1,0 +1,34 @@
+gloss: >-
+  A married couple care for each other (the husband for the wife and the wife
+  for the husband), and no act or state of that care, by either of them, is
+  required by any rule in force at that moment, whether or not the requirement
+  is backed by a penalty. Throughout, the wife can leave the marriage and no
+  one holds a power to penalise her. This is care that both give only because
+  they choose to, in a marriage she could leave, under no one's power. For the
+  wife, within the couple.
+for_whom: "The wife, within the couple."
+excludes_obliged_care_of: both
+exit_condition: true
+no_sanction_condition: true
+reasons:
+  excludes_obliged_care_of: >-
+    The good is chosen *mutual* care, so it fails if either side of the exchange
+    is compelled; excluding only her obliged care would still count a
+    coverture-style duty on the husband to support her as "chosen" mutual care,
+    which turns an imposed bundle into a counterfeit chosen one.
+  exit_condition: >-
+    That no rule obliges a given act of care says nothing about whether she
+    could leave the marriage and be okay, and the theory counts exit as its own
+    part of equal standing, so care given by a wife who cannot leave is not
+    chosen even if no rule obliges it.
+  no_sanction_condition: >-
+    The new obligation marker only says whether some rule requires an act of
+    care, but non-domination asks whether anyone can interfere with her at
+    will even if they never do or no rule calls for it, so a power to penalise
+    her stays a separate condition (it no longer has to stand in for "free not
+    to give", but it still rules out domination).
+  notes: >-
+    Because the vocabulary cannot tell which rule obliges an act, any general
+    duty of mutual support between spouses (as in many modern civil codes)
+    will also make the good unattainable; that follows from the author's
+    decision and should be noted wherever the good comes out unreachable.

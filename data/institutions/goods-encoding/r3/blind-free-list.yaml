@@ -1,0 +1,93 @@
+# Goods the project should track, drawn only from theory.md and intent.md.
+# Goods are states of affairs good for a being to have or be in; freedoms
+# (exit, voice, recognition, non-domination, permissions and bars) are excluded.
+
+- name: pleasure
+  for_whom: any person, and any sentient being the frame extends to (animals; AI systems if moral patients)
+  gloss: The person's life contains enjoyment and positive experience.
+  why_a_good: It is an experienced condition of a life that intent.md lists under flourishing, not anything the person is permitted or barred from doing.
+
+- name: absence_of_suffering
+  for_whom: any person, and any sentient being the frame extends to (animals; AI systems if moral patients)
+  gloss: The person's life is free of pain, distress and other suffering, which the veil-of-ignorance scoring records over a lifetime.
+  why_a_good: It is a condition the person undergoes or is spared, measured as an outcome, not a permission to act.
+
+- name: meaning
+  for_whom: any person
+  gloss: The person experiences their life and activities as meaningful.
+  why_a_good: It is a state of a life listed under flourishing, which intent.md scores separately from freedom.
+
+- name: being_known
+  for_whom: any person
+  gloss: The person is actually known and understood by others.
+  why_a_good: It is a relational state the person is in, listed under flourishing, rather than an act they may or may not perform.
+
+- name: safety_from_violence
+  for_whom: any person, first those most exposed to violence
+  gloss: The person is actually safe from physical and other violence.
+  why_a_good: It is a condition of being unharmed and secure, the first precondition in the sequence, not a permission or a bar.
+
+- name: bodily_integrity
+  for_whom: any person, especially those whose reproduction is controlled; also animals subject to forced breeding
+  gloss: The person's body, including their reproductive capacity, is in fact not used or altered against their interests.
+  why_a_good: It names the state of one's body being intact and one's own, which the sequence treats as a precondition, distinct from the freedom to decide what to do with it.
+
+- name: receiving_care
+  for_whom: any person who needs care (infants, children, the sick, the old), and the person who would otherwise carry it alone
+  gloss: The person actually gets the care they need, provided as a public, decommodified good rather than bought or extracted from one household member.
+  why_a_good: Being cared for is a condition of one's life that the floor secures, not something one is permitted to do.
+
+- name: health
+  for_whom: any person
+  gloss: The person is in good health and has decommodified health care when they need it.
+  why_a_good: It is a bodily and material condition listed in the floor, not a permission.
+
+- name: housing
+  for_whom: any person
+  gloss: The person has secure housing that does not depend on market luck or on staying in a relationship.
+  why_a_good: Having a home is a material state listed in the floor, distinct from any right to act.
+
+- name: income
+  for_whom: any person, starting with those who have least
+  gloss: The person has an adequate income of their own.
+  why_a_good: It is a material holding listed in the floor; what it buys is a separate question from what one is permitted to do.
+
+- name: financial_independence
+  for_whom: any person, especially carers and others tied by the gender/care bundle
+  gloss: The person does not depend on one other person for their material survival.
+  why_a_good: It is a condition of one's economic situation, the opposite of the financial-dependence strand, rather than a permission; it is what makes exit livable but is not exit itself.
+
+- name: material_surplus
+  for_whom: any person, and groups or movements
+  gloss: The person has enough slack in money, time and attention beyond the urgent to question norms, imagine alternatives and organise.
+  why_a_good: It is a state of having spare capacity, which the theory treats as the precondition of liberation, not a permission to act.
+
+- name: worker_floor
+  for_whom: workers displaced by unbundling (for example slaughter and processing workers, farmers)
+  gloss: People whose livelihood depended on a bundle keep wage insurance and income when that bundle is ended.
+  why_a_good: It is a material security the person holds through the change, guarding against displacement, not a freedom to do something.
+
+- name: continued_existence
+  for_whom: animals in lineages that exist only because farmed; AI systems, should they be moral patients
+  gloss: The being or its lineage goes on existing (for example through sanctuary or weight preservation) rather than being culled, deleted or allowed to end.
+  why_a_good: Existing is a state the being is in, which the theory treats as a new strand entangled with harm, not a permission it exercises.
+
+- name: sanctuary
+  for_whom: farmed animals who remain after unbundling
+  gloss: The animal lives in a protected place where it is cared for and not used.
+  why_a_good: It is a living condition provided to the animal, part of the suggested sequence, not an action the animal is allowed to take.
+
+- name: nutrition
+  for_whom: any person
+  gloss: The person is adequately fed, including with protein, whether from animal or substitute sources.
+  why_a_good: It is the constitutive good that the farming bundle exists to deliver, a state of being nourished rather than a permission.
+
+- name: trust
+  for_whom: any person, within their community
+  gloss: The person can rely on others to cooperate rather than betray, as tracked by the simulation's trust variable.
+  why_a_good: It is a relational condition that grows or falls with experience, not a permission or bar on action.
+
+- name: assurance
+  for_whom: any person considering leaving an imposed norm
+  gloss: The person has good grounds to believe enough others will defect from the norm with them.
+  why_a_good: It is an epistemic and social condition that makes collective exit possible, not itself the freedom to exit.

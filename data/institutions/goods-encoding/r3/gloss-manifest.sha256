@@ -1,0 +1,5 @@
+cc717bcf39744433c129a79a068d066f7590bbbca1d1db283f94961ab6c61ebf  ./intent.md
+18e8152fb4991e03bf8b101de3bbe84dbc9e42aec4af34c88b6ffb691b2924f5  ./prompt-gloss-1.md
+873aa3bdc7b872fa60659c2d24ac65d0fdbc6d56544d31281c9ceb31323fc7e7  ./prompt-gloss-2.md
+aaa35da802bc1d775ea046c336ae301d88ff804dee355e5387b6137e50237d4d  ./theory.md
+# aggregate: b65a72ab7738023d6e03cc195c700655ed4a23a57edb0ad8dcce367b13c93dc2  (sha256sum $(find . -type f | sort) | sha256sum, run inside glossbundle3)
