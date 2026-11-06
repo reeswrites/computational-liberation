@@ -329,3 +329,31 @@ Variant built by `scripts/faithfulness_batch2_p4.py <dir>`. Four of five predict
 - Exploratory `phil rules ablate --entry police-crisis` (no prediction): no single deletion or prohibition flips care_and_sanction_same_role (R3~prohibit and R5~prohibit included: with either gone, the other keeps the officer a second sanctioner); R4 flips the exit rows, R10~prohibit flips no_standing open>reachable.
 
 **Reading.** Read to the statute, police-crisis has one role that bundles care and control (the facility: it cares during the hold and holds the same custody power), and a second role with concurrent control (the officer). The engine's structural match finds the facility bundle; the invariant fails because of the officer; the gate fails because the precommitted pairs named the officer. For L1 the defensible restatement is "the role that provides care also holds sanction power over the subject" (true for the facility, cps' social worker, coverture's husband), not "only the carer holds sanction power" (false for police read faithfully). Landing P4 would need, preregistered together: the P3 + P4 dataset change, the new precommitted pairs (R11 for R3) flagged as revised after seeing this run, and either the invariant's formula restated or the police entry's expectation changed to violated. Not done; L1 unchanged.
+
+## Draft: L1 restated after P3/P4 (2026-11-06; NOT preregistered, NOT applied; for the author)
+
+### Why the claim needs restating
+
+L1 today: "The engine rediscovers the care+control cluster (police, CPS, coverture household) from the rules alone." Two things are measured under that name:
+- **the form** (gate (b), `phil rules iso`): in each member, the role that bears the care duty is the attribute of a rule granting a sanction power over the subject, and the subject has an exit bar;
+- **the exclusivity invariant** (`care_and_sanction_same_role`, expected holds_to_k in the cluster): no agent other than the carer holds sanction power over the subject.
+
+Read to WIC 5150 (P3, P4), police-crisis keeps the form (with the facility as the role) and loses exclusivity (the officer holds concurrent custody and force). cps and coverture keep both. A state-level replacement ("whenever x cares for y, x can sanction y") is not a fix: it would fail for cps too (removal needs immediate danger, R3) and for coverture (chastisement needs misbehaviour, R5), because the bundled powers are conditional. So the restatement is role-level, which is what the form already checks.
+
+### Proposed wording
+
+> **L1.** The engine rediscovers the care+control form in police crisis holds, child protection and the coverture household from the rules alone: in each, the role that bears the care duty (the designated facility, the social worker, the husband) also holds a sanction power over the subject, who has no permitted exit. The stronger reading, that the carer is the only role with sanction power, holds for child protection and coverture but not for the police hold, where the officer holds concurrent custody and force (WIC 5150(a)).
+
+Sources cell: unchanged nine rows plus police-crisis R11 (new) and R2 (re-encoded); "match reads" to be re-derived by `scripts/drop_one_match.py` after landing.
+
+### What landing would take (one preregistration, written before any run)
+
+1. Dataset: P3 + P4 into `data/institutions/src/police-crisis.yaml` (facility R2 on `in_custody`, `detain(o, f, s)` establishing care, new `hold(f, s)` and R11, `can_sanction` untyped and extended), each rule's `source` recording the 5150(a)/(c) reading.
+2. Precommitted pairs: in the `isomorphic_to` blocks of police-crisis, cps and coverture-household, the police control pair R3 -> R11 (R3~R3 becomes R11~R3; R3~R5 becomes R11~R5), **flagged as revised after the P4 run**, with the reason (the precommitment named the officer; the statute's bundled role is the facility). This is the one post hoc element; it must be labelled so in the register, not presented as a prediction.
+3. Expectation: police-crisis `expected_properties.care_and_sanction_same_role` holds_to_k -> violated; the property's gloss ("holds_to_k in the care+control cluster") -> "holds_to_k in cps and coverture; violated in police-crisis read to WIC 5150, where a second role holds concurrent control".
+4. Baseline: `data/verdicts-baseline.json` regenerated after the run (`phil rules verdicts`), the one changed row named in the commit.
+5. Claims register: L1 wording as above; status stays `weakened` until the drop-one re-derivation and a council seat on the re-encoded police card agree; theory.md's rules-engine table (row 1, "care+control cluster") gets the same qualification.
+
+Predictions for that run (to be copied into the preregistration, k=6): gate PASS, (b) PASS (police~cps care R2~R4, control R11~R3, exit R4~R10; police~coverture R2~R2, R11~R5, R4~R6; cps~coverture unchanged; controls none), (e) 146/146 (expectation now violated); `phil rules diff` against the current baseline 1 changed (police care_and_sanction_same_role holds_to_k -> violated), 0 added, 0 removed; drop-one: the police match rows become R2, R4, R11 (R3 drops out); airline-flight's match with police-crisis (L1 evidence, third review) is not predicted and is reported as found.
+
+Open for the author: whether "the carer is also a sanctioner" is still the theory's claim (theory.md's care+control strand), or whether exclusivity was the point; if exclusivity was the point, L1 is refuted for the police member and the cluster is two entries.
