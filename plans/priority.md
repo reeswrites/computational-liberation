@@ -148,3 +148,12 @@ Drift from 1-6 is recorded in plans/priority-slice1-results.md, never edited to 
 Author decision (2026-11-04, after docs/reviews/2026-11-04-capacity-convention-rev4-review.md item 2): the `offcondition_free` label is skipped for a `may` on a default-capacity action, because "free off-condition" is that action's baseline, so the prohibit variant is a clean "add a disability" row and ranks normally.
 
 Predictions: (1) exactly one row changes status across the dataset: mwpa-suit `R16~prohibit` leaves `offcondition_free_not_ranked` and ranks with a freedom_down flip (no_standing), load_freedom_up 0; (2) no entry's top set changes; (3) all other rows byte-identical to the revision-4 run apart from timing; (4) layer 1 untouched (no diff run needed; rules_ablate only).
+
+### Decisions settled 2026-11-06 (author, in session; answers to plans/priority-slice1-results.md "Decisions waiting on the author" and the R19 drift in plans/sourcing.md)
+
+1. Derived power for unregulated actions: settled earlier by the default-capacity flag (revisions 3-4; ADR 0013 amendment). Closed.
+2. **Ratified**: ASSUMED b (a `~prohibit` row whose rule is already free off-condition is listed, not ranked) and mixed-neither (a family flipping both up and down counts as neither; 0 occurrences so far). No result changes.
+3. One-step-effect convention for action obligations: recorded in ADR 0009 (engine); `care_duty_on_women` gloss states the grace. Closed.
+4. **Slice 1 close-out first**: run `step_mode` stability and tabulate strand-tag mismatches against the ablation readings, so the layer-4 pass test reads passed or failed, not incomplete.
+5. **Flip direction derived from `kind`**: `rules_ablate.UNFREEDOM` (a hand list of names) is replaced by reading `kind: freedom`, with a check that every freedom property is written unfreedom-shaped (its holding is bad for the subject). Preregistered before the engine change; expected effect: mwpa-suit R19 (`no_standing_against_spouse`) ranks.
+6. **Slice 2: go, core plus the floor route.** Core as in "Slices" item 2 (goods list and expected readings preregistered; at least three goods properties written independently by a second, fresh-agent encoder; `contested` mandatory; readings table on the care+control cluster). Plus `coverture-floor` from "Candidate for slice 2" with its predictions and the title-route vs floor-route cut-set comparison. Slice 2's plan and preregistration live in plans/priority-slice2.md.
