@@ -213,3 +213,31 @@ def test_goods_properties_have_two_encoders_and_contested():
     assert goods["mutual_household_care"].subject == married == goods["chosen_mutual_care"].subject
     assert [a.encoder for a in goods["provided_for"].contested] == ["encoder-2"]
     assert all(goods[n].contested == [] for n in goods if n != "provided_for")
+
+
+PRIMARY_MEASURES = {  # plans/priority-slice2.md revision 3, R3.1 (author decision 1, a value call): pinned verbatim
+    "cared_for": ("guaranteed", "A dependent's care that the rules merely allow is not the good; the good is care that "
+                                "does not lapse."),
+    "provided_for": ("guaranteed", "Subsistence that is merely allowed is not secured, and the gloss asks that it be "
+                                   "secured."),
+    "chosen_mutual_care": ("possible", "A chosen good cannot be forced; a rule that forced it would be the imposition it "
+                                       "excludes."),
+    "mutual_household_care": ("possible", "Relational: mutual care that the rules force is control, not the good; what "
+                                          "matters is that it is not barred."),
+    "known_carer": ("possible", "Being known cannot be forced; the rules can only leave room for a continuing carer."),
+    "child_with_family": ("possible", "Relational: forcing a child to stay with its family is itself control; what "
+                                      "matters is that it is not barred."),
+}
+
+
+def test_goods_primary_measure_pinned():
+    """R3.1: every goods property carries `primary_measure` and a one-line reason (at most 200 characters), and the
+    mapping is the preregistered table, verbatim. No other property carries either key."""
+    _, props = _dataset()
+    goods = {n: p for n, p in props.items() if p.kind == "goods"}
+    assert {n: (p.primary_measure, p.primary_measure_reason) for n, p in goods.items()} == PRIMARY_MEASURES
+    for n, p in goods.items():
+        r = p.primary_measure_reason
+        assert r.strip() and "\n" not in r and len(r) <= 200, n
+        assert all(a.model_dump().keys().isdisjoint({"primary_measure", "primary_measure_reason"}) for a in p.contested), n
+    assert all(p.primary_measure is None and p.primary_measure_reason is None for p in props.values() if p.kind != "goods")
