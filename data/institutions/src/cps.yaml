@@ -182,26 +182,26 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: 'Cal. WIC 328 / Penal Code 11165.14: reports must be investigated; the same worker who offers services investigates. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; investigate consumes report_received so it fires once per report]'
+  source: 'Cal. WIC 328 / Penal Code 11165.14: reports must be investigated; the same worker who offers services investigates. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; investigate consumes report_received so it fires once per report] Verification pass: WIC 328 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_328: (a) ''the social worker shall immediately make any investigation the social worker deems necessary to determine whether child welfare services should be offered to the family''. Penal Code 11165.14 read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_11165.14: ''The appropriate local law enforcement agency shall investigate a child abuse complaint filed by a parent or guardian of a pupil with a school'' (police inquiries into abuse by school staff at a schoolsite; not the social worker''s duty this row encodes, so this pin does not support the row).'
   provenance:
   - source_id: cal-wic-328
-    pin: s. 328
+    pin: s. 328(a)
     jurisdiction: US-CA
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: no marker next to the citation; the lowest marker later in the string reads unverified
+    verification: opened
+    excerpt: the social worker shall immediately make any investigation the social worker deems necessary to determine whether child welfare services should be offered to the family
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_328
+    note: trigger is 'cause to believe' a child is described in s. 300, not a received report; the scope is what the worker 'deems necessary'; the same worker refers to services, which fits the row's dual role
   - source_id: cal-pen-11165-14
     pin: s. 11165.14
     jurisdiction: US-CA
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: old source string says UNVERIFIED
+    verification: opened
+    excerpt: The appropriate local law enforcement agency shall investigate a child abuse complaint filed by a parent or guardian of a pupil with a school
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_penal_code_section_11165.14
+    note: 'opened and off point: a police duty for complaints against school staff at a schoolsite; it does not support a social worker''s duty to investigate reports'
   var_roles:
     w: social_worker
     c: child
@@ -355,17 +355,17 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: 'Cal. WIC 317: counsel appointed for the child in dependency proceedings. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] investigate establishes counsel_appointed(c) (a dependency case is opened with counsel for the child); appoint_counsel restores it, relieve_counsel breaks it. [ADR 0013: was must-be has_standing(c); has_standing is now derived from R11, so the obligation is on the fluent counsel_appointed that R11 reads]'
+  source: 'Cal. WIC 317: counsel appointed for the child in dependency proceedings. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] investigate establishes counsel_appointed(c) (a dependency case is opened with counsel for the child); appoint_counsel restores it, relieve_counsel breaks it. [ADR 0013: was must-be has_standing(c); has_standing is now derived from R11, so the obligation is on the fluent counsel_appointed that R11 reads] Verification pass: WIC 317 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_317: (c)(1) ''If a child or nonminor dependent is not represented by counsel, the court shall appoint counsel for the child or nonminor dependent, unless the court finds that the child or nonminor dependent would not benefit from the appointment of counsel.'' ... (d) ''Counsel shall represent the parent, guardian, child, or nonminor dependent at the detention hearing and at all subsequent proceedings before the juvenile court.'' (the court appoints, in the dependency proceeding, with an exception; the investigation does not appoint counsel).'
   provenance:
   - source_id: cal-wic-317
-    pin: s. 317
+    pin: s. 317(c)(1), (d)
     jurisdiction: US-CA
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: old source string says UNVERIFIED
+    verification: opened
+    excerpt: If a child or nonminor dependent is not represented by counsel, the court shall appoint counsel for the child or nonminor dependent, unless the court finds that the child or nonminor dependent would not benefit from the appointment of counsel. ... Counsel shall represent the parent, guardian, child, or nonminor dependent at the detention hearing and at all subsequent proceedings before the juvenile court.
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_317
+    note: appointment is by the court once a petition is before it, not on investigation; the exception means counsel is not guaranteed
   load_bearing: true
   var_roles:
     c: child
@@ -400,17 +400,26 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: 'Cal. WIC 317(e): appointed counsel represents the child''s interests in the proceeding, so the child claims in its own name through counsel. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(c) = petition enabled, i.e. counsel appointed'
+  source: 'Cal. WIC 317(e): appointed counsel represents the child''s interests in the proceeding, so the child claims in its own name through counsel. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(c) = petition enabled, i.e. counsel appointed Verification pass: WIC 317 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_317: (e)(1) ''Counsel shall be charged in general with the representation of the child''s interests.'' WIC 388 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_388: (a)(1) ''the child or the nonminor dependent through a properly appointed guardian may, upon grounds of change of circumstance or new evidence, petition the court'' (the current text says ''through a properly appointed guardian'', not counsel; the ''himself or herself'' wording is gone).'
   provenance:
   - source_id: cal-wic-317
-    pin: s. 317(e)
+    pin: s. 317(e)(1)
     jurisdiction: US-CA
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: old source string says UNVERIFIED
+    verification: opened
+    excerpt: Counsel shall be charged in general with the representation of the child's interests.
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_317
+    note: apostrophe straightened
+  - source_id: cal-wic-388
+    pin: s. 388(a)(1)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: opened
+    excerpt: the child or the nonminor dependent through a properly appointed guardian may, upon grounds of change of circumstance or new evidence, petition the court
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_388
+    note: the petition runs through a guardian, not 'in its own name through counsel' as the row reads
   var_roles:
     c: child
 source_text: '''Any social worker in a county welfare department ... may ... (2) Take into and maintain temporary custody of, without a warrant, a child who has been declared a dependent child ... or who the social worker has reasonable cause to believe ... has an immediate need for medical care or is in immediate danger of physical or sexual abuse.'' ''(f) Before taking a child into custody, a social worker shall consider whether the child may remain safely in their residence'', including whether reasonable services could eliminate the need for removal. Cal. Welf. & Inst. Code s. 306, read at https://california.public.law/codes/ca_welf_and_inst_code_section_306'

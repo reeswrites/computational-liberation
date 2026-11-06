@@ -291,17 +291,17 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened)
+  source: 'Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened) Verification pass: WIC 5275 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5275 (text ''updated Jan. 1, 2024'' per the page): ''Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release'' (the request goes to the person delivering the certification notice or to the intensive-treatment staff).'
   provenance:
   - source_id: cal-wic-5275
     pin: s. 5275
     jurisdiction: US-CA
-    effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: old source string says UNVERIFIED
+    effective_date: '2024-01-01'
+    verification: opened
+    excerpt: Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_5275
+    note: effective_date is the page's 'updated Jan. 1, 2024' (the text as amended in 2023); 'this part' (the LPS Act) covers a 5150 hold; the request procedure is written for certification, and the separate certification review hearing (s. 5256) was not opened
 - id: R10
   plain: 'The subject may sue in their own name at any time.'
   attribute: subject

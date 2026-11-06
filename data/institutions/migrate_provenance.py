@@ -63,6 +63,7 @@ WORKS = [
     ("cal-wic-328", r"WIC 328"),
     ("cal-wic-317", r"WIC 317"),
     ("cal-wic-16501", r"WIC 16501"),
+    ("cal-wic-388", r"WIC 388"),
     ("cal-pen-11165-14", r"Penal Code 11165\.14"),
     ("cal-pen-597s", r"Penal Code s\. 597s"),
     ("cal-pen-597", r"Penal Code 597\(b\)"),
@@ -341,6 +342,14 @@ RAISES = {
         "'Massachusetts St. 1874 c. 184, read 2026-11-06 at ...: s. 3 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
     ("mwpa-suit", "R19", "us-ny-laws-1860-ch90"):
         "'New York Laws 1860 ch. 90 s. 7 bars nothing in terms' and 'Suit clauses read for this row (2026-11-06): ... New York 1860 s. 7 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("cps", "R1", "cal-pen-11165-14"):
+        "'Penal Code 11165.14 read 2026-11-06 at ...: 'The appropriate local law enforcement agency ...''; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("cps", "R8", "cal-wic-317"):
+        "'WIC 317 read 2026-11-06 at ...: (c)(1) ... (d) ...'; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("cps", "R11", "cal-wic-317"):
+        "'WIC 317 read 2026-11-06 at ...: (e)(1) ...'; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("police-crisis", "R8", "cal-wic-5275"):
+        "'WIC 5275 read 2026-11-06 at ...: 'Every person detained under this part ...''; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
     ("coverture-household", "R6", "uk-matrimonial-causes-act-1857"):
         "'enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/...: s. 2, ... s. 27, ...'; "
         "the heuristic's read regex is lower-case and the work is named before 'read' (verification pass 2026-11-06)",
@@ -500,6 +509,52 @@ override("cps", "R10", "verification pass 2026-11-06: url and note",
               "Take into and maintain temporary custody of, without a warrant", "2026-11-06", _P306,
               "the section says nothing of the child's own conduct; the exit bar is inferred from custody (the row "
               "says so)"))
+_PLC = "https://california.public.law/codes/"
+override("cps", "R1",
+         "verification pass 2026-11-06: WIC 328 opened (supports a discretionary investigation duty); Penal Code "
+         "11165.14 opened and does not support the row (wrong pin, faithfulness finding)",
+         item("cal-wic-328", "opened", "s. 328(a)", "US-CA", None,
+              "the social worker shall immediately make any investigation the social worker deems necessary to "
+              "determine whether child welfare services should be offered to the family",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_328",
+              "trigger is 'cause to believe' a child is described in s. 300, not a received report; the scope is what "
+              "the worker 'deems necessary'; the same worker refers to services, which fits the row's dual role"),
+         item("cal-pen-11165-14", "opened", "s. 11165.14", "US-CA", None,
+              "The appropriate local law enforcement agency shall investigate a child abuse complaint filed by a parent "
+              "or guardian of a pupil with a school",
+              "2026-11-06", _PLC + "ca_penal_code_section_11165.14",
+              "opened and off point: a police duty for complaints against school staff at a schoolsite; it does not "
+              "support a social worker's duty to investigate reports"))
+override("cps", "R8",
+         "verification pass 2026-11-06: WIC 317 opened; the court appoints counsel in the proceeding, with a "
+         "'would not benefit' exception; the row's establishment by investigate is the encoder's (faithfulness finding)",
+         item("cal-wic-317", "opened", "s. 317(c)(1), (d)", "US-CA", None,
+              "If a child or nonminor dependent is not represented by counsel, the court shall appoint counsel for the "
+              "child or nonminor dependent, unless the court finds that the child or nonminor dependent would not "
+              "benefit from the appointment of counsel. ... Counsel shall represent the parent, guardian, child, or "
+              "nonminor dependent at the detention hearing and at all subsequent proceedings before the juvenile court.",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_317",
+              "appointment is by the court once a petition is before it, not on investigation; the exception means "
+              "counsel is not guaranteed"))
+override("cps", "R11",
+         "verification pass 2026-11-06: WIC 317(e) and 388(a)(1) opened; the child petitions through a properly "
+         "appointed guardian (388), counsel represents its interests (317(e)) (faithfulness finding)",
+         item("cal-wic-317", "opened", "s. 317(e)(1)", "US-CA", None,
+              "Counsel shall be charged in general with the representation of the child's interests.",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_317", "apostrophe straightened"),
+         item("cal-wic-388", "opened", "s. 388(a)(1)", "US-CA", None,
+              "the child or the nonminor dependent through a properly appointed guardian may, upon grounds of change "
+              "of circumstance or new evidence, petition the court",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_388",
+              "the petition runs through a guardian, not 'in its own name through counsel' as the row reads"))
+override("police-crisis", "R8", "verification pass 2026-11-06: WIC 5275 opened; effective_date of the current text set",
+         item("cal-wic-5275", "opened", "s. 5275", "US-CA", "2024-01-01",
+              "Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their "
+              "release",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_5275",
+              "effective_date is the page's 'updated Jan. 1, 2024' (the text as amended in 2023); 'this part' (the LPS "
+              "Act) covers a 5150 hold; the request procedure is written for certification, and the separate "
+              "certification review hearing (s. 5256) was not opened"))
 for _e in ("companion-ownership", "companion-guardian-renamed"):
     _items = [item("cal-civ-655", "opened", "s. 655", "US-CA", None,
                    "There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals",

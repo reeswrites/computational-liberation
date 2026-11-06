@@ -33,7 +33,7 @@
 | R5 | officer | may | `(use_force o s)` | `(and (in_custody s) (resists s))` | none | rival | The officer may use force on the subject when the subject is in custody and resists. | unverified | use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened) |
 | R6 | officer | may | `(carry_weapon o)` | `true` | none | tying | The officer may carry a weapon at any time. | unverified | officers respond armed; standard equipment policy. UNVERIFIED (general knowledge; no source opened) |
 | R7 | facility | must | `(release f s)` | `(and (in_custody s) (not (danger s)))` | none | superadditive | The facility must release the subject when the subject is in custody and there is no danger (Cal. WIC 5152). | recalled | [full source under Sources, R7](#src-r7) https://california.public.law/codes/ca_welf_and_inst_code_section_5152 |
-| R8 | subject | may | `(petition_review s)` | `(in_custody s)` | none | tying | The subject may petition for review of the hold when the subject is in custody (Cal. WIC 5275). | unverified | Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened) |
+| R8 | subject | may | `(petition_review s)` | `(in_custody s)` | none | tying | The subject may petition for review of the hold when the subject is in custody (Cal. WIC 5275). | opened | [full source under Sources, R8](#src-r8) https://california.public.law/codes/ca_welf_and_inst_code_section_5275 |
 | R10 | subject | may | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | unverified | an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue or petition_review enabled |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue
@@ -87,9 +87,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `cal-wic-5152` (s. 5152(a), (b); US-CA; date n/a): **opened** 2026-11-04: "A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted ... The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment ... A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment"
 - `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **recalled**
 
-**R8**
+<a id="src-r8"></a>
+**R8**: Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened) Verification pass: WIC 5275 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5275 (text 'updated Jan. 1, 2024' per the page): 'Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release' (the request goes to the person delivering the certification notice or to the intensive-treatment staff).
 
-- `cal-wic-5275` (s. 5275; US-CA; date n/a): **unverified**
+- `cal-wic-5275` (s. 5275; US-CA; date 2024-01-01): **opened** 2026-11-06: "Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release"
 
 **R10**
 

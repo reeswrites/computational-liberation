@@ -463,3 +463,11 @@
   jurisdiction: US-NY
   url: https://static.case.law/barb/44/cases/0366-01.json
   note: "Added 2026-11-06 (verification pass): Caselaw Access Project copy; opinion by Hogeboom, J. Cited by mwpa-suit R19."
+- id: cal-wic-388
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 388"
+  year: null
+  container: "California Welfare and Institutions Code"
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_388
+  note: "Added 2026-11-06 (verification pass): petition to change, modify or set aside a dependency order. Cited by cps R11."
