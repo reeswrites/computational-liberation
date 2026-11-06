@@ -1,6 +1,6 @@
 # Sourcing and citation overhaul
 
-Status: doing (2026-11-05). Handoff: the read-only sourcing audit of 2026-11-05 (summarised below). Part 2 of that handoff (lineage / phylogenetic sequencing) is parked; see the end of this file.
+Status: done, follow-ups open (2026-11-06): infrastructure, verification pass, faithfulness batch 2 and the L1 restatement landed; the remaining faithfulness findings are listed in docs/plan.md "Where to pick up". Started 2026-11-05. Handoff: the read-only sourcing audit of 2026-11-05 (summarised below). Part 2 of that handoff (lineage / phylogenetic sequencing) is parked; see the end of this file.
 
 ## Why
 

@@ -7,6 +7,7 @@ The theory calls such a package a *bundle*.
 Oppression, on this view, is a bundle that scarcity started, power added to, custom locked in, and that outlived its reasons.
 Liberation is turning imposed bundles into chosen ones, starting with the people who have the least freedom.
 If you are new, read [docs/overview.md](docs/overview.md) first; it explains every term below with examples.
+Current status and where to pick up: [docs/plan.md, "Where to pick up"](docs/plan.md#where-to-pick-up-updated-2026-11-06-end-of-session).
 
 ## Why compute this
 

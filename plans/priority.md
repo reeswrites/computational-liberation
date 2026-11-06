@@ -2,7 +2,7 @@
 
 Replaces the one-line "First priority computation" step in docs/plan.md (thin path, step 4).
 
-Status: draft, agreed with the author 2026-11-04. Nothing built. Slice 1 waits on the author's preregistered ranking table (slice 1, below). Layer 2 (ABM) is frozen after the 2026-11-04 gate record in plans/layer2-abm.md.
+Status (2026-11-06): slices 1 and 2 done (plans/priority-slice1-results.md; plans/priority-slice2.md and plans/priority-slice2-results.md, closed after three revisions); slice 3 (transfer graph, rebundling) is next; slices 4 and 5 todo. Layer 2 (ABM) stays frozen after the 2026-11-04 gate record in plans/layer2-abm.md. Original status line: draft, agreed with the author 2026-11-04. Nothing built. Slice 1 waits on the author's preregistered ranking table (slice 1, below). Layer 2 (ABM) is frozen after the 2026-11-04 gate record in plans/layer2-abm.md.
 
 ## Why
 
