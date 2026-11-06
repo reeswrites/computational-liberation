@@ -100,6 +100,78 @@
   },
   {
    "check": "invariant",
+   "institution": "coverture-floor",
+   "property": "cannot_contract",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-floor",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-floor",
+   "property": "care_assigned_by_sex",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-floor",
+   "property": "creditor_shield",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-floor",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-floor",
+   "property": "double_burden",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-floor",
+   "property": "financial_dependence",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-floor",
+   "property": "financial_dependence_margin",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-floor",
+   "property": "financial_dependence_means",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-floor",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-floor",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-floor",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
    "institution": "coverture-household",
    "property": "cannot_contract",
    "verdict": "holds_to_k"
