@@ -175,12 +175,12 @@ Status: run 2026-11-06. Preregistration: plans/priority-slice2.md "Revision 2" (
 
 All quantities are statements about encodings (ADR 0011); `coverture-floor` is a counterfactual (ADR 0004). Builder only: the revision-2 council (R2.6 step 8: correctness and faithfulness seats) has not run, so nothing here is yet called a result in that sense.
 
-How to read the goods columns. Two measures, never combined: **guaranteed** (a rule guarantees the good: state stable) and **possible** (the good can hold at a witness step for an existing bearer: fragile or stable). Lost counts are counts of goods formulas (families); each is followed by the number of distinct strands the lost formulas read, and no count is read as "goods lost". **Strict-compliance caveat, applying to every coverture-family goods row below:** under strict compliance R2's unsanctioned duty reads as delivered maintenance; the historical enforcement (tradesmen's claims for necessaries) is not represented.
+How to read the goods columns (wording revised in the fix pass after the revision-2 council). Two measures, never combined: **guaranteed** (the rules as obeyed force the good: every strictly compliant trace within k has it at every witness step; state stable; the force may come from a duty, from a prohibition of what breaks it, or from a vocabulary in which nothing unsets the fluent) and **possible** (the good can hold under the rules as obeyed, within k, at one witness step, for some bearer in some starting world: fragile or stable; not continuity, and blind to a bearer class for whom it is impossible while it stays possible for another). **Fragile** = holds somewhere, fails somewhere (not "a held good lapses"). Every "constitutive" (possible-lost) row so far is a **prohibition of the care act** itself, labelled so in the readings output; it is not evidence of a constitutive bundle in the glossary's sense. For `chosen_mutual_care` the guaranteed column is **not meaningful** (a good defined as freely given cannot be "forced"; see "The chosen-care good"). Definitions: docs/glossary.md "Goods measures (slice 2)". Lost counts are counts of goods formulas (families); each is followed by the number of distinct strands the lost formulas read, and no count is read as "goods lost". **Strict-compliance caveat, applying to every coverture-family goods row below:** under strict compliance R2's unsanctioned duty reads as delivered maintenance; the historical enforcement (tradesmen's claims for necessaries) is not represented.
 
 ### Headline
 
 - **Every R2.4 prediction about the 13 rows, the base states, the n/a rows, kibbutz, ectogenesis, the new good and the route comparison held**, at k=6 and k=8, under both encoders. No falsifier (RF1 to RF9) fired.
-- Possible column: no single deletion makes a coverture good impossible; deleting the exit bar (R6) makes chosen mutual care possible, in all nine coverture-family entries and in no other row; in ectogenesis, prohibiting the parent's permission to care (R4~prohibit) makes care impossible (constitutive, 3 formulas, 1 strand). Guaranteed column: as revision 1 with "constitutive" renamed "guarantee-carrying".
+- Possible column: no single deletion makes a coverture good impossible; deleting the exit bar (R6) moves `chosen_mutual_care` absent > fragile, in all nine coverture-family entries and in no other row (her care duty R3 still binds in that row and the formula cannot see it: not "chosen care becomes possible"; fix pass); in ectogenesis, prohibiting the parent's permission to care (R4~prohibit) makes care impossible (constitutive, 3 formulas, 1 strand: a prohibition of the care act itself, under strict compliance). Guaranteed column: as revision 1 with "constitutive" renamed "guarantee-carrying".
 - The no-subject artefact is gone: ectogenesis R1~prohibit, gestational-surrogacy R2~prohibit and airline-flight R1~prohibit read `not_applicable` after, lost 0 under both measures (revision-1 F2 does not fire).
 - **Misses (drift, recorded):** scoreboard `goods_rows` 34, predicted 33 (an unpredicted information row, cps R2~prohibit, possible lost 2); E4r2's "agreement cell untagged" (the R20 rows have no reading, so their cell reads `unread`, and neither row is printed in the readings table); one iso distance at `exact+strands` changes for an unclaimed pair. Details under Drift.
 - **Pass test (R2.6): met** as a builder's verdict, pending the council.
@@ -198,12 +198,12 @@ How to read the goods columns. Two measures, never combined: **guaranteed** (a r
 
 | entry | good | predicted | observed |
 | --- | --- | --- | --- |
-| nine coverture-family entries | cared_for, mutual_household_care, known_carer, provided_for (both encoders) | stable | stable |
+| nine coverture-family entries | cared_for, mutual_household_care, known_carer, provided_for (both encoders) | stable | stable (formula limit: three of `provided_for`'s four disjuncts are power fluents) |
 | nine coverture-family entries | chosen_mutual_care (both encoders) | absent | absent |
 | police-crisis | cared_for, known_carer | fragile | fragile |
-| cps | cared_for, known_carer, child_with_family | fragile (medium) | fragile |
+| cps | cared_for, known_carer, child_with_family | fragile (medium) | fragile (formula limit: the cps disjunct of `child_with_family` is freedom-shaped; `provides_care` is the caseworker's services) |
 | kibbutz-childrens-house | cared_for, known_carer | fragile | fragile |
-| kibbutz-childrens-house | child_with_family | absent | absent |
+| kibbutz-childrens-house | child_with_family | absent | absent (formula limit: `child_with_family` is three goods under one name; here only its sleep-at-home disjunct can hold) |
 | ectogenesis | cared_for, known_carer, child_with_family | fragile (medium-high) | fragile |
 | airline-flight | cared_for, known_carer | stable | stable |
 | gestational-surrogacy, crisis-team, companion-*, kibbutz-no-implicit | cared_for, known_carer | fragile (medium) | fragile |
@@ -219,17 +219,17 @@ Columns per measure: up / lost / reading / agreement. Coverture rows carry the s
 | entry | rule (tag) | guaranteed, predicted | guaranteed, observed | possible, predicted | possible, observed | |
 | --- | --- | --- | --- | --- | --- | --- |
 | coverture-household | R2 (superadditive) | 0 / 4 / guarantee-carrying / agree | 0 / 4 (1 strand, `provides_care(h, w)`) / guarantee-carrying / agree | 0 / 0 / unread | 0 / 0 / unread | held |
-| coverture-household | R3 (superadditive, implicit) | 0 / 1 / guarantee-carrying / agree | 0 / 1 (1 strand, `provides_care(w, h)`) / guarantee-carrying / agree | 0 / 0 / unread | 0 / 0 / unread | held. Guaranteed only by R3, an implicit sanctioned duty; not advice to keep it. Under possible, R3 is not constitutive |
+| coverture-household | R3 (superadditive, implicit) | 0 / 1 / guarantee-carrying / agree | 0 / 1 (1 strand, `provides_care(w, h)`) / guarantee-carrying / agree | 0 / 0 / unread | 0 / 0 / unread | held. Guaranteed only by R3, an implicit sanctioned duty; deleting it removes the guarantee of the husband's receipt of household labour (a good for the party who holds the sanction); not advice to keep it. Under possible, R3 is not constitutive |
 | coverture-household | R4 (tying) | 1 / 0 / tying / agree | 1 / 0 / tying / agree | 1 / 0 / tying / agree | 1 / 0 / tying / agree | held |
-| coverture-household | R6 (rival) | 1 / 0 / tying / no row | 1 / 0 / tying / no row | 1 / 0 / tying / no row; possible gained 1 | 1 / 0 / tying / no row; possible gained 1 (chosen_mutual_care absent > fragile) | held |
+| coverture-household | R6 (rival) | 1 / 0 / tying / no row | 1 / 0 / tying / no row | 1 / 0 / tying / no row; possible gained 1 | 1 / 0 / tying / no row; possible gained 1 (chosen_mutual_care absent > fragile) | held. R3 still binds her in this row; the good's formula cannot see the duty (fix pass) |
 | coverture-household | R7 (tying) | 1 / 0 / tying / agree | 1 / 0 / tying / agree | 1 / 0 / tying / agree | 1 / 0 / tying / agree | held |
 | police-crisis | R2 (superadditive) | 0 / 0 / unread | 0 / 0 / unread | 0 / 0 / unread | 0 / 0 / unread | held (revision-1 miss stands: as encoded no rule guarantees the goods and none makes them impossible) |
 | police-crisis | R4 (rival) | 1 / 0 / tying / no row | 1 / 0 / tying / no row | same | same | held |
 | cps | R10 (rival) | 1 / 0 / tying / no row | 1 / 0 / tying / no row | same | same | held |
 | kibbutz-childrens-house | R2 (tying, implicit) | 1 / 0 / tying / agree | 1 / 0 / tying / agree | same | same | held (section 4.2's hard case still missed) |
 | kibbutz-childrens-house | R3 (superadditive) | 0 / 0 / unread | 0 / 0 / unread | 0 / 0 / unread | 0 / 0 / unread | held |
-| kibbutz-childrens-house | R4 (rival) | 1 / 0 / tying / no row; gained 0 | 1 / 0 / tying / no row; gained 0 | 1 / 0 / tying / no row; possible gained 1 | 1 / 0 / tying / no row; possible gained 1 (child_with_family absent > fragile) | held: section 4.2's "gained 1" now holds, under possible |
-| ectogenesis | R4~prohibit (superadditive) | 0 / 0 / unread | 0 / 0 / unread | 0 / 3 / constitutive / agree | 0 / 3 (1 strand, `provides_care(intended_parent, child)`) / constitutive / agree | held: section 4.2 holds under possible |
+| kibbutz-childrens-house | R4 (rival) | 1 / 0 / tying / no row; gained 0 | 1 / 0 / tying / no row; gained 0 | 1 / 0 / tying / no row; possible gained 1 | 1 / 0 / tying / no row; possible gained 1 (child_with_family absent > fragile) | held: section 4.2's "gained 1" now holds, under possible. Formula limit: `child_with_family` is three goods under one name; here it reads its sleep-at-home disjunct alone (the cps and ectogenesis disjuncts lower false in kibbutz) |
+| ectogenesis | R4~prohibit (superadditive) | 0 / 0 / unread | 0 / 0 / unread | 0 / 3 / constitutive / agree | 0 / 3 (1 strand, `provides_care(intended_parent, child)`) / constitutive / agree | held: section 4.2 holds under possible. Label: prohibition of the care act (the "agree" is by construction: the goods read `provides_care`, the row forbids it). Strict-compliance caveat: the impossibility also rests on strict compliance pruning the traces where R5's `must provide_care` meets the prohibit |
 | ectogenesis | R5 (tying, implicit) | 1 / 0 / tying / agree | 1 / 0 / tying / agree | same | same | held |
 
 Totals, five entries (primary; encoder 2 identical): guaranteed **10 read rows, 6 agree, 0 mismatch, 4 no row** (predicted the same); possible **9 read rows, 5 agree, 0 mismatch, 4 no row** (predicted the same). Every other ranked row in the five entries is unread under both measures: held.
@@ -237,9 +237,9 @@ Totals, five entries (primary; encoder 2 identical): guaranteed **10 read rows, 
 ### n/a rows, kibbutz, information rows
 
 - Rows with an n/a move (`goods_not_applicable_rows`), exactly the three predicted: ectogenesis R1~prohibit (cared_for, known_carer, child_with_family fragile > n/a; lost 0 under both; unread under both; down 1, a protection), gestational-surrogacy R2~prohibit (cared_for, known_carer fragile > n/a; lost 0), airline-flight R1~prohibit (stable > n/a; lost 0; up 1, so tying; unranked). **Held.** Revision-1 F2 reapplied to both measures does not fire.
-- gestational-surrogacy R4~prohibit (information): cared_for, known_carer fragile > absent, possible lost 2 (1 strand), constitutive: **held**.
-- Kibbutz: child_with_family base absent; R4 deleted absent > fragile, possible gained 1, guaranteed gained 0; no other row moves it; R3 deleted no goods change: **held**.
-- **Unpredicted information row:** cps R2~prohibit (the caseworker's `may provide_services` when a case is open, prohibited; not ranked: the prohibit leaks off-condition): cared_for, known_carer fragile > absent, possible lost 2 (1 strand: `provides_care(social_worker, child)`, which in the cps vocabulary is the caseworker's services), constitutive. Revision 1 could not see it (fragile > fragile under the old states). It is not ranked, so it is not in `constitutive` and RF9 does not reach it; it is the one extra `goods_rows` row (drift 1).
+- gestational-surrogacy R4~prohibit (information): cared_for, known_carer fragile > absent, possible lost 2 (1 strand), constitutive (label: prohibition of the care act; strict compliance as ectogenesis): **held**.
+- Kibbutz: child_with_family base absent; R4 deleted absent > fragile, possible gained 1, guaranteed gained 0; no other row moves it; R3 deleted no goods change: **held**. Formula limit: the reading rests on the sleep-at-home disjunct alone (the cps and ectogenesis disjuncts lower false here, as `entries` allows).
+- **Unpredicted information row:** cps R2~prohibit (the caseworker's `may provide_services` when a case is open, prohibited; not ranked: the prohibit leaks off-condition): cared_for, known_carer fragile > absent, possible lost 2 (1 strand: `provides_care(social_worker, child)`, which in the cps vocabulary is the caseworker's services), constitutive (label: prohibition of the care act). The leak off-condition is beside the point: before a case opens no bearer exists, so services then reach no subject (correctness review finding 5). Formula limit for the cps rows: `child_with_family`'s cps disjunct ("case open, not in custody, a parent exists") is freedom-shaped, and no cps fluent records parental care. Revision 1 could not see it (fragile > fragile under the old states). It is not ranked, so it is not in `constitutive` and RF9 does not reach it; it is the one extra `goods_rows` row (drift 1).
 - companion-ownership and companion-guardian-renamed R1~prohibit: guaranteed gained 2 (1 strand) each, as in revision 1.
 
 ### The chosen-care good
@@ -250,10 +250,16 @@ Totals, five entries (primary; encoder 2 identical): guaranteed **10 read rows, 
 | R6 deleted: absent > fragile, possible gained 1, guaranteed unchanged, in all nine | held (18 rows, k=6 and 8) |
 | R5 and R5~prohibit unranked and move nothing | held |
 | R3, R2, R4, R7, R1 and the route rules: absent > absent | held (no row other than R6 changes it) |
-| no rule carries the good: lost 0 everywhere under both measures; R3 lost 0 on it | held (the faithful outcome the faithfulness review predicted for option (i)) |
+| no rule carries the good: lost 0 everywhere under both measures; R3 lost 0 on it | held. R3's lost 0 here carries no information about R3: the good is absent before and after (fix pass) |
 | encoder agreement: same effect in every row, `contested_readings` 0, no `not_expressible` | held. The merged formulas are z3-equivalent (`contested: []`), so encoder 2's column is the primary's; neither encoder recorded `not_expressible` (merge log) |
 
 The {R5, R6} pair (sanction and exit together) is a slice-4 question and is not read here.
+
+Fix-pass caveats (faithfulness review majors 1 and 2; formula unchanged):
+- **Guaranteed column not meaningful for this good.** A good defined as care "she is free not to give" cannot be forced by the rules; if it read stable, some rule would compel it, so stable would be evidence of imposition, not of the good. "Guaranteed unchanged" above is correct as a number and is not a reading. Marked on the property (`measure_note` in properties.yaml).
+- **The no-sanction clause is idle under strict compliance.** R3's `or_else` is R5, whose condition is `misbehaves` (set by the free action `misbehave`), not her neglect; she never breaches R3 in a compliant trace, so `can_sanction` is false at nearly every married step. The gloss's claim that the reading is "stricter than the gloss" is wrong in the direction that matters: the one sanction attached to her care is invisible.
+- **The preregistered R6-row rationale was wrong.** "neglect, neglect_house and misbehave stay free": `neglect` and `neglect_house` are not compliant while married (R2, R3 are must-be); `misbehave` is the only lapse route. Drift in the reasoning, not in a number.
+- **With R5 and R6 removed the good reads stable, guaranteed by R2 and R3** (reviewer's probe, scratch `fr2/`: deleting R3 there reads guarantee-carrying, guaranteed lost 2, `chosen_mutual_care` and `mutual_household_care`; deleting R2, guaranteed lost 5; in the R6-only variant deleting R5 or R5~prohibit moves it fragile > stable). The formula cannot see whether her care is obliged, so obligated care reads as chosen once exit and chastisement are gone.
 
 ### Route comparison (T = mwpa-earnings, F = coverture-floor; per encoder; k=6 and k=8 identical)
 
@@ -267,7 +273,7 @@ The {R5, R6} pair (sanction and exit together) is a slice-4 question and is not 
 | C (`financial_dependence_margin`) | holds_to_k | violated | unchanged, by construction | held (check-all, diff 0 changed) |
 | R | 1 (R14) | 1 (R20) | 1 / 1 | held |
 
-Winner rule per measure: guaranteed: tie on N, F lower on G (by construction); possible: tie on N and on G. Section 5's branch "tie as predicted" applies: T1 stays a hypothesis; slice 4 keeps the candidates {R2, R20} and {R4, R6, R7}. The floor's goods advantage is about guarantee only (her provision stops depending on R2 being kept), not about what is possible, and says nothing about order. R20 is an unconditional income-access floor for the wife, not the glossary's material floor.
+Winner rule per measure: guaranteed: tie on N, F lower on G (by construction); possible: tie on N and on G. Section 5's branch "tie as predicted" applies: T1 stays a hypothesis; slice 4 keeps the candidates {R2, R20} and {R4, R6, R7}. The floor's goods advantage is about guarantee only (her income access, as `provided_for` reads it (an income she may draw), stops depending on R2 being kept), not about what is possible, and says nothing about order. Formula limit beside these rows: three of `provided_for`'s four disjuncts are power fluents (`has_own_income := enabled draw_subsistence`, an action with no effects); the floor's G advantage runs through that freedom-shaped disjunct, and no subsistence is delivered. R20 is an unconditional income-access floor for the wife, not the glossary's material floor.
 
 ### Totals
 
@@ -330,7 +336,7 @@ Mutations, each run in a scratch copy of the engine against tests/test_rules_abl
 ### Pass test (R2.6)
 
 1. Engine implements R2.1 with every R2.2 test and every listed mutation killed: **met** (above).
-2. `chosen_mutual_care` encoded by two audited fresh encoders from a hashed bundle that contains the prompt: **met** (coordinator's merge log "Revision 2": 12 calls each, no breach; bundle hash above). Same caveat as revision 1: one model, protocol independence.
+2. `chosen_mutual_care` encoded by two audited fresh encoders from a hashed bundle that contains the prompt: **met** (coordinator's merge log "Revision 2": 12 calls each, no breach; bundle hash above). Protocol independence only (same caveat as revision 1: one model). A new shared input (fix pass, faithfulness finding 9): the gloss fixed the fluent-level reading (`can_exit`, `can_sanction`), and its author, the preregistration author, had seen the rules, the revision-1 outputs and the predictions; the encoders chose only quantifier form, so their equivalence was expected and is not evidence about the good.
 3. The run produces both measures for the 13 rows, the n/a rows, the kibbutz rows, the route comparison and the new good, per encoder, at k=6 and 8, with uncounted, inconsistent_after and k-disagreements listed: **met** (all 0).
 4. R2.5 checklist done: **met**.
 5. Every report carries the ADR 0012 sentence: **met** (this section, the card notes, `chosen_mutual_care`'s history, the commit messages).
@@ -349,7 +355,57 @@ Fail conditions: no revision-1 formula changed (formal and contested byte-identi
 8. **Persists unknown with counted states** (ASSUMED): the goods state does not read the persists verdict, so if persists alone were undecided the state would be counted and only the flip omitted. Never occurred.
 9. **Scoreboard row** appended from the saved D3 run (`scoreboard_stats` on the JSON rebuilt into row objects; the rebuilt `summarize` equals the saved summary exactly), because the run was made before the engine sync commit; the engine tree it ran on (a4ea4b3 code + D3 data) is 7a67c21's.
 10. **Three full runs**, not one: D1 (E1r2, also the phase-1 intermediate), D2 (E3r2), D3 (E4r2 and the reported numbers). Every table above is D3; D1 and D2 give the same numbers apart from the new good and R20's strand.
+11. **The per-entry subject check is stricter than R2.1's wording** (recorded in the fix pass, correctness review minor 2(b); no code change). R2.1 asked for "the same rule as `formal`, including `entries`"; that rule would accept an undeclared fluent in a `subject` in a listed entry and lower it false, silently turning the good `not_applicable`. The engine (rules_ablate.goods_subject_errors) refuses it in every applicable entry, listed or not. No current subject names an undeclared fluent, so nothing changes.
 
 ### Reproduction
 
 `cd computational-liberation && uv run phil rules ablate --k 6,8 --workers 4 --json ablate-27-r2.json --summary ablate-27-r2-summary.json --readings readings-27-r2.md --prev ablate-27-s2-summary.json` (the revision-1 summary), then the scoreboard row as drift 9. E1r2: the same on D1 (e519609) compared with revision 1's ablate-27-s2.json; E3r2: D1 vs D2 (28b4528); E4r2: D2 vs D3. Layer 1: `build.py --check` ok (27 institutions, 34 properties, 28 cards); `pytest -q` 32 passed; `check-all --no-cache` 146/146; `diff --baseline` 0/0/0; `gate` PASS; `scripts/drop_one_match.py` identical. Mutations: a scratch copy of the engine with one string replacement per mutation. Outputs in `/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/slice2/run2/`, not kept.
+
+## Revision 2 fix pass
+
+Status: 2026-11-06, after the revision-2 council (docs/reviews/2026-11-06-slice2-rev2-correctness-review.md: supported; docs/reviews/2026-11-06-slice2-rev2-faithfulness-review.md: weakened narrowly). No new predictions; nothing here changes a verdict, a goods state or a reading. Engine: philosophy-engine 969f1d8 (tests, loader edge, label) + c53d132 (data sync) = **ENGINE_PIN c53d132**. Wording in the "Revision 2" section above was revised in place where listed below (numbers untouched); everything else there stands as recorded.
+
+**Second encoder: agent, not someone living under the institution (ADR 0012).**
+
+### Findings and what was done
+
+| finding | done / how |
+| --- | --- |
+| Correctness 1: M10, M11, M12 survive (undecided guaranteed read as stable; undecided possible read as absent; no witness read as absent) | **done.** tests/test_rules_ablate_goods.py test_4e, test_4f (a fixture making only the n-th goods query unknown) and test_4g (a tiny entry where the bearer exists but no witness step does). Each mutant run in its own scratch copy against the goods and ablate tests (81): control 81 passed; M10, M11, M12 each fail exactly their test (1 failed, 80 passed). |
+| Correctness 2(a): `subject` with a free step variable raises a raw z3 Sort mismatch | **done.** The property validator turns it into a load error ("does not type-check ... only t may be free"): `RulesLoadError`, exit 2 (test_4h). |
+| Correctness 2(b): per-entry subject check stricter than R2.1's wording | **recorded**, no code change: drift 11 of "Revision 2". |
+| Correctness 2(c): only `Ant -> Subj` is checked; an over-broad subject passes | recorded here; no dataset subject is over-broad. Not changed. |
+| Correctness 3: `possible` needs the whole formula at one step | **documented** as a known limit in `rules_checks.goods_queries`' docstring and here: a good written over several bearer roles whose goods hold at different steps would read absent. Every dataset good has one bearer role, one agent per role. |
+| Correctness 4 / faithfulness: strict-compliance caveat on ectogenesis R4~prohibit (and cps R2~prohibit) | **done** in the 13-rows table, the information rows and the ectogenesis card. |
+| Faithfulness 1-2: `chosen_mutual_care` | **done, formula unchanged.** Guaranteed column marked not meaningful for this good (results "The chosen-care good", fix-pass caveats; `measure_note` on the property in properties.yaml, a free-text key the engine ignores, like `history`; card notes). Recorded: the no-sanction clause is idle under strict compliance; the preregistered R6-row rationale ("neglect stays free") was wrong (`misbehave` is the only lapse route); with R5 and R6 removed the good reads guaranteed by R2 and R3 (reviewer's probe). Headline and R6 row reworded: R6's deletion moves the good absent > fragile while R3 still binds; not "chosen care becomes possible". |
+| Faithfulness 3: "constitutive" marks only prohibitions of the care act | **done.** Label-only engine change: `possible_lost_label` = "prohibition of the care act" when a `~prohibit` row prohibits an action that sets a fluent in the consequent of a possible-lost good; printed beside the reading in the readings table (`constitutive (prohibition of the care act)`), listed in the summary's `constitutive_labels`; no count, load, reading or agreement reads it (test_5d, test_5f). In the rerun it labels exactly the possible-lost rows so far: ectogenesis R4~prohibit, gestational-surrogacy R4~prohibit, cps R2~prohibit. Also in the results rows, the "how to read" paragraph, the ectogenesis and cps cards. Possible agreement on ectogenesis R4~prohibit is by construction. |
+| Faithfulness 4-5: definitions worded too strongly; possible is existential | **done**: "how to read" paragraph: guaranteed = the rules as obeyed force it; possible = can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world; fragile = holds somewhere, fails somewhere. Same wording in the eight card notes and docs/glossary.md. |
+| Faithfulness 6: R3 row lost the "husband's receipt" clause; R3 lost 0 on the chosen good cited as evidence | **done**: clause restored in the R3 row and the four coverture-family card notes; the chosen-care table says R3's lost 0 there carries no information. |
+| Faithfulness 7: "her provision stops depending on R2" | **done**: "her income access, as `provided_for` reads it (an income she may draw), stops depending on R2", with the power-fluent limit beside the route rows and in the coverture-floor card. |
+| Faithfulness 8: formula limits of `child_with_family` and `provided_for` not beside their rows | **done**: base-states table, the kibbutz R4 row, the kibbutz and cps information bullets, the route paragraph; kibbutz, cps and coverture-floor cards. |
+| Faithfulness 9: the gloss chose the fluents (undisclosed shared input) | **done**: pass item 2 now reads protocol independence only, plus the new shared input (the gloss fixed `can_exit`, `can_sanction`; its author had seen the rules and predictions; equivalence expected, not evidence about the good). |
+| Glossary: no entries for the measures and reading words | **done**: docs/glossary.md "Goods measures (slice 2)": guaranteed, possible, guarantee-carrying, not applicable, fragile, and constitutive (reading) distinguished from constitutive bundle; one dataset example each. |
+| Open since revision 1 (6(i)): undeclared fluent in a listed entry lowers false with a warning | **skipped (recorded).** Making it a load error in a listed entry would change current rows: `child_with_family` lists cps, kibbutz-childrens-house and ectogenesis, and names undeclared fluents in all three (cps: `at_home`; kibbutz: `parent`, `case_open`, `in_custody`; ectogenesis: `at_home`, `case_open`, `in_custody`), so the good would fail to load there. The design of the three-goods-under-one-name formula depends on this lowering. Stays a warning; the kibbutz reading rests on it (formula limit, above). |
+
+### What can be reported now
+
+Each as a statement about encodings under strict compliance, within k = 6 and 8 (mirrors the faithfulness review). All of revision 1's "can report now" list stands, plus:
+
+- **Guaranteed column.** In the nine coverture-family entries, R2 and R3 are the only guarantee-carrying rules (R2: 4 formulas, 1 strand; R3: 1 formula, 1 strand). The R3 row carries: guaranteed only by R3, an implicit sanctioned duty; deleting it removes the guarantee of the husband's receipt of household labour; not advice to keep it.
+- **Possible column.** No single deletion makes any encoded coverture good impossible. In ectogenesis (and gestational-surrogacy), prohibiting the parent's care act makes care impossible: a prohibition of care itself, not evidence of a constitutive bundle. In kibbutz, the children's house rule R4 makes `child_with_family` (its sleep-at-home disjunct) impossible, and deleting it makes that possible.
+- **No-subject rows.** Ectogenesis R1~prohibit and its two siblings are not applicable: no bearer exists, so nothing is lost.
+- **`chosen_mutual_care`.** Under coverture as encoded, no compliant trace has mutual care while the wife has a permitted way out. The exit bar R6 is the only single rule whose deletion changes that; her care duty R3 still binds in that row, and the formula cannot see it.
+- **Route comparison.** Tie on N and on G possible. G guaranteed 5 vs 4 is by construction (the margin case) and runs through income access. T1 stays a hypothesis.
+- **Encoder agreement on the new good.** Protocol independence, audited. Equivalence was expected because the gloss fixed the fluents.
+
+### Not yet reportable
+
+- Any slice-4 use of `chosen_mutual_care` (the {R5, R6} pair reads obligated care as chosen and guaranteed); "chosen care becomes possible"; any guaranteed reading of this good.
+- "Constitutive" without the prohibition-of-the-care-act caveat.
+- Either measure in the glossary's sense beyond the definitions now in docs/glossary.md (guaranteed is not "a rule protects the good"; possible is not "the good is available to everyone").
+
+### Rerun against revision 2 (no verdict, goods state or reading changed)
+
+- **Ablation** (`uv run phil rules ablate --k 6,8 --workers 4 --json --summary --readings --prev <revision-1 summary>` on ENGINE_PIN c53d132, 8m34s), compared with the revision-2 run (`run2/ablate-27-r2*`): JSON and summary identical once the label fields (`possible_lost_label` per row, `constitutive_labels` per entry) are removed; readings table identical once the suffix " (prohibition of the care act)" is removed (12 labelled cells: ectogenesis and gestational-surrogacy R4~prohibit, cps R2~prohibit, k=6 and 8, both encoders); the text report identical apart from its own output paths. The label is set on exactly those six rows (k=6, 8) and on no other.
+- **Layer 1**: `build.py --check` ok (27 institutions, 34 properties, 28 cards; institutions.json unchanged, properties.json gains only `measure_note`); `pytest -q` 32 passed; `check-all --no-cache` 146/146; `diff --baseline` 0 changed, 0 added, 0 removed; `gate` PASS, output identical to the revision-2 run line for line; `scripts/drop_one_match.py` identical. Engine suite 614 passed, 2 skipped (609 + test_4e, 4f, 4g, 4h, 5f).
+- Outputs in `/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/fixpass/` (mutation record `mutations.txt`, comparison `cmp_fp.py`), not kept. No scoreboard row appended (no new numbers).

@@ -76,3 +76,14 @@ Source: `docs/interpreting-results.md` section 4. "Phase 0 test" numbers are fro
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it (`default_capacity: true` on the action; ADR 0015 A6 strict enabledness otherwise requires a `may` for every action).
 - **or else**: the sanction rule (by rule id) that applies when a `must` or `must_not` is breached.
 - **k**: the step bound of the check; `holds_to_k` means no trace of at most k steps violates the property.
+
+## Goods measures (slice 2)
+
+Source for each: plans/priority-slice2.md "Revision 2" (R2.1) and plans/priority-slice2-results.md "Revision 2" and "Revision 2 fix pass". Every statement is about encodings under strict compliance (ADR 0011), within k = 6 and 8.
+
+- **guaranteed**: the rules as obeyed force the good: every strictly compliant trace within k has it at every witness step (goods state `stable`). The force can come from a duty, from a prohibition of what breaks it, or from a vocabulary in which nothing unsets the fluent. Example: in coverture-household, `mutual_household_care` is guaranteed by R2 and R3. Not meaningful for a good defined as freely given (`chosen_mutual_care`).
+- **possible**: the good can hold under the rules as obeyed, within k, at one witness step, for some bearer in some starting world (goods state `fragile` or `stable`). It is not continuity, and it is blind to a bearer class for whom the good is impossible while it stays possible for another. Example: in kibbutz-childrens-house, `child_with_family` is not possible (R4 bars sleeping at home); with R4 deleted it is.
+- **guarantee-carrying**: the reading of a ranked deletion that removes a guarantee (guaranteed lost > 0, freedom up 0); not advice to keep the rule. Example: coverture-household R3 is guarantee-carrying for `mutual_household_care`: it guarantees the husband's receipt of household labour.
+- **not applicable**: no strictly compliant trace within k has a bearer of the good (its `subject` never holds); outside the ranking, never a loss or a gain. Example: ectogenesis R1~prohibit (no gestation starts, so no child exists): `cared_for` reads n/a, not lost.
+- **fragile**: the good holds at some witness step of some compliant trace and fails at some step of some trace ("holds somewhere, fails somewhere"; not "a held good lapses"). Example: police-crisis `cared_for`: as encoded, no rule guarantees it, and it can hold.
+- **constitutive (reading)**: the reading of a deletion that makes a good impossible (possible lost > 0, freedom up 0). Distinct from **constitutive bundle**: every such row so far (ectogenesis and gestational-surrogacy R4~prohibit, cps R2~prohibit) is a prohibition of the care act itself, labelled "prohibition of the care act", not evidence of a constitutive bundle.
