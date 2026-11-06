@@ -106,6 +106,16 @@ rules:
   strand: tying
   implicit: false
   source: opening hours. UNVERIFIED (general knowledge; no source opened)
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: opening hours'
 - id: R2
   plain: 'The patron being served must hold when the library is open and the patron is present and not suspended (Berkeley Patron Suspension Policy).'
   attribute: librarian
@@ -115,7 +125,26 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to ''provide and maintain a welcoming and safe environment for all patrons and library staff''; ''Violation of the Library''s Rules of Use Policy may warrant a suspension of library privileges''; ''Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately''; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (service to all patrons is the policy''s premise; the duty to serve is read from it, not stated as such: UNVERIFIED as a rule). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] enter establishes served; serve restores it, refuse_service breaks it'
+  source: 'Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to ''provide and maintain a welcoming and safe environment for all patrons and library staff''; ''Violation of the Library''s Rules of Use Policy may warrant a suspension of library privileges''; ''Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately''; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (service to all patrons is the policy''s premise; the duty to serve is read from it, not stated as such: UNVERIFIED as a rule). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] enter establishes served; serve restores it, refuse_service breaks it Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: ''In order to provide and maintain a welcoming and safe environment for all patrons and library staff''.'
+  provenance:
+  - source_id: berkeley-public-library-2018-patron-suspension-policy
+    pin: p. 1
+    jurisdiction: null
+    effective_date: null
+    verification: opened
+    excerpt: In order to provide and maintain a welcoming and safe environment for all patrons and library staff
+    accessed: '2026-11-06'
+    url: https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf
+    note: a purpose clause, not a duty to serve
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'the rule (a duty to serve) is read from the policy''s premise, not stated: UNVERIFIED as a rule'
 - id: R3
   plain: 'The librarian may suspend the patron when the patron is present and disruptive (Berkeley Patron Suspension Policy).'
   attribute: librarian
@@ -125,7 +154,17 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: 'Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to ''provide and maintain a welcoming and safe environment for all patrons and library staff''; ''Violation of the Library''s Rules of Use Policy may warrant a suspension of library privileges''; ''Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately''; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (violation of the Rules of Use ''may warrant a suspension of library privileges''; staff ''will instruct anyone displaying these behaviors to leave'')'
+  source: 'Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to ''provide and maintain a welcoming and safe environment for all patrons and library staff''; ''Violation of the Library''s Rules of Use Policy may warrant a suspension of library privileges''; ''Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately''; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (violation of the Rules of Use ''may warrant a suspension of library privileges''; staff ''will instruct anyone displaying these behaviors to leave'') Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: ''Continued disruption (same or different day): Library privileges will be suspended for the day by an authorized staff-member and the patron will be asked to leave the Library building.'''
+  provenance:
+  - source_id: berkeley-public-library-2018-patron-suspension-policy
+    pin: p. 2, B.2
+    jurisdiction: null
+    effective_date: null
+    verification: opened
+    excerpt: 'Continued disruption (same or different day): Library privileges will be suspended for the day by an authorized staff-member and the patron will be asked to leave the Library building.'
+    accessed: '2026-11-06'
+    url: https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf
+    note: suspension follows an initial warning (B.1); the row's single-step suspension of a disruptive patron skips the warning
 - id: R4
   plain: 'The patron may leave at any time.'
   attribute: patron
@@ -136,6 +175,16 @@ rules:
   strand: rival
   implicit: false
   source: 'a patron is free to leave at any time; nothing in the policy holds them. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(p) = leave enabled'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: a patron is free to leave at any time; nothing in the policy holds them'
 - id: R5
   plain: 'The patron may enter when the library is open and the patron is not suspended.'
   attribute: patron
@@ -145,7 +194,17 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: 'Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to ''provide and maintain a welcoming and safe environment for all patrons and library staff''; ''Violation of the Library''s Rules of Use Policy may warrant a suspension of library privileges''; ''Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately''; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (a suspended patron is excluded for the suspension''s term)'
+  source: 'Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to ''provide and maintain a welcoming and safe environment for all patrons and library staff''; ''Violation of the Library''s Rules of Use Policy may warrant a suspension of library privileges''; ''Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately''; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (a suspended patron is excluded for the suspension''s term) Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: ''Suspension of library privileges will result in removal from, and denial of access to, all Berkeley Public Library services and facilities for a designated period of time.'''
+  provenance:
+  - source_id: berkeley-public-library-2018-patron-suspension-policy
+    pin: p. 1
+    jurisdiction: null
+    effective_date: null
+    verification: opened
+    excerpt: Suspension of library privileges will result in removal from, and denial of access to, all Berkeley Public Library services and facilities for a designated period of time.
+    accessed: '2026-11-06'
+    url: https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf
+    note: states that suspension denies access; the unsuspended patron's permission to enter is the converse, not stated
   var_roles:
     lb: librarian
 - id: R6
@@ -158,6 +217,16 @@ rules:
   strand: tying
   implicit: false
   source: library privileges. UNVERIFIED (general knowledge; no source opened)
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: library privileges'
 source_text: The Berkeley Public Library's Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053) aims to 'provide and maintain a welcoming and safe environment for all patrons and library staff'; 'Violation of the Library's Rules of Use Policy may warrant a suspension of library privileges'; 'Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately'; a patron suspended for one to six months 'has the right to a hearing with the Suspension Hearing Panel'. Read at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf
 expected_properties:
   dependent_cannot_exit: unreachable_open

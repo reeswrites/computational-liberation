@@ -1,0 +1,11 @@
+encoder: encoder-2
+bundle_files_read: [prompt.md (given as task text), goods-list.md, conventions.md, vocab/coverture-household.yaml, vocab/coverture-household-us.yaml, vocab/mwpa-earnings.yaml, vocab/coverture-floor.yaml, validate.sh]
+goods:
+- id: chosen_mutual_care
+  formal: '(forall ((h agent) (w agent)) (=> (married h w t) (and (provides_care h w t) (provides_care w h t) (not (care_obliged h w t)) (not (care_obliged w h t)) (can_exit w t) (not (exists ((x agent)) (can_sanction x w t))))))'
+  subject: '(exists ((h agent) (w agent)) (married h w t))'
+  back_gloss: 'For every married couple at t: each spouse provides care to the other, no rule in force obliges either spouse''s care of the other, the wife has a permitted way out, and no one holds a power to coerce the wife.'
+  entries: [coverture-household, coverture-household-us, mwpa-earnings, coverture-floor]
+  validated: {coverture-household: 'OK; OK', coverture-household-us: 'OK; OK', mwpa-earnings: 'OK; OK', coverture-floor: 'OK; OK'}
+  not_expressible: {}
+  notes: 'Bearer is the wife of a married couple, read from married(h, w) (second argument is the wife by the fluent gloss and arg_roles); subject is the existence of such a pair, which the antecedent implies. "Care for each other" is provides_care in both directions. "No act or state of that care is required by any rule in force, sanctioned or not" is the negation of care_obliged in both directions; care_obliged is the declared derived fluent wrapping (obliged provides_care x y), whose gloss covers act or state and sanctioned or not, so no separate penalty clause is added. "She can leave" is can_exit w. "No one holds a power to penalise her" is the negation of can_sanction x w for every agent x, not only the husband, since the gloss says no one. "Throughout" is left to the state-formula reading (the formula is checked at each step); no temporal operator is added. I did not add is_subject or female to the antecedent: the gloss names the couple, and married already fixes the wife role. Rejected: reading "only because they choose to" as a further fluent (none is declared); the absence of obligation plus provided care is taken as the vocabulary''s rendering of chosen care. Same formula in all four entries; no fluent undeclared, no validator warnings.'

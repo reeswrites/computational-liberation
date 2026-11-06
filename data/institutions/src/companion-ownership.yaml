@@ -18,6 +18,12 @@ fluents:
   arity: 2
   gloss: x provides care (maintenance, assessment, treatment, services, feeding) to y
   arg_roles: [owner, animal]
+- name: care_obliged
+  arity: 2
+  gloss: 'some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted'
+  arg_roles: [owner, animal]
+  params: [x, y]
+  derived: (obliged provides_care x y)
 - name: owns
   arity: 2
   gloss: x owns y as property
@@ -161,6 +167,34 @@ rules:
   strand: rival
   implicit: false
   source: 'property status of companion animals: Cal. Civ. Code s. 655: ''There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals''; s. 663: ''Every kind of property that is not real is personal'' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
+  provenance:
+  - source_id: cal-civ-655
+    pin: s. 655
+    jurisdiction: US-CA
+    effective_date: null
+    verification: opened
+    excerpt: There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals
+    accessed: '2026-11-04'
+    url: https://codes.findlaw.com/ca/civil-code/civ-sect-655/
+    note: leginfo.legislature.ca.gov and law.justia.com returned 403
+  - source_id: cal-civ-663
+    pin: s. 663
+    jurisdiction: US-CA
+    effective_date: null
+    verification: opened
+    excerpt: Every kind of property that is not real is personal
+    accessed: '2026-11-04'
+    url: https://codes.findlaw.com/ca/civil-code/civ-sect-663/
+    note: ''
+  - source_id: cal-civ-658
+    pin: s. 658
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: cited (defines real property) with no record of reading; re-open to upgrade
 - id: R2
   plain: 'The owner may have the animal euthanized when the owner owns it.'
   attribute: owner
@@ -171,6 +205,16 @@ rules:
   strand: rival
   implicit: false
   source: 'owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: owner may have the animal euthanized by a veterinarian'
 - id: R3
   plain: 'The owner must not abandon the animal when the owner owns it, or else the state may prosecute (R4) (Cal. Penal Code 597s).'
   attribute: owner
@@ -180,7 +224,17 @@ rules:
   or_else: R4
   strand: rival
   implicit: false
-  source: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor')
+  source: 'Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ (''Every person who willfully abandons any animal is guilty of a misdemeanor'') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text ''updated Jan. 1, 2000'' per the page): (a) ''Every person who willfully abandons any animal is guilty of a misdemeanor.'''
+  provenance:
+  - source_id: cal-pen-597s
+    pin: s. 597s(a)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: opened
+    excerpt: Every person who willfully abandons any animal is guilty of a misdemeanor.
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_penal_code_section_597s
+    note: the page gives the text as 'updated Jan. 1, 2000' and its source as leginfo.legislature.ca.gov; (b) exempts releasing native wildlife
 - id: R4
   plain: 'The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s).'
   attribute: state
@@ -190,7 +244,17 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/
+  source: 'Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text ''updated Jan. 1, 2000'' per the page): (a) ''Every person who willfully abandons any animal is guilty of a misdemeanor.'''
+  provenance:
+  - source_id: cal-pen-597s
+    pin: s. 597s(a)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: opened
+    excerpt: Every person who willfully abandons any animal is guilty of a misdemeanor.
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_penal_code_section_597s
+    note: the page gives the text as 'updated Jan. 1, 2000' and its source as leginfo.legislature.ca.gov; (b) exempts releasing native wildlife
 - id: R5
   plain: 'The owner providing care to the animal must hold when the owner owns it (Cal. Penal Code 597(b)).'
   attribute: owner
@@ -201,6 +265,16 @@ rules:
   strand: superadditive
   implicit: false
   source: 'Cal. Penal Code 597(b) failure to provide food/water/shelter. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] acquire (and the initial state) establishes provides_care; feed restores it, neglect breaks it'
+  provenance:
+  - source_id: cal-pen-597
+    pin: s. 597(b)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   load_bearing: true
 - id: R6
   plain: '(practice, not written) The animal cannot leave while it is a companion animal: no such power exists.'
@@ -212,6 +286,16 @@ rules:
   strand: rival
   implicit: true
   source: 'implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state''s power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal''s status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7)'
 - id: R7
   plain: 'The state may impound the animal when it is at large.'
   attribute: state
@@ -222,6 +306,16 @@ rules:
   strand: rival
   implicit: false
   source: local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: local animal-control impound of animals at large'
 - id: R8
   plain: 'The owner may breed or sterilize the animal when the owner owns it.'
   attribute: owner
@@ -232,6 +326,16 @@ rules:
   strand: rival
   implicit: false
   source: 'incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: incident of ownership'
 - id: R9
   plain: '(practice, not written) The court cannot reassign custody of the animal at any time: no such power exists.'
   attribute: court
@@ -242,6 +346,16 @@ rules:
   strand: tying
   implicit: true
   source: 'implicit: no role may start a claim in the animal''s own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: implicit: no role may start a claim in the animal''s own interest; animals are property and cannot sue, and custody follows title'
 - id: R10
   plain: 'The owner may feed the animal when the owner owns it and is not currently providing it care.'
   attribute: owner
@@ -252,6 +366,16 @@ rules:
   strand: superadditive
   implicit: false
   source: feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: feeding is the owner''s act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled'
 - id: R11
   plain: '(practice, not written) The animal cannot sue in its own name at any time: no such power exists.'
   attribute: animal
@@ -262,6 +386,16 @@ rules:
   strand: tying
   implicit: true
   source: 'implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: implicit: an animal is property and cannot sue in its own name (a disability, or_else null)'
 source_text: '''Every person who willfully abandons any animal is guilty of a misdemeanor.'' Cal. Penal Code s. 597s(a), read at https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/. Companion animals are personal property: the owner may sell, give away or have the animal euthanized, must feed it, and the animal cannot bring or be the subject of a claim in its own name (property status and anti-cruelty duties cited from general knowledge, UNVERIFIED).'
 expected_properties:
   no_standing_persists: persists

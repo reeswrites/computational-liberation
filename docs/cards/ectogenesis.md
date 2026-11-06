@@ -24,15 +24,15 @@
 
 ## Rules
 
-| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
-|---|---|---|---|---|---|---|---|---|
-| R1 | provider | may | `(start_gestation provider child)` | `true` | none | rival | A provider may start gestation of a child at any time (Firestone 1970). | [full source under Sources, R1](#src-r1) |
-| R2 | provider | may | `(transfer_to_device provider child)` | `(in_gestation child)` | none | superadditive | The provider may transfer the child to the device when the child is in gestation (Firestone 1970). | [full source under Sources, R2](#src-r2) |
-| R3 | provider | must | `(decant provider child)` | `(gestated_ex_utero child)` | R6 `(reprimand registry x)` | superadditive | The provider must decant the child when the child has been gestated ex utero, or else the registry may reprimand (R6) (Firestone 1970). | [full source under Sources, R3](#src-r3) |
-| R4 | intended_parent | may | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child))` | none | superadditive | An intended parent may provide care for the child when a registered parent of the child and the child is a born subject. | [full source under Sources, R4](#src-r4) |
-| R5 | intended_parent | must (implicit) | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child) (female intended_parent))` | none | tying | (practice, not written) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached. | [full source under Sources, R5](#src-r5) |
-| R6 | registry | may | `(reprimand registry x)` | `true` | none | tying | The registry may reprimand at any time (the sanction for R3). | [full source under Sources, R6](#src-r6) |
-| R7 | registry | may | `(register_parentage registry intended_parent child)` | `(is_subject child)` | none | tying | The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition. | [full source under Sources, R7](#src-r7) |
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
+|---|---|---|---|---|---|---|---|---|---|
+| R1 | provider | may | `(start_gestation provider child)` | `true` | none | rival | A provider may start gestation of a child at any time (Firestone 1970). | unverified | [full source under Sources, R1](#src-r1) |
+| R2 | provider | may | `(transfer_to_device provider child)` | `(in_gestation child)` | none | superadditive | The provider may transfer the child to the device when the child is in gestation (Firestone 1970). | unverified | [full source under Sources, R2](#src-r2) |
+| R3 | provider | must | `(decant provider child)` | `(gestated_ex_utero child)` | R6 `(reprimand registry x)` | superadditive | The provider must decant the child when the child has been gestated ex utero, or else the registry may reprimand (R6) (Firestone 1970). | unverified | [full source under Sources, R3](#src-r3) |
+| R4 | intended_parent | may | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child))` | none | superadditive | An intended parent may provide care for the child when a registered parent of the child and the child is a born subject. | unverified | [full source under Sources, R4](#src-r4) |
+| R5 | intended_parent | must (implicit) | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child) (female intended_parent))` | none | tying | (practice, not written) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached. | unverified | [full source under Sources, R5](#src-r5) |
+| R6 | registry | may | `(reprimand registry x)` | `true` | none | tying | The registry may reprimand at any time (the sanction for R3). | unverified | [full source under Sources, R6](#src-r6) |
+| R7 | registry | may | `(register_parentage registry intended_parent child)` | `(is_subject child)` | none | tying | The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition. | unverified | [full source under Sources, R7](#src-r7) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): none
 
@@ -48,27 +48,48 @@
 
 ## Sources
 
+Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
+
 <a id="src-r1"></a>
 **R1**: Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) (the technology that makes gestation a service; for surrogacy, the clinic's role in assisted conception)
+
+- `firestone-1970` (ch. 1; ch. 10; date n/a): **unverified**
 
 <a id="src-r2"></a>
 **R2**: Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04; plan section 5c): the rival input is deleted, not redistributed, and no strand value says 'no strand'.
 
+- `firestone-1970` (ch. 1; ch. 10; date n/a): **unverified**
+
 <a id="src-r3"></a>
 **R3**: Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). The birth duty moves from a body to a device operator; decant never sets birthing_parent. Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04).
+
+- `firestone-1970` (ch. 1; ch. 10; date n/a): **unverified**
 
 <a id="src-r4"></a>
 **R4**: care by any registered parent of a born child is permitted, men included; nothing here bars it. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
 
+- no work named: **unverified** (rationale: care by any registered parent of a born child is permitted, men included; nothing here bars it)
+
 <a id="src-r5"></a>
 **R5**: implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
+
+- no work named: **unverified** (rationale: implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED dec...)
+- no work named: **unverified** ('the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it)': the reason for the female trigger; the row gives no citation and none is in the bibliography (a search lead for it is in plans/sourcing-worklist-other.md: add an entry and upgrade when opened))
 
 <a id="src-r6"></a>
 **R6**: the registry's sanction for R3 (or_else target; R5's link removed 2026-11-04). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
 
+- no work named: **unverified** (rationale: the registry's sanction for R3 (or_else target; R5's link removed 2026-11-04). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule))
+
 <a id="src-r7"></a>
 **R7**: parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
 
+- no work named: **unverified** (rationale: parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E))
+
+
+## Goods (slice 2)
+
+Slice 2 revisions 2 and 3 (plans/priority-slice2-results.md, "Revision 2" and "Revision 3"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world). As encoded, no rule guarantees these goods (cared_for, known_carer, child_with_family). Possible: prohibiting R4 (the registered parent's permission to care) makes all three impossible for a decanted child (constitutive: 3 formulas, one strand, provides_care(parent, child); a prohibition of the care act itself, not evidence of a constitutive bundle in the glossary's sense; it also rests on strict compliance, which prunes the traces where R5's duty to care meets the prohibit). Prohibiting R1 (start_gestation) means no child ever exists: the goods are not applicable, outside the ranking, not lost. R5 reads tying. Primary measure (revision 3 R3.1, the author's value call per good): prohibiting R4 is carrying (possible) for known_carer and child_with_family (primary lost 2); cared_for is guaranteed-primary and was never guaranteed here, so it carries no primary load. Second encoder: agent, not someone living under the institution (ADR 0012).
 
 ## Expected properties
 

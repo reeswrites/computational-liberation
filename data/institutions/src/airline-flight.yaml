@@ -14,6 +14,12 @@ fluents:
   arity: 2
   gloss: x provides care (maintenance, assessment, treatment, services, feeding) to y
   arg_roles: [crew, passenger]
+- name: care_obliged
+  arity: 2
+  gloss: 'some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted'
+  arg_roles: [crew, passenger]
+  params: [x, y]
+  derived: (obliged provides_care x y)
 - name: can_sanction
   arity: 2
   gloss: 'x holds a power to coerce y: detain, remove, chastise, prosecute'
@@ -96,6 +102,25 @@ rules:
   strand: tying
   implicit: false
   source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened)'
+  provenance:
+  - source_id: cfr-14-91-11
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: no marker next to the citation; the lowest marker later in the string reads unverified
+  - source_id: cfr-14-121-580
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   var_roles:
     c: crew
     p: passenger
@@ -108,7 +133,35 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: '14 CFR 121.571 ''Briefing passengers before takeoff'', read 2026-11-04 at https://www.law.cornell.edu/cfr/text/14/121.571 (ecfr.gov redirected to a block page): (a) ''shall insure that all passengers are orally briefed by the appropriate crewmember''; (a)(3) a required crewmember assigned to the flight must individually brief each person who may need another person''s help to reach an exit. That is a crew duty toward passengers aboard, but narrower than the rule''s provides_care (maintenance, services): the general in-flight care duty is UNVERIFIED (no text opened states it; 14 CFR 121.391, read at https://www.law.cornell.edu/cfr/text/14/121.391, only sets the number of flight attendants ''to provide the most effective egress of passengers''). 14 CFR 91.11 / 121.580 dropped 2026-11-04: they only forbid interference with crew. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] board establishes provides_care; attend restores it, withdraw breaks it'
+  source: '14 CFR 121.571 ''Briefing passengers before takeoff'', read 2026-11-04 at https://www.law.cornell.edu/cfr/text/14/121.571 (ecfr.gov redirected to a block page): (a) ''shall insure that all passengers are orally briefed by the appropriate crewmember''; (a)(3) a required crewmember assigned to the flight must individually brief each person who may need another person''s help to reach an exit. That is a crew duty toward passengers aboard, but narrower than the rule''s provides_care (maintenance, services): the general in-flight care duty is UNVERIFIED (no text opened states it; 14 CFR 121.391, read at https://www.law.cornell.edu/cfr/text/14/121.391, only sets the number of flight attendants ''to provide the most effective egress of passengers''). 14 CFR 91.11 / 121.580 dropped 2026-11-04: they only forbid interference with crew. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] board establishes provides_care; attend restores it, withdraw breaks it Verification pass: 14 CFR 121.391 read 2026-11-06 at https://www.law.cornell.edu/cfr/text/14/121.391: (d) ''flight attendants required by this section shall be located as near as practicable to required floor level exits and shall be uniformly distributed throughout the airplane in order to provide the most effective egress of passengers in event of an emergency evacuation''.'
+  provenance:
+  - source_id: cfr-14-121-571
+    pin: s. 121.571(a), (a)(3)
+    jurisdiction: US
+    effective_date: null
+    verification: opened
+    excerpt: shall insure that all passengers are orally briefed by the appropriate crewmember
+    accessed: '2026-11-04'
+    url: https://www.law.cornell.edu/cfr/text/14/121.571
+    note: ecfr.gov redirected to a block page; supports a briefing duty, narrower than the rule's provides_care
+  - source_id: cfr-14-121-391
+    pin: s. 121.391(d)
+    jurisdiction: US
+    effective_date: null
+    verification: opened
+    excerpt: flight attendants required by this section shall be located as near as practicable to required floor level exits and shall be uniformly distributed throughout the airplane in order to provide the most effective egress of passengers in event of an emergency evacuation
+    accessed: '2026-11-06'
+    url: https://www.law.cornell.edu/cfr/text/14/121.391
+    note: staffing and seating for evacuation; not an in-flight care duty
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'the general in-flight care duty: UNVERIFIED (no text opened states it)'
   load_bearing: true
   var_roles:
     c: crew
@@ -123,6 +176,25 @@ rules:
   strand: rival
   implicit: false
   source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (crew may restrain a disruptive passenger)'
+  provenance:
+  - source_id: cfr-14-91-11
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: no marker next to the citation; the lowest marker later in the string reads unverified
+  - source_id: cfr-14-121-580
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   var_roles:
     c: crew
     p: passenger
@@ -136,6 +208,25 @@ rules:
   strand: rival
   implicit: false
   source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger cannot leave in flight). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(p) = leave enabled (a default capacity), which this disability makes false aboard'
+  provenance:
+  - source_id: cfr-14-91-11
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: no marker next to the citation; the lowest marker later in the string reads unverified
+  - source_id: cfr-14-121-580
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
 - id: R6
   plain: 'The passenger may complain at any time.'
   attribute: passenger
@@ -146,6 +237,25 @@ rules:
   strand: tying
   implicit: false
   source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger may complain)'
+  provenance:
+  - source_id: cfr-14-91-11
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: no marker next to the citation; the lowest marker later in the string reads unverified
+  - source_id: cfr-14-121-580
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
 source_text: 'Reconstruction, not a quotation: a flight''s crew must care for passengers aboard, may restrain a disruptive passenger, and a passenger must not leave in flight (may leave on the ground); the passenger may complain. Supplied by the third review (2026-11-03) as a structural negative control for the care+control match.'
 expected_properties:
   subject_cannot_exit: reachable
@@ -158,3 +268,4 @@ minimal_pair_of: null
 notes: 'EXPECTED-MATCH control (`expected_control_match: true`; third review 2026-11-03). PREREGISTERED before any run: airline-flight matches police-crisis, cps and coverture-household at guard+strands (care R2 superadditive ~ care, R3 rival ~ chastise/detain/remove, R4 exit bar ~ exit bar). The match is structural: in-flight custody has the same care + restraint + exit-bar form, so it is a finding about the form, not a failure of the encoding. Retagging R2 superadditive -> tying removes every match: the strand tags are load-bearing and the tags are human inputs. Why it is not in `not_isomorphic_to_control`: gate (b) fails on any match, and the gate has no expected-match mode (philosophy-engine is not edited here); `rules_gate` still lists it as an ordinary dataset entry. Expectations copied from police-crisis minus no_standing and are unverified until check-all. 6 rules (the review''s list), not 10.'
 initial: []
 initial_free: [disruptive]
+goods_note: 'Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision 3 fix pass"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world); the primary column reads each good under the author''s value call (R3.1). This entry is not in any good''s entries list: the readings below evaluate the dataset''s goods formulas here as extrapolation, as for every goods row outside a good''s listed entries. R2 (the crew''s unsanctioned duty of care to a passenger aboard) is guarantee-carrying for cared_for and known_carer (stable > fragile when deleted) and, on the primary column, carrying (guaranteed) for cared_for (known_carer is possible-primary and stays possible). Under strict compliance R2''s duty reads as delivered care. Prohibiting R1 (boarding) means no passenger is ever aboard: the goods are not applicable there, outside the ranking, not lost. In the blind-gloss experiment (formulas not adopted) R2 carries no primary load under either blind cared_for formula, and its guaranteed reading differs between the two blind encoders. Second encoder: agent, not someone living under the institution (ADR 0012).'

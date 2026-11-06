@@ -92,3 +92,11 @@ Drift on drift, logged, nothing above deleted. The author accepted the council's
 - `double_burden`: DI -> "partial reform (no mode)" (ADR 0016 orthogonality criterion: nothing rewards undermining the property, R3 is simply untouched); the Perverse-incentive reading noted on 2026-11-03 is dropped. DI stays in the property gloss as history.
 - Section 4 failure-mode condition, restated exhaustively (replacing the 2026-11-03 restatement above, which left seven modes neither pass nor fail): pass iff Capture ranks first for 1839-50 and Backlash for 1860-80; fail if any other mode ranks first in either window. The layer-1 outcome (inconclusive: verdicts, not a ranking) is unchanged.
 - Liberated role: the wife, for every MWPA failure-mode case (ADR 0016 finding 3; one sentence added to Section 3, dated).
+
+## Amendment (2026-11-05, author decision; before the ordering test runs)
+
+Section 3's "property and suit rights precede measured married-women's LFP and patenting in >= 8 of 10 early states" names nine early states (MA, NY, PA, WI, NJ, ME, MD, OH, IL), not ten. Restated as **>= 8 of the 9 named**: the same count and at least the original 80% bar (80% of 9 is 7.2). No tenth state is added, because the sourcing pass (plans/sourcing-worklist-mwpa.md) has already surfaced date leads, and choosing a state after that could pick one to fit. The original line above is unchanged. Dates for the ordering test come from data/backtests/mwpa-ground-truth.yaml; an event still `conflict` or `unresolved` when the test runs is reported as such, per ADR 0017.
+
+## Note (2026-11-05, coverture split and US suit; plans/sourcing.md "Coverture split and US suit")
+
+The chain's base is now `coverture-household-us` (same rules as the English `coverture-household`, US-read R6 "no exit at her own will"; iso, distance 0). In `mwpa-suit`, `sue` / `has_standing` now mean standing against third parties: the direction test's "suit flips has_standing true" still holds (no layer-1 verdict changed), but standing against the husband stays barred by the new disability R19 (`no_standing_against_spouse` reachable), as the US acts found (MA 1855 c.304, NY 1860) read. The suit link is now distance 2 (R4 -> R16, R19). Preregistered and run; drift recorded there.

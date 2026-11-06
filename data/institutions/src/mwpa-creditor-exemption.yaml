@@ -1,6 +1,6 @@
 id: mwpa-creditor-exemption
 name: 'Married women''s property, 1839-50 form: creditor exemption only (dark twin; Capture per ADR 0016)'
-extends: coverture-household
+extends: coverture-household-us
 roles_add:
 - name: creditor
   gloss: a creditor of the husband
@@ -68,6 +68,16 @@ rules_add:
   strand: rival
   implicit: true
   source: 'implicit baseline: a husband''s creditors reach the property the husband holds, which under R1 includes his wife''s. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: implicit baseline: a husband''s creditors reach the property the husband holds, which under R1 includes his wife''s'
   var_roles:
     c: creditor
     w: wife
@@ -82,6 +92,43 @@ rules_add:
   strand: tying
   implicit: false
   source: 'Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED); Khan 1996, Married Women''s Property Laws and Female Commercial Activity, Table 1 (sole-trader dates; the 1839-50 wave as debt relief); https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf [F, via plans/backtest-mwpa.md] (Mississippi 1839 shielded property from husbands'' creditors; Khan excludes it as debt relief). A disability (or_else null): the exemption removes the creditor''s power, no sanction is involved'
+  provenance:
+  - source_id: chused-1984
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; quote recorded: ''generally contained nothing more than statements exempting married women''s property from the debts of husbands'' ... ''narrowly construing''; re-open to upgrade'
+  - source_id: chused-1983
+    pin: at 1400
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
+  - source_id: khan-1996
+    pin: Table 1
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade'
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: the Mississippi 1839 act the row names ('Mississippi 1839 shielded property from husbands' creditors; Khan excludes it as debt relief') is named only through Khan 1996; statute text not opened; no bibliography entry
   var_roles:
     c: creditor
     w: wife
@@ -96,6 +143,43 @@ rules_add:
   strand: tying
   implicit: true
   source: 'implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone''s bar on grants between spouses is read as lifted by the exemption acts for property so conveyed'
+  provenance:
+  - source_id: chused-1984
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; quote recorded: ''generally contained nothing more than statements exempting married women''s property from the debts of husbands'' ... ''narrowly construing''; re-open to upgrade'
+  - source_id: chused-1983
+    pin: at 1400
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[R], PDF refused: UNVERIFIED'
+  - source_id: blackstone-1765-bk1-ch15
+    pin: null
+    jurisdiction: England
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: cited for the bar on grants between spouses, read as lifted; English treatise in a US chain; pin (Bk I ch 15) inferred, not in the string
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'the conveyance to the wife as a rule of the 1839-50 acts: UNVERIFIED (general knowledge; no source opened)'
   var_roles:
     h: husband
     w: wife
@@ -114,9 +198,10 @@ isomorphic_to: []
 not_isomorphic_to: []
 not_isomorphic_to_control: []
 minimal_pair_of:
-  id: coverture-household
+  id: coverture-household-us
   rule: R10,R11,R12
   differs_on: creditor_shield
-notes: 'DARK TWIN (DT; relabelled Capture by ADR 0016, 2026-11-03, verdicts unchanged) of the property act, encoded as the plan says: the creditor may not reach the wife''s acquired property (R11) but the husband''s management (R1) stands, so nothing on the wife''s side changes. PREREGISTERED (2026-11-03, before any run): financial_dependence and financial_dependence_unpropertied holds_to_k (unchanged from coverture); creditor_shield REACHABLE (marry, transfer_to_wife: the husband''s property sits in his wife''s name, under his management, beyond his creditors); no_standing reachable, cannot_contract holds, double_burden open, backlash open (no court here). Distance 3 from coverture (R10 baseline, R11 exemption, R12 conveyance): not a one-rule pair; R10 exists only so that can_attach is a granted power the exemption removes rather than a constant. Displacement: the plan names no burden moving to another role in this wave; none is encoded.'
+notes: 'DARK TWIN (DT; relabelled Capture by ADR 0016, 2026-11-03, verdicts unchanged) of the property act, encoded as the plan says: the creditor may not reach the wife''s acquired property (R11) but the husband''s management (R1) stands, so nothing on the wife''s side changes. PREREGISTERED (2026-11-03, before any run): financial_dependence and financial_dependence_unpropertied holds_to_k (unchanged from coverture); creditor_shield REACHABLE (marry, transfer_to_wife: the husband''s property sits in his wife''s name, under his management, beyond his creditors); no_standing reachable, cannot_contract holds, double_burden open, backlash open (no court here). Distance 3 from coverture (R10 baseline, R11 exemption, R12 conveyance): not a one-rule pair; R10 exists only so that can_attach is a granted power the exemption removes rather than a constant. Displacement: the plan names no burden moving to another role in this wave; none is encoded. Base changed 2026-11-05 from coverture-household to coverture-household-us (same rules; US reading of R6 and US-reception notes on the Blackstone rows; plans/sourcing.md, B3 with B1): no verdict change predicted, distance 3 kept.'
 initial: []
 initial_free: [female, acquired_property, earns]
+goods_note: 'Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision 3 fix pass"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world); the primary column reads each good under the author''s value call (R3.1). This entry is not in any good''s entries list: the readings below evaluate the dataset''s goods formulas here as extrapolation, as for every goods row outside a good''s listed entries. The goods rows here read as in coverture-household (see its card), R2 and R3 identically: R2 (the husband''s maintenance duty) is guarantee-carrying for 4 goods formulas (one strand, provides_care(h, w)) and carrying (guaranteed) on the primary column for cared_for and provided_for; R3 (the wife''s implicit, sanctioned household duty) is guarantee-carrying for mutual_household_care only (the husband''s receipt of household labour; not advice to keep it) and, under the author''s value call and the dataset formula, carries no good on the primary column, since the possible measure cannot tell forced from free mutual care. chosen_mutual_care is absent in the base by construction (R2 and R3 oblige care at every married step) and in every single-deletion row: each of R2, R3 and R6 on its own bars it, so no single deletion makes it possible. Second encoder: agent, not someone living under the institution (ADR 0012).'

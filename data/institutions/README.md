@@ -4,11 +4,11 @@ Since 2026-11-04 the generator (`_gen_institutions.py`, `_gen_properties.py`) is
 
 Hand-reconstructed institutions for the Phase 0 institutions family (`plans/institutions-phase0.md`).
 
-- `institutions.json`: list of 25 entries (`coverture-household`, `police-crisis`, `cps`, `crisis-team`,
+- `institutions.json`: list of 26 entries (`coverture-household` (English), `police-crisis`, `cps`, `crisis-team`,
   `paternity-quota`, `transferable-leave`, `companion-ownership`, `companion-guardianship`,
   `companion-guardian-renamed`, the negative controls `lease`, `public-library` and `naming-convention`, the gate (d) pair
   `kibbutz-childrens-house`, `kibbutz-childrens-house-no-implicit`, the expected-match control `airline-flight`,
-  the six-entry MWPA chain `mwpa-creditor-exemption`, `mwpa-property`, `mwpa-earnings`, `mwpa-sole-trader`,
+  the US base `coverture-household-us` and the six-entry MWPA chain on it `mwpa-creditor-exemption`, `mwpa-property`, `mwpa-earnings`, `mwpa-sole-trader`,
   `mwpa-suit`, `mwpa-property-narrowed`, the layer-2 gate (a) pair `footbinding`, `footbinding-no-pledge`, and the ectogenesis pair `ectogenesis`, `gestational-surrogacy`). Each has `roles`, `fluents`, `actions` (with effects as fluent literals),
   ADICO `rules`, `source_text`, `expected_properties`, `isomorphic_to`, `not_isomorphic_to`, `minimal_pair_of`, `notes`.
 - `properties.json`: named properties reused across entries. The plan's nine plus one extra,
@@ -42,6 +42,12 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
   as an implicit `may ... when true`: the action carries `default_capacity: true`, it is enabled unless an express
   disability (`must_not`, `or_else` null) bars it, and a sanctioned `must_not` only punishes its exercise. Powers are
   conferred by `may`/`must`. See "Default-capacity actions (revision 4)" below.
+- A derived fluent may read `(obliged AIM args)` (philosophy-engine ADR 0013 amendment 2026-11-06;
+  plans/priority-slice2.md R3.2): true at a step when some `must` rule in force at that step, sanctioned or not, obliges
+  that act or state on those arguments. Like `(enabled ...)`, it is not available in a property formula or a rule
+  condition; properties read the derived fluent that wraps it. Every entry that declares `provides_care` declares
+  `care_obliged(x, y) := (obliged provides_care x y)` at its root (ectogenesis and gestational-surrogacy also read the
+  action duty `provide_care`), with `provides_care`'s `arg_roles`; it is constant false where no `must` names care.
 - Minimal pairs: `crisis-team` ~ `police-crisis` (R3), `transferable-leave` ~ `paternity-quota` (R2),
   `companion-guardianship` ~ `companion-ownership` (R9). `companion-guardian-renamed` is ownership under
   the bijection owner -> guardian.
@@ -49,7 +55,15 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
   rules reconstructed from general knowledge. Verified at writing time: Blackstone I.15 (via NYHS WAMS),
   Cal. WIC 5150 and 306, Cal. Penal Code 597s, QPIP A-29.011 ss. 9/10/16/17, canada.ca EI parental benefits
   and Parental Sharing Benefit, Alaska Stat. 25.24.160(a)(5), R.I. Gen. Laws 4-13-41, Denver STAR (KUNC),
-  Boulder 2000 wording change (Westword, secondary).
+  Boulder 2000 wording change (Westword, secondary). Since 2026-11-05 (`plans/sourcing.md`) each rule also carries
+  `provenance:`, a list of items (`source_id`, `pin`, `jurisdiction`, `effective_date`, `verification`, `excerpt`,
+  `accessed`, `url`, `note`); `source_id` names a work in the bibliography `data/sources/*.yaml` (one entry per work;
+  `data/sources/rules.yaml` holds the works the rule sources cite) and `verification` is, strongest first,
+  `opened` (excerpt required), `snippet`, `recalled`, `unverified`. The build strips `provenance` from the JSON (the engine never sees it);
+  cards show the weakest level per rule and every item under Sources. `migrate_provenance.py` drafted the lists
+  from the free-text `source` (conservative, re-runnable; hand settings in its `OVERRIDES`), reviewed in
+  `provenance-migration-report.md`; `tests/test_sources.py` checks ids, vocabularies and excerpts. The free-text
+  `source` stays until the migration is reviewed; never raise a level without opening the source.
 
 ## Revisions (dataset fixes after the first check-all, 21/36)
 
@@ -222,7 +236,7 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
 
 ## MWPA backtest chain (2026-11-03, `plans/backtest-mwpa.md`)
 
-- Six entries off `coverture-household`, a path of pairs (`minimal_pair_of` with `differs_on`): `mwpa-creditor-exemption`
+- Six entries off `coverture-household` (since 2026-11-05 off `coverture-household-us`, see the last section), a path of pairs (`minimal_pair_of` with `differs_on`): `mwpa-creditor-exemption`
   (1839-50 debtor-relief form, the plan's dark twin: +R10 creditor may attach [implicit, UNVERIFIED], +R11 creditor
   must_not attach the wife's acquired property [disability; Chused 1984], +R12 husband may transfer_to_wife [implicit,
   UNVERIFIED]; R1 kept; distance 3), `mwpa-property` (R1 -> R13 wife may hold_property; distance 1), `mwpa-earnings`
@@ -385,10 +399,10 @@ Every change here answers `docs/reviews/2026-11-03-phase0-skeptical-review.md`; 
 
 ## Property kinds (2026-11-04, plans/priority.md slice 1)
 
-Every property in `properties.json` now carries a `kind` key (decision 1 of "Decisions waiting on the author"). The engine ignores it; the ablation reads it to decide what is counted. 25 properties (since 2026-11-05).
+Every property in `properties.json` now carries a `kind` key (decision 1 of "Decisions waiting on the author"). The engine ignores it; the ablation reads it to decide what is counted. 25 properties (since 2026-11-05); 26 with `no_standing_against_spouse` (2026-11-05, see the last section).
 
-- `freedom` (counted in load_freedom): dependent_cannot_exit, subject_cannot_exit, subject_cannot_exit_persists, no_standing, no_standing_persists, financial_dependence, financial_dependence_unpropertied, cannot_contract, worker_uninsured, binding_practised, marriage_requires_binding, care_assigned_by_sex, reproduction_controlled_by_owner, offspring_owned, and the new `female_parent_care_persists` (16 in all with `care_duty_on_women`).
-- `goods` (counted in load_goods): none yet; slice 2 writes them.
+- `freedom` (counted in load_freedom): dependent_cannot_exit, subject_cannot_exit, subject_cannot_exit_persists, no_standing, no_standing_persists, financial_dependence, financial_dependence_unpropertied, cannot_contract, worker_uninsured, binding_practised, marriage_requires_binding, care_assigned_by_sex, reproduction_controlled_by_owner, offspring_owned, and the new `female_parent_care_persists` (16 in all with `care_duty_on_women`; 17 with `no_standing_against_spouse`, 2026-11-05).
+- `goods`: none yet; slice 2 writes them. (Update 2026-11-06, slice 2 revision 2: six goods, cared_for, mutual_household_care, known_carer, child_with_family, provided_for and chosen_mutual_care, each with `polarity: good`, `encoders`, `contested` and a `subject` formula, true when some bearer of the good exists. The ablation reads four goods states, not_applicable / absent / fragile / stable, and two measures never combined, `load_goods_guaranteed` and `load_goods_possible`; the old `load_goods` is removed. plans/priority-slice2.md R2.1.)
 - `structure` (diagnostic, listed not counted): care_and_sanction_same_role, solo_care_by_non_birthing_parent, leave_reserved_for_non_birthing_parent, new_convention_adopted, birth_labor_rival, care_decoupled_from_birth.
 - `failure_mode` (listed not counted): double_burden, creditor_shield, backlash.
 
@@ -455,3 +469,26 @@ not only in git history.
 **`petition` (cps) is a conferred power, not a default capacity** (same review, item 6): a minor's claim runs through counsel
 or a guardian ad litem and exists because a rule grants it, where an adult's `sue` is held by default. cps R11 (the child's
 `must_not petition` bar) is therefore never ranked by the ablation; recorded, not an oversight.
+
+## Coverture split and US suit (2026-11-05, plans/sourcing.md, B3 with B1 and A2)
+
+- New `coverture-household-us` (extends `coverture-household`): the US base of the MWPA chain. Same rules field for field
+  (so the same verdicts); R6 is read as "no exit at her own will" and cites US leads (Stevenson & Wolfers 2006; NY's 1787
+  divorce act), `unverified`, "lead, not opened"; R1, R2, R4, R5, R7 keep Blackstone (England) with a note that US
+  reception is assumed and unsourced (Kent's Commentaries is a lead). `coverture-household` (English) is unchanged byte for
+  byte and stays the care+control cluster member (claim L1). `mwpa-creditor-exemption` now extends the US base.
+- `mwpa-suit` (A2): the US acts found let a wife sue third parties but bar or omit suits between spouses (MA 1855 c. 304
+  s. 3). `sue` in this entry is a suit against anyone but the husband (`has_standing` = third-party standing); a new
+  default capacity `sue_spouse w h` (derived `has_standing_against_spouse`) is barred by the new disability R19, the part
+  of R4 the acts leave standing; new property `no_standing_against_spouse` (freedom, family no_standing), reachable
+  here. Before mwpa-suit, `sue` covers every suit in her own name. R16 now cites NY 1860 ch. 90 s. 7, 1862 ch. 172 and
+  MA 1855 c. 304 (leads, `unverified`); the UK Married Women's Property Act 1882 is no longer cited, and no English
+  chain is kept (A3 not taken). Distance mwpa-sole-trader -> mwpa-suit is now 2 (R4 -> R16, R19).
+- Verdicts: 11 rows added (10 for the US base, 1 for mwpa-suit), none changed; `data/verdicts-baseline.json` gained
+  exactly those rows. The ablation's freedom-direction table (engine `rules_ablate.UNFREEDOM`) does not list the new
+  property, so R19's flip is counted as unsigned, not freedom-up (drift recorded in plans/sourcing.md).
+
+
+## Polarity (slice 1 revision 5, 2026-11-06)
+
+Every `kind: freedom` property carries `polarity: unfreedom`: the encoder's declaration that the property's holding is bad for the subject (no exit, no standing, no resources, ...). The engine's loader rejects a freedom property without it, and `rules_ablate` signs a flip from `kind` alone (freedom_up when the verdict moves from reachable / holds_to_k / persists to open / violated / fails), replacing the hand name table `rules_ablate.UNFREEDOM` (so the README notes above that a property "is not in UNFREEDOM" are history). Other kinds carry no polarity yet; slice 2 decides what goods properties carry. plans/priority.md "Slice 1 revision 5".

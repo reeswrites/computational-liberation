@@ -97,6 +97,16 @@ rules:
   strand: tying
   implicit: false
   source: a lease is formed by agreement. UNVERIFIED (general knowledge; no source opened)
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: a lease is formed by agreement'
 - id: R2
   plain: 'The premises being habitable must hold when leased to the tenant, the landlord being bound (Cal. Civ. Code 1941).'
   attribute: landlord
@@ -106,7 +116,17 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Cal. Civ. Code s. 1941 (''The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it'
+  source: 'Cal. Civ. Code s. 1941 (''The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_civ_code_section_1941: ''The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''.'
+  provenance:
+  - source_id: cal-civ-1941
+    pin: s. 1941
+    jurisdiction: US-CA
+    effective_date: null
+    verification: opened
+    excerpt: The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_civ_code_section_1941
+    note: '''in the absence of an agreement to the contrary'' and the s. 1929 exception are not in the row'
 - id: R3
   plain: 'The landlord may evict the tenant when the premises are leased and rent has not been paid (Cal. Code Civ. Proc. 1161).'
   attribute: landlord
@@ -117,6 +137,16 @@ rules:
   strand: rival
   implicit: false
   source: Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161
+  provenance:
+  - source_id: cal-ccp-1161
+    pin: s. 1161(2)-(3)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: cited with no record of reading in this row's source; re-open to upgrade
 - id: R4
   plain: 'The tenant may vacate when the premises are leased to the tenant (Cal. Civ. Code 1946).'
   attribute: tenant
@@ -127,6 +157,16 @@ rules:
   strand: rival
   implicit: false
   source: 'Cal. Civ. Code s. 1946 (a hiring of real property for an unspecified term is terminated by either party''s written notice); https://california.public.law/codes/ca_civ_code_section_1946 (either party may terminate by notice; the tenant''s exit is permitted and unsanctioned). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(t) = vacate enabled'
+  provenance:
+  - source_id: cal-civ-1946
+    pin: s. 1946
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: cited with no record of reading in this row's source; re-open to upgrade
 - id: R5
   plain: 'Rent being paid must hold for the tenant when the premises are leased, or else the landlord may evict (R3) (Cal. Code Civ. Proc. 1161).'
   attribute: tenant
@@ -137,6 +177,16 @@ rules:
   strand: tying
   implicit: false
   source: 'Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days'' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 (default in rent is the breach that opens eviction). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes rent_paid; pay_rent restores it, default_rent breaks it (sanction R3)'
+  provenance:
+  - source_id: cal-ccp-1161
+    pin: s. 1161(2)-(3)
+    jurisdiction: US-CA
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: cited with no record of reading in this row's source; re-open to upgrade
 source_text: '''The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable.'' Cal. Civ. Code s. 1941, read at https://california.public.law/codes/ca_civ_code_section_1941. A tenant ''is guilty of unlawful detainer'' who continues in possession after default in rent or ''after a neglect or failure to perform other conditions or covenants of the lease'' and three days'' notice, Cal. Code Civ. Proc. s. 1161(2)-(3), read at https://california.public.law/codes/ca_civ_proc_code_section_1161. A hiring for an unspecified term ends when ''one of the parties gives written notice to the other of that party''s intention to terminate the same'', Cal. Civ. Code s. 1946, read at https://california.public.law/codes/ca_civ_code_section_1946.'
 expected_properties:
   dependent_cannot_exit: unreachable_open

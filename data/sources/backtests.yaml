@@ -1,0 +1,198 @@
+# Bibliography for backtest ground truth (data/backtests/*.yaml). Contract: plans/sourcing.md.
+# Built 2026-11-05 under a search-only network policy: no URL below was opened in that session.
+# Fields are filled only where an earlier opened read (plans/backtest-mwpa.md [F]) or several
+# agreeing search leads support them; otherwise null with a note. Ids carry a distinguishing
+# tail so they do not collide with ids in rules.yaml; if rules.yaml also lists one of these
+# works, merge to one entry (one entry per work). Merged into rules.yaml so far: GLT 2007 draft,
+# Khan 1996, Chused 1983, Chused 1984, NY Laws 1848 ch. 200 (now ny-mwpa-1848).
+
+# ---------------------------------------------------------------- secondary works
+
+- id: glt-2012-jle
+  type: secondary
+  title: "Human Capital Accumulation and the Expansion of Women's Economic Rights"
+  author: [Geddes, Rick, Lueck, Dean, Tennyson, Sharon]
+  year: 2012
+  container: "Journal of Law and Economics 55(4): 839-867"
+  jurisdiction: null
+  url: https://chicagounbound.uchicago.edu/jle/vol55/iss4/5/
+  note: "Published version of the 2007 draft. Citation from search leads (Arizona experts page, RePEc, Chicago Unbound listing), not opened; whether Chicago Unbound serves the PDF is unknown. DOI 10.1086/666086 per RePEc listing. A 2008 SSRN version ('... Expansion of Women's Property Rights') is reported in a Crossref list."
+
+- id: geddes-tennyson-2013-reh
+  type: secondary
+  title: "Passage of the Married Women's Property Acts and Earnings Acts in the United States: 1850 to 1920"
+  author: [Geddes, Rick, Tennyson, Sharon]
+  year: 2013
+  container: "Research in Economic History 29: 145-189 (Emerald)"
+  jurisdiction: null
+  url: https://ideas.repec.org/h/eme/rehizz/s0363-3268(2013)0000029007.html
+  note: "Corrected passage dates for 48 states (RePEc abstract opened per plans/backtest-data-inventory.md [F]); full text paywalled at https://emerald.com/insight/content/doi/10.1108/S0363-3268(2013)0000029007. Page range from search leads. No open copy found."
+
+
+- id: geddes-lueck-2002-self-ownership
+  type: secondary
+  title: "The Gains from Self-Ownership and the Expansion of Women's Rights"
+  author: [Geddes, Rick, Lueck, Dean]
+  year: 2002
+  container: null
+  jurisdiction: null
+  url: https://sfu.ca/~allen/LueckGeddes.PDF
+  note: "Opened per plans/backtest-mwpa.md [F] (adoption model: wealth, urbanisation; 0/27 states 1840, 30/38 by 1880). Title from a search-result title; container recalled as American Economic Review 92(4), not confirmed: null until checked."
+
+
+
+- id: goldin-1986-nber-c9688
+  type: secondary
+  title: "[Goldin 1986, NBER chapter c9688 on the female labor force; exact title unconfirmed]"
+  author: [Goldin, Claudia]
+  year: 1986
+  container: null
+  jurisdiction: null
+  url: https://www.nber.org/system/files/chapters/c9688/c9688.pdf
+  note: "Opened per plans/backtest-mwpa.md [F] (married women's LFP 4.6% 1890, 5.6% 1900, 9.0% 1920, 11.7% 1930). Title/container not recorded in the plan; recalled as 'The Female Labor Force and American Economic Growth, 1890-1980' in Long-Term Factors in American Economic Growth (NBER): confirm on the PDF."
+
+- id: hazan-weiss-zoabi-2016-wp
+  type: secondary
+  title: "Women's Liberation as a Financial Innovation"
+  author: [Hazan, Moshe, Weiss, David, Zoabi, Hosny]
+  year: 2016
+  container: "Tel Aviv University Foerder Institute working paper 15-2016"
+  jurisdiction: null
+  url: https://en-econ.tau.ac.il/sites/economy_en.tau.ac.il/files/media_server/Economics/foerder/papers/15-2016.pdf
+  note: "Opened per plans/backtest-mwpa.md [F] ('HWZ'); VoxEU column https://cepr.org/voxeu/columns/womens-liberation-financial-innovation [F]. Published per search lead as Journal of Finance 74(6): 2915-2956 (2019), DOI 10.1111/jofi.12829: not opened. Its date source (G&T 2013?) not checked."
+
+# ---------------------------------------------------------------- statutes (all LEADS; texts not read)
+- id: us-me-laws-1844-ch117
+  type: statute
+  title: "An Act to secure to married women their rights in property (Maine Public Laws 1844)"
+  year: 1844
+  container: "Acts and Resolves of the State of Maine, 1844"
+  jurisdiction: US-ME
+  url: https://lldc.mainelegislature.org/Open/Laws/1844/1844_PL_c117.pdf
+  note: "Lead (WebSearch 2026-11-05). Approved 22 March 1844 per a case summary. Chapter number unsettled: courts cite c. 117; the archive's c116 PDF reportedly carries this title; the Maine Legislative Index reportedly lists PL ch. 93. Title from the 1844 c116/c117 summaries, unconfirmed."
+
+- id: us-me-laws-1855-ch120
+  type: statute
+  title: "[Maine Public Laws 1855 c. 120, married women's property (descriptive; title unconfirmed)]"
+  year: 1855
+  container: "Acts and Resolves of the State of Maine, 1855"
+  jurisdiction: US-ME
+  url: null
+  note: "Lead. Cited as 'c. 120' (12 Feb 1855 per a treatise snippet) in Maine SJC opinions on married women's conveyance by separate deed. Candidate URL by pattern (not seen): https://lldc.mainelegislature.org/Open/Laws/1855/1855_PL_c120.pdf. A separate 1855 conveyance act (31 Jan 1855, PL ch. 28) also exists."
+
+- id: us-me-laws-1857-ch59
+  type: statute
+  title: "An act in relation to the rights of married women (Maine 1857)"
+  year: 1857
+  container: "Acts and Resolves of the State of Maine, 1857"
+  jurisdiction: US-ME
+  url: https://lldc.mainelegislature.org/Open/Laws/1857/1857_PL_c059.pdf
+  note: "Lead. Approved 15 April 1857 per summary (OCR rough); wages of her personal labour. Carried into R.S. 1857 c. 61: https://lldc.mainelegislature.org/Open/RS/RS1857/RS1857_c061.pdf. | 2026-11-06: opened; the act closes '[Approved April 17,1857.]'; 15 April is the preceding act's date."
+
+- id: us-ma-acts-1845-ch208
+  type: statute
+  title: "[Massachusetts St. 1845 c. 208, property of married women under marriage contracts (descriptive; title unconfirmed)]"
+  year: 1845
+  container: "Acts and Resolves of Massachusetts, 1845"
+  jurisdiction: US-MA
+  url: null
+  note: "Lead. 'St. 1845, c. 208' per SJC opinions (1848, 1861; e.g. https://hallapproved.com/ma/cases/supreme/1861/6539399/): property held under a pre-nuptial written contract via a trustee."
+
+- id: us-ma-acts-1855-ch304
+  type: statute
+  title: "An Act to protect the property of married women"
+  year: 1855
+  container: "Acts and Resolves of Massachusetts, 1855"
+  jurisdiction: US-MA
+  url: https://archives.lib.state.ma.us/entities/archivalmaterial/ba76b66e-bf4d-4429-9a40-6a1846fa45b8
+  note: "Lead. Title per Massachusetts State Archives catalogue (summary); 5 May 1855 per a secondary source. Ss. 1, 3, 7 summarised from case law (separate estate; sue and be sued, not between spouses; trade and earnings on separate account). The archive URL is the catalogue record surfaced by the search; not confirmed to be this chapter. Amended 1857 c. 249. | 2026-11-06: opened at https://archives.lib.state.ma.us/server/api/core/bitstreams/6cc4626f-6cc6-47f5-9a38-7a775ff276b4/content ('Approved by the Governor, May 5, 1855'); the suit clauses are ss. 4 and 7, s. 3 is conveyance and contract, and the act has no proviso on suits between spouses (that proviso is St. 1874 c. 184 s. 3)."
+
+- id: us-ma-acts-1874-ch184
+  type: statute
+  title: "[Massachusetts St. 1874 c. 184, married women (descriptive; title unconfirmed)]"
+  year: 1874
+  container: "Acts and Resolves of Massachusetts, 1874"
+  jurisdiction: US-MA
+  url: null
+  note: "Lead. St. 1874 c. 184 s. 1 (presumption that a married woman's labour for others is on her separate account) per Hawkins v. Providence & Worcester R.R., 119 Mass. 596 (1876): https://hallapproved.com/ma/cases/supreme/1876/6544714/."
+
+- id: us-ny-laws-1860-ch90
+  type: statute
+  title: "An Act concerning the rights and liabilities of husband and wife"
+  year: 1860
+  container: "Laws of the State of New York, 83rd session, 1860"
+  jurisdiction: US-NY
+  url: https://www.houseofrussell.com/american-legal-history/assignments/laws-of-new-york-83d-sessio.html
+  note: "Lead. Passed 20 March 1860 per summaries. Earnings (s. 2, section number unconfirmed) and s. 7 (sue and be sued in matters relating to her property)."
+
+- id: us-ny-laws-1862-ch172
+  type: statute
+  title: "[New York Laws 1862 ch. 172, amending 1860 ch. 90 (descriptive; title unconfirmed)]"
+  year: 1862
+  container: "Laws of the State of New York, 85th session, 1862"
+  jurisdiction: US-NY
+  url: https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-85th-sessi.pdf
+  note: "Lead. Amends 1860 ch. 90; sue and be sued 'in somewhat broader terms' (Longendyke v. Longendyke, N.Y. Sup. Ct. 1863, as summarised)."
+
+- id: us-pa-laws-1848-act372
+  type: statute
+  title: "[Pennsylvania Act of 11 April 1848, P.L. 536, No. 372 (descriptive; title unconfirmed)]"
+  year: 1848
+  container: "Pennsylvania Pamphlet Laws 1848, P.L. 536, No. 372"
+  jurisdiction: US-PA
+  url: null
+  note: "Lead. Act of 11 April 1848, ss. 6-11 (married women), cited thus at https://crawfordcopa.com/court/mw; s. 6 quoted in Holcomb v. Peoples' Savings Bank (Pa. 1880) per summary."
+
+- id: us-pa-laws-1872-act24
+  type: statute
+  title: "[Pennsylvania Act of 3 April 1872, P.L. 35, No. 24 (descriptive; title unconfirmed)]"
+  year: 1872
+  container: "Pennsylvania Pamphlet Laws 1872, P.L. 35, No. 24"
+  jurisdiction: US-PA
+  url: null
+  note: "Lead. Act of 3 April 1872 (earnings), cited thus at https://crawfordcopa.com/court/mw."
+
+- id: us-md-laws-1842-ch293
+  type: statute
+  title: "An act to regulate conjugal rights as they regard property"
+  year: 1843
+  container: "Laws of Maryland, December session 1842, ch. 293"
+  jurisdiction: US-MD
+  url: https://msa.maryland.gov/megafile/msa/speccol/sc2900/sc2908/000001/000594/html/am594--254.html
+  note: "Lead. Archives of Maryland vol. 594 (page images am594--254, --255): 1842 session, passed 10 March 1843 per summary. Cited as '1842, ch. 293' in later code annotations; year field is the passage year."
+
+- id: us-md-code-1860-art45
+  type: statute
+  title: "[Maryland Code 1860, Art. 45, Husband and Wife (descriptive)]"
+  year: 1860
+  container: "Maryland Code of Public General Laws 1860, Art. 45 (Husband and Wife)"
+  jurisdiction: US-MD
+  url: null
+  note: "Lead. Summaries of Archives of Maryland annotation pages (e.g. https://msa.maryland.gov/megafile/msa/speccol/sc2900/sc2908/000001/000389/html/am389--799.html) mix sections from different code editions; nothing confirmed."
+
+- id: us-il-laws-1861-p143
+  type: statute
+  title: "[Illinois act of 21 Feb 1861 on married women's separate property (descriptive; title unconfirmed)]"
+  year: 1861
+  container: "Public Laws of the State of Illinois, 22nd General Assembly, 1861, p. 143"
+  jurisdiction: US-IL
+  url: null
+  note: "Lead. Approved 21 Feb 1861 per Illinois Supreme Court opinions (summary). Volume guide: https://wiu.edu/libraries/govpubs/illinois_laws/1860_1869.php; HathiTrust record https://catalog.hathitrust.org/Record/100671722 (viewability unknown)."
+
+- id: us-il-laws-1869-p255
+  type: statute
+  title: "[Illinois act of 24 March 1869 on married women's earnings (descriptive; title unconfirmed)]"
+  year: 1869
+  container: "Public Laws of the State of Illinois, 26th General Assembly, 1869, p. 255"
+  jurisdiction: US-IL
+  url: null
+  note: "Lead. Approved 24 March 1869 (married women's earnings) per Illinois Supreme Court opinions (summary)."
+
+- id: us-il-rs-1874-husband-wife
+  type: statute
+  title: "[Illinois act of 30 March 1874 revising the law of husband and wife (descriptive; title unconfirmed)]"
+  year: 1874
+  container: "Revised Statutes of Illinois 1874, p. 576 (Husband and Wife)"
+  jurisdiction: US-IL
+  url: https://www.ilga.gov/ftp/ILCS/Ch%200750/Act%200065/075000650F.html
+  note: "Lead. Approved 30 March 1874; now Rights of Married Persons Act, 750 ILCS 65 (the URL is the modern codification, which gives the 1874 source line). Sue and be sued as if single; contract."

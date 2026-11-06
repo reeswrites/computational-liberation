@@ -106,6 +106,34 @@ flowchart LR
 
 Three mechanism modules are switches: `material` (surplus and a floor; below the floor the choice set collapses to current practice), `coordination` (pledges and a committed minority, after Mackie on footbinding and Centola on tipping points) and `imagination` (an agent can only choose actions it has a script for). As of 2026-11-04 `material` is built, `coordination` is being built, `imagination` is a stub. Results are rates over seeds and over swept parameters ("excluded at every sanction weight of 0.25 and above, 100% of seeds"), never a single calibrated number. Payoffs and parameters are hand inputs, swept, not fitted to data.
 
+## 5b. Priority: which rule to cut first (layer 4, slices 1 to 5)
+
+The goal of this part ([plans/priority.md](../plans/priority.md)) is for the tool to say which rule to cut first when unbundling an institution, and which rules have to go together. It runs at layer 1 strength: rules and the solver, no agents. It is built in five slices, each preregistered, run and reviewed by the council before the next.
+
+**The basic move is ablation.** Delete one rule, rerun every property, and see what flips. A rule's *load* is how much rides on it.
+
+**Two loads, never added together.** Slice 1 counts **freedoms**: exit, standing, contracting, not being financially dependent. Slice 2 adds **goods**: things the bundle actually delivers, such as being cared for, being known by one carer, or a child staying with family. Freedom properties are written as the bad state (the subject *cannot* exit); goods properties are written as the good state. The two together give a reading for each rule:
+
+| freedom load | goods load | reading | move |
+| --- | --- | --- | --- |
+| high | none | tying strand | cut it |
+| any | high | constitutive strand | redesign, don't just cut |
+| high | high | hard case | send to the disagreement locator (slice 5) |
+
+**How goods are measured (slice 2).** Each good is read in one of four states per institution: *not applicable* (no one it could be good for exists), *absent* (someone exists, and it never holds), *fragile* (it holds somewhere and fails somewhere), *stable* (the rules as obeyed force it). From these come two measures, reported side by side: **guaranteed** (do the rules force it?) and **possible** (do the rules allow it?). Each good names its primary measure: guaranteed for a dependent's care and subsistence, since care that is merely allowed is not enough for someone who depends on it; possible for relational goods like mutual or chosen care, since forcing those is meaningless or is itself control. "Constitutive" is used only when deleting a rule makes a good *impossible*, not when it only removes a guarantee.
+
+**Goods are contested by design.** Each goods property is written twice, by encoders that cannot see each other's work. Where the two formulas differ, both are kept (`contested`) and both are evaluated; they are never averaged ([ADR 0012](decisions/0012-participation-in-encoding.md)). So far both encoders have been AI agents, not people living under the institution, and every report says so.
+
+**What slice 2 has shown so far** ([plans/priority-slice2-results.md](../plans/priority-slice2-results.md), within the scope the council allowed):
+- In coverture, the husband's duty to maintain his wife (R2) and her duty to keep house (R3) are what force the household's care goods; deleting either still leaves those goods possible. That is not advice to keep R3: what it guarantees is the husband's receipt of care.
+- Chosen care is impossible under coverture as encoded, by construction: the good excludes care that any rule obliges, and coverture obliges both spouses' care at every married step. The husband's duty (R2), the wife's duty (R3) and the exit bar (R6) each block it on their own, so no single deletion makes it possible; deleting all three makes it possible at some moment, even with the husband's power to chastise her (R5) still in place, because the formula only sees a power that can be used at that moment. So this does not show that removing those three rules yields care free of domination, and any marriage law with a duty of mutual support would read the same way.
+- Under the author's choice of measure, R3 carries no good in the ranking; that measure cannot tell forced care from free care, so the cost R3 imposes is not visible there.
+- A blind test of the encoding step: when the goods were described by an author who had never seen the rules, two Claude encoders agreed on 1 of 6 goods, and the ids alone did not fix what the goods were (the blind author wrote different goods under the same names). Why agreement fell from earlier rounds is not isolated (the prompt, vocabulary and conventions also changed), and all encoders were one model.
+- Outside coverture, nothing in the rules forces any good. Banning the care act itself makes care impossible, and those rows are labelled as such.
+- Floor route vs title route ([coverture-floor](cards/coverture-floor.md) vs the MWPA chain): a tie on freedoms and on what is possible. The floor's lead on guaranteed goods is by construction, so floor-first (claim T1) stays a hypothesis.
+
+**What comes next.** Slice 3 builds the transfer graph: deleting one rule can make another more load-bearing, which is how *rebundling* shows up. Slice 4 finds sets of rules that must be cut together, and an order that keeps load from piling onto what is left. Slice 5, the disagreement locator, takes two encodings that disagree and names the smallest difference between them that carries the disagreement. The terms are defined in the [glossary](glossary.md) under "Goods measures".
+
 ## 6. Failure modes
 
 Every proposed change is checked against the ways liberation goes wrong. [ADR 0016](decisions/0016-failure-mode-axes.md) organises eleven modes on three axes; the number in the last column is the lowest layer that can detect the mode.

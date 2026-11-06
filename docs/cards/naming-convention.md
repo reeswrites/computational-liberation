@@ -21,10 +21,10 @@
 
 ## Rules
 
-| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
-|---|---|---|---|---|---|---|---|---|
-| R1 | member | may | `(use_old m)` | `true` | none | superadditive | A member may use the old name at any time (Centola et al. 2018). | [full source under Sources, R1](#src-r1) |
-| R2 | member | may | `(use_new m)` | `true` | none | superadditive | A member may use the new name at any time (Centola et al. 2018). | [full source under Sources, R2](#src-r2) |
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
+|---|---|---|---|---|---|---|---|---|---|
+| R1 | member | may | `(use_old m)` | `true` | none | superadditive | A member may use the old name at any time (Centola et al. 2018). | opened | [full source under Sources, R1](#src-r1) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
+| R2 | member | may | `(use_new m)` | `true` | none | superadditive | A member may use the new name at any time (Centola et al. 2018). | opened | [full source under Sources, R2](#src-r2) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): none
 
@@ -35,11 +35,17 @@
 
 ## Sources
 
+Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
+
 <a id="src-r1"></a>
-**R1**: Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission]
+**R1**: Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (the accepted manuscript, City Research Online; Science's PDF returned 403): 'participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field' ... 'Continuous interactions led to occasional switching by subjects throughout the study.'
+
+- `centola-becker-brackbill-baronchelli-2018` (Methods; results (accepted ms.); date n/a): **opened** 2026-11-06: "participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field ... Continuous interactions led to occasional switching by subjects throughout the study."
 
 <a id="src-r2"></a>
-**R2**: Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation (as R1: the alternative name; the committed minority holds it regardless of payoff, which is a model parameter, not a rule). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission]
+**R2**: Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation (as R1: the alternative name; the committed minority holds it regardless of payoff, which is a model parameter, not a rule). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (the accepted manuscript, City Research Online; Science's PDF returned 403): 'participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field' ... 'Continuous interactions led to occasional switching by subjects throughout the study.'
+
+- `centola-becker-brackbill-baronchelli-2018` (Methods; results (accepted ms.); date n/a): **opened** 2026-11-06: "participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field ... Continuous interactions led to occasional switching by subjects throughout the study."
 
 
 ## Expected properties

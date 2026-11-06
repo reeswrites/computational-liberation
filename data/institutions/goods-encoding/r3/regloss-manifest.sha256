@@ -1,0 +1,4 @@
+cc717bcf39744433c129a79a068d066f7590bbbca1d1db283f94961ab6c61ebf  ./intent.md
+edded5f4d0399d4517105af158e8be45c0718c03cd8b84b221d7963d862d4841  ./prompt-regloss.md
+aaa35da802bc1d775ea046c336ae301d88ff804dee355e5387b6137e50237d4d  ./theory.md
+# aggregate: 94e102dfc2e1bcf3e1bac1561291a44f151b37b9b57142deeb9581d79d30d53f  (sha256sum $(find . -type f | sort) | sha256sum, run inside reglossbundle3)

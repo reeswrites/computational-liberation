@@ -22,6 +22,25 @@ rules_add:
   strand: rival
   implicit: false
   source: 'Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED) (courts narrowly construed the acts so as to keep husbands'' control during marriage). The narrowing is a one-way act: nothing in the entry un-narrows'
+  provenance:
+  - source_id: chused-1984
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; quote recorded: ''generally contained nothing more than statements exempting married women''s property from the debts of husbands'' ... ''narrowly construing''; re-open to upgrade'
+  - source_id: chused-1983
+    pin: at 1400
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   var_roles:
     w: wife
     h: husband
@@ -35,6 +54,25 @@ rules_add:
   strand: tying
   implicit: false
   source: 'R1 reinstated under narrow construction (the plan''s BL encoding): Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_property(h, w) = control_property enabled (R18)'
+  provenance:
+  - source_id: chused-1984
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; quote recorded: ''generally contained nothing more than statements exempting married women''s property from the debts of husbands'' ... ''narrowly construing''; re-open to upgrade'
+  - source_id: chused-1983
+    pin: at 1400
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: old source string says UNVERIFIED
   var_roles:
     h: husband
     w: wife
@@ -54,3 +92,4 @@ minimal_pair_of:
   rule: R17,R18
   differs_on: backlash
 notes: 'BACKLASH (BL) entry (backlash; filed Erosion by ADR 0016 on 2026-11-03, reverted by its council pass 2026-11-04; verdicts unchanged; see docs/reviews/2026-11-04-adr0016-council.md): mwpa-property plus a court that may construe the act narrowly (R17, sets narrowed(w)), which re-disables the wife''s R13 power (its condition carries (not narrowed)) and reinstates R1 as R18 under narrowed. PREREGISTERED (2026-11-03, before any run): backlash REACHABLE (marry, construe_narrowly: the husband controls again, the wife does not); financial_dependence still VIOLATED (the court may but need not narrow, and before it does the wife holds); creditor_shield REACHABLE again (marry, transfer_to_wife, construe_narrowly: with his management reinstated the conveyance is a shield once more); everything else as mwpa-property. Distance 2 from mwpa-property (the narrowing power and the reinstated R1 are two rules). Not a chain step: a branch off mwpa-property.'
+goods_note: 'Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision 3 fix pass"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world); the primary column reads each good under the author''s value call (R3.1). This entry is not in any good''s entries list: the readings below evaluate the dataset''s goods formulas here as extrapolation, as for every goods row outside a good''s listed entries. The goods rows here read as in coverture-household (see its card), R2 and R3 identically: R2 (the husband''s maintenance duty) is guarantee-carrying for 4 goods formulas (one strand, provides_care(h, w)) and carrying (guaranteed) on the primary column for cared_for and provided_for; R3 (the wife''s implicit, sanctioned household duty) is guarantee-carrying for mutual_household_care only (the husband''s receipt of household labour; not advice to keep it) and, under the author''s value call and the dataset formula, carries no good on the primary column, since the possible measure cannot tell forced from free mutual care. chosen_mutual_care is absent in the base by construction (R2 and R3 oblige care at every married step) and in every single-deletion row: each of R2, R3 and R6 on its own bars it, so no single deletion makes it possible. Second encoder: agent, not someone living under the institution (ADR 0012).'

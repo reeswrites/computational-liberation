@@ -1,0 +1,58 @@
+# Glosses for six goods, named by id only, written from theory.md and intent.md alone.
+# No other project file was seen; ids are read in plain language.
+
+- id: cared_for
+  for_whom: a person who needs care (an infant or child, someone sick, old or disabled)
+  gloss: >-
+    The person actually receives the care they need: feeding, tending, attention and help with daily life.
+    The care has to arrive reliably, and it must not depend on someone else's control over the person.
+    The theory treats care bundled with control as a pattern to undo.
+  absent_when: The person needs care but no one provides it, or it comes only on terms of control over them.
+  why_a_good: Being cared for is a condition the person is in, not something they are permitted or barred from doing.
+
+- id: mutual_household_care
+  for_whom: each member of a household that shares care work
+  gloss: >-
+    Within the household, care and other home work are shared among the adults who can do them.
+    This includes cognitive labor, kinkeeping and school logistics, which must not fall by default on one person, typically the woman.
+    Each member both gives care and receives it.
+    The sharing must hold in practice, not only in name.
+  absent_when: Care in the household falls mostly on one member, whether by explicit rule, an unspoken assignment or norm, or financial dependence.
+  why_a_good: It is a state of how the household's work is actually distributed, not a permission any member holds.
+
+- id: known_carer
+  for_whom: a person who receives care
+  gloss: >-
+    The person's care comes from someone they know and who knows them, through a continuing relationship rather than a rotating, anonymous provider.
+    The carer knows the person's needs, history and preferences.
+    This draws on "being known", which intent.md lists under flourishing.
+  absent_when: The person's carers are strangers or keep changing, so that no carer knows them.
+  why_a_good: It is a relational condition of the person's life, the experience of being known in care, not an action they are allowed or forbidden to take.
+
+- id: child_with_family
+  for_whom: a child
+  gloss: >-
+    The child lives with, and stays connected to, the family they belong to.
+    They are not separated from that family by removal or institutional placement, except where staying would leave them unsafe.
+    The family has enough material support and care that keeping the child is possible.
+  absent_when: The child is separated from their family, for example by removal, when that family could care for them given support.
+  why_a_good: Living with one's family is a state the child is in, not a freedom the child exercises.
+
+- id: provided_for
+  for_whom: any person
+  gloss: >-
+    The person's material needs are met: income, housing, health and care.
+    Provision has to be secure and must not hinge on depending on one particular other person, such as a breadwinner spouse.
+    It must also not hinge on accepting an imposed bundle.
+    The theory calls this the material floor.
+  absent_when: The person lacks income, housing, health care or care, or gets them only by depending on someone who can withdraw them at will.
+  why_a_good: Having one's needs met is a material condition, not a permission; it is what makes exit livable but is not exit itself.
+
+- id: chosen_mutual_care
+  for_whom: each person in a care relationship
+  gloss: >-
+    The person gives and receives care in a reciprocal relationship they chose and could leave and still be okay.
+    The care must not be imposed by law, economics or norm.
+    This is the theory's goal of an imposed bundle turned into a chosen one, applied to care.
+  absent_when: The care relationship is one-sided, or the person is in it because leaving would leave them unable to manage.
+  why_a_good: It is a state of the relationship the person is in, mutual and chosen; choosing it depends on freedoms such as exit but is not itself a freedom.

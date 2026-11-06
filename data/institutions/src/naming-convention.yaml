@@ -41,7 +41,17 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Centola, Becker, Brackbill & Baronchelli, ''Experimental evidence for tipping points in social convention'', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session''s allowed network); cited from memory, UNVERIFIED as a quotation (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] '
+  source: 'Centola, Becker, Brackbill & Baronchelli, ''Experimental evidence for tipping points in social convention'', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session''s allowed network); cited from memory, UNVERIFIED as a quotation (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (the accepted manuscript, City Research Online; Science''s PDF returned 403): ''participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field'' ... ''Continuous interactions led to occasional switching by subjects throughout the study.'''
+  provenance:
+  - source_id: centola-becker-brackbill-baronchelli-2018
+    pin: Methods; results (accepted ms.)
+    jurisdiction: null
+    effective_date: null
+    verification: opened
+    excerpt: participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field ... Continuous interactions led to occasional switching by subjects throughout the study.
+    accessed: '2026-11-06'
+    url: https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf
+    note: accepted manuscript, not the Science typeset text (no Science page numbers); free text entry each round implies either name may be used at any time; the committed minority are confederates who push only the new name; the 25% threshold is stated as 'not expected to be a universal value'
 - id: R2
   plain: 'A member may use the new name at any time (Centola et al. 2018).'
   attribute: member
@@ -51,7 +61,17 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Centola, Becker, Brackbill & Baronchelli, ''Experimental evidence for tipping points in social convention'', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session''s allowed network); cited from memory, UNVERIFIED as a quotation (as R1: the alternative name; the committed minority holds it regardless of payoff, which is a model parameter, not a rule). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] '
+  source: 'Centola, Becker, Brackbill & Baronchelli, ''Experimental evidence for tipping points in social convention'', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session''s allowed network); cited from memory, UNVERIFIED as a quotation (as R1: the alternative name; the committed minority holds it regardless of payoff, which is a model parameter, not a rule). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (the accepted manuscript, City Research Online; Science''s PDF returned 403): ''participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field'' ... ''Continuous interactions led to occasional switching by subjects throughout the study.'''
+  provenance:
+  - source_id: centola-becker-brackbill-baronchelli-2018
+    pin: Methods; results (accepted ms.)
+    jurisdiction: null
+    effective_date: null
+    verification: opened
+    excerpt: participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field ... Continuous interactions led to occasional switching by subjects throughout the study.
+    accessed: '2026-11-06'
+    url: https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf
+    note: accepted manuscript, not the Science typeset text (no Science page numbers); free text entry each round implies either name may be used at any time; the committed minority are confederates who push only the new name; the 25% threshold is stated as 'not expected to be a universal value'
 payoffs:
   use_old: 1.0
   use_new: 1.0

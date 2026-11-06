@@ -25,14 +25,14 @@
 
 ## Rules
 
-| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
-|---|---|---|---|---|---|---|---|---|
-| R2 (replaced) | provider | may | `(implant provider gestator child)` | `true` | none | rival | The provider may implant an embryo in the gestator for the child at any time (gestational surrogacy). | gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. |
-| R3 (replaced) | gestator | must | `(give_birth gestator child)` | `(gestates gestator child)` | R6 `(reprimand registry x)` | rival | The gestator must give birth to the child when she is gestating it, or else the registry may reprimand (R6). | the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04). |
-| R4 | intended_parent | may | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child))` | none | superadditive | An intended parent may provide care for the child when a registered parent of the child and the child is a born subject. | [full source under Sources, R4](#src-r4) |
-| R5 | intended_parent | must (implicit) | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child) (female intended_parent))` | none | tying | (practice, not written) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached. | [full source under Sources, R5](#src-r5) |
-| R6 | registry | may | `(reprimand registry x)` | `true` | none | tying | The registry may reprimand at any time (the sanction for R3). | [full source under Sources, R6](#src-r6) |
-| R7 | registry | may | `(register_parentage registry intended_parent child)` | `(is_subject child)` | none | tying | The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition. | [full source under Sources, R7](#src-r7) |
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
+|---|---|---|---|---|---|---|---|---|---|
+| R2 (replaced) | provider | may | `(implant provider gestator child)` | `true` | none | rival | The provider may implant an embryo in the gestator for the child at any time (gestational surrogacy). | unverified | gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. |
+| R3 (replaced) | gestator | must | `(give_birth gestator child)` | `(gestates gestator child)` | R6 `(reprimand registry x)` | rival | The gestator must give birth to the child when she is gestating it, or else the registry may reprimand (R6). | unverified | the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04). |
+| R4 | intended_parent | may | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child))` | none | superadditive | An intended parent may provide care for the child when a registered parent of the child and the child is a born subject. | unverified | [full source under Sources, R4](#src-r4) |
+| R5 | intended_parent | must (implicit) | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child) (female intended_parent))` | none | tying | (practice, not written) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached. | unverified | [full source under Sources, R5](#src-r5) |
+| R6 | registry | may | `(reprimand registry x)` | `true` | none | tying | The registry may reprimand at any time (the sanction for R3). | unverified | [full source under Sources, R6](#src-r6) |
+| R7 | registry | may | `(register_parentage registry intended_parent child)` | `(is_subject child)` | none | tying | The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition. | unverified | [full source under Sources, R7](#src-r7) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): none
 
@@ -47,18 +47,41 @@
 
 ## Sources
 
+Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
+
+**R2**
+
+- no work named: **unverified** (rationale: gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary))
+
+**R3**
+
+- no work named: **unverified** (rationale: the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary))
+
 <a id="src-r4"></a>
 **R4**: care by any registered parent of a born child is permitted, men included; nothing here bars it. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
+
+- no work named: **unverified** (rationale: care by any registered parent of a born child is permitted, men included; nothing here bars it)
 
 <a id="src-r5"></a>
 **R5**: implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
 
+- no work named: **unverified** (rationale: implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED dec...)
+- no work named: **unverified** ('the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it)': the reason for the female trigger; the row gives no citation and none is in the bibliography (a search lead for it is in plans/sourcing-worklist-other.md: add an entry and upgrade when opened))
+
 <a id="src-r6"></a>
 **R6**: the registry's sanction for R3 (or_else target; R5's link removed 2026-11-04). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
+
+- no work named: **unverified** (rationale: the registry's sanction for R3 (or_else target; R5's link removed 2026-11-04). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule))
 
 <a id="src-r7"></a>
 **R7**: parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
 
+- no work named: **unverified** (rationale: parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E))
+
+
+## Goods (slice 2)
+
+Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision 3 fix pass"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world); the primary column reads each good under the author's value call (R3.1). This entry is not in any good's entries list: the readings below evaluate the dataset's goods formulas here as extrapolation, as for every goods row outside a good's listed entries. Prohibiting R4 (the registered parent's permission to care) makes cared_for and known_carer impossible (fragile > absent): constitutive on the possible column, a prohibition of the care act itself, not evidence of a constitutive bundle in the glossary's sense, and resting on strict compliance as in ectogenesis; on the primary column it is carrying (possible) for known_carer (cared_for is guaranteed-primary and never guaranteed here). Prohibiting R2 (implantation) means no child exists: the goods are not applicable, outside the ranking, not lost. R5 reads tying. In the blind-gloss experiment (formulas not adopted) the R4~prohibit row's possible and primary readings differ between the two blind encoders. Second encoder: agent, not someone living under the institution (ADR 0012).
 
 ## Expected properties
 

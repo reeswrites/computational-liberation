@@ -13,6 +13,25 @@ rules_add:
   strand: tying
   implicit: false
   source: 'New York Married Women''s Property Act 1848 (the statute text itself not opened: [R] UNVERIFIED; dates from Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md]); Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (property acts: the wife holds and controls property acquired by gift or inheritance as if a feme sole). Conditioned on (not narrowed): a narrow construction (BL entry, R17) re-disables the power. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_own_property(w) = hold_property enabled (R13)'
+  provenance:
+  - source_id: ny-mwpa-1848
+    pin: null
+    jurisdiction: US-NY
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'the statute text itself not opened: [R] UNVERIFIED; year (1848) from GLT Table 1; effective date not in the string'
+  - source_id: geddes-lueck-tennyson-2007
+    pin: Table 1
+    jurisdiction: null
+    effective_date: null
+    verification: recalled
+    excerpt: null
+    accessed: null
+    url: null
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade'
   var_roles:
     w: wife
     h: husband
@@ -32,3 +51,4 @@ minimal_pair_of:
   rule: R1->R13
   differs_on: financial_dependence
 notes: 'Plan delta `property`: delete R1 (husband may control_property), add wife may hold_property (R13); the creditor exemption (R11) and conveyance (R12) carry over from the 1839-50 form. PREREGISTERED (2026-11-03, before any run): financial_dependence VIOLATED (a propertied wife now controls her own property), financial_dependence_unpropertied holds_to_k (a wife without acquired property is as dependent as before: the flip is ''for propertied wives only''), can_exit unchanged (subject_cannot_exit reachable), has_standing unchanged (no_standing reachable), cannot_contract holds; creditor_shield OPEN (with R1 gone the husband no longer manages what he conveys: the dark twin is extinguished by the real act), backlash open, double_burden open.'
+goods_note: 'Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision 3 fix pass"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world); the primary column reads each good under the author''s value call (R3.1). This entry is not in any good''s entries list: the readings below evaluate the dataset''s goods formulas here as extrapolation, as for every goods row outside a good''s listed entries. The goods rows here read as in coverture-household (see its card), R2 and R3 identically: R2 (the husband''s maintenance duty) is guarantee-carrying for 4 goods formulas (one strand, provides_care(h, w)) and carrying (guaranteed) on the primary column for cared_for and provided_for; R3 (the wife''s implicit, sanctioned household duty) is guarantee-carrying for mutual_household_care only (the husband''s receipt of household labour; not advice to keep it) and, under the author''s value call and the dataset formula, carries no good on the primary column, since the possible measure cannot tell forced from free mutual care. chosen_mutual_care is absent in the base by construction (R2 and R3 oblige care at every married step) and in every single-deletion row: each of R2, R3 and R6 on its own bars it, so no single deletion makes it possible. Second encoder: agent, not someone living under the institution (ADR 0012).'

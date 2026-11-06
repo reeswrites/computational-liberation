@@ -13,6 +13,16 @@ rules_replace:
   strand: rival
   implicit: true
   source: 'implicit: the committee / general assembly disciplines a member who neglects the rota (R3''s or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(committee, x) = reprimand enabled (R6)'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: null
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: implicit: the committee / general assembly disciplines a member who neglects the rota (R3''s or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous)'
 source_text: 'Construction: kibbutz-childrens-house with R2 (the implicit ''never a man in the children''s house'') deleted; nothing historical corresponds to it. The explicit rules are unchanged: R1 lets the committee assign any member.'
 expected_properties:
   care_assigned_by_sex: fails

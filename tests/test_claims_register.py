@@ -6,6 +6,8 @@ Evidence rules (docs/claims.md "Evidence" column):
   OR a review file in docs/reviews/ (filename/stem, or "second review"/"third review"/"skeptical review"
   matching a file named *-<word>-review.md).
 - `refuted` / `weakened`: cell must name such a review file.
+- `Sources` (optional 7th column): the rule rows / works the claim rests on, kept apart from engine evidence;
+  tests/test_sources.py reads it (plans/sourcing.md).
 - Every `last checked` is a valid date; older than 90 days only warns. No two rows share identical claim text.
 A bare test file name (test_x.py) is not a test function and does not count.
 """
@@ -34,9 +36,9 @@ def _rows():
         if not line.startswith("|"):
             continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
-        if len(cells) != 6 or cells[0] in ("#",) or set(cells[0]) <= {"-", " "}:
+        if len(cells) not in (6, 7) or cells[0] in ("#",) or set(cells[0]) <= {"-", " "}:
             continue
-        rows.append(dict(zip(("id", "claim", "where", "evidence", "status", "checked"), cells)))
+        rows.append(dict(zip(("id", "claim", "where", "evidence", "status", "checked", "sources"), cells)))
     return rows
 
 

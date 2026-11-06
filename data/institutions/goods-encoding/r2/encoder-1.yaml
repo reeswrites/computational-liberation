@@ -1,0 +1,11 @@
+encoder: encoder-1
+bundle_files_read: [prompt.md, goods-list.md, conventions.md, vocab/coverture-household.yaml, vocab/coverture-household-us.yaml, vocab/mwpa-earnings.yaml, vocab/coverture-floor.yaml, validate.sh]
+goods:
+- id: chosen_mutual_care
+  formal: '(forall ((h agent) (w agent)) (=> (married h w t) (and (provides_care h w t) (provides_care w h t) (can_exit w t) (forall ((x agent)) (not (can_sanction x w t))))))'
+  subject: '(exists ((h agent) (w agent)) (married h w t))'
+  back_gloss: 'For every married couple at t, the husband cares for the wife, the wife cares for the husband, the wife has a permitted unsanctioned way out, and no one holds a power to coerce the wife.'
+  entries: [coverture-household, coverture-household-us, mwpa-earnings, coverture-floor]
+  validated: {coverture-household: 'OK; OK', coverture-household-us: 'OK; OK', mwpa-earnings: 'OK; OK', coverture-floor: 'OK; OK'}
+  not_expressible: {}
+  notes: 'Bearer is the wife within a couple, so the guard is (married h w t), which implies subject (some married couple exists). Both directions of provides_care are required (mutual care). "Can leave" is can_exit w, as the gloss directs. "No one holds a power to sanction her" is quantified over every agent x (not only the husband h), per the gloss "no one"; this is stricter than the gloss in that any sanction power counts, as goods-list.md acknowledges. Rejected: (1) an existential form (some couple has the good), because the gloss states the good for the wife within the couple and a universal guard over couples gives per-couple witness steps without letting one good couple mask another; (2) adding is_subject w or female w to the guard, since the gloss names a married couple and marriage already identifies the wife; (3) adding not (can_attach c w) in mwpa-earnings, since can_attach is a creditor power to levy on property in her hands, not a declared power to coerce her person, and using it only there would break the one-formula requirement and go beyond the gloss reading of sanction as can_sanction. No entry-specific fluents used; same formula in all four entries.'

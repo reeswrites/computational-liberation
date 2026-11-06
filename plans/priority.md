@@ -148,3 +148,67 @@ Drift from 1-6 is recorded in plans/priority-slice1-results.md, never edited to 
 Author decision (2026-11-04, after docs/reviews/2026-11-04-capacity-convention-rev4-review.md item 2): the `offcondition_free` label is skipped for a `may` on a default-capacity action, because "free off-condition" is that action's baseline, so the prohibit variant is a clean "add a disability" row and ranks normally.
 
 Predictions: (1) exactly one row changes status across the dataset: mwpa-suit `R16~prohibit` leaves `offcondition_free_not_ranked` and ranks with a freedom_down flip (no_standing), load_freedom_up 0; (2) no entry's top set changes; (3) all other rows byte-identical to the revision-4 run apart from timing; (4) layer 1 untouched (no diff run needed; rules_ablate only).
+
+### Decisions settled 2026-11-06 (author, in session; answers to plans/priority-slice1-results.md "Decisions waiting on the author" and the R19 drift in plans/sourcing.md)
+
+1. Derived power for unregulated actions: settled earlier by the default-capacity flag (revisions 3-4; ADR 0013 amendment). Closed.
+2. **Ratified**: ASSUMED b (a `~prohibit` row whose rule is already free off-condition is listed, not ranked) and mixed-neither (a family flipping both up and down counts as neither; 0 occurrences so far). No result changes.
+3. One-step-effect convention for action obligations: recorded in ADR 0009 (engine); `care_duty_on_women` gloss states the grace. Closed.
+4. **Slice 1 close-out first**: run `step_mode` stability and tabulate strand-tag mismatches against the ablation readings, so the layer-4 pass test reads passed or failed, not incomplete.
+5. **Flip direction derived from `kind`**: `rules_ablate.UNFREEDOM` (a hand list of names) is replaced by reading `kind: freedom`, with a check that every freedom property is written unfreedom-shaped (its holding is bad for the subject). Preregistered before the engine change; expected effect: mwpa-suit R19 (`no_standing_against_spouse`) ranks.
+6. **Slice 2: go, core plus the floor route.** Core as in "Slices" item 2 (goods list and expected readings preregistered; at least three goods properties written independently by a second, fresh-agent encoder; `contested` mandatory; readings table on the care+control cluster). Plus `coverture-floor` from "Candidate for slice 2" with its predictions and the title-route vs floor-route cut-set comparison. Slice 2's plan and preregistration live in plans/priority-slice2.md.
+
+### Slice 1 revision 5: flip direction from `kind` (preregistered 2026-11-06, before any engine edit or run)
+
+Author decision 5 of 2026-11-06. Today the engine signs a freedom flip (up/down) only if the property's name is in a hand table, `rules_ablate.UNFREEDOM`; a freedom property missing from it flips `unsigned` and cannot rank (mwpa-suit R19, plans/sourcing.md "Coverture split and US suit: results").
+
+**Engine change (philosophy-engine).**
+- `UNFREEDOM` is deleted. `flip_direction` reads the property: `kind == "freedom"` is signed (verdict moving from {reachable, holds_to_k, persists} to {open, violated, fails} is freedom_up, the reverse freedom_down); any other kind, or a name with no Property, is `unsigned`. The job tuple no longer carries a polarity table.
+- **How "unfreedom-shaped" is checked.** The shape (the property's holding is bad for the subject) is a reading of the formula, not something z3 can decide, so it is made an explicit encoder declaration that the loader enforces: `Property` gains `polarity: Literal["unfreedom"] | None = None`, and a model validator rejects any `kind: freedom` property whose `polarity` is not `unfreedom` (loader error, naming the property). Writing a freedom property in the good-when-holds direction is therefore a load error, not a silent sign inversion. Other kinds are not constrained (slice 2 decides what goods carry). Plus an engine dataset test: every freedom-kind property in the dataset declares `polarity: unfreedom`, and every name in the old table is a dataset property of kind freedom (old table kept as a test constant); the residual (freedom-kind names not in the old table) is printed, not pinned, so slice 2 can add freedom properties without editing the engine test.
+- Tests that monkeypatched `UNFREEDOM` drop the patch; fixture freedom properties carry `polarity="unfreedom"`. `test_direction_unsigned_without_polarity` is rewritten: a freedom fixture property now signs, a structure one stays unsigned. `load_freedom_unsigned` stays in the row (it can be non-zero only for a freedom flip that does not cross the two verdict classes, which a single check kind cannot produce; expected 0 everywhere).
+
+**Dataset change (computational-liberation).** `properties.yaml` gains `polarity: unfreedom` on each of the 17 freedom properties (read one by one: every gloss states a condition bad for the subject: no exit, no standing, no resources, no contract, uninsured, bound, care by sex, owner controls reproduction, offspring owned, care duty on women). `build.py` passes keys through, so properties.json gains the key; no other line changes. The engine ignores the key until the engine change; layer 1 does not read it.
+
+**Checked from the data before writing this (no run).** Freedom-kind properties: 17. Old table: 16. Freedom-kind minus table = {no_standing_against_spouse}. Table minus freedom-kind = {} (every table name is a dataset property of kind freedom; `female_parent_care_persists` and `care_duty_on_women` included). No property of another kind is in the table.
+
+**Predictions.**
+1. The rows that change between the old engine and the new one (ablation, 26 entries, k=6 and 8, same dataset) are exactly the rows whose old output has `load_freedom_unsigned > 0`, and every such unsigned flip is on `no_standing_against_spouse` in mwpa-suit. In each, the flip turns signed (reachable -> open: freedom_up), `load_freedom_unsigned` goes to 0, and family `no_standing` joins `families_up` (raising `load_freedom_up` by 1 unless `no_standing` was already up in that row). `load_freedom` is unchanged in every row.
+2. Among ranked rows, exactly one changes: mwpa-suit R19 (deleted, must_not, not deregulated) at k=6 and 8: `flip_directions` {no_standing_against_spouse: freedom_up}, `load_freedom_up` 0 -> 1, `families_up` [no_standing]. Unranked rows of mwpa-suit (a deregulated `may marry` deletion or an offcondition_free prohibit, if their flips include the property) may change too; they are listed, not predicted individually.
+3. Top sets: mwpa-suit {R6} -> **{R6, R19}** at load_freedom_up 1; the other 25 entries unchanged. Scoreboard `top_rule_changes` = 1 against a summary from the old engine on the same dataset.
+4. inconsistent_after 0, uncounted 0, k-disagreements 0.
+5. Layer 1 unchanged: `build.py --check` ok after the rebuild, `pytest -q` passes, `check-all` 134/134 as expected, `diff --baseline` 0 changed / 0 added / 0 removed, gate PASS. (rules_ablate and the Property schema only; rules_lower/rules_reference/rules_checks untouched.)
+6. Engine suite passes after the test edits; the only test semantics that change are the ones named above.
+7. Strand reading (close-out section below): mwpa-suit R19 (tagged tying) moves from "tying unconfirmed" (up 0) to agreeing with its tag.
+
+Drift from 1-7 is recorded in plans/priority-slice1-results.md ("Revision 5 run"), never edited to match.
+
+### Slice 1 close-out (preregistered 2026-11-06, before any run)
+
+Author decision 4 of 2026-11-06. Two clauses of the layer-4 pass test have no evidence yet: stability across `step_mode`, and a strand-mismatch label. Both are run on the current engine (ENGINE_PIN 27e24c0, before revision 5) and the current dataset (26 entries, with the coverture split), so revision 5 does not leak into them.
+
+**(i) step_mode.** The engine has two modes (`rules_lower.STEP_MODES`): `one` (default; at most one action per step) and `many` (any set of enabled actions per step; the only difference in the lowering is that the at-most-one constraint is dropped). Every `one` trace is a `many` trace, so per property, `many` can only move reachable-side: open -> reachable, holds_to_k -> violated, persists -> fails, never back; this holds for the base and for every ablated entry alike, so flips can still appear or vanish.
+Runs: `phil rules ablate --k 6,8 --workers 4 --step-mode one|many`, 26 entries, plus a second `one` run for determinism. Comparison per (entry, row id, k): ranked status, load_freedom_up, load_freedom_down, flips; per entry: top set.
+Criterion (fixed now): the clause passes iff every ranked row's `load_freedom_up` is identical across the two modes at k=6 and at k=8 (which implies identical top sets). Differences only in unranked rows, freedom_down, or structure/failure-mode flips are reported and do not fail it. The determinism clause passes iff the two `one` runs agree on every row apart from timing.
+Predictions:
+1. Top sets identical in all 26 entries at both k. Reason: every top is a disability on one actor's capacity (leave, sue, contract, sleep_home, refuse_binding, assign) or one obligation (ectogenesis/surrogacy R5); the unfreedom it carries holds from the first steps and does not need two actions in one step.
+2. Every ranked row's load_freedom_up identical: clause passes.
+3. Some rows differ elsewhere: at most 10 rows per k over the dataset, in unranked rows, freedom_down columns or failure-mode/structure flips; most likely where two parties' actions must coincide (care plus birth in ectogenesis/surrogacy under the one-step-grace `care_duty_on_women`; bind plus marry_off in footbinding; double_burden/creditor_shield in the MWPA chain).
+4. inconsistent_after 0, uncounted 0 in both modes; k-disagreements 0 under `one` (as before) and under `many`.
+5. The two `one` runs are identical row for row.
+
+**(ii) strand mismatches.** Method (fixed now). For each rule of each entry, its reading uses its *ranked* rows at k=6 (the deletion row and, for a `may`, the `~prohibit` row; a deregulated or offcondition_free row is not used); a rule with no ranked row is "not readable (unranked)". up = max load_freedom_up over those rows, down = max load_freedom_down. Goods load does not exist yet (no goods property), so load_goods = 0 everywhere and the table's "zero goods" half is vacuous: a reading of "tying" now means "high freedom load and goods unmeasured", and every reading below is provisional until slice 2. "High" = up >= 1 (the dataset's maximum is 1).
+What can be read now:
+- **reads tying** (up >= 1). Tag `tying`: agrees. Tag `rival` or `superadditive`: **mismatch M1** (the table would call it tying, or a hard case once goods exist; it cannot read rival or superadditive).
+- **reads protection** (up 0, down >= 1: the rule, or the permission, is load-bearing for a freedom). Tag `tying`: **mismatch M3** (a tie that protects). Tag rival/superadditive: no reading to compare.
+- **no reading** (up 0, down 0). Tag `tying`: "tying unconfirmed" (M2): not a contradiction, the table has no row for low freedom and zero goods; listed, not counted as a mismatch. Tag rival/superadditive: not readable (telling rival from superadditive or constitutive needs goods load).
+What cannot be read now: any `constitutive` or `hard case` reading; any confirmation of `rival` or `superadditive`.
+Predictions (the up >= 1 rows are known from the revision-4b run and the coverture-split results; tags read from the dataset, no run):
+6. reads tying: 36 rule instances. Tagged `tying`, agreeing, 18: R4 (sue) in the seven chain entries that keep it (coverture-household, -us, mwpa-creditor-exemption, -property, -property-narrowed, -earnings, -sole-trader), R7 (contract) in six (all those but sole-trader), kibbutz-childrens-house R2, footbinding and footbinding-no-pledge R3, ectogenesis and gestational-surrogacy R5.
+7. **M1: 18, all tagged `rival`, none superadditive**: the exit bar R6 in eight chain entries (coverture-household, -us, and the six mwpa-*), police-crisis R4, cps R10, companion-* R6 (3), kibbutz R4 (both entries; sleep_home), airline-flight R4, footbinding R9 (both; refuse_binding). All carry the `cannot_exit` family. Reading: the hand tags file bars on exit as rival; the ablation reads them as the most load-bearing ties.
+8. M3: at least 1: mwpa-suit R16 (`may sue`, tagged tying) via `R16~prohibit` (freedom_down on no_standing, revision 4b). Expected 1 to 5 in all.
+9. M2 (tying unconfirmed): 20 to 45 rule instances, including mwpa-suit R19 (its flip is unsigned on this engine; revision 5 is predicted to move it to "agrees"), the chain's R11 (creditor must_not attach; its only property is a failure mode), and tying obligations in police-crisis, cps and the leave pair.
+10. Clause (ii) passes (at least one mismatch labelled and reported). Tags are not edited.
+
+**Verdict rule.** With (i) and (ii) passing, plus the clauses already evidenced (zero silent errors, stable across k, kibbutz R2 and ectogenesis R5 at the top), the layer-4 test reads **passed**, carrying the revision-3 calibration disclosure: the rediscovery clause was met after fixes that saw the misses, so it is not blind evidence (claims L21). If either clause fails, the verdict is "failed on <clause>", reported as such.
+
+Drift from 1-10 is recorded in plans/priority-slice1-results.md, never edited to match.

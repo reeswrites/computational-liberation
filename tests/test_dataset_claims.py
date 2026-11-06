@@ -143,21 +143,25 @@ def test_coverture_dependent_cannot_exit():
 
 
 def test_deleting_police_sanction_rules_removes_the_bundled_power():
-    """With `enabled` false for an action no may/must rule names, deleting police R3 (may detain) and R5 (may
-    use_force) removes can_sanction: the old shape of care_and_sanction_same_role (care implies power) goes from
-    holds to violated, and the current shape (no one but the carer sanctions) from a non-vacuous holds_to_k to a
-    vacuous one (its antecedent, some sanction power, is unreachable)."""
+    """Police-crisis read to WIC 5150 (L1 landing 2026-11-06, plans/sourcing.md): the facility cares (R2) and may
+    hold (R11); the officer may detain (R3) and use force (R5). With `enabled` false for an action no may/must rule
+    names: the current shape of care_and_sanction_same_role (no one but the carer sanctions) is violated with the
+    officer's powers in place, holds non-vacuously once R3 and R5 are deleted (the facility is then the only
+    sanctioner and is the carer), and holds vacuously once R11 goes too (no sanction power is reachable). The old
+    shape (care implies power) stays violated throughout. Updated 2026-11-06 after the run: before the landing the
+    officer was the carer and the full entry held."""
     inst, props = _dataset_inst("police-crisis")
     old = Property(name="old_shape", kind="structure", formal="(forall ((x agent) (y agent)) (=> (and (provides_care x y t) (is_subject y t)) (can_sanction x y t)))")
     cur = props["care_and_sanction_same_role"]
     ps = {"old_shape": old, cur.name: cur}
     which = {n: ["invariant"] for n in ps}
-    before = {r.property: r for r in rc.run_all(inst, ps, k=6, which=which).results}
-    after = {r.property: r for r in rc.run_all(_without(inst, "R3", "R5"), ps, k=6, which=which).results}
-    assert before[cur.name].verdict == "holds_to_k" and not before[cur.name].vacuous
-    assert after[cur.name].verdict == "holds_to_k" and after[cur.name].vacuous and after[cur.name].antecedent_reachable is False
-    assert before["old_shape"].verdict == "violated"  # power only while danger holds; care persists
-    assert after["old_shape"].verdict == "violated"  # and never holds_to_k by an always-enabled unregulated action
+    full = {r.property: r for r in rc.run_all(inst, ps, k=6, which=which).results}
+    no_officer = {r.property: r for r in rc.run_all(_without(inst, "R3", "R5"), ps, k=6, which=which).results}
+    none = {r.property: r for r in rc.run_all(_without(inst, "R3", "R5", "R11"), ps, k=6, which=which).results}
+    assert full[cur.name].verdict == "violated" and not full[cur.name].vacuous
+    assert no_officer[cur.name].verdict == "holds_to_k" and not no_officer[cur.name].vacuous
+    assert none[cur.name].verdict == "holds_to_k" and none[cur.name].vacuous and none[cur.name].antecedent_reachable is False
+    assert all(d["old_shape"].verdict == "violated" for d in (full, no_officer, none))
     # what violates the current shape is a non-carer holding the power while someone else cares: crisis-team's R8
     ct, _ = _dataset_inst("crisis-team")
     rep = rc.run_all(ct, {cur.name: cur}, k=6, which={cur.name: ["invariant"]})
@@ -195,3 +199,115 @@ def test_round_trip_counterexample_traces():
                     problems.append((inst.id, r.property, r.check, r.verdict, bad))
     assert seen > 0
     assert not problems, "\n".join(f"{i} {p}/{c} ({v}): {b}" for i, p, c, v, b in problems)
+
+
+def test_goods_properties_have_two_encoders_and_contested():
+    """Slice 2 (plans/priority-slice2.md sections 2 and 6): every goods property names two encoders and carries a
+    `contested` list (empty when the encoders' formulas were logically equivalent); provided_for keeps encoder 2's
+    non-equivalent formula. Revision 2 (R2.1, R2.3): every goods property has a `subject`; chosen_mutual_care added.
+    Second encoder: agent, not someone living under the institution (ADR 0012)."""
+    _, props = _dataset()
+    goods = {n: p for n, p in props.items() if p.kind == "goods"}
+    assert set(goods) == {"cared_for", "mutual_household_care", "known_carer", "child_with_family", "provided_for",
+                          "chosen_mutual_care"}
+    for n, p in goods.items():
+        assert p.polarity == "good" and p.check == "persists" and p.encoders == ["encoder-1", "encoder-2"], n
+        assert p.contested is not None and p.subject, n
+    married = "(exists ((h agent) (w agent)) (married h w t))"
+    assert goods["mutual_household_care"].subject == married == goods["chosen_mutual_care"].subject
+    assert [a.encoder for a in goods["provided_for"].contested] == ["encoder-2"]
+    assert all(goods[n].contested == [] for n in goods if n != "provided_for")
+
+
+PRIMARY_MEASURES = {  # plans/priority-slice2.md revision 3, R3.1 (author decision 1, a value call): pinned verbatim
+    "cared_for": ("guaranteed", "A dependent's care that the rules merely allow is not the good; the good is care that "
+                                "does not lapse."),
+    "provided_for": ("guaranteed", "Subsistence that is merely allowed is not secured, and the gloss asks that it be "
+                                   "secured."),
+    "chosen_mutual_care": ("possible", "A chosen good cannot be forced; a rule that forced it would be the imposition it "
+                                       "excludes."),
+    "mutual_household_care": ("possible", "Relational: mutual care that the rules force is control, not the good; what "
+                                          "matters is that it is not barred."),
+    "known_carer": ("possible", "Being known cannot be forced; the rules can only leave room for a continuing carer."),
+    "child_with_family": ("possible", "Relational: forcing a child to stay with its family is itself control; what "
+                                      "matters is that it is not barred."),
+}
+
+
+def test_goods_primary_measure_pinned():
+    """R3.1: every goods property carries `primary_measure` and a one-line reason (at most 200 characters), and the
+    mapping is the preregistered table, verbatim. No other property carries either key."""
+    _, props = _dataset()
+    goods = {n: p for n, p in props.items() if p.kind == "goods"}
+    assert {n: (p.primary_measure, p.primary_measure_reason) for n, p in goods.items()} == PRIMARY_MEASURES
+    for n, p in goods.items():
+        r = p.primary_measure_reason
+        assert r.strip() and "\n" not in r and len(r) <= 200, n
+        assert all(a.model_dump().keys().isdisjoint({"primary_measure", "primary_measure_reason"}) for a in p.contested), n
+    assert all(p.primary_measure is None and p.primary_measure_reason is None for p in props.values() if p.kind != "goods")
+
+
+# R3.2 O5 (plans/priority-slice2.md revision 3): `care_obliged` pins. Two pins are written here as the preregistration
+# meant them, not as it typed them (drift 10, plans/priority-slice2-results.md "Revision 3"): over every ordered pair of
+# agents, `(married h w t)` is false for (wife, husband) while both duties hold, and (husband, wife) is still obliged by
+# R2 once R3 is deleted. The as-typed forms are pinned too, with the verdict they get. `<=>` is written `iff` (the
+# engine's grammar).
+O5 = {
+    "coverture-household": {
+        "mutual_iff_married": ("(forall ((h agent) (w agent)) (iff (or (married h w t) (married w h t)) "
+                               "(and (care_obliged h w t) (care_obliged w h t))))", "invariant", "holds_to_k"),
+        "as_typed": ("(forall ((h agent) (w agent)) (iff (married h w t) (and (care_obliged h w t) "
+                     "(care_obliged w h t))))", "invariant", "violated"),
+        "wife_obliged": ("(care_obliged wife husband t)", "reachable", "reachable"),
+    },
+    "ectogenesis": {
+        "iff": ("(iff (care_obliged intended_parent child t) (and (parent intended_parent child t) (is_subject child t) "
+                "(female intended_parent t)))", "invariant", "holds_to_k"),
+        "obliged": ("(care_obliged intended_parent child t)", "reachable", "reachable"),
+    },
+    "kibbutz-childrens-house": {
+        "iff": ("(iff (care_obliged metapelet child t) (assigned metapelet t))", "invariant", "holds_to_k"),
+        "obliged": ("(care_obliged metapelet child t)", "reachable", "reachable"),
+    },
+}
+
+
+@pytest.mark.parametrize("iid", sorted(O5))
+def test_care_obliged_pins(iid):
+    inst, _ = _dataset_inst(iid)
+    ps = {n: Property(name=n, kind="structure", formal=f) for n, (f, _, _) in O5[iid].items()}
+    rep = rc.run_all(inst, ps, k=6, which={n: [c] for n, (_, c, _) in O5[iid].items()})
+    assert {r.property: r.verdict for r in rep.results} == {n: v for n, (_, _, v) in O5[iid].items()}
+
+
+def test_care_obliged_pin_coverture_without_R3():
+    inst, _ = _dataset_inst("coverture-household")
+    ps = {"wife_never": Property(name="wife_never", kind="structure", formal="(not (care_obliged wife husband t))"),
+          "as_typed": Property(name="as_typed", kind="structure",
+                               formal="(forall ((h agent) (w agent)) (not (care_obliged w h t)))"),
+          "husband_still": Property(name="husband_still", kind="structure", formal="(care_obliged husband wife t)")}
+    rep = rc.run_all(_without(inst, "R3"), ps, k=6, which={"wife_never": ["invariant"], "as_typed": ["invariant"],
+                                                           "husband_still": ["reachable"]})
+    assert {r.property: r.verdict for r in rep.results} == {"wife_never": "holds_to_k", "as_typed": "violated",
+                                                            "husband_still": "reachable"}
+
+
+CARE_OBLIGED_ENTRIES = {  # R3.2: every entry that declares provides_care (22; the footbinding pair declares none; drift 11)
+    "coverture-household", "coverture-household-us", "coverture-floor", "mwpa-creditor-exemption", "mwpa-property",
+    "mwpa-earnings", "mwpa-sole-trader", "mwpa-suit", "mwpa-property-narrowed", "police-crisis", "cps", "crisis-team",
+    "airline-flight", "kibbutz-childrens-house", "kibbutz-childrens-house-no-implicit", "ectogenesis",
+    "gestational-surrogacy", "companion-ownership", "companion-guardianship", "companion-guardian-renamed",
+    "paternity-quota", "transferable-leave"}
+
+
+def test_care_obliged_declared_where_provides_care_is():
+    insts = load_institutions(default_paths()[0])
+    for i in insts:
+        fl = {f.name: f for f in i.fluents}
+        assert ("care_obliged" in fl) == ("provides_care" in fl) == (i.id in CARE_OBLIGED_ENTRIES), i.id
+        if "care_obliged" in fl:
+            f = fl["care_obliged"]
+            assert f.arity == 2 and f.params == ["x", "y"] and f.arg_roles == fl["provides_care"].arg_roles, i.id
+            want = ("(or (obliged provides_care x y) (obliged provide_care x y))"
+                    if i.id in ("ectogenesis", "gestational-surrogacy") else "(obliged provides_care x y)")
+            assert f.derived == want, i.id

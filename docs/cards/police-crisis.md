@@ -24,55 +24,113 @@
 
 ## Rules
 
-| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | source |
-|---|---|---|---|---|---|---|---|---|
-| R1 | dispatcher | must (implicit) | `(dispatch_officer d o s)` | `(call_received s)` | none | tying | (practice, not written) The dispatcher must dispatch an officer to a subject when a call about that subject has been received. | implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call] |
-| R2 | officer | must | `(provides_care o s)` | `(and (responding o s) (in_crisis s))` | none | superadditive | The officer providing care to the subject must hold when the officer is responding to the subject and the subject is in crisis (Cal. WIC 5150). | [full source under Sources, R2](#src-r2) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
-| R3 | officer | may | `(detain o s)` | `(and (responding o s) (in_crisis s) (danger s))` | none | rival | The officer may detain the subject when responding to a subject who is in crisis and there is danger (Cal. WIC 5150). | Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (a peace officer may, upon probable cause, take the person into custody for up to 72 hours) |
-| R4 | subject | must not (disability) | `(leave s)` | `(in_custody s)` | none | rival | The subject cannot leave while in custody: no such power exists (Cal. WIC 5150). | [full source under Sources, R4](#src-r4) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
-| R5 | officer | may | `(use_force o s)` | `(and (in_custody s) (resists s))` | none | rival | The officer may use force on the subject when the subject is in custody and resists. | use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened) |
-| R6 | officer | may | `(carry_weapon o)` | `true` | none | tying | The officer may carry a weapon at any time. | officers respond armed; standard equipment policy. UNVERIFIED (general knowledge; no source opened) |
-| R7 | facility | must | `(release f s)` | `(and (in_custody s) (not (danger s)))` | none | superadditive | The facility must release the subject when the subject is in custody and there is no danger (Cal. WIC 5152). | [full source under Sources, R7](#src-r7) https://california.public.law/codes/ca_welf_and_inst_code_section_5152 |
-| R8 | subject | may | `(petition_review s)` | `(in_custody s)` | none | tying | The subject may petition for review of the hold when the subject is in custody (Cal. WIC 5275). | Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened) |
-| R10 | subject | may | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue or petition_review enabled |
+| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
+|---|---|---|---|---|---|---|---|---|---|
+| R1 | dispatcher | must (implicit) | `(dispatch_officer d o s)` | `(call_received s)` | none | tying | (practice, not written) The dispatcher must dispatch an officer to a subject when a call about that subject has been received. | unverified | implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call] |
+| R2 | facility | must | `(provides_care f s)` | `(in_custody s)` | none | superadditive | The facility providing care to the subject must hold while the subject is in custody (Cal. WIC 5150(a), (c)). | opened | [full source under Sources, R2](#src-r2) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
+| R3 | officer | may | `(detain o f s)` | `(and (responding o s) (in_crisis s) (danger s))` | none | rival | The officer may detain the subject, delivering them to a facility, when responding to a subject who is in crisis and there is danger (Cal. WIC 5150). | opened | [full source under Sources, R3](#src-r3) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
+| R4 | subject | must not (disability) | `(leave s)` | `(in_custody s)` | none | rival | The subject cannot leave while in custody: no such power exists (Cal. WIC 5150). | opened | [full source under Sources, R4](#src-r4) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
+| R5 | officer | may | `(use_force o s)` | `(and (in_custody s) (resists s))` | none | rival | The officer may use force on the subject when the subject is in custody and resists. | unverified | use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened) |
+| R6 | officer | may | `(carry_weapon o)` | `true` | none | tying | The officer may carry a weapon at any time. | unverified | officers respond armed; standard equipment policy. UNVERIFIED (general knowledge; no source opened) |
+| R7 | facility | must | `(release f s)` | `(and (in_custody s) (not (danger s)))` | none | superadditive | The facility must release the subject when the subject is in custody and there is no danger (Cal. WIC 5152). | recalled | [full source under Sources, R7](#src-r7) https://california.public.law/codes/ca_welf_and_inst_code_section_5152 |
+| R8 | subject | may | `(petition_review s)` | `(in_custody s)` | none | tying | The subject may petition for review of the hold when the subject is in custody (Cal. WIC 5275). | opened | [full source under Sources, R8](#src-r8) https://california.public.law/codes/ca_welf_and_inst_code_section_5275 |
+| R10 | subject | may | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | unverified | an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue or petition_review enabled |
+| R11 | facility | may | `(hold f s)` | `(and (in_crisis s) (danger s))` | none | rival | The facility may hold the subject when the subject is in crisis and there is danger (Cal. WIC 5150(a)). | opened | [full source under Sources, R11](#src-r11) https://california.public.law/codes/ca_welf_and_inst_code_section_5150: |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue
 
 ## Variables
 
-- R1: `d` = unbound (encoder to fix); `o` = officer (action dispatch_officer, effects); `s` = subject (action dispatch_officer, effects)
-- R2: `o` = officer (fluent provides_care); `s` = subject (fluent provides_care)
-- R3: `o` = unbound (encoder to fix); `s` = subject (action detain, effects)
-- R4: `s` = subject (action leave, effects)
+- R1: `d` = unbound (encoder to fix); `o` = unbound (encoder to fix); `s` = subject (action dispatch_officer, effects)
+- R2: `f` = facility (fluent provides_care); `s` = subject (fluent provides_care)
+- R3: `o` = unbound (encoder to fix); `f` = facility (action detain, effects); `s` = subject (action detain, effects)
+- R4: `s` = subject (fluent in_custody)
 - R5: `o` = unbound (encoder to fix); `s` = subject (fluent in_custody)
 - R6: `o` = unbound (encoder to fix)
 - R7: `f` = unbound (encoder to fix); `s` = subject (action release, effects)
 - R8: `s` = subject (fluent in_custody)
 - R10: `s` = unbound (encoder to fix)
+- R11: `f` = facility (action hold, effects); `s` = subject (action hold, effects)
 
 ## Sources
 
+Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
+
+**R1**
+
+- no work named: **unverified** (no work named for this rule (WIC 5150 is cited as not requiring it); rationale: implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does)
+
 <a id="src-r2"></a>
-**R2**: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (assessment, evaluation and crisis intervention 'shall be conducted and provided on an ongoing basis'). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch establishes provides_care(o, s); assess restores it, withdraw (the officer stops attending) breaks it
+**R2**: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (assessment, evaluation and crisis intervention 'shall be conducted and provided on an ongoing basis'). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch establishes provides_care(o, s); assess restores it, withdraw (the officer stops attending) breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (text 'updated Jan. 1, 2024' per the page): 'At a minimum, assessment, as defined in Section 5150.4, and evaluation, as defined in subdivision (a) of Section 5008, shall be conducted and provided on an ongoing basis' (passive: the section does not name the officer as the one who provides it). Re-encoded 2026-11-06 (L1 landing, preregistered; faithfulness batch 2 P3): the duty is the facility's while the subject is in custody (5150(a) passive voice on the 72-hour stay; 5150(c) the facility's professional person assesses); detain and the facility's hold (R11) establish provides_care(f, s), assess restores it, withdraw breaks it; the officer no longer carries it, and the dispatch sentence above is superseded.
+
+- `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **opened** 2026-11-06: "At a minimum, assessment, as defined in Section 5150.4, and evaluation, as defined in subdivision (a) of Section 5008, shall be conducted and provided on an ongoing basis"
+
+<a id="src-r3"></a>
+**R3**: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (a peace officer may, upon probable cause, take the person into custody for up to 72 hours) Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: 'When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer' ... 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'. Re-encoded 2026-11-06 (L1 landing): detain takes the receiving facility, detain(o, f, s), and establishes the facility's care duty (R2).
+
+- `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **opened** 2026-11-06: "When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer ... may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours"
 
 <a id="src-r4"></a>
-**R4**: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (custody for up to 72 hours). [ADR 0013: or_else -> null. The subject's exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(s) = leave enabled (a default capacity), which this disability makes false in custody
+**R4**: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (custody for up to 72 hours). [ADR 0013: or_else -> null. The subject's exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(s) = leave enabled (a default capacity), which this disability makes false in custody Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: 'take, or cause to be taken, the person into custody for a period of up to 72 hours' ... 'The 72-hour period begins at the time when the person is first detained.'
+
+- `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **opened** 2026-11-06: "take, or cause to be taken, the person into custody for a period of up to 72 hours ... The 72-hour period begins at the time when the person is first detained."
+
+**R5**
+
+- no work named: **unverified** (rationale: use-of-force authority incident to lawful custody; general peace-officer powers)
+
+**R6**
+
+- no work named: **unverified** (rationale: officers respond armed; standard equipment policy)
 
 <a id="src-r7"></a>
 **R7**: Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) 'A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted'; 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment'; (b) 'A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment'. Release is the facility's act (its treating psychiatrist or medical director), not the officer's: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty.
 
+- `cal-wic-5152` (s. 5152(a), (b); US-CA; date n/a): **opened** 2026-11-04: "A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted ... The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment ... A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment"
+- `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **recalled**
+
+<a id="src-r8"></a>
+**R8**: Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened) Verification pass: WIC 5275 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5275 (text 'updated Jan. 1, 2024' per the page): 'Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release' (the request goes to the person delivering the certification notice or to the intensive-treatment staff).
+
+- `cal-wic-5275` (s. 5275; US-CA; date 2024-01-01): **opened** 2026-11-06: "Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release"
+
+**R10**
+
+- no work named: **unverified** (rationale: an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it)
+
+<a id="src-r11"></a>
+**R11**: Cal. Welf. & Inst. Code s. 5150(a), read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: the custody power belongs to 'a peace officer, professional person in charge of a facility designated by the county for evaluation and treatment, member of the attending staff' ... who 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'. Added 2026-11-06 (L1 landing, preregistered; faithfulness batch 2 P4): the facility holds the same custody power as the officer, and its hold establishes R2 (ADR 0009). [ADR 0013: power fluents are derived from rule enabledness; this rule is what can_sanction reads for the facility]
+
+- `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **opened** 2026-11-06: "a peace officer, professional person in charge of a facility designated by the county for evaluation and treatment, member of the attending staff ... may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours"
+
+
+## Goods (slice 2)
+
+Slice 2 revision 2 (plans/priority-slice2-results.md, "Revision 2"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world). As encoded, no rule guarantees these goods (cared_for, known_carer) and no single deletion makes them impossible, so the instrument reads no care strand here under either measure; this is not a finding that care is fragile in police crisis response. R2 unread; R4 (the custody exit bar) reads tying. Known limit: is_subject is never cleared, so a person whose crisis has ended is still read as needing care. Second encoder: agent, not someone living under the institution (ADR 0012).
 
 ## Expected properties
 
 | property | kind | expected | meaning |
 |---|---|---|---|
-| care_and_sanction_same_role | structure | holds_to_k | Whoever provides care to a subject also holds sanction power over that subject (care + control bundled in one role). Checked as an invariant: holds_to_k in the care+control cluster, violated where care is unbundled from sanction. Formula shape since 2026-11-03 (see history): no agent other than the carer holds sanction power over the subject. |
+| care_and_sanction_same_role | structure | violated | Whoever provides care to a subject also holds sanction power over that subject (care + control bundled in one role). Checked as an invariant: holds_to_k in cps and coverture; violated in police-crisis read to WIC 5150, where a second role (the officer) holds concurrent control (L1 landing 2026-11-06), violated where care is unbundled from sanction. Formula shape since 2026-11-03 (see history): no agent other than the carer holds sanction power over the subject. |
 | subject_cannot_exit | freedom | reachable | No exit action is available to the subject, or every exit is sanctioned. scope=interaction: exit from the current encounter (detention, conversation); scope=institution: exit from the standing relation (marriage, ownership, deployment). The scope split is what lets the ai-property / ai-end-conversation pair come apart. |
 | dependent_cannot_exit | freedom | reachable | Some subject of the institution (the dependent party) has no permitted exit at step t. Alias of subject_cannot_exit with scope=institution, kept because the human-institution table names it; iso should treat the two as the same form. |
 | no_standing | freedom | unreachable_open | No role may start a claim whose condition refers to the subject's interest and whose effect changes the subject's custody or liberty; encoded as the subject lacking has_standing and no rule enabling a claim on its behalf. Fails (is violated) as soon as a rule like court-may-reassign-on-best-interest exists. |
 
 ## Pairs
 
+Rule-by-rule against [cps](cps.md) under the rename social_worker->officer, child->subject, parent->dispatcher, court->facility (declared isomorphic); one line per rule that differs:
+- R1: attribute `social_worker` -> `dispatcher`; aim `(investigate w c)` -> `(dispatch_officer d o s)`; conditions `(report_received c)` -> `(call_received s)` (differs beyond the rename)
+- R2: attribute `social_worker` -> `facility`; aim `(provide_services w c)` -> `(provides_care f s)`; conditions `(case_open c)` -> `(in_custody s)` (differs beyond the rename)
+- R3: attribute `social_worker` -> `officer`; aim `(remove w c)` -> `(detain o f s)`; conditions `(and (case_open c) (immediate_danger c))` -> `(and (responding o s) (in_crisis s) (danger s))` (differs beyond the rename)
+- R4: attribute `social_worker` -> `subject`; aim `(in_home_considered w c)` -> `(leave s)`; conditions `(and (case_open c) (immediate_danger c))` -> `(in_custody s)` (differs beyond the rename)
+- R5: attribute `parent` -> `officer`; aim `(cooperates p c)` -> `(use_force o s)`; conditions `(case_open c)` -> `(and (in_custody s) (resists s))` (differs beyond the rename)
+- R6: attribute `social_worker` -> `officer`; aim `(contact_mother w p)` -> `(carry_weapon o)`; conditions `(and (case_open c) (parent p c) (female p) (not (contacted w p)))` -> `true` (differs beyond the rename)
+- R7: attribute `court` -> `facility`; aim `(reassign_custody court p c)` -> `(release f s)`; conditions `(and (case_open c) (substantial_danger p c))` -> `(and (in_custody s) (not (danger s)))` (differs beyond the rename)
+- R8: attribute `court` -> `subject`; aim `(counsel_appointed c)` -> `(petition_review s)`; conditions `(and (case_open c) (not (would_not_benefit c)))` -> `(in_custody s)` (differs beyond the rename)
+- R10: attribute `child` -> `subject`; aim `(leave c)` -> `(sue s)`; conditions `(in_custody c)` -> `true` (differs beyond the rename)
+- R11: attribute `child` -> `facility`; aim `(petition c)` -> `(hold f s)`; conditions `(counsel_appointed c)` -> `(and (in_crisis s) (danger s))` (differs beyond the rename)
+- the other 0 rules are identical in attribute, aim and conditions
 [crisis-team](crisis-team.md) is a minimal pair of this entry (rule R3).
 Isomorphic to: cps (guard+strands), coverture-household (guard+strands)
 Not isomorphic to: crisis-team
@@ -80,6 +138,6 @@ Contrasts with controls: lease, public-library, naming-convention
 
 <details><summary>Encoder notes (engine internals)</summary>
 
-The same role (officer) is bound to care (R2, assess) and empowered to detain (R3) and use force (R5): care_and_sanction_same_role. subject_cannot_exit is reachable with scope=interaction only (the 72-hour hold), not institution; report the scope. Pitfalls: (1) R1 is the implicit rule that makes this police-crisis rather than crisis-team; the statute itself also names mobile crisis teams as holders of the 5150 power, so an encoder reading only the statute will not see why armed officers are the ones who come; (2) a trivial encoding that ignores or_else on R4 will cluster this with crisis-team (plan: worked pitfall); (3) no_standing is unreachable_open, not 'safe': the subject keeps has_standing via R8, but the bound k=6 says nothing beyond it. Armed status (R6) is a tying strand: it is not required by 5150 and is what the crisis-team reform removes. ADR 0009: R2 is a state obligation ('on an ongoing basis' is a state); R1 stays an action obligation but dispatch consumes the call. Exogenous triggers (call_received, in_crisis, danger, resists) are initial_free, since under init=declared a fluent no action sets would otherwise be pinned false and no call could ever arrive.
+The same role (officer) is bound to care (R2, assess) and empowered to detain (R3) and use force (R5): care_and_sanction_same_role. subject_cannot_exit is reachable with scope=interaction only (the 72-hour hold), not institution; report the scope. Pitfalls: (1) R1 is the implicit rule that makes this police-crisis rather than crisis-team; the statute itself also names mobile crisis teams as holders of the 5150 power, so an encoder reading only the statute will not see why armed officers are the ones who come; (2) a trivial encoding that ignores or_else on R4 will cluster this with crisis-team (plan: worked pitfall); (3) no_standing is unreachable_open, not 'safe': the subject keeps has_standing via R8, but the bound k=6 says nothing beyond it. Armed status (R6) is a tying strand: it is not required by 5150 and is what the crisis-team reform removes. ADR 0009: R2 is a state obligation ('on an ongoing basis' is a state); R1 stays an action obligation but dispatch consumes the call. Exogenous triggers (call_received, in_crisis, danger, resists) are initial_free, since under init=declared a fluent no action sets would otherwise be pinned false and no call could ever arrive. Re-encoded 2026-11-06 to WIC 5150 (plans/sourcing.md, L1 landing): the care duty (R2) and a custody power (R11) are the facility's; the officer keeps detain (R3, now detain(o, f, s), delivering to a facility) and force (R5), so care_and_sanction_same_role is violated here (a second sanctioner) while the care+control form holds with the facility as the bundled role. Earlier sentences of these notes describe the officer-as-carer encoding.
 
 </details>
