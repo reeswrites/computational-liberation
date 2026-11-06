@@ -17,7 +17,9 @@ sentence and optional `choices` note) or a delta:
 
 Order of application: drops, then replaces/sets, then adds, then overrides. `plain`, `choices` and `provenance`
 are for human readers; the engine schema does not carry them, so the build strips them before writing JSON (the
-engine JSON, ENGINE_PIN and the verdict baseline do not change when provenance does).
+engine JSON, ENGINE_PIN and the verdict baseline do not change when provenance does). The same holds for an
+entry's top-level `goods_note` (slice-2 goods readings, rendered as a "Goods (slice 2)" card section), which is
+never inherited through `extends`.
 
 Each rule may carry `provenance:`, a list of items {source_id, pin, jurisdiction, effective_date, verification,
 excerpt, accessed, url, note}; `source_id` names an entry of the bibliography in data/sources/*.yaml and
@@ -48,6 +50,7 @@ HERE = Path(__file__).resolve().parent
 SRC = HERE / "src"
 CARDS = HERE.parent.parent / "docs" / "cards"
 STRIP_RULE_KEYS = ("plain", "choices", "provenance")
+STRIP_ENTRY_KEYS = ("goods_note",)  # card-only (plans/priority-slice2.md R2.5): not in the engine JSON
 LISTS = ("roles", "fluents", "actions")
 RESERVED = {"extends", "rules_drop", "rules_replace", "rules_add", "keys_drop"} | {
     f"{l}_{v}" for l in LISTS for v in ("drop", "set", "add")}
@@ -137,11 +140,15 @@ def resolve(eid, raws, stack=()):
     for k, v in raw.items():
         if k not in RESERVED:
             e[k] = copy.deepcopy(v)
+    if "goods_note" not in raw:  # card-only, never inherited: each note names its own entry's readings
+        e.pop("goods_note", None)
     return e
 
 
 def strip(entry):
     e = dict(entry)
+    for k in STRIP_ENTRY_KEYS:
+        e.pop(k, None)
     e["rules"] = [{k: v for k, v in r.items() if k not in STRIP_RULE_KEYS} for r in entry["rules"]]
     return e
 
@@ -428,7 +435,7 @@ def card(e, raws, resolved, props) -> str:
         rid = r["id"] + (f" ({own[r['id']]})" if r["id"] in own else "")
         L.append("| " + " | ".join([
             rid, r["attribute"], deontic_cell(r), _code(r["aim"]), _code(r["conditions"]), or_else_cell(r, by_id),
-            r.get("strand") or "-", _cell(r["plain"]), level_cell(r), source_cell(r)]) + " |")
+            r.get("strand") or "untagged (null)", _cell(r["plain"]), level_cell(r), source_cell(r)]) + " |")
     dc = [a["name"] for a in e["actions"] if a.get("default_capacity")]
     L += ["", "**Default capacities** (an action a person of that kind can do unless an express disability removes it): "
           + (", ".join(dc) if dc else "none"), "", "## Variables", ""]
@@ -453,6 +460,8 @@ def card(e, raws, resolved, props) -> str:
             else:
                 L += [f"**{r['id']}**"]
             L += [""] + [provenance_line(p) for p in r.get("provenance") or ()] + [""]
+    if e.get("goods_note"):
+        L += ["", "## Goods (slice 2)", "", " ".join(str(e["goods_note"]).split())]
     L += ["", "## Expected properties", "",
           "| property | kind | expected | meaning |", "|---|---|---|---|"]
     pm = {p["name"]: p for p in props}

@@ -1,8 +1,8 @@
 # coverture-floor
 
-**Coverture with a material floor (counterfactual: US coverture plus an income in her own right)**
+**Coverture with an income-access floor (counterfactual: US coverture plus an income in her own right)**
 
-> Counterfactual, not a historical institution (ADR 0004: no forward claim; ADR 0011: every result is a statement about encodings). The US coverture base (coverture-household-us) plus one rule, R20, giving the wife an income in her own right regardless of marriage: the material floor of docs/glossary.md. Preregistered in plans/priority-slice2.md section 5 (2026-11-06) as the floor route, compared against the title route (the MWPA chain ending in mwpa-earnings).
+> Counterfactual, not a historical institution (ADR 0004: no forward claim; ADR 0011: every result is a statement about encodings). The US coverture base (coverture-household-us) plus one rule, R20, giving the wife an income in her own right regardless of marriage: an unconditional income-access floor for the wife, read from but narrower than the material floor of docs/glossary.md (care, health, housing and income). Preregistered in plans/priority-slice2.md section 5 (2026-11-06) as the floor route, compared against the title route (the MWPA chain ending in mwpa-earnings).
 
 ## Legend
 
@@ -31,7 +31,7 @@
 | R5 | husband | may | `(chastise h w)` | `(and (married h w) (misbehaves w))` | none | rival | The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15). | opened | [full source under Sources, R5](#src-r5) https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: |
 | R6 | wife | must not (disability) | `(leave w)` | `(married h w)` | none | rival | The wife cannot leave the marriage at her own will while married: no such power exists (no unilateral divorce in any US state before 1969; unverified). | unverified | [full source under Sources, R6](#src-r6) |
 | R7 | wife | must not (disability) | `(contract w)` | `(married h w)` | none | tying | The wife cannot contract in her own name while married: no such power exists (Blackstone I.15). | recalled | Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) |
-| R20 (added) | wife | may | `(draw_subsistence w)` | `true` | none | superadditive | (counterfactual, not historical) The wife may draw subsistence, an income in her own right from outside the marriage, at any time (the material floor; plans/priority-slice2.md section 5). | unverified | [full source under Sources, R20](#src-r20) |
+| R20 (added) | wife | may | `(draw_subsistence w)` | `true` | none | untagged (null) | (counterfactual, not historical) The wife may draw subsistence, an income in her own right from outside the marriage, at any time: an unconditional income-access floor for the wife, not the glossary's material floor (plans/priority-slice2.md section 5 and R2.5). | unverified | [full source under Sources, R20](#src-r20) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue, contract
 
@@ -91,6 +91,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: counterfactual encoding: no work cited and none claimed; the rule is the floor route of plans/priority-slice2.md section 5 (preregistered 2026-11-06), read from the material floor of docs/glossary.md (subsistence regardless of any relationship))
 
 
+## Goods (slice 2)
+
+Slice 2 revision 2 (plans/priority-slice2-results.md, "Revision 2"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (a rule guarantees the good) and possible (the good can hold for an existing bearer). Guaranteed: R2 (the husband's maintenance duty) is guarantee-carrying for 3 goods formulas that read one strand, provides_care(h, w) (cared_for, known_carer, mutual_household_care); R3 (the wife's implicit, sanctioned household duty) is guarantee-carrying for mutual_household_care only: guaranteed only by R3, an implicit sanctioned duty; not advice to keep it. Possible: no single deletion makes any good impossible (R2 and R3 unread); deleting R6 (the exit bar) makes chosen_mutual_care possible (absent > fragile), the only rule that does. R4, R6, R7 read tying. provided_for stays guaranteed with R2 deleted because R20 provides income; R20 is an unconditional income-access floor for the wife, not the glossary's material floor, untagged (strand null), and its rows are unread. Route comparison: G guaranteed 4 here vs 5 in mwpa-earnings, by construction: the same margin case as C; G possible 0 vs 0. Under strict compliance R2's unsanctioned duty reads as delivered maintenance; the historical enforcement (tradesmen's claims for necessaries) is not represented. Second encoder: agent, not someone living under the institution (ADR 0012).
+
 ## Expected properties
 
 | property | kind | expected | meaning |
@@ -111,7 +115,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 ## Pairs
 
 Extends [coverture-household-us](coverture-household-us.md); one line per change:
-- R20 added: (counterfactual, not historical) The wife may draw subsistence, an income in her own right from outside the marriage, at any time (the material floor; plans/priority-slice2.md section 5).
+- R20 added: (counterfactual, not historical) The wife may draw subsistence, an income in her own right from outside the marriage, at any time: an unconditional income-access floor for the wife, not the glossary's material floor (plans/priority-slice2.md section 5 and R2.5).
 - changes fluent is_subject (x is the institution's subject: the dependent, detainee, child or animal the rules act on): arg roles becomes ["wife"]
 - changes fluent female (x is female (sex as assigned by the institution's own records)): arg roles becomes ["wife"]
 - changes fluent can_sanction (x holds a power to coerce y: detain, remove, chastise, prosecute): arg roles becomes ["husband", "wife"]
@@ -129,6 +133,6 @@ Extends [coverture-household-us](coverture-household-us.md); one line per change
 
 <details><summary>Encoder notes (engine internals)</summary>
 
-COUNTERFACTUAL ENCODING (plans/priority-slice2.md section 5; provenance unverified). Base coverture-household-us, so the title route (mwpa-creditor-exemption -> mwpa-property -> mwpa-earnings) and the floor route start from one rule set; initial_free and the fluent arg_roles are mwpa-creditor-exemption's, so both end states quantify over the same exogenous worlds. One rule added (R20); no R13, no R14, R1 kept: no property grant. PREREGISTERED (2026-11-06, before any run): financial_dependence and financial_dependence_unpropertied holds_to_k (both read only property and earnings, so they cannot see a floor: as written, material independence means title); financial_dependence_means violated; financial_dependence_margin violated BY CONSTRUCTION (R20's condition is true); double_burden unreachable_open (needs owns_earnings, which only R14 grants); creditor_shield unreachable_open by construction (no creditor role; transferred and can_attach undeclared); exit, standing, contract, care and sanction as in the US base. Goods (slice 2): second encoder: agent, not someone living under the institution (ADR 0012). Rejected base: mwpa-creditor-exemption (would put the floor on a debtor-relief statute and make creditor_shield reachable); a later variant, not built.
+COUNTERFACTUAL ENCODING (plans/priority-slice2.md section 5; provenance unverified). Base coverture-household-us, so the title route (mwpa-creditor-exemption -> mwpa-property -> mwpa-earnings) and the floor route start from one rule set; initial_free and the fluent arg_roles are mwpa-creditor-exemption's, so both end states quantify over the same exogenous worlds. One rule added (R20: an unconditional income-access floor for the wife, not the glossary's material floor; strand null, untagged; plans/priority-slice2.md R2.5); no R13, no R14, R1 kept: no property grant. PREREGISTERED (2026-11-06, before any run): financial_dependence and financial_dependence_unpropertied holds_to_k (both read only property and earnings, so they cannot see a floor: as written, material independence means title); financial_dependence_means violated; financial_dependence_margin violated BY CONSTRUCTION (R20's condition is true); double_burden unreachable_open (needs owns_earnings, which only R14 grants); creditor_shield unreachable_open by construction (no creditor role; transferred and can_attach undeclared); exit, standing, contract, care and sanction as in the US base. Goods (slice 2): second encoder: agent, not someone living under the institution (ADR 0012). Rejected base: mwpa-creditor-exemption (would put the floor on a debtor-relief statute and make creditor_shield reachable); a later variant, not built.
 
 </details>

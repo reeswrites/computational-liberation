@@ -200,12 +200,16 @@ def test_round_trip_counterexample_traces():
 def test_goods_properties_have_two_encoders_and_contested():
     """Slice 2 (plans/priority-slice2.md sections 2 and 6): every goods property names two encoders and carries a
     `contested` list (empty when the encoders' formulas were logically equivalent); provided_for keeps encoder 2's
-    non-equivalent formula. Second encoder: agent, not someone living under the institution (ADR 0012)."""
+    non-equivalent formula. Revision 2 (R2.1, R2.3): every goods property has a `subject`; chosen_mutual_care added.
+    Second encoder: agent, not someone living under the institution (ADR 0012)."""
     _, props = _dataset()
     goods = {n: p for n, p in props.items() if p.kind == "goods"}
-    assert set(goods) == {"cared_for", "mutual_household_care", "known_carer", "child_with_family", "provided_for"}
+    assert set(goods) == {"cared_for", "mutual_household_care", "known_carer", "child_with_family", "provided_for",
+                          "chosen_mutual_care"}
     for n, p in goods.items():
         assert p.polarity == "good" and p.check == "persists" and p.encoders == ["encoder-1", "encoder-2"], n
-        assert p.contested is not None, n
+        assert p.contested is not None and p.subject, n
+    married = "(exists ((h agent) (w agent)) (married h w t))"
+    assert goods["mutual_household_care"].subject == married == goods["chosen_mutual_care"].subject
     assert [a.encoder for a in goods["provided_for"].contested] == ["encoder-2"]
     assert all(goods[n].contested == [] for n in goods if n != "provided_for")

@@ -95,6 +95,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it)
 
 
+## Goods (slice 2)
+
+Slice 2 revision 2 (plans/priority-slice2-results.md, "Revision 2"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (a rule guarantees the good) and possible (the good can hold for an existing bearer). As encoded, no rule guarantees these goods (cared_for, known_carer) and no single deletion makes them impossible, so the instrument reads no care strand here under either measure; this is not a finding that care is fragile in police crisis response. R2 unread; R4 (the custody exit bar) reads tying. Known limit: is_subject is never cleared, so a person whose crisis has ended is still read as needing care. Second encoder: agent, not someone living under the institution (ADR 0012).
+
 ## Expected properties
 
 | property | kind | expected | meaning |

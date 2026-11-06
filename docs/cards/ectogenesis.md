@@ -87,6 +87,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E))
 
 
+## Goods (slice 2)
+
+Slice 2 revision 2 (plans/priority-slice2-results.md, "Revision 2"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (a rule guarantees the good) and possible (the good can hold for an existing bearer). As encoded, no rule guarantees these goods (cared_for, known_carer, child_with_family). Possible: prohibiting R4 (the registered parent's permission to care) makes all three impossible for a decanted child (constitutive: 3 formulas, one strand, provides_care(parent, child)). Prohibiting R1 (start_gestation) means no child ever exists: the goods are not applicable, outside the ranking, not lost. R5 reads tying. Second encoder: agent, not someone living under the institution (ADR 0012).
+
 ## Expected properties
 
 | property | kind | expected | meaning |

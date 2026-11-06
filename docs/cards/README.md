@@ -26,7 +26,7 @@ How to read a card: every card opens with the same Legend (what may / must / mus
 - [mwpa-sole-trader](mwpa-sole-trader.md): Sole-trader act (earnings act minus R7, plus may contract) | pairs: mwpa-earnings (extends); mwpa-suit (extended by)
 - [mwpa-suit](mwpa-suit.md): Suit act (sole-trader act minus R4, plus may sue third parties while married; suits between spouses stay barred) | pairs: mwpa-sole-trader (extends)
 - [mwpa-property-narrowed](mwpa-property-narrowed.md): Property act under narrow construction (backlash; filed Erosion by ADR 0016 on 2026-11-03, reverted by its council pass 2026-11-04: court reinstates the husband's control) | pairs: mwpa-property (extends)
-- [coverture-floor](coverture-floor.md): Coverture with a material floor (counterfactual: US coverture plus an income in her own right) | pairs: coverture-household-us (extends)
+- [coverture-floor](coverture-floor.md): Coverture with an income-access floor (counterfactual: US coverture plus an income in her own right) | pairs: coverture-household-us (extends)
 - [footbinding](footbinding.md): Footbinding as a marriage-market convention (Mackie 1996), with pledge associations | pairs: footbinding-no-pledge (extended by)
 - [footbinding-no-pledge](footbinding-no-pledge.md): Footbinding without the pledge action (minimal pair for gate (a)) | pairs: footbinding (extends)
 - [ectogenesis](ectogenesis.md): Ectogenesis (artificial womb; Firestone 1970): gestation in a device, no birthing parent | pairs: gestational-surrogacy (extended by)

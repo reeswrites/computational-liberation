@@ -105,6 +105,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `cal-wic-317` (s. 317(e); US-CA; date n/a): **unverified**
 
 
+## Goods (slice 2)
+
+Slice 2 revision 2 (plans/priority-slice2-results.md, "Revision 2"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (a rule guarantees the good) and possible (the good can hold for an existing bearer). As encoded, no rule guarantees these goods (cared_for, known_carer, child_with_family) and no ranked deletion makes them impossible, so the instrument reads no care strand here; this is not a finding that care is fragile in child protection. R10 reads tying. Information row (not ranked: the prohibit leaks off-condition): prohibiting R2 makes cared_for and known_carer impossible (possible lost 2). In this vocabulary provides_care is the caseworker's services; no fluent records parental care. Second encoder: agent, not someone living under the institution (ADR 0012).
+
 ## Expected properties
 
 | property | kind | expected | meaning |

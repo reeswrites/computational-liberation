@@ -92,6 +92,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: implicit, added 2026-11-04 per ADR 0015 A6 (strict enabledness at layer 2: an action needs a may/must rule) so that the breaker of R3 is an enabled action for the layer-2 ABM: the metapelet can always fail the children's house, and that is the choice R3's or_else R6 answers. Under layer 1 the permis...)
 
 
+## Goods (slice 2)
+
+Slice 2 revision 2 (plans/priority-slice2-results.md, "Revision 2"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (a rule guarantees the good) and possible (the good can hold for an existing bearer). As encoded, no rule guarantees cared_for or known_carer (release is unregulated), so R3 reads unread under both measures and R2 tying; this is not a finding that care is fragile in the children's house. child_with_family reads absent (R4 bars sleeping at home); deleting R4 makes it possible (absent > fragile: possible gained 1, guaranteed unchanged). Second encoder: agent, not someone living under the institution (ADR 0012).
+
 ## Expected properties
 
 | property | kind | expected | meaning |

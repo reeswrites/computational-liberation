@@ -84,6 +84,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `blackstone-1765-bk1-ch15` (Bk I ch 15; England; date n/a): **recalled**
 
 
+## Goods (slice 2)
+
+Slice 2 revision 2 (plans/priority-slice2-results.md, "Revision 2"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (a rule guarantees the good) and possible (the good can hold for an existing bearer). Guaranteed: R2 (the husband's maintenance duty) is guarantee-carrying for 4 goods formulas that read one strand, provides_care(h, w) (cared_for, known_carer, mutual_household_care, provided_for); R3 (the wife's implicit, sanctioned household duty) is guarantee-carrying for mutual_household_care only: guaranteed only by R3, an implicit sanctioned duty; not advice to keep it. Possible: no single deletion makes any good impossible (R2 and R3 unread); deleting R6 (the exit bar) makes chosen_mutual_care possible (absent > fragile), the only rule that does. R4, R6, R7 read tying. Under strict compliance R2's unsanctioned duty reads as delivered maintenance; the historical enforcement (tradesmen's claims for necessaries) is not represented. Second encoder: agent, not someone living under the institution (ADR 0012).
+
 ## Expected properties
 
 | property | kind | expected | meaning |

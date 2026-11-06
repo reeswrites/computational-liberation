@@ -31,7 +31,7 @@ Layer 2 is frozen after today's gate record. The `imagination` module is not bui
 - Parked by the ADR 0016 scope seat until the layer 2 gate exists: mode tagging in ABM reports, Enforcement decay, Lock-in, the mechanism tag; preregistrations name only modes at or below the run's layer.
 - Footbinding and naming-convention encodings (gate (a), (b)) and the coordination/imagination modules: next layer-2 slice.
 - Airline control: gate support for expected-match controls (engine change), then move `airline-flight` into the cluster's control list as an expected-match check.
-- Strand-tag redesign: strand tags are hand inputs the cluster match depends on (third review); find a derivation or a robustness test.
+- Strand-tag redesign: strand tags are hand inputs the cluster match depends on (third review); find a derivation or a robustness test. A floor has no slot in the vocabulary: coverture-floor R20 carries `strand: null` (untagged, outside the bundle; plans/priority-slice2.md R2.5, 2026-11-06), which the engine accepts as `Strand | None` and `+strands` iso levels treat as its own tag.
 
 ## Standing process
 - Preregistration: expected verdicts are written before runs and never edited to match; drift is recorded (CONTRIBUTING.md).
