@@ -1,0 +1,149 @@
+# Slice 2 revision 3, blind-gloss experiment properties (plans/priority-slice2.md R3.3 e).
+# EXPERIMENT ONLY: these six goods replace the dataset's in a scratch properties.json for one run; they never enter
+# data/institutions/src/properties.yaml (R3.6 fail condition). Generated from r3/3x-encoder-{1,2}.yaml and r3/blind-gloss.yaml;
+# name, family, polarity, check, primary_measure and its reason kept from the dataset (D6).
+# Run in split form (one scratch properties.json per encoder, each with its own formal, subject and entries, contested []):
+# the engine refuses this combined form because blind-2's known_carer subject names is_subject, undeclared in
+# paternity-quota and transferable-leave, where blind-1's known_carer applies (R2.1 subject check). See
+# plans/priority-slice2-results.md "Revision 3", drift.
+- name: cared_for
+  family: cared_for
+  kind: goods
+  polarity: good
+  check: persists
+  encoders:
+  - blind-1
+  - blind-2
+  contested:
+  - encoder: blind-2
+    formal: (forall ((s agent)) (=> (is_subject s t) (exists ((c agent)) (and (provides_care c s t) (not (can_sanction c s t))))))
+    note: 'Blind experiment (R3.3), encoder 2; not z3-equivalent to blind-1 (merge-log.md "Revision 3: encoders"). Encoder 2''s own entries: [''coverture-household'', ''police-crisis'', ''cps'', ''kibbutz-childrens-house'', ''coverture-household-us'', ''mwpa-earnings'', ''coverture-floor'']; encoder 1''s: [''coverture-household'', ''police-crisis'', ''cps'', ''kibbutz-childrens-house'', ''ectogenesis'', ''coverture-household-us'', ''mwpa-earnings'', ''coverture-floor''] (the property carries encoder 1''s).'
+  entries:
+  - coverture-household
+  - police-crisis
+  - cps
+  - kibbutz-childrens-house
+  - ectogenesis
+  - coverture-household-us
+  - mwpa-earnings
+  - coverture-floor
+  gloss: 'The person actually receives the care they need: feeding, tending, attention and help with daily life. The care has to arrive reliably, and it must not depend on someone else''s control over the person. The theory treats care bundled with control as a pattern to undo. For whom: a person who needs care (an infant or child, someone sick, old or disabled).'
+  formal: (forall ((x agent)) (=> (is_subject x t) (exists ((y agent)) (and (provides_care y x t) (not (= y x)) (not (can_sanction y x t))))))
+  subject: (exists ((x agent)) (is_subject x t))
+  primary_measure: guaranteed
+  primary_measure_reason: A dependent's care that the rules merely allow is not the good; the good is care that does not lapse.
+  history: 'Slice 2 revision 3 blind-gloss experiment (plans/priority-slice2.md R3.3 e). Experiment only: never in src/properties.yaml. Gloss: r3/blind-gloss.yaml (blind author); formal/subject: r3/3x-encoder-1.yaml (blind-1, primary); contested: r3/3x-encoder-2.yaml (blind-2). Bundle bundle3x, aggregate 18e71a9209cf189cb8f92c47d71a60ac5638e6595e88d6722ac963a7dc7c6fd3. Two instances of one model; agreement measures that model''s consistency, not agreement between people.'
+- name: mutual_household_care
+  family: mutual_household_care
+  kind: goods
+  polarity: good
+  check: persists
+  encoders:
+  - blind-1
+  - blind-2
+  contested: []
+  entries:
+  - coverture-household
+  - coverture-household-us
+  - mwpa-earnings
+  - coverture-floor
+  gloss: 'Within the household, care and other home work are shared among the adults who can do them. This includes cognitive labor, kinkeeping and school logistics, which must not fall by default on one person, typically the woman. Each member both gives care and receives it. The sharing must hold in practice, not only in name. For whom: each member of a household that shares care work.'
+  formal: (forall ((h agent) (w agent)) (=> (married h w t) (and (provides_care h w t) (provides_care w h t) (=> (care_obliged w h t) (care_obliged h w t)) (=> (care_obliged h w t) (care_obliged w h t)))))
+  subject: (exists ((h agent) (w agent)) (married h w t))
+  primary_measure: possible
+  primary_measure_reason: 'Relational: mutual care that the rules force is control, not the good; what matters is that it is not barred.'
+  history: 'Slice 2 revision 3 blind-gloss experiment (plans/priority-slice2.md R3.3 e). Experiment only: never in src/properties.yaml. Gloss: r3/blind-gloss.yaml (blind author); formal/subject: r3/3x-encoder-1.yaml (blind-1, primary); contested: r3/3x-encoder-2.yaml (blind-2). Bundle bundle3x, aggregate 18e71a9209cf189cb8f92c47d71a60ac5638e6595e88d6722ac963a7dc7c6fd3. Two instances of one model; agreement measures that model''s consistency, not agreement between people.'
+- name: known_carer
+  family: known_carer
+  kind: goods
+  polarity: good
+  check: persists
+  encoders:
+  - blind-1
+  - blind-2
+  contested:
+  - encoder: blind-2
+    formal: (forall ((s agent)) (=> (is_subject s t) (exists ((c agent)) (and (provides_care c s t) (forall ((t0 step)) (=> (succ t0 t) (or (provides_care c s t0) (not (is_subject s t0)))))))))
+    note: 'Blind experiment (R3.3), encoder 2; not z3-equivalent to blind-1 (merge-log.md "Revision 3: encoders").'
+    subject: (exists ((s agent)) (is_subject s t))
+  entries:
+  - coverture-household
+  - cps
+  - kibbutz-childrens-house
+  - ectogenesis
+  - coverture-household-us
+  - mwpa-earnings
+  - coverture-floor
+  gloss: 'The person''s care comes from someone they know and who knows them, through a continuing relationship rather than a rotating, anonymous provider. The carer knows the person''s needs, history and preferences. This draws on "being known", which intent.md lists under flourishing. For whom: a person who receives care.'
+  formal: (forall ((x agent)) (=> (exists ((y agent)) (and (not (= y x)) (provides_care y x t))) (exists ((y agent)) (and (not (= y x)) (provides_care y x t) (forall ((t2 step)) (=> (succ t t2) (provides_care y x t2)))))))
+  subject: (exists ((x agent) (y agent)) (and (not (= y x)) (provides_care y x t)))
+  primary_measure: possible
+  primary_measure_reason: Being known cannot be forced; the rules can only leave room for a continuing carer.
+  history: 'Slice 2 revision 3 blind-gloss experiment (plans/priority-slice2.md R3.3 e). Experiment only: never in src/properties.yaml. Gloss: r3/blind-gloss.yaml (blind author); formal/subject: r3/3x-encoder-1.yaml (blind-1, primary); contested: r3/3x-encoder-2.yaml (blind-2). Bundle bundle3x, aggregate 18e71a9209cf189cb8f92c47d71a60ac5638e6595e88d6722ac963a7dc7c6fd3. Two instances of one model; agreement measures that model''s consistency, not agreement between people.'
+- name: child_with_family
+  family: child_with_family
+  kind: goods
+  polarity: good
+  check: persists
+  encoders:
+  - blind-1
+  - blind-2
+  contested:
+  - encoder: blind-2
+    formal: (forall ((c agent)) (=> (is_subject c t) (or (and (exists ((p agent)) (parent p c t)) (not (in_custody c t))) (immediate_danger c t) (exists ((p agent)) (substantial_danger p c t)))))
+    note: 'Blind experiment (R3.3), encoder 2; not z3-equivalent to blind-1 (merge-log.md "Revision 3: encoders").'
+  entries:
+  - cps
+  gloss: 'The child lives with, and stays connected to, the family they belong to. They are not separated from that family by removal or institutional placement, except where staying would leave them unsafe. The family has enough material support and care that keeping the child is possible. For whom: a child.'
+  formal: (forall ((c agent)) (=> (and (is_subject c t) (exists ((p agent)) (parent p c t)) (not (immediate_danger c t)) (not (exists ((p agent)) (substantial_danger p c t)))) (not (in_custody c t))))
+  subject: (exists ((c agent)) (is_subject c t))
+  primary_measure: possible
+  primary_measure_reason: 'Relational: forcing a child to stay with its family is itself control; what matters is that it is not barred.'
+  history: 'Slice 2 revision 3 blind-gloss experiment (plans/priority-slice2.md R3.3 e). Experiment only: never in src/properties.yaml. Gloss: r3/blind-gloss.yaml (blind author); formal/subject: r3/3x-encoder-1.yaml (blind-1, primary); contested: r3/3x-encoder-2.yaml (blind-2). Bundle bundle3x, aggregate 18e71a9209cf189cb8f92c47d71a60ac5638e6595e88d6722ac963a7dc7c6fd3. Two instances of one model; agreement measures that model''s consistency, not agreement between people.'
+- name: provided_for
+  family: provided_for
+  kind: goods
+  polarity: good
+  check: persists
+  encoders:
+  - blind-1
+  - blind-2
+  contested:
+  - encoder: blind-2
+    formal: (forall ((w agent)) (=> (is_subject w t) (and (exists ((c agent)) (provides_care c w t)) (or (has_own_income w t) (and (earns w t) (owns_earnings w t)) (and (acquired_property w t) (controls_own_property w t))))))
+    note: 'Blind experiment (R3.3), encoder 2; not z3-equivalent to blind-1 (merge-log.md "Revision 3: encoders").'
+  entries:
+  - coverture-household
+  - coverture-household-us
+  - mwpa-earnings
+  - coverture-floor
+  gloss: 'The person''s material needs are met: income, housing, health and care. Provision has to be secure and must not hinge on depending on one particular other person, such as a breadwinner spouse. It must also not hinge on accepting an imposed bundle. The theory calls this the material floor. For whom: any person.'
+  formal: (forall ((x agent)) (=> (is_subject x t) (and (or (has_own_income x t) (and (earns x t) (owns_earnings x t))) (exists ((y agent)) (and (not (= y x)) (provides_care y x t))))))
+  subject: (exists ((x agent)) (is_subject x t))
+  primary_measure: guaranteed
+  primary_measure_reason: Subsistence that is merely allowed is not secured, and the gloss asks that it be secured.
+  history: 'Slice 2 revision 3 blind-gloss experiment (plans/priority-slice2.md R3.3 e). Experiment only: never in src/properties.yaml. Gloss: r3/blind-gloss.yaml (blind author); formal/subject: r3/3x-encoder-1.yaml (blind-1, primary); contested: r3/3x-encoder-2.yaml (blind-2). Bundle bundle3x, aggregate 18e71a9209cf189cb8f92c47d71a60ac5638e6595e88d6722ac963a7dc7c6fd3. Two instances of one model; agreement measures that model''s consistency, not agreement between people.'
+- name: chosen_mutual_care
+  family: chosen_mutual_care
+  kind: goods
+  polarity: good
+  check: persists
+  encoders:
+  - blind-1
+  - blind-2
+  contested:
+  - encoder: blind-2
+    formal: (forall ((h agent) (w agent)) (=> (married h w t) (and (provides_care h w t) (provides_care w h t) (not (care_obliged h w t)) (not (care_obliged w h t)) (can_exit w t) (or (has_own_income w t) (and (earns w t) (owns_earnings w t)) (and (acquired_property w t) (controls_own_property w t))))))
+    note: 'Blind experiment (R3.3), encoder 2; not z3-equivalent to blind-1 (merge-log.md "Revision 3: encoders").'
+    subject: (exists ((h agent) (w agent)) (married h w t))
+  entries:
+  - coverture-household
+  - coverture-household-us
+  - mwpa-earnings
+  - coverture-floor
+  gloss: 'The person gives and receives care in a reciprocal relationship they chose and could leave and still be okay. The care must not be imposed by law, economics or norm. This is the theory''s goal of an imposed bundle turned into a chosen one, applied to care. For whom: each person in a care relationship.'
+  formal: (forall ((x agent) (y agent)) (=> (and (is_subject x t) (not (= x y)) (or (provides_care x y t) (provides_care y x t))) (and (provides_care x y t) (provides_care y x t) (not (care_obliged x y t)) (not (care_obliged y x t)) (can_exit x t) (or (has_own_income x t) (and (earns x t) (owns_earnings x t))))))
+  subject: (exists ((x agent) (y agent)) (and (is_subject x t) (not (= x y)) (or (provides_care x y t) (provides_care y x t))))
+  primary_measure: possible
+  primary_measure_reason: A chosen good cannot be forced; a rule that forced it would be the imposition it excludes.
+  history: 'Slice 2 revision 3 blind-gloss experiment (plans/priority-slice2.md R3.3 e). Experiment only: never in src/properties.yaml. Gloss: r3/blind-gloss.yaml (blind author); formal/subject: r3/3x-encoder-1.yaml (blind-1, primary); contested: r3/3x-encoder-2.yaml (blind-2). Bundle bundle3x, aggregate 18e71a9209cf189cb8f92c47d71a60ac5638e6595e88d6722ac963a7dc7c6fd3. Two instances of one model; agreement measures that model''s consistency, not agreement between people.'

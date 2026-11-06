@@ -409,3 +409,496 @@ Each as a statement about encodings under strict compliance, within k = 6 and 8 
 - **Ablation** (`uv run phil rules ablate --k 6,8 --workers 4 --json --summary --readings --prev <revision-1 summary>` on ENGINE_PIN c53d132, 8m34s), compared with the revision-2 run (`run2/ablate-27-r2*`): JSON and summary identical once the label fields (`possible_lost_label` per row, `constitutive_labels` per entry) are removed; readings table identical once the suffix " (prohibition of the care act)" is removed (12 labelled cells: ectogenesis and gestational-surrogacy R4~prohibit, cps R2~prohibit, k=6 and 8, both encoders); the text report identical apart from its own output paths. The label is set on exactly those six rows (k=6, 8) and on no other.
 - **Layer 1**: `build.py --check` ok (27 institutions, 34 properties, 28 cards; institutions.json unchanged, properties.json gains only `measure_note`); `pytest -q` 32 passed; `check-all --no-cache` 146/146; `diff --baseline` 0 changed, 0 added, 0 removed; `gate` PASS, output identical to the revision-2 run line for line; `scripts/drop_one_match.py` identical. Engine suite 614 passed, 2 skipped (609 + test_4e, 4f, 4g, 4h, 5f).
 - Outputs in `/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/fixpass/` (mutation record `mutations.txt`, comparison `cmp_fp.py`), not kept. No scoreboard row appended (no new numbers).
+
+## Revision 3
+
+Status: 2026-11-06. Revision 3 as preregistered in plans/priority-slice2.md "Revision 3" (8e512f3), R3.6 steps 3 to 7: the primary measure (D4), the derived `obliged` and `care_obliged` (D5), the re-glossed and re-encoded `chosen_mutual_care` (D6), and the blind-gloss experiment against D6. Step 8 (council) is still to come; nothing below is called a result until its findings are answered. Engine: philosophy-engine 42df8af (R3.1, R3.2) + data syncs 0472661 (D4), 605cff4 (D5), 7859726 (D6) = **ENGINE_PIN 7859726** (the D6 sync changes data only; engine code is 42df8af's). Every quantity is a statement about encodings (ADR 0011), strict compliance, k = 6 and 8.
+
+**Second encoder: agent, not someone living under the institution (ADR 0012).** All encoders in this revision (the two dataset encoders and the two blind encoders) are fresh Claude agents: their agreement measures one model's consistency, not agreement across models or between people. The non-Claude encoder was **not run** (no API key); its prompt is inside bundle3x's hash (merge log "Revision 3: encoders").
+
+### Headline
+
+- **`chosen_mutual_care`, obliged version (D6).** The re-gloss author chose variant **B, E+** (both spouses' obliged care excluded; exit and no-sanction kept). Both dataset encoders wrote z3-equivalent formulas that add `(not (care_obliged h w t))` and `(not (care_obliged w h t))` to revision 2's. As encoded, the good is **absent in the base of all nine coverture-family entries and in every single-deletion row**: R6's row is now absent > absent (revision 2: absent > fragile), because R2 and R3 still oblige care there. No single rule moves it; scoreboard `goods_rows` 34 > 25. Probes on coverture-household (and, as extra information, the other three listed entries): with R5 and R6 deleted it reads **absent** (revision 2's formula: stable, obliged care read as chosen; the laundering is gone); with R3 and R6 deleted, absent (R2 still obliges him); with R2, R3 and R6 deleted, **fragile**, and also with R5 deleted. It is never stable. Every R3.5 prediction for variant B held; no RF3 falsifier fired.
+- **Blind-gloss experiment.** With glosses written from theory.md and intent.md only, two fresh Claude encoders agree (z3) on 1 of 6 goods (`mutual_household_care`), and **none** of the twelve blind formulas is z3-equivalent to the dataset's. Run against D6 at k = 6 and 8: 41 (entry, good) base states differ between some two of the three columns; three of the 13 preregistered rows read differently (coverture-household R2: carrying (guaranteed) > carrying (possible); R3: unread > carrying (possible); ectogenesis R4~prohibit: blind-1 unread); 3 ranked rows carry a contested reading between the blind encoders (revision 2: 0). One replacement candidate (`mutual_household_care`) and one conditional candidate (`cared_for`) are referred to the author, pending the faithfulness seat; none acted on. The dataset's formulas are unchanged.
+
+### D4 and D5 (R3.1, R3.2): recorded from the step-3 run
+
+As reported in computational-liberation b24cb36 and philosophy-engine 42df8af (outputs in the session scratchpad `r3run/`, not kept): the D4 ablation is identical to the fix-pass rerun apart from the new primary fields (**E1r3 held**); every primary cell of R3.1's table, the 13-row totals (10 read, 6 agree, 0 mismatch, 4 no row) and the summary lists (`primary_carrying`, `hard_cases_primary` empty, `top_goods_rules`) came out as computed; D5 is identical to D4 in every field (**E2r3 held**). Engine tests O1 to O6 and P1 to P5 pass; mutations MP1 to MP3 and MO1 to MO6 are all killed (record in the 42df8af message); engine suite 656 passed, 2 skipped. Layer 1 on D5: build ok, pytest 38 passed, check-all 146/146, diff 0/0/0, gate PASS identical, drop-one identical. **Value call, reported as such:** under the author's measure per good, coverture R3 carries no good in any row; its only revision-2 load was a guarantee of `mutual_household_care`, which the author reads as possible-primary.
+
+### Baseline for D6: the dataset moved between D5 and D6 (drift 1)
+
+The branch merged faithfulness batch 2 (cps R8 'would not benefit' exception with the free fluent `would_not_benefit`; P1 prose fixes) after the D5 run. R3.5's predictions were written before it. D6 is therefore compared with **D5'** = the dataset at 1c512b9 (D5 + the faithfulness batch), run on the same engine. D5' vs D5: 42 leaf differences, all in cps: R8, R11 and R11~prohibit lose their freedom load (`no_standing` open > reachable, freedom_down, at k = 6 and 8; load_freedom 1 > 0). No goods field, summary list or readings-table line differs. None of R3.5's rows is a cps row except cps R10 (tying, no row) and cps R2~prohibit (unranked), both unchanged. So the faithfulness batch moves no revision-3 prediction; its own effect is recorded here as drift with its cause, not as a failed prediction.
+
+### D6 (R3.4, R3.5): `chosen_mutual_care` replaced
+
+**Dataset entry.** `gloss`: the re-gloss author's, verbatim (r3/regloss.yaml). `formal` and `subject`: 3d encoder 1 (primary). `contested: []` (merge: formal equivalent, universal vs negated existential over the sanctioning agent; subject identical). `encoders: [encoder-1, encoder-2]` as the revision-3 dataset encoders, with bundle3d's hash and the merge-log section in `history`. Revision 2's gloss, formal, subject, `measure_note` and `history` moved verbatim into `history`. `measure_note` rewritten (guaranteed column still not meaningful; the obligation is now visible; the re-gloss author's note that a general spousal duty of mutual support would also make the good unattainable, since the fluent cannot say which rule obliges). `primary_measure: possible` and its reason kept. No other property changed (the five revision-1 goods' `formal`, `subject` and `contested` are byte-identical).
+
+**Variant.** The re-gloss author's answers: `excludes_obliged_care_of: both`, `exit_condition: true`, `no_sanction_condition: true`, i.e. **B (E+)**, one of the preregistered variants.
+
+**Run.** `phil rules ablate --k 6,8` on all 27 entries (8m18s), compared with D5' leaf by leaf: 270 leaf differences, all in the R6 row of the nine coverture-family entries (30 fields each: `chosen_mutual_care` absent > fragile becomes absent > absent; possible and primary gained 1 > 0, both encoders, both k). Summary identical to D5'. Readings table: only those R6 rows' goods columns.
+
+| row (nine coverture-family entries) | R3.5 prediction, B | D6 result | held |
+| --- | --- | --- | --- |
+| base | absent (R2 and R3) | absent in all nine, k = 6 and 8 | yes |
+| R6 deleted | absent > absent | absent > absent (D5': absent > fragile) | yes |
+| R3 deleted | absent > absent (R2 still obliges him) | absent > absent | yes |
+| R2, R4, R5, R7, R1, R5~prohibit, R1~prohibit, route rules | absent > absent | absent > absent (no row moves the good) | yes |
+| `top_goods_rules`, `primary_carrying` | unchanged from D4 | unchanged (summary identical to D5') | yes |
+| scoreboard `goods_rows` | 34 > 25 | **25** | yes |
+| encoders | same states in every row (high); z3-equivalent (medium) | same states in every row; z3-equivalent (merge) | yes |
+| guaranteed column | never stable | never stable | yes |
+
+**Probes** (base goods state of `chosen_mutual_care` in a scratch copy of coverture-household minus the set, rebuilt with the engine's `without_rule`; information, not ablation rows, not slice 4; k = 6 and 8 identical). Revision 2's formula is evaluated beside it as a control, and the same probes were run on coverture-household-us, mwpa-earnings and coverture-floor (identical results in all four).
+
+| deleted set | R3.5 prediction, B | D6 formula | revision-2 formula (control) | held |
+| --- | --- | --- | --- | --- |
+| {R5, R6} | absent | **absent** | stable | yes (RF3.5 not fired: the laundering is gone) |
+| {R3, R6} | absent (R2) | absent | fragile | yes |
+| {R2, R3, R6} | fragile | **fragile** | fragile | yes (RF3.7 not fired) |
+| {R2, R3, R5, R6} | fragile | fragile | fragile | yes |
+| {R6} (as the ablation row) | absent | absent | fragile | yes |
+| {R3} | absent | absent | absent | yes |
+
+Under {R3, R6}, `mutual_household_care` reads fragile and the other goods stable; under {R2, R3, R6} every coverture good reads fragile (nothing forces care once both duties go).
+
+**What it says, and what it does not.** As encoded, under coverture no compliant trace has mutual care that neither spouse is obliged to give, and no single rule's deletion changes that: the husband's maintenance duty (R2) and the wife's household duty (R3) each oblige care on their own, and the exit bar (R6) bars exit on top. The good becomes possible only when both duties and the exit bar go. This is a statement about the encoding of one good, under strict compliance; it is not a finding that chosen care is impossible in any real marriage, and, as the re-gloss author noted, any general duty of mutual support (as in many modern civil codes) would make the good unattainable in the same way.
+
+### The blind-gloss experiment (R3.3 e, R3.6 step 6)
+
+**Formulas** (dataset: data/institutions/properties.json at D6; blind: r3/3x-encoder-{1,2}.yaml; the experiment's property file: r3/experiment-properties.yaml, never in src/properties.yaml). Back-glosses, short:
+
+| good | dataset (primary) | blind-1 | blind-2 |
+| --- | --- | --- | --- |
+| `cared_for` | every continuing subject receives care from someone | every subject receives care from someone else who holds no power to sanction them | every subject receives care from someone who holds no power to sanction them (ectogenesis left out of its entries) |
+| `mutual_household_care` | each spouse provides care to the other | both directions of care, and `care_obliged` symmetric between spouses | equivalent to blind-1 |
+| `known_carer` | every continuing subject has a carer who also cared at the previous step, if anyone did | everyone receiving care from another has a carer who still cares at the next step | every subject has a carer who also cared at the previous step (unless newly a subject) |
+| `child_with_family` | one disjunct per entry (at home; parent cares; case open and not in custody) | cps only: a child with a parent and in no danger is not in custody | cps only: has a parent and is not in custody, unless in danger |
+| `provided_for` | maintained by her husband, or means of her own (contested: by anyone) | income of her own (independent, or earnings she owns) and care from someone else | care from someone and means of her own (income, owned earnings or controlled property) |
+| `chosen_mutual_care` | (D6) care both ways, not obliged either way, she can exit, no one can sanction her | any subject in a care relation: care both ways, not obliged either way, she can exit and has an income of her own | married couples: care both ways, not obliged either way, she can exit and has means of her own |
+
+**z3 equivalence** (fluents uninterpreted, as scripts/goods_equiv.py; D = dataset primary at D6):
+
+| good | formal D~b1 | D~b2 | b1~b2 | subject D~b1 | D~b2 | b1~b2 |
+| --- | --- | --- | --- | --- | --- | --- |
+| `cared_for` | different | different | different | equiv | equiv | equiv |
+| `mutual_household_care` | different | different | **equiv** | equiv | equiv | equiv |
+| `known_carer` | different | different | different | different | equiv | different |
+| `child_with_family` | different | different | different | equiv | equiv | equiv |
+| `provided_for` | different | different | different | equiv | equiv | equiv |
+| `chosen_mutual_care` | different | different | different | different | equiv | different |
+
+The dataset's `provided_for` alternative (encoder-2) is equivalent to neither blind formula.
+
+**How it was run (drift 4).** The spec's single scratch properties.json (blind-1 as `formal`, blind-2 as a contested alternative) is refused by the engine's R2.1 subject check: blind-2's `known_carer` subject names `is_subject`, undeclared in paternity-quota and transferable-leave, where blind-1's `known_carer` (which names only `provides_care` and `succ`) applies. The experiment was therefore run in split form: one scratch properties.json per blind encoder, each = D6's with the six goods replaced by that encoder's own `formal`, `subject` and `entries` (so each encoder's goods apply where its own entries and its own fluents put them), `phil rules ablate --k 6,8` on all 27 entries each (blind-1 5m, blind-2 5m). Per-encoder readings are then the two runs' readings, and contested readings are computed as the engine defines them (`summarize`: ranked rows at k = 6 whose reading differs by encoder in any column), across the two runs. r3/experiment-properties.yaml records the combined form (encoder 1's `entries` on each property; the note on `cared_for`'s alternative gives encoder 2's).
+
+
+**Reading the differences.** Most of the blind-vs-dataset movement traces to three encoding choices, each visible in the formulas above, none a defect:
+- `mutual_household_care` (blind, both): requiring `care_obliged` to be symmetric makes deleting either spouse's duty leave a one-sided duty, so R2 and R3 each make the good impossible (stable > absent) and read **carrying (possible)** and constitutive in all nine coverture-family entries; under the dataset formula R3 is unread (primary) and guarantee-carrying.
+- `cared_for` (blind, both): excluding care from a carer who holds a power to sanction makes it fragile, not stable, in the coverture family (the husband holds the chastisement power while R5 stands; deleting R5 makes it stable, an unranked row) and absent in the companion entries; deleting R2 then moves nothing, so airline-flight R2 and coverture R2 lose their guaranteed-primary load for this good.
+- `provided_for` (blind, both): means of her own are required, so maintenance by the husband no longer counts; the good reads absent or fragile instead of stable, and R2 moves it only in coverture-floor (stable > fragile; its base is stable there through R20's income access and R2's care).
+- `known_carer` (blind-1 forward continuity vs blind-2 backward continuity): the encoders' main disagreement; blind-1 reads it fragile across the coverture family and stable in cps, ectogenesis and gestational-surrogacy, blind-2 the reverse pattern. It produces the contested readings on ectogenesis and gestational-surrogacy R4~prohibit and airline-flight R2.
+
+**Predictions X1 to X7** (none a falsifier of the instrument; a miss is a result):
+
+| | prediction | result | held |
+| --- | --- | --- | --- |
+| X1 | the free list names at least 3 of the six topics | **2** clearly (care received: `receiving_care`; secured subsistence: `income`, `financial_independence`, `housing`); a third only if `being_known` (being known by others, no carer named) counts as "a continuing, knowing carer"; mutual care in a household, child with family and chosen or unimposed care do not appear | **borderline**: missed on the strict reading, held only on the lenient one |
+| X2 | at most 4 of six blind pairs z3-equivalent; `mutual_household_care` likeliest equivalent; `child_with_family`, `provided_for`, `chosen_mutual_care` likeliest contested | 1 of 6 (`mutual_household_care`); the three named are contested | yes |
+| X3 | at least one `not_expressible` | many: blind-1 records them on all six goods (cared_for in ectogenesis; partial in every listed entry of four goods; child_with_family in kibbutz and ectogenesis), blind-2 likewise | yes |
+| X4 | `contested_readings` >= 1 in some entry | **3 ranked rows** (engine definition, k = 6): airline-flight R2 (guaranteed: blind-1 unread, blind-2 guarantee-carrying), ectogenesis R4~prohibit (primary: blind-1 unread, blind-2 carrying (possible)), gestational-surrogacy R4~prohibit (possible and primary); 34 cells counting unranked rows and both k | yes |
+| X5 | at most 2 of six blind primaries z3-equivalent to the dataset's | **0** (and 0 for blind-2) | yes (RF3.9 not fired) |
+| X6 | on the 13 rows the blind primary differs from the dataset in at least one row (likeliest police-crisis R2) | 3 rows differ: coverture-household R2 and R3, ectogenesis R4~prohibit; police-crisis R2 reads unread in all three columns (the blind `cared_for` reads it fragile > fragile there too) | yes; the named locus wrong |
+| X7 | if the blind `chosen_mutual_care` gloss mentions duty or being made to care, at least one encoder uses `care_obliged`, and then base absent and R6 absent > absent | the gloss says "must not be imposed by law, economics or norm" (imposition, not "duty" in words); **both** encoders use `care_obliged` both ways; base absent in all nine entries and R6 absent > absent, both encoders, both k | yes |
+
+**Replacement candidates** (R3.3 e; referred to the author for a revision-4 preregistration; **none acted on**; condition 3, the faithfulness seat's back-translation, is still to come):
+- **`mutual_household_care`: candidate.** (1) blind-1 and blind-2 z3-equivalent; (2) its primary reading differs from the dataset's on ranked rows of the five entries (coverture-household R3 unread > carrying (possible); R2 carrying (guaranteed) > carrying (possible)) and its base agrees (stable). (3) pending.
+- **`cared_for`: conditional candidate.** (2) holds (base stable > fragile in the coverture family; coverture R2's reading). (1) holds on every row of every entry where both blind formulas apply (500 cells, no state differs), but not literally "in every row": blind-2 left ectogenesis out of its entries (its sanction clause is not expressible there), so its formula does not apply in ectogenesis, where blind-1's reads fragile. Whether that applicability difference fails (1) is the author's call.
+- **`chosen_mutual_care`: not a candidate.** (1) holds (same states in every row: absent everywhere, like the dataset) but (2) fails: no reading or base state differs from D6.
+- **`known_carer`, `child_with_family`, `provided_for`: not candidates** (the blind encoders disagree in states: `known_carer` in 13 entries, `child_with_family` in cps, `provided_for` in the five MWPA entries). Input for slice 5, with these loci: `known_carer`'s direction of continuity (forward vs backward); `child_with_family`'s danger exception (guard vs disjunct; blind-1 reads it stable in cps, blind-2 fragile); `provided_for`'s means of her own (whether controlled property counts).
+
+**Uncounted, inconsistent_after, k-disagreements** (both blind runs and D6): **none** in all three (0 uncounted cells, 0 inconsistent_after, 0 k-disagreement rows; every base state and every row identical at k = 6 and 8 in every column). Goods not-applicable rows: D6 3 (airline-flight R1~prohibit, ectogenesis R1~prohibit, gestational-surrogacy R2~prohibit); blind-1 7 (those three, plus ectogenesis and gestational-surrogacy R4~prohibit for `known_carer`, whose subject needs care from another, and paternity-quota R1 and R1~prohibit, where blind-1's `known_carer` applies); blind-2 3 (the same three as D6).
+
+**What the experiment can and cannot show.** It measures agreement between two instances of one model encoding a gloss written without the instrument. Agreement dropped from 4 of 5 (revision 1) and 1 of 1 (revision 2), both with non-blind glosses, to 1 of 6: the earlier convergence depended largely on the gloss fixing the fluents (faithfulness revision-2 finding 9). No blind formula is equivalent to the dataset's, and the readings that depend on encoder choice are listed above. It cannot show agreement across models or between people: two Claude instances share priors, and the non-Claude encoder was not run.
+
+### Falsifiers (R3.5)
+
+| | falsifier | fired |
+| --- | --- | --- |
+| RF3.1 | D4 vs D5 differ in any field, or a layer-1 verdict changes | no (D5 = D4; check-all, diff, gate, drop-one unchanged at D5 and again at D6) |
+| RF3.2 | a primary cell differs from R3.1's table, or a measure field / `top_rules` differs from the fix-pass rerun | no |
+| RF3.3 | an obliged differential disagreement (O3) or dataset pin failure (O5) | no (engine suite 656 passed; computational-liberation pytest 38 passed at D6) |
+| RF3.4 | under B, `chosen_mutual_care` not absent in some coverture-family base, or R6 not absent > absent | no |
+| RF3.5 | probe {R5, R6} not absent | no (absent; revision-2 formula: stable) |
+| RF3.6 | under B, any single-rule row moves `chosen_mutual_care` | no |
+| RF3.7 | {R2, R3, R6} reads absent (B) | no (fragile) |
+| RF3.8 | a stable cell for `chosen_mutual_care`, a goods uncounted cell, `no_witness_within_k`, a goods k-disagreement or `inconsistent_after` | no (none in D6, nor in either blind run) |
+| RF3.9 | X5 fails | no (0 of 6) |
+
+**No RF3 falsifier fired.**
+
+### Layer 1 at D6
+
+`build.py --check`: ok, 27 institutions, 34 properties, 28 cards (institutions.json unchanged by D6; properties.json changes only `chosen_mutual_care`; six cards change only their goods note). `pytest -q`: 38 passed (computational-liberation, including the O5 `care_obliged` pins); philosophy-engine 656 passed, 2 skipped on the synced data. `check-all --no-cache`: 146/146 agreement. `diff --baseline` (data/verdicts-baseline.json at HEAD): 0 changed, 0 added, 0 removed of 146. `gate`: PASS, output identical to the D5 run line for line. `scripts/drop_one_match.py`: identical to the D5 run. No verdict reads `chosen_mutual_care` outside the ablation, so none moved. Scoreboard row appended (docs/scoreboard-ablate.md): `2026-11-06 | 7859726 | rules ablate | 27 | 356 | 0 | 0 | 0 | 0 | 25 | 0` (`top_rule_changes` against D5'; `contested_readings` 0 in the dataset).
+
+### Pass test (R3.6)
+
+| item | status |
+| --- | --- |
+| engine implements R3.1 and R3.2, every listed test passing, every listed mutation killed | **pass** (42df8af) |
+| E1r3 and E2r3 hold | **pass** |
+| `chosen_mutual_care` re-glossed by an audited fresh agent from its bundle only, encoded by two audited fresh encoders from a hashed bundle containing the prompt, and run | **pass** (merge log "Revision 3"; D6 above) |
+| blind-gloss experiment on all six goods: blind author audited, message order kept; two audited fresh Claude encoders; hashed bundles; results side by side at k = 6 and 8 with uncounted, inconsistent_after and k-disagreements listed | **pass**, with the split-run departure (drift 4) and the bundle departures (drift 2) |
+| non-Claude encoder recorded as not run, procedure and prompt hashed | **pass** (bundle3x includes prompt-api.md) |
+| every report carries the ADR 0012 sentence | **pass** |
+| fail: a `formal`, `subject` or `contested` of the five revision-1 goods changes | not triggered (properties.yaml diff touches only `chosen_mutual_care`) |
+| fail: an experiment formula enters src/properties.yaml | not triggered (scratch properties.json only; r3/experiment-properties.yaml is outside src/) |
+| fail: a gloss author or encoder given anything outside its bundle | not triggered (audits in the merge log) |
+| fail: the free list written after the ids were shown | not triggered (the ids were moved out of the bundle while it was written; hash recorded first) |
+| fail: a contested alternative pooled or dropped | not triggered (each blind encoder its own column; the dataset's `provided_for` alternative kept) |
+| fail: a prediction edited after a run | not triggered (plans/priority-slice2.md unchanged) |
+
+**Verdict: revision 3 passes steps 1 to 7, pending the step-8 council** (correctness seat: `obliged`, the primary column, tests and mutations, E1r3/E2r3; faithfulness seat: back-translation of the new `chosen_mutual_care` and each blind formula, transcript audits, the primary mapping, and condition 3 of the replacement rule).
+
+### Drift (recorded; nothing edited in the preregistration)
+
+1. **Dataset baseline moved** (faithfulness batch 2, merged from `sourcing-verify` after the D5 run): cps R8, R11, R11~prohibit freedom load 1 > 0 at both k; no goods change. D6 is compared with D5' (above). The police R2 experiment (P3) is not in the dataset. diff/gate/drop-one are against data/verdicts-baseline.json at HEAD.
+2. **Bundle departures** (merge log "Revision 3: encoders", coordinator decisions): the validator is a new self-contained validate.sh (the revision-2 one built coverture-floor from the revision-1 hand vocab); vocab diffs against revision 1 are not "`care_obliged` only" (the dataset had since gained `has_own_income` / `draw_subsistence`, `would_not_benefit` and the real coverture-floor entry); cps `defaults` kept in its vocab; goods-list.md format chosen by the assembler; prompt-api.md inside bundle3x (one encoder saw its name in a listing and did not open it).
+3. **Gloss procedure stricter than the spec**: prompt-gloss-2.md was moved out of glossbundle3 while message 1 ran (the spec left it on disk), then restored with its hash re-verified (merge log "Revision 3: gloss authors").
+4. **Experiment run in split form**: the combined scratch property is refused by the engine's R2.1 subject check (blind-2's `known_carer` subject names `is_subject`, undeclared in the two leave entries where blind-1's applies). Each blind encoder ran in its own scratch properties.json with its own `entries`; contested readings computed across the two runs with the engine's definition. Consequence: blind-2's `cared_for` is not evaluated in ectogenesis (outside its own entries), where a combined run would have evaluated it on blind-1's entries.
+5. **X1 judged borderline** (strictly 2 of 6 topics; 3 only if `being_known` counts).
+6. **Extra information, not preregistered**: probes also on coverture-household-us, mwpa-earnings and coverture-floor, the {R6} and {R3} probes, and revision 2's formula as a control (all consistent).
+7. **History carries more than R3.4 names**: besides revision 2's gloss and formal, its subject, `measure_note` and `history` moved into `history` verbatim, so nothing is lost.
+8. **Card goods notes**: updated for coverture-household, coverture-household-us, mwpa-earnings and coverture-floor (chosen care, primary measure) and ectogenesis and kibbutz-childrens-house (primary measure). The cps and police-crisis notes were left alone: another session owns edits to those entries (faithfulness batch). For the record, cps R2~prohibit reads carrying (possible) under the primary column (unranked) and police-crisis has no primary load.
+9. **ENGINE_PIN** moves from 605cff4 to 7859726, a data-only sync (pattern c53d132); engine code unchanged.
+
+### Reproduction
+
+Dataset: computational-liberation at this commit, `uv run python data/institutions/build.py --write --cards`. D5' and D6: `uv run phil rules ablate --k 6,8 --workers 4 --json --summary --readings` (D5': `--institutions/--properties` copies of data/institutions/*.json at 1c512b9; D6: the committed data, with `--scoreboard docs/scoreboard-ablate.md --prev <D5' summary>`). Probes: a scratch script applying `rules_ablate.without_rule` per set and reading `rules_checks.run_all` goods states at k = 6 and 8. Experiment: two scratch properties.json (D6's with the six goods replaced by r3/3x-encoder-1.yaml's, resp. -2's, formal, subject and entries), each run with the same ablate command; equivalence with the scripts/goods_equiv.py logic on formal and subject. Outputs in `/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/r3d6/`, not kept.
+
+### Side-by-side tables (D6 vs blind-1 vs blind-2)
+
+#### Base states (unablated), D6 dataset primary | blind-1 | blind-2 (k=6 = k=8 unless shown; '-' = not applicable in that entry)
+
+| entry | good | D6 | blind-1 | blind-2 |
+| --- | --- | --- | --- | --- |
+| coverture-household | cared_for | stable | fragile | fragile |
+| coverture-household | mutual_household_care | stable | stable | stable |
+| coverture-household | known_carer | stable | fragile | stable |
+| coverture-household | provided_for | stable | absent | absent |
+| coverture-household | chosen_mutual_care | absent | absent | absent |
+| police-crisis | cared_for | fragile | fragile | fragile |
+| police-crisis | known_carer | fragile | fragile | fragile |
+| cps | cared_for | fragile | fragile | fragile |
+| cps | known_carer | fragile | stable | fragile |
+| cps | child_with_family | fragile | stable | fragile |
+| crisis-team | cared_for | fragile | fragile | fragile |
+| crisis-team | known_carer | fragile | fragile | fragile |
+| paternity-quota | known_carer | - | fragile | - |
+| transferable-leave | known_carer | - | fragile | - |
+| companion-ownership | cared_for | fragile | absent | absent |
+| companion-ownership | known_carer | fragile | fragile | fragile |
+| companion-guardianship | cared_for | fragile | absent | absent |
+| companion-guardianship | known_carer | fragile | fragile | fragile |
+| companion-guardian-renamed | cared_for | fragile | absent | absent |
+| companion-guardian-renamed | known_carer | fragile | fragile | fragile |
+| kibbutz-childrens-house | cared_for | fragile | fragile | fragile |
+| kibbutz-childrens-house | known_carer | fragile | fragile | fragile |
+| kibbutz-childrens-house | child_with_family | absent | - | - |
+| kibbutz-childrens-house-no-implicit | cared_for | fragile | fragile | fragile |
+| kibbutz-childrens-house-no-implicit | known_carer | fragile | fragile | fragile |
+| airline-flight | cared_for | stable | fragile | fragile |
+| airline-flight | known_carer | stable | fragile | stable |
+| coverture-household-us | cared_for | stable | fragile | fragile |
+| coverture-household-us | mutual_household_care | stable | stable | stable |
+| coverture-household-us | known_carer | stable | fragile | stable |
+| coverture-household-us | provided_for | stable | absent | absent |
+| coverture-household-us | chosen_mutual_care | absent | absent | absent |
+| mwpa-creditor-exemption | cared_for | stable | fragile | fragile |
+| mwpa-creditor-exemption | mutual_household_care | stable | stable | stable |
+| mwpa-creditor-exemption | known_carer | stable | fragile | stable |
+| mwpa-creditor-exemption | provided_for | stable | absent | absent |
+| mwpa-creditor-exemption | chosen_mutual_care | absent | absent | absent |
+| mwpa-property | cared_for | stable | fragile | fragile |
+| mwpa-property | mutual_household_care | stable | stable | stable |
+| mwpa-property | known_carer | stable | fragile | stable |
+| mwpa-property | provided_for | stable | absent | fragile |
+| mwpa-property | chosen_mutual_care | absent | absent | absent |
+| mwpa-earnings | cared_for | stable | fragile | fragile |
+| mwpa-earnings | mutual_household_care | stable | stable | stable |
+| mwpa-earnings | known_carer | stable | fragile | stable |
+| mwpa-earnings | provided_for | stable | fragile | fragile |
+| mwpa-earnings | chosen_mutual_care | absent | absent | absent |
+| mwpa-sole-trader | cared_for | stable | fragile | fragile |
+| mwpa-sole-trader | mutual_household_care | stable | stable | stable |
+| mwpa-sole-trader | known_carer | stable | fragile | stable |
+| mwpa-sole-trader | provided_for | stable | fragile | fragile |
+| mwpa-sole-trader | chosen_mutual_care | absent | absent | absent |
+| mwpa-suit | cared_for | stable | fragile | fragile |
+| mwpa-suit | mutual_household_care | stable | stable | stable |
+| mwpa-suit | known_carer | stable | fragile | stable |
+| mwpa-suit | provided_for | stable | fragile | fragile |
+| mwpa-suit | chosen_mutual_care | absent | absent | absent |
+| mwpa-property-narrowed | cared_for | stable | fragile | fragile |
+| mwpa-property-narrowed | mutual_household_care | stable | stable | stable |
+| mwpa-property-narrowed | known_carer | stable | fragile | stable |
+| mwpa-property-narrowed | provided_for | stable | absent | fragile |
+| mwpa-property-narrowed | chosen_mutual_care | absent | absent | absent |
+| coverture-floor | cared_for | stable | fragile | fragile |
+| coverture-floor | mutual_household_care | stable | stable | stable |
+| coverture-floor | known_carer | stable | fragile | stable |
+| coverture-floor | provided_for | stable | stable | stable |
+| coverture-floor | chosen_mutual_care | absent | absent | absent |
+| ectogenesis | cared_for | fragile | fragile | - |
+| ectogenesis | known_carer | fragile | stable | fragile |
+| ectogenesis | child_with_family | fragile | - | - |
+| gestational-surrogacy | cared_for | fragile | - | - |
+| gestational-surrogacy | known_carer | fragile | stable | fragile |
+
+Base k-disagreements: none. Base differences between any two columns: 41 (entry, good) pairs.
+
+#### Rows where some column moves a good and the three columns' transitions differ (k=6; k=8 identical unless marked)
+
+| entry | rule | ranked | good | D6 | blind-1 | blind-2 |
+| --- | --- | --- | --- | --- | --- | --- |
+| coverture-household | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| coverture-household | R2 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| coverture-household | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| coverture-household | R2 | yes | provided_for | stable>fragile | absent | absent |
+| coverture-household | R3 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| coverture-household | R5 | no | cared_for | stable | fragile>stable | fragile>stable |
+| coverture-household | R5~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| cps | R2~prohibit | no | known_carer | fragile>absent | stable | fragile>absent |
+| cps | R3 | no | child_with_family | fragile | stable>fragile | fragile |
+| cps | R3~prohibit | no | child_with_family | fragile | stable>fragile | fragile |
+| paternity-quota | R1 | yes | known_carer | - | fragile>not_applicable | - |
+| paternity-quota | R1~prohibit | yes | known_carer | - | fragile>not_applicable | - |
+| companion-ownership | R1~prohibit | no | cared_for | fragile>stable | absent | absent |
+| companion-ownership | R10 | no | cared_for | fragile | absent>fragile | absent>fragile |
+| companion-ownership | R10~prohibit | no | cared_for | fragile | absent>fragile | absent>fragile |
+| companion-guardianship | R10 | no | cared_for | fragile | absent>fragile | absent>fragile |
+| companion-guardianship | R10~prohibit | no | cared_for | fragile | absent>fragile | absent>fragile |
+| companion-guardian-renamed | R1~prohibit | no | cared_for | fragile>stable | absent | absent |
+| companion-guardian-renamed | R10 | no | cared_for | fragile | absent>fragile | absent>fragile |
+| companion-guardian-renamed | R10~prohibit | no | cared_for | fragile | absent>fragile | absent>fragile |
+| kibbutz-childrens-house | R4 | yes | child_with_family | absent>fragile | - | - |
+| airline-flight | R1~prohibit | no | cared_for | stable>not_applicable | fragile>not_applicable | fragile>not_applicable |
+| airline-flight | R1~prohibit | no | known_carer | stable>not_applicable | fragile | stable>not_applicable |
+| airline-flight | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| airline-flight | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| airline-flight | R3 | no | cared_for | stable | fragile>stable | fragile>stable |
+| airline-flight | R3~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| coverture-household-us | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| coverture-household-us | R2 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| coverture-household-us | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| coverture-household-us | R2 | yes | provided_for | stable>fragile | absent | absent |
+| coverture-household-us | R3 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| coverture-household-us | R5 | no | cared_for | stable | fragile>stable | fragile>stable |
+| coverture-household-us | R5~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-creditor-exemption | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| mwpa-creditor-exemption | R2 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-creditor-exemption | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| mwpa-creditor-exemption | R2 | yes | provided_for | stable>fragile | absent | absent |
+| mwpa-creditor-exemption | R3 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-creditor-exemption | R5 | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-creditor-exemption | R5~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-property | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| mwpa-property | R2 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-property | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| mwpa-property | R2 | yes | provided_for | stable>fragile | absent | fragile |
+| mwpa-property | R3 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-property | R5 | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-property | R5~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-property | R13 | no | provided_for | stable | absent | fragile>absent |
+| mwpa-property | R13~prohibit | no | provided_for | stable | absent | fragile>absent |
+| mwpa-earnings | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| mwpa-earnings | R2 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-earnings | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| mwpa-earnings | R2 | yes | provided_for | stable>fragile | fragile | fragile |
+| mwpa-earnings | R3 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-earnings | R5 | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-earnings | R5~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-earnings | R14 | no | provided_for | stable | fragile>absent | fragile |
+| mwpa-earnings | R14~prohibit | no | provided_for | stable | fragile>absent | fragile |
+| mwpa-sole-trader | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| mwpa-sole-trader | R2 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-sole-trader | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| mwpa-sole-trader | R2 | yes | provided_for | stable>fragile | fragile | fragile |
+| mwpa-sole-trader | R3 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-sole-trader | R5 | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-sole-trader | R5~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-sole-trader | R14 | no | provided_for | stable | fragile>absent | fragile |
+| mwpa-sole-trader | R14~prohibit | no | provided_for | stable | fragile>absent | fragile |
+| mwpa-suit | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| mwpa-suit | R2 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-suit | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| mwpa-suit | R2 | yes | provided_for | stable>fragile | fragile | fragile |
+| mwpa-suit | R3 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-suit | R5 | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-suit | R5~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-suit | R14 | no | provided_for | stable | fragile>absent | fragile |
+| mwpa-suit | R14~prohibit | no | provided_for | stable | fragile>absent | fragile |
+| mwpa-property-narrowed | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| mwpa-property-narrowed | R2 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-property-narrowed | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| mwpa-property-narrowed | R2 | yes | provided_for | stable>fragile | absent | fragile |
+| mwpa-property-narrowed | R3 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| mwpa-property-narrowed | R5 | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-property-narrowed | R5~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| mwpa-property-narrowed | R13 | no | provided_for | stable | absent | fragile>absent |
+| mwpa-property-narrowed | R13~prohibit | no | provided_for | stable | absent | fragile>absent |
+| coverture-floor | R2 | yes | cared_for | stable>fragile | fragile | fragile |
+| coverture-floor | R2 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| coverture-floor | R2 | yes | known_carer | stable>fragile | fragile | stable>fragile |
+| coverture-floor | R2 | yes | provided_for | stable | stable>fragile | stable>fragile |
+| coverture-floor | R3 | yes | mutual_household_care | stable>fragile | stable>absent | stable>absent |
+| coverture-floor | R5 | no | cared_for | stable | fragile>stable | fragile>stable |
+| coverture-floor | R5~prohibit | no | cared_for | stable | fragile>stable | fragile>stable |
+| coverture-floor | R20 | no | provided_for | stable | stable>absent | stable>absent |
+| coverture-floor | R20~prohibit | yes | provided_for | stable | stable>absent | stable>absent |
+| ectogenesis | R1~prohibit | yes | cared_for | fragile>not_applicable | fragile>not_applicable | - |
+| ectogenesis | R1~prohibit | yes | known_carer | fragile>not_applicable | stable>not_applicable | fragile>not_applicable |
+| ectogenesis | R1~prohibit | yes | child_with_family | fragile>not_applicable | - | - |
+| ectogenesis | R4~prohibit | yes | cared_for | fragile>absent | fragile>absent | - |
+| ectogenesis | R4~prohibit | yes | known_carer | fragile>absent | stable>not_applicable | fragile>absent |
+| ectogenesis | R4~prohibit | yes | child_with_family | fragile>absent | - | - |
+| gestational-surrogacy | R2~prohibit | yes | cared_for | fragile>not_applicable | - | - |
+| gestational-surrogacy | R2~prohibit | yes | known_carer | fragile>not_applicable | stable>not_applicable | fragile>not_applicable |
+| gestational-surrogacy | R4~prohibit | yes | cared_for | fragile>absent | - | - |
+| gestational-surrogacy | R4~prohibit | yes | known_carer | fragile>absent | stable>not_applicable | fragile>absent |
+
+105 (row, good) pairs. Row-level k-disagreements across the three columns: none.
+
+#### Primary readings that differ between D6 and either blind encoder (k=6)
+
+| entry | rule | ranked | D6 | blind-1 | blind-2 |
+| --- | --- | --- | --- | --- | --- |
+| coverture-household | R2 | yes | carrying (guaranteed) | carrying (possible) | carrying (possible) |
+| coverture-household | R3 | yes | unread | carrying (possible) | carrying (possible) |
+| cps | R2~prohibit | no | carrying (possible) | unread | carrying (possible) |
+| airline-flight | R2 | yes | carrying (guaranteed) | unread | unread |
+| coverture-household-us | R2 | yes | carrying (guaranteed) | carrying (possible) | carrying (possible) |
+| coverture-household-us | R3 | yes | unread | carrying (possible) | carrying (possible) |
+| mwpa-creditor-exemption | R2 | yes | carrying (guaranteed) | carrying (possible) | carrying (possible) |
+| mwpa-creditor-exemption | R3 | yes | unread | carrying (possible) | carrying (possible) |
+| mwpa-property | R2 | yes | carrying (guaranteed) | carrying (possible) | carrying (possible) |
+| mwpa-property | R3 | yes | unread | carrying (possible) | carrying (possible) |
+| mwpa-earnings | R2 | yes | carrying (guaranteed) | carrying (possible) | carrying (possible) |
+| mwpa-earnings | R3 | yes | unread | carrying (possible) | carrying (possible) |
+| mwpa-sole-trader | R2 | yes | carrying (guaranteed) | carrying (possible) | carrying (possible) |
+| mwpa-sole-trader | R3 | yes | unread | carrying (possible) | carrying (possible) |
+| mwpa-suit | R2 | yes | carrying (guaranteed) | carrying (possible) | carrying (possible) |
+| mwpa-suit | R3 | yes | unread | carrying (possible) | carrying (possible) |
+| mwpa-property-narrowed | R2 | yes | carrying (guaranteed) | carrying (possible) | carrying (possible) |
+| mwpa-property-narrowed | R3 | yes | unread | carrying (possible) | carrying (possible) |
+| coverture-floor | R2 | yes | carrying (guaranteed) | carrying (both) | carrying (both) |
+| coverture-floor | R3 | yes | unread | carrying (possible) | carrying (possible) |
+| coverture-floor | R20 | no | unread | carrying (guaranteed) | carrying (guaranteed) |
+| coverture-floor | R20~prohibit | yes | unread | carrying (guaranteed) | carrying (guaranteed) |
+| ectogenesis | R4~prohibit | yes | carrying (possible) | unread | carrying (possible) |
+| gestational-surrogacy | R4~prohibit | yes | carrying (possible) | unread | carrying (possible) |
+
+24 rows. Ranked rows in the five entries: [('coverture-household', 'R2'), ('coverture-household', 'R3'), ('ectogenesis', 'R4~prohibit')]
+
+#### The 13 preregistered rows, primary reading (k=6; k=8 identical unless shown)
+
+| entry | rule | D6 | blind-1 | blind-2 |
+| --- | --- | --- | --- | --- |
+| coverture-household | R2 | carrying (guaranteed) | carrying (possible) | carrying (possible) |
+| coverture-household | R3 | unread | carrying (possible) | carrying (possible) |
+| coverture-household | R4 | tying | tying | tying |
+| coverture-household | R7 | tying | tying | tying |
+| coverture-household | R6 | tying | tying | tying |
+| police-crisis | R2 | unread | unread | unread |
+| police-crisis | R4 | tying | tying | tying |
+| cps | R10 | tying | tying | tying |
+| kibbutz-childrens-house | R2 | tying | tying | tying |
+| kibbutz-childrens-house | R3 | unread | unread | unread |
+| kibbutz-childrens-house | R4 | tying | tying | tying |
+| ectogenesis | R4~prohibit | carrying (possible) | unread | carrying (possible) |
+| ectogenesis | R5 | tying | tying | tying |
+
+Rows where a blind column differs from D6: [('coverture-household', 'R2'), ('coverture-household', 'R3'), ('ectogenesis', 'R4~prohibit')]
+
+#### Contested readings between blind-1 and blind-2 (reading differs by encoder on a row; any of the three columns; k=6 and 8)
+
+- cps R2~prohibit k=6 primary: blind-1 unread / blind-2 carrying (possible) (unranked)
+- cps R2~prohibit k=8 primary: blind-1 unread / blind-2 carrying (possible) (unranked)
+- cps R3 k=6 guaranteed: blind-1 guarantee-carrying / blind-2 unread (unranked)
+- cps R3 k=8 guaranteed: blind-1 guarantee-carrying / blind-2 unread (unranked)
+- cps R3~prohibit k=6 guaranteed: blind-1 guarantee-carrying / blind-2 unread (unranked)
+- cps R3~prohibit k=8 guaranteed: blind-1 guarantee-carrying / blind-2 unread (unranked)
+- airline-flight R2 k=6 guaranteed: blind-1 unread / blind-2 guarantee-carrying
+- airline-flight R2 k=8 guaranteed: blind-1 unread / blind-2 guarantee-carrying
+- mwpa-property R13 k=6 possible: blind-1 unread / blind-2 constitutive (unranked)
+- mwpa-property R13 k=8 possible: blind-1 unread / blind-2 constitutive (unranked)
+- mwpa-property R13~prohibit k=6 possible: blind-1 unread / blind-2 constitutive (unranked)
+- mwpa-property R13~prohibit k=8 possible: blind-1 unread / blind-2 constitutive (unranked)
+- mwpa-earnings R14 k=6 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-earnings R14 k=8 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-earnings R14~prohibit k=6 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-earnings R14~prohibit k=8 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-sole-trader R14 k=6 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-sole-trader R14 k=8 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-sole-trader R14~prohibit k=6 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-sole-trader R14~prohibit k=8 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-suit R14 k=6 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-suit R14 k=8 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-suit R14~prohibit k=6 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-suit R14~prohibit k=8 possible: blind-1 constitutive / blind-2 unread (unranked)
+- mwpa-property-narrowed R13 k=6 possible: blind-1 unread / blind-2 constitutive (unranked)
+- mwpa-property-narrowed R13 k=8 possible: blind-1 unread / blind-2 constitutive (unranked)
+- mwpa-property-narrowed R13~prohibit k=6 possible: blind-1 unread / blind-2 constitutive (unranked)
+- mwpa-property-narrowed R13~prohibit k=8 possible: blind-1 unread / blind-2 constitutive (unranked)
+- ectogenesis R4~prohibit k=6 primary: blind-1 unread / blind-2 carrying (possible)
+- ectogenesis R4~prohibit k=8 primary: blind-1 unread / blind-2 carrying (possible)
+- gestational-surrogacy R4~prohibit k=6 possible: blind-1 unread / blind-2 constitutive
+- gestational-surrogacy R4~prohibit k=6 primary: blind-1 unread / blind-2 carrying (possible)
+- gestational-surrogacy R4~prohibit k=8 possible: blind-1 unread / blind-2 constitutive
+- gestational-surrogacy R4~prohibit k=8 primary: blind-1 unread / blind-2 carrying (possible)
+
+34 (row, k, column) cells; entries: ['airline-flight', 'cps', 'ectogenesis', 'gestational-surrogacy', 'mwpa-earnings', 'mwpa-property', 'mwpa-property-narrowed', 'mwpa-sole-trader', 'mwpa-suit']
+
+#### Totals per run (uncounted, inconsistent_after, k-disagreements, goods n/a rows)
+
+- **D6**: summary totals {'entries': 27, 'inconsistent_after': 0, 'uncounted': 0}; uncounted cells 0; inconsistent_after 0; k-disagreement rows 0; goods n/a rows 3
+  - n/a: ('airline-flight', 'R1~prohibit', ('cared_for', 'known_carer'))
+  - n/a: ('ectogenesis', 'R1~prohibit', ('cared_for', 'child_with_family', 'known_carer'))
+  - n/a: ('gestational-surrogacy', 'R2~prohibit', ('cared_for', 'known_carer'))
+- **blind-1**: summary totals {'entries': 27, 'inconsistent_after': 0, 'uncounted': 0}; uncounted cells 0; inconsistent_after 0; k-disagreement rows 0; goods n/a rows 7
+  - n/a: ('airline-flight', 'R1~prohibit', ('cared_for',))
+  - n/a: ('ectogenesis', 'R1~prohibit', ('cared_for', 'known_carer'))
+  - n/a: ('ectogenesis', 'R4~prohibit', ('known_carer',))
+  - n/a: ('gestational-surrogacy', 'R2~prohibit', ('known_carer',))
+  - n/a: ('gestational-surrogacy', 'R4~prohibit', ('known_carer',))
+  - n/a: ('paternity-quota', 'R1', ('known_carer',))
+  - n/a: ('paternity-quota', 'R1~prohibit', ('known_carer',))
+- **blind-2**: summary totals {'entries': 27, 'inconsistent_after': 0, 'uncounted': 0}; uncounted cells 0; inconsistent_after 0; k-disagreement rows 0; goods n/a rows 3
+  - n/a: ('airline-flight', 'R1~prohibit', ('cared_for', 'known_carer'))
+  - n/a: ('ectogenesis', 'R1~prohibit', ('known_carer',))
+  - n/a: ('gestational-surrogacy', 'R2~prohibit', ('known_carer',))
+
+#### Summary lists that differ from D6 (k=6)
+
+- coverture-household (blind-1): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- coverture-household (blind-2): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- airline-flight (blind-1): `primary_carrying` ['R2'] -> []; `top_goods_rules` ['R2'] -> []; `top_load_goods_primary` 1 -> 0; `guarantee_carrying` ['R2'] -> []
+- airline-flight (blind-2): `primary_carrying` ['R2'] -> []; `top_goods_rules` ['R2'] -> []; `top_load_goods_primary` 1 -> 0
+- coverture-household-us (blind-1): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- coverture-household-us (blind-2): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-creditor-exemption (blind-1): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-creditor-exemption (blind-2): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-property (blind-1): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-property (blind-2): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-earnings (blind-1): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-earnings (blind-2): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-sole-trader (blind-1): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-sole-trader (blind-2): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-suit (blind-1): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-suit (blind-2): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-property-narrowed (blind-1): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- mwpa-property-narrowed (blind-2): `primary_carrying` ['R2'] -> ['R2', 'R3']; `top_goods_rules` ['R2'] -> ['R2', 'R3']; `top_load_goods_primary` 2 -> 1; `constitutive` [] -> ['R2', 'R3']
+- coverture-floor (blind-1): `primary_carrying` ['R2'] -> ['R2', 'R20~prohibit', 'R3']; `top_load_goods_primary` 1 -> 2; `constitutive` [] -> ['R2', 'R20~prohibit', 'R3']; `guarantee_carrying` ['R2', 'R3'] -> ['R2', 'R20~prohibit', 'R3']
+- coverture-floor (blind-2): `primary_carrying` ['R2'] -> ['R2', 'R20~prohibit', 'R3']; `top_load_goods_primary` 1 -> 2; `constitutive` [] -> ['R2', 'R20~prohibit', 'R3']; `guarantee_carrying` ['R2', 'R3'] -> ['R2', 'R20~prohibit', 'R3']
+- ectogenesis (blind-1): `primary_carrying` ['R4~prohibit'] -> []; `top_goods_rules` ['R4~prohibit'] -> []; `top_load_goods_primary` 2 -> 0
+- ectogenesis (blind-2): `top_load_goods_primary` 2 -> 1
+- gestational-surrogacy (blind-1): `primary_carrying` ['R4~prohibit'] -> []; `top_goods_rules` ['R4~prohibit'] -> []; `top_load_goods_primary` 1 -> 0; `constitutive` ['R4~prohibit'] -> []
