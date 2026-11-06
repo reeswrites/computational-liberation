@@ -433,7 +433,9 @@ _BK1_15_EXCERPT = {
     "R7": ("all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable ... all "
            "compacts made between husband and wife, when single, are voided by the intermarriage",
            "long s modernised; the OCR prints 'converture' in the first passage; 'void, or at least voidable' is "
-           "weaker than the row's 'no such power exists' (voidable acts bind until avoided); earlier pointer " + WAMS),
+           "weaker than the row's 'no such power exists' (voidable acts bind until avoided); the first passage is "
+           "introduced as acts done 'by his compulsion', and the second concerns compacts between the spouses, not "
+           "her capacity to contract with third parties (council 2026-11-06); earlier pointer " + WAMS),
 }
 for _r, (_ex, _note) in _BK1_15_EXCERPT.items():
     override("coverture-household", _r,

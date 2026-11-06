@@ -268,16 +268,16 @@
   year: null
   container: California Welfare and Institutions Code
   jurisdiction: US-CA
-  url: null
-  note: "URL not in repo text; cited from general knowledge"
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_317
+  note: "URL not in repo text; cited from general knowledge | 2026-11-06: opened at the url (verification pass)"
 - id: cal-wic-328
   type: statute
   title: "Cal. Welf. & Inst. Code s. 328"
   year: null
   container: California Welfare and Institutions Code
   jurisdiction: US-CA
-  url: null
-  note: "URL not in repo text; cited from general knowledge"
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_328
+  note: "URL not in repo text; cited from general knowledge | 2026-11-06: opened at the url (verification pass)"
 - id: cal-wic-361
   type: statute
   title: "Cal. Welf. & Inst. Code s. 361"
@@ -308,8 +308,8 @@
   year: null
   container: California Welfare and Institutions Code
   jurisdiction: US-CA
-  url: null
-  note: "URL not in repo text; cited from general knowledge (certification review / habeas)"
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_5275
+  note: "URL not in repo text; cited from general knowledge (certification review / habeas) | 2026-11-06: opened at the url (verification pass)"
 - id: cal-wic-16501
   type: statute
   title: "Cal. Welf. & Inst. Code s. 16501"
@@ -340,8 +340,8 @@
   year: null
   container: California Penal Code
   jurisdiction: US-CA
-  url: null
-  note: "URL not in repo text; cited from general knowledge"
+  url: https://california.public.law/codes/ca_penal_code_section_11165.14
+  note: "URL not in repo text; cited from general knowledge | 2026-11-06: opened at the url (verification pass)"
 - id: cal-civ-655
   type: statute
   title: "Cal. Civ. Code s. 655"

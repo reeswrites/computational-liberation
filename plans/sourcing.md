@@ -195,6 +195,19 @@ Brief: plans/sourcing-verify-session.md. Network reached california.public.law, 
 
 Order of work in this pass: step 2 (the eight other match rows) ran first while the step-1 and step-3 sources were being fetched.
 
+### Counts, before and after (`migrate_provenance.py --summary`)
+
+| | opened | snippet | recalled | unverified | total |
+|---|---|---|---|---|---|
+| rows by weakest item, before (af481c1^) | 6 | 0 | 43 | 80 | 129 |
+| rows by weakest item, after | 34 | 0 | 24 | 71 | 129 |
+| provenance items, before | 12 | 5 | 74 | 97 | 188 |
+| provenance items, after | 56 | 5 | 50 | 81 | 192 |
+| ground-truth items opened | 0 -> 17 | | | | |
+| ground-truth events settled | 0 -> 2 (ME-earnings, IL-property) | | | | |
+
+Of the nine rows L1 rests on, eight now have every item `opened`; coverture R6 has two `opened` items (Blackstone, the 1857 Act) and two `unverified` (Shanley, Stone), so its weakest level is still `unverified`. Net +4 items (new works cited on R6, R19, cps R11, and a null item for the 'at any time' gap on kibbutz R5, less items merged on rewritten rows), and three bibliography entries (`uk-matrimonial-causes-act-1857`, `longendyke-1863`, `cal-wic-388`). RAISES grew from 11 to 28 items, each citing the row's new read sentence. No preregistered rule change: every mismatch is listed below for the author.
+
 ### Faithfulness findings (rules the sources do not support as written; for the author, no rule edited)
 
 - **police-crisis R2** (match row): WIC 5150(a) puts the ongoing assessment and evaluation in the passive voice ("shall be conducted and provided on an ongoing basis") and on the 72-hour facility stay, not on the responding officer. The row's must-be provides_care(o, s) on the officer is the encoder's reading.
@@ -217,6 +230,12 @@ Order of work in this pass: step 2 (the eight other match rows) ran first while 
 17 statute items opened with excerpts (ME 1844 c. 117, 1855 c. 120, 1857 c. 59; MA 1845 c. 208, 1855 c. 304 x3, 1874 c. 184; NY 1848 ch. 200, 1860 ch. 90 x3, 1862 ch. 172; MD 1842-session ch. 293 x2; IL 1861, 1869). Settled under ADR 0017 point 4 (one opened primary of the jurisdiction states the date, no item reports another): **ME-earnings 1857** (approved 17 April 1857; the bibliography's 15 April was the preceding act) and **IL-property 1861** (approved 21 February 1861). Left unresolved on purpose: the NY events, whose opened copies are transcriptions on a law-course site, not scans; settle once a scan is opened. Conflicts kept: ME-property (1844 vs 1855), MA-property (1845 is a marriage-settlement act; 1855 is the general act), MA-earnings, MA-sole_trader, MD-property and MD-earnings (ch. 293 passed 10 March 1843 in the 1842 session; s. 8 is a real earnings clause capped at $1,000, so GLT's 1842 is the session year, not an OCR error; s. 1's scope may be property in slaves only, check the page image), IL-earnings (Khan 1861 vs the 1869 act), NY-suit.
 
 Not reached: the published GLT 2012 (J. Law & Econ. 55(4)) and Geddes & Tennyson 2013 tables (403 at Chicago Unbound, Emerald, SSRN, journals.uchicago.edu). A 2014 ASSA draft (MacDonald) reproduces G&T 2013 dates but its table prints garbled, so it was not cited; its dates are leads only: ME 1855/1857, MD 1860/1842, MA 1855/1846, IL 1861/1869, NY 1848/1860, MS 1880/1873 (property/earnings). MS-property thus has three candidate dates (GLT 2007 1871, G&T 2013 1880 via MacDonald, 1839 creditor act). IL dates: the backtest should say whether it codes approval (21 Feb 1861, 24 Mar 1869) or in-force (24 Apr 1861, 19 Jun 1869) dates.
+
+### Council (fresh agent, 2026-11-06): ten `opened` items drawn at random (seed 20261106, 56 opened)
+
+Checked against freshly downloaded text: mwpa-suit R16 (MA 1855, NY 1860), companion-guardian-renamed R4 (597s), coverture-household-us R6 (Stevenson & Wolfers), airline-flight R2 (121.571), coverture-household R4 and -us R7 (Blackstone), cps R1 (WIC 328). All eight excerpts are real quotes (allowances: line-break joins, long s, OCR "converture", a dropped leading "And"), pins right, levels right, each gap between passage and rule recorded. Not audited: companion-ownership R1 and companion-guardian-renamed R1 (Civ. 663, opened 2026-11-04): FindLaw and leginfo blocked the reviewer (403); they stay unaudited, not passed.
+
+Acted on: the -us/English R7 note now says the second fragment concerns compacts between spouses, not her capacity with third parties; bibliography urls filled for WIC 328, 317, 5275 and Penal 11165.14. Left for the author (prose a rule carries, not provenance): mwpa-suit R16 and R19 `plain` still cite "MA 1855 c. 304 s. 3; unverified", and their `source` strings still open with "UNVERIFIED (leads ...)"; R16's `source` credits the "sole and separate property ... descent, devise, bequest" wording to the 1862 amendment though the 1860 s. 7 already has it (1862 adds "purchase" and "grant"); the "transfer is an incident of ownership" inference on the Civ. 663 rows sits in `source`, not in the item note; Blackstone pins could give pages (pp. 429-432).
 
 ### Not reached in this pass
 
