@@ -181,3 +181,34 @@ Author decision 5 of 2026-11-06. Today the engine signs a freedom flip (up/down)
 7. Strand reading (close-out section below): mwpa-suit R19 (tagged tying) moves from "tying unconfirmed" (up 0) to agreeing with its tag.
 
 Drift from 1-7 is recorded in plans/priority-slice1-results.md ("Revision 5 run"), never edited to match.
+
+### Slice 1 close-out (preregistered 2026-11-06, before any run)
+
+Author decision 4 of 2026-11-06. Two clauses of the layer-4 pass test have no evidence yet: stability across `step_mode`, and a strand-mismatch label. Both are run on the current engine (ENGINE_PIN 27e24c0, before revision 5) and the current dataset (26 entries, with the coverture split), so revision 5 does not leak into them.
+
+**(i) step_mode.** The engine has two modes (`rules_lower.STEP_MODES`): `one` (default; at most one action per step) and `many` (any set of enabled actions per step; the only difference in the lowering is that the at-most-one constraint is dropped). Every `one` trace is a `many` trace, so per property, `many` can only move reachable-side: open -> reachable, holds_to_k -> violated, persists -> fails, never back; this holds for the base and for every ablated entry alike, so flips can still appear or vanish.
+Runs: `phil rules ablate --k 6,8 --workers 4 --step-mode one|many`, 26 entries, plus a second `one` run for determinism. Comparison per (entry, row id, k): ranked status, load_freedom_up, load_freedom_down, flips; per entry: top set.
+Criterion (fixed now): the clause passes iff every ranked row's `load_freedom_up` is identical across the two modes at k=6 and at k=8 (which implies identical top sets). Differences only in unranked rows, freedom_down, or structure/failure-mode flips are reported and do not fail it. The determinism clause passes iff the two `one` runs agree on every row apart from timing.
+Predictions:
+1. Top sets identical in all 26 entries at both k. Reason: every top is a disability on one actor's capacity (leave, sue, contract, sleep_home, refuse_binding, assign) or one obligation (ectogenesis/surrogacy R5); the unfreedom it carries holds from the first steps and does not need two actions in one step.
+2. Every ranked row's load_freedom_up identical: clause passes.
+3. Some rows differ elsewhere: at most 10 rows per k over the dataset, in unranked rows, freedom_down columns or failure-mode/structure flips; most likely where two parties' actions must coincide (care plus birth in ectogenesis/surrogacy under the one-step-grace `care_duty_on_women`; bind plus marry_off in footbinding; double_burden/creditor_shield in the MWPA chain).
+4. inconsistent_after 0, uncounted 0 in both modes; k-disagreements 0 under `one` (as before) and under `many`.
+5. The two `one` runs are identical row for row.
+
+**(ii) strand mismatches.** Method (fixed now). For each rule of each entry, its reading uses its *ranked* rows at k=6 (the deletion row and, for a `may`, the `~prohibit` row; a deregulated or offcondition_free row is not used); a rule with no ranked row is "not readable (unranked)". up = max load_freedom_up over those rows, down = max load_freedom_down. Goods load does not exist yet (no goods property), so load_goods = 0 everywhere and the table's "zero goods" half is vacuous: a reading of "tying" now means "high freedom load and goods unmeasured", and every reading below is provisional until slice 2. "High" = up >= 1 (the dataset's maximum is 1).
+What can be read now:
+- **reads tying** (up >= 1). Tag `tying`: agrees. Tag `rival` or `superadditive`: **mismatch M1** (the table would call it tying, or a hard case once goods exist; it cannot read rival or superadditive).
+- **reads protection** (up 0, down >= 1: the rule, or the permission, is load-bearing for a freedom). Tag `tying`: **mismatch M3** (a tie that protects). Tag rival/superadditive: no reading to compare.
+- **no reading** (up 0, down 0). Tag `tying`: "tying unconfirmed" (M2): not a contradiction, the table has no row for low freedom and zero goods; listed, not counted as a mismatch. Tag rival/superadditive: not readable (telling rival from superadditive or constitutive needs goods load).
+What cannot be read now: any `constitutive` or `hard case` reading; any confirmation of `rival` or `superadditive`.
+Predictions (the up >= 1 rows are known from the revision-4b run and the coverture-split results; tags read from the dataset, no run):
+6. reads tying: 36 rule instances. Tagged `tying`, agreeing, 18: R4 (sue) in the seven chain entries that keep it (coverture-household, -us, mwpa-creditor-exemption, -property, -property-narrowed, -earnings, -sole-trader), R7 (contract) in six (all those but sole-trader), kibbutz-childrens-house R2, footbinding and footbinding-no-pledge R3, ectogenesis and gestational-surrogacy R5.
+7. **M1: 18, all tagged `rival`, none superadditive**: the exit bar R6 in eight chain entries (coverture-household, -us, and the six mwpa-*), police-crisis R4, cps R10, companion-* R6 (3), kibbutz R4 (both entries; sleep_home), airline-flight R4, footbinding R9 (both; refuse_binding). All carry the `cannot_exit` family. Reading: the hand tags file bars on exit as rival; the ablation reads them as the most load-bearing ties.
+8. M3: at least 1: mwpa-suit R16 (`may sue`, tagged tying) via `R16~prohibit` (freedom_down on no_standing, revision 4b). Expected 1 to 5 in all.
+9. M2 (tying unconfirmed): 20 to 45 rule instances, including mwpa-suit R19 (its flip is unsigned on this engine; revision 5 is predicted to move it to "agrees"), the chain's R11 (creditor must_not attach; its only property is a failure mode), and tying obligations in police-crisis, cps and the leave pair.
+10. Clause (ii) passes (at least one mismatch labelled and reported). Tags are not edited.
+
+**Verdict rule.** With (i) and (ii) passing, plus the clauses already evidenced (zero silent errors, stable across k, kibbutz R2 and ectogenesis R5 at the top), the layer-4 test reads **passed**, carrying the revision-3 calibration disclosure: the rediscovery clause was met after fixes that saw the misses, so it is not blind evidence (claims L21). If either clause fails, the verdict is "failed on <clause>", reported as such.
+
+Drift from 1-10 is recorded in plans/priority-slice1-results.md, never edited to match.
