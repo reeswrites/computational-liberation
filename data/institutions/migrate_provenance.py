@@ -100,6 +100,7 @@ WORKS = [
     ("firestone-1970", r"Firestone, The Dialectic of Sex"),
     ("kunc-2020-denver-star", r"KUNC 2020-11-17"),
     ("uk-matrimonial-causes-act-1857", r"Matrimonial Causes Act 1857 \(20 & 21 Vict"),
+    ("longendyke-1863", r"Longendyke v\. Longendyke, 44 Barb"),
     ("berkeley-public-library-2018-patron-suspension-policy", r"Berkeley Public Library, Patron Suspension Policy"),
 ]
 
@@ -328,6 +329,18 @@ RAISES = {
         "'(Wikipedia 'Tian Zu Hui', ... read 2026-11-04 as search snippets only, pages not "
         "opened: [R]'; the row's closing UNVERIFIED belongs to the reconstructed rule (its own null item)",
     ("footbinding", "R10", "wikipedia-heavenly-foot-society"): "as wikipedia-tian-zu-hui on this row",
+    ("mwpa-suit", "R16", "us-ma-acts-1855-ch304"):
+        "'Massachusetts St. 1855 c. 304, read 2026-11-06 at ...: s. 4 ... s. 7 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R16", "us-ny-laws-1860-ch90"):
+        "'New York Laws 1860 ch. 90, read 2026-11-06 at ...: s. 7 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R16", "us-ny-laws-1862-ch172"):
+        "'New York Laws 1862 ch. 172, read 2026-11-06 at ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R19", "us-ma-acts-1855-ch304"):
+        "'Massachusetts St. 1855 c. 304 read 2026-11-06 at ...: it contains no proviso ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R19", "us-ma-acts-1874-ch184"):
+        "'Massachusetts St. 1874 c. 184, read 2026-11-06 at ...: s. 3 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R19", "us-ny-laws-1860-ch90"):
+        "'New York Laws 1860 ch. 90 s. 7 bars nothing in terms' and 'Suit clauses read for this row (2026-11-06): ... New York 1860 s. 7 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
     ("coverture-household", "R6", "uk-matrimonial-causes-act-1857"):
         "'enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/...: s. 2, ... s. 27, ...'; "
         "the heuristic's read regex is lower-case and the work is named before 'read' (verification pass 2026-11-06)",
@@ -596,18 +609,61 @@ override("mwpa-property", "R13",
          item("ny-mwpa-1848", "unverified", None, "US-NY", None, note="the statute text itself not opened: [R] UNVERIFIED; year (1848) from GLT Table 1; effective date not in the string"),
          item("geddes-lueck-tennyson-2007", "recalled", "Table 1",
               note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade"))
+_NY60 = "http://www.houseofrussell.com/american-legal-history/assignments/laws-of-new-york-83d-sessio.html"
+_NY62 = "https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-85th-sessi.pdf"
+_MA55 = "https://archives.lib.state.ma.us/server/api/core/bitstreams/6cc4626f-6cc6-47f5-9a38-7a775ff276b4/content"
+_MA74 = "https://archives.lib.state.ma.us/server/api/core/bitstreams/ce48bb31-9c82-4384-925f-39ba51ab54b4/content"
+_RUSSELL = "a transcription on a law-course site (Russell, American Legal History), not a scan of the session laws"
 override("mwpa-suit", "R16",
-         "re-sourced 2026-11-05 to US leads (A2; the UK 1882 act no longer cited); each statute a lead, not opened; GLT carries no quote here",
-         item("us-ny-laws-1860-ch90", "unverified", "s. 7", "US-NY", note="lead, not opened; s. 7 scoped to 'matters having relation to her property' (per summary); the encoding takes the broader reading"),
-         item("us-ny-laws-1862-ch172", "unverified", None, "US-NY", note="lead, not opened; amends 1860 ch. 90, suit clause in broader terms (per summary)"),
-         item("us-ma-acts-1855-ch304", "unverified", "s. 3", "US-MA", note="lead, not opened; sue and be sued as if sole (per case-law summary)"),
+         "verification pass 2026-11-06: the three US acts opened; MA pin corrected from s. 3 to ss. 4, 7 (s. 3 is "
+         "conveyance); GLT carries no quote here",
+         item("us-ny-laws-1860-ch90", "opened", "s. 7", "US-NY", None,
+              "Any married woman may, while married, sue and be sued in all matters having relation to her property ... "
+              "any married woman may bring and maintain an action in her own name, for damages, against any person or "
+              "body corporate, for any injury to her person or character, the same as if she were sole",
+              "2026-11-06", _NY60,
+              _RUSSELL + "; 'Passed March 20, 1860'; the property suit is scoped to her property, the tort suit runs "
+              "against any person; the encoding takes the broader reading"),
+         item("us-ny-laws-1862-ch172", "opened", "s. 3 (s. 7 as amended)", "US-NY", None,
+              "sue and be sued in all matters having relation to her sole and separate property, or which may hereafter "
+              "come to her by descent, devise, bequest, purchase, or the gift or grant of any person",
+              "2026-11-06", _NY62, _RUSSELL + "; 'Passed April 10, 1862'; still scoped to her property"),
+         item("us-ma-acts-1855-ch304", "opened", "ss. 4, 7", "US-MA", None,
+              "may, while married, sue and be sued, in all matters having relation to her property, in the same manner "
+              "as if she were sole ... she may sue and be sued as if sole in regard to her trade, business, labor, "
+              "services and earnings",
+              "2026-11-06", _MA55,
+              "'Approved by the Governor, May 5, 1855'; the row's pin 's. 3' is wrong (s. 3 is conveyance and "
+              "contract); s. 4 applies to a woman 'hereafter to be married'"),
          item("geddes-lueck-tennyson-2007", "recalled", "Table 1",
-              note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade"))
+              note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no "
+                   "access date; no excerpt recorded; the published GLT 2012 and Geddes & Tennyson 2013 were not "
+                   "reachable 2026-11-06 (403 at Chicago Unbound, Emerald, SSRN)"))
 override("mwpa-suit", "R19",
-         "new 2026-11-05 (A2): the spousal-suit bar the US acts leave standing; leads, not opened",
-         item("us-ma-acts-1855-ch304", "unverified", "s. 3", "US-MA", note="lead, not opened; the proviso is quoted from a case-law summary, not from the statute"),
-         item("us-ny-laws-1860-ch90", "unverified", "s. 7", "US-NY", note="lead, not opened; read through Longendyke v. Longendyke (1863), as summarised"),
-         item(note="Longendyke v. Longendyke (N.Y. Sup. Ct. 1863), named only as a summary in the worklist; no bibliography entry"))
+         "verification pass 2026-11-06: MA 1855 has no spousal-suit proviso (the quoted proviso is MA 1874 c. 184 "
+         "s. 3); NY 1860 s. 7 bars nothing in terms, Longendyke construes it (faithfulness finding)",
+         item("us-ma-acts-1855-ch304", "opened", "ss. 3, 4, 7", "US-MA", None,
+              "may, while married, sue and be sued, in all matters having relation to her property, in the same manner "
+              "as if she were sole",
+              "2026-11-06", _MA55,
+              "cited by the row for a proviso it does not contain: the act omits suits between spouses rather than "
+              "barring them, so it supports R19 only as an omission (the row's 'bars or omits')"),
+         item("us-ma-acts-1874-ch184", "opened", "s. 3", "US-MA", "1874",
+              "nothing herein contained shall authorize suits between husband and wife",
+              "2026-11-06", _MA74,
+              "'Approved April 24, 1874'; the express proviso the row quotes, 19 years after the act the row cites; "
+              "effective_date is the year only"),
+         item("us-ny-laws-1860-ch90", "opened", "s. 7", "US-NY", None,
+              "Any married woman may, while married, sue and be sued in all matters having relation to her property",
+              "2026-11-06", _NY60,
+              _RUSSELL + "; no bar on suits against the husband in terms ('except her husband' qualifies gifts)"),
+         item("longendyke-1863", "opened", "44 Barb. 366", "US-NY", None,
+              "It is conceded by counsel that by the rules of the common law husband and wife could not sue each other "
+              "in a civil action ... The right to sue her husband in an action of assault and battery may perhaps be "
+              "covered under the literal language of this section; but I think such was not the meaning and intent of "
+              "the legislature",
+              "2026-11-06", None, "Caselaw Access Project JSON; the bar on spousal suits in New York is judicial "
+              "construction of the 1860/1862 acts, not statutory text"))
 override("footbinding", "R1",
          "Mackie abstract quotes as a search-index snippet (snippet), the rule itself 'UNVERIFIED as a rule'",
          item("mackie-1996", "snippet", "abstract", None, None,

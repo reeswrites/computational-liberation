@@ -454,3 +454,12 @@
   jurisdiction: US-NY
   url: https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-chap-200.pdf
   note: "cited in repo text as 'New York Married Women's Property Act 1848'; title, chapter and URL not in repo text (filled at the merge from leads: see below); statute text not opened | merged from us-ny-laws-1848-ch200 (backtest bibliography): Lead. Passed 7 April 1848 per several summaries; the title wording varies between the published title and page header. Transcription (course site); official scan candidate: NY State Archives https://digitalcollections.archives.nysed.gov/index.php/Detail/objects/10821."
+- id: longendyke-1863
+  type: case
+  title: "Longendyke v. Longendyke, 44 Barb. 366 (N.Y. Sup. Ct., Albany General Term, 1863)"
+  author: null
+  year: 1863
+  container: "Barbour's Supreme Court Reports, vol. 44"
+  jurisdiction: US-NY
+  url: https://static.case.law/barb/44/cases/0366-01.json
+  note: "Added 2026-11-06 (verification pass): Caselaw Access Project copy; opinion by Hogeboom, J. Cited by mwpa-suit R19."

@@ -27,35 +27,35 @@ rules_add:
   or_else: null
   strand: tying
   implicit: false
-  source: 'UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked; plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch A): New York Laws 1860 ch. 90 s. 7 (may sue and be sued ''in all matters having relation to her property''), broadened by Laws 1862 ch. 172; Massachusetts St. 1855 c. 304 s. 3 (may sue and be sued as if sole, with a proviso against suits between husband and wife, R19). Read at the broader reading (NY 1862, MA 1855: as if sole, as to third parties); NY 1860''s scope to matters of her property is recorded here, not encoded. Earlier pointer kept: Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (acts giving a married woman the right to sue and be sued in her own name; dates follow the property/earnings acts, e.g. NY 1860). Re-sourced 2026-11-05 (plans/sourcing.md, A2): the Married Women''s Property Act 1882 (UK), cited until then, is an English act and is no longer cited here; no English chain is kept (A3 not taken). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled, where sue is a suit against anyone but her husband in this entry: sue is a default capacity (the former R9 ''may sue when not married'' is deleted, revision 4) and R4, the disability, is deleted; R16 is kept as the act''s own express permission'
+  source: 'UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked; plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch A): New York Laws 1860 ch. 90 s. 7 (may sue and be sued ''in all matters having relation to her property''), broadened by Laws 1862 ch. 172; Massachusetts St. 1855 c. 304 s. 3 (may sue and be sued as if sole, with a proviso against suits between husband and wife, R19). Read at the broader reading (NY 1862, MA 1855: as if sole, as to third parties); NY 1860''s scope to matters of her property is recorded here, not encoded. Earlier pointer kept: Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (acts giving a married woman the right to sue and be sued in her own name; dates follow the property/earnings acts, e.g. NY 1860). Re-sourced 2026-11-05 (plans/sourcing.md, A2): the Married Women''s Property Act 1882 (UK), cited until then, is an English act and is no longer cited here; no English chain is kept (A3 not taken). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled, where sue is a suit against anyone but her husband in this entry: sue is a default capacity (the former R9 ''may sue when not married'' is deleted, revision 4) and R4, the disability, is deleted; R16 is kept as the act''s own express permission Verification pass: New York Laws 1860 ch. 90, read 2026-11-06 at http://www.houseofrussell.com/american-legal-history/assignments/laws-of-new-york-83d-sessio.html (a course-site transcription, ''Passed March 20, 1860''): s. 7 ''Any married woman may, while married, sue and be sued in all matters having relation to her property'' ... ''any married woman may bring and maintain an action in her own name, for damages, against any person or body corporate, for any injury to her person or character, the same as if she were sole''. New York Laws 1862 ch. 172, read 2026-11-06 at https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-85th-sessi.pdf (''Passed April 10, 1862''), s. 7 as amended: ''sue and be sued in all matters having relation to her sole and separate property, or which may hereafter come to her by descent, devise, bequest, purchase, or the gift or grant of any person''. Massachusetts St. 1855 c. 304, read 2026-11-06 at https://archives.lib.state.ma.us/server/api/core/bitstreams/6cc4626f-6cc6-47f5-9a38-7a775ff276b4/content (''Approved by the Governor, May 5, 1855''): s. 4 ''may, while married, sue and be sued, in all matters having relation to her property, in the same manner as if she were sole'' ... s. 7 ''she may sue and be sued as if sole in regard to her trade, business, labor, services and earnings''. The pin ''s. 3'' above is wrong (s. 3 is conveyance and contract), and the 1855 act has no proviso on suits between spouses.'
   provenance:
   - source_id: us-ny-laws-1860-ch90
     pin: s. 7
     jurisdiction: US-NY
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: lead, not opened; s. 7 scoped to 'matters having relation to her property' (per summary); the encoding takes the broader reading
+    verification: opened
+    excerpt: Any married woman may, while married, sue and be sued in all matters having relation to her property ... any married woman may bring and maintain an action in her own name, for damages, against any person or body corporate, for any injury to her person or character, the same as if she were sole
+    accessed: '2026-11-06'
+    url: http://www.houseofrussell.com/american-legal-history/assignments/laws-of-new-york-83d-sessio.html
+    note: a transcription on a law-course site (Russell, American Legal History), not a scan of the session laws; 'Passed March 20, 1860'; the property suit is scoped to her property, the tort suit runs against any person; the encoding takes the broader reading
   - source_id: us-ny-laws-1862-ch172
-    pin: null
+    pin: s. 3 (s. 7 as amended)
     jurisdiction: US-NY
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: lead, not opened; amends 1860 ch. 90, suit clause in broader terms (per summary)
+    verification: opened
+    excerpt: sue and be sued in all matters having relation to her sole and separate property, or which may hereafter come to her by descent, devise, bequest, purchase, or the gift or grant of any person
+    accessed: '2026-11-06'
+    url: https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-85th-sessi.pdf
+    note: a transcription on a law-course site (Russell, American Legal History), not a scan of the session laws; 'Passed April 10, 1862'; still scoped to her property
   - source_id: us-ma-acts-1855-ch304
-    pin: s. 3
+    pin: ss. 4, 7
     jurisdiction: US-MA
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: lead, not opened; sue and be sued as if sole (per case-law summary)
+    verification: opened
+    excerpt: may, while married, sue and be sued, in all matters having relation to her property, in the same manner as if she were sole ... she may sue and be sued as if sole in regard to her trade, business, labor, services and earnings
+    accessed: '2026-11-06'
+    url: https://archives.lib.state.ma.us/server/api/core/bitstreams/6cc4626f-6cc6-47f5-9a38-7a775ff276b4/content
+    note: '''Approved by the Governor, May 5, 1855''; the row''s pin ''s. 3'' is wrong (s. 3 is conveyance and contract); s. 4 applies to a woman ''hereafter to be married'''
   - source_id: geddes-lueck-tennyson-2007
     pin: Table 1
     jurisdiction: null
@@ -64,7 +64,7 @@ rules_add:
     excerpt: null
     accessed: null
     url: null
-    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade'
+    note: '[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; the published GLT 2012 and Geddes & Tennyson 2013 were not reachable 2026-11-06 (403 at Chicago Unbound, Emerald, SSRN)'
   var_roles:
     w: wife
     h: husband
@@ -77,35 +77,44 @@ rules_add:
   or_else: null
   strand: tying
   implicit: false
-  source: 'UNVERIFIED (leads, not opened 2026-11-05; plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch A, option A2): Massachusetts St. 1855 c. 304 s. 3, proviso ''nothing herein contained shall authorize suits between husband and wife'' (quoted in the worklist from a case-law summary, not from the statute); New York Laws 1860 ch. 90 s. 7 as read in Longendyke v. Longendyke (N.Y. Sup. Ct. 1863, as summarised): not against her husband for assault or slander. The part of coverture''s R4 disability the acts leave standing: every US act found bars or omits suits between spouses. A disability (or_else null), not a sanctioned prohibition. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing_against_spouse(w, h) = sue_spouse enabled (a default capacity), which this disability removes while married'
+  source: 'UNVERIFIED (leads, not opened 2026-11-05; plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch A, option A2): Massachusetts St. 1855 c. 304 s. 3, proviso ''nothing herein contained shall authorize suits between husband and wife'' (quoted in the worklist from a case-law summary, not from the statute); New York Laws 1860 ch. 90 s. 7 as read in Longendyke v. Longendyke (N.Y. Sup. Ct. 1863, as summarised): not against her husband for assault or slander. The part of coverture''s R4 disability the acts leave standing: every US act found bars or omits suits between spouses. A disability (or_else null), not a sanctioned prohibition. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing_against_spouse(w, h) = sue_spouse enabled (a default capacity), which this disability removes while married Verification pass: Massachusetts St. 1855 c. 304 read 2026-11-06 at https://archives.lib.state.ma.us/server/api/core/bitstreams/6cc4626f-6cc6-47f5-9a38-7a775ff276b4/content: it contains no proviso on suits between husband and wife (s. 3 is conveyance and contract; the suit clauses, ss. 4 and 7, are silent on the husband); the quoted proviso is in Massachusetts St. 1874 c. 184, read 2026-11-06 at https://archives.lib.state.ma.us/server/api/core/bitstreams/ce48bb31-9c82-4384-925f-39ba51ab54b4/content (''Approved April 24, 1874''): s. 3 ''A married woman may sue and be sued in the same manner and to the same extent as if she were sole, but nothing herein contained shall authorize suits between husband and wife.'' New York Laws 1860 ch. 90 s. 7 bars nothing in terms (''except her husband'' there qualifies gifts); Longendyke v. Longendyke, 44 Barb. 366 (N.Y. Sup. Ct. 1863), read 2026-11-06 at https://static.case.law/barb/44/cases/0366-01.json: ''It is conceded by counsel that by the rules of the common law husband and wife could not sue each other in a civil action'' ... ''The right to sue her husband in an action of assault and battery may perhaps be covered under the literal language of this section; but I think such was not the meaning and intent of the legislature''. Suit clauses read for this row (2026-11-06): Massachusetts 1855 s. 4 ''may, while married, sue and be sued, in all matters having relation to her property, in the same manner as if she were sole''; New York 1860 s. 7 ''Any married woman may, while married, sue and be sued in all matters having relation to her property'' (neither names the husband).'
   provenance:
   - source_id: us-ma-acts-1855-ch304
-    pin: s. 3
+    pin: ss. 3, 4, 7
     jurisdiction: US-MA
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: lead, not opened; the proviso is quoted from a case-law summary, not from the statute
+    verification: opened
+    excerpt: may, while married, sue and be sued, in all matters having relation to her property, in the same manner as if she were sole
+    accessed: '2026-11-06'
+    url: https://archives.lib.state.ma.us/server/api/core/bitstreams/6cc4626f-6cc6-47f5-9a38-7a775ff276b4/content
+    note: 'cited by the row for a proviso it does not contain: the act omits suits between spouses rather than barring them, so it supports R19 only as an omission (the row''s ''bars or omits'')'
+  - source_id: us-ma-acts-1874-ch184
+    pin: s. 3
+    jurisdiction: US-MA
+    effective_date: '1874'
+    verification: opened
+    excerpt: nothing herein contained shall authorize suits between husband and wife
+    accessed: '2026-11-06'
+    url: https://archives.lib.state.ma.us/server/api/core/bitstreams/ce48bb31-9c82-4384-925f-39ba51ab54b4/content
+    note: '''Approved April 24, 1874''; the express proviso the row quotes, 19 years after the act the row cites; effective_date is the year only'
   - source_id: us-ny-laws-1860-ch90
     pin: s. 7
     jurisdiction: US-NY
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: lead, not opened; read through Longendyke v. Longendyke (1863), as summarised
-  - source_id: null
-    pin: null
-    jurisdiction: null
+    verification: opened
+    excerpt: Any married woman may, while married, sue and be sued in all matters having relation to her property
+    accessed: '2026-11-06'
+    url: http://www.houseofrussell.com/american-legal-history/assignments/laws-of-new-york-83d-sessio.html
+    note: a transcription on a law-course site (Russell, American Legal History), not a scan of the session laws; no bar on suits against the husband in terms ('except her husband' qualifies gifts)
+  - source_id: longendyke-1863
+    pin: 44 Barb. 366
+    jurisdiction: US-NY
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
+    verification: opened
+    excerpt: It is conceded by counsel that by the rules of the common law husband and wife could not sue each other in a civil action ... The right to sue her husband in an action of assault and battery may perhaps be covered under the literal language of this section; but I think such was not the meaning and intent of the legislature
+    accessed: '2026-11-06'
     url: null
-    note: Longendyke v. Longendyke (N.Y. Sup. Ct. 1863), named only as a summary in the worklist; no bibliography entry
+    note: Caselaw Access Project JSON; the bar on spousal suits in New York is judicial construction of the 1860/1862 acts, not statutory text
   var_roles:
     w: wife
     h: husband
