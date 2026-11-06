@@ -195,3 +195,17 @@ def test_round_trip_counterexample_traces():
                     problems.append((inst.id, r.property, r.check, r.verdict, bad))
     assert seen > 0
     assert not problems, "\n".join(f"{i} {p}/{c} ({v}): {b}" for i, p, c, v, b in problems)
+
+
+def test_goods_properties_have_two_encoders_and_contested():
+    """Slice 2 (plans/priority-slice2.md sections 2 and 6): every goods property names two encoders and carries a
+    `contested` list (empty when the encoders' formulas were logically equivalent); provided_for keeps encoder 2's
+    non-equivalent formula. Second encoder: agent, not someone living under the institution (ADR 0012)."""
+    _, props = _dataset()
+    goods = {n: p for n, p in props.items() if p.kind == "goods"}
+    assert set(goods) == {"cared_for", "mutual_household_care", "known_carer", "child_with_family", "provided_for"}
+    for n, p in goods.items():
+        assert p.polarity == "good" and p.check == "persists" and p.encoders == ["encoder-1", "encoder-2"], n
+        assert p.contested is not None, n
+    assert [a.encoder for a in goods["provided_for"].contested] == ["encoder-2"]
+    assert all(goods[n].contested == [] for n in goods if n != "provided_for")
