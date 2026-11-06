@@ -295,3 +295,23 @@ Reading, facts first: the hand tags call every exit bar `rival` while the ablati
 **Verdict: passed as written**, with two disclosures that limit what the pass means: the rediscovery clause is a calibration result, not a blind one, and the step_mode clause was met on a dataset that does not exercise interleaving. Slice 1 is closed on these terms. Drift: prediction 3 (no row moved at all) and prediction 8 (6 M3, above the 1-5 range).
 
 Reproduction: `cd computational-liberation && uv run phil rules ablate --k 6,8 --workers 4 --step-mode one --json A-one.json --summary A-one-summary.json` (and `A-one2`, and `--step-mode many` to `A-many`); `uv run phil rules check-all --json --no-cache --step-mode many|one`. Outputs in the session scratchpad (`/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/A-*.json`, with the comparison script `cmp.py` and the strand tabulation `strand.py`), not kept.
+
+## Revision 5 run (2026-11-06; engine e27127b = ENGINE_PIN)
+
+Preregistration: plans/priority.md "Slice 1 revision 5" (e1113bf, before any engine edit or run). Dataset: `polarity: unfreedom` on the 17 freedom properties (8e0a880). Engine: dataset synced (5f4655e, also the first sync since the coverture split), then `UNFREEDOM` removed and direction read from `Property.kind`, loader requiring `polarity: unfreedom` on every freedom property (e27127b, pushed). Old-engine comparison output: the close-out `one` run above (27e24c0, same 26 entries).
+
+| # | Prediction | Result |
+|---|---|---|
+| 1 | Changed rows = exactly the old rows with load_freedom_unsigned > 0, all on no_standing_against_spouse in mwpa-suit; each turns freedom_up, unsigned -> 0, no_standing joins families_up; load_freedom unchanged everywhere | **held**: the old output has two such rows (mwpa-suit R19 at k=6 and k=8) and those are the only rows that differ (688 of 690 identical on every non-timing field); fields changed: flip_directions, families_up, load_freedom_unsigned 1 -> 0, load_freedom_up 0 -> 1 |
+| 2 | Exactly one ranked rule changes (mwpa-suit R19); unranked mwpa-suit rows may change | **held**; no unranked row changed (none carried the property as an unsigned flip) |
+| 3 | mwpa-suit top {R6} -> {R6, R19}; others unchanged; top_rule_changes 1 | **held**: scoreboard row `2026-11-06 | e27127b | 26 | 345 | 0 | 0 | 0 | 1` |
+| 4 | inconsistent_after 0, uncounted 0, k-disagreements 0 | **held** |
+| 5 | Layer 1 unchanged | **held**: `build.py --check` ok (26 institutions, 26 properties, 27 cards); `pytest -q` 31 passed; `check-all` 134/134; `diff --baseline` 0 changed, 0 added, 0 removed of 134; `gate` PASS |
+| 6 | Engine suite passes; only the named test semantics change | **held** with a small scope drift: 557 passed, 2 skipped (live LLM). Besides the named edits (monkeypatches dropped, fixture polarity, the unsigned test rewritten as `test_direction_read_from_kind`), two more tests were touched: the loader test gained the polarity cases, and two `flip_direction` calls by name became calls with a Property (signature change). New: `test_dataset_freedom_properties_are_unfreedom_shaped` (residual printed: `no_standing_against_spouse`) |
+| 7 | mwpa-suit R19 moves from "tying unconfirmed" to agreeing with its tag | **held**: agree 18 -> 19, M2 26 -> 25; M1 18 and M3 6 unchanged |
+
+step_mode recheck on the new engine (cheap, so done): `--step-mode many` vs the run above, 690 of 690 rows identical.
+
+Drift: only the test-scope note in 6. Left stale, not edited: the engine repo's legacy `data/institutions/_gen_properties.py` and its README copy predate the YAML builder and do not write `polarity`; running that generator would now produce a properties.json the loader rejects. The dataset's source of truth is this repo's `build.py`.
+
+Reproduction: `cd computational-liberation && uv run phil rules ablate --k 6,8 --workers 4 --json ablate-26-v9.json --summary ablate-26-v9-summary.json --prev A-one-summary.json --scoreboard docs/scoreboard-ablate.md` (A-one from the close-out run on 27e24c0). Outputs in `/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/`, not kept.
