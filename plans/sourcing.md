@@ -357,3 +357,23 @@ Sources cell: unchanged nine rows plus police-crisis R11 (new) and R2 (re-encode
 Predictions for that run (to be copied into the preregistration, k=6): gate PASS, (b) PASS (police~cps care R2~R4, control R11~R3, exit R4~R10; police~coverture R2~R2, R11~R5, R4~R6; cps~coverture unchanged; controls none), (e) 146/146 (expectation now violated); `phil rules diff` against the current baseline 1 changed (police care_and_sanction_same_role holds_to_k -> violated), 0 added, 0 removed; drop-one: the police match rows become R2, R4, R11 (R3 drops out); airline-flight's match with police-crisis (L1 evidence, third review) is not predicted and is reported as found.
 
 Open for the author: whether "the carer is also a sanctioner" is still the theory's claim (theory.md's care+control strand), or whether exclusivity was the point; if exclusivity was the point, L1 is refuted for the police member and the cluster is two entries.
+
+## L1 landing: preregistered 2026-11-06, before any edit or run
+
+Author decision (in session, 2026-11-06): "Carer-also-sanctions", i.e. L1 is the role-level claim in the draft above; exclusivity is not part of it. Engine ENGINE_PIN c53d132, k=6, baseline parameters.
+
+### Exact change
+
+1. `data/institutions/src/police-crisis.yaml`, exactly the P3 + P4 variants (`scripts/faithfulness_batch2_p3.py`, `_p4.py`): provides_care arg_roles [facility, subject]; can_sanction derived `(or (exists ((f agent)) (enabled detain o f s)) (enabled use_force o s) (enabled hold o s))`, arg_roles removed; dispatch_officer and leave no longer touch provides_care; assess / withdraw take (f, s); detain(o, f, s) also sets provides_care(f, s); new action hold(f, s) setting in_custody(s), provides_care(f, s); R2 attribute facility, aim (provides_care f s), conditions (in_custody s); R3 aim (detain o f s); new R11 facility may (hold f s) when (and (in_crisis s) (danger s)), strand rival. `plain` / `source` of R2, R3, R11 record the WIC 5150(a)/(c) reading; provenance via OVERRIDES. expected_properties care_and_sanction_same_role holds_to_k -> violated. Card regenerated.
+2. Precommitted pairs, **revised after the P4 run (post hoc, labelled as such)**: police-crisis `R3~R3 detain~remove` -> `R11~R3 hold~remove`, `R3~R5 detain~chastise` -> `R11~R5 hold~chastise`; cps `R3~R3 remove~detain` -> `R3~R11 remove~hold`; coverture-household `R5~R3 chastise~detain` -> `R5~R11 chastise~hold`. Reason: the precommitment named the officer; the statute's bundled role is the facility.
+3. `properties.yaml` care_and_sanction_same_role gloss: "holds_to_k in the care+control cluster" -> "holds_to_k in cps and coverture; violated in police-crisis read to WIC 5150, where a second role (the officer) holds concurrent control". Formula unchanged.
+
+### Predictions (k=6)
+
+- `phil rules gate`: PASS; (b) PASS: police~cps care R2~R4, control R11~R3, exit R4~R10; police~coverture R2~R2, R11~R5, R4~R6; cps~coverture unchanged; controls none; (e) 146/146.
+- `phil rules diff --baseline data/verdicts-baseline.json`: 1 changed (police-crisis care_and_sanction_same_role holds_to_k -> violated), 0 added, 0 removed of 146.
+- `scripts/drop_one_match.py`: the police rows the match reads become R2, R4, R11 (R3 drops out); coverture R2, R5, R6 and cps R3, R4, R10 unchanged.
+- build --check ok, pytest passes (32).
+- Not predicted, reported as found: airline-flight's match with police-crisis (L1 evidence, third review); police-crisis ablation and goods readings.
+
+Then: baseline regenerated (`phil rules verdicts`), L1 wording and Sources in docs/claims.md, theory.md table row 1 qualified; L1 status stays `weakened` pending a council seat on the re-encoded police card. A dataset sync to philosophy-engine is owed afterwards.
