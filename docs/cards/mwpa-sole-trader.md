@@ -123,6 +123,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (the statutes the row encodes are named only through the secondary work; statute texts not opened ([R]); no bibliography entry)
 
 
+## Goods (slice 2)
+
+Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision 3 fix pass"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world); the primary column reads each good under the author's value call (R3.1). This entry is not in any good's entries list: the readings below evaluate the dataset's goods formulas here as extrapolation, as for every goods row outside a good's listed entries. The goods rows here read as in coverture-household (see its card), R2 and R3 identically: R2 (the husband's maintenance duty) is guarantee-carrying for 4 goods formulas (one strand, provides_care(h, w)) and carrying (guaranteed) on the primary column for cared_for and provided_for; R3 (the wife's implicit, sanctioned household duty) is guarantee-carrying for mutual_household_care only (the husband's receipt of household labour; not advice to keep it) and, under the author's value call and the dataset formula, carries no good on the primary column, since the possible measure cannot tell forced from free mutual care. chosen_mutual_care is absent in the base by construction (R2 and R3 oblige care at every married step) and in every single-deletion row: each of R2, R3 and R6 on its own bars it, so no single deletion makes it possible. Second encoder: agent, not someone living under the institution (ADR 0012).
+
 ## Expected properties
 
 | property | kind | expected | meaning |

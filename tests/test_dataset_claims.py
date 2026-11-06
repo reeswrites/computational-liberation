@@ -244,7 +244,7 @@ def test_goods_primary_measure_pinned():
 
 
 # R3.2 O5 (plans/priority-slice2.md revision 3): `care_obliged` pins. Two pins are written here as the preregistration
-# meant them, not as it typed them (drift, plans/priority-slice2-results.md "Revision 3"): over every ordered pair of
+# meant them, not as it typed them (drift 10, plans/priority-slice2-results.md "Revision 3"): over every ordered pair of
 # agents, `(married h w t)` is false for (wife, husband) while both duties hold, and (husband, wife) is still obliged by
 # R2 once R3 is deleted. The as-typed forms are pinned too, with the verdict they get. `<=>` is written `iff` (the
 # engine's grammar).
@@ -288,7 +288,7 @@ def test_care_obliged_pin_coverture_without_R3():
                                                             "husband_still": "reachable"}
 
 
-CARE_OBLIGED_ENTRIES = {  # R3.2: every entry that declares provides_care (22; the footbinding pair declares none)
+CARE_OBLIGED_ENTRIES = {  # R3.2: every entry that declares provides_care (22; the footbinding pair declares none; drift 11)
     "coverture-household", "coverture-household-us", "coverture-floor", "mwpa-creditor-exemption", "mwpa-property",
     "mwpa-earnings", "mwpa-sole-trader", "mwpa-suit", "mwpa-property-narrowed", "police-crisis", "cps", "crisis-team",
     "airline-flight", "kibbutz-childrens-house", "kibbutz-childrens-house-no-implicit", "ectogenesis",

@@ -79,6 +79,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E))
 
 
+## Goods (slice 2)
+
+Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision 3 fix pass"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world); the primary column reads each good under the author's value call (R3.1). This entry is not in any good's entries list: the readings below evaluate the dataset's goods formulas here as extrapolation, as for every goods row outside a good's listed entries. Prohibiting R4 (the registered parent's permission to care) makes cared_for and known_carer impossible (fragile > absent): constitutive on the possible column, a prohibition of the care act itself, not evidence of a constitutive bundle in the glossary's sense, and resting on strict compliance as in ectogenesis; on the primary column it is carrying (possible) for known_carer (cared_for is guaranteed-primary and never guaranteed here). Prohibiting R2 (implantation) means no child exists: the goods are not applicable, outside the ranking, not lost. R5 reads tying. In the blind-gloss experiment (formulas not adopted) the R4~prohibit row's possible and primary readings differ between the two blind encoders. Second encoder: agent, not someone living under the institution (ADR 0012).
+
 ## Expected properties
 
 | property | kind | expected | meaning |

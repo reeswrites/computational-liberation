@@ -74,6 +74,10 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `cfr-14-121-580` (US; date n/a): **unverified**
 
 
+## Goods (slice 2)
+
+Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision 3 fix pass"): goods as encoded, strict compliance, k=6 and 8, both encoders read the same; a statement about encodings (ADR 0011). Two measures, never combined: guaranteed (the rules as obeyed force the good) and possible (it can hold under the rules as obeyed, within k, at one step, for some bearer in some starting world); the primary column reads each good under the author's value call (R3.1). This entry is not in any good's entries list: the readings below evaluate the dataset's goods formulas here as extrapolation, as for every goods row outside a good's listed entries. R2 (the crew's unsanctioned duty of care to a passenger aboard) is guarantee-carrying for cared_for and known_carer (stable > fragile when deleted) and, on the primary column, carrying (guaranteed) for cared_for (known_carer is possible-primary and stays possible). Under strict compliance R2's duty reads as delivered care. Prohibiting R1 (boarding) means no passenger is ever aboard: the goods are not applicable there, outside the ranking, not lost. In the blind-gloss experiment (formulas not adopted) R2 carries no primary load under either blind cared_for formula, and its guaranteed reading differs between the two blind encoders. Second encoder: agent, not someone living under the institution (ADR 0012).
+
 ## Expected properties
 
 | property | kind | expected | meaning |
