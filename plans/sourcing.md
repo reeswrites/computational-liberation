@@ -390,3 +390,26 @@ Dataset police-crisis logic checked identical to the P4 variant (fluents, action
 - Reported as found (not predicted): airline-flight~police-crisis still matches, now care R2 ~ R2 (provides_care f s), control R3 (restrain) ~ R11 (hold), exit R4~R4.
 
 Then: `data/verdicts-baseline.json` regenerated (`phil rules verdicts --k 6 --no-cache`): the one row above changed, and engine_hash updated (the old baseline was written under an earlier engine, the "engine source hash differs" note on every diff run); diff against it 0 changed. docs/claims.md L1 restated (the author's wording above), Sources "match reads" updated to police R2, R4, R11, evidence appended, last checked 2026-11-06, status `weakened` (pending a council seat on the re-encoded police card). docs/theory.md table row 1 qualified. The cps and police `notes` updated. Owed: a dataset sync to philosophy-engine; a council seat (card-only) on police-crisis.
+
+## police-crisis R7 re-encode to WIC 5152: preregistered 2026-11-06, before any edit or run
+
+From the card-only seat (docs/reviews/2026-11-06-police-crisis-card-review.md): R7 unfaithful. WIC 5152(a), read 2026-11-06: a person admitted for 72-hour evaluation "shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment". Today R7 is "facility must release when in custody and not danger"; `danger` is exogenous and never changes, and both detain (R3) and hold (R11) require it, so R7's condition is unreachable and its ablation load is 0 (checked before writing this).
+
+### Change (lands)
+
+- New fluent `requires_treatment(s)`: "the treating psychiatrist believes, as a result of the evaluation, that s still requires evaluation or treatment (WIC 5152(a)); exogenous", arg_roles [subject], added to `initial_free`.
+- R7 becomes the "only if": facility must_not `(release f s)` when `(and (in_custody s) (requires_treatment s))`; or_else null; strand rival (it keeps the subject held); plain "The facility must not release the subject early while the treating psychiatrist finds the subject still requires evaluation or treatment (Cal. WIC 5152(a))".
+- New R12: facility may `(release f s)` when `(and (in_custody s) (not (requires_treatment s)))`; strand superadditive (as R7 was); plain "The facility may release the subject when the treating psychiatrist finds the subject no longer requires evaluation or treatment (Cal. WIC 5152(a))".
+- 5152(b)'s end-of-hold outcomes (release, voluntary referral, certification for intensive treatment) are not encoded: the model has no clock for "72 hours have elapsed"; recorded on the rows as a disclosed gap.
+
+### Predictions (k=6)
+
+- `phil rules diff --baseline data/verdicts-baseline.json`: 0 changed, 0 added, 0 removed of 146 (police-crisis: care_and_sanction_same_role violated, the officer still a second sanctioner; subject_cannot_exit and dependent_cannot_exit reachable, now also with release reachable for some worlds; no_standing open).
+- `phil rules gate`: PASS; (b) PASS with the same pairs (R7 and R12 are outside the sub-signatures); (e) 146/146.
+- `scripts/drop_one_match.py`: the match rows unchanged (coverture R2, R5, R6; police R2, R4, R11; cps R3, R4, R10).
+- build --check ok, pytest 32 passed.
+- Exploratory, no prediction: `phil rules ablate --entry police-crisis` (R7 and R12 loads; goods readings).
+
+### R7 re-encode: results (2026-11-06)
+
+Every prediction held; no drift. `phil rules diff --baseline data/verdicts-baseline.json --no-cache`: 0 changed, 0 added, 0 removed of 146. `phil rules gate`: PASS, (b) PASS with the same six partial(care+control) pairs, (e) 146/146. `scripts/drop_one_match.py`: (b) fails on deleting exactly coverture R2, R5, R6; police R2, R4, R11; cps R3, R4, R10. build --check ok; pytest 32 passed. Exploratory `phil rules ablate --entry police-crisis`: R7 (must_not) load 0; R12 (may) deregulated on deletion (release has no other may), load 0; R12~prohibit load 0; no goods change. Reading: the re-encode removes an unfaithful, unreachable rule and makes early release lawful in the worlds where the psychiatrist finds no further need, without moving any property this dataset checks; the exit properties are existential, so a reachable release does not change them. 5152(b) stays unencoded (no clock).
