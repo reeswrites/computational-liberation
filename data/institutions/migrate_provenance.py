@@ -304,10 +304,6 @@ def override(eid, rid, reason, *items, append=False):
 # unverified), with the clause of the row's own string that licenses it. main() checks this list against the
 # computed raises on every run (review 2026-11-05, finding 3).
 RAISES = {
-    ("police-crisis", "R7", "cal-wic-5150"):
-        "'s. 5150(a) (https://california.public.law/...section_5150, cited here until 2026-11-04) "
-        "gives the officer custody and delivery (R3), no release duty'; the heuristic's regex misses the bare "
-        "'s. 5150(a)'; cited with a URL and no read record = recalled",
     ("companion-ownership", "R1", "cal-civ-655"):
         "'Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ ...' follows "
         "the quote 'There may be ownership of ... of all domestic animals'; the heuristic only looks for a quote after "
@@ -366,6 +362,10 @@ RAISES = {
         "'Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/...: "
         "'participants are shown an image ...''; the row's earlier 'NOT OPENED (2026-11-04 ...)' is superseded "
         "(verification pass 2026-11-06)",
+    ("police-crisis", "R2", "cal-wic-5152"):
+        "'WIC 5152 read 2026-11-06 at https://california.public.law/...: (a) ... 'shall receive whatever treatment and "
+        "care ...''; the heuristic's 5152 regex ('Welf. & Inst. Code s. 5152') does not match the bare 'WIC 5152' "
+        "(card seat, 2026-11-06)",
     ("coverture-household", "R6", "uk-matrimonial-causes-act-1857"):
         "'enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/...: s. 2, ... s. 27, ...'; "
         "the heuristic's read regex is lower-case and the work is named before 'read' (verification pass 2026-11-06)",
@@ -468,14 +468,22 @@ override("coverture-household-us", "R6",
               "petition, adultery the only ground; dissolution on the other spouse's fault (B2), not at her own will; "
               "the date is the passage date printed (OCR 'Passed the zoth of March, 1787', i.e. 30th), commencement not "
               "stated"))
+_P5152 = "https://california.public.law/codes/ca_welf_and_inst_code_section_5152"
+_ONLY_IF = ("The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible "
+            "for the person's treatment believes, as a result of the psychiatrist's personal observations, that the "
+            "person no longer requires evaluation or treatment.")
 override("police-crisis", "R7",
-         "s. 5150(a) is cited for the absence of an officer release duty (recalled), s. 5152 is the opened source; the excerpt keeps the release-only-if passage that (not (danger s)) stands for",
-         item("cal-wic-5152", "opened", "s. 5152(a), (b)", "US-CA", None,
-              "A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted ... The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment ... A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment",
-              "2026-11-04", "https://california.public.law/codes/ca_welf_and_inst_code_section_5152",
-              "leginfo.legislature.ca.gov returned 403"),
-         item("cal-wic-5150", "recalled", "s. 5150(a)", "US-CA",
-              note="cited for what it lacks (no release duty on the officer); no read record for this use"))
+         "re-encoded 2026-11-06 (preregistered): the prohibition side of 5152(a)'s 'only if'; 5150 is no longer cited "
+         "(it was cited for an officer release duty the re-encode does not need)",
+         item("cal-wic-5152", "opened", "s. 5152(a)", "US-CA", None, _ONLY_IF, "2026-11-06", _P5152,
+              "apostrophes straightened; the psychiatrist's belief is the exogenous fluent requires_treatment; first "
+              "opened 2026-11-04, when the row encoded a release duty on 'no danger' (unfaithful, card seat "
+              "2026-11-06); 5152(b)'s end-of-hold outcomes are not encoded (no clock)"))
+override("police-crisis", "R12", "added 2026-11-06 (preregistered): the permission side of 5152(a)'s 'only if'",
+         item("cal-wic-5152", "opened", "s. 5152(a)", "US-CA", None, _ONLY_IF, "2026-11-06", _P5152,
+              "apostrophes straightened; 'only if' gives a necessary condition, so the permission is the encoder's "
+              "reading of when release is lawful; 5152(b) (release, referral or certification at the end of the hold) "
+              "not encoded"))
 override("police-crisis", "R1",
          "implicit: the string names WIC 5150 only to say it does not require police dispatch; no work supports the row",
          item(note="no work named for this rule (WIC 5150 is cited as not requiring it); rationale: implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does"))
@@ -487,7 +495,8 @@ override("cps", "R7", "pin and excerpt tidied (the heuristic's excerpt joined th
 # Verification pass 2026-11-06: the other match rows (plans/sourcing.md "Which rows the care+control match reads").
 _P5150 = "https://california.public.law/codes/ca_welf_and_inst_code_section_5150"
 _P306 = "https://california.public.law/codes/ca_welf_and_inst_code_section_306"
-_PL = "the page gives the text as 'updated Jan. 1, 2024' and its source as leginfo.legislature.ca.gov"
+_PL = ("the page gives the text as 'updated Jan. 1, 2023' and its source as leginfo.legislature.ca.gov (2024 until "
+       "the 2026-11-06 card seat caught it)")
 override("police-crisis", "R2",
          "verification pass 2026-11-06: excerpt narrowed to the statute (the heuristic took the page's update date as a quote)",
          item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
@@ -495,7 +504,13 @@ override("police-crisis", "R2",
               "Section 5008, shall be conducted and provided on an ongoing basis", "2026-11-06", _P5150,
               _PL + "; the duty is in the passive voice, on the 72-hour stay; since the L1 landing (2026-11-06) the row "
               "puts it on the facility while the subject is in custody, as 5150(c) has the facility's professional "
-              "person assess (until then the row had it on the responding officer, a faithfulness finding)"))
+              "person assess (until then the row had it on the responding officer, a faithfulness finding)"),
+         item("cal-wic-5152", "opened", "s. 5152(a)", "US-CA", None,
+              "shall receive whatever treatment and care the person's condition requires for the full period that they "
+              "are held", "2026-11-06", "https://california.public.law/codes/ca_welf_and_inst_code_section_5152",
+              "added on the card seat's advice (2026-11-06): the stronger source for the facility's care duty; "
+              "apostrophe straightened; 5152 governs a person admitted to the facility, so the window before delivery "
+              "(in custody, not yet admitted) is not covered by it"))
 override("police-crisis", "R11", "added 2026-11-06 (L1 landing): the facility's own custody power, same sentence of 5150(a)",
          item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
               "a peace officer, professional person in charge of a facility designated by the county for evaluation and "
