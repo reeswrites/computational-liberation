@@ -170,17 +170,17 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it'
+  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''The husband is bound to provide his wife with necessaries by law, as much as himself'' (long s modernised from the OCR).'
   provenance:
   - source_id: blackstone-1765-bk1-ch15
     pin: Bk I ch 15
     jurisdiction: England
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
-    note: cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade
+    verification: opened
+    excerpt: The husband is bound to provide his wife with necessaries by law, as much as himself
+    accessed: '2026-11-06'
+    url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
+    note: long s modernised from the OCR; earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
   load_bearing: true
 - id: R3
   plain: '(practice, not written) The wife providing care to her husband (household labour) must hold when they are married, or else the husband may chastise her (R5).'
@@ -212,17 +212,17 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married'
+  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''If the wife be injured in her person or her property, she can bring no action for redress without her husband''s concurrence, and in his name, as well as her own'' ... ''neither can she be sued, without making the husband a defendant'' (long s modernised from the OCR; the same passage excepts a husband who ''has abjured the realm, or is banished'').'
   provenance:
   - source_id: blackstone-1765-bk1-ch15
     pin: Bk I ch 15
     jurisdiction: England
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
-    note: cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade
+    verification: opened
+    excerpt: If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own ... neither can she be sued, without making the husband a defendant
+    accessed: '2026-11-06'
+    url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
+    note: long s modernised from the OCR; the same passage excepts a husband who has abjured the realm or is banished (she then sues as a feme sole), an exception the row does not encode; earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
 - id: R5
   plain: 'The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15).'
   attribute: husband
@@ -282,17 +282,17 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his)
+  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable'' ... ''all compacts made between husband and wife, when single, are voided by the intermarriage'' (long s modernised; the OCR prints ''converture'' in the first passage).'
   provenance:
   - source_id: blackstone-1765-bk1-ch15
     pin: Bk I ch 15
     jurisdiction: England
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
-    note: cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade
+    verification: opened
+    excerpt: all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable ... all compacts made between husband and wife, when single, are voided by the intermarriage
+    accessed: '2026-11-06'
+    url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
+    note: long s modernised; the OCR prints 'converture' in the first passage; 'void, or at least voidable' is weaker than the row's 'no such power exists' (voidable acts bind until avoided); earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
 source_text: '''By marriage, the husband and wife are one person in law: that is, the very being or legal existence of the woman is suspended during the marriage, or at least is incorporated and consolidated into that of the husband: under whose wing, protection, and cover, she performs every thing; and is therefore called ... a feme-covert.'' He cannot grant anything to her or covenant with her, she cannot sue in her own name, and ''the husband is bound to provide his wife with necessaries by law''. Blackstone, Commentaries on the Laws of England, Book I, ch. 15 (Oxford: Clarendon, 1765). Passage checked at https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/'
 expected_properties:
   dependent_cannot_exit: reachable

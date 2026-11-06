@@ -188,3 +188,15 @@ Preregistration: the section above (commit 73f9c46, before any edit or run). It 
 Other checks: `build.py --check` ok (26 institutions, 26 properties, 27 cards); `pytest -q` 31 passed; `migrate_provenance.py` rerun leaves every `src/*.yaml` byte-identical (128 own rules; 47 hand rows; RAISES unchanged). Reproduction: `uv run phil rules ablate --k 6,8 --workers 4 --entry coverture-household --entry coverture-household-us --entry mwpa-creditor-exemption --entry mwpa-property --entry mwpa-earnings --entry mwpa-sole-trader --entry mwpa-suit --entry mwpa-property-narrowed`, and the same with `--institutions`/`--properties` pointing at the previous commit's JSON for the comparison.
 
 Owed elsewhere: a drift note in plans/backtest-mwpa.md (the direction test's "suit flips has_standing" now means third-party standing; standing against the husband stays barred, `no_standing_against_spouse` reachable; the mwpa-suit link is distance 2; the chain's base is `coverture-household-us`); a dataset sync to philosophy-engine; the engine's `UNFREEDOM` table if R19 should rank.
+
+## Verification pass (2026-11-06, local session, branch `sourcing-verify`)
+
+Brief: plans/sourcing-verify-session.md. Network reached california.public.law, avalon.law.yale.edu, legislation.gov.uk, archive.org downloads and nber.org; archive.org lending items (Shanley, Stone) returned 401 / "item not available" and the Google Books API 429, so those two books stay unread. Every `opened` item below was read in full in this session; each row's `source` now carries a "Verification pass: read 2026-11-06 at <url>: '<quote>'" sentence (appended, nothing removed), so the excerpt check (tests/test_sources.py check 2) holds. Provenance is set in `migrate_provenance.py` OVERRIDES, not by hand in the YAML. No rule (deontic, aim, conditions, or_else) was changed, so nothing needed preregistering; the `source` text is carried into institutions.json, verdicts are not (`phil rules diff`: 0 changed of 146 after every batch).
+
+Order of work in this pass: step 2 (the eight other match rows) ran first while the step-1 and step-3 sources were being fetched.
+
+### Faithfulness findings (rules the sources do not support as written; for the author, no rule edited)
+
+- **police-crisis R2** (match row): WIC 5150(a) puts the ongoing assessment and evaluation in the passive voice ("shall be conducted and provided on an ongoing basis") and on the 72-hour facility stay, not on the responding officer. The row's must-be provides_care(o, s) on the officer is the encoder's reading.
+- **coverture-household R7** (and -us R7): Blackstone says her deeds and acts are "void, or at least voidable"; the row encodes no power at all. Voidable acts bind until avoided, so the row is the stronger reading.
+- **coverture-household R4** (and -us R4): the same passage excepts a husband who "has abjured the realm, or is banished" (she then sues as a feme sole); the row has no exception. Minor.

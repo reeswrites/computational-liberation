@@ -237,17 +237,17 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((a)(2): take into temporary custody without a warrant on reasonable cause of immediate danger). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(w, c) = remove enabled'
+  source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((a)(2): take into temporary custody without a warrant on reasonable cause of immediate danger). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(w, c) = remove enabled Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_306: ''Take into and maintain temporary custody of, without a warrant, a child who'' ... ''the social worker has reasonable cause to believe that the child has an immediate need for medical care or is in immediate danger of physical or sexual abuse''.'
   provenance:
   - source_id: cal-wic-306
-    pin: (a)(2)
+    pin: s. 306(a)(2)
     jurisdiction: US-CA
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: cited with no record of reading in this row's source; re-open to upgrade
+    verification: opened
+    excerpt: Take into and maintain temporary custody of, without a warrant, a child who ... the social worker has reasonable cause to believe that the child has an immediate need for medical care or is in immediate danger of physical or sexual abuse
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_306
+    note: the page gives its source as leginfo.legislature.ca.gov (updated 2024-09-27); (a)(2) also requires the child to be a dependent or described in s. 300(b) or (g)
   var_roles:
     w: social_worker
     c: child
@@ -260,17 +260,17 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((f): before taking a child into custody the worker shall consider whether the child may remain safely at home). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] investigate establishes in_home_considered(w, c) (the investigation is that consideration); consider_in_home restores it, disregard_in_home (the worker drops the question) breaks it'
+  source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((f): before taking a child into custody the worker shall consider whether the child may remain safely at home). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] investigate establishes in_home_considered(w, c) (the investigation is that consideration); consider_in_home restores it, disregard_in_home (the worker drops the question) breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_306: ''Before taking a child into custody, a social worker shall consider whether the child may remain safely in their residence.'''
   provenance:
   - source_id: cal-wic-306
-    pin: (f)
+    pin: s. 306(f)
     jurisdiction: US-CA
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: cited with no record of reading in this row's source; re-open to upgrade
+    verification: opened
+    excerpt: Before taking a child into custody, a social worker shall consider whether the child may remain safely in their residence.
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_306
+    note: the page gives its source as leginfo.legislature.ca.gov (updated 2024-09-27)
   load_bearing: true
   var_roles:
     w: social_worker
@@ -378,17 +378,17 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((a)(2): the social worker may ''take into and maintain temporary custody''; maintaining custody is what bars the child''s own exit). Inferred from ''maintain custody'', the section does not address the child''s conduct; a disability (or_else null): no sanction falls on a child who runs, the custody is the restraint. [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.]'
+  source: 'Cal. Welf. & Inst. Code s. 306; https://california.public.law/codes/ca_welf_and_inst_code_section_306 ((a)(2): the social worker may ''take into and maintain temporary custody''; maintaining custody is what bars the child''s own exit). Inferred from ''maintain custody'', the section does not address the child''s conduct; a disability (or_else null): no sanction falls on a child who runs, the custody is the restraint. [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_306: ''Take into and maintain temporary custody of, without a warrant'' (the section says nothing of the child''s own conduct; the exit bar stays the encoder''s inference, as above).'
   provenance:
   - source_id: cal-wic-306
-    pin: (a)(2)
+    pin: s. 306(a)(2)
     jurisdiction: US-CA
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: 'cited with no record of reading in this row''s source; quote in the old string (no read date): ''take into and maintain temporary custody'' ... ''maintain custody''; re-open to upgrade'
+    verification: opened
+    excerpt: Take into and maintain temporary custody of, without a warrant
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_306
+    note: the section says nothing of the child's own conduct; the exit bar is inferred from custody (the row says so)
   var_roles:
     c: child
 - id: R11

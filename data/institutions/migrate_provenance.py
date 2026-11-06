@@ -346,11 +346,27 @@ override("coverture-household", "R6",
          "the string names Bk I ch 15 only to say it is no longer cited; Shanley and Stone each UNVERIFIED",
          item("shanley-1989", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429); cited for restitution of conjugal rights and no unilateral exit before the Matrimonial Causes Act 1857"),
          item("stone-1990", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429); same point as Shanley"))
-for _r in ("R2", "R4", "R7"):
+# Verification pass 2026-11-06 (plans/sourcing-verify-session.md, order 2 and the cheapest upgrades): Bk I ch 15
+# re-opened at Avalon; each row's `source` now records the read date and the passage quoted.
+BK1_15 = "https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp"
+_BK1_15_EXCERPT = {
+    "R2": ("The husband is bound to provide his wife with necessaries by law, as much as himself",
+           "long s modernised from the OCR; earlier pointer " + WAMS),
+    "R4": ("If the wife be injured in her person or her property, she can bring no action for redress without her "
+           "husband's concurrence, and in his name, as well as her own ... neither can she be sued, without making the "
+           "husband a defendant",
+           "long s modernised from the OCR; the same passage excepts a husband who has abjured the realm or is "
+           "banished (she then sues as a feme sole), an exception the row does not encode; earlier pointer " + WAMS),
+    "R7": ("all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable ... all "
+           "compacts made between husband and wife, when single, are voided by the intermarriage",
+           "long s modernised; the OCR prints 'converture' in the first passage; 'void, or at least voidable' is "
+           "weaker than the row's 'no such power exists' (voidable acts bind until avoided); earlier pointer " + WAMS),
+}
+for _r, (_ex, _note) in _BK1_15_EXCERPT.items():
     override("coverture-household", _r,
-             "WAMS URL is the copy read for Bk I ch 15 (provenance url); no read claim or quote in the row: recalled",
-             item("blackstone-1765-bk1-ch15", "recalled", "Bk I ch 15", "England", url=WAMS,
-                  note="cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade"))
+             "verification pass 2026-11-06: Bk I ch 15 re-opened at Avalon; the row now records the read and the quote",
+             item("blackstone-1765-bk1-ch15", "opened", "Bk I ch 15", "England", None, _ex, "2026-11-06", BK1_15,
+                  _note))
 # coverture-household-us (2026-11-05, plans/sourcing.md "Coverture split and US suit", B3 with B1): the English rows'
 # items with a note that US reception of Blackstone is assumed and unsourced; R6 cites US leads, never above unverified.
 _US_RECEPTION = ("US entry: an English treatise cited for a US rule; US reception of Blackstone is assumed and "
@@ -379,6 +395,47 @@ override("cps", "R7", "pin and excerpt tidied (the heuristic's excerpt joined th
               "unless the juvenile court finds clear and convincing evidence of any of the following circumstances ... substantial danger to the physical health, safety, protection, or physical or emotional well-being of the minor",
               "2026-11-04", "https://california.public.law/codes/ca_welf_and_inst_code_section_361",
               "leginfo.legislature.ca.gov returned 403"))
+# Verification pass 2026-11-06: the other match rows (plans/sourcing.md "Which rows the care+control match reads").
+_P5150 = "https://california.public.law/codes/ca_welf_and_inst_code_section_5150"
+_P306 = "https://california.public.law/codes/ca_welf_and_inst_code_section_306"
+_PL = "the page gives the text as 'updated Jan. 1, 2024' and its source as leginfo.legislature.ca.gov"
+override("police-crisis", "R2",
+         "verification pass 2026-11-06: excerpt narrowed to the statute (the heuristic took the page's update date as a quote)",
+         item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
+              "At a minimum, assessment, as defined in Section 5150.4, and evaluation, as defined in subdivision (a) of "
+              "Section 5008, shall be conducted and provided on an ongoing basis", "2026-11-06", _P5150,
+              _PL + "; the duty is in the passive voice and is not placed on the officer: the row's provides_care(o, s) "
+              "on the responding officer is the encoder's reading (faithfulness finding, plans/sourcing.md)"))
+override("police-crisis", "R3", "verification pass 2026-11-06: url and note",
+         item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
+              "When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or "
+              "gravely disabled, a peace officer ... may, upon probable cause, take, or cause to be taken, the person "
+              "into custody for a period of up to 72 hours", "2026-11-06", _P5150,
+              _PL + "; the statute's trigger also includes 'gravely disabled' and requires probable cause; the row "
+              "reads only danger"))
+override("police-crisis", "R4", "verification pass 2026-11-06: url and note",
+         item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
+              "take, or cause to be taken, the person into custody for a period of up to 72 hours ... The 72-hour "
+              "period begins at the time when the person is first detained.", "2026-11-06", _P5150,
+              _PL + "; the section states custody, not the subject's exit bar, which the row infers from custody; "
+              "5150(c) lets the facility serve the person on a voluntary basis instead of detaining"))
+override("cps", "R3", "verification pass 2026-11-06: url and note",
+         item("cal-wic-306", "opened", "s. 306(a)(2)", "US-CA", None,
+              "Take into and maintain temporary custody of, without a warrant, a child who ... the social worker has "
+              "reasonable cause to believe that the child has an immediate need for medical care or is in immediate "
+              "danger of physical or sexual abuse", "2026-11-06", _P306,
+              "the page gives its source as leginfo.legislature.ca.gov (updated 2024-09-27); (a)(2) also requires the "
+              "child to be a dependent or described in s. 300(b) or (g)"))
+override("cps", "R4", "verification pass 2026-11-06: url",
+         item("cal-wic-306", "opened", "s. 306(f)", "US-CA", None,
+              "Before taking a child into custody, a social worker shall consider whether the child may remain safely "
+              "in their residence.", "2026-11-06", _P306,
+              "the page gives its source as leginfo.legislature.ca.gov (updated 2024-09-27)"))
+override("cps", "R10", "verification pass 2026-11-06: url and note",
+         item("cal-wic-306", "opened", "s. 306(a)(2)", "US-CA", None,
+              "Take into and maintain temporary custody of, without a warrant", "2026-11-06", _P306,
+              "the section says nothing of the child's own conduct; the exit bar is inferred from custody (the row "
+              "says so)"))
 for _e in ("companion-ownership", "companion-guardian-renamed"):
     _items = [item("cal-civ-655", "opened", "s. 655", "US-CA", None,
                    "There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals",
