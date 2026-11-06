@@ -227,17 +227,17 @@ rules:
   or_else: R4
   strand: rival
   implicit: false
-  source: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor')
+  source: 'Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ (''Every person who willfully abandons any animal is guilty of a misdemeanor'') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text ''updated Jan. 1, 2000'' per the page): (a) ''Every person who willfully abandons any animal is guilty of a misdemeanor.'''
   provenance:
   - source_id: cal-pen-597s
     pin: s. 597s(a)
     jurisdiction: US-CA
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: 'cited with no record of reading in this row''s source; quote in the old string (no read date): ''Every person who willfully abandons any animal is guilty of a misdemeanor''; re-open to upgrade'
+    verification: opened
+    excerpt: Every person who willfully abandons any animal is guilty of a misdemeanor.
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_penal_code_section_597s
+    note: the page gives the text as 'updated Jan. 1, 2000' and its source as leginfo.legislature.ca.gov; (b) exempts releasing native wildlife
 - id: R4
   plain: 'The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s).'
   attribute: state
@@ -247,17 +247,17 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/
+  source: 'Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text ''updated Jan. 1, 2000'' per the page): (a) ''Every person who willfully abandons any animal is guilty of a misdemeanor.'''
   provenance:
   - source_id: cal-pen-597s
     pin: s. 597s(a)
     jurisdiction: US-CA
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: cited with no record of reading in this row's source; re-open to upgrade
+    verification: opened
+    excerpt: Every person who willfully abandons any animal is guilty of a misdemeanor.
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_penal_code_section_597s
+    note: the page gives the text as 'updated Jan. 1, 2000' and its source as leginfo.legislature.ca.gov; (b) exempts releasing native wildlife
 - id: R5
   plain: 'The guardian providing care to the animal must hold when the guardian owns it (Cal. Penal Code 597(b)).'
   attribute: guardian

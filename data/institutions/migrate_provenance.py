@@ -359,6 +359,14 @@ RAISES = {
         "'Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/...: 'In order to provide and "
         "maintain ...''; the row's 'UNVERIFIED as a rule' belongs to the duty to serve (its own null item) "
         "(verification pass 2026-11-06)",
+    ("naming-convention", "R1", "centola-becker-brackbill-baronchelli-2018"):
+        "'Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/...: "
+        "'participants are shown an image ...''; the row's earlier 'NOT OPENED (2026-11-04 ...)' is superseded "
+        "(verification pass 2026-11-06)",
+    ("naming-convention", "R2", "centola-becker-brackbill-baronchelli-2018"):
+        "'Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/...: "
+        "'participants are shown an image ...''; the row's earlier 'NOT OPENED (2026-11-04 ...)' is superseded "
+        "(verification pass 2026-11-06)",
     ("coverture-household", "R6", "uk-matrimonial-causes-act-1857"):
         "'enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/...: s. 2, ... s. 27, ...'; "
         "the heuristic's read regex is lower-case and the work is named before 'read' (verification pass 2026-11-06)",
@@ -859,6 +867,33 @@ override("airline-flight", "R2",
               "https://www.law.cornell.edu/cfr/text/14/121.391",
               "staffing and seating for evacuation; not an in-flight care duty"),
          item(note="the general in-flight care duty: UNVERIFIED (no text opened states it)"))
+_P597S = "https://california.public.law/codes/ca_penal_code_section_597s"
+for _e in ("companion-ownership", "companion-guardian-renamed"):
+    for _r in ("R3", "R4"):
+        override(_e, _r, "verification pass 2026-11-06: 597s opened; excerpt narrowed to the statute (the heuristic "
+                 "took the page's update date as a quote)",
+                 item("cal-pen-597s", "opened", "s. 597s(a)", "US-CA", None,
+                      "Every person who willfully abandons any animal is guilty of a misdemeanor.", "2026-11-06",
+                      _P597S, "the page gives the text as 'updated Jan. 1, 2000' and its source as "
+                      "leginfo.legislature.ca.gov; (b) exempts releasing native wildlife"))
+override("lease", "R2", "verification pass 2026-11-06: 1941 opened; url and note",
+         item("cal-civ-1941", "opened", "s. 1941", "US-CA", None,
+              "The lessor of a building intended for the occupation of human beings must, in the absence of an "
+              "agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent "
+              "dilapidations thereof, which render it untenantable", "2026-11-06",
+              "https://california.public.law/codes/ca_civ_code_section_1941",
+              "'in the absence of an agreement to the contrary' and the s. 1929 exception are not in the row"))
+for _r in ("R1", "R2"):
+    override("naming-convention", _r,
+             "verification pass 2026-11-06: Centola et al. read in full (accepted manuscript): opened; the free choice "
+             "of name is the experiment's design, not a stated rule",
+             item("centola-becker-brackbill-baronchelli-2018", "opened", "Methods; results (accepted ms.)", None, None,
+                  "participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the "
+                  "response field ... Continuous interactions led to occasional switching by subjects throughout the "
+                  "study.", "2026-11-06", "https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf",
+                  "accepted manuscript, not the Science typeset text (no Science page numbers); free text entry each "
+                  "round implies either name may be used at any time; the committed minority are confederates who "
+                  "push only the new name; the 25% threshold is stated as 'not expected to be a universal value'"))
 
 def migrate_rule(eid, rule):
     key = (eid, rule["id"])

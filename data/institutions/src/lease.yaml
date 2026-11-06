@@ -116,17 +116,17 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Cal. Civ. Code s. 1941 (''The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it'
+  source: 'Cal. Civ. Code s. 1941 (''The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_civ_code_section_1941: ''The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''.'
   provenance:
   - source_id: cal-civ-1941
     pin: s. 1941
     jurisdiction: US-CA
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: 'cited with no record of reading in this row''s source; quote in the old string (no read date): ''The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''; re-open to upgrade'
+    verification: opened
+    excerpt: The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_civ_code_section_1941
+    note: '''in the absence of an agreement to the contrary'' and the s. 1929 exception are not in the row'
 - id: R3
   plain: 'The landlord may evict the tenant when the premises are leased and rent has not been paid (Cal. Code Civ. Proc. 1161).'
   attribute: landlord
