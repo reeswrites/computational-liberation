@@ -315,7 +315,7 @@ isomorphic_to:
   level: guard+strands
   sub_signature:
   - R2~R2 provides_care~provides_care
-  - R5~R3 chastise~detain
+  - R5~R11 chastise~hold
   - R6~R4 leave~leave
 - id: cps
   level: guard+strands

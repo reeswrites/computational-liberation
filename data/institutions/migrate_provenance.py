@@ -493,8 +493,16 @@ override("police-crisis", "R2",
          item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
               "At a minimum, assessment, as defined in Section 5150.4, and evaluation, as defined in subdivision (a) of "
               "Section 5008, shall be conducted and provided on an ongoing basis", "2026-11-06", _P5150,
-              _PL + "; the duty is in the passive voice and is not placed on the officer: the row's provides_care(o, s) "
-              "on the responding officer is the encoder's reading (faithfulness finding, plans/sourcing.md)"))
+              _PL + "; the duty is in the passive voice, on the 72-hour stay; since the L1 landing (2026-11-06) the row "
+              "puts it on the facility while the subject is in custody, as 5150(c) has the facility's professional "
+              "person assess (until then the row had it on the responding officer, a faithfulness finding)"))
+override("police-crisis", "R11", "added 2026-11-06 (L1 landing): the facility's own custody power, same sentence of 5150(a)",
+         item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
+              "a peace officer, professional person in charge of a facility designated by the county for evaluation and "
+              "treatment, member of the attending staff ... may, upon probable cause, take, or cause to be taken, the "
+              "person into custody for a period of up to 72 hours", "2026-11-06", _P5150,
+              _PL + "; the facility and the officer hold the same power on the same trigger, so the officer remains a "
+              "second sanctioner (care_and_sanction_same_role violated)"))
 override("police-crisis", "R3", "verification pass 2026-11-06: url and note",
          item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
               "When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or "
