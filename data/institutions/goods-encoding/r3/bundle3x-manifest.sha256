@@ -1,0 +1,208 @@
+45c42edd37579cab94600c70afd93c24ce212b3547e22ad03a0d4d54263e3c00  ./conventions.md
+31a40f9106834fb6439c6c0d8d2fafd6d32180d7dc146a6649ba2b346d4f9b4c  ./goods-list.md
+f0ea04dabcbf008b752befcfe836a6c5aba7b9657ebf07008e04bec119cae8d9  ./prompt-api.md
+c624ac36d3309c482ea278be73a3b6aca05a54a3f7267434dd831add7a2b4f9f  ./prompt.md
+2d498c64075a4645198ffc9058aeba3f3154eb6fd088736d46f7060e43c2f962  ./validate.sh
+e70a03bc98bd4364c2d310c8cb296e11e45585e1ec592a8a4d019d624a40d1e3  ./vocab/coverture-floor.yaml
+2a6a55610d97157367da221a9e9bcbfdb4b83c3e0f1b8bbfa6aad40e2f411b0c  ./vocab/coverture-household-us.yaml
+908072520a3ea795a7c45d186a5f5529926eaded84ea85b688e6bc592c7fdd4b  ./vocab/coverture-household.yaml
+e80c1f4234989475c7e684f93431bb7da8cd0e4271783021c5606f87587e8afe  ./vocab/cps.yaml
+27c0b5a581b5a3aaa32f4323fb92fd3fbdeaf69a92411d19dc642fe3db45668c  ./vocab/ectogenesis.yaml
+f6eebe4dcd7475732ecb7edde6a4b4e4cdbcd4e0f7f20602f04e8db9105ccf37  ./vocab/kibbutz-childrens-house.yaml
+4f0a12df55bb067ea585336b7a5684e9c863ef39cd0fe1944fca8a9a84b1f4da  ./vocab/mwpa-earnings.yaml
+6c56a5ae5fb2359fe8b3593cca29c21426e4926256c9c318c48bf6a9a54b7202  ./vocab/police-crisis.yaml
+# aggregate: 18e71a9209cf189cb8f92c47d71a60ac5638e6595e88d6722ac963a7dc7c6fd3  (sha256sum $(find . -type f | sort) | sha256sum, run inside bundle3x)
+# revision-2 prompt template (data/institutions/goods-encoding/r2/prompt-template.md): cbbad8131d44ef97a658591b54d9369c161b80f49016d3f03fde95ef024490a2
+# substituted prompts (differ only in <N> and the output path carrying it; <BUNDLE>=/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/r3/bundle3x, <OUT>=/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/r3/out/3x):
+# 191cdca57cd3619d2b24ea73eec7d791954fcc8d288cfdc7d7ef541a8d975e93  prompt-3x-1.txt
+# 1a03d846c85559468199eb3cecf2053bcecd014067e15df5d73c0a0940d03db7  prompt-3x-2.txt
+# validator: validate.sh calls philengine.rules_lower.validate_property (philosophy-engine at ENGINE_PIN 605cff41bf203a10f4c551c8e254e6f7d5d0c467) on the entry in /home/user/computational-liberation/data/institutions/institutions.json (sha256 6c57185bf0a4228c7f0c01dd9f0d0618baead6a347b820d308697f45a5d6baa1, computational-liberation 6805589)
+# vocab/ extracted from that institutions.json (keys roles, fluents, actions, initial, initial_free, defaults; id appended; yaml.safe_dump sort_keys=False)
+# vocab diffs against revision 1's vocab files (scratchpad/slice2/bundle/vocab/<id>.yaml):
+# ## diff r1 vocab/coverture-floor.yaml
+# 9a10,11
+# >   arg_roles:
+# >   - wife
+# 12a15,21
+# > - name: care_obliged
+# >   arity: 2
+# >   gloss: some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted
+# >   params:
+# >   - x
+# >   - y
+# >   derived: (obliged provides_care x y)
+# 15a25,26
+# >   arg_roles:
+# >   - wife
+# 22a34,36
+# >   arg_roles:
+# >   - husband
+# >   - wife
+# 28a43,44
+# >   arg_roles:
+# >   - wife
+# 34a51,52
+# >   arg_roles:
+# >   - wife
+# 37a56,58
+# >   arg_roles:
+# >   - husband
+# >   - wife
+# 44a66,68
+# >   arg_roles:
+# >   - husband
+# >   - wife
+# 50a75,76
+# >   arg_roles:
+# >   - wife
+# 56a83,84
+# >   arg_roles:
+# >   - wife
+# 62a91,92
+# >   arg_roles:
+# >   - wife
+# 65a96,97
+# >   arg_roles:
+# >   - wife
+# 68a101,102
+# >   arg_roles:
+# >   - wife
+# 74a109,110
+# >   params:
+# >   - w
+# 166a203,206
+# > - name: draw_subsistence
+# >   args:
+# >   - w
+# >   effects: []
+# 182,189c222
+# < - name: draw_subsistence
+# <   args:
+# <   - w
+# <   arg_roles:
+# <   - wife
+# <   effects: []
+# <   gloss: income in her own right from outside the marriage; no effects
+# < id: coverture-floor
+# ---
+# > initial: []
+# 194c227
+# < # vocabulary from plans/priority-slice2.md section 5; the entry does not exist yet
+# ---
+# > id: coverture-floor
+# ## diff r1 vocab/coverture-household-us.yaml
+# 12a13,19
+# > - name: care_obliged
+# >   arity: 2
+# >   gloss: some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted
+# >   params:
+# >   - x
+# >   - y
+# >   derived: (obliged provides_care x y)
+# 71a79,84
+# > - name: has_own_income
+# >   arity: 1
+# >   gloss: w has an income in her own right from outside the marriage
+# >   params:
+# >   - w
+# >   derived: (enabled draw_subsistence w)
+# 162a176,179
+# > - name: draw_subsistence
+# >   args:
+# >   - w
+# >   effects: []
+# ## diff r1 vocab/coverture-household.yaml
+# 12a13,19
+# > - name: care_obliged
+# >   arity: 2
+# >   gloss: some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted
+# >   params:
+# >   - x
+# >   - y
+# >   derived: (obliged provides_care x y)
+# 71a79,84
+# > - name: has_own_income
+# >   arity: 1
+# >   gloss: w has an income in her own right from outside the marriage
+# >   params:
+# >   - w
+# >   derived: (enabled draw_subsistence w)
+# 162a176,179
+# > - name: draw_subsistence
+# >   args:
+# >   - w
+# >   effects: []
+# ## diff r1 vocab/cps.yaml
+# 21a22,31
+# > - name: care_obliged
+# >   arity: 2
+# >   gloss: some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted
+# >   arg_roles:
+# >   - social_worker
+# >   - child
+# >   params:
+# >   - x
+# >   - y
+# >   derived: (obliged provides_care x y)
+# 78a89,93
+# > - name: would_not_benefit
+# >   arity: 1
+# >   gloss: the court finds that c would not benefit from the appointment of counsel (WIC 317(c)(1)); exogenous
+# >   arg_roles:
+# >   - child
+# 257a273
+# > - would_not_benefit
+# ## diff r1 vocab/ectogenesis.yaml
+# 21a22,31
+# > - name: care_obliged
+# >   arity: 2
+# >   gloss: some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted
+# >   arg_roles:
+# >   - intended_parent
+# >   - child
+# >   params:
+# >   - x
+# >   - y
+# >   derived: (or (obliged provides_care x y) (obliged provide_care x y))
+# ## diff r1 vocab/kibbutz-childrens-house.yaml
+# 18a19,25
+# > - name: care_obliged
+# >   arity: 2
+# >   gloss: some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted
+# >   params:
+# >   - x
+# >   - y
+# >   derived: (obliged provides_care x y)
+# ## diff r1 vocab/mwpa-earnings.yaml
+# 16a17,23
+# > - name: care_obliged
+# >   arity: 2
+# >   gloss: some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted
+# >   params:
+# >   - x
+# >   - y
+# >   derived: (obliged provides_care x y)
+# 100a108,113
+# > - name: has_own_income
+# >   arity: 1
+# >   gloss: w has an income in her own right from outside the marriage
+# >   params:
+# >   - w
+# >   derived: (enabled draw_subsistence w)
+# 212a226,229
+# > - name: draw_subsistence
+# >   args:
+# >   - w
+# >   effects: []
+# ## diff r1 vocab/police-crisis.yaml
+# 21a22,31
+# > - name: care_obliged
+# >   arity: 2
+# >   gloss: some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted
+# >   arg_roles:
+# >   - officer
+# >   - subject
+# >   params:
+# >   - x
+# >   - y
+# >   derived: (obliged provides_care x y)

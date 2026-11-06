@@ -1,0 +1,16 @@
+45c42edd37579cab94600c70afd93c24ce212b3547e22ad03a0d4d54263e3c00  ./conventions.md
+358b50b63df58d789b3ab184cc55ad2195b51bd3fc7bc53d5d0ea941b692311a  ./goods-list.md
+cbbad8131d44ef97a658591b54d9369c161b80f49016d3f03fde95ef024490a2  ./prompt.md
+2d498c64075a4645198ffc9058aeba3f3154eb6fd088736d46f7060e43c2f962  ./validate.sh
+e70a03bc98bd4364c2d310c8cb296e11e45585e1ec592a8a4d019d624a40d1e3  ./vocab/coverture-floor.yaml
+2a6a55610d97157367da221a9e9bcbfdb4b83c3e0f1b8bbfa6aad40e2f411b0c  ./vocab/coverture-household-us.yaml
+908072520a3ea795a7c45d186a5f5529926eaded84ea85b688e6bc592c7fdd4b  ./vocab/coverture-household.yaml
+4f0a12df55bb067ea585336b7a5684e9c863ef39cd0fe1944fca8a9a84b1f4da  ./vocab/mwpa-earnings.yaml
+# aggregate: 46b99b67973d363e2b09bae0d3e0165cefa1a958216f9b1288a41478b9fd94af  (sha256sum $(find . -type f | sort) | sha256sum, run inside bundle3d)
+# revision-2 prompt template (data/institutions/goods-encoding/r2/prompt-template.md): cbbad8131d44ef97a658591b54d9369c161b80f49016d3f03fde95ef024490a2
+# substituted prompts (differ only in <N> and the output path carrying it; <BUNDLE>=/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/r3/bundle3d, <OUT>=/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/r3/out/3d):
+# fd5aaced96fac4fb87021edb4d9b43c3ca5df7b3681fe430b523db8e56125bd3  prompt-3d-1.txt
+# 947eab9a832b71aeed8a42b0c5873aa0755f65709f9d5c966cdd179c127518a9  prompt-3d-2.txt
+# validator: validate.sh calls philengine.rules_lower.validate_property (philosophy-engine at ENGINE_PIN 605cff41bf203a10f4c551c8e254e6f7d5d0c467) on the entry in /home/user/computational-liberation/data/institutions/institutions.json (sha256 6c57185bf0a4228c7f0c01dd9f0d0618baead6a347b820d308697f45a5d6baa1, computational-liberation 6805589)
+# vocab/ extracted from that institutions.json (keys roles, fluents, actions, initial, initial_free, defaults; id appended; yaml.safe_dump sort_keys=False)
+# vocab/ files are byte copies of bundle3x's vocab/ for the same four entries; their diffs against revision 1 are in bundle3x-manifest.sha256

@@ -41,3 +41,25 @@ Protocol: plans/priority-slice2.md "Revision 3" R3.3-R3.4, R3.6 step 2. Bundles:
 **Audit.** Blind gloss author: across both messages, Read theory.md, Read intent.md, Write free-list.yaml, Write gloss.yaml; nothing else. Re-gloss author: Read theory.md, Read intent.md, Write gloss.yaml; nothing else. No commands, no web.
 
 **Outputs.** Free list: 18 goods (being_known, receiving_care, financial_independence, safety_from_violence, bodily_integrity, health, housing, income, ... ; see r3/blind-free-list.yaml); none of mutual care, chosen care or child-with-family appear unprompted. Blind glosses for the six ids: r3/blind-gloss.yaml (the author flags known_carer as ambiguous between "being known by one's carer" and recognition of the carer's work). Re-gloss of chosen_mutual_care: r3/regloss.yaml; excludes obliged care of **both** spouses, keeps the exit and no-sanction conditions, and notes that a general spousal duty of mutual support (as in many civil codes) would make the good unattainable because the vocabulary cannot say which rule obliges.
+
+## Revision 3: encoders (2026-11-06)
+
+Bundles (R3.6 step 4): bundle3d (dataset re-encoding of `chosen_mutual_care` from r3/regloss.yaml; aggregate `46b99b67973d363e2b09bae0d3e0165cefa1a958216f9b1288a41478b9fd94af`) and bundle3x (blind experiment, all six goods from r3/blind-gloss.yaml; aggregate `18e71a9209cf189cb8f92c47d71a60ac5638e6595e88d6722ac963a7dc7c6fd3`, includes `prompt-api.md` for the non-Claude encoder, **not run: no API key**). Manifests, templates, the validator and prompt-api.md in r3/. Vocab from the current dataset (ENGINE_PIN 605cff4, institutions.json at 6805589).
+
+**Departures from the spec, recorded (coordinator decisions on the bundle assembler's report):** (1) the validator is not the revision-2 one "unchanged": that one built coverture-floor from the revision-1 hand-made vocab and warned on `care_obliged` there; the new validate.sh is self-contained and loads the current dataset entry for every id. (2) Vocab diffs against revision 1 are not "`care_obliged` only": the dataset has since gained `has_own_income` / `draw_subsistence` (coverture family), `would_not_benefit` (cps, faithfulness batch 2 P2) and the real coverture-floor entry (arg_roles, params, initial); full diffs in bundle3x-manifest.sha256. (3) cps `defaults` kept in its vocab, as in revision 1's extraction. (4) goods-list.md format chosen by the assembler (bundle3d: id | for whom | gloss | entries; bundle3x adds absent when | why a good). (5) prompt-api.md sits inside bundle3x (inside the hash, as specified); the encoders' access rules do not list it; one encoder saw its name in a directory listing and did not open it.
+
+**Audit.** For each of the four encoders the first message equals its substituted prompt file byte for byte (whitespace-trimmed); pairs differ only in encoder number and output path. Tool calls: 3d-1 11, 3d-2 11, 3x-1 71, 3x-2 22. Every Read was a bundle file of its own bundle; every Bash call ran only that bundle's validate.sh (some in shell loops with variables); the one Write was its own goods.yaml; one Glob listing per encoder of its bundle or vocab directory. No breach.
+
+**Merge** (z3 validity of A <-> B, fluents uninterpreted, formal and subject separately):
+
+| experiment | good | formal | subject | merge |
+| --- | --- | --- | --- | --- |
+| 3d (dataset) | `chosen_mutual_care` | equivalent | equivalent | one formula (encoder 1), `contested: []` |
+| 3x (blind) | `cared_for` | **different** | equivalent | contested (entries also differ) |
+| 3x | `mutual_household_care` | equivalent | equivalent | agree |
+| 3x | `known_carer` | **different** | **different** | contested |
+| 3x | `child_with_family` | **different** | equivalent | contested |
+| 3x | `provided_for` | **different** | equivalent | contested |
+| 3x | `chosen_mutual_care` | **different** | **different** | contested |
+
+**Headline for the experiment.** With glosses written by an author who never saw the rules, two Claude encoders on one hashed bundle agree on 1 of 6 goods; with the revision-1 glosses (author had seen the rules and predictions; the gloss chose the fluents) they agreed on 4 of 5 (5 of 6 counting `chosen_mutual_care` in revision 2). The earlier agreement came largely from the gloss fixing the vocabulary, as the revision-2 faithfulness review suspected. Notable divergences in the blind encodings: `cared_for` adds "the carer holds no power to sanction the subject"; `child_with_family` is written for cps only (kibbutz and ectogenesis not expressible); `provided_for` requires means of her own rather than maintenance; `chosen_mutual_care` adds her own income. Experiment formulas do not enter the dataset (R3.6 fail condition); replacement candidates are listed in the results, not acted on. Second encoder: agent, not someone living under the institution (ADR 0012).
