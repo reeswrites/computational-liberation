@@ -18,6 +18,12 @@ fluents:
   arity: 2
   gloss: x provides care (maintenance, assessment, treatment, services, feeding) to y
   arg_roles: [intended_parent, child]
+- name: care_obliged
+  arity: 2
+  gloss: 'some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted'
+  arg_roles: [intended_parent, child]
+  params: [x, y]
+  derived: (or (obliged provides_care x y) (obliged provide_care x y))
 - name: female
   arity: 1
   gloss: x is female (sex as assigned by the institution's own records)

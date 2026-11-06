@@ -241,3 +241,69 @@ def test_goods_primary_measure_pinned():
         assert r.strip() and "\n" not in r and len(r) <= 200, n
         assert all(a.model_dump().keys().isdisjoint({"primary_measure", "primary_measure_reason"}) for a in p.contested), n
     assert all(p.primary_measure is None and p.primary_measure_reason is None for p in props.values() if p.kind != "goods")
+
+
+# R3.2 O5 (plans/priority-slice2.md revision 3): `care_obliged` pins. Two pins are written here as the preregistration
+# meant them, not as it typed them (drift, plans/priority-slice2-results.md "Revision 3"): over every ordered pair of
+# agents, `(married h w t)` is false for (wife, husband) while both duties hold, and (husband, wife) is still obliged by
+# R2 once R3 is deleted. The as-typed forms are pinned too, with the verdict they get. `<=>` is written `iff` (the
+# engine's grammar).
+O5 = {
+    "coverture-household": {
+        "mutual_iff_married": ("(forall ((h agent) (w agent)) (iff (or (married h w t) (married w h t)) "
+                               "(and (care_obliged h w t) (care_obliged w h t))))", "invariant", "holds_to_k"),
+        "as_typed": ("(forall ((h agent) (w agent)) (iff (married h w t) (and (care_obliged h w t) "
+                     "(care_obliged w h t))))", "invariant", "violated"),
+        "wife_obliged": ("(care_obliged wife husband t)", "reachable", "reachable"),
+    },
+    "ectogenesis": {
+        "iff": ("(iff (care_obliged intended_parent child t) (and (parent intended_parent child t) (is_subject child t) "
+                "(female intended_parent t)))", "invariant", "holds_to_k"),
+        "obliged": ("(care_obliged intended_parent child t)", "reachable", "reachable"),
+    },
+    "kibbutz-childrens-house": {
+        "iff": ("(iff (care_obliged metapelet child t) (assigned metapelet t))", "invariant", "holds_to_k"),
+        "obliged": ("(care_obliged metapelet child t)", "reachable", "reachable"),
+    },
+}
+
+
+@pytest.mark.parametrize("iid", sorted(O5))
+def test_care_obliged_pins(iid):
+    inst, _ = _dataset_inst(iid)
+    ps = {n: Property(name=n, kind="structure", formal=f) for n, (f, _, _) in O5[iid].items()}
+    rep = rc.run_all(inst, ps, k=6, which={n: [c] for n, (_, c, _) in O5[iid].items()})
+    assert {r.property: r.verdict for r in rep.results} == {n: v for n, (_, _, v) in O5[iid].items()}
+
+
+def test_care_obliged_pin_coverture_without_R3():
+    inst, _ = _dataset_inst("coverture-household")
+    ps = {"wife_never": Property(name="wife_never", kind="structure", formal="(not (care_obliged wife husband t))"),
+          "as_typed": Property(name="as_typed", kind="structure",
+                               formal="(forall ((h agent) (w agent)) (not (care_obliged w h t)))"),
+          "husband_still": Property(name="husband_still", kind="structure", formal="(care_obliged husband wife t)")}
+    rep = rc.run_all(_without(inst, "R3"), ps, k=6, which={"wife_never": ["invariant"], "as_typed": ["invariant"],
+                                                           "husband_still": ["reachable"]})
+    assert {r.property: r.verdict for r in rep.results} == {"wife_never": "holds_to_k", "as_typed": "violated",
+                                                            "husband_still": "reachable"}
+
+
+CARE_OBLIGED_ENTRIES = {  # R3.2: every entry that declares provides_care (22; the footbinding pair declares none)
+    "coverture-household", "coverture-household-us", "coverture-floor", "mwpa-creditor-exemption", "mwpa-property",
+    "mwpa-earnings", "mwpa-sole-trader", "mwpa-suit", "mwpa-property-narrowed", "police-crisis", "cps", "crisis-team",
+    "airline-flight", "kibbutz-childrens-house", "kibbutz-childrens-house-no-implicit", "ectogenesis",
+    "gestational-surrogacy", "companion-ownership", "companion-guardianship", "companion-guardian-renamed",
+    "paternity-quota", "transferable-leave"}
+
+
+def test_care_obliged_declared_where_provides_care_is():
+    insts = load_institutions(default_paths()[0])
+    for i in insts:
+        fl = {f.name: f for f in i.fluents}
+        assert ("care_obliged" in fl) == ("provides_care" in fl) == (i.id in CARE_OBLIGED_ENTRIES), i.id
+        if "care_obliged" in fl:
+            f = fl["care_obliged"]
+            assert f.arity == 2 and f.params == ["x", "y"] and f.arg_roles == fl["provides_care"].arg_roles, i.id
+            want = ("(or (obliged provides_care x y) (obliged provide_care x y))"
+                    if i.id in ("ectogenesis", "gestational-surrogacy") else "(obliged provides_care x y)")
+            assert f.derived == want, i.id

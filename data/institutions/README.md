@@ -42,6 +42,12 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
   as an implicit `may ... when true`: the action carries `default_capacity: true`, it is enabled unless an express
   disability (`must_not`, `or_else` null) bars it, and a sanctioned `must_not` only punishes its exercise. Powers are
   conferred by `may`/`must`. See "Default-capacity actions (revision 4)" below.
+- A derived fluent may read `(obliged AIM args)` (philosophy-engine ADR 0013 amendment 2026-11-06;
+  plans/priority-slice2.md R3.2): true at a step when some `must` rule in force at that step, sanctioned or not, obliges
+  that act or state on those arguments. Like `(enabled ...)`, it is not available in a property formula or a rule
+  condition; properties read the derived fluent that wraps it. Every entry that declares `provides_care` declares
+  `care_obliged(x, y) := (obliged provides_care x y)` at its root (ectogenesis and gestational-surrogacy also read the
+  action duty `provide_care`), with `provides_care`'s `arg_roles`; it is constant false where no `must` names care.
 - Minimal pairs: `crisis-team` ~ `police-crisis` (R3), `transferable-leave` ~ `paternity-quota` (R2),
   `companion-guardianship` ~ `companion-ownership` (R9). `companion-guardian-renamed` is ownership under
   the bijection owner -> guardian.

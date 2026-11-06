@@ -18,6 +18,12 @@ fluents:
   arity: 2
   gloss: x provides care (maintenance, assessment, treatment, services, feeding) to y
   arg_roles: [guardian, animal]
+- name: care_obliged
+  arity: 2
+  gloss: 'some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted'
+  arg_roles: [guardian, animal]
+  params: [x, y]
+  derived: (obliged provides_care x y)
 - name: owns
   arity: 2
   gloss: x owns y as property
