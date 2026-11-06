@@ -1,0 +1,38 @@
+encoder: encoder-2
+bundle_files_read: [bundle/goods-list.md, bundle/conventions.md, bundle/validate.sh, bundle/vocab/coverture-household.yaml, bundle/vocab/coverture-household-us.yaml, bundle/vocab/coverture-floor.yaml, bundle/vocab/mwpa-earnings.yaml, bundle/vocab/police-crisis.yaml, bundle/vocab/cps.yaml, bundle/vocab/kibbutz-childrens-house.yaml, bundle/vocab/ectogenesis.yaml]
+goods:
+- id: cared_for
+  formal: '(forall ((s agent) (t0 step)) (=> (and (succ t0 t) (is_subject s t0) (is_subject s t)) (exists ((x agent)) (provides_care x s t))))'
+  back_gloss: 'Anyone who was a subject at the previous step and still is now has someone providing care to them now.'
+  entries: [coverture-household, police-crisis, cps, kibbutz-childrens-house, ectogenesis, coverture-household-us, mwpa-earnings, coverture-floor]
+  validated: {coverture-household: OK, police-crisis: OK, cps: OK, kibbutz-childrens-house: OK, ectogenesis: OK, coverture-household-us: OK, mwpa-earnings: OK, coverture-floor: OK}
+  not_expressible: {}
+  notes: 'Only is_subject and provides_care are shared by all eight entries, so the relation is read as subjecthood continuing (is_subject s at t0 and t); entry-specific relation fluents (married, responding, case_open, assigned, parent) were rejected as not shared. Persisting "subject => some carer" covers both receipt and non-lapse. One-step grace (succ t0 t, as in care_duty_on_women) because care arrives as an action effect one step after subjecthood can start (ectogenesis decant sets is_subject with no carer). Blind at step 0 and to a subject made at the last step. Consequence: in police-crisis, leave clears care but not is_subject, so a subject who leaves counts as having lost care; a per-carer non-lapse form was rejected because it is vacuous when care never begins.'
+- id: mutual_household_care
+  formal: '(forall ((h agent) (w agent)) (=> (married h w t) (and (provides_care h w t) (provides_care w h t))))'
+  back_gloss: 'For every married pair, each spouse provides care to the other.'
+  entries: [coverture-household, coverture-household-us, mwpa-earnings, coverture-floor]
+  validated: {coverture-household: OK, coverture-household-us: OK, mwpa-earnings: OK, coverture-floor: OK}
+  not_expressible: {}
+  notes: 'married is the household relation in all four entries; marry sets both care strands in the same step, so no grace step is needed. Vacuous before any marriage, so a trace without one does not show the good as lost. Rejected keying on is_subject because only the wife is a subject, and the good is about both spouses.'
+- id: known_carer
+  formal: '(forall ((s agent) (t0 step)) (=> (and (succ t0 t) (is_subject s t0) (is_subject s t)) (exists ((x agent)) (and (provides_care x s t) (or (provides_care x s t0) (not (exists ((y agent)) (provides_care y s t0))))))))'
+  back_gloss: 'A continuing subject is cared for now by someone who also cared for them at the previous step, or, if nobody cared for them then, by someone (a first carer).'
+  entries: [coverture-household, cps, kibbutz-childrens-house, ectogenesis, coverture-household-us, mwpa-earnings, coverture-floor]
+  validated: {coverture-household: OK, cps: OK, kibbutz-childrens-house: OK, ectogenesis: OK, coverture-household-us: OK, mwpa-earnings: OK, coverture-floor: OK}
+  not_expressible: {}
+  notes: 'Continuity is read step to step: at least one carer from t0 carries over to t, so a swap of the whole carer set (kibbutz rota release+assign, a caseworker change) breaks it; adding a second carer does not. Implies cared_for (care must hold at t). The "nobody cared at t0" branch lets the first carer start without counting as a change. Uses only shared fluents. Rejected requiring the same carer from the very first step, which needs history the state formula cannot hold beyond one step. Weakness: in cps the only carer is the social_worker, so "known" means the same worker, not a family member.'
+- id: child_with_family
+  formal: '(forall ((c agent) (t0 step)) (=> (and (succ t0 t) (is_subject c t0) (is_subject c t)) (or (at_home c t) (and (case_open c t) (not (in_custody c t)) (exists ((p agent)) (parent p c t))) (exists ((p agent)) (and (parent p c t) (provides_care p c t))))))'
+  back_gloss: 'A continuing child subject either sleeps at its parents home (kibbutz), or has an open case but is not removed into custody and has a parent (cps), or is cared for by its own registered parent (ectogenesis).'
+  entries: [cps, kibbutz-childrens-house, ectogenesis]
+  validated: {cps: "OK; warnings: undeclared at_home", kibbutz-childrens-house: "OK; warnings: undeclared case_open, in_custody, parent (x2)", ectogenesis: "OK; warnings: undeclared at_home, case_open, in_custody"}
+  not_expressible: {}
+  notes: 'The three vocabularies share only is_subject and provides_care, which cannot say "with its family": kibbutz has no parent fluent (family = at_home), cps gives provides_care only to the social worker (family = not removed: not in_custody), ectogenesis has parent and parental provides_care. Chose a rewrite, not not_expressible: one disjunct per vocabulary, each anchored by a positively occurring entry-specific fluent (at_home, case_open, parent with parental care), so the undeclared-fluent warnings only make the other entries branches constant false, which is intended; no branch is made true by a constant-false fluent (not in_custody sits only under case_open). Leakage risk: in cps the third branch fires only if a parent were given provides_care, which nothing in cps does. Same one-step grace as cared_for for ectogenesis decant. In kibbutz the good is absent from the start (child sleeps in the children''s house) until sleep_home.'
+- id: provided_for
+  formal: '(forall ((w agent)) (=> (is_subject w t) (or (exists ((h agent)) (provides_care h w t)) (and (earns w t) (owns_earnings w t)) (and (acquired_property w t) (controls_own_property w t)) (has_own_income w t))))'
+  back_gloss: 'Every subject (wife) is either maintained by someone, or has wages that are her own, or has acquired property she controls, or has an income in her own right.'
+  entries: [coverture-household, coverture-household-us, mwpa-earnings, coverture-floor]
+  validated: {coverture-household: "OK; warnings: undeclared has_own_income", coverture-household-us: "OK; warnings: undeclared has_own_income", mwpa-earnings: "OK; warnings: undeclared has_own_income", coverture-floor: OK}
+  not_expressible: {}
+  notes: 'Subsistence from a carer (provides_care, i.e. maintenance) or from means in her own right. Own means require both the exogenous source and the right over it (earns and owns_earnings; acquired_property and controls_own_property), since a right with nothing to hold, or wages the husband controls, secure nothing of hers. Kept has_own_income although undeclared outside coverture-floor (chose rewrite-in-place, not not_expressible): it is a separate disjunct, so constant false there just means no such income exists in those entries, which is right; dropping it would blind the formula to coverture-floor''s draw_subsistence. No grace step: marry sets is_subject and the husband''s care together. Rejected using married as guard because is_subject is the named-party marker and equivalent here.'
