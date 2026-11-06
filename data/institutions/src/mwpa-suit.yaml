@@ -19,7 +19,7 @@ actions_add:
 rules_drop: [R4]
 rules_add:
 - id: R16
-  plain: The wife may sue third parties in her own name when married (US suit acts, e.g. NY 1860 ch. 90 s. 7, MA 1855 c. 304 s. 3; unverified); suits against her husband stay barred (R19).
+  plain: 'The wife may sue third parties in her own name when married (US suit acts: NY 1860 ch. 90 s. 7, NY 1862 ch. 172, MA 1855 c. 304 ss. 4, 7); suits against her husband stay barred (R19).'
   attribute: wife
   deontic: may
   aim: (sue w)
@@ -69,7 +69,7 @@ rules_add:
     w: wife
     h: husband
 - id: R19
-  plain: 'The wife cannot sue her husband while married: no such power exists (the suit acts leave suits between spouses barred, MA 1855 c. 304 s. 3; unverified).'
+  plain: 'The wife cannot sue her husband while married: no such power exists (the suit acts leave suits between spouses barred: omitted in MA 1855 c. 304, barred in terms by MA 1874 c. 184 s. 3; in New York by construction, Longendyke 1863).'
   attribute: wife
   deontic: must_not
   aim: (sue_spouse w h)

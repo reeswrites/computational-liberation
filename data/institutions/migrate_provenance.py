@@ -64,6 +64,7 @@ WORKS = [
     ("cal-wic-317", r"WIC 317"),
     ("cal-wic-16501", r"WIC 16501"),
     ("cal-wic-388", r"WIC 388"),
+    ("cal-wic-326-5", r"WIC 326\.5, read"),
     ("cal-pen-11165-14", r"Penal Code 11165\.14"),
     ("cal-pen-597s", r"Penal Code s\. 597s"),
     ("cal-pen-597", r"Penal Code 597\(b\)"),
@@ -343,8 +344,6 @@ RAISES = {
         "'Massachusetts St. 1874 c. 184, read 2026-11-06 at ...: s. 3 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
     ("mwpa-suit", "R19", "us-ny-laws-1860-ch90"):
         "'New York Laws 1860 ch. 90 s. 7 bars nothing in terms' and 'Suit clauses read for this row (2026-11-06): ... New York 1860 s. 7 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
-    ("cps", "R1", "cal-pen-11165-14"):
-        "'Penal Code 11165.14 read 2026-11-06 at ...: 'The appropriate local law enforcement agency ...''; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
     ("cps", "R8", "cal-wic-317"):
         "'WIC 317 read 2026-11-06 at ...: (c)(1) ... (d) ...'; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
     ("cps", "R11", "cal-wic-317"):
@@ -529,19 +528,13 @@ override("cps", "R10", "verification pass 2026-11-06: url and note",
 _PLC = "https://california.public.law/codes/"
 override("cps", "R1",
          "verification pass 2026-11-06: WIC 328 opened (supports a discretionary investigation duty); Penal Code "
-         "11165.14 opened and does not support the row (wrong pin, faithfulness finding)",
+         "11165.14 opened, off point, and no longer cited (faithfulness batch 2, P1)",
          item("cal-wic-328", "opened", "s. 328(a)", "US-CA", None,
               "the social worker shall immediately make any investigation the social worker deems necessary to "
               "determine whether child welfare services should be offered to the family",
               "2026-11-06", _PLC + "ca_welf_and_inst_code_section_328",
               "trigger is 'cause to believe' a child is described in s. 300, not a received report; the scope is what "
-              "the worker 'deems necessary'; the same worker refers to services, which fits the row's dual role"),
-         item("cal-pen-11165-14", "opened", "s. 11165.14", "US-CA", None,
-              "The appropriate local law enforcement agency shall investigate a child abuse complaint filed by a parent "
-              "or guardian of a pupil with a school",
-              "2026-11-06", _PLC + "ca_penal_code_section_11165.14",
-              "opened and off point: a police duty for complaints against school staff at a schoolsite; it does not "
-              "support a social worker's duty to investigate reports"))
+              "the worker 'deems necessary'; the same worker refers to services, which fits the row's dual role"))
 override("cps", "R8",
          "verification pass 2026-11-06: WIC 317 opened; the court appoints counsel in the proceeding, with a "
          "'would not benefit' exception; the row's establishment by investigate is the encoder's (faithfulness finding)",
@@ -551,8 +544,8 @@ override("cps", "R8",
               "benefit from the appointment of counsel. ... Counsel shall represent the parent, guardian, child, or "
               "nonminor dependent at the detention hearing and at all subsequent proceedings before the juvenile court.",
               "2026-11-06", _PLC + "ca_welf_and_inst_code_section_317",
-              "appointment is by the court once a petition is before it, not on investigation; the exception means "
-              "counsel is not guaranteed"))
+              "appointment is by the court once a petition is before it, not on investigation (kept as a disclosed "
+              "simplification); the 'would not benefit' exception is encoded since faithfulness batch 2 (P2)"))
 override("cps", "R11",
          "verification pass 2026-11-06: WIC 317(e) and 388(a)(1) opened; the child petitions through a properly "
          "appointed guardian (388), counsel represents its interests (317(e)) (faithfulness finding)",
@@ -563,7 +556,12 @@ override("cps", "R11",
               "the child or the nonminor dependent through a properly appointed guardian may, upon grounds of change "
               "of circumstance or new evidence, petition the court",
               "2026-11-06", _PLC + "ca_welf_and_inst_code_section_388",
-              "the petition runs through a guardian, not 'in its own name through counsel' as the row reads"))
+              "the petition runs through a guardian; plain reworded in faithfulness batch 2 (P1), logic unchanged"),
+         item("cal-wic-326-5", "opened", "s. 326.5", "US-CA", None,
+              "the appointment of a guardian ad litem, who may be an attorney or a court-appointed special advocate",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_326.5",
+              "a rule of court implementing CAPTA (text 'updated Jan. 1, 2001'); the guardian may be the child's "
+              "attorney, so counsel_appointed standing in for the guardian is a simplification, not a reversal"))
 override("police-crisis", "R8", "verification pass 2026-11-06: WIC 5275 opened; effective_date of the current text set",
          item("cal-wic-5275", "opened", "s. 5275", "US-CA", "2024-01-01",
               "Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their "

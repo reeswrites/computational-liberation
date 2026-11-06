@@ -471,3 +471,11 @@
   jurisdiction: US-CA
   url: https://california.public.law/codes/ca_welf_and_inst_code_section_388
   note: "Added 2026-11-06 (verification pass): petition to change, modify or set aside a dependency order. Cited by cps R11."
+- id: cal-wic-326-5
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 326.5"
+  year: null
+  container: "California Welfare and Institutions Code"
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_326.5
+  note: "Added 2026-11-06 (faithfulness batch 2): CAPTA guardian ad litem rule of court. Cited by cps R11."
