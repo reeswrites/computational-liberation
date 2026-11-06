@@ -236,3 +236,62 @@ Preregistration: plans/priority.md "Slice 1 revision 4b" (f12b061, before the en
 | 4 | Layer 1 untouched | not run; the change is in rules_ablate only (the layer-1 source hash is unchanged) |
 
 Council item 7 (docs/reviews/2026-11-04-capacity-convention-rev4-review.md): the spawn-equality test now covers a default-capacity action and a non-true-condition `may`; no serial artefact is kept. Reproduction: `uv run phil rules ablate --k 6,8 --workers 4 --json ablate-25-v8.json --summary ablate-25-v8-summary.json --prev ablate-25-v7-summary.json --scoreboard docs/scoreboard-ablate.md`.
+
+## Slice 1 close-out run (2026-11-06; engine 27e24c0 = ENGINE_PIN, before revision 5)
+
+Preregistration: plans/priority.md "Slice 1 close-out" (9b81737, before any run). Dataset: 26 entries, 219 rules, 345 rows per k (690 over k=6,8).
+
+### (i) step_mode
+
+`rules_lower.STEP_MODES` = (`one`, `many`). Three full runs: `one` twice, `many` once, k=6 and 8, `--workers 4`. Compared per (entry, row id, k) on every field except timing.
+
+| # | Prediction | Result |
+|---|---|---|
+| 1 | Top sets identical in all 26 entries, both k | **held** |
+| 2 | Every ranked row's load_freedom_up identical (clause criterion) | **held**: 690 of 690 rows identical on every field, ranked or not |
+| 3 | Some rows differ elsewhere, at most 10 per k | **drift (in the stable direction)**: 0 rows differ. The cause is upstream: `check-all --no-cache --step-mode many` gives the same verdict as `one` on all 134 layer-1 rows. No property verdict in the dataset, base or ablated, depends on whether two actions may share a step at k <= 8 |
+| 4 | inconsistent_after 0, uncounted 0, k-disagreements 0 in both modes | **held** |
+| 5 | The two `one` runs identical | **held**: 690 of 690 |
+
+That the flag is live in the ablation path was checked on a two-action toy (goal needs a1 and a2, k=1): under `many` the prohibit variant of R1 flips the goal reachable -> open, under `one` nothing flips. So the zero is the dataset's, not a dropped flag. Reading: the clause passes, but on this dataset it cannot discriminate: it shows no instability, not robustness to an interleaving effect the dataset never exercises. A step-mode-sensitive entry (two parties who must act in the same step) would be needed to test it properly. Recorded; nothing tuned. Gap noted: the ablation JSON and summary do not record `step_mode` (the check-all JSON does); the runs here are labelled by file name only.
+
+### (ii) strand mismatches (k=6; k=8 identical)
+
+Method as preregistered: a rule's reading uses its ranked rows (deletion, and `~prohibit` for a `may`); up/down = max over them. Goods load is 0 everywhere because no goods property exists, so "tying" here means "freedom load >= 1, goods unmeasured"; every label is provisional until slice 2.
+
+| class | tag | count | rules |
+|---|---|---|---|
+| reads tying, agrees | tying | 18 | R4 (sue; no_standing) in coverture-household, -us, mwpa-creditor-exemption, -property, -property-narrowed, -earnings, -sole-trader; R7 (contract; cannot_contract) in the same less sole-trader; kibbutz-childrens-house R2 (care_assigned_by_sex); footbinding, footbinding-no-pledge R3 (binding_practised); ectogenesis, gestational-surrogacy R5 (care_duty_on_women) |
+| **M1: reads tying, tagged otherwise** | rival | **18** | exit and refusal bars, all on the `cannot_exit` family: R6 in coverture-household, -us and the six mwpa-*; police-crisis R4; cps R10; companion-ownership, -guardianship, -guardian-renamed R6; kibbutz-childrens-house and -no-implicit R4 (sleep_home); airline-flight R4; footbinding and -no-pledge R9 (refuse_binding) |
+| M1 | superadditive | 0 | |
+| **M3: reads protection (up 0, down >= 1), tagged tying** | tying | **6** | police-crisis R10 (`may sue`; ~prohibit down on no_standing); crisis-team R9 (`may sue`; same); mwpa-suit R16 (`may sue`; same); cps R8 (`must counsel_appointed` when case_open; deletion down on no_standing); mwpa-sole-trader R15 and mwpa-suit R15 (`may contract`; ~prohibit down on cannot_contract) |
+| M2: tying unconfirmed (up 0, down 0) | tying | 26 | police-crisis R1, R6; cps R1, R5, R6; crisis-team R1, R6; paternity-quota R2, R7; transferable-leave R7; companion-ownership R9, R11; companion-guardianship R11; companion-guardian-renamed R9, R11; lease R5; airline-flight R6; R11 (creditor must_not attach) in the six mwpa-*; mwpa-suit R19 (one flip, unsigned on this engine); ectogenesis R6; gestational-surrogacy R6 |
+| reads protection, no tag comparison | rival / superadditive | 5 / 2 | crisis-team R5, paternity-quota R1, public-library R4, ectogenesis R1, gestational-surrogacy R2 / ectogenesis R4, gestational-surrogacy R4 |
+| no reading (up 0, down 0) | rival / superadditive | 14 / 33 | not readable without goods load |
+| not readable (no ranked row) | tying / rival / superadditive | 43 / 42 / 12 | every row deregulated or offcondition_free |
+
+Total 219 rules.
+
+| # | Prediction | Result |
+|---|---|---|
+| 6 | 36 read tying; 18 tagged tying agree (the listed rules) | **held** exactly |
+| 7 | M1 = 18, all rival, none superadditive, the listed exit/refusal bars, all cannot_exit | **held** exactly |
+| 8 | M3 at least 1 (mwpa-suit R16), 1 to 5 in all | **drift**: 6. R16 is there; the other five are the same shape (a permission to sue or contract, tagged tying, whose prohibition would remove standing or contract) plus cps R8, an obligation (appoint counsel) that carries the child's standing. The range was too low; the direction held |
+| 9 | M2 20 to 45, including mwpa-suit R19, the chain's R11, tying obligations in police-crisis, cps and the leave pair | **held**: 26, all named groups present |
+| 10 | Clause passes (at least one mismatch labelled); no tag edited | **held**: 24 mismatches labelled (18 M1, 6 M3); no tag touched |
+
+Reading, facts first: the hand tags call every exit bar `rival` while the ablation finds exit bars the most load-bearing rules in 18 entries; and six rules tagged `tying` are, on the ablation, permissions or duties whose removal costs the subject standing or contract (the tag seems to follow "part of the bundle" where the ablation reads "protection inside the bundle"). Which is right is the strand-tag redesign's question (docs/plan.md), not this run's. Tags are not edited.
+
+### Layer-4 pass test: final verdict
+
+| clause | evidence | status |
+|---|---|---|
+| deterministic | two `one` runs, 690/690 rows identical; spawn-workers equality test | met |
+| stable across k (preregistered 6, 8) | 0 k-disagreements, both modes | met |
+| stable across step_mode | 690/690 rows identical | met, **uninformative on this dataset** (no verdict depends on step_mode) |
+| rediscovers kibbutz R2, ectogenesis R5 | R2 tied top, R5 top | met after fixes that saw the misses (revision-3 calibration disclosure: not blind evidence; L21 stays weakened) |
+| labels at least one strand mismatch, reported not fixed | 18 M1, 6 M3 | met |
+
+**Verdict: passed as written**, with two disclosures that limit what the pass means: the rediscovery clause is a calibration result, not a blind one, and the step_mode clause was met on a dataset that does not exercise interleaving. Slice 1 is closed on these terms. Drift: prediction 3 (no row moved at all) and prediction 8 (6 M3, above the 1-5 range).
+
+Reproduction: `cd computational-liberation && uv run phil rules ablate --k 6,8 --workers 4 --step-mode one --json A-one.json --summary A-one-summary.json` (and `A-one2`, and `--step-mode many` to `A-many`); `uv run phil rules check-all --json --no-cache --step-mode many|one`. Outputs in the session scratchpad (`/tmp/claude-0/-home-user/602c9851-0b06-5dd0-a31e-00ab948ba10a/scratchpad/A-*.json`, with the comparison script `cmp.py` and the strand tabulation `strand.py`), not kept.
