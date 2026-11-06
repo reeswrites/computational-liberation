@@ -133,7 +133,7 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: '14 CFR 121.571 ''Briefing passengers before takeoff'', read 2026-11-04 at https://www.law.cornell.edu/cfr/text/14/121.571 (ecfr.gov redirected to a block page): (a) ''shall insure that all passengers are orally briefed by the appropriate crewmember''; (a)(3) a required crewmember assigned to the flight must individually brief each person who may need another person''s help to reach an exit. That is a crew duty toward passengers aboard, but narrower than the rule''s provides_care (maintenance, services): the general in-flight care duty is UNVERIFIED (no text opened states it; 14 CFR 121.391, read at https://www.law.cornell.edu/cfr/text/14/121.391, only sets the number of flight attendants ''to provide the most effective egress of passengers''). 14 CFR 91.11 / 121.580 dropped 2026-11-04: they only forbid interference with crew. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] board establishes provides_care; attend restores it, withdraw breaks it'
+  source: '14 CFR 121.571 ''Briefing passengers before takeoff'', read 2026-11-04 at https://www.law.cornell.edu/cfr/text/14/121.571 (ecfr.gov redirected to a block page): (a) ''shall insure that all passengers are orally briefed by the appropriate crewmember''; (a)(3) a required crewmember assigned to the flight must individually brief each person who may need another person''s help to reach an exit. That is a crew duty toward passengers aboard, but narrower than the rule''s provides_care (maintenance, services): the general in-flight care duty is UNVERIFIED (no text opened states it; 14 CFR 121.391, read at https://www.law.cornell.edu/cfr/text/14/121.391, only sets the number of flight attendants ''to provide the most effective egress of passengers''). 14 CFR 91.11 / 121.580 dropped 2026-11-04: they only forbid interference with crew. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] board establishes provides_care; attend restores it, withdraw breaks it Verification pass: 14 CFR 121.391 read 2026-11-06 at https://www.law.cornell.edu/cfr/text/14/121.391: (d) ''flight attendants required by this section shall be located as near as practicable to required floor level exits and shall be uniformly distributed throughout the airplane in order to provide the most effective egress of passengers in event of an emergency evacuation''.'
   provenance:
   - source_id: cfr-14-121-571
     pin: s. 121.571(a), (a)(3)
@@ -145,14 +145,14 @@ rules:
     url: https://www.law.cornell.edu/cfr/text/14/121.571
     note: ecfr.gov redirected to a block page; supports a briefing duty, narrower than the rule's provides_care
   - source_id: cfr-14-121-391
-    pin: s. 121.391
+    pin: s. 121.391(d)
     jurisdiction: US
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
+    verification: opened
+    excerpt: flight attendants required by this section shall be located as near as practicable to required floor level exits and shall be uniformly distributed throughout the airplane in order to provide the most effective egress of passengers in event of an emergency evacuation
+    accessed: '2026-11-06'
     url: https://www.law.cornell.edu/cfr/text/14/121.391
-    note: 'the string says ''read at <url>'' and quotes ''to provide the most effective egress of passengers'' but gives no read date for this section (121.571''s date is not borrowed): recalled, re-open to upgrade (review 2026-11-05, finding 10); only sets the number of flight attendants'
+    note: staffing and seating for evacuation; not an in-flight care duty
   - source_id: null
     pin: null
     jurisdiction: null

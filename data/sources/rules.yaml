@@ -36,7 +36,7 @@
   container: null
   jurisdiction: null
   url: null
-  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04)"
+  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04; again 2026-11-06: archive.org lending copy 401 / search-inside 'item not available', Google Books API 429, Google Books ids with no preview)"
 - id: stevenson-wolfers-2006
   type: secondary
   title: "Bargaining in the Shadow of the Law: Divorce Laws and Family Distress"
@@ -45,15 +45,23 @@
   container: "Quarterly Journal of Economics 121(1)"
   jurisdiction: null
   url: https://www.nber.org/system/files/working_papers/w10175/w10175.pdf
-  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): unilateral divorce adopted by US states from 1969; NBER working paper w10175. plans/backtest-data-inventory.md records an earlier fetch [F] of the NBER paper; not opened in the 2026-11-05 session. Cited by coverture-household-us R6."
+  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): unilateral divorce adopted by US states from 1969; NBER working paper w10175. plans/backtest-data-inventory.md records an earlier fetch [F] of the NBER paper; not opened in the 2026-11-05 session. Cited by coverture-household-us R6. | 2026-11-06: the url is the NBER working paper (December 2003; its abstract page misprints the number as 10174), which is the copy opened; the QJE 2006 published version was not opened, and its text may differ."
 - id: us-ny-laws-1787-divorce
   type: statute
-  title: "[New York divorce act 1787, absolute divorce for adultery only (descriptive; title unconfirmed)]"
+  title: "An Act directing a Mode of Trial, and allowing of Divorces in Cases of Adultery (Laws of New York, 10th session, ch. 69)"
   year: 1787
-  container: "Laws of the State of New York, 1787"
+  container: "Laws of the State of New-York, 1787 (passed 30 March 1787)"
   jurisdiction: US-NY
-  url: null
-  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): absolute divorce for adultery only until the 1966 Divorce Reform Law, per https://en.wikipedia.org/wiki/New_York_divorce_law and a Law & History Review article on divorce in New York and Indiana 1815-1870 (search results, not opened). Chapter and title not confirmed. Cited by coverture-household-us R6."
+  url: https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt
+  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): absolute divorce for adultery only until the 1966 Divorce Reform Law, per https://en.wikipedia.org/wiki/New_York_divorce_law and a Law & History Review article on divorce in New York and Indiana 1815-1870 (search results, not opened). Cited by coverture-household-us R6. | 2026-11-06: title, chapter (LXIX) and date confirmed from the session-law OCR at the url (Eighteenth Century Collections copy)."
+- id: uk-matrimonial-causes-act-1857
+  type: statute
+  title: "Matrimonial Causes Act 1857 (20 & 21 Vict. c. 85), An Act to amend the Law relating to Divorce and Matrimonial Causes in England"
+  year: 1857
+  container: null
+  jurisdiction: England
+  url: https://www.legislation.gov.uk/ukpga/Vict/20-21/85/pdfs/ukpga_18570085_en.pdf
+  note: "Added 2026-11-06 (verification pass): the enacted text as a scanned PDF; read through its OCR. Cited by coverture-household R6."
 - id: stone-1990
   type: secondary
   title: "Road to Divorce: England 1530-1987"
@@ -62,7 +70,7 @@
   container: null
   jurisdiction: null
   url: null
-  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04)"
+  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04; again 2026-11-06: archive.org lending copy 401 / search-inside 'item not available', Google Books API 429, Google Books ids with no preview)"
 - id: spiro-1956
   type: secondary
   title: "Kibbutz: Venture in Utopia"
@@ -260,16 +268,16 @@
   year: null
   container: California Welfare and Institutions Code
   jurisdiction: US-CA
-  url: null
-  note: "URL not in repo text; cited from general knowledge"
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_317
+  note: "URL not in repo text; cited from general knowledge | 2026-11-06: opened at the url (verification pass)"
 - id: cal-wic-328
   type: statute
   title: "Cal. Welf. & Inst. Code s. 328"
   year: null
   container: California Welfare and Institutions Code
   jurisdiction: US-CA
-  url: null
-  note: "URL not in repo text; cited from general knowledge"
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_328
+  note: "URL not in repo text; cited from general knowledge | 2026-11-06: opened at the url (verification pass)"
 - id: cal-wic-361
   type: statute
   title: "Cal. Welf. & Inst. Code s. 361"
@@ -300,8 +308,8 @@
   year: null
   container: California Welfare and Institutions Code
   jurisdiction: US-CA
-  url: null
-  note: "URL not in repo text; cited from general knowledge (certification review / habeas)"
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_5275
+  note: "URL not in repo text; cited from general knowledge (certification review / habeas) | 2026-11-06: opened at the url (verification pass)"
 - id: cal-wic-16501
   type: statute
   title: "Cal. Welf. & Inst. Code s. 16501"
@@ -332,8 +340,8 @@
   year: null
   container: California Penal Code
   jurisdiction: US-CA
-  url: null
-  note: "URL not in repo text; cited from general knowledge"
+  url: https://california.public.law/codes/ca_penal_code_section_11165.14
+  note: "URL not in repo text; cited from general knowledge | 2026-11-06: opened at the url (verification pass)"
 - id: cal-civ-655
   type: statute
   title: "Cal. Civ. Code s. 655"
@@ -446,3 +454,28 @@
   jurisdiction: US-NY
   url: https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-chap-200.pdf
   note: "cited in repo text as 'New York Married Women's Property Act 1848'; title, chapter and URL not in repo text (filled at the merge from leads: see below); statute text not opened | merged from us-ny-laws-1848-ch200 (backtest bibliography): Lead. Passed 7 April 1848 per several summaries; the title wording varies between the published title and page header. Transcription (course site); official scan candidate: NY State Archives https://digitalcollections.archives.nysed.gov/index.php/Detail/objects/10821."
+- id: longendyke-1863
+  type: case
+  title: "Longendyke v. Longendyke, 44 Barb. 366 (N.Y. Sup. Ct., Albany General Term, 1863)"
+  author: null
+  year: 1863
+  container: "Barbour's Supreme Court Reports, vol. 44"
+  jurisdiction: US-NY
+  url: https://static.case.law/barb/44/cases/0366-01.json
+  note: "Added 2026-11-06 (verification pass): Caselaw Access Project copy; opinion by Hogeboom, J. Cited by mwpa-suit R19."
+- id: cal-wic-388
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 388"
+  year: null
+  container: "California Welfare and Institutions Code"
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_388
+  note: "Added 2026-11-06 (verification pass): petition to change, modify or set aside a dependency order. Cited by cps R11."
+- id: cal-wic-326-5
+  type: statute
+  title: "Cal. Welf. & Inst. Code s. 326.5"
+  year: null
+  container: "California Welfare and Institutions Code"
+  jurisdiction: US-CA
+  url: https://california.public.law/codes/ca_welf_and_inst_code_section_326.5
+  note: "Added 2026-11-06 (faithfulness batch 2): CAPTA guardian ad litem rule of court. Cited by cps R11."

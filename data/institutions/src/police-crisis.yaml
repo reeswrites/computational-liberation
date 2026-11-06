@@ -166,17 +166,17 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (assessment, evaluation and crisis intervention ''shall be conducted and provided on an ongoing basis''). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch establishes provides_care(o, s); assess restores it, withdraw (the officer stops attending) breaks it'
+  source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (assessment, evaluation and crisis intervention ''shall be conducted and provided on an ongoing basis''). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch establishes provides_care(o, s); assess restores it, withdraw (the officer stops attending) breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (text ''updated Jan. 1, 2024'' per the page): ''At a minimum, assessment, as defined in Section 5150.4, and evaluation, as defined in subdivision (a) of Section 5008, shall be conducted and provided on an ongoing basis'' (passive: the section does not name the officer as the one who provides it).'
   provenance:
   - source_id: cal-wic-5150
     pin: s. 5150(a)
     jurisdiction: US-CA
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: 'cited with no record of reading in this row''s source; quote in the old string (no read date): ''shall be conducted and provided on an ongoing basis''; re-open to upgrade'
+    verification: opened
+    excerpt: At a minimum, assessment, as defined in Section 5150.4, and evaluation, as defined in subdivision (a) of Section 5008, shall be conducted and provided on an ongoing basis
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_5150
+    note: 'the page gives the text as ''updated Jan. 1, 2024'' and its source as leginfo.legislature.ca.gov; the duty is in the passive voice and is not placed on the officer: the row''s provides_care(o, s) on the responding officer is the encoder''s reading (faithfulness finding, plans/sourcing.md)'
   load_bearing: true
 - id: R3
   plain: 'The officer may detain the subject when responding to a subject who is in crisis and there is danger (Cal. WIC 5150).'
@@ -187,17 +187,17 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (a peace officer may, upon probable cause, take the person into custody for up to 72 hours)
+  source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (a peace officer may, upon probable cause, take the person into custody for up to 72 hours) Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: ''When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer'' ... ''may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours''.'
   provenance:
   - source_id: cal-wic-5150
     pin: s. 5150(a)
     jurisdiction: US-CA
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: cited with no record of reading in this row's source; re-open to upgrade
+    verification: opened
+    excerpt: When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer ... may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_5150
+    note: the page gives the text as 'updated Jan. 1, 2024' and its source as leginfo.legislature.ca.gov; the statute's trigger also includes 'gravely disabled' and requires probable cause; the row reads only danger
 - id: R4
   plain: 'The subject cannot leave while in custody: no such power exists (Cal. WIC 5150).'
   attribute: subject
@@ -207,17 +207,17 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (custody for up to 72 hours). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(s) = leave enabled (a default capacity), which this disability makes false in custody'
+  source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (custody for up to 72 hours). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(s) = leave enabled (a default capacity), which this disability makes false in custody Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: ''take, or cause to be taken, the person into custody for a period of up to 72 hours'' ... ''The 72-hour period begins at the time when the person is first detained.'''
   provenance:
   - source_id: cal-wic-5150
     pin: s. 5150(a)
     jurisdiction: US-CA
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: null
-    note: cited with no record of reading in this row's source; re-open to upgrade
+    verification: opened
+    excerpt: take, or cause to be taken, the person into custody for a period of up to 72 hours ... The 72-hour period begins at the time when the person is first detained.
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_5150
+    note: the page gives the text as 'updated Jan. 1, 2024' and its source as leginfo.legislature.ca.gov; the section states custody, not the subject's exit bar, which the row infers from custody; 5150(c) lets the facility serve the person on a voluntary basis instead of detaining
 - id: R5
   plain: 'The officer may use force on the subject when the subject is in custody and resists.'
   attribute: officer
@@ -297,17 +297,17 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened)
+  source: 'Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened) Verification pass: WIC 5275 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5275 (text ''updated Jan. 1, 2024'' per the page): ''Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release'' (the request goes to the person delivering the certification notice or to the intensive-treatment staff).'
   provenance:
   - source_id: cal-wic-5275
     pin: s. 5275
     jurisdiction: US-CA
-    effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: old source string says UNVERIFIED
+    effective_date: '2024-01-01'
+    verification: opened
+    excerpt: Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release
+    accessed: '2026-11-06'
+    url: https://california.public.law/codes/ca_welf_and_inst_code_section_5275
+    note: effective_date is the page's 'updated Jan. 1, 2024' (the text as amended in 2023); 'this part' (the LPS Act) covers a 5150 hold; the request procedure is written for certification, and the separate certification review hearing (s. 5256) was not opened
 - id: R10
   plain: 'The subject may sue in their own name at any time.'
   attribute: subject

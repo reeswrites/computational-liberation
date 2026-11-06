@@ -63,6 +63,8 @@ WORKS = [
     ("cal-wic-328", r"WIC 328"),
     ("cal-wic-317", r"WIC 317"),
     ("cal-wic-16501", r"WIC 16501"),
+    ("cal-wic-388", r"WIC 388"),
+    ("cal-wic-326-5", r"WIC 326\.5, read"),
     ("cal-pen-11165-14", r"Penal Code 11165\.14"),
     ("cal-pen-597s", r"Penal Code s\. 597s"),
     ("cal-pen-597", r"Penal Code 597\(b\)"),
@@ -99,6 +101,8 @@ WORKS = [
     ("gavron-2000", r"Gavron, The Kibbutz"),
     ("firestone-1970", r"Firestone, The Dialectic of Sex"),
     ("kunc-2020-denver-star", r"KUNC 2020-11-17"),
+    ("uk-matrimonial-causes-act-1857", r"Matrimonial Causes Act 1857 \(20 & 21 Vict"),
+    ("longendyke-1863", r"Longendyke v\. Longendyke, 44 Barb"),
     ("berkeley-public-library-2018-patron-suspension-policy", r"Berkeley Public Library, Patron Suspension Policy"),
 ]
 
@@ -286,6 +290,8 @@ def _wiki_pledge():
     return [item(s, "recalled", note=WIKI_SNIP) for s in TIAN]
 
 
+BK1_15 = "https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp"
+
 OVERRIDES = {}  # (entry id, rule id) -> (items, reason, append); filled below
 
 
@@ -312,7 +318,8 @@ RAISES = {
     ("companion-guardian-renamed", "R1", "cal-civ-655"): "as companion-ownership R1 (same string)",
     ("companion-guardian-renamed", "R1", "cal-civ-663"): "as companion-ownership R1 (same string)",
     ("kibbutz-childrens-house", "R2", "wikipedia-kibbutz-communal-child-rearing"):
-        "the row quotes 'was always a woman's role' (WIKI_KIB) with no read record; the "
+        "'Verification pass: read 2026-11-06 at https://en.wikipedia.org/...oldid=1360699722 ...: 'The nanny position "
+        "was always a woman's role. ...'' (until 2026-11-06: the row quoted it with no read record); the "
         "row's UNVERIFIED belongs to the clause 'the assignment finding itself NOT read directly' (Tiger & Shepher)",
     ("kibbutz-childrens-house", "R2", "kirkus-tiger-shepher-women-in-the-kibbutz"):
         "'book and sample (34,040 members) confirmed via Kirkus review https://www.kirkusreviews.com/...'"
@@ -325,6 +332,51 @@ RAISES = {
         "'(Wikipedia 'Tian Zu Hui', ... read 2026-11-04 as search snippets only, pages not "
         "opened: [R]'; the row's closing UNVERIFIED belongs to the reconstructed rule (its own null item)",
     ("footbinding", "R10", "wikipedia-heavenly-foot-society"): "as wikipedia-tian-zu-hui on this row",
+    ("mwpa-suit", "R16", "us-ma-acts-1855-ch304"):
+        "'Massachusetts St. 1855 c. 304, read 2026-11-06 at ...: s. 4 ... s. 7 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R16", "us-ny-laws-1860-ch90"):
+        "'New York Laws 1860 ch. 90, read 2026-11-06 at ...: s. 7 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R16", "us-ny-laws-1862-ch172"):
+        "'New York Laws 1862 ch. 172, read 2026-11-06 at ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R19", "us-ma-acts-1855-ch304"):
+        "'Massachusetts St. 1855 c. 304 read 2026-11-06 at ...: it contains no proviso ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R19", "us-ma-acts-1874-ch184"):
+        "'Massachusetts St. 1874 c. 184, read 2026-11-06 at ...: s. 3 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("mwpa-suit", "R19", "us-ny-laws-1860-ch90"):
+        "'New York Laws 1860 ch. 90 s. 7 bars nothing in terms' and 'Suit clauses read for this row (2026-11-06): ... New York 1860 s. 7 ...'; the row opens with 'UNVERIFIED (leads, not opened 2026-11-05 ...)', which the heuristic applies to the whole window; the appended 'Verification pass: ... read 2026-11-06 at <url> ...: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("cps", "R8", "cal-wic-317"):
+        "'WIC 317 read 2026-11-06 at ...: (c)(1) ... (d) ...'; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("cps", "R11", "cal-wic-317"):
+        "'WIC 317 read 2026-11-06 at ...: (e)(1) ...'; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("police-crisis", "R8", "cal-wic-5275"):
+        "'WIC 5275 read 2026-11-06 at ...: 'Every person detained under this part ...''; the row's 'UNVERIFIED (general knowledge; no source opened)' precedes and the heuristic applies it to the window; the appended 'Verification pass: ... read 2026-11-06 at <url>: <quote>' licenses the raise (verification pass 2026-11-06)",
+    ("companion-guardianship", "R9", "ak-stat-25-24-160"):
+        "'Verification pass: read 2026-11-06 at https://www.animallaw.info/...: '(5) if an animal is owned, ...''; the "
+        "row's 'UNVERIFIED (general knowledge; no source opened)' belongs to the generalisation (its own null item) "
+        "(verification pass 2026-11-06)",
+    ("public-library", "R2", "berkeley-public-library-2018-patron-suspension-policy"):
+        "'Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/...: 'In order to provide and "
+        "maintain ...''; the row's 'UNVERIFIED as a rule' belongs to the duty to serve (its own null item) "
+        "(verification pass 2026-11-06)",
+    ("naming-convention", "R1", "centola-becker-brackbill-baronchelli-2018"):
+        "'Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/...: "
+        "'participants are shown an image ...''; the row's earlier 'NOT OPENED (2026-11-04 ...)' is superseded "
+        "(verification pass 2026-11-06)",
+    ("naming-convention", "R2", "centola-becker-brackbill-baronchelli-2018"):
+        "'Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/...: "
+        "'participants are shown an image ...''; the row's earlier 'NOT OPENED (2026-11-04 ...)' is superseded "
+        "(verification pass 2026-11-06)",
+    ("coverture-household", "R6", "uk-matrimonial-causes-act-1857"):
+        "'enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/...: s. 2, ... s. 27, ...'; "
+        "the heuristic's read regex is lower-case and the work is named before 'read' (verification pass 2026-11-06)",
+    ("coverture-household-us", "R6", "stevenson-wolfers-2006"):
+        "'Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/...: 'from the preexisting divorce laws ...''; "
+        "the heuristic applies the row's opening 'UNVERIFIED (leads, not opened 2026-11-05 ...)' to the whole "
+        "window (verification pass 2026-11-06)",
+    ("coverture-household-us", "R6", "us-ny-laws-1787-divorce"):
+        "'New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at "
+        "https://archive.org/...: 'in all cases of adultery ...''; no WORKS regex names this act (verification pass "
+        "2026-11-06)",
     ("footbinding", "R10", "mackie-1996"):
         "'Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]' "
         "(an [F] tag relayed second-hand, no quote, no read date = recalled); the closing UNVERIFIED belongs to the "
@@ -342,15 +394,51 @@ override("coverture-household", "R5",
          item("blackstone-1765-bk1-ch15", "opened", "Bk I ch 15", "England", None,
               "The husband also (by the old law) might give his wife moderate correction ... the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour",
               "2026-11-04", None, "long s modernised from the OCR; earlier pointer " + WAMS))
+_SHANLEY_STONE = ("not opened 2026-11-04 (archive.org 403, Google Books API 429) nor 2026-11-06 (archive.org lending copy "
+                  "401, search-inside 'item not available', Google Books API 429, no-preview ids); ")
 override("coverture-household", "R6",
-         "the string names Bk I ch 15 only to say it is no longer cited; Shanley and Stone each UNVERIFIED",
-         item("shanley-1989", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429); cited for restitution of conjugal rights and no unilateral exit before the Matrimonial Causes Act 1857"),
-         item("stone-1990", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429); same point as Shanley"))
-for _r in ("R2", "R4", "R7"):
+         "verification pass 2026-11-06: Blackstone Bk I ch 15 (the row's earlier note wrongly said it has no exit bar) and "
+         "the 1857 Act opened; re-cited the same day (author decision): Shanley and Stone, never opened, are leads "
+         "for the 1765-1857 interval, not cited items (" + _SHANLEY_STONE.rstrip("; ") + ")",
+         item("blackstone-1765-bk1-ch15", "opened", "Bk I ch 15, II (divorce)", "England", None,
+              "it will not allow it to be unloosed for any cause whatsoever, that arises after the union is made ... with "
+              "us in England adultery is only a cause of separation from bed and board ... divorces a vinculo "
+              "matrimonii, for adultery, have of late years been frequently granted by act of parliament",
+              "2026-11-06", BK1_15,
+              "long s modernised from the OCR; states the law as of 1765, not up to 1857; two conditional exits the "
+              "row does not encode: separation a mensa et thoro for 'intolerable ill temper, or adultery, in either of "
+              "the parties' (no dissolution) and a private Act of Parliament for adultery"),
+         item("uk-matrimonial-causes-act-1857", "opened", "ss. 2, 27", "England", "1857",
+              "Suits for Restitution of Conjugal Rights, and in all Causes, Suits, and Matters Matrimonial, shall cease "
+              "to be so exerciseable ... it shall be lawful for any Wife to present a Petition to the said Court, "
+              "praying that her Marriage may be dissolved",
+              "2026-11-06", None,
+              "read through the OCR of the enacted PDF (margin notes dropped); s. 2 shows the pre-1857 remedies sat in "
+              "the ecclesiastical courts; s. 27 gives the wife dissolution only for the husband's aggravated adultery, "
+              "so even after 1857 she has no exit at her own will; effective_date is the act's year, the "
+              "commencement section was not read"))
+# Verification pass 2026-11-06 (plans/sourcing-verify-session.md, order 2 and the cheapest upgrades): Bk I ch 15
+# re-opened at Avalon; each row's `source` now records the read date and the passage quoted.
+_BK1_15_EXCERPT = {
+    "R2": ("The husband is bound to provide his wife with necessaries by law, as much as himself",
+           "long s modernised from the OCR; earlier pointer " + WAMS),
+    "R4": ("If the wife be injured in her person or her property, she can bring no action for redress without her "
+           "husband's concurrence, and in his name, as well as her own ... neither can she be sued, without making the "
+           "husband a defendant",
+           "long s modernised from the OCR; the same passage excepts a husband who has abjured the realm or is "
+           "banished (she then sues as a feme sole), an exception the row does not encode; earlier pointer " + WAMS),
+    "R7": ("all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable ... all "
+           "compacts made between husband and wife, when single, are voided by the intermarriage",
+           "long s modernised; the OCR prints 'converture' in the first passage; 'void, or at least voidable' is "
+           "weaker than the row's 'no such power exists' (voidable acts bind until avoided); the first passage is "
+           "introduced as acts done 'by his compulsion', and the second concerns compacts between the spouses, not "
+           "her capacity to contract with third parties (council 2026-11-06); earlier pointer " + WAMS),
+}
+for _r, (_ex, _note) in _BK1_15_EXCERPT.items():
     override("coverture-household", _r,
-             "WAMS URL is the copy read for Bk I ch 15 (provenance url); no read claim or quote in the row: recalled",
-             item("blackstone-1765-bk1-ch15", "recalled", "Bk I ch 15", "England", url=WAMS,
-                  note="cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade"))
+             "verification pass 2026-11-06: Bk I ch 15 re-opened at Avalon; the row now records the read and the quote",
+             item("blackstone-1765-bk1-ch15", "opened", "Bk I ch 15", "England", None, _ex, "2026-11-06", BK1_15,
+                  _note))
 # coverture-household-us (2026-11-05, plans/sourcing.md "Coverture split and US suit", B3 with B1): the English rows'
 # items with a note that US reception of Blackstone is assumed and unsourced; R6 cites US leads, never above unverified.
 _US_RECEPTION = ("US entry: an English treatise cited for a US rule; US reception of Blackstone is assumed and "
@@ -360,9 +448,26 @@ for _r in ("R1", "R2", "R4", "R5", "R7"):
     override("coverture-household-us", _r, _why + "; US base: the same item, its note adds that US reception is assumed",
              *[dict(_it, note=(_it["note"] + "; " if _it["note"] else "") + _US_RECEPTION) for _it in _items])
 override("coverture-household-us", "R6",
-         "US leads for 'no exit at her own will' (B1), not opened: lead level, never above unverified",
-         item("stevenson-wolfers-2006", "unverified", note="lead, not opened; cited for no unilateral divorce in any US state before 1969"),
-         item("us-ny-laws-1787-divorce", "unverified", None, "US-NY", note="lead, not opened; one state's fault statute (absolute divorce for adultery only until 1966)"))
+         "verification pass 2026-11-06: both leads opened; the paper does not support 'no unilateral divorce in any US "
+         "state before 1969' (faithfulness finding), it supports the B1 reading (consent or fault required)",
+         item("stevenson-wolfers-2006", "opened", "s. 2; Table 1", None, None,
+              "from the preexisting divorce laws (which typically required either the consent of both spouses or a "
+              "demonstration of marital fault) ... prior to unilateral divorce, a partner wishing to dissolve the "
+              "marriage could leave ... However, in such a situation, a legal divorce is not granted",
+              "2026-11-06", "https://www.nber.org/system/files/working_papers/w10175/w10175.pdf",
+              "NBER working paper (December 2003), not the QJE 2006 text; Table 1 lists nine states with unilateral "
+              "divorce statutes predating 1964, contradicting the row's 'before 1969' parenthesis; the paper covers "
+              "the twentieth century and says nothing of the MWPA era; consent divorce is an exit the row does not "
+              "encode; physical departure without divorce is possible, the row's 'leave' means dissolution"),
+         item("us-ny-laws-1787-divorce", "opened", "ch. 69, s. 1", "US-NY", "1787-03-30",
+              "in all cases of adultery that have already been committed, or may hereafter be committed, where the "
+              "parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill "
+              "to the Chancellor",
+              "2026-11-06", None,
+              "read through the OCR (long s modernised, clipped letters restored); 'party injured': either spouse may "
+              "petition, adultery the only ground; dissolution on the other spouse's fault (B2), not at her own will; "
+              "the date is the passage date printed (OCR 'Passed the zoth of March, 1787', i.e. 30th), commencement not "
+              "stated"))
 override("police-crisis", "R7",
          "s. 5150(a) is cited for the absence of an officer release duty (recalled), s. 5152 is the opened source; the excerpt keeps the release-only-if passage that (not (danger s)) stands for",
          item("cal-wic-5152", "opened", "s. 5152(a), (b)", "US-CA", None,
@@ -379,6 +484,92 @@ override("cps", "R7", "pin and excerpt tidied (the heuristic's excerpt joined th
               "unless the juvenile court finds clear and convincing evidence of any of the following circumstances ... substantial danger to the physical health, safety, protection, or physical or emotional well-being of the minor",
               "2026-11-04", "https://california.public.law/codes/ca_welf_and_inst_code_section_361",
               "leginfo.legislature.ca.gov returned 403"))
+# Verification pass 2026-11-06: the other match rows (plans/sourcing.md "Which rows the care+control match reads").
+_P5150 = "https://california.public.law/codes/ca_welf_and_inst_code_section_5150"
+_P306 = "https://california.public.law/codes/ca_welf_and_inst_code_section_306"
+_PL = "the page gives the text as 'updated Jan. 1, 2024' and its source as leginfo.legislature.ca.gov"
+override("police-crisis", "R2",
+         "verification pass 2026-11-06: excerpt narrowed to the statute (the heuristic took the page's update date as a quote)",
+         item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
+              "At a minimum, assessment, as defined in Section 5150.4, and evaluation, as defined in subdivision (a) of "
+              "Section 5008, shall be conducted and provided on an ongoing basis", "2026-11-06", _P5150,
+              _PL + "; the duty is in the passive voice and is not placed on the officer: the row's provides_care(o, s) "
+              "on the responding officer is the encoder's reading (faithfulness finding, plans/sourcing.md)"))
+override("police-crisis", "R3", "verification pass 2026-11-06: url and note",
+         item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
+              "When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or "
+              "gravely disabled, a peace officer ... may, upon probable cause, take, or cause to be taken, the person "
+              "into custody for a period of up to 72 hours", "2026-11-06", _P5150,
+              _PL + "; the statute's trigger also includes 'gravely disabled' and requires probable cause; the row "
+              "reads only danger"))
+override("police-crisis", "R4", "verification pass 2026-11-06: url and note",
+         item("cal-wic-5150", "opened", "s. 5150(a)", "US-CA", None,
+              "take, or cause to be taken, the person into custody for a period of up to 72 hours ... The 72-hour "
+              "period begins at the time when the person is first detained.", "2026-11-06", _P5150,
+              _PL + "; the section states custody, not the subject's exit bar, which the row infers from custody; "
+              "5150(c) lets the facility serve the person on a voluntary basis instead of detaining"))
+override("cps", "R3", "verification pass 2026-11-06: url and note",
+         item("cal-wic-306", "opened", "s. 306(a)(2)", "US-CA", None,
+              "Take into and maintain temporary custody of, without a warrant, a child who ... the social worker has "
+              "reasonable cause to believe that the child has an immediate need for medical care or is in immediate "
+              "danger of physical or sexual abuse", "2026-11-06", _P306,
+              "the page gives its source as leginfo.legislature.ca.gov (updated 2024-09-27); (a)(2) also requires the "
+              "child to be a dependent or described in s. 300(b) or (g)"))
+override("cps", "R4", "verification pass 2026-11-06: url",
+         item("cal-wic-306", "opened", "s. 306(f)", "US-CA", None,
+              "Before taking a child into custody, a social worker shall consider whether the child may remain safely "
+              "in their residence.", "2026-11-06", _P306,
+              "the page gives its source as leginfo.legislature.ca.gov (updated 2024-09-27)"))
+override("cps", "R10", "verification pass 2026-11-06: url and note",
+         item("cal-wic-306", "opened", "s. 306(a)(2)", "US-CA", None,
+              "Take into and maintain temporary custody of, without a warrant", "2026-11-06", _P306,
+              "the section says nothing of the child's own conduct; the exit bar is inferred from custody (the row "
+              "says so)"))
+_PLC = "https://california.public.law/codes/"
+override("cps", "R1",
+         "verification pass 2026-11-06: WIC 328 opened (supports a discretionary investigation duty); Penal Code "
+         "11165.14 opened, off point, and no longer cited (faithfulness batch 2, P1)",
+         item("cal-wic-328", "opened", "s. 328(a)", "US-CA", None,
+              "the social worker shall immediately make any investigation the social worker deems necessary to "
+              "determine whether child welfare services should be offered to the family",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_328",
+              "trigger is 'cause to believe' a child is described in s. 300, not a received report; the scope is what "
+              "the worker 'deems necessary'; the same worker refers to services, which fits the row's dual role"))
+override("cps", "R8",
+         "verification pass 2026-11-06: WIC 317 opened; the court appoints counsel in the proceeding, with a "
+         "'would not benefit' exception; the row's establishment by investigate is the encoder's (faithfulness finding)",
+         item("cal-wic-317", "opened", "s. 317(c)(1), (d)", "US-CA", None,
+              "If a child or nonminor dependent is not represented by counsel, the court shall appoint counsel for the "
+              "child or nonminor dependent, unless the court finds that the child or nonminor dependent would not "
+              "benefit from the appointment of counsel. ... Counsel shall represent the parent, guardian, child, or "
+              "nonminor dependent at the detention hearing and at all subsequent proceedings before the juvenile court.",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_317",
+              "appointment is by the court once a petition is before it, not on investigation (kept as a disclosed "
+              "simplification); the 'would not benefit' exception is encoded since faithfulness batch 2 (P2)"))
+override("cps", "R11",
+         "verification pass 2026-11-06: WIC 317(e) and 388(a)(1) opened; the child petitions through a properly "
+         "appointed guardian (388), counsel represents its interests (317(e)) (faithfulness finding)",
+         item("cal-wic-317", "opened", "s. 317(e)(1)", "US-CA", None,
+              "Counsel shall be charged in general with the representation of the child's interests.",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_317", "apostrophe straightened"),
+         item("cal-wic-388", "opened", "s. 388(a)(1)", "US-CA", None,
+              "the child or the nonminor dependent through a properly appointed guardian may, upon grounds of change "
+              "of circumstance or new evidence, petition the court",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_388",
+              "the petition runs through a guardian; plain reworded in faithfulness batch 2 (P1), logic unchanged"),
+         item("cal-wic-326-5", "opened", "s. 326.5", "US-CA", None,
+              "the appointment of a guardian ad litem, who may be an attorney or a court-appointed special advocate",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_326.5",
+              "a rule of court implementing CAPTA (text 'updated Jan. 1, 2001'); the guardian may be the child's "
+              "attorney, so counsel_appointed standing in for the guardian is a simplification, not a reversal"))
+override("police-crisis", "R8", "verification pass 2026-11-06: WIC 5275 opened; effective_date of the current text set",
+         item("cal-wic-5275", "opened", "s. 5275", "US-CA", "2024-01-01",
+              "Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their "
+              "release",
+              "2026-11-06", _PLC + "ca_welf_and_inst_code_section_5275",
+              "effective_date is the page's 'updated Jan. 1, 2024' (the text as amended in 2023); 'this part' (the LPS "
+              "Act) covers a 5150 hold; the request procedure is written for certification, and the separate "
+              "certification review hearing (s. 5256) was not opened"))
 for _e in ("companion-ownership", "companion-guardian-renamed"):
     _items = [item("cal-civ-655", "opened", "s. 655", "US-CA", None,
                    "There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals",
@@ -488,18 +679,61 @@ override("mwpa-property", "R13",
          item("ny-mwpa-1848", "unverified", None, "US-NY", None, note="the statute text itself not opened: [R] UNVERIFIED; year (1848) from GLT Table 1; effective date not in the string"),
          item("geddes-lueck-tennyson-2007", "recalled", "Table 1",
               note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade"))
+_NY60 = "http://www.houseofrussell.com/american-legal-history/assignments/laws-of-new-york-83d-sessio.html"
+_NY62 = "https://www.houseofrussell.com/american-legal-history/docs/laws-of-new-york-85th-sessi.pdf"
+_MA55 = "https://archives.lib.state.ma.us/server/api/core/bitstreams/6cc4626f-6cc6-47f5-9a38-7a775ff276b4/content"
+_MA74 = "https://archives.lib.state.ma.us/server/api/core/bitstreams/ce48bb31-9c82-4384-925f-39ba51ab54b4/content"
+_RUSSELL = "a transcription on a law-course site (Russell, American Legal History), not a scan of the session laws"
 override("mwpa-suit", "R16",
-         "re-sourced 2026-11-05 to US leads (A2; the UK 1882 act no longer cited); each statute a lead, not opened; GLT carries no quote here",
-         item("us-ny-laws-1860-ch90", "unverified", "s. 7", "US-NY", note="lead, not opened; s. 7 scoped to 'matters having relation to her property' (per summary); the encoding takes the broader reading"),
-         item("us-ny-laws-1862-ch172", "unverified", None, "US-NY", note="lead, not opened; amends 1860 ch. 90, suit clause in broader terms (per summary)"),
-         item("us-ma-acts-1855-ch304", "unverified", "s. 3", "US-MA", note="lead, not opened; sue and be sued as if sole (per case-law summary)"),
+         "verification pass 2026-11-06: the three US acts opened; MA pin corrected from s. 3 to ss. 4, 7 (s. 3 is "
+         "conveyance); GLT carries no quote here",
+         item("us-ny-laws-1860-ch90", "opened", "s. 7", "US-NY", None,
+              "Any married woman may, while married, sue and be sued in all matters having relation to her property ... "
+              "any married woman may bring and maintain an action in her own name, for damages, against any person or "
+              "body corporate, for any injury to her person or character, the same as if she were sole",
+              "2026-11-06", _NY60,
+              _RUSSELL + "; 'Passed March 20, 1860'; the property suit is scoped to her property, the tort suit runs "
+              "against any person; the encoding takes the broader reading"),
+         item("us-ny-laws-1862-ch172", "opened", "s. 3 (s. 7 as amended)", "US-NY", None,
+              "sue and be sued in all matters having relation to her sole and separate property, or which may hereafter "
+              "come to her by descent, devise, bequest, purchase, or the gift or grant of any person",
+              "2026-11-06", _NY62, _RUSSELL + "; 'Passed April 10, 1862'; still scoped to her property"),
+         item("us-ma-acts-1855-ch304", "opened", "ss. 4, 7", "US-MA", None,
+              "may, while married, sue and be sued, in all matters having relation to her property, in the same manner "
+              "as if she were sole ... she may sue and be sued as if sole in regard to her trade, business, labor, "
+              "services and earnings",
+              "2026-11-06", _MA55,
+              "'Approved by the Governor, May 5, 1855'; the row's pin 's. 3' is wrong (s. 3 is conveyance and "
+              "contract); s. 4 applies to a woman 'hereafter to be married'"),
          item("geddes-lueck-tennyson-2007", "recalled", "Table 1",
-              note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no access date; no excerpt recorded; re-open to upgrade"))
+              note="[F, via plans/backtest-mwpa.md]: an earlier batch reports fetching it; relayed second-hand, no "
+                   "access date; no excerpt recorded; the published GLT 2012 and Geddes & Tennyson 2013 were not "
+                   "reachable 2026-11-06 (403 at Chicago Unbound, Emerald, SSRN)"))
 override("mwpa-suit", "R19",
-         "new 2026-11-05 (A2): the spousal-suit bar the US acts leave standing; leads, not opened",
-         item("us-ma-acts-1855-ch304", "unverified", "s. 3", "US-MA", note="lead, not opened; the proviso is quoted from a case-law summary, not from the statute"),
-         item("us-ny-laws-1860-ch90", "unverified", "s. 7", "US-NY", note="lead, not opened; read through Longendyke v. Longendyke (1863), as summarised"),
-         item(note="Longendyke v. Longendyke (N.Y. Sup. Ct. 1863), named only as a summary in the worklist; no bibliography entry"))
+         "verification pass 2026-11-06: MA 1855 has no spousal-suit proviso (the quoted proviso is MA 1874 c. 184 "
+         "s. 3); NY 1860 s. 7 bars nothing in terms, Longendyke construes it (faithfulness finding)",
+         item("us-ma-acts-1855-ch304", "opened", "ss. 3, 4, 7", "US-MA", None,
+              "may, while married, sue and be sued, in all matters having relation to her property, in the same manner "
+              "as if she were sole",
+              "2026-11-06", _MA55,
+              "cited by the row for a proviso it does not contain: the act omits suits between spouses rather than "
+              "barring them, so it supports R19 only as an omission (the row's 'bars or omits')"),
+         item("us-ma-acts-1874-ch184", "opened", "s. 3", "US-MA", "1874",
+              "nothing herein contained shall authorize suits between husband and wife",
+              "2026-11-06", _MA74,
+              "'Approved April 24, 1874'; the express proviso the row quotes, 19 years after the act the row cites; "
+              "effective_date is the year only"),
+         item("us-ny-laws-1860-ch90", "opened", "s. 7", "US-NY", None,
+              "Any married woman may, while married, sue and be sued in all matters having relation to her property",
+              "2026-11-06", _NY60,
+              _RUSSELL + "; no bar on suits against the husband in terms ('except her husband' qualifies gifts)"),
+         item("longendyke-1863", "opened", "44 Barb. 366", "US-NY", None,
+              "It is conceded by counsel that by the rules of the common law husband and wife could not sue each other "
+              "in a civil action ... The right to sue her husband in an action of assault and battery may perhaps be "
+              "covered under the literal language of this section; but I think such was not the meaning and intent of "
+              "the legislature",
+              "2026-11-06", None, "Caselaw Access Project JSON; the bar on spousal suits in New York is judicial "
+              "construction of the 1860/1862 acts, not statutory text"))
 override("footbinding", "R1",
          "Mackie abstract quotes as a search-index snippet (snippet), the rule itself 'UNVERIFIED as a rule'",
          item("mackie-1996", "snippet", "abstract", None, None,
@@ -544,6 +778,120 @@ for _r in ("R4", "R5", "R6", "R7"):
                           "the bibliography (a search lead for it is in plans/sourcing-worklist-other.md: add an entry "
                           "and upgrade when opened)")] if _r == "R5" else []))
 
+
+# ---------------------------------------------------------------- verification pass 2026-11-06, step 5 and the
+# cheapest upgrades (plans/sourcing-verify-session.md). Each call below supersedes the hand setting of the same row
+# above (override() replaces the row); the earlier reason is kept above for the history.
+_WK = ("https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education"
+       "&oldid=1360699722")
+_WKN = "revision 1360699722 (2026-06-23), read as wikitext; "
+_BP = ("https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/"
+       "patron_suspension_policy_approved_14nov2018.pdf")
+override("kibbutz-childrens-house", "R1",
+         "verification pass 2026-11-06: page re-read; still no passage states a committee's power to assign: recalled",
+         item("wikipedia-kibbutz-communal-child-rearing", "recalled", accessed=None, url=_WK,
+              note=_WKN + "the nearest passage, 'Kibbutz members who were considered the most educated and esteemed "
+                   "got the position of educators', names no committee or assignment procedure; Spiro or Gavron on the "
+                   "work-assignment committee would be the source to open"),
+         item(note="the committee's power to assign a member to the children's house: stated only in the encoder's "
+                   "parenthesis; no read text states it"))
+override("kibbutz-childrens-house", "R2",
+         "verification pass 2026-11-06: the WIKI_KIB sentence re-read with a date in this row: opened for the practice; "
+         "Tiger & Shepher's finding still not read",
+         item("wikipedia-kibbutz-communal-child-rearing", "opened", None, None, None,
+              "The nanny position was always a woman's role. Teacher positions were both for women and men.",
+              "2026-11-06", _WK, _WKN + "supports the practice the row encodes, not a committee prohibition (the row "
+              "says so); the page cites no source for the sentence"),
+         item("tiger-shepher-1975", "unverified", "pp. 41, 167",
+              note="the assignment finding itself NOT read directly: UNVERIFIED; cited by WIKI_KIB"),
+         item("kirkus-tiger-shepher-women-in-the-kibbutz", "recalled",
+              note="earlier batch reports confirming the book and sample (34,040 members) via this review; no excerpt "
+                   "recorded; re-open to upgrade"))
+override("kibbutz-childrens-house", "R3",
+         "verification pass 2026-11-06: a passage stating the nanny's care was found and quoted: opened",
+         item("wikipedia-kibbutz-communal-child-rearing", "opened", None, None, None,
+              "A group of children, all about the same age, shared a children's house and had a nanny who took care "
+              "of their everyday needs.", "2026-11-06", _WK,
+              _WKN + "states the care, not that it is owed on pain of reprimand (R6's link is the encoder's)"))
+override("kibbutz-childrens-house", "R5",
+         "verification pass 2026-11-06: a passage on fathers' time with children found: opened, with the 'at any time' "
+         "gap noted (faithfulness finding)",
+         item("wikipedia-kibbutz-communal-child-rearing", "opened", None, None, None,
+              "Fathers were supposed to bond with their children through quality time much more so than in a "
+              "non-kibbutz environment ... visited their parents for 2-3 hours a day", "2026-11-06", _WK,
+              _WKN + "en dash in '2-3' normalised; the page has the children visit the parents for 2-3 hours a day, "
+              "the row lets a male member visit the child 'at any time'"),
+         item(note="'at any time': the encoder's reading; the read text gives a daily visiting time at the parents' "
+                   "house"))
+override("public-library", "R2", "verification pass 2026-11-06: policy PDF opened; the duty to serve stays a reading",
+         item("berkeley-public-library-2018-patron-suspension-policy", "opened", "p. 1", None, None,
+              "In order to provide and maintain a welcoming and safe environment for all patrons and library staff",
+              "2026-11-06", _BP, "a purpose clause, not a duty to serve"),
+         item(note="the rule (a duty to serve) is read from the policy's premise, not stated: UNVERIFIED as a rule"))
+override("public-library", "R3", "verification pass 2026-11-06: policy PDF opened",
+         item("berkeley-public-library-2018-patron-suspension-policy", "opened", "p. 2, B.2", None, None,
+              "Continued disruption (same or different day): Library privileges will be suspended for the day by an "
+              "authorized staff-member and the patron will be asked to leave the Library building.",
+              "2026-11-06", _BP, "suspension follows an initial warning (B.1); the row's single-step suspension of a "
+              "disruptive patron skips the warning"))
+override("public-library", "R5", "verification pass 2026-11-06: policy PDF opened; entry read from the suspension's effect",
+         item("berkeley-public-library-2018-patron-suspension-policy", "opened", "p. 1", None, None,
+              "Suspension of library privileges will result in removal from, and denial of access to, all Berkeley "
+              "Public Library services and facilities for a designated period of time.",
+              "2026-11-06", _BP, "states that suspension denies access; the unsuspended patron's permission to enter "
+              "is the converse, not stated"))
+override("companion-guardianship", "R9",
+         "verification pass 2026-11-06: statute text read as reproduced on animallaw.info: opened; the generalisation "
+         "keeps its own null item",
+         item("ak-stat-25-24-160", "opened", "(a)(5)", "US-AK", "2017-01-17",
+              "(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration "
+              "the well-being of the animal.", "2026-11-06",
+              "https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment",
+              "the page reproduces the amended section and gives 'effective January 17, 2017'; akleg.gov not opened; "
+              "the statute decides ownership in a divorce, it does not reassign custody outside one"),
+         item(note="the generalisation from divorce to any custody claim: no jurisdiction does this (the entry's "
+                   "construction)"))
+override("airline-flight", "R2",
+         "verification pass 2026-11-06: 121.391 opened (supports egress staffing only); 121.571 as before; the general "
+         "care duty stays UNVERIFIED",
+         item("cfr-14-121-571", "opened", "s. 121.571(a), (a)(3)", "US", None,
+              "shall insure that all passengers are orally briefed by the appropriate crewmember", "2026-11-04",
+              "https://www.law.cornell.edu/cfr/text/14/121.571",
+              "ecfr.gov redirected to a block page; supports a briefing duty, narrower than the rule's provides_care"),
+         item("cfr-14-121-391", "opened", "s. 121.391(d)", "US", None,
+              "flight attendants required by this section shall be located as near as practicable to required floor "
+              "level exits and shall be uniformly distributed throughout the airplane in order to provide the most "
+              "effective egress of passengers in event of an emergency evacuation", "2026-11-06",
+              "https://www.law.cornell.edu/cfr/text/14/121.391",
+              "staffing and seating for evacuation; not an in-flight care duty"),
+         item(note="the general in-flight care duty: UNVERIFIED (no text opened states it)"))
+_P597S = "https://california.public.law/codes/ca_penal_code_section_597s"
+for _e in ("companion-ownership", "companion-guardian-renamed"):
+    for _r in ("R3", "R4"):
+        override(_e, _r, "verification pass 2026-11-06: 597s opened; excerpt narrowed to the statute (the heuristic "
+                 "took the page's update date as a quote)",
+                 item("cal-pen-597s", "opened", "s. 597s(a)", "US-CA", None,
+                      "Every person who willfully abandons any animal is guilty of a misdemeanor.", "2026-11-06",
+                      _P597S, "the page gives the text as 'updated Jan. 1, 2000' and its source as "
+                      "leginfo.legislature.ca.gov; (b) exempts releasing native wildlife"))
+override("lease", "R2", "verification pass 2026-11-06: 1941 opened; url and note",
+         item("cal-civ-1941", "opened", "s. 1941", "US-CA", None,
+              "The lessor of a building intended for the occupation of human beings must, in the absence of an "
+              "agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent "
+              "dilapidations thereof, which render it untenantable", "2026-11-06",
+              "https://california.public.law/codes/ca_civ_code_section_1941",
+              "'in the absence of an agreement to the contrary' and the s. 1929 exception are not in the row"))
+for _r in ("R1", "R2"):
+    override("naming-convention", _r,
+             "verification pass 2026-11-06: Centola et al. read in full (accepted manuscript): opened; the free choice "
+             "of name is the experiment's design, not a stated rule",
+             item("centola-becker-brackbill-baronchelli-2018", "opened", "Methods; results (accepted ms.)", None, None,
+                  "participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the "
+                  "response field ... Continuous interactions led to occasional switching by subjects throughout the "
+                  "study.", "2026-11-06", "https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf",
+                  "accepted manuscript, not the Science typeset text (no Science page numbers); free text entry each "
+                  "round implies either name may be used at any time; the committed minority are confederates who "
+                  "push only the new name; the 25% threshold is stated as 'not expected to be a universal value'"))
 
 def migrate_rule(eid, rule):
     key = (eid, rule["id"])

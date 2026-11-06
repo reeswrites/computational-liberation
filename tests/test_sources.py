@@ -18,6 +18,7 @@ Report-only (warnings.warn until the migration is reviewed, then promoted):
 1e. Two bibliography entries with the same url, or the same (type, year, normalised title): probably one work
    under two ids.
 4. Every rule has `provenance`.
+Hard since 2026-11-06 (promoted after the verification pass, plans/sourcing.md):
 5. A `supported` claim in docs/claims.md whose `sources` cell names a rule row (`<entry>:R6`, `<entry>:R2,R5`,
    `<entry>:*`, globs such as `mwpa-*:*`) whose weakest provenance item is below `opened` (skipped when the claims
    table has no `sources` column; a cell starting `engine-only` is a claim about the engine and is not read).
@@ -390,7 +391,7 @@ def test_provenance_not_in_engine_json():
     assert not [r for e in inst for r in e["rules"] if "provenance" in r]
 
 
-# ---------------------------------------------------------------- report-only: checks 4 and 5
+# ---------------------------------------------------------------- check 4 (report-only) and check 5 (hard)
 def test_report_rules_without_provenance(raws):
     order, rs = raws
     missing = [f"{eid} {r['id']}" for eid, r in _own_rules(order, rs) if not r.get("provenance")]
@@ -462,6 +463,7 @@ def test_report_supported_claims_on_weak_rows(raws):
             if level != "opened":
                 weak.append(f"{row.get('#', '?')}: {eid}:{rid} is {level}")
     if weak:
-        warnings.warn("supported claims resting on rule rows below opened (check 5, report-only): " + "; ".join(weak))
+        raise AssertionError("supported claims resting on rule rows below opened (check 5): " + "; ".join(weak)
+                             + " -- open the rows or downgrade the claim, and log the downgrade in docs/claims.md")
     if unknown:
         warnings.warn("docs/claims.md sources cells name unknown entries or rules: " + "; ".join(unknown))

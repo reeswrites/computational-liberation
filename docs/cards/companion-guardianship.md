@@ -28,8 +28,8 @@
 |---|---|---|---|---|---|---|---|---|---|
 | R1 | owner | may | `(transfer o a o2)` | `(owns o a)` | none | rival | The owner may transfer the animal to another when the owner owns it (Cal. Civ. Code 655, 663). | recalled | [full source under Sources, R1](#src-r1) https://codes.findlaw.com/ca/civil-code/civ-sect-655/ |
 | R2 | owner | may | `(euthanize o a)` | `(owns o a)` | none | rival | The owner may have the animal euthanized when the owner owns it. | unverified | owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize |
-| R3 | owner | must not | `(abandon o a)` | `(owns o a)` | R4 `(prosecute state o)` | rival | The owner must not abandon the animal when the owner owns it, or else the state may prosecute (R4) (Cal. Penal Code 597s). | recalled | Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor') |
-| R4 | state | may | `(prosecute state o)` | `(abandoned a)` | none | rival | The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s). | recalled | Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ |
+| R3 | owner | must not | `(abandon o a)` | `(owns o a)` | R4 `(prosecute state o)` | rival | The owner must not abandon the animal when the owner owns it, or else the state may prosecute (R4) (Cal. Penal Code 597s). | opened | [full source under Sources, R3](#src-r3) https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ |
+| R4 | state | may | `(prosecute state o)` | `(abandoned a)` | none | rival | The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s). | opened | [full source under Sources, R4](#src-r4) https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ |
 | R5 | owner | must | `(provides_care o a)` | `(owns o a)` | none | superadditive | The owner providing care to the animal must hold when the owner owns it (Cal. Penal Code 597(b)). | unverified | [full source under Sources, R5](#src-r5) |
 | R6 | animal | must not (disability) (implicit) | `(leave a)` | `(is_subject a)` | none | rival | (practice, not written) The animal cannot leave while it is a companion animal: no such power exists. | unverified | [full source under Sources, R6](#src-r6) |
 | R7 | state | may | `(impound state a)` | `(at_large a)` | none | rival | The state may impound the animal when it is at large. | unverified | local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened) |
@@ -69,13 +69,15 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 - no work named: **unverified** (rationale: owner may have the animal euthanized by a veterinarian)
 
-**R3**
+<a id="src-r3"></a>
+**R3**: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'
 
-- `cal-pen-597s` (s. 597s(a); US-CA; date n/a): **recalled**
+- `cal-pen-597s` (s. 597s(a); US-CA; date n/a): **opened** 2026-11-06: "Every person who willfully abandons any animal is guilty of a misdemeanor."
 
-**R4**
+<a id="src-r4"></a>
+**R4**: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'
 
-- `cal-pen-597s` (s. 597s(a); US-CA; date n/a): **recalled**
+- `cal-pen-597s` (s. 597s(a); US-CA; date n/a): **opened** 2026-11-06: "Every person who willfully abandons any animal is guilty of a misdemeanor."
 
 <a id="src-r5"></a>
 **R5**: Cal. Penal Code 597(b) failure to provide food/water/shelter. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] acquire (and the initial state) establishes provides_care; feed restores it, neglect breaks it
@@ -96,9 +98,9 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: incident of ownership)
 
 <a id="src-r9"></a>
-**R9**: Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal 'taking into consideration the well-being of the animal'); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail
+**R9**: Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal 'taking into consideration the well-being of the animal'); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail Verification pass: read 2026-11-06 at https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (the statute as reproduced there): '(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal.'
 
-- `ak-stat-25-24-160` ((a)(5); US-AK; date 2017-01-17): **unverified**
+- `ak-stat-25-24-160` ((a)(5); US-AK; date 2017-01-17): **opened** 2026-11-06: "(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal."
 - no work named: **unverified** (the generalisation from divorce to any custody claim: no jurisdiction does this (the entry's construction))
 
 **R10**

@@ -175,17 +175,17 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
-  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it'
+  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''The husband is bound to provide his wife with necessaries by law, as much as himself'' (long s modernised from the OCR).'
   provenance:
   - source_id: blackstone-1765-bk1-ch15
     pin: Bk I ch 15
     jurisdiction: England
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
-    note: cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade
+    verification: opened
+    excerpt: The husband is bound to provide his wife with necessaries by law, as much as himself
+    accessed: '2026-11-06'
+    url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
+    note: long s modernised from the OCR; earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
   load_bearing: true
 - id: R3
   plain: '(practice, not written) The wife providing care to her husband (household labour) must hold when they are married, or else the husband may chastise her (R5).'
@@ -217,17 +217,17 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married'
+  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''If the wife be injured in her person or her property, she can bring no action for redress without her husband''s concurrence, and in his name, as well as her own'' ... ''neither can she be sued, without making the husband a defendant'' (long s modernised from the OCR; the same passage excepts a husband who ''has abjured the realm, or is banished'').'
   provenance:
   - source_id: blackstone-1765-bk1-ch15
     pin: Bk I ch 15
     jurisdiction: England
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
-    note: cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade
+    verification: opened
+    excerpt: If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own ... neither can she be sued, without making the husband a defendant
+    accessed: '2026-11-06'
+    url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
+    note: long s modernised from the OCR; the same passage excepts a husband who has abjured the realm or is banished (she then sues as a feme sole), an exception the row does not encode; earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
 - id: R5
   plain: 'The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15).'
   attribute: husband
@@ -258,26 +258,26 @@ rules:
   or_else: null
   strand: rival
   implicit: false
-  source: 'UNVERIFIED (not opened 2026-11-04): Shanley, Feminism, Marriage and the Law in Victorian England, 1850-1895 (1989), and Stone, Road to Divorce: England 1530-1987 (1990), on restitution of conjugal rights and the absence of any unilateral exit from marriage before the Matrimonial Causes Act 1857 (archive.org search-inside returned 403 and the Google Books API 429, two tries each). Re-sourced 2026-11-04: Blackstone Book I ch. 15 (https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/), cited before, contains no exit bar (its nearest passage: an eloping wife forfeits necessaries) and is no longer cited for this rule. [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married'
+  source: 'UNVERIFIED (not opened 2026-11-04): Shanley, Feminism, Marriage and the Law in Victorian England, 1850-1895 (1989), and Stone, Road to Divorce: England 1530-1987 (1990), on restitution of conjugal rights and the absence of any unilateral exit from marriage before the Matrimonial Causes Act 1857 (archive.org search-inside returned 403 and the Google Books API 429, two tries each). Re-sourced 2026-11-04: Blackstone Book I ch. 15 (https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/), cited before, contains no exit bar (its nearest passage: an eloping wife forfeits necessaries) and is no longer cited for this rule. [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Blackstone, Commentaries on the Laws of England, Book I ch. 15, read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''it will not allow it to be unloosed for any cause whatsoever, that arises after the union is made'' ... ''with us in England adultery is only a cause of separation from bed and board'' ... ''divorces a vinculo matrimonii, for adultery, have of late years been frequently granted by act of parliament'' (long s modernised; this corrects the 2026-11-04 sentence above: Bk I ch. 15 does treat dissolution, and supports the bar as of 1765). Matrimonial Causes Act 1857 (20 & 21 Vict. c. 85), enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/ukpga/Vict/20-21/85/pdfs/ukpga_18570085_en.pdf: s. 2, the ecclesiastical jurisdiction over ''Suits for Restitution of Conjugal Rights, and in all Causes, Suits, and Matters Matrimonial, shall cease to be so exerciseable''; s. 27, ''it shall be lawful for any Wife to present a Petition to the said Court, praying that her Marriage may be dissolved'' on the husband''s aggravated adultery only (margin notes dropped from the OCR). Shanley and Stone tried again 2026-11-06 and still not opened. Re-cited 2026-11-06 (author decision): the rule rests on Blackstone Bk I ch. 15 and the Matrimonial Causes Act 1857 as read above; Shanley 1989 and Stone 1990, never opened, are kept as leads for the 1765-1857 interval and are no longer cited.'
   provenance:
-  - source_id: shanley-1989
-    pin: null
-    jurisdiction: null
+  - source_id: blackstone-1765-bk1-ch15
+    pin: Bk I ch 15, II (divorce)
+    jurisdiction: England
     effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
+    verification: opened
+    excerpt: it will not allow it to be unloosed for any cause whatsoever, that arises after the union is made ... with us in England adultery is only a cause of separation from bed and board ... divorces a vinculo matrimonii, for adultery, have of late years been frequently granted by act of parliament
+    accessed: '2026-11-06'
+    url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
+    note: 'long s modernised from the OCR; states the law as of 1765, not up to 1857; two conditional exits the row does not encode: separation a mensa et thoro for ''intolerable ill temper, or adultery, in either of the parties'' (no dissolution) and a private Act of Parliament for adultery'
+  - source_id: uk-matrimonial-causes-act-1857
+    pin: ss. 2, 27
+    jurisdiction: England
+    effective_date: '1857'
+    verification: opened
+    excerpt: Suits for Restitution of Conjugal Rights, and in all Causes, Suits, and Matters Matrimonial, shall cease to be so exerciseable ... it shall be lawful for any Wife to present a Petition to the said Court, praying that her Marriage may be dissolved
+    accessed: '2026-11-06'
     url: null
-    note: not opened 2026-11-04 (archive.org 403, Google Books API 429); cited for restitution of conjugal rights and no unilateral exit before the Matrimonial Causes Act 1857
-  - source_id: stone-1990
-    pin: null
-    jurisdiction: null
-    effective_date: null
-    verification: unverified
-    excerpt: null
-    accessed: null
-    url: null
-    note: not opened 2026-11-04 (archive.org 403, Google Books API 429); same point as Shanley
+    note: read through the OCR of the enacted PDF (margin notes dropped); s. 2 shows the pre-1857 remedies sat in the ecclesiastical courts; s. 27 gives the wife dissolution only for the husband's aggravated adultery, so even after 1857 she has no exit at her own will; effective_date is the act's year, the commencement section was not read
 - id: R7
   plain: 'The wife cannot contract in her own name while married: no such power exists (Blackstone I.15).'
   attribute: wife
@@ -287,17 +287,17 @@ rules:
   or_else: null
   strand: tying
   implicit: false
-  source: Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his)
+  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable'' ... ''all compacts made between husband and wife, when single, are voided by the intermarriage'' (long s modernised; the OCR prints ''converture'' in the first passage).'
   provenance:
   - source_id: blackstone-1765-bk1-ch15
     pin: Bk I ch 15
     jurisdiction: England
     effective_date: null
-    verification: recalled
-    excerpt: null
-    accessed: null
-    url: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
-    note: cited via the NYHS WAMS page with a paraphrase, no read date or quote in this row (the entry source_text quotes Bk I ch 15 and says the passage was checked); re-open to upgrade
+    verification: opened
+    excerpt: all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable ... all compacts made between husband and wife, when single, are voided by the intermarriage
+    accessed: '2026-11-06'
+    url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
+    note: long s modernised; the OCR prints 'converture' in the first passage; 'void, or at least voidable' is weaker than the row's 'no such power exists' (voidable acts bind until avoided); the first passage is introduced as acts done 'by his compulsion', and the second concerns compacts between the spouses, not her capacity to contract with third parties (council 2026-11-06); earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
 source_text: '''By marriage, the husband and wife are one person in law: that is, the very being or legal existence of the woman is suspended during the marriage, or at least is incorporated and consolidated into that of the husband: under whose wing, protection, and cover, she performs every thing; and is therefore called ... a feme-covert.'' He cannot grant anything to her or covenant with her, she cannot sue in her own name, and ''the husband is bound to provide his wife with necessaries by law''. Blackstone, Commentaries on the Laws of England, Book I, ch. 15 (Oxford: Clarendon, 1765). Passage checked at https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/'
 expected_properties:
   dependent_cannot_exit: reachable
