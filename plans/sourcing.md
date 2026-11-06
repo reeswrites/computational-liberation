@@ -248,3 +248,40 @@ Acted on: the -us/English R7 note now says the second fragment concerns compacts
 ### Follow-up, 2026-11-06: R6 re-cited, check 5 hard
 
 coverture-household R6 now cites only the two works read in full (Blackstone Bk I ch 15, Matrimonial Causes Act 1857); Shanley 1989 and Stone 1990 are leads for the 1765-1857 interval, recorded in the row's `source` and the Blackstone item's reason, not as provenance items. All nine rows the L1 match reads are now `opened` (rows opened 34 -> 35; items 192 -> 190). L1 stays `weakened`: its other grounds (strand tags load-bearing, the airline-flight control match) are not sourcing questions; its Sources cell is updated. Check 5 is hard: a claim moved to `supported` while it names a row below `opened` now fails CI.
+
+## Faithfulness batch 2: preregistered 2026-11-06, before any edit or run
+
+From the verification pass's findings (above). Engine at ENGINE_PIN (philosophy-engine c53d132), baseline parameters (k=6). Three parts: P1 and P2 land in the dataset; P3 is an experiment on a temporary copy of institutions.json and does not land (it may fail the gate; landing it is the author's call after reading the result).
+
+### P1. Prose only (`plain` / `source`; the engine reads neither)
+
+- mwpa-suit R16 `plain`: "e.g. NY 1860 ch. 90 s. 7, MA 1855 c. 304 s. 3; unverified" -> "NY 1860 ch. 90 s. 7, NY 1862 ch. 172, MA 1855 c. 304 ss. 4, 7".
+- mwpa-suit R19 `plain`: "MA 1855 c. 304 s. 3; unverified" -> "omitted in MA 1855 c. 304, barred in terms by MA 1874 c. 184 s. 3; in New York by construction, Longendyke 1863".
+- coverture-household-us R6 `plain`: "(no unilateral divorce in any US state before 1969; unverified)" -> "(pre-reform divorce required the spouse's consent or proved fault, Stevenson & Wolfers; NY 1787 adultery only)".
+- cps R1: `source` gains a re-pin sentence (the duty is WIC 328(a); Penal Code 11165.14 is off point and no longer cited); its provenance item is removed (as with Shanley/Stone on R6). `plain` unchanged.
+- cps R11: `plain` -> "The child may petition through a guardian when one has been appointed for the child (Cal. WIC 388(a)(1); the guardian ad litem may be the appointed attorney, WIC 326.5; encoded as counsel appointed)". Logic unchanged: counsel_appointed stands in for the guardian, a disclosed simplification.
+
+Prediction: no verdict, gate, iso or ablation change anywhere (`phil rules diff` 0 changed of 146). Certain unless `plain`/`source` reach the engine, which build.py and test_provenance_not_in_engine_json say they do not for `plain`.
+
+### P2. cps R8: the statute's exception (lands)
+
+WIC 317(c)(1): the court shall appoint counsel "unless the court finds that the child ... would not benefit". Change: new free fluent `would_not_benefit(c)` (arg_roles [child], in `initial_free`); R8 conditions `(case_open c)` -> `(and (case_open c) (not (would_not_benefit c)))`. Everything else unchanged: `investigate` still establishes counsel_appointed (ADR 0009 establishing-action convention; the court-not-investigation timing stays a disclosed simplification, because an action obligation on the court would collide with R6's contact_mother at the same step, the collision ADR 0009 was written to remove). Effect in the model: where `would_not_benefit` holds, `relieve_counsel` (unregulated) becomes compliant, so the child can lose has_standing.
+
+Predictions (k=6):
+- cps rows: care_and_sanction_same_role holds_to_k; care_assigned_by_sex reachable; dependent_cannot_exit reachable; subject_cannot_exit reachable; no_standing_persists fails. All five unchanged (no_standing_persists still fails: worlds with counsel, and the court's can_claim_for under substantial_danger, remain).
+- `phil rules diff`: 0 changed, 0 added, 0 removed of 146.
+- `phil rules gate`: PASS; criterion (b) PASS (R8 is not one of the nine match rows and is outside both cps iso sub-signatures).
+- `phil rules iso`: cps~police-crisis and cps~coverture-household still hold at guard+strands.
+
+### P3. police-crisis R2 on the facility (experiment, does not land)
+
+WIC 5150(a) puts the ongoing assessment and evaluation on the 72-hour stay, in the passive voice; 5150(c) has the facility's professional person assess. Variant: R2 attribute officer -> facility; aim `(provides_care f s)`; conditions `(and (responding o s) (in_crisis s))` -> `(in_custody s)`; fluent provides_care arg_roles [facility, subject]; `detain` gains the facility argument, `detain(o, f, s)`, and also establishes provides_care(f, s) (ADR 0009); `dispatch_officer` and `leave` no longer touch provides_care; `assess` / `withdraw` take (f, s); can_sanction stays the officer's (`(exists ((f agent)) (enabled detain o f s))` or use_force). R3, R4, R7, R8 otherwise unchanged.
+
+Predictions (k=6), the point of the experiment:
+- police-crisis care_and_sanction_same_role: holds_to_k -> **violated** (counterexample: subject in custody and resisting; the facility provides care, the officer can sanction via use_force).
+- police-crisis subject_cannot_exit, dependent_cannot_exit: reachable (unchanged); no_standing: open (unchanged).
+- `phil rules iso`: police-crisis~cps and police-crisis~coverture-household at guard+strands: **fail** (R2's role is now the facility while R3's is the officer; the declared sub-signatures pair both with one role).
+- `phil rules gate`: **FAIL** on criterion (b): the faithful police entry no longer matches the care+control cluster; other criteria unchanged.
+- Effect on L1, if it held: L1's care+control cluster would rest on cps and coverture; police-crisis, read faithfully, unbundles care (facility) from control (officer). Recorded as a result, not acted on: L1's status is the author's call.
+
+Exploratory, no prediction: `phil rules ablate --entry cps` after P2 and `--entry police-crisis` on the P3 copy, reported as run.
