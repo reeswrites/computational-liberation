@@ -99,6 +99,7 @@ WORKS = [
     ("gavron-2000", r"Gavron, The Kibbutz"),
     ("firestone-1970", r"Firestone, The Dialectic of Sex"),
     ("kunc-2020-denver-star", r"KUNC 2020-11-17"),
+    ("uk-matrimonial-causes-act-1857", r"Matrimonial Causes Act 1857 \(20 & 21 Vict"),
     ("berkeley-public-library-2018-patron-suspension-policy", r"Berkeley Public Library, Patron Suspension Policy"),
 ]
 
@@ -286,6 +287,8 @@ def _wiki_pledge():
     return [item(s, "recalled", note=WIKI_SNIP) for s in TIAN]
 
 
+BK1_15 = "https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp"
+
 OVERRIDES = {}  # (entry id, rule id) -> (items, reason, append); filled below
 
 
@@ -325,6 +328,17 @@ RAISES = {
         "'(Wikipedia 'Tian Zu Hui', ... read 2026-11-04 as search snippets only, pages not "
         "opened: [R]'; the row's closing UNVERIFIED belongs to the reconstructed rule (its own null item)",
     ("footbinding", "R10", "wikipedia-heavenly-foot-society"): "as wikipedia-tian-zu-hui on this row",
+    ("coverture-household", "R6", "uk-matrimonial-causes-act-1857"):
+        "'enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/...: s. 2, ... s. 27, ...'; "
+        "the heuristic's read regex is lower-case and the work is named before 'read' (verification pass 2026-11-06)",
+    ("coverture-household-us", "R6", "stevenson-wolfers-2006"):
+        "'Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/...: 'from the preexisting divorce laws ...''; "
+        "the heuristic applies the row's opening 'UNVERIFIED (leads, not opened 2026-11-05 ...)' to the whole "
+        "window (verification pass 2026-11-06)",
+    ("coverture-household-us", "R6", "us-ny-laws-1787-divorce"):
+        "'New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at "
+        "https://archive.org/...: 'in all cases of adultery ...''; no WORKS regex names this act (verification pass "
+        "2026-11-06)",
     ("footbinding", "R10", "mackie-1996"):
         "'Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]' "
         "(an [F] tag relayed second-hand, no quote, no read date = recalled); the closing UNVERIFIED belongs to the "
@@ -342,13 +356,33 @@ override("coverture-household", "R5",
          item("blackstone-1765-bk1-ch15", "opened", "Bk I ch 15", "England", None,
               "The husband also (by the old law) might give his wife moderate correction ... the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour",
               "2026-11-04", None, "long s modernised from the OCR; earlier pointer " + WAMS))
+_SHANLEY_STONE = ("not opened 2026-11-04 (archive.org 403, Google Books API 429) nor 2026-11-06 (archive.org lending copy "
+                  "401, search-inside 'item not available', Google Books API 429, no-preview ids); ")
 override("coverture-household", "R6",
-         "the string names Bk I ch 15 only to say it is no longer cited; Shanley and Stone each UNVERIFIED",
-         item("shanley-1989", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429); cited for restitution of conjugal rights and no unilateral exit before the Matrimonial Causes Act 1857"),
-         item("stone-1990", "unverified", note="not opened 2026-11-04 (archive.org 403, Google Books API 429); same point as Shanley"))
+         "verification pass 2026-11-06: Blackstone Bk I ch 15 (the row's earlier note wrongly said it has no exit bar) and "
+         "the 1857 Act opened; Shanley and Stone still unverified",
+         item("blackstone-1765-bk1-ch15", "opened", "Bk I ch 15, II (divorce)", "England", None,
+              "it will not allow it to be unloosed for any cause whatsoever, that arises after the union is made ... with "
+              "us in England adultery is only a cause of separation from bed and board ... divorces a vinculo "
+              "matrimonii, for adultery, have of late years been frequently granted by act of parliament",
+              "2026-11-06", BK1_15,
+              "long s modernised from the OCR; states the law as of 1765, not up to 1857; two conditional exits the "
+              "row does not encode: separation a mensa et thoro for 'intolerable ill temper, or adultery, in either of "
+              "the parties' (no dissolution) and a private Act of Parliament for adultery"),
+         item("uk-matrimonial-causes-act-1857", "opened", "ss. 2, 27", "England", "1857",
+              "Suits for Restitution of Conjugal Rights, and in all Causes, Suits, and Matters Matrimonial, shall cease "
+              "to be so exerciseable ... it shall be lawful for any Wife to present a Petition to the said Court, "
+              "praying that her Marriage may be dissolved",
+              "2026-11-06", None,
+              "read through the OCR of the enacted PDF (margin notes dropped); s. 2 shows the pre-1857 remedies sat in "
+              "the ecclesiastical courts; s. 27 gives the wife dissolution only for the husband's aggravated adultery, "
+              "so even after 1857 she has no exit at her own will; effective_date is the act's year, the "
+              "commencement section was not read"),
+         item("shanley-1989", "unverified", note=_SHANLEY_STONE + "cited for restitution of conjugal rights and no "
+              "unilateral exit before the Matrimonial Causes Act 1857"),
+         item("stone-1990", "unverified", note=_SHANLEY_STONE + "same point as Shanley"))
 # Verification pass 2026-11-06 (plans/sourcing-verify-session.md, order 2 and the cheapest upgrades): Bk I ch 15
 # re-opened at Avalon; each row's `source` now records the read date and the passage quoted.
-BK1_15 = "https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp"
 _BK1_15_EXCERPT = {
     "R2": ("The husband is bound to provide his wife with necessaries by law, as much as himself",
            "long s modernised from the OCR; earlier pointer " + WAMS),
@@ -376,9 +410,26 @@ for _r in ("R1", "R2", "R4", "R5", "R7"):
     override("coverture-household-us", _r, _why + "; US base: the same item, its note adds that US reception is assumed",
              *[dict(_it, note=(_it["note"] + "; " if _it["note"] else "") + _US_RECEPTION) for _it in _items])
 override("coverture-household-us", "R6",
-         "US leads for 'no exit at her own will' (B1), not opened: lead level, never above unverified",
-         item("stevenson-wolfers-2006", "unverified", note="lead, not opened; cited for no unilateral divorce in any US state before 1969"),
-         item("us-ny-laws-1787-divorce", "unverified", None, "US-NY", note="lead, not opened; one state's fault statute (absolute divorce for adultery only until 1966)"))
+         "verification pass 2026-11-06: both leads opened; the paper does not support 'no unilateral divorce in any US "
+         "state before 1969' (faithfulness finding), it supports the B1 reading (consent or fault required)",
+         item("stevenson-wolfers-2006", "opened", "s. 2; Table 1", None, None,
+              "from the preexisting divorce laws (which typically required either the consent of both spouses or a "
+              "demonstration of marital fault) ... prior to unilateral divorce, a partner wishing to dissolve the "
+              "marriage could leave ... However, in such a situation, a legal divorce is not granted",
+              "2026-11-06", "https://www.nber.org/system/files/working_papers/w10175/w10175.pdf",
+              "NBER working paper (December 2003), not the QJE 2006 text; Table 1 lists nine states with unilateral "
+              "divorce statutes predating 1964, contradicting the row's 'before 1969' parenthesis; the paper covers "
+              "the twentieth century and says nothing of the MWPA era; consent divorce is an exit the row does not "
+              "encode; physical departure without divorce is possible, the row's 'leave' means dissolution"),
+         item("us-ny-laws-1787-divorce", "opened", "ch. 69, s. 1", "US-NY", "1787-03-30",
+              "in all cases of adultery that have already been committed, or may hereafter be committed, where the "
+              "parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill "
+              "to the Chancellor",
+              "2026-11-06", None,
+              "read through the OCR (long s modernised, clipped letters restored); 'party injured': either spouse may "
+              "petition, adultery the only ground; dissolution on the other spouse's fault (B2), not at her own will; "
+              "the date is the passage date printed (OCR 'Passed the zoth of March, 1787', i.e. 30th), commencement not "
+              "stated"))
 override("police-crisis", "R7",
          "s. 5150(a) is cited for the absence of an officer release duty (recalled), s. 5152 is the opened source; the excerpt keeps the release-only-if passage that (not (danger s)) stands for",
          item("cal-wic-5152", "opened", "s. 5152(a), (b)", "US-CA", None,

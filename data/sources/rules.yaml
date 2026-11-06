@@ -36,7 +36,7 @@
   container: null
   jurisdiction: null
   url: null
-  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04)"
+  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04; again 2026-11-06: archive.org lending copy 401 / search-inside 'item not available', Google Books API 429, Google Books ids with no preview)"
 - id: stevenson-wolfers-2006
   type: secondary
   title: "Bargaining in the Shadow of the Law: Divorce Laws and Family Distress"
@@ -45,15 +45,23 @@
   container: "Quarterly Journal of Economics 121(1)"
   jurisdiction: null
   url: https://www.nber.org/system/files/working_papers/w10175/w10175.pdf
-  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): unilateral divorce adopted by US states from 1969; NBER working paper w10175. plans/backtest-data-inventory.md records an earlier fetch [F] of the NBER paper; not opened in the 2026-11-05 session. Cited by coverture-household-us R6."
+  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): unilateral divorce adopted by US states from 1969; NBER working paper w10175. plans/backtest-data-inventory.md records an earlier fetch [F] of the NBER paper; not opened in the 2026-11-05 session. Cited by coverture-household-us R6. | 2026-11-06: the url is the NBER working paper (December 2003; its abstract page misprints the number as 10174), which is the copy opened; the QJE 2006 published version was not opened, and its text may differ."
 - id: us-ny-laws-1787-divorce
   type: statute
-  title: "[New York divorce act 1787, absolute divorce for adultery only (descriptive; title unconfirmed)]"
+  title: "An Act directing a Mode of Trial, and allowing of Divorces in Cases of Adultery (Laws of New York, 10th session, ch. 69)"
   year: 1787
-  container: "Laws of the State of New York, 1787"
+  container: "Laws of the State of New-York, 1787 (passed 30 March 1787)"
   jurisdiction: US-NY
-  url: null
-  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): absolute divorce for adultery only until the 1966 Divorce Reform Law, per https://en.wikipedia.org/wiki/New_York_divorce_law and a Law & History Review article on divorce in New York and Indiana 1815-1870 (search results, not opened). Chapter and title not confirmed. Cited by coverture-household-us R6."
+  url: https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt
+  note: "Lead (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B): absolute divorce for adultery only until the 1966 Divorce Reform Law, per https://en.wikipedia.org/wiki/New_York_divorce_law and a Law & History Review article on divorce in New York and Indiana 1815-1870 (search results, not opened). Cited by coverture-household-us R6. | 2026-11-06: title, chapter (LXIX) and date confirmed from the session-law OCR at the url (Eighteenth Century Collections copy)."
+- id: uk-matrimonial-causes-act-1857
+  type: statute
+  title: "Matrimonial Causes Act 1857 (20 & 21 Vict. c. 85), An Act to amend the Law relating to Divorce and Matrimonial Causes in England"
+  year: 1857
+  container: null
+  jurisdiction: England
+  url: https://www.legislation.gov.uk/ukpga/Vict/20-21/85/pdfs/ukpga_18570085_en.pdf
+  note: "Added 2026-11-06 (verification pass): the enacted text as a scanned PDF; read through its OCR. Cited by coverture-household R6."
 - id: stone-1990
   type: secondary
   title: "Road to Divorce: England 1530-1987"
@@ -62,7 +70,7 @@
   container: null
   jurisdiction: null
   url: null
-  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04)"
+  note: "given name and URL not in repo text; not opened (archive.org 403, Google Books API 429 on 2026-11-04; again 2026-11-06: archive.org lending copy 401 / search-inside 'item not available', Google Books API 429, Google Books ids with no preview)"
 - id: spiro-1956
   type: secondary
   title: "Kibbutz: Venture in Utopia"
