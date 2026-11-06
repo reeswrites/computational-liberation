@@ -177,3 +177,11 @@ Preregistered predictions for the engine change, checked before the goods enter 
 8. **Council**: faithfulness seat (section 1), card-only seat for coverture-floor; findings answered before anything is called a result.
 
 Encoders never see steps 4 to 8 before both have submitted, and they are not reused as builders or reviewers.
+
+## Author decisions after the council (2026-11-06; reviews docs/reviews/2026-11-06-slice2-correctness-review.md and 2026-11-06-slice2-faithfulness-review.md, both weakened)
+
+Taken before revision 2 is preregistered; the revision-1 run and its results file stay as recorded.
+1. **Four goods states.** `not_applicable`: no subject exists in any compliant trace (outside the ranking; never a loss or a gain). `absent`: a subject exists and the good never holds for it. `fragile`: the good can hold and can lapse. `stable`: a rule guarantees it. Fixes the ectogenesis/surrogacy "no child = goods lost" artefact (F2) and the kibbutz `child_with_family` / R4 row.
+2. **Two measures, side by side, never combined.** The current measure is renamed **guaranteed** (stable vs not). A second column, **possible**, says whether the good can happen at all under the rules (reachable for an existing subject). "Constitutive" (redesign, do not cut) is used only when deleting a rule makes a good impossible, not when it removes a guarantee.
+3. **Chosen-care good.** A new good: both spouses care for each other, the wife can exit, and her care carries no sanction. Written by two fresh encoders under the section 2 protocol, with the full encoder prompt inside the hashed bundle this time (merge-log disclosure). Meanwhile the revision-1 R3 row is reported only as "guaranteed only by R3, an implicit sanctioned duty; not advice to keep it".
+Also (no decision needed; fix pass): kill the three surviving test mutants (fragile/absent order, contested pooling, goods k-disagreement); the vacuity check reads the good's own subject, and an undecided subject check is uncounted, not stable; cards carry a goods note and the ADR 0012 sentence; R20 is labelled an income-access floor, not the glossary's material floor, and its strand placeholder is removed; G's 5-vs-4 is labelled by construction; lost counts are reported per strand as well as per formula; the strict-compliance caveat sits beside coverture goods rows.
