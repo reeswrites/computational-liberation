@@ -399,7 +399,8 @@ _SHANLEY_STONE = ("not opened 2026-11-04 (archive.org 403, Google Books API 429)
                   "401, search-inside 'item not available', Google Books API 429, no-preview ids); ")
 override("coverture-household", "R6",
          "verification pass 2026-11-06: Blackstone Bk I ch 15 (the row's earlier note wrongly said it has no exit bar) and "
-         "the 1857 Act opened; Shanley and Stone still unverified",
+         "the 1857 Act opened; re-cited the same day (author decision): Shanley and Stone, never opened, are leads "
+         "for the 1765-1857 interval, not cited items (" + _SHANLEY_STONE.rstrip("; ") + ")",
          item("blackstone-1765-bk1-ch15", "opened", "Bk I ch 15, II (divorce)", "England", None,
               "it will not allow it to be unloosed for any cause whatsoever, that arises after the union is made ... with "
               "us in England adultery is only a cause of separation from bed and board ... divorces a vinculo "
@@ -416,10 +417,7 @@ override("coverture-household", "R6",
               "read through the OCR of the enacted PDF (margin notes dropped); s. 2 shows the pre-1857 remedies sat in "
               "the ecclesiastical courts; s. 27 gives the wife dissolution only for the husband's aggravated adultery, "
               "so even after 1857 she has no exit at her own will; effective_date is the act's year, the "
-              "commencement section was not read"),
-         item("shanley-1989", "unverified", note=_SHANLEY_STONE + "cited for restitution of conjugal rights and no "
-              "unilateral exit before the Matrimonial Causes Act 1857"),
-         item("stone-1990", "unverified", note=_SHANLEY_STONE + "same point as Shanley"))
+              "commencement section was not read"))
 # Verification pass 2026-11-06 (plans/sourcing-verify-session.md, order 2 and the cheapest upgrades): Bk I ch 15
 # re-opened at Avalon; each row's `source` now records the read date and the passage quoted.
 _BK1_15_EXCERPT = {

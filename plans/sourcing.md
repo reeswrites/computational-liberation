@@ -78,7 +78,7 @@ Hard (fail now):
 Report-only until migration is reviewed (warn, then promote to hard):
 - (1e) two bibliography entries with the same url, or the same type, year and normalised title (one work under two ids).
 4. Every rule has `provenance`.
-5. A `supported` claim in `docs/claims.md` whose `sources` cell names a rule row below `opened`.
+5. A `supported` claim in `docs/claims.md` whose `sources` cell names a rule row below `opened`. **Promoted to hard 2026-11-06** (after the verification pass; it passes, since every `supported` claim is `engine-only` and L1 is `weakened`). Check 4 also passes (every rule has provenance) and stays report-only for now.
 
 ## Which rows the care+control match reads (drop-one, 2026-11-05)
 
@@ -244,3 +244,7 @@ Acted on: the -us/English R7 note now says the second fragment concerns compacts
 - Shanley 1989, Stone 1990 (coverture R6): as above.
 - GLT 2012 and Geddes & Tennyson 2013 published tables: 403 everywhere; a library login is the route.
 - docs/theory.md uncited facts (plans/sourcing-worklist-other.md): not started.
+
+### Follow-up, 2026-11-06: R6 re-cited, check 5 hard
+
+coverture-household R6 now cites only the two works read in full (Blackstone Bk I ch 15, Matrimonial Causes Act 1857); Shanley 1989 and Stone 1990 are leads for the 1765-1857 interval, recorded in the row's `source` and the Blackstone item's reason, not as provenance items. All nine rows the L1 match reads are now `opened` (rows opened 34 -> 35; items 192 -> 190). L1 stays `weakened`: its other grounds (strand tags load-bearing, the airline-flight control match) are not sourcing questions; its Sources cell is updated. Check 5 is hard: a claim moved to `supported` while it names a row below `opened` now fails CI.
