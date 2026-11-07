@@ -23,8 +23,8 @@
 
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
-| R1 | member | may | `(use_old m)` | `true` | none | superadditive | A member may use the old name at any time (Centola et al. 2018). | opened | [full source under Sources, R1](#src-r1) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
-| R2 | member | may | `(use_new m)` | `true` | none | superadditive | A member may use the new name at any time (Centola et al. 2018). | opened | [full source under Sources, R2](#src-r2) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
+| R1 | member | may (sanctioner derived, unreviewed) | `(use_old m)` | `true` | none | superadditive | A member may use the old name at any time (Centola et al. 2018). | opened | [full source under Sources, R1](#src-r1) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
+| R2 | member | may (sanctioner derived, unreviewed) | `(use_new m)` | `true` | none | superadditive | A member may use the new name at any time (Centola et al. 2018). | opened | [full source under Sources, R2](#src-r2) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): none
 

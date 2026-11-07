@@ -36,6 +36,9 @@ rules_add:
   or_else: null
   strand: null
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'counterfactual encoding: no work cited and none claimed; the rule is the floor route of plans/priority-slice2.md section 5 (preregistered 2026-11-06), read from the material floor of docs/glossary.md (subsistence regardless of any relationship). UNVERIFIED as history: no jurisdiction ever enacted it on the coverture frame.'
   provenance:
   - source_id: null

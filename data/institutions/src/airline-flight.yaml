@@ -101,6 +101,9 @@ rules:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened)'
   provenance:
   - source_id: cfr-14-91-11
@@ -133,6 +136,9 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: '14 CFR 121.571 ''Briefing passengers before takeoff'', read 2026-11-04 at https://www.law.cornell.edu/cfr/text/14/121.571 (ecfr.gov redirected to a block page): (a) ''shall insure that all passengers are orally briefed by the appropriate crewmember''; (a)(3) a required crewmember assigned to the flight must individually brief each person who may need another person''s help to reach an exit. That is a crew duty toward passengers aboard, but narrower than the rule''s provides_care (maintenance, services): the general in-flight care duty is UNVERIFIED (no text opened states it; 14 CFR 121.391, read at https://www.law.cornell.edu/cfr/text/14/121.391, only sets the number of flight attendants ''to provide the most effective egress of passengers''). 14 CFR 91.11 / 121.580 dropped 2026-11-04: they only forbid interference with crew. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] board establishes provides_care; attend restores it, withdraw breaks it Verification pass: 14 CFR 121.391 read 2026-11-06 at https://www.law.cornell.edu/cfr/text/14/121.391: (d) ''flight attendants required by this section shall be located as near as practicable to required floor level exits and shall be uniformly distributed throughout the airplane in order to provide the most effective egress of passengers in event of an emergency evacuation''.'
   provenance:
   - source_id: cfr-14-121-571
@@ -175,6 +181,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (crew may restrain a disruptive passenger)'
   provenance:
   - source_id: cfr-14-91-11
@@ -207,6 +216,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger cannot leave in flight). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(p) = leave enabled (a default capacity), which this disability makes false aboard'
   provenance:
   - source_id: cfr-14-91-11
@@ -236,6 +248,9 @@ rules:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Reconstruction from the third review''s 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger may complain)'
   provenance:
   - source_id: cfr-14-91-11

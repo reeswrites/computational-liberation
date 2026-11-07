@@ -11,6 +11,9 @@ rules_add:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (earnings acts: NY 1860, MA 1846/1874, PA 1872, ...: a married woman''s wages are her separate property). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] owns_earnings(w) = keep_earnings enabled (R14)'
   provenance:
   - source_id: geddes-lueck-tennyson-2007

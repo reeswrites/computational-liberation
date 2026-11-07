@@ -155,6 +155,9 @@ rules:
   or_else: null
   strand: tying
   implicit: true
+  kind: norm
+  sanctioner: none
+  sanctioner_review: derived
   source: 'implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call]'
   provenance:
   - source_id: null
@@ -175,6 +178,9 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (assessment, evaluation and crisis intervention ''shall be conducted and provided on an ongoing basis''). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch establishes provides_care(o, s); assess restores it, withdraw (the officer stops attending) breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (text ''updated Jan. 1, 2023'' per the page; corrected 2026-11-06, the card seat): ''At a minimum, assessment, as defined in Section 5150.4, and evaluation, as defined in subdivision (a) of Section 5008, shall be conducted and provided on an ongoing basis'' (passive: the section does not name the officer as the one who provides it). Re-encoded 2026-11-06 (L1 landing, preregistered; faithfulness batch 2 P3): the duty is the facility''s while the subject is in custody (5150(a) passive voice on the 72-hour stay; 5150(c) the facility''s professional person assesses); detain and the facility''s hold (R11) establish provides_care(f, s), assess restores it, withdraw breaks it; the officer no longer carries it, and the dispatch sentence above is superseded. WIC 5152 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) a person admitted for 72-hour treatment and evaluation ''shall receive whatever treatment and care the person''s condition requires for the full period that they are held''.'
   provenance:
   - source_id: cal-wic-5150
@@ -205,6 +211,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (a peace officer may, upon probable cause, take the person into custody for up to 72 hours) Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: ''When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer'' ... ''may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours''. Re-encoded 2026-11-06 (L1 landing): detain takes the receiving facility, detain(o, f, s), and establishes the facility''s care duty (R2).'
   provenance:
   - source_id: cal-wic-5150
@@ -225,6 +234,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (custody for up to 72 hours). [ADR 0013: or_else -> null. The subject''s exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(s) = leave enabled (a default capacity), which this disability makes false in custody Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: ''take, or cause to be taken, the person into custody for a period of up to 72 hours'' ... ''The 72-hour period begins at the time when the person is first detained.'''
   provenance:
   - source_id: cal-wic-5150
@@ -245,6 +257,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened)
   provenance:
   - source_id: null
@@ -265,6 +280,9 @@ rules:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: officers respond armed; standard equipment policy. UNVERIFIED (general knowledge; no source opened)
   provenance:
   - source_id: null
@@ -285,6 +303,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) ''A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted''; ''The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person''s treatment believes ... that the person no longer requires evaluation or treatment''; (b) ''A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment''. Release is the facility''s act (its treating psychiatrist or medical director), not the officer''s: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty. Re-encoded 2026-11-06 (preregistered, plans/sourcing.md; card-only seat finding): read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) ''The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person''s treatment believes, as a result of the psychiatrist''s personal observations, that the person no longer requires evaluation or treatment.'' R7 is now the prohibition side of that ''only if'' (no early release while treatment is still required, exogenous fluent requires_treatment); R12 is the permission side. The earlier duty to release on ''no danger'' was unfaithful and unreachable (danger never changes; detain and hold require it).'
   provenance:
   - source_id: cal-wic-5152
@@ -306,6 +327,9 @@ rules:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. WIC 5275 certification review / habeas; subject keeps standing. UNVERIFIED (general knowledge; no source opened) Verification pass: WIC 5275 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5275 (text ''updated Jan. 1, 2024'' per the page): ''Every person detained under this part shall have a right to a hearing by writ of habeas corpus for their release'' (the request goes to the person delivering the certification notice or to the intensive-treatment staff).'
   provenance:
   - source_id: cal-wic-5275
@@ -326,6 +350,9 @@ rules:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue or petition_review enabled'
   provenance:
   - source_id: null
@@ -346,6 +373,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Welf. & Inst. Code s. 5150(a), read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: the custody power belongs to ''a peace officer, professional person in charge of a facility designated by the county for evaluation and treatment, member of the attending staff'' ... who ''may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours''. Added 2026-11-06 (L1 landing, preregistered; faithfulness batch 2 P4): the facility holds the same custody power as the officer, and its hold establishes R2 (ADR 0009). [ADR 0013: power fluents are derived from rule enabledness; this rule is what can_sanction reads for the facility]'
   provenance:
   - source_id: cal-wic-5150
@@ -366,6 +396,9 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Welf. & Inst. Code s. 5152, read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) ''The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person''s treatment believes, as a result of the psychiatrist''s personal observations, that the person no longer requires evaluation or treatment.'' Added 2026-11-06 (preregistered R7 re-encode, plans/sourcing.md): the permission side of the ''only if''; R7 is the prohibition side. 5152(b)''s end-of-hold outcomes (release, voluntary referral, certification for intensive treatment) are not encoded: the model has no clock for 72 hours (disclosed gap). Apostrophes straightened.'
   provenance:
   - source_id: cal-wic-5152

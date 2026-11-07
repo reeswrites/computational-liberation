@@ -21,6 +21,9 @@ rules_add:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED) (courts narrowly construed the acts so as to keep husbands'' control during marriage). The narrowing is a one-way act: nothing in the entry un-narrows'
   provenance:
   - source_id: chused-1984
@@ -53,6 +56,9 @@ rules_add:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'R1 reinstated under narrow construction (the plan''s BL encoding): Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_property(h, w) = control_property enabled (R18)'
   provenance:
   - source_id: chused-1984

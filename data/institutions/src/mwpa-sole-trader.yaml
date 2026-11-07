@@ -12,6 +12,9 @@ rules_add:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Khan 1996, Married Women''s Property Laws and Female Commercial Activity, Table 1 (sole-trader dates; the 1839-50 wave as debt relief); https://www.laits.utexas.edu/~mbs31415/Khan_MarriedWomenPropertyRights.pdf [F, via plans/backtest-mwpa.md] (sole-trader provisions: a married woman may carry on trade and contract in her own name; ME 1844, MA 1860, NY 1860, ...). Statute texts not opened ([R]). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_contract(w) = contract enabled (R15), no longer barred (R7 deleted)'
   provenance:
   - source_id: khan-1996

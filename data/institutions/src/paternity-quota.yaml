@@ -116,6 +116,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: maximum of five weeks of paternity benefits or exclusive benefits for the non-birthing parent)'
   provenance:
   - source_id: qc-cqlr-a-29-011
@@ -136,6 +139,9 @@ rules:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9 labels the weeks exclusive; s. 16 sharing covers only shareable benefits; s. 17 adds unused weeks to the other parent only on death). A disability (or_else null): the Act confers no power to transfer; forfeiture (R3) is the use-it-or-lose-it consequence of the benefit period ending, not a sanction for transferring'
   provenance:
   - source_id: qc-cqlr-a-29-011
@@ -159,6 +165,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (unused exclusive weeks lapse; use-it-or-lose-it)
   provenance:
   - source_id: qc-cqlr-a-29-011
@@ -179,6 +188,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 10: 32 shareable weeks; s. 16: may be taken by either parent or shared)'
   provenance:
   - source_id: qc-cqlr-a-29-011
@@ -199,6 +211,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16)
   provenance:
   - source_id: qc-cqlr-a-29-011
@@ -219,6 +234,9 @@ rules:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16: shareable weeks may be shared between the parents)'
   provenance:
   - source_id: qc-cqlr-a-29-011
@@ -241,6 +259,9 @@ rules:
   or_else: null
   strand: tying
   implicit: true
+  kind: norm
+  sanctioner: none
+  sanctioner_review: derived
   source: 'implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened)'
   provenance:
   - source_id: null
@@ -261,6 +282,9 @@ rules:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: the exclusive weeks are granted to the non-birthing parent)'
   provenance:
   - source_id: qc-cqlr-a-29-011
@@ -283,6 +307,9 @@ rules:
   or_else: null
   strand: rival
   implicit: true
+  kind: norm
+  sanctioner: none
+  sanctioner_review: derived
   source: whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened)
   provenance:
   - source_id: null

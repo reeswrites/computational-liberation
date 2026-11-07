@@ -96,6 +96,9 @@ rules:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: a lease is formed by agreement. UNVERIFIED (general knowledge; no source opened)
   provenance:
   - source_id: null
@@ -116,6 +119,9 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Civ. Code s. 1941 (''The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_civ_code_section_1941: ''The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable''.'
   provenance:
   - source_id: cal-civ-1941
@@ -136,6 +142,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161
   provenance:
   - source_id: cal-ccp-1161
@@ -156,6 +165,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Civ. Code s. 1946 (a hiring of real property for an unspecified term is terminated by either party''s written notice); https://california.public.law/codes/ca_civ_code_section_1946 (either party may terminate by notice; the tenant''s exit is permitted and unsanctioned). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(t) = vacate enabled'
   provenance:
   - source_id: cal-civ-1946
@@ -176,6 +188,9 @@ rules:
   or_else: R3
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: institution
+  sanctioner_review: derived
   source: 'Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days'' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 (default in rent is the breach that opens eviction). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes rent_paid; pay_rent restores it, default_rent breaks it (sanction R3)'
   provenance:
   - source_id: cal-ccp-1161

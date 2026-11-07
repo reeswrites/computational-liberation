@@ -35,6 +35,14 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
   (the early note that `sexpr.py` forbade it is obsolete).
 - Rule variables (`h w`, `o s`, `p q c`, `o a o2`) are bound by the rule's attribute role and the action's
   argument list, not by an explicit quantifier; the formalize stage adds the quantifiers.
+- `kind` and `sanctioner` (plans/informal-rules.md D1): `kind` is `formal | norm | strategy` (default `formal`);
+  `sanctioner` is `state | institution | peers | family | self | none`, who enforces the `or_else`, and must be
+  `none` or unset exactly when `or_else` is null (the engine validates this). The 2026-11-07 migration
+  (`_migrate_kind_sanctioner.py`, run once) set `kind: norm` where `implicit: true`, else `formal`; and `sanctioner`
+  `none` when `or_else` is null, else derived from the attribute role of the `or_else` target by a fixed
+  substring table (state, institution, family, peers, self; no match -> `institution`). Every migrated rule carries
+  `sanctioner_review: derived`, a YAML-only key (stripped from the JSON, shown on cards as "sanctioner derived,
+  unreviewed") that marks a value not yet hand-reviewed; the faithfulness batch reviews them and removes the key.
 - `or_else: null` on a `must_not` means a disability (no power exists), not an unenforced prohibition
   (coverture R4/R7, crisis-team R4, companion-ownership R9, and since ADR 0013 every subject-side exit bar:
   coverture R6, police-crisis R4, cps R10, companion R6). Lowering should not invent a sanctioner.

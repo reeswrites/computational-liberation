@@ -15,8 +15,8 @@ sentence and optional `choices` note) or a delta:
     keys_drop: [initial]           # top-level keys the base has and this entry does not
     <any other key>: value         # overrides that key wholesale (name, notes, expected_properties, ...)
 
-Order of application: drops, then replaces/sets, then adds, then overrides. `plain`, `choices` and `provenance`
-are for human readers; the engine schema does not carry them, so the build strips them before writing JSON (the
+Order of application: drops, then replaces/sets, then adds, then overrides. `plain`, `choices`, `provenance` and `sanctioner_review`
+(`derived` = the rule's `sanctioner` was derived by migration, not yet hand-reviewed) are for human readers; the engine schema does not carry them, so the build strips them before writing JSON (the
 engine JSON, ENGINE_PIN and the verdict baseline do not change when provenance does). The same holds for an
 entry's top-level `goods_note` (slice-2 goods readings, rendered as a "Goods (slice 2)" card section), which is
 never inherited through `extends`.
@@ -49,7 +49,7 @@ import yaml
 HERE = Path(__file__).resolve().parent
 SRC = HERE / "src"
 CARDS = HERE.parent.parent / "docs" / "cards"
-STRIP_RULE_KEYS = ("plain", "choices", "provenance")
+STRIP_RULE_KEYS = ("plain", "choices", "provenance", "sanctioner_review")
 STRIP_ENTRY_KEYS = ("goods_note",)  # card-only (plans/priority-slice2.md R2.5): not in the engine JSON
 LISTS = ("roles", "fluents", "actions")
 RESERVED = {"extends", "rules_drop", "rules_replace", "rules_add", "keys_drop"} | {
@@ -287,6 +287,8 @@ def deontic_cell(r) -> str:
         d += " (disability)"
     if r.get("implicit"):
         d += " (implicit)"
+    if r.get("sanctioner_review") == "derived":
+        d += " (sanctioner derived, unreviewed)"
     return d
 
 

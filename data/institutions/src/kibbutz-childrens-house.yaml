@@ -100,6 +100,9 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children''s house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it Verification pass: re-read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): the page says ''Kibbutz members who were considered the most educated and esteemed got the position of educators'' and names no committee or assignment procedure.'
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
@@ -129,6 +132,9 @@ rules:
   or_else: R6
   strand: tying
   implicit: true
+  kind: norm
+  sanctioner: institution
+  sanctioner_review: derived
   source: 'SANCTIONED NORM encoding a documented PRACTICE, not a written rule (third review 2026-11-03: the sources support a practice, not a committee disability): the nanny ''was always a woman''s role'' (WIKI_KIB); no kibbutz by-law said so, the rota simply never put a man in the children''s house, and Tiger & Shepher, Women in the Kibbutz (Harcourt Brace Jovanovich, 1975): women concentrated in child care, education and services despite formal equality. Cited by WIKI_KIB (pp. 41, 167); book and sample (34,040 members) confirmed via Kirkus review https://www.kirkusreviews.com/book-reviews/lionel-joseph-shepher-tiger/women-in-the-kibbutz/ ; the assignment finding itself NOT read directly: UNVERIFIED reports women concentrated in child care as a pattern (the finding is framed there as women''s own choice). Encoded as a prohibition the committee answers for (or_else R6, the implicit reprimand), not as a disability; under strict compliance the effect on traces is the same, which is what gate (d) reads. Earlier draft (disability, or_else null) retired by the third review Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.'''
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
@@ -168,6 +174,9 @@ rules:
   or_else: R6
   strand: superadditive
   implicit: false
+  kind: formal
+  sanctioner: institution
+  sanctioner_review: derived
   source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children''s house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): ''A group of children, all about the same age, shared a children''s house and had a nanny who took care of their everyday needs.'''
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
@@ -189,6 +198,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (communal sleeping: the children lived and slept in the children''s house). A disability (or_else null), as every subject-side exit bar since ADR 0013; the draft''s or_else R6 is dropped for the same reason as coverture R6. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(child) = sleep_home enabled (a default capacity) and not barred (R4)'
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
@@ -209,6 +221,9 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children ''visited their parents for 2-3 hours a day''; the father''s relation to the children''s house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): ''Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment'' ... ''visited their parents for 2-3 hours a day'' (the page prints an en dash).'
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
@@ -238,6 +253,9 @@ rules:
   or_else: null
   strand: rival
   implicit: true
+  kind: norm
+  sanctioner: none
+  sanctioner_review: derived
   source: 'UNVERIFIED (not opened 2026-11-04): Spiro, Kibbutz: Venture in Utopia (1956; 1958 ed.) and Gavron, The Kibbutz: Awakening from Utopia (2000), on the general assembly and public opinion as the kibbutz''s instrument of discipline over members (archive.org search-inside returned 403 and the Google Books API 429, two tries each). implicit: the committee / general assembly disciplines a member who neglects the rota (R3''s or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(committee, x) = reprimand enabled (R6)'
   provenance:
   - source_id: spiro-1956
@@ -276,6 +294,9 @@ rules:
   or_else: null
   strand: superadditive
   implicit: true
+  kind: norm
+  sanctioner: none
+  sanctioner_review: derived
   source: 'implicit, added 2026-11-04 per ADR 0015 A6 (strict enabledness at layer 2: an action needs a may/must rule) so that the breaker of R3 is an enabled action for the layer-2 ABM: the metapelet can always fail the children''s house, and that is the choice R3''s or_else R6 answers. Under layer 1 the permissive floor already let the unregulated neglect fire in traces, so no verdict should change; the rule makes neglect regulated, which narrows its firing to the assigned metapelet (the only bearer of R3). Condition mirrors R3: neglect is a breach only while assigned. Tagged superadditive as the care strand''s own breach (R3), as companion R10 `may feed` is tagged for the restore. UNVERIFIED (general knowledge; no source opened)'
   provenance:
   - source_id: null

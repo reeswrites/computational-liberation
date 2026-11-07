@@ -50,6 +50,9 @@ rules_replace:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened.'
   provenance:
   - source_id: null
@@ -70,6 +73,9 @@ rules_replace:
   or_else: R6
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: institution
+  sanctioner_review: derived
   source: 'the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04).'
   provenance:
   - source_id: null

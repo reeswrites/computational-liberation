@@ -166,6 +166,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'property status of companion animals: Cal. Civ. Code s. 655: ''There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals''; s. 663: ''Every kind of property that is not real is personal'' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
   provenance:
   - source_id: cal-civ-655
@@ -204,6 +207,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize'
   provenance:
   - source_id: null
@@ -224,6 +230,9 @@ rules:
   or_else: R4
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: state
+  sanctioner_review: derived
   source: 'Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ (''Every person who willfully abandons any animal is guilty of a misdemeanor'') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text ''updated Jan. 1, 2000'' per the page): (a) ''Every person who willfully abandons any animal is guilty of a misdemeanor.'''
   provenance:
   - source_id: cal-pen-597s
@@ -244,6 +253,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text ''updated Jan. 1, 2000'' per the page): (a) ''Every person who willfully abandons any animal is guilty of a misdemeanor.'''
   provenance:
   - source_id: cal-pen-597s
@@ -264,6 +276,9 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Cal. Penal Code 597(b) failure to provide food/water/shelter. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] acquire (and the initial state) establishes provides_care; feed restores it, neglect breaks it'
   provenance:
   - source_id: cal-pen-597
@@ -285,6 +300,9 @@ rules:
   or_else: null
   strand: rival
   implicit: true
+  kind: norm
+  sanctioner: none
+  sanctioner_review: derived
   source: 'implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state''s power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal''s status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false'
   provenance:
   - source_id: null
@@ -305,6 +323,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)
   provenance:
   - source_id: null
@@ -325,6 +346,9 @@ rules:
   or_else: null
   strand: rival
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled'
   provenance:
   - source_id: null
@@ -345,6 +369,9 @@ rules:
   or_else: null
   strand: tying
   implicit: true
+  kind: norm
+  sanctioner: none
+  sanctioner_review: derived
   source: 'implicit: no role may start a claim in the animal''s own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false'
   provenance:
   - source_id: null
@@ -365,6 +392,9 @@ rules:
   or_else: null
   strand: superadditive
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)
   provenance:
   - source_id: null
@@ -385,6 +415,9 @@ rules:
   or_else: null
   strand: tying
   implicit: true
+  kind: norm
+  sanctioner: none
+  sanctioner_review: derived
   source: 'implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false'
   provenance:
   - source_id: null
