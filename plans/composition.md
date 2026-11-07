@@ -76,3 +76,18 @@ Untyped fluents ground as `product(agents, repeat=arity)`. A composite with eigh
 - Neutral role names for composites (husband/wife carry coverture's history into a hospital entry; `partner_a`/`partner_b` lose the sex the care properties read). The alias target is where this is decided, once.
 - Whether derived-fluent conflicts should error (proposed) or disjoin.
 - Whether composites enter the golden baseline on first build or only after their council pass.
+
+## Recombination and synthesis (the direction composition opens; not a task, 2026-11-07)
+
+Composition is first a way to see load move between institutions a person already lives under. It also makes a second use possible: institutions that never existed, built from rules that did. This is design, not simulation. No agent chooses and nothing happens over time; the engine type-checks a constitution. It becomes social modelling only when the dynamics layer (plans/dynamics-sticks.md) asks whether people living under the design keep it.
+
+Four pieces, each on top of something that exists:
+
+1. **Block library.** Every encoded institution sliced into named blocks with provenance (a care duty, an exit floor, a standing grant, a proof-of-commitment gate). Strand tags already roughly partition rules this way; aliases make blocks portable across role vocabularies. A design is a selection of blocks plus aliases, and its card shows where each block came from and says plainly that the arrangement is the author's claim.
+2. **Synthesis with Z3.** The engine already runs Z3 over rule sets; the inverted query is "given a target set of properties (partner can visit, nobody loses standing, no double burden), find the smallest set of blocks from the library that entails it." An optimisation query Z3 answers. This is the one mechanism in docs/interpreting-results.md section 7 that produces a rule set nobody wrote. Output is a destination, not a path.
+3. **History lookup through isomorphism.** Every synthesized design is matched against the encoded institutions. A match means the shape has existed and its backtest is the design's track record. No match means untried, which is a flag, not a recommendation.
+4. **Routes from here.** The project's question is which change first, from the present. Synthesis gives destinations; ablation and `--path` give routes. A target design, the current entry and an ordered removal is a plan with an exposure table at every step. This keeps synthesis tied to the sequencing thesis instead of drifting into drawing utopias.
+
+Where it goes wrong: blocks combined without semantic sense (a care duty over a library patron), which aliases and typed fluents catch only partly; combinatorial blow-up, which the minimality constraint tames; and provenance, since each block is sourced but the combination is not.
+
+Grounding: people already recombine. The Somerville and Cambridge multi-partner domestic partnership ordinances (plans/marriage-bundle.md) are the marriage bundle's blocks with the two-person cap removed, a recombined institution with a real track record, which is exactly what a history lookup would return.
