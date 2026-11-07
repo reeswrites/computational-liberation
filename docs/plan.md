@@ -54,6 +54,7 @@ Layer 2 is frozen after today's gate record. The `imagination` module is not bui
 - Preregistration: expected verdicts are written before runs and never edited to match; drift is recorded (CONTRIBUTING.md).
 - Council after every batch (docs/decisions/0014-review-council.md): correctness, consistency, scope, encoding faithfulness; fresh agents, never the builder. Reports go in docs/reviews/.
 - docs/claims.md is the honest summary; README points to it. CI fails if a `supported` claim has no passing evidence (todo).
+- docs/surprises.md: every unpredicted flip is entered when a run is reported and ruled artifact or finding by the council. A run report that omits its surprises is incomplete.
 - This file is revised at the end of each batch.
 
 ## Housekeeping after the split (2026-11-03)
@@ -95,6 +96,7 @@ Layer 2 is frozen after today's gate record. The `imagination` module is not bui
 7. done — README cold-visitor pass with diagrams (README.md, docs/overview.md, engine README).
 
 ## Log
+- 2026-11-07 (later still) — docs/interpreting-results.md section 7 (what the engine can and cannot find: bounded by encoding; novelty via cut sets, iso transfer, composition, bounded edit search; limits stated first), docs/surprises.md (ledger, backfilled S1–S3, findings 0), README pointer, standing-process bullet. Engine `kind`/`sanctioner`/`function` fields and dataset migration in progress (builder).
 - 2026-11-07 (later) — plans/composition.md written from an engine read; second research pass folded into plans/informal-rules.md (SF Admin Code ch. 62 substitute test is cohabitation + shared expenses sworn, no duration; no compliance study for the 2011 CMS visitation rule exists; "metarules" better credited to Watzlawick, Beavin & Jackson 1967). Agents: 2.
 - 2026-11-07 — Formal + informal rule handoff received and discussed with the author; parked with decisions (plans/informal-rules.md) and a companion dynamics plan (plans/dynamics-sticks.md). Nothing built. Citations in the handoff checked; corrections recorded in the plan. Dataset count is 27, not the 25 the handoff and claims L23/L24 state. Agents: 3 (repo map, citation check, rediscovery research).
 - 2026-11-05/06 — Sourcing overhaul (ADR 0017), verification pass and faithfulness batch 2 (local session), coverture English/US split, L1 restated on the WIC 5150/5152 police re-encode; slice 1 closed (revision 5: flip direction from kind); slice 2 run in three revisions (goods, guaranteed/possible/primary measures, derived `obliged`, chosen care excluding obliged care, floor route, blind-gloss experiment), each with correctness and faithfulness councils and fix passes. Merged to `main` (both repos, PRs #1-#2). Pick-up point: "Where to pick up" above.

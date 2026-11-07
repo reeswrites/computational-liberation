@@ -134,7 +134,7 @@ The roadmap in [docs/theory.md](docs/theory.md) builds the tool in five layers. 
 | 4. Priority | Which rule carries the most freedom; which rules must go together? | In progress as rule ablation; [plans/priority.md](plans/priority.md) |
 | 5. Sequence | What order should changes go in, given that partial cuts shift load? | Not started; depends on 4 |
 
-The current work is layer 4 at layer-1 strength: ablation over every rule of every entry, two loads (freedom and goods) that are never summed, a transfer graph of where load moves when a rule is cut, and simultaneous-safe cut sets. The honest tally of what has been shown is the [claims register](docs/claims.md); read it before quoting any result.
+The current work is layer 4 at layer-1 strength: ablation over every rule of every entry, two loads (freedom and goods) that are never summed, a transfer graph of where load moves when a rule is cut, and simultaneous-safe cut sets. The honest tally of what has been shown is the [claims register](docs/claims.md); read it before quoting any result. Nothing comes out of the engine that was not encoded into it: its outputs are combinations and comparisons of the encodings, and every surprise so far has been an encoding error, not a finding ([what it can and cannot find](docs/interpreting-results.md), [surprise ledger](docs/surprises.md)).
 
 ## The process loop
 
