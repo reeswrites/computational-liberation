@@ -4,7 +4,7 @@ Since 2026-11-04 the generator (`_gen_institutions.py`, `_gen_properties.py`) is
 
 Hand-reconstructed institutions for the Phase 0 institutions family (`plans/institutions-phase0.md`).
 
-- `institutions.json`: list of 26 entries (`coverture-household` (English), `police-crisis`, `cps`, `crisis-team`,
+- `institutions.json`: list of 27 entries (`coverture-household` (English), `police-crisis`, `cps`, `crisis-team`,
   `paternity-quota`, `transferable-leave`, `companion-ownership`, `companion-guardianship`,
   `companion-guardian-renamed`, the negative controls `lease`, `public-library` and `naming-convention`, the gate (d) pair
   `kibbutz-childrens-house`, `kibbutz-childrens-house-no-implicit`, the expected-match control `airline-flight`,

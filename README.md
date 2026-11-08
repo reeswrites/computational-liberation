@@ -128,7 +128,7 @@ The roadmap in [docs/theory.md](docs/theory.md) builds the tool in five layers. 
 
 | Layer | Question it answers | State |
 |---|---|---|
-| 1. Entailment | What does this rule set permit or force within a few steps? | Built: `phil rules`, gate (a) to (f) passes on 25 entries |
+| 1. Entailment | What does this rule set permit or force within a few steps? | Built: `phil rules`, gate (a) to (f) passes on 27 entries |
 | 2. Frequency | How often do adaptive agents under those rules reach an outcome? | Frozen 2026-11-04 after an honest gate record; see [plans/layer2-abm.md](plans/layer2-abm.md) |
 | 3. Backtest | Do the layers reproduce known history? | One layer-1 backtest (MWPA chain), inconclusive without layer 2 |
 | 4. Priority | Which rule carries the most freedom; which rules must go together? | In progress as rule ablation; [plans/priority.md](plans/priority.md) |
@@ -203,6 +203,6 @@ uv run phil abm gate --seeds 100            # layer 2 (frozen; serial on macOS, 
 `phil rules check --inst ID --trace` prints the counterexample trace for one institution.
 `phil rules diff --baseline data/verdicts-baseline.json` is the regression check: it recomputes every verdict and exits 1 if any committed verdict changed or vanished (CI runs it). `--scoreboard docs/scoreboard.md` appends one row per run to the scoreboard, a table the tools write and nobody types into; `phil rules ablate --scoreboard docs/scoreboard-ablate.md --prev PREV_SUMMARY` does the same for ablation runs (entries, rows, uncounted, inconsistent, k disagreements, top-rule changes against the previous summary).
 The engine resolves `data/` from the current working directory, so run `uv run phil ...` from inside this repo.
-The dataset lives in `data/institutions/` here (25 entries; the source is one YAML per institution in `data/institutions/src/`, with a plain-English line and a source on every rule, and `build.py` writes the JSON and the cards in `docs/cards/`; never hand-edit the JSON); the engine repo carries a synced copy.
+The dataset lives in `data/institutions/` here (27 entries; the source is one YAML per institution in `data/institutions/src/`, with a plain-English line and a source on every rule, and `build.py` writes the JSON and the cards in `docs/cards/`; never hand-edit the JSON); the engine repo carries a synced copy.
 
 Apache-2.0. Research in progress; nothing here is a finding about any real institution until the claims register says so.

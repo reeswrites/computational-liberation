@@ -41,7 +41,7 @@ Layer 2 is frozen after today's gate record. The `imagination` module is not bui
 - Dynamics for "sticks" and endpoint path dependence (plans/dynamics-sticks.md, 2026-11-07): the time question the static layer refuses to answer; not an unfreeze of layer 2; gate is an ordering prediction on Loving v. Virginia (formal-led) and same-sex marriage (norm-led), never a curve fit; footbinding not reused. After informal-rules.
 - Batch-2 institutions other than kibbutz (family-wage, fair-play-domains, gig-platform, ostrom-fishery and their pairs).
 - Non-human institutions (plans/institutions-phase0.md, Extension).
-- Layer 2 agent-based model (plans/layer2-abm.md): slice 1 built 2026-11-03 in philosophy-engine (`phil abm run --seeds N`, material module only, engine commits a1b2a6c + 4f55306, 14 tests). Blocked on design decisions A1–A6 in docs/decisions-pending.md (breach A4 and unruled actions A6 gate the footbinding/kibbutz tests). Not parked any more; next slice after decisions.
+- Layer 2 agent-based model (plans/layer2-abm.md): slice 1 built 2026-11-03 in philosophy-engine (`phil abm run --seeds N`, material module only, engine commits a1b2a6c + 4f55306, 14 tests). Blocked on design decisions A1–A6 in docs/decisions-pending.md (breach A4 and unruled actions A6 gate the footbinding/kibbutz tests). Frozen 2026-11-04 (see Layer 2 frozen); reopening is the author's call, via plans/cardinality.md step 4 and plans/dynamics-sticks.md.
 - Worked examples for the interpretation guide (docs/interpreting-results.md exists).
 - Methods write-up and blog posts (after step 3).
 - Launch checklist (after step 3; gate: one falsifiable result that survived or failed honestly). Blog post first, thread second, repo in reply. Lead with the MWPA preregistered-verdicts table, not the theory; claims-register tally as the differentiator; one ask ("encoding reviewer wanted"). Prep now, cheap: README cold-visitor pass (one agreed headline across README/theory/claims), a current Status line, demo gif of `phil rules gate`.
@@ -54,7 +54,7 @@ Layer 2 is frozen after today's gate record. The `imagination` module is not bui
 ## Standing process
 - Preregistration: expected verdicts are written before runs and never edited to match; drift is recorded (CONTRIBUTING.md).
 - Council after every batch (docs/decisions/0014-review-council.md): correctness, consistency, scope, encoding faithfulness; fresh agents, never the builder. Reports go in docs/reviews/.
-- docs/claims.md is the honest summary; README points to it. CI fails if a `supported` claim has no passing evidence (todo).
+- docs/claims.md is the honest summary; README points to it. CI fails if a `supported` claim has no passing evidence (done; tests/test_claims_register.py).
 - docs/surprises.md: every unpredicted flip is entered when a run is reported and ruled artifact or finding by the council. A run report that omits its surprises is incomplete.
 - This file is revised at the end of each batch.
 
@@ -87,6 +87,7 @@ Layer 2 is frozen after today's gate record. The `imagination` module is not bui
 - Reserved `payoffs`-block keys as the declaration mechanism.
 
 ## Next slice (2026-11-04, accepted): gate (a) and (b)
+Superseded: items 3–6 landed per the Restart list; layer 2 frozen 2026-11-04 (see above). Kept for the record.
 (Historical: superseded by "Where to pick up" above; kept for the record.)
 1. done — `footbinding` + `footbinding-no-pledge` (Mackie 1996; sources mostly UNVERIFIED, network refused every page) and `naming-convention` (Centola 2018, cited from memory, UNVERIFIED) encoded with preregistered layer-1 verdicts; check-all 115/115, layer-1 gate PASS, 23 entries. Encoding-faithfulness review owed.
 2. done — Engine `coordination` module (slice 4, engine 20f60d7, 479 tests): assurance payoff, pledge flip, `committed_minority`, `initial_practice`, sanction-in-force reading, `necessary_modules`; gate runs six configurations. Correctness review owed.
