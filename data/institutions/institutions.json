@@ -13660,7 +13660,7 @@
   ],
   "actions": [
    {
-    "name": "marry",
+    "name": "wed",
     "args": [
      "c",
      "s"
@@ -13992,7 +13992,7 @@
    "lease"
   ],
   "minimal_pair_of": null,
-  "notes": "SSI marriage penalty, encoded as powers the rules grant the agency (the project's convention: a derived fluent reads `enabled`). Roles claimant, spouse, agency; `married` arity 2 typed [claimant, spouse] so it can be aliased to partner_a / partner_b for composition with coverture-household-us (plans/composition.md; ADR 0018). Preregistered in plans/ssi-entry.md before any run. Encoded as `may` powers, not the statute's mandatory 'must': a must on an action fires every step and blocks the other actions (ADR 0009), and a must-be would need the establishing action to carry the rate. Dollar amounts are not represented: the couple penalty appears only as which limit and which rate the agency is empowered to apply. Deviations from the brief, recorded: (1) R4, the displaced gate, is `kind: formal, sanctioner: none`, not `state`: R4 is an agency `may` power with no duty to sanction, and the engine rejects a sanctioner without an or_else; overpayment recovery (20 CFR 416.537, not opened) sanctions the claimant under a different, unencoded rule; the displaced reading therefore cannot lean on a sanctioner difference and reads attribute sets only. (2) Holding out is encoded as a power on the same aim as R2 (a second route to the couple rate), not as a rewrite of `married`, because a derived fluent cannot read `married or holds_out`. Unverified or unread: 20 CFR 416.1804, 416.1805 and the deeming sections 416.1160-1163; effective dates of 416.1806; 2026 federal benefit rates and limits (a search-summary lead); 20 CFR 416.537 (overpayment recovery); no secondary source frames holding out as a displaced gate (CRS gives rule and size only); every provenance level is `snippet` or `unverified` (ADR 0017 s.3): the excerpts were carried from the worklist, whose fetches returned a summary, not raw text, and were not re-opened by the builder (the faithfulness seat confirmed 416.1802(b)(1) and (d)(1), 416.1806(a)(3) and 1382(a)(3)(A)-(B) verbatim from raw text). Vocabulary is the worklist's ASSUMED vocabulary. No `is_subject`, `can_exit` or care fluents are declared, so none of the 34 older properties is applicable to this entry alone; they become applicable only in a composite (what P2 needs is in plans/ssi-entry.md). Unencoded, revision 2 items: R2/R3 cohabitation condition (the source says a spouse with whom he or she is living; the rules carry `married` alone), R4 qualifiers `unrelated` and timing, R5/R6 complement omits 416.1806(a)(2) and the 416.1802(a) deeming case. R4 follows POMS SI 00501.152 (same-sex included), not the opposite-sex text of 416.1806(a)(3). Consent guard ruling, quoted exactly: \"Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to benefits rules by the author, 2026-11-08.\""
+  "notes": "SSI marriage penalty, encoded as powers the rules grant the agency (the project's convention: a derived fluent reads `enabled`). Roles claimant, spouse, agency; `married` arity 2 typed [claimant, spouse] so it can be aliased to partner_a / partner_b for composition with coverture-household-us (plans/composition.md; ADR 0018). Preregistered in plans/ssi-entry.md before any run. Encoded as `may` powers, not the statute's mandatory 'must': a must on an action fires every step and blocks the other actions (ADR 0009), and a must-be would need the establishing action to carry the rate. Dollar amounts are not represented: the couple penalty appears only as which limit and which rate the agency is empowered to apply. Deviations from the brief, recorded: (1) R4, the displaced gate, is `kind: formal, sanctioner: none`, not `state`: R4 is an agency `may` power with no duty to sanction, and the engine rejects a sanctioner without an or_else; overpayment recovery (20 CFR 416.537, not opened) sanctions the claimant under a different, unencoded rule; the displaced reading therefore cannot lean on a sanctioner difference and reads attribute sets only. (2) Holding out is encoded as a power on the same aim as R2 (a second route to the couple rate), not as a rewrite of `married`, because a derived fluent cannot read `married or holds_out`. Unverified or unread: 20 CFR 416.1804, 416.1805 and the deeming sections 416.1160-1163; effective dates of 416.1806; 2026 federal benefit rates and limits (a search-summary lead); 20 CFR 416.537 (overpayment recovery); no secondary source frames holding out as a displaced gate (CRS gives rule and size only); every provenance level is `snippet` or `unverified` (ADR 0017 s.3): the excerpts were carried from the worklist, whose fetches returned a summary, not raw text, and were not re-opened by the builder (the faithfulness seat confirmed 416.1802(b)(1) and (d)(1), 416.1806(a)(3) and 1382(a)(3)(A)-(B) verbatim from raw text). `divorce` is an unsourced encoder action (a bare setter of married false; no source mentions divorce, and no rule uses it). `marry` was renamed `wed` for composition (P2b, plans/p2-ssi-composite.md) because coverture-household-us also has a `marry`; no rule, plain line or source changed. Vocabulary is the worklist's ASSUMED vocabulary. No `is_subject`, `can_exit` or care fluents are declared, so none of the 34 older properties is applicable to this entry alone; they become applicable only in a composite (what P2 needs is in plans/ssi-entry.md). Unencoded, revision 2 items: R2/R3 cohabitation condition (the source says a spouse with whom he or she is living; the rules carry `married` alone), R4 qualifiers `unrelated` and timing, R5/R6 complement omits 416.1806(a)(2) and the 416.1802(a) deeming case. R4 follows POMS SI 00501.152 (same-sex included), not the opposite-sex text of 416.1806(a)(3). Consent guard ruling, quoted exactly: \"Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to benefits rules by the author, 2026-11-08.\""
  },
  {
   "id": "ssi-marriage-penalty-individual",
@@ -14118,7 +14118,7 @@
   ],
   "actions": [
    {
-    "name": "marry",
+    "name": "wed",
     "args": [
      "c",
      "s"
@@ -15437,6 +15437,1125 @@
   "members": [
    "coverture-household-us",
    "hospital-visitation"
+  ]
+ },
+ {
+  "id": "coverture-us-ssi",
+  "name": "Composite: coverture household (US) + SSI marriage penalty, the husband as claimant and the wife as spouse",
+  "roles": [
+   {
+    "name": "partner_a",
+    "gloss": "the husband; the legal person the marriage keeps"
+   },
+   {
+    "name": "partner_b",
+    "gloss": "the feme covert; her legal existence is suspended during marriage"
+   },
+   {
+    "name": "agency",
+    "gloss": "the Social Security Administration, which decides marital status and applies the rate and the limit"
+   }
+  ],
+  "fluents": [
+   {
+    "name": "is_subject",
+    "arity": 1,
+    "gloss": "x is the institution's subject: the dependent, detainee, child or animal the rules act on",
+    "arg_roles": null,
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "provides_care",
+    "arity": 2,
+    "gloss": "x provides care (maintenance, assessment, treatment, services, feeding) to y",
+    "arg_roles": null,
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "care_obliged",
+    "arity": 2,
+    "gloss": "some rule in force at this step obliges x to give care to y (a must on the care act or the care state, sanctioned or not); derived from the rules, not asserted",
+    "arg_roles": null,
+    "derived": "(obliged provides_care x y)",
+    "params": [
+     "x",
+     "y"
+    ]
+   },
+   {
+    "name": "female",
+    "arity": 1,
+    "gloss": "x is female (sex as assigned by the institution's own records)",
+    "arg_roles": null,
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "can_sanction",
+    "arity": 2,
+    "gloss": "x holds a power to coerce y: detain, remove, chastise, prosecute",
+    "arg_roles": null,
+    "derived": "(enabled chastise h w)",
+    "params": [
+     "h",
+     "w"
+    ]
+   },
+   {
+    "name": "can_exit",
+    "arity": 1,
+    "gloss": "x has a permitted, unsanctioned way out of the relation (see property scope)",
+    "arg_roles": null,
+    "derived": "(enabled leave w)",
+    "params": [
+     "w"
+    ]
+   },
+   {
+    "name": "has_standing",
+    "arity": 1,
+    "gloss": "x can start a legal claim in x's own name",
+    "arg_roles": null,
+    "derived": "(enabled sue w)",
+    "params": [
+     "w"
+    ]
+   },
+   {
+    "name": "married",
+    "arity": 2,
+    "gloss": "h and w are married",
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "controls_property",
+    "arity": 2,
+    "gloss": "h holds and manages w's property and earnings",
+    "arg_roles": null,
+    "derived": "(enabled control_property h w)",
+    "params": [
+     "h",
+     "w"
+    ]
+   },
+   {
+    "name": "controls_own_property",
+    "arity": 1,
+    "gloss": "w holds and controls separate property in her own right",
+    "arg_roles": null,
+    "derived": "(enabled hold_property w)",
+    "params": [
+     "w"
+    ]
+   },
+   {
+    "name": "owns_earnings",
+    "arity": 1,
+    "gloss": "w's earnings are her own separate property",
+    "arg_roles": null,
+    "derived": "(enabled keep_earnings w)",
+    "params": [
+     "w"
+    ]
+   },
+   {
+    "name": "can_contract",
+    "arity": 1,
+    "gloss": "w may contract in her own name",
+    "arg_roles": null,
+    "derived": "(enabled contract w)",
+    "params": [
+     "w"
+    ]
+   },
+   {
+    "name": "acquired_property",
+    "arity": 1,
+    "gloss": "w has acquired property by gift or inheritance (exogenous)",
+    "arg_roles": null,
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "earns",
+    "arity": 1,
+    "gloss": "w earns wages outside the household (exogenous)",
+    "arg_roles": null,
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "misbehaves",
+    "arity": 1,
+    "gloss": "w's conduct is what the old law called gross misbehaviour (the encoder's name for Blackstone's condition on restraint)",
+    "arg_roles": null,
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "has_own_income",
+    "arity": 1,
+    "gloss": "w has an income in her own right from outside the marriage",
+    "arg_roles": null,
+    "derived": "(enabled draw_subsistence w)",
+    "params": [
+     "w"
+    ]
+   },
+   {
+    "name": "cohabits",
+    "arity": 2,
+    "gloss": "c and s live together in the same household",
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "holds_out",
+    "arity": 2,
+    "gloss": "c and s lead people in their community to believe they are married (the holding-out test)",
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "resources_under_limit",
+    "arity": 1,
+    "gloss": "the countable resources c is assessed on are within the limit that applies (read as a boolean; dollar amounts are not represented)",
+    "arg_roles": [
+     "partner_a"
+    ],
+    "derived": null,
+    "params": null
+   },
+   {
+    "name": "couple_rate",
+    "arity": 2,
+    "gloss": "the agency holds the power to rate c and s as a couple (couple federal rate, combined income); derived from the rules",
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "derived": "(exists ((g agent)) (enabled apply_couple_rate g c s))",
+    "params": [
+     "c",
+     "s"
+    ]
+   },
+   {
+    "name": "couple_limit",
+    "arity": 2,
+    "gloss": "the agency holds the power to apply the couple resource limit to c and s; derived from the rules",
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "derived": "(exists ((g agent)) (enabled apply_couple_limit g c s))",
+    "params": [
+     "c",
+     "s"
+    ]
+   },
+   {
+    "name": "individual_rate",
+    "arity": 2,
+    "gloss": "the agency holds the power to rate c as an individual although s is the other person of the pair; derived from the rules",
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "derived": "(exists ((g agent)) (enabled apply_individual_rate g c s))",
+    "params": [
+     "c",
+     "s"
+    ]
+   },
+   {
+    "name": "individual_limit",
+    "arity": 2,
+    "gloss": "the agency holds the power to apply the individual resource limit to c; derived from the rules",
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "derived": "(exists ((g agent)) (enabled apply_individual_limit g c s))",
+    "params": [
+     "c",
+     "s"
+    ]
+   },
+   {
+    "name": "eligible",
+    "arity": 1,
+    "gloss": "the agency holds the power to pay c a benefit; derived from the rules",
+    "arg_roles": [
+     "partner_a"
+    ],
+    "derived": "(exists ((g agent)) (enabled pay_benefit g c))",
+    "params": [
+     "c"
+    ]
+   }
+  ],
+  "actions": [
+   {
+    "name": "marry",
+    "args": [
+     "h",
+     "w"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "married",
+      "args": [
+       "h",
+       "w"
+      ],
+      "value": true
+     },
+     {
+      "fluent": "is_subject",
+      "args": [
+       "w"
+      ],
+      "value": true
+     },
+     {
+      "fluent": "provides_care",
+      "args": [
+       "h",
+       "w"
+      ],
+      "value": true
+     },
+     {
+      "fluent": "provides_care",
+      "args": [
+       "w",
+       "h"
+      ],
+      "value": true
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "hold_property",
+    "args": [
+     "w"
+    ],
+    "arg_roles": [
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "keep_earnings",
+    "args": [
+     "w"
+    ],
+    "arg_roles": [
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "maintain",
+    "args": [
+     "h",
+     "w"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "provides_care",
+      "args": [
+       "h",
+       "w"
+      ],
+      "value": true
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "neglect",
+    "args": [
+     "h",
+     "w"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "provides_care",
+      "args": [
+       "h",
+       "w"
+      ],
+      "value": false
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "keep_house",
+    "args": [
+     "w",
+     "h"
+    ],
+    "arg_roles": [
+     "partner_b",
+     "partner_a"
+    ],
+    "effects": [
+     {
+      "fluent": "provides_care",
+      "args": [
+       "w",
+       "h"
+      ],
+      "value": true
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "neglect_house",
+    "args": [
+     "w",
+     "h"
+    ],
+    "arg_roles": [
+     "partner_b",
+     "partner_a"
+    ],
+    "effects": [
+     {
+      "fluent": "provides_care",
+      "args": [
+       "w",
+       "h"
+      ],
+      "value": false
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "control_property",
+    "args": [
+     "h",
+     "w"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "chastise",
+    "args": [
+     "h",
+     "w"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "misbehave",
+    "args": [
+     "w"
+    ],
+    "arg_roles": [
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "misbehaves",
+      "args": [
+       "w"
+      ],
+      "value": true
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "draw_subsistence",
+    "args": [
+     "w"
+    ],
+    "arg_roles": [
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "leave",
+    "args": [
+     "w"
+    ],
+    "arg_roles": [
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": true
+   },
+   {
+    "name": "sue",
+    "args": [
+     "w"
+    ],
+    "arg_roles": [
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": true
+   },
+   {
+    "name": "contract",
+    "args": [
+     "w"
+    ],
+    "arg_roles": [
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": true
+   },
+   {
+    "name": "wed",
+    "args": [
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "married",
+      "args": [
+       "c",
+       "s"
+      ],
+      "value": true
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "divorce",
+    "args": [
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "married",
+      "args": [
+       "c",
+       "s"
+      ],
+      "value": false
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "cohabit",
+    "args": [
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "cohabits",
+      "args": [
+       "c",
+       "s"
+      ],
+      "value": true
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "separate",
+    "args": [
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "cohabits",
+      "args": [
+       "c",
+       "s"
+      ],
+      "value": false
+     },
+     {
+      "fluent": "holds_out",
+      "args": [
+       "c",
+       "s"
+      ],
+      "value": false
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "present_as_married",
+    "args": [
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "holds_out",
+      "args": [
+       "c",
+       "s"
+      ],
+      "value": true
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "cease_holding_out",
+    "args": [
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [
+     {
+      "fluent": "holds_out",
+      "args": [
+       "c",
+       "s"
+      ],
+      "value": false
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "accumulate",
+    "args": [
+     "c"
+    ],
+    "arg_roles": [
+     "partner_a"
+    ],
+    "effects": [
+     {
+      "fluent": "resources_under_limit",
+      "args": [
+       "c"
+      ],
+      "value": false
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "spend_down",
+    "args": [
+     "c"
+    ],
+    "arg_roles": [
+     "partner_a"
+    ],
+    "effects": [
+     {
+      "fluent": "resources_under_limit",
+      "args": [
+       "c"
+      ],
+      "value": true
+     }
+    ],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "apply_couple_rate",
+    "args": [
+     "g",
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     null,
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "apply_couple_limit",
+    "args": [
+     "g",
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     null,
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "apply_individual_rate",
+    "args": [
+     "g",
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     null,
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "apply_individual_limit",
+    "args": [
+     "g",
+     "c",
+     "s"
+    ],
+    "arg_roles": [
+     null,
+     "partner_a",
+     "partner_b"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   },
+   {
+    "name": "pay_benefit",
+    "args": [
+     "g",
+     "c"
+    ],
+    "arg_roles": [
+     null,
+     "partner_a"
+    ],
+    "effects": [],
+    "gloss": "",
+    "default_capacity": false
+   }
+  ],
+  "rules": [
+   {
+    "id": "coverture_household_us__R1",
+    "attribute": "partner_a",
+    "deontic": "may",
+    "aim": "(control_property h w)",
+    "aim_kind": null,
+    "conditions": "(married h w)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "Blackstone, Commentaries on the Laws of England, Book II ch. 29 'Of Title by Succession, Marriage, and Judgment' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says 'I speak not at present of the rights of property' and so did not support this rule.",
+    "var_roles": {
+     "w": "partner_b",
+     "h": "partner_a"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   },
+   {
+    "id": "coverture_household_us__R2",
+    "attribute": "partner_a",
+    "deontic": "must",
+    "aim": "(provides_care h w)",
+    "aim_kind": null,
+    "conditions": "(married h w)",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
+    "var_roles": {
+     "h": "partner_a",
+     "w": "partner_b"
+    },
+    "load_bearing": true,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   },
+   {
+    "id": "coverture_household_us__R3",
+    "attribute": "partner_b",
+    "deontic": "must",
+    "aim": "(provides_care w h)",
+    "aim_kind": null,
+    "conditions": "(married h w)",
+    "or_else": "coverture_household_us__R5",
+    "strand": "superadditive",
+    "implicit": true,
+    "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
+    "var_roles": {
+     "w": "partner_b",
+     "h": "partner_a"
+    },
+    "load_bearing": true,
+    "kind": "norm",
+    "sanctioner": "family",
+    "function": null
+   },
+   {
+    "id": "coverture_household_us__R4",
+    "attribute": "partner_b",
+    "deontic": "must_not",
+    "aim": "(sue w)",
+    "aim_kind": null,
+    "conditions": "(married h w)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished').",
+    "var_roles": {
+     "h": "partner_a",
+     "w": "partner_b"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   },
+   {
+    "id": "coverture_household_us__R5",
+    "attribute": "partner_a",
+    "deontic": "may",
+    "aim": "(chastise h w)",
+    "aim_kind": null,
+    "conditions": "(and (married h w) (misbehaves w))",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": false,
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "partner_b",
+     "h": "partner_a"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   },
+   {
+    "id": "coverture_household_us__R6",
+    "attribute": "partner_b",
+    "deontic": "must_not",
+    "aim": "(leave w)",
+    "aim_kind": null,
+    "conditions": "(married h w)",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": false,
+    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored).",
+    "var_roles": {
+     "h": "partner_a",
+     "w": "partner_b"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   },
+   {
+    "id": "coverture_household_us__R7",
+    "attribute": "partner_b",
+    "deontic": "must_not",
+    "aim": "(contract w)",
+    "aim_kind": null,
+    "conditions": "(married h w)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage).",
+    "var_roles": {
+     "h": "partner_a",
+     "w": "partner_b"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   },
+   {
+    "id": "ssi_marriage_penalty__R1",
+    "attribute": "agency",
+    "deontic": "may",
+    "aim": "(pay_benefit g c)",
+    "aim_kind": null,
+    "conditions": "true",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "The SSI payment power, 42 U.S.C. 1382(a). UNVERIFIED as a rule row: no excerpt supports a bare grant of the power to pay; it is the encoder's skeleton so that R7 (the resource bar) removes something. Sanctioner none: the sources opened name no enforcement of the agency's payment duty.",
+    "var_roles": {
+     "g": "agency",
+     "c": "partner_a"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   },
+   {
+    "id": "ssi_marriage_penalty__R2",
+    "attribute": "agency",
+    "deontic": "may",
+    "aim": "(apply_couple_rate g c s)",
+    "aim_kind": null,
+    "conditions": "(married c s)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "20 CFR 416.1802 'Effects of marriage on eligibility and amount of benefits' (https://www.law.cornell.edu/cfr/text/20/416.1802), as carried from plans/sourcing-worklist-marriage.md section 5 (a summarising fetch, not raw text; not re-opened for this row; level snippet): 'we will count your combined income and calculated the benefit amount for you as a couple.' (the worklist's quotation, typo included) and '(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.' The couple federal rate is lower than two individual rates (42 U.S.C. 1382(b)(2), not (a)(1)(B), per the faithfulness review's raw read; 1974 base rates $1,752 individual, $2,628 couple per the worklist; 2026 rates $994 / $1,491 are an unverified lead). Sanctioner none: no enforcement of the agency's duty is in the text read. Read as a power (`may`), not an applied rate; the statute is mandatory, which the encoding does not carry.",
+    "var_roles": {
+     "g": "agency",
+     "c": "partner_a",
+     "s": "partner_b"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": "penalises_marriage_rate"
+   },
+   {
+    "id": "ssi_marriage_penalty__R3",
+    "attribute": "agency",
+    "deontic": "may",
+    "aim": "(apply_couple_limit g c s)",
+    "aim_kind": null,
+    "conditions": "(married c s)",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "42 U.S.C. 1382(a)(3)(A)-(B) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (first 100,000 of 170,641 characters, through a summarising fetch; not re-opened; level snippet): '$3,000 on January 1, 1989' for a couple and '$2,000 on January 1, 1989' for an individual (Pub. L. 98-369 s. 2611, not indexed to inflation; the 1.5 ratio is arithmetic). A pair of individuals may hold $4,000 together, so the couple limit is the lower of the two. Sanctioner none: no enforcement in the text read. The 2026 limits equal the 1989 figures per an unverified search-summary lead.",
+    "var_roles": {
+     "g": "agency",
+     "c": "partner_a",
+     "s": "partner_b"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": "penalises_marriage_limit"
+   },
+   {
+    "id": "ssi_marriage_penalty__R4",
+    "attribute": "agency",
+    "deontic": "may",
+    "aim": "(apply_couple_rate g c s)",
+    "aim_kind": null,
+    "conditions": "(and (cohabits c s) (holds_out c s))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "20 CFR 416.1806 (https://www.law.cornell.edu/cfr/text/20/416.1806), as carried from the worklist (a summarising fetch; not re-opened; level snippet): someone is a spouse for SSI purposes where (a)(3) 'You and an unrelated person of the opposite sex are living together in the same household' and 'you both lead people to believe that you are husband and wife.' POMS SI 00501.150 (TN 80, 02-25): 'Living together in the same household and holding themselves out as a married couple to the community in which they live.' POMS SI 00501.152 (TN 85, 12-25): 'both individuals lead people in the community in which they reside to believe they are a married couple'. POMS covers same-sex couples per a search summary; the Cornell regulation text still says opposite sex. This is the displaced gate: a conduct test that carries the couple rate to unmarried pairs. Sanctioner none (see notes): R4 is an agency `may` power with no duty to sanction, and the engine rejects a sanctioner without an or_else. Unencoded qualifiers: the regulation's `unrelated` and `at or after the time you apply`; the opposite-sex limit is deliberately not encoded (POMS). Overpayment recovery (20 CFR 416.537, not opened) sanctions the claimant under a different, unencoded rule.",
+    "var_roles": {
+     "g": "agency",
+     "c": "partner_a",
+     "s": "partner_b"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": "extends_penalty_to_holding_out"
+   },
+   {
+    "id": "ssi_marriage_penalty__R5",
+    "attribute": "agency",
+    "deontic": "may",
+    "aim": "(apply_individual_rate g c s)",
+    "aim_kind": null,
+    "conditions": "(not (or (married c s) (and (cohabits c s) (holds_out c s))))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "CRS RL33675 (https://www.everycrsreport.com/reports/RL33675.html), as carried from the worklist (summarising fetch; not re-opened): 'a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.' (so the unmarried are rated as individuals). 20 CFR 416.1802(d)(1) as in R2 (it does not itself state an individual rate for the unmarried). The complement condition (not married and not holding out) is the encoder's reading of the three tests in the worklist.",
+    "var_roles": {
+     "g": "agency",
+     "c": "partner_a",
+     "s": "partner_b"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   },
+   {
+    "id": "ssi_marriage_penalty__R6",
+    "attribute": "agency",
+    "deontic": "may",
+    "aim": "(apply_individual_limit g c s)",
+    "aim_kind": null,
+    "conditions": "(not (or (married c s) (and (cohabits c s) (holds_out c s))))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "source": "42 U.S.C. 1382(a)(3)(B) as carried from the worklist (summarising fetch; not re-opened; level snippet): '$2,000 on January 1, 1989' for an individual, '$3,000 on January 1, 1989' for a couple. The complement condition is the encoder's reading.",
+    "var_roles": {
+     "g": "agency",
+     "c": "partner_a",
+     "s": "partner_b"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   },
+   {
+    "id": "ssi_marriage_penalty__R7",
+    "attribute": "agency",
+    "deontic": "must_not",
+    "aim": "(pay_benefit g c)",
+    "aim_kind": null,
+    "conditions": "(not (resources_under_limit c))",
+    "or_else": null,
+    "strand": "rival",
+    "implicit": false,
+    "source": "42 U.S.C. 1382(a)(1)(B) and (a)(2)(B) (the bar: eligible only if resources are not more than the limit; pin from the faithfulness seat's raw read, not re-opened by the builder) and (a)(3)(A)-(B) (the limits) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (summarising fetch; not re-opened; level snippet): the resource limits '$2,000 on January 1, 1989' (individual) and '$3,000 on January 1, 1989' (couple). A disability, not a sanctioned prohibition, hence or_else null. That exceeding the limit bars payment is read from the eligibility condition in (a)(1)(B); the `must_not` form is a reading of 'eligible only if'.",
+    "var_roles": {
+     "g": "agency",
+     "c": "partner_a"
+    },
+    "load_bearing": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": null
+   }
+  ],
+  "source_text": "composite of: coverture-household-us, ssi-marriage-penalty",
+  "expected_properties": {
+   "dependent_cannot_exit": "reachable",
+   "subject_cannot_exit": "reachable",
+   "care_and_sanction_same_role": "holds_to_k",
+   "no_standing": "reachable",
+   "care_assigned_by_sex": "violated",
+   "financial_dependence": "holds_to_k",
+   "financial_dependence_unpropertied": "holds_to_k",
+   "cannot_contract": "violated",
+   "double_burden": "unreachable_open",
+   "creditor_shield": "unreachable_open",
+   "married_couple_rated": "holds_to_k",
+   "married_couple_limited": "holds_to_k",
+   "penalty_reaches_unmarried": "reachable",
+   "married_rated_individually": "unreachable_open",
+   "over_limit_ineligible": "holds_to_k"
+  },
+  "isomorphic_to": [],
+  "not_isomorphic_to": [],
+  "not_isomorphic_to_control": [],
+  "minimal_pair_of": null,
+  "notes": "P2 composite (plans/p2-ssi-composite.md, preregistered 2026-11-08 before the build): tests the second half of claim C2 (docs/connections.md section 4). Claimant -> partner_a so that the SSI rules' (married c s) is the same atom as coverture's married(h, w) after aliasing; the claimant being the husband is an assumption of this composite, not of SSI. Sex by female(partner_b) in initial; acquired_property and earns free as in the first composite. C2b is read from `phil rules ablate --entry coverture-us-ssi`, rows ssi_marriage_penalty__R2 and R3: predicted NOT to flip financial_dependence (it reads is_subject, controls_own_property and owns_earnings, which no SSI rule touches), so C2 fails as written. Not a cluster member; no iso claims; takes no part in the gate. Post hoc (S7): cannot_contract was preregistered holds_to_k and is edited to violated after the run; violated via SSI divorce (an unsourced encoder action that un-marries a coverture pair, so R7's married condition fails). The edit follows the repo post hoc convention (docs/interpreting-results.md section 6); the baseline row already records the actual verdict. Constructed world (ADR 0018): pairs 1765 coverture with 1974+ SSI over one couple; not a historical regime.",
+  "defaults": {},
+  "initial": [
+   "(resources_under_limit partner_a)",
+   "female(partner_b)"
+  ],
+  "initial_free": [
+   "acquired_property",
+   "earns"
+  ],
+  "members": [
+   "coverture-household-us",
+   "ssi-marriage-penalty"
   ]
  }
 ]

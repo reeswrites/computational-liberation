@@ -549,6 +549,13 @@ def card(e, raws, resolved, props) -> str:
          LEGEND]
     if e.get("members"):
         spec = raw.get("composite", {})
+        mem = ", ".join(e["members"])
+        yrs = sorted({int(y) for r in e["rules"] for pv in (r.get("provenance") or ())
+                      for y in re.findall(r"\b(1[0-9]{3}|20[0-9]{2})\b", str(pv.get("effective_date") or ""))})
+        span = f"{yrs[0]}\u2013{yrs[-1]}" if yrs else "dates per member cards"
+        L += [f"**Constructed world (ADR 0018):** composed from {mem} for check {spec.get('purpose') or 'n/a'}; not a "
+              f"historical institution; the members span {span} (from provenance effective_date where present).", "",
+              "Council: " + (spec.get("review") or "pending"), ""]
         L += ["## Members", "", "A composite (ADR 0018): the members' roles are unioned after the aliases below, fluents "
               "unified by name, rules concatenated under `<member>__` prefixes. Each rule row below is the member's rule, "
               "unchanged except for the renamed roles; its plain line and sources are the member's.", ""]
@@ -567,11 +574,24 @@ def card(e, raws, resolved, props) -> str:
                 rev.setdefault(n, []).append(f"{o} in {mid}")
         if rev:
             L += ["", "Role map: " + "; ".join(f"**{n}** = {' = '.join(v)}" for n, v in rev.items())]
-        L += ["", "Actions (name(parameters): what they set; a member's rules permit, oblige or bar them):"]
+        glosses = {}
+        for mid in e["members"]:
+            for o, n in ((spec.get("aliases") or {}).get(mid) or {}).items():
+                g = next((x.get("gloss", "") for x in resolved[mid]["roles"] if x["name"] == o), "")
+                glosses[(mid, o)] = (n, g)
+        if glosses:
+            L += ["", "Alias map (original role gloss):"]
+            L += [f"- {o} ({mid}) → {n}: {_cell(g) or 'no gloss'}" for (mid, o), (n, g) in glosses.items()]
+        L += ["", "Actions (name(parameters): what they set; a member's rules permit, oblige or bar them; `from member` is the entry that declares the action):"]
+        amem: dict[str, list[str]] = {}
+        for mid in e["members"]:
+            for a in resolved[mid]["actions"]:
+                amem.setdefault(a["name"], []).append(mid)
         for a in e["actions"]:
             eff = ", ".join(f"{'' if x['value'] else 'not '}{x['fluent']}({', '.join(x['args'])})" for x in a.get("effects", [])) or "no effect"
             tr = [f"{p}: {r}" for p, r in zip(a["args"], a.get("arg_roles") or []) if r]
-            L.append(f"- `{a['name']}({', '.join(a['args'])})`" + (f" [{'; '.join(tr)}]" if tr else "") + f": {eff}")
+            L.append(f"- `{a['name']}({', '.join(a['args'])})`" + (f" [{'; '.join(tr)}]" if tr else "") + f": {eff}"
+                     + f" (from member: {', '.join(amem.get(a['name'], ['?']))})")
         L.append("")
     L += ["## Roles", ""]
     L += [f"- **{r['name']}**: {_cell(r.get('gloss', ''))}" for r in e["roles"]]

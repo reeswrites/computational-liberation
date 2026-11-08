@@ -298,7 +298,7 @@ CARE_OBLIGED_ENTRIES = {  # R3.2: every entry that declares provides_care (22; t
     "airline-flight", "kibbutz-childrens-house", "kibbutz-childrens-house-no-implicit", "ectogenesis",
     "gestational-surrogacy", "companion-ownership", "companion-guardianship", "companion-guardian-renamed",
     "paternity-quota", "transferable-leave",
-    "coverture-us-hospital-visitation"}  # composite (ADR 0018): inherits coverture-household-us's care fluents
+    "coverture-us-hospital-visitation", "coverture-us-ssi"}  # composites (ADR 0018): inherit coverture-household-us's care fluents
 
 
 def test_care_obliged_declared_where_provides_care_is():

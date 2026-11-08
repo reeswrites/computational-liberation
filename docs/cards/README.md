@@ -36,3 +36,4 @@ How to read a card: every card opens with the same Legend (what may / must / mus
 - [ssi-marriage-penalty](ssi-marriage-penalty.md): SSI marriage penalty (couple rate and resource limit gated on marriage, extended to unmarried couples who hold out) | pairs: ssi-marriage-penalty-individual (extended by)
 - [ssi-marriage-penalty-individual](ssi-marriage-penalty-individual.md): SSI without the marriage penalty (individual rate and limit regardless of marital status; holding-out test dropped) | pairs: ssi-marriage-penalty (extends)
 - [coverture-us-hospital-visitation](coverture-us-hospital-visitation.md): Composite: coverture household (US) + hospital visitation after 2011, the husband as patient and the wife as visitor
+- [coverture-us-ssi](coverture-us-ssi.md): Composite: coverture household (US) + SSI marriage penalty, the husband as claimant and the wife as spouse

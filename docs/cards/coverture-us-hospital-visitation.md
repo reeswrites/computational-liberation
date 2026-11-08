@@ -16,6 +16,10 @@
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
 - **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
+**Constructed world (ADR 0018):** composed from coverture-household-us, hospital-visitation for check claim N1 (static rediscovery case, plans/informal-rules.md R1): does hospital_visitation__R4 displace the spouse's guarantee (`phil rules ablate --entry coverture-us-hospital-visitation`); not a historical institution; the members span 1787–2012 (from provenance effective_date where present).
+
+Council: docs/reviews/2026-11-08-hospital-slice.md
+
 ## Members
 
 A composite (ADR 0018): the members' roles are unioned after the aliases below, fluents unified by name, rules concatenated under `<member>__` prefixes. Each rule row below is the member's rule, unchanged except for the renamed roles; its plain line and sources are the member's.
@@ -29,28 +33,34 @@ Free at t=0: `acquired_property`, `earns`
 
 Role map: **partner_a** = husband in coverture-household-us = patient in hospital-visitation; **partner_b** = wife in coverture-household-us = partner in hospital-visitation
 
-Actions (name(parameters): what they set; a member's rules permit, oblige or bar them):
-- `marry(h, w)` [h: partner_a; w: partner_b]: married(h, w), is_subject(w), provides_care(h, w), provides_care(w, h)
-- `hold_property(w)` [w: partner_b]: no effect
-- `keep_earnings(w)` [w: partner_b]: no effect
-- `maintain(h, w)` [h: partner_a; w: partner_b]: provides_care(h, w)
-- `neglect(h, w)` [h: partner_a; w: partner_b]: not provides_care(h, w)
-- `keep_house(w, h)` [w: partner_b; h: partner_a]: provides_care(w, h)
-- `neglect_house(w, h)` [w: partner_b; h: partner_a]: not provides_care(w, h)
-- `control_property(h, w)` [h: partner_a; w: partner_b]: no effect
-- `chastise(h, w)` [h: partner_a; w: partner_b]: no effect
-- `misbehave(w)` [w: partner_b]: misbehaves(w)
-- `draw_subsistence(w)` [w: partner_b]: no effect
-- `leave(w)` [w: partner_b]: no effect
-- `sue(w)` [w: partner_b]: no effect
-- `contract(w)` [w: partner_b]: no effect
-- `admit(s, p)` [s: staff; p: partner_a]: admitted(p)
-- `recognize_family(s, p, x)` [s: staff; p: partner_a; x: partner_b]: counts_as_family(p, x)
-- `admit_visitor(s, x, p)` [s: staff; x: partner_b; p: partner_a]: visiting(x, p)
-- `restrict(s, p)` [s: staff; p: partner_a]: clinically_restricted(p)
-- `reprimand(o, s)` [o: hospital; s: staff]: no effect
-- `designate(p, x)` [p: partner_a; x: partner_b]: designated(p, x)
-- `cite(v, o)` [v: surveyor; o: hospital]: no effect
+Alias map (original role gloss):
+- husband (coverture-household-us) → partner_a: the husband; the legal person the marriage keeps
+- wife (coverture-household-us) → partner_b: the feme covert; her legal existence is suspended during marriage
+- patient (hospital-visitation) → partner_a: the admitted patient whose visitors are at issue
+- partner (hospital-visitation) → partner_b: the would-be visitor; a spouse or an unmarried partner, depending on the trace (married is exogenous here)
+
+Actions (name(parameters): what they set; a member's rules permit, oblige or bar them; `from member` is the entry that declares the action):
+- `marry(h, w)` [h: partner_a; w: partner_b]: married(h, w), is_subject(w), provides_care(h, w), provides_care(w, h) (from member: coverture-household-us)
+- `hold_property(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `keep_earnings(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `maintain(h, w)` [h: partner_a; w: partner_b]: provides_care(h, w) (from member: coverture-household-us)
+- `neglect(h, w)` [h: partner_a; w: partner_b]: not provides_care(h, w) (from member: coverture-household-us)
+- `keep_house(w, h)` [w: partner_b; h: partner_a]: provides_care(w, h) (from member: coverture-household-us)
+- `neglect_house(w, h)` [w: partner_b; h: partner_a]: not provides_care(w, h) (from member: coverture-household-us)
+- `control_property(h, w)` [h: partner_a; w: partner_b]: no effect (from member: coverture-household-us)
+- `chastise(h, w)` [h: partner_a; w: partner_b]: no effect (from member: coverture-household-us)
+- `misbehave(w)` [w: partner_b]: misbehaves(w) (from member: coverture-household-us)
+- `draw_subsistence(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `leave(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `sue(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `contract(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `admit(s, p)` [s: staff; p: partner_a]: admitted(p) (from member: hospital-visitation)
+- `recognize_family(s, p, x)` [s: staff; p: partner_a; x: partner_b]: counts_as_family(p, x) (from member: hospital-visitation)
+- `admit_visitor(s, x, p)` [s: staff; x: partner_b; p: partner_a]: visiting(x, p) (from member: hospital-visitation)
+- `restrict(s, p)` [s: staff; p: partner_a]: clinically_restricted(p) (from member: hospital-visitation)
+- `reprimand(o, s)` [o: hospital; s: staff]: no effect (from member: hospital-visitation)
+- `designate(p, x)` [p: partner_a; x: partner_b]: designated(p, x) (from member: hospital-visitation)
+- `cite(v, o)` [v: surveyor; o: hospital]: no effect (from member: hospital-visitation)
 
 ## Roles
 
