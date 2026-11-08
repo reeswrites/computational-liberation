@@ -14,6 +14,7 @@
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
 ## Roles
 
@@ -40,12 +41,12 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r1"></a>
 **R1**: Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (the accepted manuscript, City Research Online; Science's PDF returned 403): 'participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field' ... 'Continuous interactions led to occasional switching by subjects throughout the study.'
 
-- `centola-becker-brackbill-baronchelli-2018` (Methods; results (accepted ms.); date n/a): **opened** 2026-11-06: "participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field ... Continuous interactions led to occasional switching by subjects throughout the study."
+- `centola-becker-brackbill-baronchelli-2018` (Methods; results (accepted ms.); date n/a): **opened** 2026-11-06: "participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field ... Continuous interactions led to occasional switching by subjects throughout the study." <https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf>
 
 <a id="src-r2"></a>
 **R2**: Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827. NOT OPENED (2026-11-04: every host tried is outside this session's allowed network); cited from memory, UNVERIFIED as a quotation (as R1: the alternative name; the committed minority holds it regardless of payoff, which is a model parameter, not a rule). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] Verification pass: Centola, Becker, Brackbill & Baronchelli read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (the accepted manuscript, City Research Online; Science's PDF returned 403): 'participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field' ... 'Continuous interactions led to occasional switching by subjects throughout the study.'
 
-- `centola-becker-brackbill-baronchelli-2018` (Methods; results (accepted ms.); date n/a): **opened** 2026-11-06: "participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field ... Continuous interactions led to occasional switching by subjects throughout the study."
+- `centola-becker-brackbill-baronchelli-2018` (Methods; results (accepted ms.); date n/a): **opened** 2026-11-06: "participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field ... Continuous interactions led to occasional switching by subjects throughout the study." <https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf>
 
 
 ## Expected properties

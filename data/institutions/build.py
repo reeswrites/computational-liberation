@@ -245,6 +245,8 @@ def compose_entry(spec: dict, resolved: dict) -> tuple[dict, dict]:
                         if k in orig:
                             r[k] = copy.deepcopy(orig[k])
                     r["member"] = mid
+                    # a member's plain line says "(R6)"; on the composite card that id is `<member>__R6`
+                    r["plain"] = re.sub(r"\bR(\d+)\b", lambda m: pre + m.group(0), str(r.get("plain", "")))
                 break
         card_rules.append(r)
     view = {**stripped, "rules": card_rules, "aliases": aliases}
@@ -290,6 +292,7 @@ LEGEND = """## Legend
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 """
 
 KEYWORDS = {"and", "or", "not", "exists", "forall", "true", "false", "=", "imp", "implies"}
@@ -387,6 +390,8 @@ def provenance_line(p) -> str:
     out = f"- {sid} ({'; '.join(_cell(m) for m in meta)}): {lvl}"
     if p.get("excerpt"):
         out += f": \"{_cell(p['excerpt'])}\""
+    if p.get("url"):
+        out += f" <{p['url']}>"
     return out
 
 
@@ -552,6 +557,17 @@ def card(e, raws, resolved, props) -> str:
                   + (" (init mode `declared`; fluents not listed start false)" if e["initial"] else "")]
         if e.get("initial_free"):
             L += ["", "Free at t=0: " + ", ".join(f"`{x}`" for x in e["initial_free"])]
+        rev: dict[str, list[str]] = {}
+        for mid in e["members"]:
+            for o, n in ((spec.get("aliases") or {}).get(mid) or {}).items():
+                rev.setdefault(n, []).append(f"{o} in {mid}")
+        if rev:
+            L += ["", "Role map: " + "; ".join(f"**{n}** = {' = '.join(v)}" for n, v in rev.items())]
+        L += ["", "Actions (name(parameters): what they set; a member's rules permit, oblige or bar them):"]
+        for a in e["actions"]:
+            eff = ", ".join(f"{'' if x['value'] else 'not '}{x['fluent']}({', '.join(x['args'])})" for x in a.get("effects", [])) or "no effect"
+            tr = [f"{p}: {r}" for p, r in zip(a["args"], a.get("arg_roles") or []) if r]
+            L.append(f"- `{a['name']}({', '.join(a['args'])})`" + (f" [{'; '.join(tr)}]" if tr else "") + f": {eff}")
         L.append("")
     L += ["## Roles", ""]
     L += [f"- **{r['name']}**: {_cell(r.get('gloss', ''))}" for r in e["roles"]]

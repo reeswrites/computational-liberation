@@ -14,6 +14,7 @@
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
 ## Roles
 
@@ -52,8 +53,8 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r2"></a>
 **R2**: 14 CFR 121.571 'Briefing passengers before takeoff', read 2026-11-04 at https://www.law.cornell.edu/cfr/text/14/121.571 (ecfr.gov redirected to a block page): (a) 'shall insure that all passengers are orally briefed by the appropriate crewmember'; (a)(3) a required crewmember assigned to the flight must individually brief each person who may need another person's help to reach an exit. That is a crew duty toward passengers aboard, but narrower than the rule's provides_care (maintenance, services): the general in-flight care duty is UNVERIFIED (no text opened states it; 14 CFR 121.391, read at https://www.law.cornell.edu/cfr/text/14/121.391, only sets the number of flight attendants 'to provide the most effective egress of passengers'). 14 CFR 91.11 / 121.580 dropped 2026-11-04: they only forbid interference with crew. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] board establishes provides_care; attend restores it, withdraw breaks it Verification pass: 14 CFR 121.391 read 2026-11-06 at https://www.law.cornell.edu/cfr/text/14/121.391: (d) 'flight attendants required by this section shall be located as near as practicable to required floor level exits and shall be uniformly distributed throughout the airplane in order to provide the most effective egress of passengers in event of an emergency evacuation'.
 
-- `cfr-14-121-571` (s. 121.571(a), (a)(3); US; date n/a): **opened** 2026-11-04: "shall insure that all passengers are orally briefed by the appropriate crewmember"
-- `cfr-14-121-391` (s. 121.391(d); US; date n/a): **opened** 2026-11-06: "flight attendants required by this section shall be located as near as practicable to required floor level exits and shall be uniformly distributed throughout the airplane in order to provide the most effective egress of passengers in event of an emergency evacuation"
+- `cfr-14-121-571` (s. 121.571(a), (a)(3); US; date n/a): **opened** 2026-11-04: "shall insure that all passengers are orally briefed by the appropriate crewmember" <https://www.law.cornell.edu/cfr/text/14/121.571>
+- `cfr-14-121-391` (s. 121.391(d); US; date n/a): **opened** 2026-11-06: "flight attendants required by this section shall be located as near as practicable to required floor level exits and shall be uniformly distributed throughout the airplane in order to provide the most effective egress of passengers in event of an emergency evacuation" <https://www.law.cornell.edu/cfr/text/14/121.391>
 - no work named: **unverified** (the general in-flight care duty: UNVERIFIED (no text opened states it))
 
 <a id="src-r3"></a>

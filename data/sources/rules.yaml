@@ -498,7 +498,7 @@
   container: "Federal Register 75(223): 70831 (2010-11-19), CMS-3228-F, doc 2010-29194"
   jurisdiction: US
   url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
-  note: "Effective 2011-01-18. Adds 42 CFR 482.13(h) and 485.635(f) (critical access hospitals). Opened 2026-11-08 by the sourcing worklist (first 100,000 of 103,789 characters; amendatory text read via offset)."
+  note: "Effective 2011-01-18. Adds 42 CFR 482.13(h) and 485.635(f) (critical access hospitals). Opened 2026-11-08 by the sourcing worklist (first 100,000 of 103,789 characters; amendatory text read via offset) and re-opened by the encoder and the council (WebFetch summaries, first 100,000 characters). The 'denies patients access to their loved ones in times of need' sentence is in Part II, a response to comments, not a Background section."
 - id: hv-presmemo-2010
   type: archival
   title: "Presidential Memorandum: Hospital Visitation (2010-04-15)"

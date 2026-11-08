@@ -14,6 +14,7 @@
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
 ## Roles
 
@@ -53,13 +54,13 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r2"></a>
 **R2**: Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to 'provide and maintain a welcoming and safe environment for all patrons and library staff'; 'Violation of the Library's Rules of Use Policy may warrant a suspension of library privileges'; 'Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately'; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (service to all patrons is the policy's premise; the duty to serve is read from it, not stated as such: UNVERIFIED as a rule). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] enter establishes served; serve restores it, refuse_service breaks it Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: 'In order to provide and maintain a welcoming and safe environment for all patrons and library staff'.
 
-- `berkeley-public-library-2018-patron-suspension-policy` (p. 1; date n/a): **opened** 2026-11-06: "In order to provide and maintain a welcoming and safe environment for all patrons and library staff"
+- `berkeley-public-library-2018-patron-suspension-policy` (p. 1; date n/a): **opened** 2026-11-06: "In order to provide and maintain a welcoming and safe environment for all patrons and library staff" <https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf>
 - no work named: **unverified** (the rule (a duty to serve) is read from the policy's premise, not stated: UNVERIFIED as a rule)
 
 <a id="src-r3"></a>
 **R3**: Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to 'provide and maintain a welcoming and safe environment for all patrons and library staff'; 'Violation of the Library's Rules of Use Policy may warrant a suspension of library privileges'; 'Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately'; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (violation of the Rules of Use 'may warrant a suspension of library privileges'; staff 'will instruct anyone displaying these behaviors to leave') Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: 'Continued disruption (same or different day): Library privileges will be suspended for the day by an authorized staff-member and the patron will be asked to leave the Library building.'
 
-- `berkeley-public-library-2018-patron-suspension-policy` (p. 2, B.2; date n/a): **opened** 2026-11-06: "Continued disruption (same or different day): Library privileges will be suspended for the day by an authorized staff-member and the patron will be asked to leave the Library building."
+- `berkeley-public-library-2018-patron-suspension-policy` (p. 2, B.2; date n/a): **opened** 2026-11-06: "Continued disruption (same or different day): Library privileges will be suspended for the day by an authorized staff-member and the patron will be asked to leave the Library building." <https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf>
 
 **R4**
 
@@ -68,7 +69,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r5"></a>
 **R5**: Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to 'provide and maintain a welcoming and safe environment for all patrons and library staff'; 'Violation of the Library's Rules of Use Policy may warrant a suspension of library privileges'; 'Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately'; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (a suspended patron is excluded for the suspension's term) Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: 'Suspension of library privileges will result in removal from, and denial of access to, all Berkeley Public Library services and facilities for a designated period of time.'
 
-- `berkeley-public-library-2018-patron-suspension-policy` (p. 1; date n/a): **opened** 2026-11-06: "Suspension of library privileges will result in removal from, and denial of access to, all Berkeley Public Library services and facilities for a designated period of time."
+- `berkeley-public-library-2018-patron-suspension-policy` (p. 1; date n/a): **opened** 2026-11-06: "Suspension of library privileges will result in removal from, and denial of access to, all Berkeley Public Library services and facilities for a designated period of time." <https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf>
 
 **R6**
 

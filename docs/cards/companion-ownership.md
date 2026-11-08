@@ -14,6 +14,7 @@
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
 ## Roles
 
@@ -61,8 +62,8 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r1"></a>
 **R1**: property status of companion animals: Cal. Civ. Code s. 655: 'There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals'; s. 663: 'Every kind of property that is not real is personal' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize
 
-- `cal-civ-655` (s. 655; US-CA; date n/a): **opened** 2026-11-04: "There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals"
-- `cal-civ-663` (s. 663; US-CA; date n/a): **opened** 2026-11-04: "Every kind of property that is not real is personal"
+- `cal-civ-655` (s. 655; US-CA; date n/a): **opened** 2026-11-04: "There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals" <https://codes.findlaw.com/ca/civil-code/civ-sect-655/>
+- `cal-civ-663` (s. 663; US-CA; date n/a): **opened** 2026-11-04: "Every kind of property that is not real is personal" <https://codes.findlaw.com/ca/civil-code/civ-sect-663/>
 - `cal-civ-658` (s. 658; US-CA; date n/a): **recalled**
 
 **R2**
@@ -72,12 +73,12 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r3"></a>
 **R3**: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'
 
-- `cal-pen-597s` (s. 597s(a); US-CA; date n/a): **opened** 2026-11-06: "Every person who willfully abandons any animal is guilty of a misdemeanor."
+- `cal-pen-597s` (s. 597s(a); US-CA; date n/a): **opened** 2026-11-06: "Every person who willfully abandons any animal is guilty of a misdemeanor." <https://california.public.law/codes/ca_penal_code_section_597s>
 
 <a id="src-r4"></a>
 **R4**: Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'
 
-- `cal-pen-597s` (s. 597s(a); US-CA; date n/a): **opened** 2026-11-06: "Every person who willfully abandons any animal is guilty of a misdemeanor."
+- `cal-pen-597s` (s. 597s(a); US-CA; date n/a): **opened** 2026-11-06: "Every person who willfully abandons any animal is guilty of a misdemeanor." <https://california.public.law/codes/ca_penal_code_section_597s>
 
 <a id="src-r5"></a>
 **R5**: Cal. Penal Code 597(b) failure to provide food/water/shelter. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] acquire (and the initial state) establishes provides_care; feed restores it, neglect breaks it
