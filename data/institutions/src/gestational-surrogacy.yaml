@@ -74,8 +74,8 @@ rules_replace:
   strand: rival
   implicit: false
   kind: formal
-  sanctioner: institution
-  sanctioner_review: derived
+  sanctioner: state
+  sanctioner_review: reviewed
   source: 'the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04).'
   provenance:
   - source_id: null

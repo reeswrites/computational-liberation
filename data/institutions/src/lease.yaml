@@ -189,8 +189,8 @@ rules:
   strand: tying
   implicit: false
   kind: formal
-  sanctioner: institution
-  sanctioner_review: derived
+  sanctioner: state
+  sanctioner_review: reviewed
   source: 'Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days'' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 (default in rent is the breach that opens eviction). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes rent_paid; pay_rent restores it, default_rent breaks it (sanction R3)'
   provenance:
   - source_id: cal-ccp-1161

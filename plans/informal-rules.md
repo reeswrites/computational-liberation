@@ -36,13 +36,29 @@ The handoff (verbatim below) asks for five things. Checked against the repo, thr
 
 **D6. Queue position.** After the faithfulness batch. Informal rules will carry the weakest sources in the dataset (hospital practice, workplace custom), and 24/211 rules are already known-unfaithful. The card-only seat (ADR 0014 fifth seat) runs on every informal rule.
 
+### Sanctioner and kind review (hand review by a fresh agent, 2026-11-08; author acted on it the same day)
+
+Of the ten derived `sanctioner` values, five were right (coverture R3 → family, cps R5 → state after the hand fix, companion R3 → state, footbinding R3 → peers and its copy). Four were wrong and are fixed in this branch with `sanctioner_review: reviewed`: kibbutz R2 and R3 → **peers** (R6's source says the general assembly and public opinion discipline members; there is no body above the committee), lease R5 → **state** (CCP 1161 unlawful detainer is a court process the landlord only initiates), gestational-surrogacy R3 → **state** (parentage is registered by courts and vital records). Ectogenesis R3 (registry → institution) is left derived: the registry sanction is itself an encoder invention (ectogenesis.yaml line 212) and the real fix is a real sanction holder at the faithfulness batch. Sanctioner touches no verdict; `phil rules diff` confirmed.
+
+`kind` was derived as norm iff `implicit: true`. The review found the tag drifts both ways. **Faithfulness-batch item, needs its own preregistration; not applied:**
+
+| Direction | Rows | Reason |
+|---|---|---|
+| norm → formal | crisis-team R8 (WIC 5150(a), a statute); paternity-quota R9, transferable-leave R9 (reconstruction of the scheme); companion R6, R9, R11 (+copies; leash/impound law, property and standing doctrine); mwpa-* R10 (Blackstone creditor reach), R12 (Chused, trustee conveyance); footbinding R10 (explicit pledge commitment) | written law tagged implicit for another reason |
+| norm → strategy | police-crisis R1 (dispatch routine); cps R6 ("mother called first"); paternity-quota R7, transferable-leave R7 (the pattern the quota was introduced to break); ectogenesis R5, surrogacy R5 ("care-norm ... no sanction"); crisis-team R7 | regularity nobody sanctions; Bicchieri requires a sanction for a norm |
+| norm → drop (default capacity) | footbinding R2, kibbutz R8 | added for ADR 0015 A6; the README says default capacities are not written as implicit `may ... true` |
+| formal → norm | kibbutz R1, R3, R4, R5 (Wikipedia practice source, no by-law); footbinding R1, R4, R6, R7 (Mackie convention, unwritten) | practices tagged as written |
+| formal → strategy | naming-convention R1, R2 | Centola tipping convention with no sanction; the clearest strategy case |
+
+Rules at `sanctioner: none` whose source implies a real sanction the encoding never gave an `or_else` (candidates for the same batch): companion-ownership R5 (Penal Code 597(b) misdemeanor; R4 prosecute power already exists to link), lease R2 (Civ. Code 1941 repair duty), ectogenesis/surrogacy R5 (Kleven motherhood penalty, peers), coverture R2 (necessaries enforced through creditors; inference, not text).
+
 ### Rediscovery case
 
 Researched 2026-11-07 (standard web search, no page fetches; advocacy-sourced items marked). Three candidates; the first two are usable, the third is a near-vanish.
 
 **R1. US hospital visitation, 2010–11 (best fit: clean before/after rule structure).**
 - Before: no federal visitor-choice rule in the Medicare Conditions of Participation. Each hospital set policy, commonly "immediate family only," and staff decided who counted. `kind: norm` or institution policy, `sanctioner: institution`.
-- Change: Presidential Memorandum April 2010; CMS final rule 42 CFR 482.13(h) (critical access hospitals 485.535(f)), November 2010; CMS survey memo 7 September 2011 telling state surveyors to check compliance. The patient designates visitors regardless of relationship; clinical restriction remains.
+- Change: Presidential Memorandum 15 April 2010; CMS final rule 42 CFR 482.13(h) (critical access hospitals 485.635(f)), 75 FR 70831, published 2010-11-19, effective 2011-01-18; CMS Transmittal 75 (r75soma), 2011-12-02, giving surveyors the interpretive guidance (A-0215). The patient designates visitors "including, but not limited to, a spouse, a domestic partner (including a same-sex domestic partner), another family member, or a friend" ((h)(2)); (h)(4) requires "full and equal" visitation privileges; (h)(3) bars restriction on race, sex, sexual orientation and similar grounds. Clinical restriction remains. Corrected 2026-11-08 from plans/sourcing-worklist-marriage.md; the earlier "7 September 2011" memo date was unconfirmed and is dropped.
 - After: the formal gate moved from marital status or kinship to patient designation. Denials continued in reported cases (Lambda Legal 2010 survey anecdotes; a 2012 Nevada domestic-partner denial). No systematic post-2011 compliance study found.
 - Expected static verdict, to preregister before encoding: **displaced** (gate moved to designation, clinical exception retained), with the informal staff gate still present as a `norm` rule that the formal rule now overrides but does not delete. The record for "informal gate persisted" is anecdotal; the engine must not be read as confirming a rate.
 - Sources: CMS 2011 press release (cms.gov/newsroom/press-releases/medicare-steps-enforcement-equal-visitation-and-representation-rights-hospitals); CMS transmittal r75soma (cms.gov/regulations-and-guidance/guidance/transmittals/downloads/r75soma.pdf); Lambda Legal, *When Health Care Isn't Caring* (2010); Center for American Progress overview. Second lookup 2026-11-07: **no systematic compliance study exists** (no GAO report, academic survey, Joint Commission or CMS survey-finding rate found). HRC's Healthcare Equality Index requires a documented equal-visitation policy (hrc.org/hei/equal-visitation) but is a self-selected sample and no pass rate surfaced. Consequence: the rediscovery pass criterion must be about rule structure, not a compliance rate the record does not contain.

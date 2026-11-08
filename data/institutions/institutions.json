@@ -4851,7 +4851,7 @@
     "strand": "tying",
     "implicit": false,
     "kind": "formal",
-    "sanctioner": "institution",
+    "sanctioner": "state",
     "source": "Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 (default in rent is the breach that opens eviction). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes rent_paid; pay_rent restores it, default_rent breaks it (sanction R3)"
    }
   ],
@@ -5548,7 +5548,7 @@
     "strand": "tying",
     "implicit": true,
     "kind": "norm",
-    "sanctioner": "institution",
+    "sanctioner": "peers",
     "source": "SANCTIONED NORM encoding a documented PRACTICE, not a written rule (third review 2026-11-03: the sources support a practice, not a committee disability): the nanny 'was always a woman's role' (WIKI_KIB); no kibbutz by-law said so, the rota simply never put a man in the children's house, and Tiger & Shepher, Women in the Kibbutz (Harcourt Brace Jovanovich, 1975): women concentrated in child care, education and services despite formal equality. Cited by WIKI_KIB (pp. 41, 167); book and sample (34,040 members) confirmed via Kirkus review https://www.kirkusreviews.com/book-reviews/lionel-joseph-shepher-tiger/women-in-the-kibbutz/ ; the assignment finding itself NOT read directly: UNVERIFIED reports women concentrated in child care as a pattern (the finding is framed there as women's own choice). Encoded as a prohibition the committee answers for (or_else R6, the implicit reprimand), not as a disability; under strict compliance the effect on traces is the same, which is what gate (d) reads. Earlier draft (disability, or_else null) retired by the third review Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'",
     "load_bearing": true
    },
@@ -5562,7 +5562,7 @@
     "strand": "superadditive",
     "implicit": false,
     "kind": "formal",
-    "sanctioner": "institution",
+    "sanctioner": "peers",
     "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.'",
     "load_bearing": true
    },
@@ -5876,7 +5876,7 @@
     "strand": "superadditive",
     "implicit": false,
     "kind": "formal",
-    "sanctioner": "institution",
+    "sanctioner": "peers",
     "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.'",
     "load_bearing": true
    },
@@ -12177,7 +12177,7 @@
     "strand": "rival",
     "implicit": false,
     "kind": "formal",
-    "sanctioner": "institution",
+    "sanctioner": "state",
     "source": "the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04)."
    },
    {

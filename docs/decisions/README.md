@@ -32,6 +32,7 @@ A decision is changed by a new ADR that supersedes the old one, not by rewriting
 | [0015](0015-layer2-abm-design.md) | Layer 2 ABM design choices (A1–A7) | accepted |
 | [0016](0016-failure-mode-axes.md) | Failure modes on three axes (who pays / rule / time) | accepted |
 | [0017](0017-sourcing-standard.md) | Sourcing standard: structured provenance, primary sources for ground truth | accepted |
+| [0018](0018-composition-semantics.md) | Composition semantics: build-time, neutral roles, frozen bindings, error on conflict | proposed |
 
 ## In philosophy-engine (engine mechanics)
 
