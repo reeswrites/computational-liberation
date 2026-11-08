@@ -532,3 +532,52 @@
   jurisdiction: US-NV
   url: https://www.nbcnews.com/news/world/nv-hospital-denies-rights-domestic-partners-flna957300
   note: "One anecdote of a post-2011 denial (Spring Valley Hospital, Las Vegas; registered domestic partner denied access until she produced a power of attorney). Opened 2026-11-08 by the sourcing worklist (summary-mediated). Not a rate."
+- id: ssi-cfr-416-1806
+  type: regulation
+  title: "20 CFR 416.1806: Whether you are married and who is your spouse"
+  year: null
+  container: "Code of Federal Regulations, Title 20"
+  jurisdiction: US
+  url: https://www.law.cornell.edu/cfr/text/20/416.1806
+  note: "Added 2026-11-08 (ssi-entry; carried from plans/sourcing-worklist-marriage.md section 5, level opened but summary-mediated: WebFetch returned a model summary, not raw text). The Cornell text says 'opposite sex'; effective date unread. Cited by ssi-marriage-penalty R4."
+- id: ssi-cfr-416-1802
+  type: regulation
+  title: "20 CFR 416.1802: Effects of marriage on eligibility and amount of benefits"
+  year: null
+  container: "Code of Federal Regulations, Title 20"
+  jurisdiction: US
+  url: https://www.law.cornell.edu/cfr/text/20/416.1802
+  note: "Added 2026-11-08 (ssi-entry; worklist section 5, summary-mediated). Holding out does not appear in this section. Cited by ssi-marriage-penalty R2, R5."
+- id: ssi-poms-si-00501-150
+  type: web
+  title: "SSA POMS SI 00501.150: Determining Whether a Marital Relationship Exists (TN 80, 02-25)"
+  year: 2025
+  container: "Social Security Administration, Program Operations Manual System"
+  jurisdiction: US
+  url: https://secure.ssa.gov/poms.nsf/lnx/0500501150
+  note: "Added 2026-11-08 (ssi-entry; worklist section 5, summary-mediated). Agency guidance, not law. Cited by ssi-marriage-penalty R4."
+- id: ssi-poms-si-00501-152
+  type: web
+  title: "SSA POMS SI 00501.152: Determining Whether Two Individuals Are Holding Themselves Out as a Married Couple (TN 85, 12-25)"
+  year: 2025
+  container: "Social Security Administration, Program Operations Manual System"
+  jurisdiction: US
+  url: https://secure.ssa.gov/poms.nsf/lnx/0500501152
+  note: "Added 2026-11-08 (ssi-entry; worklist section 5, summary-mediated). Agency guidance, not law. Cited by ssi-marriage-penalty R4."
+- id: ssi-usc-1382a
+  type: statute
+  title: "42 U.S.C. 1382(a): Eligibility for benefits; resources and benefit rates"
+  year: null
+  container: "United States Code, Title 42"
+  jurisdiction: US
+  url: https://www.law.cornell.edu/uscode/text/42/1382
+  note: "Added 2026-11-08 (ssi-entry; worklist section 5: first 100,000 of 170,641 chars read, via a summarising fetch). Limits $2,000 / $3,000 as of 1 January 1989 (Pub. L. 98-369 s. 2611), not indexed. 2026 federal benefit rates are an unverified lead. Cited by ssi-marriage-penalty R1, R3, R5, R6, R7."
+- id: ssi-crs-rl33675
+  type: secondary
+  title: "Potential Effect of Marriage on SSI Eligibility and Benefits (CRS RL33675)"
+  author: [Congressional Research Service]
+  year: 2008
+  container: "CRS Report RL33675"
+  jurisdiction: US
+  url: https://www.everycrsreport.com/reports/RL33675.html
+  note: "Added 2026-11-08 (ssi-entry; worklist section 5, summary-mediated; author not shown). 2008 figures. Lists holding out as a third test but does not frame it as a displaced gate. Cited by ssi-marriage-penalty R5, R6."

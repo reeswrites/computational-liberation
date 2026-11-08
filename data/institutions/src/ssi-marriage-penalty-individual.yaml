@@ -1,0 +1,70 @@
+id: ssi-marriage-penalty-individual
+name: 'SSI without the marriage penalty (individual rate and limit regardless of marital status; holding-out test dropped)'
+extends: ssi-marriage-penalty
+rules_drop: [R2, R3, R4]
+rules_replace:
+- id: R5
+  plain: 'The agency may rate the claimant as an individual whatever the marital status of the pair (a reform: individual rate for all).'
+  attribute: agency
+  deontic: may
+  aim: (apply_individual_rate g c s)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: reviewed
+  source: 'UNVERIFIED reform: no reform text was read (S. 73 of 2025, named in plans/sourcing-worklist-marriage.md Gaps, is an unopened lead). The rule is the base R5 with its marital-status condition removed, which is what ''penalty removed'' means in the preregistration (plans/ssi-entry.md). Baseline text for the rule it replaces: CRS RL33675, ''a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.'' (carried from the worklist; summarising fetch).'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'a counterfactual, not a law: no reform text opened; condition deleted from base R5 by the encoder'
+  var_roles:
+    g: agency
+    c: claimant
+    s: spouse
+- id: R6
+  plain: 'The agency may apply the individual resource limit whatever the marital status of the pair (a reform: individual limit for all).'
+  attribute: agency
+  deontic: may
+  aim: (apply_individual_limit g c s)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: reviewed
+  source: 'UNVERIFIED reform: no reform text was read. The rule is the base R6 with its marital-status condition removed. Baseline text for the rule it replaces: 42 U.S.C. 1382(a)(3)(B), ''$2,000 on January 1, 1989'' for an individual (carried from the worklist; summarising fetch).'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'a counterfactual, not a law: no reform text opened; condition deleted from base R6 by the encoder'
+  var_roles:
+    g: agency
+    c: claimant
+    s: spouse
+expected_properties:
+  married_couple_rated: violated
+  married_couple_limited: violated
+  penalty_reaches_unmarried: unreachable_open
+  married_rated_individually: reachable
+  over_limit_ineligible: holds_to_k
+minimal_pair_of:
+  id: ssi-marriage-penalty
+  rule: R2,R3,R4,R5,R6
+  differs_on: married_couple_rated
+notes: 'This is a 5-rule reform pair, not a minimal pair (the field name `minimal_pair_of` is the dataset''s, ADR 0007 names one-rule pairs as the model). Revision 2 options for a one-rule pair: drop R3 alone (flips married_couple_limited), or drop R4 alone (holding out removed; flips penalty_reaches_unmarried). Dropping R2 alone leaves married pairs with no rate, which is why the reform edits R5 and R6. Penalty removed: R2, R3 (couple rate and limit gated on marriage) and R4 (the holding-out gate) are dropped, and R5, R6 lose their marital-status condition, so the individual rate and limit apply to every claimant. This is not one rule apart (three dropped, two edited); `rule` names the five rules (R2,R3,R4 dropped; R5,R6 replaced) and the pair is read on verdicts, not on the one-rule gate. R5 and R6 of the pair rest on no source (unverified counterfactuals). `violated` here means the power is absent, not that a law is broken; dollar amounts are not modelled. Holding out is DROPPED, not kept: with no couple rate there is nothing for the test to gate, and no reform text was read that keeps it (S. 73 of 2025 is an unopened lead; the CRS report gives rule and size only). The fluents `holds_out`, `cohabits` and the actions remain declared so the two entries share a vocabulary and can be compared; here they gate nothing. The resource bar (R1, R7) is kept: the reform removes the penalty, not the resource test. Preregistered in plans/ssi-entry.md before any run. Consent guard ruling, quoted exactly: "Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to benefits rules by the author, 2026-11-08."'
