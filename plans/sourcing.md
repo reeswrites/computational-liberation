@@ -52,6 +52,7 @@ Verification levels:
 - `snippet`: only a search snippet, abstract, or partial page was read.
 - `recalled`: cited from memory or second-hand (the old `[R]` tag); also a row whose old text claims it was read but records no quote.
 - `unverified`: no work identified, or the old string says `UNVERIFIED`.
+A summarising fetch (WebFetch or any tool that returns a model's summary instead of the raw text) is recorded as `snippet`, never `opened`, however verbatim its quotes look; only a raw read counts. Since 2026-11-08 CI fails an `opened` item without `accessed` (ISO date) and `excerpt` (check 6, `build.py --check` and `tests/test_sources.py`).
 A search-engine summary is not a snippet of the source; it is a lead, and changes no level. Never upgrade from memory.
 
 ### Backtest ground truth: `data/backtests/<backtest>-ground-truth.yaml`

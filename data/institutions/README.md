@@ -72,6 +72,10 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
   from the free-text `source` (conservative, re-runnable; hand settings in its `OVERRIDES`), reviewed in
   `provenance-migration-report.md`; `tests/test_sources.py` checks ids, vocabularies and excerpts. The free-text
   `source` stays until the migration is reviewed; never raise a level without opening the source.
+  `opened` requires `accessed` (ISO date) and a non-empty `excerpt`: `build.py --check` and `tests/test_sources.py` check 6 fail an
+  `opened` item without both, naming entry, rule and source_id. The card-only seat found provenance items carried from
+  summarising fetches and marked `opened` in two batches (SSI, hospital); a fetch nobody re-opened is `snippet` (ADR 0017 s.3).
+  The check is mechanical: it cannot tell a raw open from a dated summary, so `accessed` must mean a raw read.
 
 ## Revisions (dataset fixes after the first check-all, 21/36)
 
