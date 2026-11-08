@@ -14,6 +14,7 @@
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
 ## Roles
 
@@ -59,8 +60,8 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r7"></a>
 **R7**: 42 U.S.C. 1382(a)(1)(B) and (a)(2)(B) (the bar: eligible only if resources are not more than the limit; pin from the faithfulness seat's raw read, not re-opened by the builder) and (a)(3)(A)-(B) (the limits) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (summarising fetch; not re-opened; level snippet): the resource limits '$2,000 on January 1, 1989' (individual) and '$3,000 on January 1, 1989' (couple). A disability, not a sanctioned prohibition, hence or_else null. That exceeding the limit bars payment is read from the eligibility condition in (a)(1)(B); the `must_not` form is a reading of 'eligible only if'.
 
-- `ssi-usc-1382a` (s. 1382(a)(1)(B); (a)(2)(B); US; date n/a): **unverified**
-- `ssi-usc-1382a` (s. 1382(a)(3)(A)-(B); US; date 1989-01-01): **snippet** 2026-11-08: "$2,000 on January 1, 1989 ... $3,000 on January 1, 1989"
+- `ssi-usc-1382a` (s. 1382(a)(1)(B); (a)(2)(B); US; date n/a): **unverified** <https://www.law.cornell.edu/uscode/text/42/1382>
+- `ssi-usc-1382a` (s. 1382(a)(3)(A)-(B); US; date 1989-01-01): **snippet** 2026-11-08: "$2,000 on January 1, 1989 ... $3,000 on January 1, 1989" <https://www.law.cornell.edu/uscode/text/42/1382>
 
 
 ## Expected properties

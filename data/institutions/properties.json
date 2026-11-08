@@ -424,5 +424,48 @@
   "check": "invariant",
   "gloss": "A visitor the admitted patient has designated is admitted within one step, provided visiting was not clinically restricted at that step (42 CFR 482.13(h)(2), (h)(4)). Not applicable before 2011 (no designated fluent); holds_to_k after. The differs_on property of the hospital-visitation pair.",
   "formal": "(forall ((p agent) (x agent) (t0 step)) (=> (and (succ t0 t) (admitted p t0) (designated p x t0) (not (clinically_restricted p t0)) (admitted p t) (designated p x t)) (visiting x p t)))"
+ },
+ {
+  "name": "married_couple_rated",
+  "family": "marital_penalty",
+  "kind": "freedom",
+  "polarity": "unfreedom",
+  "check": "invariant",
+  "gloss": "Whenever two people are married, the benefits agency holds the power to rate them as a couple (the couple federal rate, combined income): marriage brings the couple rate. Its holding is the SSI marriage penalty (preregistered plans/ssi-entry.md, 2026-11-08); read as a power the rules grant (derived), not as an applied rate.",
+  "formal": "(forall ((c agent) (s agent)) (=> (married c s t) (couple_rate c s t)))"
+ },
+ {
+  "name": "married_couple_limited",
+  "family": "marital_penalty",
+  "kind": "freedom",
+  "polarity": "unfreedom",
+  "check": "invariant",
+  "gloss": "Whenever two people are married, the agency holds the power to apply the couple resource limit. Its holding is the resource half of the SSI marriage penalty (plans/ssi-entry.md).",
+  "formal": "(forall ((c agent) (s agent)) (=> (married c s t) (couple_limit c s t)))"
+ },
+ {
+  "name": "penalty_reaches_unmarried",
+  "family": "penalty_reach",
+  "kind": "failure_mode",
+  "check": "reachable",
+  "gloss": "Some pair who are not married are rated as a couple: the penalty reaches people the marriage rule alone would not touch, through a test of conduct (holding out). Reachable when a holding-out gate exists; open when only legal marriage gates the couple rate (plans/ssi-entry.md).",
+  "formal": "(exists ((c agent) (s agent)) (and (not (married c s t)) (couple_rate c s t)))"
+ },
+ {
+  "name": "married_rated_individually",
+  "family": "penalty_absent",
+  "kind": "structure",
+  "check": "reachable",
+  "gloss": "Some married pair are rated as individuals: marriage does not by itself bring the couple rate. The mirror of married_couple_rated, preregistered to separate ssi-marriage-penalty from its individual-rate pair (plans/ssi-entry.md).",
+  "formal": "(exists ((c agent) (s agent)) (and (married c s t) (individual_rate c s t)))"
+ },
+ {
+  "name": "over_limit_ineligible",
+  "family": "resource_test",
+  "kind": "freedom",
+  "polarity": "unfreedom",
+  "check": "invariant",
+  "gloss": "A claimant whose countable resources exceed the applicable limit is not eligible for payment. Its holding is the resource test itself (42 U.S.C. 1382(a)(3)); the encoding reads the limit as a boolean, not a dollar amount (plans/ssi-entry.md).",
+  "formal": "(forall ((c agent)) (=> (not (resources_under_limit c t)) (not (eligible c t))))"
  }
 ]

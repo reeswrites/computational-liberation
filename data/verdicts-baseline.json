@@ -993,6 +993,66 @@
    "verdict": "open"
   },
   {
+   "check": "invariant",
+   "institution": "ssi-marriage-penalty",
+   "property": "married_couple_limited",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "ssi-marriage-penalty",
+   "property": "married_couple_rated",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "ssi-marriage-penalty",
+   "property": "married_rated_individually",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "ssi-marriage-penalty",
+   "property": "over_limit_ineligible",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "ssi-marriage-penalty",
+   "property": "penalty_reaches_unmarried",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "ssi-marriage-penalty-individual",
+   "property": "married_couple_limited",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "ssi-marriage-penalty-individual",
+   "property": "married_couple_rated",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "ssi-marriage-penalty-individual",
+   "property": "married_rated_individually",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "ssi-marriage-penalty-individual",
+   "property": "over_limit_ineligible",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "ssi-marriage-penalty-individual",
+   "property": "penalty_reaches_unmarried",
+   "verdict": "open"
+  },
+  {
    "check": "reachable",
    "institution": "transferable-leave",
    "property": "care_assigned_by_sex",

@@ -14,6 +14,7 @@
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
 ## Roles
 
@@ -56,36 +57,36 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r2"></a>
 **R2**: 20 CFR 416.1802 'Effects of marriage on eligibility and amount of benefits' (https://www.law.cornell.edu/cfr/text/20/416.1802), as carried from plans/sourcing-worklist-marriage.md section 5 (a summarising fetch, not raw text; not re-opened for this row; level snippet): 'we will count your combined income and calculated the benefit amount for you as a couple.' (the worklist's quotation, typo included) and '(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.' The couple federal rate is lower than two individual rates (42 U.S.C. 1382(b)(2), not (a)(1)(B), per the faithfulness review's raw read; 1974 base rates $1,752 individual, $2,628 couple per the worklist; 2026 rates $994 / $1,491 are an unverified lead). Sanctioner none: no enforcement of the agency's duty is in the text read. Read as a power (`may`), not an applied rate; the statute is mandatory, which the encoding does not carry.
 
-- `ssi-cfr-416-1802` (s. 416.1802(b)(1); (d)(1); US; date n/a): **snippet** 2026-11-08: "we will count your combined income and calculated the benefit amount for you as a couple. ... (d)(1) Benefits depend on whether you are married or not married at the beginning of each month."
-- `ssi-usc-1382a` (s. 1382(b)(2); US; date n/a): **unverified**
+- `ssi-cfr-416-1802` (s. 416.1802(b)(1); (d)(1); US; date n/a): **snippet** 2026-11-08: "we will count your combined income and calculated the benefit amount for you as a couple. ... (d)(1) Benefits depend on whether you are married or not married at the beginning of each month." <https://www.law.cornell.edu/cfr/text/20/416.1802>
+- `ssi-usc-1382a` (s. 1382(b)(2); US; date n/a): **unverified** <https://www.law.cornell.edu/uscode/text/42/1382>
 
 <a id="src-r3"></a>
 **R3**: 42 U.S.C. 1382(a)(3)(A)-(B) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (first 100,000 of 170,641 characters, through a summarising fetch; not re-opened; level snippet): '$3,000 on January 1, 1989' for a couple and '$2,000 on January 1, 1989' for an individual (Pub. L. 98-369 s. 2611, not indexed to inflation; the 1.5 ratio is arithmetic). A pair of individuals may hold $4,000 together, so the couple limit is the lower of the two. Sanctioner none: no enforcement in the text read. The 2026 limits equal the 1989 figures per an unverified search-summary lead.
 
-- `ssi-usc-1382a` (s. 1382(a)(3)(A)-(B); US; date 1989-01-01): **snippet** 2026-11-08: "$3,000 on January 1, 1989 ... $2,000 on January 1, 1989"
+- `ssi-usc-1382a` (s. 1382(a)(3)(A)-(B); US; date 1989-01-01): **snippet** 2026-11-08: "$3,000 on January 1, 1989 ... $2,000 on January 1, 1989" <https://www.law.cornell.edu/uscode/text/42/1382>
 
 <a id="src-r4"></a>
 **R4**: 20 CFR 416.1806 (https://www.law.cornell.edu/cfr/text/20/416.1806), as carried from the worklist (a summarising fetch; not re-opened; level snippet): someone is a spouse for SSI purposes where (a)(3) 'You and an unrelated person of the opposite sex are living together in the same household' and 'you both lead people to believe that you are husband and wife.' POMS SI 00501.150 (TN 80, 02-25): 'Living together in the same household and holding themselves out as a married couple to the community in which they live.' POMS SI 00501.152 (TN 85, 12-25): 'both individuals lead people in the community in which they reside to believe they are a married couple'. POMS covers same-sex couples per a search summary; the Cornell regulation text still says opposite sex. This is the displaced gate: a conduct test that carries the couple rate to unmarried pairs. Sanctioner none (see notes): R4 is an agency `may` power with no duty to sanction, and the engine rejects a sanctioner without an or_else. Unencoded qualifiers: the regulation's `unrelated` and `at or after the time you apply`; the opposite-sex limit is deliberately not encoded (POMS). Overpayment recovery (20 CFR 416.537, not opened) sanctions the claimant under a different, unencoded rule.
 
-- `ssi-cfr-416-1806` (s. 416.1806(a)(3); US; date n/a): **snippet** 2026-11-08: "You and an unrelated person of the opposite sex are living together in the same household ... you both lead people to believe that you are husband and wife."
-- `ssi-poms-si-00501-150` (SI 00501.150; US; date n/a): **snippet** 2026-11-08: "Living together in the same household and holding themselves out as a married couple to the community in which they live."
-- `ssi-poms-si-00501-152` (SI 00501.152; US; date n/a): **snippet** 2026-11-08: "both individuals lead people in the community in which they reside to believe they are a married couple"
+- `ssi-cfr-416-1806` (s. 416.1806(a)(3); US; date n/a): **snippet** 2026-11-08: "You and an unrelated person of the opposite sex are living together in the same household ... you both lead people to believe that you are husband and wife." <https://www.law.cornell.edu/cfr/text/20/416.1806>
+- `ssi-poms-si-00501-150` (SI 00501.150; US; date n/a): **snippet** 2026-11-08: "Living together in the same household and holding themselves out as a married couple to the community in which they live." <https://secure.ssa.gov/poms.nsf/lnx/0500501150>
+- `ssi-poms-si-00501-152` (SI 00501.152; US; date n/a): **snippet** 2026-11-08: "both individuals lead people in the community in which they reside to believe they are a married couple" <https://secure.ssa.gov/poms.nsf/lnx/0500501152>
 
 <a id="src-r5"></a>
 **R5**: CRS RL33675 (https://www.everycrsreport.com/reports/RL33675.html), as carried from the worklist (summarising fetch; not re-opened): 'a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.' (so the unmarried are rated as individuals). 20 CFR 416.1802(d)(1) as in R2 (it does not itself state an individual rate for the unmarried). The complement condition (not married and not holding out) is the encoder's reading of the three tests in the worklist.
 
-- `ssi-crs-rl33675` (US; date 2008-01-30): **snippet** 2026-11-08: "a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income."
-- `ssi-cfr-416-1802` (s. 416.1802(d)(1); US; date n/a): **snippet** 2026-11-08: "Benefits depend on whether you are married or not married at the beginning of each month."
+- `ssi-crs-rl33675` (US; date 2008-01-30): **snippet** 2026-11-08: "a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income." <https://www.everycrsreport.com/reports/RL33675.html>
+- `ssi-cfr-416-1802` (s. 416.1802(d)(1); US; date n/a): **snippet** 2026-11-08: "Benefits depend on whether you are married or not married at the beginning of each month." <https://www.law.cornell.edu/cfr/text/20/416.1802>
 
 **R6**
 
-- `ssi-usc-1382a` (s. 1382(a)(3)(B); US; date 1989-01-01): **snippet** 2026-11-08: "$2,000 on January 1, 1989"
+- `ssi-usc-1382a` (s. 1382(a)(3)(B); US; date 1989-01-01): **snippet** 2026-11-08: "$2,000 on January 1, 1989" <https://www.law.cornell.edu/uscode/text/42/1382>
 
 <a id="src-r7"></a>
 **R7**: 42 U.S.C. 1382(a)(1)(B) and (a)(2)(B) (the bar: eligible only if resources are not more than the limit; pin from the faithfulness seat's raw read, not re-opened by the builder) and (a)(3)(A)-(B) (the limits) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (summarising fetch; not re-opened; level snippet): the resource limits '$2,000 on January 1, 1989' (individual) and '$3,000 on January 1, 1989' (couple). A disability, not a sanctioned prohibition, hence or_else null. That exceeding the limit bars payment is read from the eligibility condition in (a)(1)(B); the `must_not` form is a reading of 'eligible only if'.
 
-- `ssi-usc-1382a` (s. 1382(a)(1)(B); (a)(2)(B); US; date n/a): **unverified**
-- `ssi-usc-1382a` (s. 1382(a)(3)(A)-(B); US; date 1989-01-01): **snippet** 2026-11-08: "$2,000 on January 1, 1989 ... $3,000 on January 1, 1989"
+- `ssi-usc-1382a` (s. 1382(a)(1)(B); (a)(2)(B); US; date n/a): **unverified** <https://www.law.cornell.edu/uscode/text/42/1382>
+- `ssi-usc-1382a` (s. 1382(a)(3)(A)-(B); US; date 1989-01-01): **snippet** 2026-11-08: "$2,000 on January 1, 1989 ... $3,000 on January 1, 1989" <https://www.law.cornell.edu/uscode/text/42/1382>
 
 
 ## Expected properties
