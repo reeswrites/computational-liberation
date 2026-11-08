@@ -1,0 +1,354 @@
+id: ssi-marriage-penalty
+name: 'SSI marriage penalty (couple rate and resource limit gated on marriage, extended to unmarried couples who hold out)'
+roles:
+- name: claimant
+  gloss: the person who applies for or receives SSI (the benefit's subject)
+- name: spouse
+  gloss: the other person of the pair, a legal spouse or a cohabitant who holds out as one
+- name: agency
+  gloss: the Social Security Administration, which decides marital status and applies the rate and the limit
+fluents:
+- name: married
+  arity: 2
+  gloss: c and s are married (legal marriage)
+  arg_roles: [claimant, spouse]
+- name: cohabits
+  arity: 2
+  gloss: c and s live together in the same household
+  arg_roles: [claimant, spouse]
+- name: holds_out
+  arity: 2
+  gloss: c and s lead people in their community to believe they are married (the holding-out test)
+  arg_roles: [claimant, spouse]
+- name: resources_under_limit
+  arity: 1
+  gloss: the countable resources c is assessed on are within the limit that applies (read as a boolean; dollar amounts are not represented)
+  arg_roles: [claimant]
+- name: couple_rate
+  arity: 2
+  gloss: the agency holds the power to rate c and s as a couple (couple federal rate, combined income); derived from the rules
+  params: [c, s]
+  derived: (exists ((g agent)) (enabled apply_couple_rate g c s))
+  arg_roles: [claimant, spouse]
+- name: couple_limit
+  arity: 2
+  gloss: the agency holds the power to apply the couple resource limit to c and s; derived from the rules
+  params: [c, s]
+  derived: (exists ((g agent)) (enabled apply_couple_limit g c s))
+  arg_roles: [claimant, spouse]
+- name: individual_rate
+  arity: 2
+  gloss: the agency holds the power to rate c as an individual although s is the other person of the pair; derived from the rules
+  params: [c, s]
+  derived: (exists ((g agent)) (enabled apply_individual_rate g c s))
+  arg_roles: [claimant, spouse]
+- name: individual_limit
+  arity: 2
+  gloss: the agency holds the power to apply the individual resource limit to c; derived from the rules
+  params: [c, s]
+  derived: (exists ((g agent)) (enabled apply_individual_limit g c s))
+  arg_roles: [claimant, spouse]
+- name: eligible
+  arity: 1
+  gloss: the agency holds the power to pay c a benefit; derived from the rules
+  params: [c]
+  derived: (exists ((g agent)) (enabled pay_benefit g c))
+  arg_roles: [claimant]
+actions:
+- name: marry
+  args: [c, s]
+  effects:
+  - fluent: married
+    args: [c, s]
+    value: true
+- name: divorce
+  args: [c, s]
+  effects:
+  - fluent: married
+    args: [c, s]
+    value: false
+- name: cohabit
+  args: [c, s]
+  effects:
+  - fluent: cohabits
+    args: [c, s]
+    value: true
+- name: separate
+  args: [c, s]
+  effects:
+  - fluent: cohabits
+    args: [c, s]
+    value: false
+  - fluent: holds_out
+    args: [c, s]
+    value: false
+- name: present_as_married
+  args: [c, s]
+  effects:
+  - fluent: holds_out
+    args: [c, s]
+    value: true
+- name: cease_holding_out
+  args: [c, s]
+  effects:
+  - fluent: holds_out
+    args: [c, s]
+    value: false
+- name: accumulate
+  args: [c]
+  effects:
+  - fluent: resources_under_limit
+    args: [c]
+    value: false
+- name: spend_down
+  args: [c]
+  effects:
+  - fluent: resources_under_limit
+    args: [c]
+    value: true
+- name: apply_couple_rate
+  args: [g, c, s]
+  effects: []
+- name: apply_couple_limit
+  args: [g, c, s]
+  effects: []
+- name: apply_individual_rate
+  args: [g, c, s]
+  effects: []
+- name: apply_individual_limit
+  args: [g, c, s]
+  effects: []
+- name: pay_benefit
+  args: [g, c]
+  effects: []
+rules:
+- id: R1
+  plain: 'The agency may pay the claimant a benefit (42 U.S.C. 1382(a)); the encoder''s grant, so that the resource bar in R7 has a power to remove.'
+  attribute: agency
+  deontic: may
+  aim: (pay_benefit g c)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: reviewed
+  source: 'The SSI payment power, 42 U.S.C. 1382(a). UNVERIFIED as a rule row: no excerpt supports a bare grant of the power to pay; it is the encoder''s skeleton so that R7 (the resource bar) removes something. Sanctioner none: the sources opened name no enforcement of the agency''s payment duty.'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'encoder skeleton; 42 U.S.C. 1382(a) is the program statute (ssi-usc-1382a) but the grant row rests on no excerpt'
+  var_roles:
+    g: agency
+    c: claimant
+- id: R2
+  plain: 'The agency may rate the claimant and the other person as a couple, counting combined income at the couple rate, when they are married (20 CFR 416.1802).'
+  attribute: agency
+  deontic: may
+  aim: (apply_couple_rate g c s)
+  conditions: (married c s)
+  or_else: null
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: reviewed
+  function: penalises_marriage_rate
+  source: '20 CFR 416.1802 ''Effects of marriage on eligibility and amount of benefits'' (https://www.law.cornell.edu/cfr/text/20/416.1802), as carried from plans/sourcing-worklist-marriage.md section 5 (a summarising fetch, not raw text; not re-opened for this row): ''we will count your combined income and calculated the benefit amount for you as a couple.'' (the worklist''s quotation, typo included) and ''(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.'' The couple federal rate is lower than two individual rates (42 U.S.C. 1382(a)(1)(B); 1974 base rates $1,752 individual, $2,628 couple per the worklist; 2026 rates $994 / $1,491 are an unverified lead). Sanctioner none: no enforcement of the agency''s duty is in the text read. Read as a power (`may`), not an applied rate; the statute is mandatory, which the encoding does not carry.'
+  provenance:
+  - source_id: ssi-cfr-416-1802
+    pin: s. 416.1802; (d)(1)
+    jurisdiction: US
+    effective_date: null
+    verification: opened
+    excerpt: we will count your combined income and calculated the benefit amount for you as a couple. ... (d)(1) Benefits depend on whether you are married or not married at the beginning of each month.
+    accessed: '2026-11-08'
+    url: https://www.law.cornell.edu/cfr/text/20/416.1802
+    note: 'level and excerpt carried from the sourcing worklist (summarising fetch, not raw text); not re-opened by the encoder; effective date unread; 416.1804, 416.1805 and the deeming sections 416.1160-1163 not opened'
+  var_roles:
+    g: agency
+    c: claimant
+    s: spouse
+- id: R3
+  plain: 'The agency may apply the couple resource limit ($3,000) rather than two individual limits ($2,000 each) when they are married (42 U.S.C. 1382(a)(3)).'
+  attribute: agency
+  deontic: may
+  aim: (apply_couple_limit g c s)
+  conditions: (married c s)
+  or_else: null
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: reviewed
+  function: penalises_marriage_limit
+  source: '42 U.S.C. 1382(a)(3)(A)-(B) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (first 100,000 of 170,641 characters, through a summarising fetch; not re-opened): ''$3,000 on January 1, 1989'' for a couple and ''$2,000 on January 1, 1989'' for an individual (Pub. L. 98-369 s. 2611, not indexed to inflation; the 1.5 ratio is arithmetic). A pair of individuals may hold $4,000 together, so the couple limit is the lower of the two. Sanctioner none: no enforcement in the text read. The 2026 limits equal the 1989 figures per an unverified search-summary lead.'
+  provenance:
+  - source_id: ssi-usc-1382a
+    pin: s. 1382(a)(3)(A)-(B)
+    jurisdiction: US
+    effective_date: '1989-01-01'
+    verification: opened
+    excerpt: $3,000 on January 1, 1989 ... $2,000 on January 1, 1989
+    accessed: '2026-11-08'
+    url: https://www.law.cornell.edu/uscode/text/42/1382
+    note: 'level and excerpt carried from the worklist (summarising fetch, partial text); the dollar figures are not represented in the encoding; the date is the statutory step date, not an effective date of the rule'
+  var_roles:
+    g: agency
+    c: claimant
+    s: spouse
+- id: R4
+  plain: 'The agency may rate cohabitants as a couple, as if married, when they live together and lead people to believe they are husband and wife (20 CFR 416.1806; POMS SI 00501.150, .152).'
+  attribute: agency
+  deontic: may
+  aim: (apply_couple_rate g c s)
+  conditions: (and (cohabits c s) (holds_out c s))
+  or_else: null
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: reviewed
+  function: extends_penalty_to_holding_out
+  source: '20 CFR 416.1806 (https://www.law.cornell.edu/cfr/text/20/416.1806), as carried from the worklist (a summarising fetch; not re-opened): someone is a spouse for SSI purposes where (a)(3) ''You and an unrelated person of the opposite sex are living together in the same household'' and ''you both lead people to believe that you are husband and wife.'' POMS SI 00501.150 (TN 80, 02-25): ''Living together in the same household and holding themselves out as a married couple to the community in which they live.'' POMS SI 00501.152 (TN 85, 12-25): ''both individuals lead people in the community in which they reside to believe they are a married couple''. POMS covers same-sex couples per a search summary; the Cornell regulation text still says opposite sex. This is the displaced gate: a conduct test that carries the couple rate to unmarried pairs. Sanctioner none (see notes): the sources name no sanction for the agency''s duty and the engine rejects a sanctioner without an or_else.'
+  provenance:
+  - source_id: ssi-cfr-416-1806
+    pin: s. 416.1806(a)(3)
+    jurisdiction: US
+    effective_date: null
+    verification: opened
+    excerpt: You and an unrelated person of the opposite sex are living together in the same household ... you both lead people to believe that you are husband and wife.
+    accessed: '2026-11-08'
+    url: https://www.law.cornell.edu/cfr/text/20/416.1806
+    note: 'carried from the worklist (summarising fetch); effective date unread; the text may be unamended after Obergefell'
+  - source_id: ssi-poms-si-00501-150
+    pin: SI 00501.150
+    jurisdiction: US
+    effective_date: null
+    verification: opened
+    excerpt: Living together in the same household and holding themselves out as a married couple to the community in which they live.
+    accessed: '2026-11-08'
+    url: https://secure.ssa.gov/poms.nsf/lnx/0500501150
+    note: 'carried from the worklist (summarising fetch); TN 80 (02-25); agency guidance, not law; G.2 presumption on resumed cohabitation of former spouses is not encoded'
+  - source_id: ssi-poms-si-00501-152
+    pin: SI 00501.152
+    jurisdiction: US
+    effective_date: null
+    verification: opened
+    excerpt: both individuals lead people in the community in which they reside to believe they are a married couple
+    accessed: '2026-11-08'
+    url: https://secure.ssa.gov/poms.nsf/lnx/0500501152
+    note: 'carried from the worklist (summarising fetch); TN 85 (12-25); examples (calling each other spouse, shared name, joint records) are not encoded'
+  var_roles:
+    g: agency
+    c: claimant
+    s: spouse
+- id: R5
+  plain: 'The agency may rate the claimant as an individual when the pair are neither married nor holding out (20 CFR 416.1802).'
+  attribute: agency
+  deontic: may
+  aim: (apply_individual_rate g c s)
+  conditions: (not (or (married c s) (and (cohabits c s) (holds_out c s))))
+  or_else: null
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: reviewed
+  source: 'CRS RL33675 (https://www.everycrsreport.com/reports/RL33675.html), as carried from the worklist (summarising fetch; not re-opened): ''a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.'' (so the unmarried are rated as individuals). 20 CFR 416.1802(d)(1) as in R2. The complement condition (not married and not holding out) is the encoder''s reading of the three tests in the worklist.'
+  provenance:
+  - source_id: ssi-crs-rl33675
+    pin: null
+    jurisdiction: US
+    effective_date: '2008-01-30'
+    verification: opened
+    excerpt: a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.
+    accessed: '2026-11-08'
+    url: https://www.everycrsreport.com/reports/RL33675.html
+    note: 'carried from the worklist (summarising fetch); 2008 report, figures then: two singles up to $1,348 a month combined against $1,011 for a couple; the complement condition is the encoder''s'
+  var_roles:
+    g: agency
+    c: claimant
+    s: spouse
+- id: R6
+  plain: 'The agency may apply the individual resource limit ($2,000) when the pair are neither married nor holding out (42 U.S.C. 1382(a)(3)).'
+  attribute: agency
+  deontic: may
+  aim: (apply_individual_limit g c s)
+  conditions: (not (or (married c s) (and (cohabits c s) (holds_out c s))))
+  or_else: null
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: reviewed
+  source: '42 U.S.C. 1382(a)(3)(B) as carried from the worklist (summarising fetch; not re-opened): ''$2,000 on January 1, 1989'' for an individual, ''$3,000 on January 1, 1989'' for a couple. The complement condition is the encoder''s reading.'
+  provenance:
+  - source_id: ssi-usc-1382a
+    pin: s. 1382(a)(3)(B)
+    jurisdiction: US
+    effective_date: '1989-01-01'
+    verification: opened
+    excerpt: $2,000 on January 1, 1989
+    accessed: '2026-11-08'
+    url: https://www.law.cornell.edu/uscode/text/42/1382
+    note: 'carried from the worklist (summarising fetch, partial text); the dollar figure is not represented; the complement condition is the encoder''s'
+  var_roles:
+    g: agency
+    c: claimant
+    s: spouse
+- id: R7
+  plain: 'The agency cannot pay the claimant a benefit while the claimant''s countable resources exceed the applicable limit: no such power exists (42 U.S.C. 1382(a)(3)).'
+  attribute: agency
+  deontic: must_not
+  aim: (pay_benefit g c)
+  conditions: (not (resources_under_limit c))
+  or_else: null
+  strand: rival
+  implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: reviewed
+  source: '42 U.S.C. 1382(a)(3) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (summarising fetch; not re-opened): the resource limits ''$2,000 on January 1, 1989'' (individual) and ''$3,000 on January 1, 1989'' (couple). A disability, not a sanctioned prohibition, hence or_else null. That exceeding the limit bars payment is the encoder''s reading: the operative text of (a)(3)(A) was not read.'
+  provenance:
+  - source_id: ssi-usc-1382a
+    pin: s. 1382(a)(3)(A)-(B)
+    jurisdiction: US
+    effective_date: '1989-01-01'
+    verification: opened
+    excerpt: $2,000 on January 1, 1989 ... $3,000 on January 1, 1989
+    accessed: '2026-11-08'
+    url: https://www.law.cornell.edu/uscode/text/42/1382
+    note: 'carried from the worklist (summarising fetch, partial text); the limit amounts are opened, the consequence of exceeding them (no payment) is the encoder''s reading and is unverified'
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'the bar itself (an over-limit claimant is ineligible) rests on no excerpt; the (a)(3)(A) operative text was not read'
+  var_roles:
+    g: agency
+    c: claimant
+source_text: 'Per the sourcing worklist (summarising fetches, not raw text): 20 CFR 416.1802 (''we will count your combined income and calculated the benefit amount for you as a couple.''; ''(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.''); 20 CFR 416.1806 (a)(3) (cohabitants who ''lead people to believe that you are husband and wife'' are spouses for SSI); SSA POMS SI 00501.150 and .152 (holding out); 42 U.S.C. 1382(a)(3) (resource limits $2,000 individual and $3,000 couple as of 1 January 1989); CRS RL33675 (a married couple has a lower resource limit, a lower maximum federal benefit and a lower amount of excluded income).'
+expected_properties:
+  married_couple_rated: holds_to_k
+  married_couple_limited: holds_to_k
+  penalty_reaches_unmarried: reachable
+  married_rated_individually: unreachable_open
+  over_limit_ineligible: holds_to_k
+initial:
+- (resources_under_limit claimant)
+isomorphic_to: []
+not_isomorphic_to: [coverture-household, police-crisis, cps, lease]
+minimal_pair_of: null
+notes: 'SSI marriage penalty, encoded as powers the rules grant the agency (the project''s convention: a derived fluent reads `enabled`). Roles claimant, spouse, agency; `married` arity 2 typed [claimant, spouse] so it can be aliased to partner_a / partner_b for composition with coverture-household-us (plans/composition.md; ADR 0018). Preregistered in plans/ssi-entry.md before any run. Encoded as `may` powers, not the statute''s mandatory ''must'': a must on an action fires every step and blocks the other actions (ADR 0009), and a must-be would need the establishing action to carry the rate. Dollar amounts are not represented: the couple penalty appears only as which limit and which rate the agency is empowered to apply. Deviations from the brief, recorded: (1) R4, the displaced gate, is `kind: formal, sanctioner: none`, not `state`: the engine rejects a sanctioner without an or_else, and the only sanction rule available (recovery of overpayments, SSA appeal) is in no source opened, so inventing one would be the encoder''s; the displaced reading therefore cannot lean on a sanctioner difference and reads attribute sets only. (2) Holding out is encoded as a power on the same aim as R2 (a second route to the couple rate), not as a rewrite of `married`, because a derived fluent cannot read `married or holds_out`. Unverified or unread: 20 CFR 416.1804, 416.1805 and the deeming sections 416.1160-1163; effective dates of 416.1806; 2026 federal benefit rates and limits (a search-summary lead); the operative text of 42 U.S.C. 1382(a)(3)(A); no secondary source frames holding out as a displaced gate (CRS gives rule and size only); every `opened` level and excerpt is carried from the worklist, whose fetches returned a summary, not raw text, and was not re-opened here. Vocabulary is the worklist''s ASSUMED vocabulary. No `is_subject`, `can_exit` or care fluents are declared, so none of the 34 older properties is applicable to this entry alone; they become applicable only in a composite (what P2 needs is in plans/ssi-entry.md). Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to benefits rules by the author, 2026-11-08.'
