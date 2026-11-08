@@ -232,3 +232,27 @@ Stop conditions (any one stops the batch before the next step; the preregistrati
 | B6 coverture R2 | do not touch | no | yes if touched: breaks the care leg, gate (b) FAIL |
 | B7 ectogenesis R3 registry sanction | drop `or_else` in both files | no | no on verdicts; iso guard claim must hold both sides |
 | Card columns for kind/sanctioner | build.py change before 3b | no | no |
+
+## 6. Author rulings (2026-11-08, after reading sections 2–5; nothing above edited)
+
+| Item | Ruling |
+|---|---|
+| A1 cps R1 | apply as recommended (re-encode with `cause_to_believe`, prose fix) |
+| A2 cps R11 | re-source only; counsel stands in for the guardian ad litem (326.5), disclosed |
+| A3 kibbutz R5 / R1 | apply as recommended |
+| A4 public-library R3 | re-gloss `disruptive` as continued disruption after the warning; no new rule |
+| A5 coverture R4 | prose exception only |
+| A6 coverture R7 | **re-source, keep the disability**; re-pin to the incapacity passage; card says "encoded as no power" |
+| A7 coverture-us R6 | **prose fix now**; `exit_ground` experiment as its own preregistration (3d), lands only on a later say-so |
+| A8 naming-convention | re-source; `kind: strategy` |
+| B1 norm → formal | **retag only the four with opened text** (crisis-team R8, mwpa R10/R12, footbinding R10); hold companion R6/R9/R11 and the leave R9s at `norm` with the "text not opened" note |
+| B2 norm → strategy | **retag all seven**, `must` kept; the card states both: nobody enforces it, the engine still reads a duty. Resolves the ectogenesis/surrogacy R5 double listing in favour of `strategy` |
+| B3 norm → drop | **convert to `default_capacity`** in their own preregistration (3c); ABM question recorded as a known limit |
+| B4, B5 | apply |
+| B6 companion R5 | **two-step experiment on a copy** (R12 + `or_else`, then widen `can_sanction`), each predicted before its run; land decision after step 2 |
+| B6 lease R2 | open Civ. Code 1942 first; sanctioner vocabulary question deferred until then |
+| B6 coverture R2 | do not touch |
+| B7 ectogenesis R3 | apply |
+| Card columns | apply before 3b |
+
+Also ruled today, outside this brief: SSI revision 2 item 1 (add `cohabits`) and item 5 (sex unencoded), plans/ssi-entry.md; hospital "guarantee lost, possibility kept" = displaced, to the patient, plans/informal-rules.md.
