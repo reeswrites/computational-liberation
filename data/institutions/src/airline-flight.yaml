@@ -239,6 +239,8 @@ rules:
     accessed: null
     url: null
     note: old source string says UNVERIFIED
+  var_roles:
+    p: passenger
 - id: R6
   plain: 'The passenger may complain at any time.'
   attribute: passenger
@@ -271,6 +273,8 @@ rules:
     accessed: null
     url: null
     note: old source string says UNVERIFIED
+  var_roles:
+    p: passenger
 source_text: 'Reconstruction, not a quotation: a flight''s crew must care for passengers aboard, may restrain a disruptive passenger, and a passenger must not leave in flight (may leave on the ground); the passenger may complain. Supplied by the third review (2026-11-03) as a structural negative control for the care+control match.'
 expected_properties:
   subject_cannot_exit: reachable

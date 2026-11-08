@@ -35,12 +35,12 @@
 
 ## Variables
 
-- R1: `lb` = librarian (action open_library, effects)
+- R1: `lb` = librarian (rule var_roles)
 - R2: `lb` = librarian (rule var_roles); `p` = patron (rule var_roles)
-- R3: `lb` = librarian (action suspend, effects); `p` = patron (rule var_roles)
-- R4: `p` = patron (action leave, effects)
-- R5: `p` = patron (action enter, effects); `lb` = librarian (rule var_roles)
-- R6: `p` = patron (fluent present)
+- R3: `lb` = librarian (rule var_roles); `p` = patron (rule var_roles)
+- R4: `p` = patron (rule var_roles)
+- R5: `p` = patron (rule var_roles); `lb` = librarian (rule var_roles)
+- R6: `p` = patron (rule var_roles)
 
 ## Sources
 

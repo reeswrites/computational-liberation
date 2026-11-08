@@ -112,6 +112,7 @@ rules:
     note: 'no work named; rationale: a lease is formed by agreement'
   var_roles:
     t: tenant
+    l: landlord
 - id: R2
   plain: 'The premises being habitable must hold when leased to the tenant, the landlord being bound (Cal. Civ. Code 1941).'
   attribute: landlord
@@ -163,6 +164,7 @@ rules:
     note: cited with no record of reading in this row's source; re-open to upgrade
   var_roles:
     t: tenant
+    l: landlord
 - id: R4
   plain: 'The tenant may vacate when the premises are leased to the tenant (Cal. Civ. Code 1946).'
   attribute: tenant
@@ -188,6 +190,7 @@ rules:
     note: cited with no record of reading in this row's source; re-open to upgrade
   var_roles:
     l: landlord
+    t: tenant
 - id: R5
   plain: 'Rent being paid must hold for the tenant when the premises are leased, or else the landlord may evict (R3) (Cal. Code Civ. Proc. 1161).'
   attribute: tenant

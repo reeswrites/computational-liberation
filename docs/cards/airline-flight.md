@@ -37,8 +37,8 @@
 - R1: `c` = crew (rule var_roles); `p` = passenger (rule var_roles)
 - R2: `c` = crew (rule var_roles); `p` = passenger (rule var_roles)
 - R3: `c` = crew (rule var_roles); `p` = passenger (rule var_roles)
-- R4: `p` = passenger (action leave, effects)
-- R6: `p` = unbound (encoder to fix)
+- R4: `p` = passenger (rule var_roles)
+- R6: `p` = passenger (rule var_roles)
 
 ## Sources
 

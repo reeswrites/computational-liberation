@@ -171,6 +171,7 @@ rules:
     note: long s modernised from the OCR
   var_roles:
     w: wife
+    h: husband
 - id: R2
   plain: 'The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15).'
   attribute: husband
@@ -250,6 +251,7 @@ rules:
     note: long s modernised from the OCR; the same passage excepts a husband who has abjured the realm or is banished (she then sues as a feme sole), an exception the row does not encode; earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
   var_roles:
     h: husband
+    w: wife
 - id: R5
   plain: 'The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15).'
   attribute: husband
@@ -275,6 +277,7 @@ rules:
     note: long s modernised from the OCR; earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
   var_roles:
     w: wife
+    h: husband
   choices: 'Broad reading (the encoding until 2026-11-04): may chastise whenever married; the care+control match with police-crisis R3 (detain) and cps R3 (remove) was read on it. Narrow reading (chosen 2026-11-04): Blackstone''s text makes moderate correction ''the old law'' and permits restraint only ''in case of any gross misbehaviour''; the fluent misbehaves and the free action misbehave are the encoder''s device for that condition.'
 - id: R6
   plain: 'The wife cannot leave the marriage while married: no such power exists (no unilateral exit before the Matrimonial Causes Act 1857; unverified).'
@@ -310,6 +313,7 @@ rules:
     note: read through the OCR of the enacted PDF (margin notes dropped); s. 2 shows the pre-1857 remedies sat in the ecclesiastical courts; s. 27 gives the wife dissolution only for the husband's aggravated adultery, so even after 1857 she has no exit at her own will; effective_date is the act's year, the commencement section was not read
   var_roles:
     h: husband
+    w: wife
 - id: R7
   plain: 'The wife cannot contract in her own name while married: no such power exists (Blackstone I.15).'
   attribute: wife
@@ -335,6 +339,7 @@ rules:
     note: long s modernised; the OCR prints 'converture' in the first passage; 'void, or at least voidable' is weaker than the row's 'no such power exists' (voidable acts bind until avoided); the first passage is introduced as acts done 'by his compulsion', and the second concerns compacts between the spouses, not her capacity to contract with third parties (council 2026-11-06); earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
   var_roles:
     h: husband
+    w: wife
 source_text: '''By marriage, the husband and wife are one person in law: that is, the very being or legal existence of the woman is suspended during the marriage, or at least is incorporated and consolidated into that of the husband: under whose wing, protection, and cover, she performs every thing; and is therefore called ... a feme-covert.'' He cannot grant anything to her or covenant with her, she cannot sue in her own name, and ''the husband is bound to provide his wife with necessaries by law''. Blackstone, Commentaries on the Laws of England, Book I, ch. 15 (Oxford: Clarendon, 1765). Passage checked at https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/'
 expected_properties:
   dependent_cannot_exit: reachable

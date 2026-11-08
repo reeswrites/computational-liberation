@@ -55,6 +55,8 @@ rules:
     accessed: '2026-11-06'
     url: https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf
     note: accepted manuscript, not the Science typeset text (no Science page numbers); free text entry each round implies either name may be used at any time; the committed minority are confederates who push only the new name; the 25% threshold is stated as 'not expected to be a universal value'
+  var_roles:
+    m: member
 - id: R2
   plain: 'A member may use the new name at any time (Centola et al. 2018).'
   attribute: member
@@ -78,6 +80,8 @@ rules:
     accessed: '2026-11-06'
     url: https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf
     note: accepted manuscript, not the Science typeset text (no Science page numbers); free text entry each round implies either name may be used at any time; the committed minority are confederates who push only the new name; the 25% threshold is stated as 'not expected to be a universal value'
+  var_roles:
+    m: member
 payoffs:
   use_old: 1.0
   use_new: 1.0

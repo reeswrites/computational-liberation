@@ -42,17 +42,17 @@
 
 ## Variables
 
-- R1: `d` = unbound (encoder to fix); `o` = officer (rule var_roles); `s` = subject (rule var_roles)
+- R1: `d` = dispatcher (rule var_roles); `o` = officer (rule var_roles); `s` = subject (rule var_roles)
 - R2: `f` = facility (rule var_roles); `s` = subject (rule var_roles)
-- R3: `o` = unbound (encoder to fix); `f` = facility (rule var_roles); `s` = subject (rule var_roles)
-- R4: `s` = subject (fluent in_custody)
-- R5: `o` = unbound (encoder to fix); `s` = subject (rule var_roles)
-- R6: `o` = unbound (encoder to fix)
-- R7: `f` = unbound (encoder to fix); `s` = subject (rule var_roles)
-- R8: `s` = subject (fluent in_custody)
-- R10: `s` = unbound (encoder to fix)
-- R11: `f` = facility (action hold, effects); `s` = subject (rule var_roles)
-- R12: `f` = unbound (encoder to fix); `s` = subject (rule var_roles)
+- R3: `o` = officer (rule var_roles); `f` = facility (rule var_roles); `s` = subject (rule var_roles)
+- R4: `s` = subject (rule var_roles)
+- R5: `o` = officer (rule var_roles); `s` = subject (rule var_roles)
+- R6: `o` = officer (rule var_roles)
+- R7: `f` = facility (rule var_roles); `s` = subject (rule var_roles)
+- R8: `s` = subject (rule var_roles)
+- R10: `s` = subject (rule var_roles)
+- R11: `f` = facility (rule var_roles); `s` = subject (rule var_roles)
+- R12: `f` = facility (rule var_roles); `s` = subject (rule var_roles)
 
 ## Sources
 

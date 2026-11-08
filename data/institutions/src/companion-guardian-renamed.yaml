@@ -209,6 +209,7 @@ rules:
     note: cited for the role name only, not for this rule; no read record in this row (the entry source_text says read); 'P.L. 2001 ch. 72' is the session law, not an effective date
   var_roles:
     a: animal
+    g: guardian
 - id: R2
   plain: 'The guardian may have the animal euthanized when the guardian owns it.'
   attribute: guardian
@@ -234,6 +235,7 @@ rules:
     note: 'no work named; rationale: owner may have the animal euthanized by a veterinarian'
   var_roles:
     a: animal
+    g: guardian
 - id: R3
   plain: 'The guardian must not abandon the animal when the guardian owns it, or else the state may prosecute (R4) (Cal. Penal Code 597s).'
   attribute: guardian
@@ -259,6 +261,7 @@ rules:
     note: the page gives the text as 'updated Jan. 1, 2000' and its source as leginfo.legislature.ca.gov; (b) exempts releasing native wildlife
   var_roles:
     a: animal
+    g: guardian
 - id: R4
   plain: 'The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s).'
   attribute: state
@@ -335,6 +338,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7)'
+  var_roles:
+    a: animal
 - id: R7
   plain: 'The state may impound the animal when it is at large.'
   attribute: state
@@ -385,6 +390,7 @@ rules:
     note: 'no work named; rationale: incident of ownership'
   var_roles:
     a: animal
+    g: guardian
 - id: R9
   plain: '(practice, not written) The court cannot reassign custody of the animal at any time: no such power exists.'
   attribute: court
@@ -436,6 +442,7 @@ rules:
     note: 'no work named; rationale: feeding is the owner''s act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled'
   var_roles:
     a: animal
+    g: guardian
 - id: R11
   plain: '(practice, not written) The animal cannot sue in its own name at any time: no such power exists.'
   attribute: animal
@@ -459,6 +466,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: implicit: an animal is property and cannot sue in its own name (a disability, or_else null)'
+  var_roles:
+    a: animal
 source_text: '''Wherever the word "owner" shall appear in this chapter it shall also mean and may be interchanged with the word "guardian"'', R.I. Gen. Laws s. 4-13-41 (P.L. 2001 ch. 72 s. 3), read at https://webserver.rilegislature.gov/Statutes/TITLE4/4-13/4-13-41.htm. Boulder, Colorado made the same owner->guardian wording change in its animal ordinances in July 2000; the assistant city attorney who rewrote the passages said ''I''ve always viewed [the wording change] as symbolic'' (Westword, read at https://www.westword.com/?p=40702255; the ordinance text itself was not opened).'
 expected_properties:
   no_standing_persists: persists

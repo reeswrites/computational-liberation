@@ -42,17 +42,17 @@
 
 ## Variables
 
-- R1: `g` = guardian (action transfer, effects); `a` = animal (rule var_roles); `o2` = guardian (action transfer, effects)
-- R2: `g` = guardian (fluent owns); `a` = animal (rule var_roles)
-- R3: `g` = guardian (action abandon, effects); `a` = animal (rule var_roles)
+- R1: `g` = guardian (rule var_roles); `a` = animal (rule var_roles); `o2` = guardian (action transfer, effects)
+- R2: `g` = guardian (rule var_roles); `a` = animal (rule var_roles)
+- R3: `g` = guardian (rule var_roles); `a` = animal (rule var_roles)
 - R4: `g` = guardian (rule var_roles); `a` = animal (rule var_roles)
 - R5: `g` = guardian (rule var_roles); `a` = animal (rule var_roles)
-- R6: `a` = animal (action leave, effects)
+- R6: `a` = animal (rule var_roles)
 - R7: `a` = animal (rule var_roles)
-- R8: `g` = guardian (fluent owns); `a` = animal (rule var_roles)
+- R8: `g` = guardian (rule var_roles); `a` = animal (rule var_roles)
 - R9: `g` = guardian (rule var_roles); `a` = animal (rule var_roles)
-- R10: `g` = guardian (action feed, effects); `a` = animal (rule var_roles)
-- R11: `a` = unbound (encoder to fix)
+- R10: `g` = guardian (rule var_roles); `a` = animal (rule var_roles)
+- R11: `a` = animal (rule var_roles)
 
 ## Sources
 

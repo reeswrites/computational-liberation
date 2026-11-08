@@ -163,6 +163,7 @@ rules:
   var_roles:
     r: responder
     s: subject
+    d: dispatcher
 - id: R2
   plain: 'The responder providing care to the subject must hold when the responder is responding to the subject and the subject is in crisis (Denver STAR).'
   attribute: responder
@@ -215,6 +216,7 @@ rules:
     note: cited with no record of reading in this row's source; re-open to upgrade
   var_roles:
     s: subject
+    r: responder
 - id: R4
   plain: 'The responder cannot detain the subject at any time: no such power exists (Denver STAR).'
   attribute: responder
@@ -240,6 +242,7 @@ rules:
     note: 'cited with no record of reading in this row''s source; quote in the old string (no read date): ''non-police response''; re-open to upgrade'
   var_roles:
     s: subject
+    r: responder
 - id: R5
   plain: 'The subject may leave at any time (Denver STAR, voluntary encounter).'
   attribute: subject
@@ -263,6 +266,8 @@ rules:
     accessed: null
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
+  var_roles:
+    s: subject
 - id: R6
   plain: 'The responder cannot carry a weapon at any time: no such power exists (Denver STAR, unarmed).'
   attribute: responder
@@ -286,6 +291,8 @@ rules:
     accessed: null
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
+  var_roles:
+    r: responder
 - id: R7
   plain: '(practice, not written) The responder may request police for the subject when responding to the subject and there is danger.'
   attribute: responder
@@ -312,6 +319,7 @@ rules:
   var_roles:
     o: officer
     s: subject
+    r: responder
 - id: R8
   plain: '(practice, not written) The officer may detain the subject when responding to the subject and there is danger (Cal. WIC 5150).'
   attribute: officer
@@ -337,6 +345,7 @@ rules:
     note: cited with no record of reading in this row's source; re-open to upgrade
   var_roles:
     s: subject
+    o: officer
 - id: R9
   plain: 'The subject may sue in their own name at any time.'
   attribute: subject
@@ -360,6 +369,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: an adult keeps legal capacity to sue in their own name; a voluntary encounter does not touch it'
+  var_roles:
+    s: subject
 source_text: Denver's STAR pilot 'dispatches a mental health clinician and a paramedic to low-level emergencies' instead of police; since June 2020 it 'has responded to more than 600 calls ... many of them related to homelessness, mental illness and substance abuse — not criminal activity.' The team is described as unarmed; in one case it picked up a woman's medication and 'connected her with housing'. KUNC, 'In Denver, unarmed mental health workers respond to hundreds of 911 calls instead of police' (2020-11-17), read at https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police
 expected_properties:
   care_and_sanction_same_role: violated

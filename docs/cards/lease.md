@@ -34,10 +34,10 @@
 
 ## Variables
 
-- R1: `l` = landlord (action lease_to, effects); `t` = tenant (rule var_roles)
+- R1: `l` = landlord (rule var_roles); `t` = tenant (rule var_roles)
 - R2: `l` = landlord (rule var_roles); `t` = tenant (rule var_roles)
-- R3: `l` = landlord (action evict, effects); `t` = tenant (rule var_roles)
-- R4: `t` = tenant (action vacate, effects); `l` = landlord (rule var_roles)
+- R3: `l` = landlord (rule var_roles); `t` = tenant (rule var_roles)
+- R4: `t` = tenant (rule var_roles); `l` = landlord (rule var_roles)
 - R5: `t` = tenant (rule var_roles); `l` = landlord (rule var_roles)
 
 ## Sources

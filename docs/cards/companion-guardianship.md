@@ -42,17 +42,17 @@
 
 ## Variables
 
-- R1: `o` = owner (action transfer, effects); `a` = animal (rule var_roles); `o2` = owner (action transfer, effects)
-- R2: `o` = owner (fluent owns); `a` = animal (rule var_roles)
-- R3: `o` = owner (action abandon, effects); `a` = animal (rule var_roles)
+- R1: `o` = owner (rule var_roles); `a` = animal (rule var_roles); `o2` = owner (action transfer, effects)
+- R2: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
+- R3: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
 - R4: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
 - R5: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
-- R6: `a` = animal (action leave, effects)
+- R6: `a` = animal (rule var_roles)
 - R7: `a` = animal (rule var_roles)
-- R8: `o` = owner (fluent owns); `a` = animal (rule var_roles)
+- R8: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
 - R9: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
-- R10: `o` = owner (action feed, effects); `a` = animal (rule var_roles)
-- R11: `a` = unbound (encoder to fix)
+- R10: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
+- R11: `a` = animal (rule var_roles)
 
 ## Sources
 

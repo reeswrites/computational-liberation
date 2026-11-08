@@ -30,8 +30,8 @@
 
 ## Variables
 
-- R1: `m` = member (action use_old, effects)
-- R2: `m` = member (action use_new, effects)
+- R1: `m` = member (rule var_roles)
+- R2: `m` = member (rule var_roles)
 
 ## Sources
 

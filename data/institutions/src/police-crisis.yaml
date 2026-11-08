@@ -172,6 +172,7 @@ rules:
   var_roles:
     o: officer
     s: subject
+    d: dispatcher
 - id: R2
   plain: 'The facility must keep providing care to the subject while the subject is in custody (Cal. WIC 5150(a), (c); 5152(a)).'
   attribute: facility
@@ -234,6 +235,7 @@ rules:
   var_roles:
     f: facility
     s: subject
+    o: officer
 - id: R4
   plain: 'The subject cannot leave while in custody: no such power exists (Cal. WIC 5150).'
   attribute: subject
@@ -257,6 +259,8 @@ rules:
     accessed: '2026-11-06'
     url: https://california.public.law/codes/ca_welf_and_inst_code_section_5150
     note: the page gives the text as 'updated Jan. 1, 2023' and its source as leginfo.legislature.ca.gov (2024 until the 2026-11-06 card seat caught it); the section states custody, not the subject's exit bar, which the row infers from custody; 5150(c) lets the facility serve the person on a voluntary basis instead of detaining
+  var_roles:
+    s: subject
 - id: R5
   plain: 'The officer may use force on the subject when the subject is in custody and resists.'
   attribute: officer
@@ -282,6 +286,7 @@ rules:
     note: 'no work named; rationale: use-of-force authority incident to lawful custody; general peace-officer powers'
   var_roles:
     s: subject
+    o: officer
 - id: R6
   plain: 'The officer may carry a weapon at any time.'
   attribute: officer
@@ -305,6 +310,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: officers respond armed; standard equipment policy'
+  var_roles:
+    o: officer
 - id: R7
   plain: 'The facility must not release the subject early while the treating psychiatrist finds the subject still requires evaluation or treatment (Cal. WIC 5152(a)).'
   attribute: facility
@@ -330,6 +337,7 @@ rules:
     note: apostrophes straightened; the psychiatrist's belief is the exogenous fluent requires_treatment; first opened 2026-11-04, when the row encoded a release duty on 'no danger' (unfaithful, card seat 2026-11-06); 5152(b)'s end-of-hold outcomes are not encoded (no clock)
   var_roles:
     s: subject
+    f: facility
   choices: 'Until 2026-11-04 the release duty sat on the officer (the one responder role); moved to the new role facility on the card-seat finding that WIC 5150 gives the officer no release duty and 5152 gives it to the facility. Condition and or_else unchanged; the aim variable is renamed o -> f (the attribute binds it).'
 - id: R8
   plain: 'The subject may petition for review of the hold when the subject is in custody (Cal. WIC 5275).'
@@ -354,6 +362,8 @@ rules:
     accessed: '2026-11-06'
     url: https://california.public.law/codes/ca_welf_and_inst_code_section_5275
     note: effective_date is the page's 'updated Jan. 1, 2024' (the text as amended in 2023); 'this part' (the LPS Act) covers a 5150 hold; the request procedure is written for certification, and the separate certification review hearing (s. 5256) was not opened
+  var_roles:
+    s: subject
 - id: R10
   plain: 'The subject may sue in their own name at any time.'
   attribute: subject
@@ -377,6 +387,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: an adult keeps legal capacity to sue in their own name; a 5150 hold does not remove it'
+  var_roles:
+    s: subject
 - id: R11
   plain: 'The facility may hold the subject when the subject is in crisis and there is danger (Cal. WIC 5150(a)).'
   attribute: facility
@@ -402,6 +414,7 @@ rules:
     note: the page gives the text as 'updated Jan. 1, 2023' and its source as leginfo.legislature.ca.gov (2024 until the 2026-11-06 card seat caught it); the facility and the officer hold the same power on the same trigger, so the officer remains a second sanctioner (care_and_sanction_same_role violated)
   var_roles:
     s: subject
+    f: facility
 - id: R12
   plain: 'The facility may release the subject when the treating psychiatrist finds the subject no longer requires evaluation or treatment (Cal. WIC 5152(a)).'
   attribute: facility
@@ -427,6 +440,7 @@ rules:
     note: apostrophes straightened; 'only if' gives a necessary condition, so the permission is the encoder's reading of when release is lawful; 5152(b) (release, referral or certification at the end of the hold) not encoded
   var_roles:
     s: subject
+    f: facility
 source_text: '''When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer, ... designated members of a mobile crisis team, or professional person designated by the county may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours for assessment, evaluation, and crisis intervention.'' ''At a minimum, assessment ... and evaluation ... shall be conducted and provided on an ongoing basis.'' Cal. Welf. & Inst. Code s. 5150(a), read at https://california.public.law/codes/ca_welf_and_inst_code_section_5150'
 expected_properties:
   care_and_sanction_same_role: violated
