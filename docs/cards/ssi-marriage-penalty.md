@@ -98,6 +98,8 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 ## Pairs
 
+Extended by: [ssi-marriage-penalty-individual](ssi-marriage-penalty-individual.md)
+[ssi-marriage-penalty-individual](ssi-marriage-penalty-individual.md) is a minimal pair of this entry (rule None).
 Not isomorphic to: coverture-household, police-crisis, cps, lease
 
 <details><summary>Encoder notes (engine internals)</summary>
