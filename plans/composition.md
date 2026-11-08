@@ -123,3 +123,5 @@ Four pieces, each on top of something that exists:
 Where it goes wrong: blocks combined without semantic sense (a care duty over a library patron), which aliases and typed fluents catch only partly; combinatorial blow-up, which the minimality constraint tames; and provenance, since each block is sourced but the combination is not.
 
 Grounding: people already recombine. The Somerville and Cambridge multi-partner domestic partnership ordinances (plans/marriage-bundle.md) are the marriage bundle's blocks with the two-person cap removed, a recombined institution with a real track record, which is exactly what a history lookup would return.
+
+**Note 2026-11-08 (engine e46f6ea):** P1b has since moved into the engine's `freeze_bindings` (philosophy-engine PR #5); build.py's `freeze_action_types` is removed and the output is byte-identical.
