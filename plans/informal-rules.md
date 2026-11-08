@@ -111,6 +111,36 @@ A function whose prediction misses is reported as unsupported (D2). Flips not in
 
 **Static verdict for R1 (D3), read from the post-2011 entry alone:** removing the formal spouse gate R4 is **displaced**: the guarantee is lost (`spouse_visit_guaranteed` violated), the good stays possible (`spouse_visit_possible` reachable) through the staff norm (R2, `sanctioner: institution` on its sanctioned half R3) and through designation (R10 → R9, `sanctioner: state`, the patient's own act). Who loses: the spouse loses the guarantee that attached to marital status; who now gates: staff discretion and the patient. The N1 wording "naming chosen family as the party that loses" is kept as written and judged against this reading after the run; the record for "informal gate persisted" is one anecdote (hv-nv-2012), and no rate is claimed. The composite reading (N1 proper) is preregistered in plans/composition.md ("First composite, preregistered").
 
+### Slice 1, run 1 (2026-11-08, engine b5fd019, z3 5.3.3, k = 6 and 8, strict, step-mode one)
+
+**Pair: every preregistered verdict matched** (`phil rules check`: pre2011 3/3, post 4/4, at k = 6; the ablation's base verdicts at k = 8 agree, no k disagreement on any row). Baseline diff: 0 changed, 0 removed over the 146 pre-slice rows, 21 added. Wall-clock: ablation of both entries 1 min 19 s (6.5 cores).
+
+Function predictions against the ablation (deleted-rule rows; the `~prohibit` variant rows were not preregistered and are listed after):
+
+| rule | predicted | got | ruling |
+|---|---|---|---|
+| pre R4 (sorts_who_belongs) | spouse_visit_guaranteed → violated; possible stays | as predicted | prediction fired |
+| pre R2 (sorts_who_belongs) | unmarried_partner_visit_possible → open | as predicted | fired |
+| pre R3 | nothing | nothing | as predicted (sole-prohibition reading) |
+| pre R8 | spouse_visit_guaranteed → violated | as predicted | — |
+| pre R5, R6, R7 | nothing | nothing | as predicted |
+| pre R1 | "everything that needs admission unreachable or vacuous" | nothing: `deregulated` | **miss**: deleting the sole `may` on `admit` deregulates it (always enabled, plans/priority-slice1-results.md S1 reading), so admission still happens; the prediction forgot the deregulation semantics |
+| post R4 | → violated; possible stays by two routes | as predicted | fired |
+| post R9 (settles_who_decides) | designated_visit_guaranteed → violated only | as predicted | fired |
+| post R2 | nothing (displaced to designation) | nothing | as predicted |
+| post R3, R5, R6, R7, R11 | nothing | nothing | as predicted |
+| post R8 | spouse_visit_guaranteed → violated | as predicted | — |
+| post R10 | vacuous flag on designated_visit_guaranteed | nothing: `deregulated` | **miss**, same cause: deleting the sole `may` on `designate` lets the patient designate freely, the opposite of "never designates" |
+| post R1 | as pre R1 | nothing: `deregulated` | miss, same cause |
+
+Every `function:` prediction fired (R4 twice, R2 once where predicted and correctly silent where predicted silent, R9 once) and none was edited after the run; N3's condition is met on this pair, though N3 is stated for the marriage bundle and stays untested until that batch. Two misses, both the same known engine reading (deregulation of a sole `may`), recorded, not tuned. Not-preregistered `~prohibit` rows: prohibiting R1 (off-condition leak, `offcondition_free`), R2 or R5 makes both reachable properties open in pre2011; in the post entry prohibiting R2 makes only spouse_visit_possible open (the unmarried partner still reaches admission by designation), prohibiting R1 or R5 makes both open. Consistent with the readings above; nothing new.
+
+**Static verdict for R1 (read on the post entry, as preregistered): displaced.** Deleting R4 loses the guarantee and keeps the good possible; the carriers are R2/R3 (norm, institution) and R10 → R9 (formal, state). The N1 phrase "naming chosen family as the party that loses" is not what the row says: the party that loses is the spouse (the guarantee rode on marital status); chosen family never had it. N1 proper is read on the composite, which run 1 could not deliver (next).
+
+**Composite: 12/14, P1 FAILED on `check`, and the failure is an artifact (docs/surprises.md S5).** `cannot_contract` came back violated (expected holds_to_k) and `spouse_visit_possible` open (expected reachable); `spouse_visit_guaranteed` held vacuously (antecedent unreachable) and so did `care_and_sanction_same_role` at k = 8. Scratch probes on the composite (reachability of `married`, `admitted`, both, `is_subject partner_a`, `is_subject staff`): `married(partner_a, partner_b)` is never reachable, while `is_subject(partner_a)` and `is_subject(staff)` are. Cause, from rules_lower.py `_action_types`: coverture's actions declare no `arg_roles`, so their parameters are typed by the prefix heuristic over the *composite's* roles after aliasing; `h` no longer matches `husband` and now matches `hospital` (the one role starting with h), `w` matches nothing (all agents). So `marry` grounds as marry(hospital, anyone): it sets `is_subject` on anyone (hence `cannot_contract` violated: partner_a becomes a subject with no disability binding him) and never sets the typed `married(partner_a, partner_b)`. ADR 0018's freeze covered rule variables (`var_roles`) and not action parameters; plans/composition.md's cost note ("the freeze step should type the rest from the member's resolution") named the gap and nothing did it. Consequences in run 1: the hospital rows `hospital_visitation__R4`, `R8`, `R2` flip nothing in the composite (no marriage, so nothing to lose), the N1 row is unreadable, `chosen_mutual_care` and `mutual_household_care` read not_applicable (their subject, a married pair, never exists); the coverture rows match coverture-household-us's own ablation (R4 → no_standing open; R6 → dependent_cannot_exit, subject_cannot_exit open); `hospital_visitation__R9` → designated_visit_guaranteed violated (marriage-independent). **Q2 held exactly**: the composite's applicable set is 22 = coverture-household-us's 18 ∪ hospital-visitation's 4, and the six of the nine predicted applicable are applicable; backlash and no_standing_against_spouse are inapplicable on both for the fluent reason, creditor_shield forced in by expected_properties. Wall-clock: composite ablation 2 min 37 s (6.5 cores), check 2 s.
+
+Fix, preregistered as P1b in plans/composition.md before the rerun: build.py freezes each member's action parameter types from the member's own roles (writes `arg_roles` the way the member's heuristic resolved them) before composition. The member entries are not edited.
+
 ### Preregistered claims (enter in docs/claims.md when this batch is scheduled, not before)
 
 - N1. In the composed marriage bundle, removing the formal hospital-visitation gate (spouse may visit) leaves `partner_can_visit` carried by a `norm` rule gated on `counts_as_family`, with `sanctioner: institution` (staff discretion): verdict **displaced** to a narrower attribute set, naming chosen family as the party that loses. Falsified if the property vanishes (no backstop) or holds for the same attribute set (absorbed).
