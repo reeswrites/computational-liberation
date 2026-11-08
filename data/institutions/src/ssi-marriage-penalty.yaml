@@ -55,7 +55,7 @@ fluents:
   derived: (exists ((g agent)) (enabled pay_benefit g c))
   arg_roles: [claimant]
 actions:
-- name: marry
+- name: wed
   args: [c, s]
   effects:
   - fluent: married

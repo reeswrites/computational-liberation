@@ -25,3 +25,28 @@
     unmarried_partner_visit_possible: reachable
     designated_visit_guaranteed: holds_to_k
   notes: 'First composite (plans/composition.md "First composite, preregistered", 2026-11-08; the static rediscovery case of plans/informal-rules.md R1 and the carrier of claim N1). Members and aliases as listed; sex is carried by female(partner_b) in initial (ADR 0018), which puts the engine in init mode declared, so acquired_property and earns are listed free to keep coverture-household-us''s exogenous fluents free as they are in that entry''s own empty mode (plans/composition.md explains). Expected verdicts: the ten coverture-household-us expectations unchanged plus the four visitation properties as in hospital-visitation. N1 is read from `phil rules ablate --entry coverture-us-hospital-visitation`, row hospital_visitation__R4: predicted displaced (spouse_visit_guaranteed to violated, spouse_visit_possible reachable, no coverture property moves). Not a cluster member; no iso claims; takes no part in the gate. Roles are neutral; the coverture rules keep Blackstone''s sexed reading through the alias, which the card shows.'
+- id: coverture-us-ssi
+  name: 'Composite: coverture household (US) + SSI marriage penalty, the husband as claimant and the wife as spouse'
+  members: [coverture-household-us, ssi-marriage-penalty]
+  aliases:
+    coverture-household-us: {husband: partner_a, wife: partner_b}
+    ssi-marriage-penalty: {claimant: partner_a, spouse: partner_b}
+  initial: ['female(partner_b)']
+  initial_free: [acquired_property, earns]
+  expected_properties:
+    dependent_cannot_exit: reachable
+    subject_cannot_exit: reachable
+    care_and_sanction_same_role: holds_to_k
+    no_standing: reachable
+    care_assigned_by_sex: violated
+    financial_dependence: holds_to_k
+    financial_dependence_unpropertied: holds_to_k
+    cannot_contract: holds_to_k
+    double_burden: unreachable_open
+    creditor_shield: unreachable_open
+    married_couple_rated: holds_to_k
+    married_couple_limited: holds_to_k
+    penalty_reaches_unmarried: reachable
+    married_rated_individually: unreachable_open
+    over_limit_ineligible: holds_to_k
+  notes: 'P2 composite (plans/p2-ssi-composite.md, preregistered 2026-11-08 before the build): tests the second half of claim C2 (docs/connections.md section 4). Claimant -> partner_a so that the SSI rules'' (married c s) is the same atom as coverture''s married(h, w) after aliasing; the claimant being the husband is an assumption of this composite, not of SSI. Sex by female(partner_b) in initial; acquired_property and earns free as in the first composite. C2b is read from `phil rules ablate --entry coverture-us-ssi`, rows ssi_marriage_penalty__R2 and R3: predicted NOT to flip financial_dependence (it reads is_subject, controls_own_property and owns_earnings, which no SSI rule touches), so C2 fails as written. Not a cluster member; no iso claims; takes no part in the gate.'

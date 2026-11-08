@@ -50,3 +50,39 @@ Reason: SSI actions touch no coverture fluent except `married` (and `wed`, after
 ## Drift rule
 
 Any result other than the above is recorded in "Results" against the row it contradicts and never edited into this section; an unpredicted flip also gets a row in docs/surprises.md (S7).
+
+## Results (run 2026-11-08, engine 81d5b9e, k = 6 and 8, declared, strict, step-mode one)
+
+Recorded against the preregistration above; nothing above was edited.
+
+**Build.** First `build.py --write --cards` failed exactly as predicted: `action 'marry' differs from an earlier member's`. P2b applied as preregistered (SSI's `marry` renamed `wed`; one line in `ssi-marriage-penalty.yaml`, the card of the standalone entry is unchanged because no card names the action); then `--write --cards` wrote 33 institutions, 34 cards; `--check` ok. The only other file touched outside the spec: `tests/test_dataset_claims.py` `CARE_OBLIGED_ENTRIES` gained `coverture-us-ssi` (same mechanical step as the first composite; without it `test_care_obliged_declared_where_provides_care_is` failed).
+
+**Check, k = 6 and 8: 14 of 15 as preregistered.** Drift, 1 miss: `cannot_contract` expected holds_to_k, got **violated** (both k). Diagnosed with `check --prop cannot_contract --trace`: marry, then SSI's `divorce(partner_a, partner_b)` sets `married` false (coverture has no divorce action and bars `leave`, not divorce), after which coverture R7's condition (`married`) fails and `contract` is enabled for the wife. My preregistered reasoning treated `married` as a shared fluent only SSI's `wed` could set; `divorce` is the other setter and I overlooked it. Not an engine fault and not tuned: the expectation stays as written, the mismatch stays in check-all, docs/surprises.md S7. Warnings: exactly the six predicted (coverture's three derived-fluent and three undeclared-fluent warnings), none from SSI. No vacuity flag.
+
+**Q2 again.** The composite's ablation header: 24 properties applicable, 20 not (of 44, the list including `provided_for@encoder-2`). coverture-household-us's applicable set united with the SSI five is the preregistered union; the six properties (cared_for, chosen_mutual_care, double_burden, financial_dependence, financial_dependence_unpropertied, provided_for) are among the applicable ones; backlash and no_standing_against_spouse are not applicable. Not separately verified: that the 24 equal the exact union (I did not diff the set by name, only read the six and the two named non-applicable); recorded as not verified.
+
+**Ablation (`phil rules ablate --entry coverture-us-ssi`).** Flips by rule (k = 6): coverture R4 -> no_standing reachable > open; coverture R6 -> dependent_cannot_exit and subject_cannot_exit reachable > open; coverture R2 and R3 -> mutual_household_care persists > fails (goods); coverture R7 -> **no flip** (preregistered: the same flips as coverture alone, which includes R7 flipping cannot_contract; here masked by S7, since cannot_contract is already violated); SSI R2 -> married_couple_rated holds_to_k > violated; SSI R3 (deregulated, not ranked) -> married_couple_limited holds_to_k > violated; SSI R4 -> penalty_reaches_unmarried reachable > open; SSI R7 -> over_limit_ineligible holds_to_k > violated; SSI R1, R5, R6 and coverture R1, R5 (all deregulated) no flip. No SSI row flips a coverture property and no coverture row flips an SSI property.
+
+**The C2 second-half result, verbatim from the rows:** `financial_dependence` is not named in any flip column. `ssi_marriage_penalty__R2`: `married_couple_rated:holds_to_k>violated[freedom_up]`. `ssi_marriage_penalty__R3`: `married_couple_limited:holds_to_k>violated[freedom_up]`. Both rules deleted together (scratch probe over `without_rule`, k = 6 and 8): financial_dependence holds_to_k, financial_dependence_unpropertied holds_to_k, married_couple_rated violated, married_couple_limited violated. **C2's second half does not hold: deleting the SSI couple-rate and couple-limit rules in the composite does not flip `financial_dependence`. C2 fails as written**, as preregistered (about 95%), for the structural reason preregistered: the property reads `is_subject`, `controls_own_property` and `owns_earnings`, which no SSI rule touches. This says nothing about whether the SSI marriage penalty burdens a wife in fact; it says the encodings share no fluent that carries it. A claim that SSI's penalty shifts load onto the wife's economic standing would need a shared fluent (plans/ssi-entry.md item 2: declare `is_subject` on the claimant, or a `means_tested_income` fluent and a new property) and is not tested here.
+
+**`phil rules diff --baseline data/verdicts-baseline.json`** before extending: `0 changed, 15 added, 0 removed (of 192 rows)` (the 177 old rows clean; the 15 are the composite's). After `phil rules verdicts --out data/verdicts-baseline.json` (192 rows; the only removed line in the file diff is the engine_hash): `0 changed, 0 added, 0 removed (of 192 rows)`. `pytest -q`: 38 passed (after the one-line `CARE_OBLIGED_ENTRIES` update; 1 failed before it). `check-all` (background): agreement 191/192 = 99%, exit 1, the one miss `coverture-us-ssi cannot_contract` (S7). Wall time of the composite ablation: not measured.
+
+## Council pending (self-review checklist; the coordinator runs the seats)
+
+**Correctness seat**
+- Confirm the `cannot_contract` trace: marry, divorce, contract. Is `divorce` the only married-state exit? Would renaming SSI's `divorce`/`wed` into a shared-state exit modelling choice be an entry change? Should the composite instead drop SSI's `wed` and `divorce` (the member's own marital-status setters) so that `married` is coverture's alone?
+- Is claimant -> partner_a the only line-up (`married[partner_a, partner_b]` set by coverture's `marry(h, w)`)? Probe: with claimant -> partner_b does `married_couple_rated` still hold_to_k (it should be non-vacuous only if `wed` reaches the swapped atom)?
+- Is `exists ((g agent))` over agency only, or over partner_a, partner_b too (open item 6 of ssi-entry revision 2, still unrun)? In the composite the property of interest does not read it, but `married_couple_rated` does.
+- Check that `financial_dependence`'s independence is not a typing accident: do `controls_own_property` and `owns_earnings` ground over partner_b, and are they false under both members' rules (they are: the build warnings say so)?
+- The scratch probe (R2 + R3 together) used `without_rule` on the composite in memory: re-run through the CLI or a unit test if the claim is kept.
+- Q2 set equality was read, not diffed by name.
+
+**Faithfulness seat**
+- Does "the claimant is the husband" stand for anything historical? The SSI program (1974) post-dates coverture's US reading; the composite is a pairing of two eras' rules over one couple, which the card must not read as one legal regime. Is the composite name's `coverture household (US)` + `SSI` honest about that?
+- Does the refutation of C2b read as a statement about the sources? It should not: it is a statement about which fluents each entry declares.
+- Anything in the SSI entry's provenance is untouched (the sibling builder owns `verification` and `accessed`).
+
+**Card-only seat** (docs/cards/coverture-us-ssi.md only)
+- Can a reader see that `marry` (coverture) and `wed` (SSI) both set `married`, and that `divorce` exists only because of SSI? Is the alias line (claimant -> partner_a) visible with its reason?
+- Does the card show that the expected `cannot_contract` verdict missed and why, or only the preregistered value? (It shows the value; the miss lives here and in S7.)
+- Is it clear from the card that no SSI rule touches the wife's property or earnings?

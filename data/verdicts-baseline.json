@@ -1,5 +1,5 @@
 {
- "engine_hash": "ea4bed041fd32c7940e01bd27c93a6fcdb6c1cd0db96f9552419510a67f83bc5",
+ "engine_hash": "58c4c54222de217a1ac5a2d1847338369cfb1c6b91539599f2cca7cbcf0a0fb1",
  "format": 1,
  "params": {
   "compliance": "strict",
@@ -372,6 +372,96 @@
    "check": "reachable",
    "institution": "coverture-us-hospital-visitation",
    "property": "unmarried_partner_visit_possible",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-ssi",
+   "property": "cannot_contract",
+   "verdict": "violated"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-ssi",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-ssi",
+   "property": "care_assigned_by_sex",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-ssi",
+   "property": "creditor_shield",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-ssi",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-ssi",
+   "property": "double_burden",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-ssi",
+   "property": "financial_dependence",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-ssi",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-ssi",
+   "property": "married_couple_limited",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-ssi",
+   "property": "married_couple_rated",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-ssi",
+   "property": "married_rated_individually",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-ssi",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-ssi",
+   "property": "over_limit_ineligible",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-ssi",
+   "property": "penalty_reaches_unmarried",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-ssi",
+   "property": "subject_cannot_exit",
    "verdict": "reachable"
   },
   {
