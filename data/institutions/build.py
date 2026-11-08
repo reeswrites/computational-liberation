@@ -172,7 +172,7 @@ def strip(entry):
 
 
 COMPOSITES = "_composites.yaml"
-CARD_RULE_KEYS = ("plain", "choices", "provenance", "sanctioner_review")  # re-attached to composite rules for the card
+CARD_RULE_KEYS = ("plain", "choices", "provenance", "sanctioner_review", "kind", "sanctioner")  # re-attached to composite rules for the card
 
 
 def load_composites(src: Path = SRC) -> list:
@@ -296,6 +296,8 @@ LEGEND = """## Legend
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **kind**: what sort of rule it is. `formal` = written law or contract (the default, always shown so it can be questioned); `norm` = an unwritten practice that others enforce; `strategy` = a regularity nobody enforces. A `strategy` rule written as `must` is still read by the engine as a duty under strict compliance, though nobody enforces it.
+- **sanctioner**: who enforces the or-else: `state`, `institution`, `peers`, `family`, `self`, or `none` (no or-else, so nobody).
 - **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 """
 
@@ -405,6 +407,10 @@ def deontic_cell(r) -> str:
         d += " (disability)"
     if r.get("implicit"):
         d += " (implicit)"
+    kind = r.get("kind", "formal")
+    d += f" [kind: {kind}; sanctioner: {r.get('sanctioner') or 'none'}]"
+    if kind == "strategy" and r["deontic"] == "must":
+        d += " (strategy: nobody enforces this, yet the engine reads it as a duty under strict compliance)"
     if r.get("sanctioner_review") == "derived":
         d += " (sanctioner derived, unreviewed)"
     return d
