@@ -40,14 +40,14 @@
 
 ## Variables
 
-- R1: `d` = unbound (encoder to fix); `r` = responder (action dispatch_team, effects); `s` = subject (action dispatch_team, effects)
-- R2: `r` = responder (fluent provides_care); `s` = subject (fluent provides_care)
-- R3: `r` = unbound (encoder to fix); `s` = unbound (encoder to fix)
-- R4: `r` = unbound (encoder to fix); `s` = subject (action detain arg_roles)
+- R1: `d` = unbound (encoder to fix); `r` = responder (rule var_roles); `s` = subject (rule var_roles)
+- R2: `r` = responder (rule var_roles); `s` = subject (rule var_roles)
+- R3: `r` = unbound (encoder to fix); `s` = subject (rule var_roles)
+- R4: `r` = unbound (encoder to fix); `s` = subject (rule var_roles)
 - R5: `s` = subject (action leave, effects)
 - R6: `r` = unbound (encoder to fix)
-- R7: `r` = unbound (encoder to fix); `o` = unbound (encoder to fix); `s` = subject (fluent danger)
-- R8: `o` = unbound (encoder to fix); `s` = subject (action detain arg_roles)
+- R7: `r` = unbound (encoder to fix); `o` = officer (rule var_roles); `s` = subject (rule var_roles)
+- R8: `o` = unbound (encoder to fix); `s` = subject (rule var_roles)
 - R9: `s` = unbound (encoder to fix)
 
 ## Sources

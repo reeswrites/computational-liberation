@@ -40,15 +40,15 @@
 
 ## Variables
 
-- R1: `p` = birthing_parent (fluent birthing_parent); `c` = child (fluent birthing_parent)
-- R2: `p` = unbound (encoder to fix); `q` = birthing_parent (rule var_roles); `c` = unbound (encoder to fix)
-- R3: `p` = unbound (encoder to fix); `c` = child (fluent benefit_period_ended)
-- R4: `p` = unbound (encoder to fix); `c` = unbound (encoder to fix)
-- R5: `p` = unbound (encoder to fix); `c` = unbound (encoder to fix)
-- R6: `p` = unbound (encoder to fix); `q` = non_birthing_parent (rule var_roles); `c` = unbound (encoder to fix)
-- R7: `p` = birthing_parent (fluent female); `c` = unbound (encoder to fix)
-- R8: `p` = non_birthing_parent (rule var_roles); `c` = child (fluent birthing_parent)
-- R9: `p` = unbound (encoder to fix); `c` = unbound (encoder to fix)
+- R1: `p` = birthing_parent (fluent birthing_parent); `c` = child (rule var_roles)
+- R2: `p` = unbound (encoder to fix); `q` = birthing_parent (rule var_roles); `c` = child (rule var_roles)
+- R3: `p` = unbound (encoder to fix); `c` = child (rule var_roles)
+- R4: `p` = unbound (encoder to fix); `c` = child (rule var_roles)
+- R5: `p` = unbound (encoder to fix); `c` = child (rule var_roles)
+- R6: `p` = unbound (encoder to fix); `q` = non_birthing_parent (rule var_roles); `c` = child (rule var_roles)
+- R7: `p` = birthing_parent (fluent female); `c` = child (rule var_roles)
+- R8: `p` = non_birthing_parent (rule var_roles); `c` = child (rule var_roles)
+- R9: `p` = unbound (encoder to fix); `c` = child (rule var_roles)
 
 ## Sources
 

@@ -130,6 +130,8 @@ rules:
     accessed: null
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
+  var_roles:
+    c: child
 - id: R2
   plain: 'The non-birthing parent cannot transfer the reserved weeks to another parent: no such power exists (QPIP ss. 9, 16, 17).'
   attribute: non_birthing_parent
@@ -179,6 +181,8 @@ rules:
     accessed: null
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
+  var_roles:
+    c: child
 - id: R4
   plain: 'The birthing parent may take shareable leave for the child when they are a parent of the child and have shareable weeks available (QPIP ss. 10, 16).'
   attribute: birthing_parent
@@ -202,6 +206,8 @@ rules:
     accessed: null
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
+  var_roles:
+    c: child
 - id: R5
   plain: 'The non-birthing parent may take shareable leave for the child when they are a parent of the child and have shareable weeks available (QPIP s. 16).'
   attribute: non_birthing_parent
@@ -225,6 +231,8 @@ rules:
     accessed: null
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
+  var_roles:
+    c: child
 - id: R6
   plain: 'The birthing parent may transfer shareable weeks to another parent of the child when she has shareable weeks available (QPIP s. 16).'
   attribute: birthing_parent
@@ -250,6 +258,7 @@ rules:
     note: cited with no record of reading in this row's source; re-open to upgrade
   var_roles:
     q: non_birthing_parent
+    c: child
 - id: R7
   plain: '(practice, not written) The birthing parent must take shareable leave for the child when she is a female parent of the child and has shareable weeks available.'
   attribute: birthing_parent
@@ -273,6 +282,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break)'
+  var_roles:
+    c: child
 - id: R8
   plain: 'The plan may grant reserved weeks to a parent of the child who is not the birthing parent (QPIP s. 9).'
   attribute: plan
@@ -298,6 +309,7 @@ rules:
     note: cited with no record of reading in this row's source; re-open to upgrade
   var_roles:
     p: non_birthing_parent
+    c: child
 - id: R9
   plain: '(practice, not written) The birthing parent may take reserved leave for the child when they are a parent of the child and have reserved weeks available.'
   attribute: birthing_parent
@@ -321,6 +333,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute'
+  var_roles:
+    c: child
 source_text: '''The maximum number of weeks of paternity benefits or exclusive benefits for the non-birthing parent is five'' (s. 9; three under the s. 18 election). ''The number of weeks of shareable parental benefits to which the parents may be entitled is 32'' (s. 10), and shareable weeks ''may be taken by either parent or shared between the parents'' (s. 16); the sharing rule covers only the shareable block, and unused exclusive weeks pass to the other parent only on a parent''s death (s. 17). Act respecting parental insurance, CQLR c. A-29.011, read at https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011'
 expected_properties:
   solo_care_by_non_birthing_parent: reachable

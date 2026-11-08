@@ -207,6 +207,8 @@ rules:
     accessed: null
     url: null
     note: cited for the role name only, not for this rule; no read record in this row (the entry source_text says read); 'P.L. 2001 ch. 72' is the session law, not an effective date
+  var_roles:
+    a: animal
 - id: R2
   plain: 'The guardian may have the animal euthanized when the guardian owns it.'
   attribute: guardian
@@ -230,6 +232,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: owner may have the animal euthanized by a veterinarian'
+  var_roles:
+    a: animal
 - id: R3
   plain: 'The guardian must not abandon the animal when the guardian owns it, or else the state may prosecute (R4) (Cal. Penal Code 597s).'
   attribute: guardian
@@ -253,6 +257,8 @@ rules:
     accessed: '2026-11-06'
     url: https://california.public.law/codes/ca_penal_code_section_597s
     note: the page gives the text as 'updated Jan. 1, 2000' and its source as leginfo.legislature.ca.gov; (b) exempts releasing native wildlife
+  var_roles:
+    a: animal
 - id: R4
   plain: 'The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s).'
   attribute: state
@@ -276,6 +282,9 @@ rules:
     accessed: '2026-11-06'
     url: https://california.public.law/codes/ca_penal_code_section_597s
     note: the page gives the text as 'updated Jan. 1, 2000' and its source as leginfo.legislature.ca.gov; (b) exempts releasing native wildlife
+  var_roles:
+    g: guardian
+    a: animal
 - id: R5
   plain: 'The guardian providing care to the animal must hold when the guardian owns it (Cal. Penal Code 597(b)).'
   attribute: guardian
@@ -300,6 +309,9 @@ rules:
     url: null
     note: old source string says UNVERIFIED
   load_bearing: true
+  var_roles:
+    g: guardian
+    a: animal
 - id: R6
   plain: '(practice, not written) The animal cannot leave while it is a companion animal: no such power exists.'
   attribute: animal
@@ -346,6 +358,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: local animal-control impound of animals at large'
+  var_roles:
+    a: animal
 - id: R8
   plain: 'The guardian may breed or sterilize the animal when the guardian owns it.'
   attribute: guardian
@@ -369,6 +383,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: incident of ownership'
+  var_roles:
+    a: animal
 - id: R9
   plain: '(practice, not written) The court cannot reassign custody of the animal at any time: no such power exists.'
   attribute: court
@@ -392,6 +408,9 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: implicit: no role may start a claim in the animal''s own interest; animals are property and cannot sue, and custody follows title'
+  var_roles:
+    g: guardian
+    a: animal
 - id: R10
   plain: 'The guardian may feed the animal when the guardian owns it and is not currently providing it care.'
   attribute: guardian
@@ -415,6 +434,8 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: feeding is the owner''s act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled'
+  var_roles:
+    a: animal
 - id: R11
   plain: '(practice, not written) The animal cannot sue in its own name at any time: no such power exists.'
   attribute: animal

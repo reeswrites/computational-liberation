@@ -151,6 +151,9 @@ rules:
     accessed: null
     url: null
     note: 'the rule (a duty to serve) is read from the policy''s premise, not stated: UNVERIFIED as a rule'
+  var_roles:
+    lb: librarian
+    p: patron
 - id: R3
   plain: 'The librarian may suspend the patron when the patron is present and disruptive (Berkeley Patron Suspension Policy).'
   attribute: librarian
@@ -174,6 +177,8 @@ rules:
     accessed: '2026-11-06'
     url: https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf
     note: suspension follows an initial warning (B.1); the row's single-step suspension of a disruptive patron skips the warning
+  var_roles:
+    p: patron
 - id: R4
   plain: 'The patron may leave at any time.'
   attribute: patron

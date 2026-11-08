@@ -36,13 +36,13 @@
 
 ## Variables
 
-- R1: `h` = unbound (encoder to fix); `w` = unbound (encoder to fix)
-- R2: `h` = unbound (encoder to fix); `w` = unbound (encoder to fix)
-- R3: `w` = unbound (encoder to fix); `h` = unbound (encoder to fix)
-- R4: `w` = unbound (encoder to fix); `h` = unbound (encoder to fix)
-- R5: `h` = unbound (encoder to fix); `w` = unbound (encoder to fix)
-- R6: `w` = unbound (encoder to fix); `h` = unbound (encoder to fix)
-- R7: `w` = unbound (encoder to fix); `h` = unbound (encoder to fix)
+- R1: `h` = unbound (encoder to fix); `w` = wife (rule var_roles)
+- R2: `h` = husband (rule var_roles); `w` = wife (rule var_roles)
+- R3: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
+- R4: `w` = unbound (encoder to fix); `h` = husband (rule var_roles)
+- R5: `h` = unbound (encoder to fix); `w` = wife (rule var_roles)
+- R6: `w` = unbound (encoder to fix); `h` = husband (rule var_roles)
+- R7: `w` = unbound (encoder to fix); `h` = husband (rule var_roles)
 
 ## Sources
 

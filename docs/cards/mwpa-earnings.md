@@ -41,12 +41,12 @@
 
 ## Variables
 
-- R2: `h` = husband (fluent married); `w` = wife (fluent married)
-- R3: `w` = wife (fluent married); `h` = husband (fluent married)
-- R4: `w` = wife (fluent married); `h` = husband (fluent married)
-- R5: `h` = husband (fluent married); `w` = wife (fluent married)
-- R6: `w` = wife (fluent married); `h` = husband (fluent married)
-- R7: `w` = wife (fluent married); `h` = husband (fluent married)
+- R2: `h` = husband (rule var_roles); `w` = wife (rule var_roles)
+- R3: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
+- R4: `w` = wife (fluent married); `h` = husband (rule var_roles)
+- R5: `h` = husband (fluent married); `w` = wife (rule var_roles)
+- R6: `w` = wife (fluent married); `h` = husband (rule var_roles)
+- R7: `w` = wife (fluent married); `h` = husband (rule var_roles)
 - R10: `c` = creditor (rule var_roles); `w` = wife (rule var_roles); `h` = husband (rule var_roles)
 - R11: `c` = creditor (rule var_roles); `w` = wife (rule var_roles); `h` = husband (rule var_roles)
 - R12: `h` = husband (rule var_roles); `w` = wife (rule var_roles)

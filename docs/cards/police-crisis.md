@@ -42,17 +42,17 @@
 
 ## Variables
 
-- R1: `d` = unbound (encoder to fix); `o` = unbound (encoder to fix); `s` = subject (action dispatch_officer, effects)
-- R2: `f` = facility (fluent provides_care); `s` = subject (fluent provides_care)
-- R3: `o` = unbound (encoder to fix); `f` = facility (action detain, effects); `s` = subject (action detain, effects)
+- R1: `d` = unbound (encoder to fix); `o` = officer (rule var_roles); `s` = subject (rule var_roles)
+- R2: `f` = facility (rule var_roles); `s` = subject (rule var_roles)
+- R3: `o` = unbound (encoder to fix); `f` = facility (rule var_roles); `s` = subject (rule var_roles)
 - R4: `s` = subject (fluent in_custody)
-- R5: `o` = unbound (encoder to fix); `s` = subject (fluent in_custody)
+- R5: `o` = unbound (encoder to fix); `s` = subject (rule var_roles)
 - R6: `o` = unbound (encoder to fix)
-- R7: `f` = unbound (encoder to fix); `s` = subject (action release, effects)
+- R7: `f` = unbound (encoder to fix); `s` = subject (rule var_roles)
 - R8: `s` = subject (fluent in_custody)
 - R10: `s` = unbound (encoder to fix)
-- R11: `f` = facility (action hold, effects); `s` = subject (action hold, effects)
-- R12: `f` = unbound (encoder to fix); `s` = subject (action release, effects)
+- R11: `f` = facility (action hold, effects); `s` = subject (rule var_roles)
+- R12: `f` = unbound (encoder to fix); `s` = subject (rule var_roles)
 
 ## Sources
 

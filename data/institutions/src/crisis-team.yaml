@@ -160,6 +160,9 @@ rules:
     accessed: null
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
+  var_roles:
+    r: responder
+    s: subject
 - id: R2
   plain: 'The responder providing care to the subject must hold when the responder is responding to the subject and the subject is in crisis (Denver STAR).'
   attribute: responder
@@ -184,6 +187,9 @@ rules:
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
   load_bearing: true
+  var_roles:
+    r: responder
+    s: subject
 - id: R3
   plain: 'The responder may refer the subject (for example to medication pick-up or housing) when responding to the subject (Denver STAR).'
   attribute: responder
@@ -207,6 +213,8 @@ rules:
     accessed: null
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
+  var_roles:
+    s: subject
 - id: R4
   plain: 'The responder cannot detain the subject at any time: no such power exists (Denver STAR).'
   attribute: responder
@@ -230,6 +238,8 @@ rules:
     accessed: null
     url: null
     note: 'cited with no record of reading in this row''s source; quote in the old string (no read date): ''non-police response''; re-open to upgrade'
+  var_roles:
+    s: subject
 - id: R5
   plain: 'The subject may leave at any time (Denver STAR, voluntary encounter).'
   attribute: subject
@@ -299,6 +309,9 @@ rules:
     accessed: null
     url: null
     note: 'no work named; rationale: implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read'
+  var_roles:
+    o: officer
+    s: subject
 - id: R8
   plain: '(practice, not written) The officer may detain the subject when responding to the subject and there is danger (Cal. WIC 5150).'
   attribute: officer
@@ -322,6 +335,8 @@ rules:
     accessed: null
     url: null
     note: cited with no record of reading in this row's source; re-open to upgrade
+  var_roles:
+    s: subject
 - id: R9
   plain: 'The subject may sue in their own name at any time.'
   attribute: subject

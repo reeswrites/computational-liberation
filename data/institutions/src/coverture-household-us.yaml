@@ -25,6 +25,8 @@ rules_replace:
     accessed: '2026-11-04'
     url: null
     note: 'long s modernised from the OCR; US entry: an English treatise cited for a US rule; US reception of Blackstone is assumed and unsourced; a US treatise (Kent, Commentaries on American Law) is a lead, not opened'
+  var_roles:
+    w: wife
 - id: R2
   plain: The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15).
   attribute: husband
@@ -49,6 +51,9 @@ rules_replace:
     url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
     note: 'long s modernised from the OCR; earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/; US entry: an English treatise cited for a US rule; US reception of Blackstone is assumed and unsourced; a US treatise (Kent, Commentaries on American Law) is a lead, not opened'
   load_bearing: true
+  var_roles:
+    h: husband
+    w: wife
 - id: R4
   plain: 'The wife cannot sue in her own name while married: no such power exists (Blackstone I.15).'
   attribute: wife
@@ -72,6 +77,8 @@ rules_replace:
     accessed: '2026-11-06'
     url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
     note: 'long s modernised from the OCR; the same passage excepts a husband who has abjured the realm or is banished (she then sues as a feme sole), an exception the row does not encode; earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/; US entry: an English treatise cited for a US rule; US reception of Blackstone is assumed and unsourced; a US treatise (Kent, Commentaries on American Law) is a lead, not opened'
+  var_roles:
+    h: husband
 - id: R5
   plain: The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15).
   attribute: husband
@@ -95,6 +102,8 @@ rules_replace:
     accessed: '2026-11-04'
     url: null
     note: 'long s modernised from the OCR; earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/; US entry: an English treatise cited for a US rule; US reception of Blackstone is assumed and unsourced; a US treatise (Kent, Commentaries on American Law) is a lead, not opened'
+  var_roles:
+    w: wife
   choices: 'Broad reading (the encoding until 2026-11-04): may chastise whenever married; the care+control match with police-crisis R3 (detain) and cps R3 (remove) was read on it. Narrow reading (chosen 2026-11-04): Blackstone''s text makes moderate correction ''the old law'' and permits restraint only ''in case of any gross misbehaviour''; the fluent misbehaves and the free action misbehave are the encoder''s device for that condition.'
 - id: R6
   plain: 'The wife cannot leave the marriage at her own will while married: no such power exists (pre-reform divorce required the spouse''s consent or proved fault, Stevenson & Wolfers; NY 1787 adultery only).'
@@ -128,6 +137,8 @@ rules_replace:
     accessed: '2026-11-06'
     url: null
     note: 'read through the OCR (long s modernised, clipped letters restored); ''party injured'': either spouse may petition, adultery the only ground; dissolution on the other spouse''s fault (B2), not at her own will; the date is the passage date printed (OCR ''Passed the zoth of March, 1787'', i.e. 30th), commencement not stated'
+  var_roles:
+    h: husband
 - id: R7
   plain: 'The wife cannot contract in her own name while married: no such power exists (Blackstone I.15).'
   attribute: wife
@@ -151,6 +162,8 @@ rules_replace:
     accessed: '2026-11-06'
     url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
     note: 'long s modernised; the OCR prints ''converture'' in the first passage; ''void, or at least voidable'' is weaker than the row''s ''no such power exists'' (voidable acts bind until avoided); the first passage is introduced as acts done ''by his compulsion'', and the second concerns compacts between the spouses, not her capacity to contract with third parties (council 2026-11-06); earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/; US entry: an English treatise cited for a US rule; US reception of Blackstone is assumed and unsourced; a US treatise (Kent, Commentaries on American Law) is a lead, not opened'
+  var_roles:
+    h: husband
 source_text: 'Coverture as received in the US states before the married women''s property acts: the rules of coverture-household (Blackstone, Commentaries I.15 and II.29, England), read as US law. Reception is assumed, not sourced (a US treatise, Kent''s Commentaries on American Law, is a lead, not opened). Exit: no US state had unilateral divorce before 1969 (Stevenson & Wolfers 2006, lead, not opened); fault divorce existed in most states and is not encoded. Split from coverture-household 2026-11-05 (plans/sourcing.md, B3 with B1).'
 isomorphic_to:
 - id: coverture-household

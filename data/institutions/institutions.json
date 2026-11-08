@@ -331,7 +331,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book II ch. 29 'Of Title by Succession, Marriage, and Judgment' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says 'I speak not at present of the rights of property' and so did not support this rule."
+    "source": "Blackstone, Commentaries on the Laws of England, Book II ch. 29 'Of Title by Succession, Marriage, and Judgment' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says 'I speak not at present of the rights of property' and so did not support this rule.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R2",
@@ -345,7 +348,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "h": "husband",
+     "w": "wife"
+    }
    },
    {
     "id": "R3",
@@ -359,7 +366,11 @@
     "kind": "norm",
     "sanctioner": "family",
     "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "w": "wife",
+     "h": "husband"
+    }
    },
    {
     "id": "R4",
@@ -372,7 +383,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished')."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished').",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R5",
@@ -385,7 +399,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R6",
@@ -398,7 +415,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED (not opened 2026-11-04): Shanley, Feminism, Marriage and the Law in Victorian England, 1850-1895 (1989), and Stone, Road to Divorce: England 1530-1987 (1990), on restitution of conjugal rights and the absence of any unilateral exit from marriage before the Matrimonial Causes Act 1857 (archive.org search-inside returned 403 and the Google Books API 429, two tries each). Re-sourced 2026-11-04: Blackstone Book I ch. 15 (https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/), cited before, contains no exit bar (its nearest passage: an eloping wife forfeits necessaries) and is no longer cited for this rule. [ADR 0013: or_else -> null. The subject's exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Blackstone, Commentaries on the Laws of England, Book I ch. 15, read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'it will not allow it to be unloosed for any cause whatsoever, that arises after the union is made' ... 'with us in England adultery is only a cause of separation from bed and board' ... 'divorces a vinculo matrimonii, for adultery, have of late years been frequently granted by act of parliament' (long s modernised; this corrects the 2026-11-04 sentence above: Bk I ch. 15 does treat dissolution, and supports the bar as of 1765). Matrimonial Causes Act 1857 (20 & 21 Vict. c. 85), enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/ukpga/Vict/20-21/85/pdfs/ukpga_18570085_en.pdf: s. 2, the ecclesiastical jurisdiction over 'Suits for Restitution of Conjugal Rights, and in all Causes, Suits, and Matters Matrimonial, shall cease to be so exerciseable'; s. 27, 'it shall be lawful for any Wife to present a Petition to the said Court, praying that her Marriage may be dissolved' on the husband's aggravated adultery only (margin notes dropped from the OCR). Shanley and Stone tried again 2026-11-06 and still not opened. Re-cited 2026-11-06 (author decision): the rule rests on Blackstone Bk I ch. 15 and the Matrimonial Causes Act 1857 as read above; Shanley 1989 and Stone 1990, never opened, are kept as leads for the 1765-1857 interval and are no longer cited."
+    "source": "UNVERIFIED (not opened 2026-11-04): Shanley, Feminism, Marriage and the Law in Victorian England, 1850-1895 (1989), and Stone, Road to Divorce: England 1530-1987 (1990), on restitution of conjugal rights and the absence of any unilateral exit from marriage before the Matrimonial Causes Act 1857 (archive.org search-inside returned 403 and the Google Books API 429, two tries each). Re-sourced 2026-11-04: Blackstone Book I ch. 15 (https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/), cited before, contains no exit bar (its nearest passage: an eloping wife forfeits necessaries) and is no longer cited for this rule. [ADR 0013: or_else -> null. The subject's exit bar is a disability (no permitted exit exists), not a prohibition the subject answers for; the sanction power that used to be linked here keeps its own trigger condition, so under strict compliance nothing changes and the link only duplicated it. Same reading for coverture R6, police-crisis R4, cps R10 and companion R6.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Blackstone, Commentaries on the Laws of England, Book I ch. 15, read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'it will not allow it to be unloosed for any cause whatsoever, that arises after the union is made' ... 'with us in England adultery is only a cause of separation from bed and board' ... 'divorces a vinculo matrimonii, for adultery, have of late years been frequently granted by act of parliament' (long s modernised; this corrects the 2026-11-04 sentence above: Bk I ch. 15 does treat dissolution, and supports the bar as of 1765). Matrimonial Causes Act 1857 (20 & 21 Vict. c. 85), enacted text read 2026-11-06 through the OCR of https://www.legislation.gov.uk/ukpga/Vict/20-21/85/pdfs/ukpga_18570085_en.pdf: s. 2, the ecclesiastical jurisdiction over 'Suits for Restitution of Conjugal Rights, and in all Causes, Suits, and Matters Matrimonial, shall cease to be so exerciseable'; s. 27, 'it shall be lawful for any Wife to present a Petition to the said Court, praying that her Marriage may be dissolved' on the husband's aggravated adultery only (margin notes dropped from the OCR). Shanley and Stone tried again 2026-11-06 and still not opened. Re-cited 2026-11-06 (author decision): the rule rests on Blackstone Bk I ch. 15 and the Matrimonial Causes Act 1857 as read above; Shanley 1989 and Stone 1990, never opened, are kept as leads for the 1765-1857 interval and are no longer cited.",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R7",
@@ -411,7 +431,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage)."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage).",
+    "var_roles": {
+     "h": "husband"
+    }
    }
   ],
   "source_text": "'By marriage, the husband and wife are one person in law: that is, the very being or legal existence of the woman is suspended during the marriage, or at least is incorporated and consolidated into that of the husband: under whose wing, protection, and cover, she performs every thing; and is therefore called ... a feme-covert.' He cannot grant anything to her or covenant with her, she cannot sue in her own name, and 'the husband is bound to provide his wife with necessaries by law'. Blackstone, Commentaries on the Laws of England, Book I, ch. 15 (Oxford: Clarendon, 1765). Passage checked at https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/",
@@ -809,7 +832,11 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call]"
+    "source": "implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call]",
+    "var_roles": {
+     "o": "officer",
+     "s": "subject"
+    }
    },
    {
     "id": "R2",
@@ -823,7 +850,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (assessment, evaluation and crisis intervention 'shall be conducted and provided on an ongoing basis'). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch establishes provides_care(o, s); assess restores it, withdraw (the officer stops attending) breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (text 'updated Jan. 1, 2023' per the page; corrected 2026-11-06, the card seat): 'At a minimum, assessment, as defined in Section 5150.4, and evaluation, as defined in subdivision (a) of Section 5008, shall be conducted and provided on an ongoing basis' (passive: the section does not name the officer as the one who provides it). Re-encoded 2026-11-06 (L1 landing, preregistered; faithfulness batch 2 P3): the duty is the facility's while the subject is in custody (5150(a) passive voice on the 72-hour stay; 5150(c) the facility's professional person assesses); detain and the facility's hold (R11) establish provides_care(f, s), assess restores it, withdraw breaks it; the officer no longer carries it, and the dispatch sentence above is superseded. WIC 5152 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) a person admitted for 72-hour treatment and evaluation 'shall receive whatever treatment and care the person's condition requires for the full period that they are held'.",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "f": "facility",
+     "s": "subject"
+    }
    },
    {
     "id": "R3",
@@ -836,7 +867,11 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (a peace officer may, upon probable cause, take the person into custody for up to 72 hours) Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: 'When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer' ... 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'. Re-encoded 2026-11-06 (L1 landing): detain takes the receiving facility, detain(o, f, s), and establishes the facility's care duty (R2)."
+    "source": "Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (a peace officer may, upon probable cause, take the person into custody for up to 72 hours) Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: 'When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer' ... 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'. Re-encoded 2026-11-06 (L1 landing): detain takes the receiving facility, detain(o, f, s), and establishes the facility's care duty (R2).",
+    "var_roles": {
+     "f": "facility",
+     "s": "subject"
+    }
    },
    {
     "id": "R4",
@@ -862,7 +897,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened)"
+    "source": "use-of-force authority incident to lawful custody; general peace-officer powers. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "s": "subject"
+    }
    },
    {
     "id": "R6",
@@ -888,7 +926,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) 'A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted'; 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment'; (b) 'A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment'. Release is the facility's act (its treating psychiatrist or medical director), not the officer's: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty. Re-encoded 2026-11-06 (preregistered, plans/sourcing.md; card-only seat finding): read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment.' R7 is now the prohibition side of that 'only if' (no early release while treatment is still required, exogenous fluent requires_treatment); R12 is the permission side. The earlier duty to release on 'no danger' was unfaithful and unreachable (danger never changes; detain and hold require it)."
+    "source": "Cal. Welf. & Inst. Code s. 5152, read 2026-11-04 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152 (leginfo.legislature.ca.gov returned 403): (a) 'A person admitted to a facility for 72-hour treatment and evaluation ... shall receive an evaluation as soon as possible after the person is admitted'; 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes ... that the person no longer requires evaluation or treatment'; (b) 'A person who has been detained for evaluation and treatment shall be released, referred for further care and treatment on a voluntary basis, or certified for intensive treatment'. Release is the facility's act (its treating psychiatrist or medical director), not the officer's: s. 5150(a) (https://california.public.law/codes/ca_welf_and_inst_code_section_5150, cited here until 2026-11-04) gives the officer custody and delivery (R3), no release duty. Re-encoded 2026-11-06 (preregistered, plans/sourcing.md; card-only seat finding): read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment.' R7 is now the prohibition side of that 'only if' (no early release while treatment is still required, exogenous fluent requires_treatment); R12 is the permission side. The earlier duty to release on 'no danger' was unfaithful and unreachable (danger never changes; detain and hold require it).",
+    "var_roles": {
+     "s": "subject"
+    }
    },
    {
     "id": "R8",
@@ -927,7 +968,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Welf. & Inst. Code s. 5150(a), read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: the custody power belongs to 'a peace officer, professional person in charge of a facility designated by the county for evaluation and treatment, member of the attending staff' ... who 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'. Added 2026-11-06 (L1 landing, preregistered; faithfulness batch 2 P4): the facility holds the same custody power as the officer, and its hold establishes R2 (ADR 0009). [ADR 0013: power fluents are derived from rule enabledness; this rule is what can_sanction reads for the facility]"
+    "source": "Cal. Welf. & Inst. Code s. 5150(a), read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5150: the custody power belongs to 'a peace officer, professional person in charge of a facility designated by the county for evaluation and treatment, member of the attending staff' ... who 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'. Added 2026-11-06 (L1 landing, preregistered; faithfulness batch 2 P4): the facility holds the same custody power as the officer, and its hold establishes R2 (ADR 0009). [ADR 0013: power fluents are derived from rule enabledness; this rule is what can_sanction reads for the facility]",
+    "var_roles": {
+     "s": "subject"
+    }
    },
    {
     "id": "R12",
@@ -940,7 +984,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Welf. & Inst. Code s. 5152, read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment.' Added 2026-11-06 (preregistered R7 re-encode, plans/sourcing.md): the permission side of the 'only if'; R7 is the prohibition side. 5152(b)'s end-of-hold outcomes (release, voluntary referral, certification for intensive treatment) are not encoded: the model has no clock for 72 hours (disclosed gap). Apostrophes straightened."
+    "source": "Cal. Welf. & Inst. Code s. 5152, read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_5152: (a) 'The person shall be released before 72 hours have elapsed only if the psychiatrist directly responsible for the person's treatment believes, as a result of the psychiatrist's personal observations, that the person no longer requires evaluation or treatment.' Added 2026-11-06 (preregistered R7 re-encode, plans/sourcing.md): the permission side of the 'only if'; R7 is the prohibition side. 5152(b)'s end-of-hold outcomes (release, voluntary referral, certification for intensive treatment) are not encoded: the model has no clock for 72 hours (disclosed gap). Apostrophes straightened.",
+    "var_roles": {
+     "s": "subject"
+    }
    }
   ],
   "source_text": "'When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer, ... designated members of a mobile crisis team, or professional person designated by the county may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours for assessment, evaluation, and crisis intervention.' 'At a minimum, assessment ... and evaluation ... shall be conducted and provided on an ongoing basis.' Cal. Welf. & Inst. Code s. 5150(a), read at https://california.public.law/codes/ca_welf_and_inst_code_section_5150",
@@ -1978,7 +2025,11 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (low-level calls involving mental illness, homelessness, substance use are routed to the clinician-paramedic van). [ADR 0009: one-off action obligation; dispatch consumes call_received]"
+    "source": "Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (low-level calls involving mental illness, homelessness, substance use are routed to the clinician-paramedic van). [ADR 0009: one-off action obligation; dispatch consumes call_received]",
+    "var_roles": {
+     "r": "responder",
+     "s": "subject"
+    }
    },
    {
     "id": "R2",
@@ -1992,7 +2043,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] dispatch_team establishes provides_care(r, s); assess restores it, withdraw breaks it",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "r": "responder",
+     "s": "subject"
+    }
    },
    {
     "id": "R3",
@@ -2005,7 +2060,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (medication pick-up, housing connection; referral is the output)"
+    "source": "Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (medication pick-up, housing connection; referral is the output)",
+    "var_roles": {
+     "s": "subject"
+    }
    },
    {
     "id": "R4",
@@ -2018,7 +2076,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police ('non-police response'; the team holds no custody power; or_else null because this is an absence of power, not a prohibition with a penalty). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(responder, s) = detain enabled, which this disability makes false"
+    "source": "Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police ('non-police response'; the team holds no custody power; or_else null because this is an absence of power, not a prohibition with a penalty). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(responder, s) = detain enabled, which this disability makes false",
+    "var_roles": {
+     "s": "subject"
+    }
    },
    {
     "id": "R5",
@@ -2057,7 +2118,11 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read. UNVERIFIED (general knowledge; no source opened)"
+    "source": "implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "o": "officer",
+     "s": "subject"
+    }
    },
    {
     "id": "R8",
@@ -2070,7 +2135,10 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (the peace officer the team calls holds the 5150 custody power the team lacks; the rebundling path R7 opens). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(officer, s) = detain enabled"
+    "source": "Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (the peace officer the team calls holds the 5150 custody power the team lacks; the rebundling path R7 opens). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(officer, s) = detain enabled",
+    "var_roles": {
+     "s": "subject"
+    }
    },
    {
     "id": "R9",
@@ -2371,7 +2439,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: maximum of five weeks of paternity benefits or exclusive benefits for the non-birthing parent)"
+    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: maximum of five weeks of paternity benefits or exclusive benefits for the non-birthing parent)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R2",
@@ -2400,7 +2471,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (unused exclusive weeks lapse; use-it-or-lose-it)"
+    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (unused exclusive weeks lapse; use-it-or-lose-it)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R4",
@@ -2413,7 +2487,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 10: 32 shareable weeks; s. 16: may be taken by either parent or shared)"
+    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 10: 32 shareable weeks; s. 16: may be taken by either parent or shared)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R5",
@@ -2426,7 +2503,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16)"
+    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R6",
@@ -2441,7 +2521,8 @@
     "sanctioner": "none",
     "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16: shareable weeks may be shared between the parents)",
     "var_roles": {
-     "q": "non_birthing_parent"
+     "q": "non_birthing_parent",
+     "c": "child"
     }
    },
    {
@@ -2455,7 +2536,10 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened)"
+    "source": "implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R8",
@@ -2470,7 +2554,8 @@
     "sanctioner": "none",
     "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: the exclusive weeks are granted to the non-birthing parent)",
     "var_roles": {
-     "p": "non_birthing_parent"
+     "p": "non_birthing_parent",
+     "c": "child"
     }
    },
    {
@@ -2484,7 +2569,10 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened)"
+    "source": "whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "c": "child"
+    }
    }
   ],
   "source_text": "'The maximum number of weeks of paternity benefits or exclusive benefits for the non-birthing parent is five' (s. 9; three under the s. 18 election). 'The number of weeks of shareable parental benefits to which the parents may be entitled is 32' (s. 10), and shareable weeks 'may be taken by either parent or shared between the parents' (s. 16); the sharing rule covers only the shareable block, and unused exclusive weeks pass to the other parent only on a parent's death (s. 17). Act respecting parental insurance, CQLR c. A-29.011, read at https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011",
@@ -2765,7 +2853,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: maximum of five weeks of paternity benefits or exclusive benefits for the non-birthing parent)"
+    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: maximum of five weeks of paternity benefits or exclusive benefits for the non-birthing parent)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R2",
@@ -2780,7 +2871,8 @@
     "sanctioner": "none",
     "source": "Minimal-pair construction: the reserved block is made shareable, as the shareable block is under QPIP s. 16 and as all 35 standard parental weeks were under Canadian EI before the 2019-03-17 Parental Sharing Benefit. Employment Insurance maternity and parental benefits, canada.ca; https://www.canada.ca/en/services/benefits/ei/ei-maternity-parental.html; Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011",
     "var_roles": {
-     "q": "birthing_parent"
+     "q": "birthing_parent",
+     "c": "child"
     }
    },
    {
@@ -2794,7 +2886,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (unused exclusive weeks lapse; use-it-or-lose-it)"
+    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (unused exclusive weeks lapse; use-it-or-lose-it)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R4",
@@ -2807,7 +2902,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 10: 32 shareable weeks; s. 16: may be taken by either parent or shared)"
+    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 10: 32 shareable weeks; s. 16: may be taken by either parent or shared)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R5",
@@ -2820,7 +2918,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16)"
+    "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R6",
@@ -2835,7 +2936,8 @@
     "sanctioner": "none",
     "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16: shareable weeks may be shared between the parents)",
     "var_roles": {
-     "q": "non_birthing_parent"
+     "q": "non_birthing_parent",
+     "c": "child"
     }
    },
    {
@@ -2849,7 +2951,10 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened)"
+    "source": "implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "c": "child"
+    }
    },
    {
     "id": "R8",
@@ -2864,7 +2969,8 @@
     "sanctioner": "none",
     "source": "Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: the exclusive weeks are granted to the non-birthing parent)",
     "var_roles": {
-     "p": "non_birthing_parent"
+     "p": "non_birthing_parent",
+     "c": "child"
     }
    },
    {
@@ -2878,7 +2984,10 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened)"
+    "source": "whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "c": "child"
+    }
    }
   ],
   "source_text": "Canadian EI standard parental benefits: 'up to 40 weeks can be shared between parents, but one parent cannot receive more than 35 weeks of standard benefits'; maternity benefits 'can't be shared between parents' (canada.ca, read at https://www.canada.ca/en/services/benefits/ei/ei-maternity-parental.html). Before 2019-03-17 there were no reserved weeks: the Parental Sharing Benefit added the 5 (standard) or 8 (extended) use-it-or-lose-it weeks for children born on or after that date (https://canada.ca/en/employment-social-development/campaigns/ei-improvements/parent-sharing.html). The entry encodes the pre-2019 form: the same block exists but may be transferred.",
@@ -3303,7 +3412,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "property status of companion animals: Cal. Civ. Code s. 655: 'There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals'; s. 663: 'Every kind of property that is not real is personal' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize"
+    "source": "property status of companion animals: Cal. Civ. Code s. 655: 'There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals'; s. 663: 'Every kind of property that is not real is personal' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R2",
@@ -3316,7 +3428,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize"
+    "source": "owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R3",
@@ -3329,7 +3444,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "state",
-    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'"
+    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R4",
@@ -3342,7 +3460,11 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'"
+    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'",
+    "var_roles": {
+     "o": "owner",
+     "a": "animal"
+    }
    },
    {
     "id": "R5",
@@ -3356,7 +3478,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Cal. Penal Code 597(b) failure to provide food/water/shelter. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] acquire (and the initial state) establishes provides_care; feed restores it, neglect breaks it",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "o": "owner",
+     "a": "animal"
+    }
    },
    {
     "id": "R6",
@@ -3382,7 +3508,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)"
+    "source": "local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R8",
@@ -3395,7 +3524,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled"
+    "source": "incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R9",
@@ -3408,7 +3540,11 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false"
+    "source": "implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false",
+    "var_roles": {
+     "o": "owner",
+     "a": "animal"
+    }
    },
    {
     "id": "R10",
@@ -3421,7 +3557,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)"
+    "source": "feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R11",
@@ -3858,7 +3997,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "property status of companion animals: Cal. Civ. Code s. 655: 'There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals'; s. 663: 'Every kind of property that is not real is personal' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize"
+    "source": "property status of companion animals: Cal. Civ. Code s. 655: 'There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals'; s. 663: 'Every kind of property that is not real is personal' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R2",
@@ -3871,7 +4013,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize"
+    "source": "owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R3",
@@ -3884,7 +4029,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "state",
-    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'"
+    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R4",
@@ -3897,7 +4045,11 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'"
+    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'",
+    "var_roles": {
+     "o": "owner",
+     "a": "animal"
+    }
    },
    {
     "id": "R5",
@@ -3911,7 +4063,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Cal. Penal Code 597(b) failure to provide food/water/shelter. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] acquire (and the initial state) establishes provides_care; feed restores it, neglect breaks it",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "o": "owner",
+     "a": "animal"
+    }
    },
    {
     "id": "R6",
@@ -3937,7 +4093,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)"
+    "source": "local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R8",
@@ -3950,7 +4109,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled"
+    "source": "incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R9",
@@ -3963,7 +4125,11 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal 'taking into consideration the well-being of the animal'); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail Verification pass: read 2026-11-06 at https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (the statute as reproduced there): '(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal.'"
+    "source": "Alaska Stat. s. 25.24.160(a)(5) (SLA 2016 ch. 60, eff. 2017-01-17); https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (in a divorce the court decides ownership of an animal 'taking into consideration the well-being of the animal'); generalised here from the divorce context to any custody claim, which no US jurisdiction yet does. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled: this rule, and nothing in the initial state, is what makes no_standing_persists fail Verification pass: read 2026-11-06 at https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment (the statute as reproduced there): '(5) if an animal is owned, for the ownership or joint ownership of the animal, taking into consideration the well-being of the animal.'",
+    "var_roles": {
+     "o": "owner",
+     "a": "animal"
+    }
    },
    {
     "id": "R10",
@@ -3976,7 +4142,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)"
+    "source": "feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R11",
@@ -4417,7 +4586,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "property status of companion animals: Cal. Civ. Code s. 655: 'There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals'; s. 663: 'Every kind of property that is not real is personal' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. R.I. Gen. Laws s. 4-13-41 (P.L. 2001 ch. 72; https://webserver.rilegislature.gov/Statutes/TITLE4/4-13/4-13-41.htm) only makes 'owner' and 'guardian' interchangeable: it is the source of the role name, not of this rule. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize"
+    "source": "property status of companion animals: Cal. Civ. Code s. 655: 'There may be ownership of all inanimate things which are capable of appropriation or of manual delivery; of all domestic animals'; s. 663: 'Every kind of property that is not real is personal' (s. 658 defines real property as land and what is affixed or incidental to it, so a domestic animal is personal property). Read 2026-11-04 at https://codes.findlaw.com/ca/civil-code/civ-sect-655/ and https://codes.findlaw.com/ca/civil-code/civ-sect-663/ (leginfo.legislature.ca.gov and law.justia.com returned 403). Transfer is an incident of ownership of personal property; Cal. Penal Code 597s (wilful abandonment, cited here until 2026-11-04) says nothing about property status and is cited on R3 only. R.I. Gen. Laws s. 4-13-41 (P.L. 2001 ch. 72; https://webserver.rilegislature.gov/Statutes/TITLE4/4-13/4-13-41.htm) only makes 'owner' and 'guardian' interchangeable: it is the source of the role name, not of this rule. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R2",
@@ -4430,7 +4602,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize"
+    "source": "owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R3",
@@ -4443,7 +4618,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "state",
-    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'"
+    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ ('Every person who willfully abandons any animal is guilty of a misdemeanor') Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R4",
@@ -4456,7 +4634,11 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'"
+    "source": "Cal. Penal Code s. 597s(a); https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_597s (text 'updated Jan. 1, 2000' per the page): (a) 'Every person who willfully abandons any animal is guilty of a misdemeanor.'",
+    "var_roles": {
+     "g": "guardian",
+     "a": "animal"
+    }
    },
    {
     "id": "R5",
@@ -4470,7 +4652,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Cal. Penal Code 597(b) failure to provide food/water/shelter. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] acquire (and the initial state) establishes provides_care; feed restores it, neglect breaks it",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "g": "guardian",
+     "a": "animal"
+    }
    },
    {
     "id": "R6",
@@ -4496,7 +4682,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)"
+    "source": "local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R8",
@@ -4509,7 +4698,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled"
+    "source": "incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R9",
@@ -4522,7 +4714,11 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false"
+    "source": "implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false",
+    "var_roles": {
+     "g": "guardian",
+     "a": "animal"
+    }
    },
    {
     "id": "R10",
@@ -4535,7 +4731,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)"
+    "source": "feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "a": "animal"
+    }
    },
    {
     "id": "R11",
@@ -4800,7 +4999,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "a lease is formed by agreement. UNVERIFIED (general knowledge; no source opened)"
+    "source": "a lease is formed by agreement. UNVERIFIED (general knowledge; no source opened)",
+    "var_roles": {
+     "t": "tenant"
+    }
    },
    {
     "id": "R2",
@@ -4813,7 +5015,11 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Civ. Code s. 1941 ('The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable'); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_civ_code_section_1941: 'The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable'."
+    "source": "Cal. Civ. Code s. 1941 ('The lessor of a building intended for the occupation of human beings must ... put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable'); https://california.public.law/codes/ca_civ_code_section_1941. [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes habitable; repair restores it, withhold_repairs breaks it Verification pass: read 2026-11-06 at https://california.public.law/codes/ca_civ_code_section_1941: 'The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable'.",
+    "var_roles": {
+     "l": "landlord",
+     "t": "tenant"
+    }
    },
    {
     "id": "R3",
@@ -4826,7 +5032,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161"
+    "source": "Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161",
+    "var_roles": {
+     "t": "tenant"
+    }
    },
    {
     "id": "R4",
@@ -4839,7 +5048,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Civ. Code s. 1946 (a hiring of real property for an unspecified term is terminated by either party's written notice); https://california.public.law/codes/ca_civ_code_section_1946 (either party may terminate by notice; the tenant's exit is permitted and unsanctioned). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(t) = vacate enabled"
+    "source": "Cal. Civ. Code s. 1946 (a hiring of real property for an unspecified term is terminated by either party's written notice); https://california.public.law/codes/ca_civ_code_section_1946 (either party may terminate by notice; the tenant's exit is permitted and unsanctioned). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(t) = vacate enabled",
+    "var_roles": {
+     "l": "landlord"
+    }
    },
    {
     "id": "R5",
@@ -4852,7 +5064,11 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "state",
-    "source": "Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 (default in rent is the breach that opens eviction). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes rent_paid; pay_rent restores it, default_rent breaks it (sanction R3)"
+    "source": "Cal. Code Civ. Proc. s. 1161(2)-(3) (tenant guilty of unlawful detainer who continues in possession after default in rent, or after neglect or failure to perform other conditions or covenants of the lease, and three days' notice); https://california.public.law/codes/ca_civ_proc_code_section_1161 (default in rent is the breach that opens eviction). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] let establishes rent_paid; pay_rent restores it, default_rent breaks it (sanction R3)",
+    "var_roles": {
+     "t": "tenant",
+     "l": "landlord"
+    }
    }
   ],
   "source_text": "'The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable.' Cal. Civ. Code s. 1941, read at https://california.public.law/codes/ca_civ_code_section_1941. A tenant 'is guilty of unlawful detainer' who continues in possession after default in rent or 'after a neglect or failure to perform other conditions or covenants of the lease' and three days' notice, Cal. Code Civ. Proc. s. 1161(2)-(3), read at https://california.public.law/codes/ca_civ_proc_code_section_1161. A hiring for an unspecified term ends when 'one of the parties gives written notice to the other of that party's intention to terminate the same', Cal. Civ. Code s. 1946, read at https://california.public.law/codes/ca_civ_code_section_1946.",
@@ -5119,7 +5335,11 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to 'provide and maintain a welcoming and safe environment for all patrons and library staff'; 'Violation of the Library's Rules of Use Policy may warrant a suspension of library privileges'; 'Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately'; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (service to all patrons is the policy's premise; the duty to serve is read from it, not stated as such: UNVERIFIED as a rule). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] enter establishes served; serve restores it, refuse_service breaks it Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: 'In order to provide and maintain a welcoming and safe environment for all patrons and library staff'."
+    "source": "Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to 'provide and maintain a welcoming and safe environment for all patrons and library staff'; 'Violation of the Library's Rules of Use Policy may warrant a suspension of library privileges'; 'Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately'; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (service to all patrons is the policy's premise; the duty to serve is read from it, not stated as such: UNVERIFIED as a rule). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] enter establishes served; serve restores it, refuse_service breaks it Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: 'In order to provide and maintain a welcoming and safe environment for all patrons and library staff'.",
+    "var_roles": {
+     "lb": "librarian",
+     "p": "patron"
+    }
    },
    {
     "id": "R3",
@@ -5132,7 +5352,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to 'provide and maintain a welcoming and safe environment for all patrons and library staff'; 'Violation of the Library's Rules of Use Policy may warrant a suspension of library privileges'; 'Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately'; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (violation of the Rules of Use 'may warrant a suspension of library privileges'; staff 'will instruct anyone displaying these behaviors to leave') Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: 'Continued disruption (same or different day): Library privileges will be suspended for the day by an authorized staff-member and the patron will be asked to leave the Library building.'"
+    "source": "Berkeley Public Library, Patron Suspension Policy (orig. 2002-09-11, rev. 2018-11-14, Res. R18-053): the Library aims to 'provide and maintain a welcoming and safe environment for all patrons and library staff'; 'Violation of the Library's Rules of Use Policy may warrant a suspension of library privileges'; 'Authorized library staff will instruct anyone displaying these behaviors to leave the library facility immediately'; https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf (violation of the Rules of Use 'may warrant a suspension of library privileges'; staff 'will instruct anyone displaying these behaviors to leave') Verification pass: read 2026-11-06 at https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf: 'Continued disruption (same or different day): Library privileges will be suspended for the day by an authorized staff-member and the patron will be asked to leave the Library building.'",
+    "var_roles": {
+     "p": "patron"
+    }
    },
    {
     "id": "R4",
@@ -6603,7 +6826,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book II ch. 29 'Of Title by Succession, Marriage, and Judgment' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says 'I speak not at present of the rights of property' and so did not support this rule."
+    "source": "Blackstone, Commentaries on the Laws of England, Book II ch. 29 'Of Title by Succession, Marriage, and Judgment' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says 'I speak not at present of the rights of property' and so did not support this rule.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R2",
@@ -6617,7 +6843,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "h": "husband",
+     "w": "wife"
+    }
    },
    {
     "id": "R3",
@@ -6631,7 +6861,11 @@
     "kind": "norm",
     "sanctioner": "family",
     "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "w": "wife",
+     "h": "husband"
+    }
    },
    {
     "id": "R4",
@@ -6644,7 +6878,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished')."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished').",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R5",
@@ -6657,7 +6894,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R6",
@@ -6670,7 +6910,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored)."
+    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R7",
@@ -6683,7 +6926,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage)."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage).",
+    "var_roles": {
+     "h": "husband"
+    }
    }
   ],
   "source_text": "Coverture as received in the US states before the married women's property acts: the rules of coverture-household (Blackstone, Commentaries I.15 and II.29, England), read as US law. Reception is assumed, not sourced (a US treatise, Kent's Commentaries on American Law, is a lead, not opened). Exit: no US state had unilateral divorce before 1969 (Stevenson & Wolfers 2006, lead, not opened); fault divorce existed in most states and is not encoded. Split from coverture-household 2026-11-05 (plans/sourcing.md, B3 with B1).",
@@ -7150,7 +7396,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book II ch. 29 'Of Title by Succession, Marriage, and Judgment' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says 'I speak not at present of the rights of property' and so did not support this rule."
+    "source": "Blackstone, Commentaries on the Laws of England, Book II ch. 29 'Of Title by Succession, Marriage, and Judgment' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says 'I speak not at present of the rights of property' and so did not support this rule.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R2",
@@ -7164,7 +7413,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "h": "husband",
+     "w": "wife"
+    }
    },
    {
     "id": "R3",
@@ -7178,7 +7431,11 @@
     "kind": "norm",
     "sanctioner": "family",
     "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "w": "wife",
+     "h": "husband"
+    }
    },
    {
     "id": "R4",
@@ -7191,7 +7448,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished')."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished').",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R5",
@@ -7204,7 +7464,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R6",
@@ -7217,7 +7480,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored)."
+    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R7",
@@ -7230,7 +7496,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage)."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R10",
@@ -7753,7 +8022,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "h": "husband",
+     "w": "wife"
+    }
    },
    {
     "id": "R3",
@@ -7767,7 +8040,11 @@
     "kind": "norm",
     "sanctioner": "family",
     "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "w": "wife",
+     "h": "husband"
+    }
    },
    {
     "id": "R4",
@@ -7780,7 +8057,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished')."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished').",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R5",
@@ -7793,7 +8073,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R6",
@@ -7806,7 +8089,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored)."
+    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R7",
@@ -7819,7 +8105,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage)."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R10",
@@ -8359,7 +8648,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "h": "husband",
+     "w": "wife"
+    }
    },
    {
     "id": "R3",
@@ -8373,7 +8666,11 @@
     "kind": "norm",
     "sanctioner": "family",
     "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "w": "wife",
+     "h": "husband"
+    }
    },
    {
     "id": "R4",
@@ -8386,7 +8683,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished')."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished').",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R5",
@@ -8399,7 +8699,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R6",
@@ -8412,7 +8715,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored)."
+    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R7",
@@ -8425,7 +8731,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage)."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R10",
@@ -8982,7 +9291,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "h": "husband",
+     "w": "wife"
+    }
    },
    {
     "id": "R3",
@@ -8996,7 +9309,11 @@
     "kind": "norm",
     "sanctioner": "family",
     "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "w": "wife",
+     "h": "husband"
+    }
    },
    {
     "id": "R4",
@@ -9009,7 +9326,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished')."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished').",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R5",
@@ -9022,7 +9342,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R6",
@@ -9035,7 +9358,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored)."
+    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R10",
@@ -9631,7 +9957,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "h": "husband",
+     "w": "wife"
+    }
    },
    {
     "id": "R3",
@@ -9645,7 +9975,11 @@
     "kind": "norm",
     "sanctioner": "family",
     "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "w": "wife",
+     "h": "husband"
+    }
    },
    {
     "id": "R5",
@@ -9658,7 +9992,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R6",
@@ -9671,7 +10008,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored)."
+    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R10",
@@ -10299,7 +10639,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "h": "husband",
+     "w": "wife"
+    }
    },
    {
     "id": "R3",
@@ -10313,7 +10657,11 @@
     "kind": "norm",
     "sanctioner": "family",
     "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "w": "wife",
+     "h": "husband"
+    }
    },
    {
     "id": "R4",
@@ -10326,7 +10674,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished')."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished').",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R5",
@@ -10339,7 +10690,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R6",
@@ -10352,7 +10706,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored)."
+    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R7",
@@ -10365,7 +10722,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage)."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R10",
@@ -10871,7 +11231,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book II ch. 29 'Of Title by Succession, Marriage, and Judgment' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says 'I speak not at present of the rights of property' and so did not support this rule."
+    "source": "Blackstone, Commentaries on the Laws of England, Book II ch. 29 'Of Title by Succession, Marriage, and Judgment' (1766), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage' (long s modernised from the OCR). Re-sourced 2026-11-04: Book I ch. 15 (the earlier citation; https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/, the husband and wife are one person in law) says 'I speak not at present of the rights of property' and so did not support this rule.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R2",
@@ -10885,7 +11248,11 @@
     "kind": "formal",
     "sanctioner": "none",
     "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (the husband is bound to provide his wife with necessaries). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(h, w); maintain restores it, neglect breaks it Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband is bound to provide his wife with necessaries by law, as much as himself' (long s modernised from the OCR).",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "h": "husband",
+     "w": "wife"
+    }
    },
    {
     "id": "R3",
@@ -10899,7 +11266,11 @@
     "kind": "norm",
     "sanctioner": "family",
     "source": "implicit norm: household labour is the wife's; not in Blackstone's text, assumed by it. UNVERIFIED (general knowledge; no source opened). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] marry establishes provides_care(w, h); keep_house restores it, neglect_house breaks it (sanction R5)",
-    "load_bearing": true
+    "load_bearing": true,
+    "var_roles": {
+     "w": "wife",
+     "h": "husband"
+    }
    },
    {
     "id": "R4",
@@ -10912,7 +11283,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished')."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (she cannot sue or be sued in her own name without her husband); a disability, not a sanctioned prohibition, hence or_else null. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(w) = sue enabled (a default capacity), which this disability removes while married Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'If the wife be injured in her person or her property, she can bring no action for redress without her husband's concurrence, and in his name, as well as her own' ... 'neither can she be sued, without making the husband a defendant' (long s modernised from the OCR; the same passage excepts a husband who 'has abjured the realm, or is banished').",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R5",
@@ -10925,7 +11299,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765), read 2026-11-04 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'The husband also (by the old law) might give his wife moderate correction' ... 'the courts of law will still permit a husband to restrain a wife of her liberty, in case of any gross misbehaviour' (long s modernised from the OCR). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/. The condition (misbehaves w) is set by the free action misbehave, which no rule regulates: the encoder's way to make Blackstone's condition reachable.",
+    "var_roles": {
+     "w": "wife"
+    }
    },
    {
     "id": "R6",
@@ -10938,7 +11315,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored)."
+    "source": "UNVERIFIED (leads, not opened 2026-11-05; network fetches blocked): Stevenson & Wolfers, 'Bargaining in the Shadow of the Law: Divorce Laws and Family Distress', Quarterly Journal of Economics 121(1) (2006), NBER w10175, on unilateral (no-fault) divorce adopted state by state from 1969; New York's 1787 divorce act (absolute divorce for adultery only, until the 1966 reform) as one state's fault statute (plans/sourcing-worklist-mwpa.md, Jurisdiction mismatch B). Reading (option B1): R6 encodes no exit at her own will. A judicial divorce on the husband's proved fault (grounds varied by state; South Carolina had none) is an exit this encoding does not represent (option B2, a later preregistered experiment, plans/sourcing.md). The English sources of coverture-household R6 (Shanley 1989, Stone 1990, on England before the Matrimonial Causes Act 1857) are not cited here. [ADR 0013: or_else null: the exit bar is a disability, not a prohibition the subject answers for. Power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(w) = leave enabled (a default capacity), which this disability makes false while married Verification pass: Stevenson & Wolfers read 2026-11-06 at https://www.nber.org/system/files/working_papers/w10175/w10175.pdf (the NBER working paper of December 2003, not the QJE version): 'from the preexisting divorce laws (which typically required either the consent of both spouses or a demonstration of marital fault)' ... 'prior to unilateral divorce, a partner wishing to dissolve the marriage could leave' ... 'However, in such a situation, a legal divorce is not granted'; its Table 1 lists 'Pre-existing Unilateral Divorce statutes (predate beginning of sample in 1964)' in nine states (Alaska, Louisiana, Maryland, North Carolina, Oklahoma, Utah, Virginia, Vermont, West Virginia), so the paper does not say that no state had unilateral divorce before 1969. New York, Laws of 1787 ch. 69 (passed 30 March 1787), read 2026-11-06 through the OCR at https://archive.org/download/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787/bim_eighteenth-century_laws-of-the-state-of-new_new-york-state_1787_djvu.txt: 'in all cases of adultery that have already been committed, or may hereafter be committed, where the parties are inhabitants of this State, for the party injured, to exhibit or present a petition or bill to the Chancellor' (long s modernised; letters clipped at line starts restored).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R7",
@@ -10951,7 +11331,10 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage)."
+    "source": "Blackstone, Commentaries on the Laws of England, Book I ch. 15 'Of Husband and Wife' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: 'all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable' ... 'all compacts made between husband and wife, when single, are voided by the intermarriage' (long s modernised; the OCR prints 'converture' in the first passage).",
+    "var_roles": {
+     "h": "husband"
+    }
    },
    {
     "id": "R20",
