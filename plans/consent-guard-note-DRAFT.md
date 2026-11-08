@@ -32,3 +32,7 @@ Mirrors ADR 0005: a gate (a bare iso: true across the human/non-human line fails
 
 ## Author decisions needed to finalize
 (a) scope of visitation/SSI; (b) testimony in notes or banned outright; (c) Hale citation form; (d) owning review seat; (e) stop triggers; (f) accept, with date, as an ADR number.
+
+## Settled so far
+
+- (a) Scope, author 2026-11-08: the note covers the sexual-conduct entries only (marital rape exemption, consent definitions, sodomy/adultery/bigamy statutes). Hospital visitation and SSI are marriage-adjacent but not in scope; their entries cite this ruling in `notes`. Must be final before marriage batch 2.
