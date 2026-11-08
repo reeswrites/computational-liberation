@@ -13774,7 +13774,10 @@
      "h",
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
     "effects": [
      {
       "fluent": "married",
@@ -13816,7 +13819,9 @@
     "args": [
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_b"
+    ],
     "effects": [],
     "gloss": "",
     "default_capacity": false
@@ -13826,7 +13831,9 @@
     "args": [
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_b"
+    ],
     "effects": [],
     "gloss": "",
     "default_capacity": false
@@ -13837,7 +13844,10 @@
      "h",
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
     "effects": [
      {
       "fluent": "provides_care",
@@ -13857,7 +13867,10 @@
      "h",
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
     "effects": [
      {
       "fluent": "provides_care",
@@ -13877,7 +13890,10 @@
      "w",
      "h"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_b",
+     "partner_a"
+    ],
     "effects": [
      {
       "fluent": "provides_care",
@@ -13897,7 +13913,10 @@
      "w",
      "h"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_b",
+     "partner_a"
+    ],
     "effects": [
      {
       "fluent": "provides_care",
@@ -13917,7 +13936,10 @@
      "h",
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
     "effects": [],
     "gloss": "",
     "default_capacity": false
@@ -13928,7 +13950,10 @@
      "h",
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_a",
+     "partner_b"
+    ],
     "effects": [],
     "gloss": "",
     "default_capacity": false
@@ -13938,7 +13963,9 @@
     "args": [
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_b"
+    ],
     "effects": [
      {
       "fluent": "misbehaves",
@@ -13956,7 +13983,9 @@
     "args": [
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_b"
+    ],
     "effects": [],
     "gloss": "",
     "default_capacity": false
@@ -13966,7 +13995,9 @@
     "args": [
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_b"
+    ],
     "effects": [],
     "gloss": "",
     "default_capacity": true
@@ -13976,7 +14007,9 @@
     "args": [
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_b"
+    ],
     "effects": [],
     "gloss": "",
     "default_capacity": true
@@ -13986,7 +14019,9 @@
     "args": [
      "w"
     ],
-    "arg_roles": null,
+    "arg_roles": [
+     "partner_b"
+    ],
     "effects": [],
     "gloss": "",
     "default_capacity": true
