@@ -679,8 +679,38 @@ def cards_problems(files: dict, out: Path = CARDS) -> list:
 
 
 # ---------------------------------------------------------------- commands
+ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def opened_problem(item):
+    """None unless a provenance item marked `opened` lacks an ISO `accessed` date or a non-empty `excerpt`
+    (ADR 0017 s.3: a fetch nobody re-opened is `snippet`). Shared with tests/test_sources.py check 6."""
+    if not isinstance(item, dict) or item.get("verification") != "opened":
+        return None
+    miss = []
+    if not ISO_DATE.match(str(item.get("accessed") or "").strip()):
+        miss.append("accessed (ISO date)")
+    if not str(item.get("excerpt") or "").strip():
+        miss.append("excerpt")
+    return "opened without " + " and ".join(miss) if miss else None
+
+
+def provenance_problems(raws):
+    """Every own rule (rules, rules_add, rules_replace) of every src entry; inherited rules are counted where written."""
+    errs = []
+    for eid, raw in raws.items():
+        for key in ("rules", "rules_add", "rules_replace"):
+            for r in raw.get(key) or ():
+                for it in r.get("provenance") or ():
+                    p = opened_problem(it)
+                    if p:
+                        errs.append(f"{eid} {r.get('id')}: provenance {it.get('source_id')}: {p} (check 6, ADR 0017 s.3)")
+    return errs
+
+
 def problems(resolved, require_plain):
     errs, warns = [], []
+    errs += provenance_problems(load_sources()[1])
     for e in resolved:
         for r in e["rules"]:
             where = f"{e['id']} {r['id']}"

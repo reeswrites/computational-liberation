@@ -14,6 +14,8 @@ Hard:
    from independent secondary works agreeing on it (independent: both have authors and their normalised surname
    sets are disjoint; a work with no author is never independent). A `conflict` event records its
    `conflict_note`; an event whose items report different dates is `conflict` (no silent conflict).
+6. `opened` requires `accessed` (ISO date) and a non-empty `excerpt` (rules, rules_add, rules_replace, ground truth);
+   same rule as build.py `problems()` (`opened_problem`). A fetch nobody re-opened is `snippet` (ADR 0017 s.3).
 Report-only (warnings.warn until the migration is reviewed, then promoted):
 1e. Two bibliography entries with the same url, or the same (type, year, normalised title): probably one work
    under two ids.
@@ -389,6 +391,27 @@ def test_date_conflict_logic():
 def test_provenance_not_in_engine_json():
     inst = json.loads((INST / "institutions.json").read_text(encoding="utf-8"))
     assert not [r for e in inst for r in e["rules"] if "provenance" in r]
+
+
+# ---------------------------------------------------------------- check 6
+def test_opened_has_accessed_and_excerpt(raws):
+    order, rs = raws
+    errs = []
+    for where, it in _all_items(order, rs):
+        p = build.opened_problem(it)
+        if p:
+            errs.append(f"{where}: provenance {it.get('source_id')}: {p}")
+    assert not errs, "check 6 (ADR 0017 s.3):\n" + "\n".join(errs)
+    assert not build.provenance_problems(rs)
+
+
+def test_opened_rule_logic():
+    ok = {"source_id": "s", "verification": "opened", "accessed": "2026-11-08", "excerpt": "x"}
+    assert build.opened_problem(ok) is None
+    assert build.opened_problem({**ok, "accessed": None})
+    assert build.opened_problem({**ok, "accessed": "Nov 8"})
+    assert build.opened_problem({**ok, "excerpt": " "})
+    assert build.opened_problem({**ok, "verification": "snippet", "accessed": None, "excerpt": None}) is None
 
 
 # ---------------------------------------------------------------- check 4 (report-only) and check 5 (hard)
