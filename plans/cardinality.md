@@ -57,3 +57,22 @@ Bools per fluent per step grow as (agents)^arity. A 2-role arity-2 untyped fluen
 - Whether `atmost`/`atleast` live in the property language only, or also in rule conditions (a cap is a rule: `clerk must_not register when (atleast 2 partners)`). Rules need it for Q4; proposing both, same lowering.
 - A ceiling on `count` for runtime (3?) enforced by `build.py --check`, so nobody writes 20 by accident.
 - Whether the ABM step (4) is part of this slice or its own, given layer 2 is frozen and reopening it is the author's call.
+
+## Open decision: `INITIAL_ROLE_EVERY_INSTANCE` and `initial` semantics (for the author)
+
+Assistant's read of the engine, 2026-11-08. The flag is `rules_roles.INITIAL_ROLE_EVERY_INSTANCE` in `philengine/rules_roles.py`, currently `False`. It is read only inside `expand_initial`, which `rules_lower.py` calls at lines 311 and 997 and `rules_reference.py` at 461. The recommendation is mine; the decision is yours.
+
+**What it changes.** Only when a role has count > 1 and an entry's `initial` literal names the role rather than an instance. With the flag False, the engine raises `RoleCardinalityError` and tells you to name an instance. With it True, the literal expands to every instance (for several arguments, the full product over instances). It never applies to count-1 roles, so existing entries are unaffected. Nothing gives "only the first instance": today the choice is between "error" and "all of them".
+
+**Two-wife example.** Take an entry with `wife.count: 2` (wife_1, wife_2) and the literal `owns(wife)`.
+- Flag False: load fails; you write `owns(wife_1)` and leave wife_2 out. Result: wife_1 is propertied and wife_2 is not, so `financial_dependence_unpropertied` can be read as holding for wife_2 only. This is what Q3 preregisters.
+- Flag True: both wives own, so no instance is unpropertied. The dependence verdicts that depend on wife_2 lacking property flip, and Q3's contrast cannot be built with that literal. Worse, no error appears: a modeller who meant "a wife owns" silently got "every wife owns". A two-role literal such as `married(wife, wife)` would also expand to include self-pairs (wife_1 with wife_1).
+
+**Options.**
+1. Default False, as now. Safest and loudest; costs a line per instance in every entry that needs the same fact for all.
+2. Default True. Shorter entries for homogeneous households; silent over-assertion, and the Q3 case needs instance names anyway.
+3. Per entry or per literal in YAML. A per-entry switch (`initial_every_instance: true`) is easy but still all-or-nothing within the entry. A per-literal marker (for example `owns(wife[*])`) lets the author say "every wife" on that literal only.
+
+**Recommendation.** Keep False as the default (option 1) now, and add the per-literal marker (the second form of option 3) only when an entry needs "every instance" often enough to justify it. Q3, the first user of counts, needs mixed instances anyway, and an error is cheaper than a silent wrong verdict.
+
+**Tradeoff.** False costs verbosity and a failing load when someone writes the role name; the per-literal marker adds a small syntax and a card rendering rule. True is shortest but hides the exact mistake that count > 1 makes easy.
