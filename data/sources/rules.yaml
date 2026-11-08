@@ -479,3 +479,56 @@
   jurisdiction: US-CA
   url: https://california.public.law/codes/ca_welf_and_inst_code_section_326.5
   note: "Added 2026-11-06 (faithfulness batch 2): CAPTA guardian ad litem rule of court. Cited by cps R11."
+
+# ---------------------------------------------------------------- hospital visitation (informal-rules slice 1, 2026-11-08)
+# Levels and excerpts below are those plans/sourcing-worklist-marriage.md reached on 2026-11-08 (WebFetch summaries of
+# the pages, PDF text for r75soma); the encoding session did not re-open them. Nothing is upgraded past the worklist.
+- id: hv-cfr-482-13-h
+  type: regulation
+  title: "42 CFR 482.13(h) Patient visitation rights"
+  year: 2011
+  container: "Code of Federal Regulations, title 42, part 482 (Medicare Conditions of Participation for hospitals)"
+  jurisdiction: US
+  url: https://www.law.cornell.edu/cfr/text/42/482.13
+  note: "Current eCFR text (amended 2012, 2019); the 2011 text is the FR amendment (hv-fr-2010-final-rule). Opened 2026-11-08 by the sourcing worklist (summary-mediated)."
+- id: hv-fr-2010-final-rule
+  type: regulation
+  title: "Medicare and Medicaid Programs; Changes to the Hospital and Critical Access Hospital Conditions of Participation to Ensure Visitation Rights for All Patients; final rule, 75 FR 70831"
+  year: 2010
+  container: "Federal Register 75(223): 70831 (2010-11-19), CMS-3228-F, doc 2010-29194"
+  jurisdiction: US
+  url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
+  note: "Effective 2011-01-18. Adds 42 CFR 482.13(h) and 485.635(f) (critical access hospitals). Opened 2026-11-08 by the sourcing worklist (first 100,000 of 103,789 characters; amendatory text read via offset)."
+- id: hv-presmemo-2010
+  type: archival
+  title: "Presidential Memorandum: Hospital Visitation (2010-04-15)"
+  year: 2010
+  container: "The White House, Office of the Press Secretary (Obama White House archive)"
+  jurisdiction: US
+  url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
+  note: "Directs the HHS Secretary to initiate rulemaking; describes the pre-2011 baseline as immediate-family visitation. Opened 2026-11-08 by the sourcing worklist."
+- id: hv-cms-r75soma
+  type: regulation
+  title: "CMS Transmittal 75, Pub. 100-07 State Operations Manual, Appendix A and W: visitation rights interpretive guidelines (A-0215 to A-0217, C-1000 to C-1002)"
+  year: 2011
+  container: "CMS State Operations Manual transmittals, 2011-12-02"
+  jurisdiction: US
+  url: https://www.cms.gov/regulations-and-guidance/guidance/transmittals/downloads/r75soma.pdf
+  note: "Interpretive guidance for state survey agencies; the enforcement path behind 482.13(h). Opened 2026-11-08 by the sourcing worklist (PDF, pdftotext; A-0215 read; A-0216/0217 and C-1000 to C-1002 not read)."
+- id: hv-ll-2010-wcnc
+  type: secondary
+  title: "When Health Care Isn't Caring: Lambda Legal's Survey on Discrimination Against LGBT People and People Living with HIV"
+  author: [Lambda Legal]
+  year: 2010
+  container: null
+  jurisdiction: US
+  url: https://legacy.lambdalegal.org/sites/default/files/publications/downloads/whcic_report_when-health-care-isnt-caring.pdf
+  note: "UNREACHABLE 2026-11-08: the host redirect-loops between legacy.lambdalegal.org and lambdalegal.org; nothing opened, no quote. Lead for pre-2011 visitation denials; cite nothing from memory."
+- id: hv-nv-2012
+  type: web
+  title: "NV hospital denies rights to domestic partners (AP via NBC News, 2012-08-21)"
+  year: 2012
+  container: "NBC News"
+  jurisdiction: US-NV
+  url: https://www.nbcnews.com/news/world/nv-hospital-denies-rights-domestic-partners-flna957300
+  note: "One anecdote of a post-2011 denial (Spring Valley Hospital, Las Vegas; registered domestic partner denied access until she produced a power of attorney). Opened 2026-11-08 by the sourcing worklist (summary-mediated). Not a rate."

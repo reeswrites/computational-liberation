@@ -1,6 +1,6 @@
 # Parked: formal + informal rule layer (handoff received 2026-11-06)
 
-Status: PARKED, discussed with the author 2026-11-06/07; the decisions below are the author's. Not started. Sequenced after the faithfulness batch (plans/readability.md "Faithfulness batch") and after the composition verb exists.
+Status: slice 1 STARTED 2026-11-08 (see "Slice 1 preregistration" below); decisions below are the author's (2026-11-06/07). The faithfulness batch (plans/readability.md) is still owed and the composition verb exists in the engine (compose(), 47cd94b).
 
 ## Coordinator note (2026-11-07)
 
@@ -73,6 +73,43 @@ Researched 2026-11-07 (standard web search, no page fetches; advocacy-sourced it
 **R3. Sweden individual taxation 1971 (near-vanish, not clean).** The married-couple tax gate vanished formally; residual couple-level transfer rules remain and the 2003 Cohabitation Act is a separate regime. Not documented as moving to an informal test. Useful as the **no backstop found** control if the residual transfers are encoded honestly. Sources: Springer 10.1007/BF00160329; NBER c11497; IFAU wp00-5. Pre-1971 cohabitant status unverified.
 
 Recommendation (not decided): R1 as the blind rediscovery (preregister "displaced, informal gate retained"), R2 as the second encoding (preregister "displaced to new formal test"), R3 as the vanish control. Author picks.
+
+## Slice 1 preregistration: hospital-visitation pair (2026-11-08, committed before the first run)
+
+Status: slice 1 STARTED 2026-11-08 on branch `informal-rules-slice1` (the faithfulness batch is not done; the author scheduled this slice ahead of it, so every informal rule here is sourced at the level the worklist reached and the card-only seat runs on all of them). Encoded: `hospital-visitation-pre2011` (8 rules) and `hospital-visitation` (extends it: R3 narrowed, R9–R11 added). Properties added (kind `structure`, so ablation lists their flips and counts no load): `spouse_visit_guaranteed` (invariant, two grace steps), `spouse_visit_possible` (reachable), `unmarried_partner_visit_possible` (reachable), `designated_visit_guaranteed` (invariant, one grace step; the pair's `differs_on`). The properties read `visiting` on compliant traces, not a derived power, because the engine's `(enabled ...)` ignores a sanctioned `must_not` (only an or_else-null disability blocks enablement), so no power fluent could see the staff norm. Engine facts relied on, from rules_lower.py: a regulated action fires only at a step where some may/must condition on that instance holds; one action per step; a step where two different must-do instances fire has no compliant continuation and is excluded.
+
+Encoding departures from the worklist vocabulary (section 4 there), all ASSUMED: `hospital` split into `staff` (decide, admit) and `hospital` (sanction); `kin` dropped (one visitor role; `married` exogenous in the standalone entries, set by `marry` in the composite); `deny_visitor` and `can_visit` dropped; a family-admission duty R8 added so the spouse's visit can be guaranteed and not merely possible; the 2011 override of the staff norm written as a narrowing of R3's condition by `(not (designated p x))`.
+
+**Expected verdicts (k = 6 and 8, strict, step-mode one), never to be edited after the run:**
+
+| property | pre2011 | post-2011 (hospital-visitation) |
+|---|---|---|
+| spouse_visit_guaranteed | holds_to_k | holds_to_k |
+| spouse_visit_possible | reachable | reachable |
+| unmarried_partner_visit_possible | reachable | reachable |
+| designated_visit_guaranteed | not applicable (no `designated`) | holds_to_k |
+
+**Function predictions (D2), per rule, on single-rule ablation (`phil rules ablate`), read as flips of the four structure properties:**
+
+| rule | kind / sanctioner | function | predicted flips on deletion |
+|---|---|---|---|
+| pre R4 (must recognise spouse) | formal / institution | sorts_who_belongs | spouse_visit_guaranteed holds_to_k → violated; spouse_visit_possible stays reachable (R2 route) |
+| pre R2 (staff may recognise anyone) | norm / none (sanction on R3) | sorts_who_belongs | unmarried_partner_visit_possible reachable → unreachable_open |
+| pre R3 (must not admit non-family) | norm / institution | sorts_who_belongs | nothing on the four (R5 then lets the unmarried partner through without recognition, which the reachable property cannot distinguish); recorded as the sole-prohibition reading if so |
+| pre R8 (must admit family) | formal / institution | (none declared) | spouse_visit_guaranteed → violated |
+| pre R5 (may admit any visitor) | formal / none | (none) | nothing (R8 also permits) |
+| pre R1, R6, R7 | formal / none | (none) | R1: everything that needs admission becomes unreachable or vacuous (admit is the only setter of `admitted`); R6: nothing (sanction rule, strict compliance); R7: nothing (restriction only removes traces) |
+| post R4 | formal / institution | sorts_who_belongs | spouse_visit_guaranteed → violated (designation is a `may`, not forced); spouse_visit_possible stays reachable by two routes |
+| post R9 (must admit designated) | formal / state | settles_who_decides | designated_visit_guaranteed → violated; nothing else |
+| post R2 | norm / none | sorts_who_belongs | nothing (unmarried partner reachable through R10 + R9: displaced to designation) |
+| post R3 (narrowed norm) | norm / institution | sorts_who_belongs | nothing |
+| post R8 | formal / institution | (none) | spouse_visit_guaranteed → violated |
+| post R10 (patient may designate) | formal / none | (none) | designated_visit_guaranteed holds vacuously (no designation ever) — a vacuous flag, not a flip; nothing else |
+| post R5, R6, R7, R11, R1 | | | as the pre row for the same rule |
+
+A function whose prediction misses is reported as unsupported (D2). Flips not in this table go in docs/surprises.md.
+
+**Static verdict for R1 (D3), read from the post-2011 entry alone:** removing the formal spouse gate R4 is **displaced**: the guarantee is lost (`spouse_visit_guaranteed` violated), the good stays possible (`spouse_visit_possible` reachable) through the staff norm (R2, `sanctioner: institution` on its sanctioned half R3) and through designation (R10 → R9, `sanctioner: state`, the patient's own act). Who loses: the spouse loses the guarantee that attached to marital status; who now gates: staff discretion and the patient. The N1 wording "naming chosen family as the party that loses" is kept as written and judged against this reading after the run; the record for "informal gate persisted" is one anecdote (hv-nv-2012), and no rate is claimed. The composite reading (N1 proper) is preregistered in plans/composition.md ("First composite, preregistered").
 
 ### Preregistered claims (enter in docs/claims.md when this batch is scheduled, not before)
 

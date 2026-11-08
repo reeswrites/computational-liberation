@@ -12785,5 +12785,754 @@
   "initial_free": [
    "female"
   ]
+ },
+ {
+  "id": "hospital-visitation-pre2011",
+  "name": "US hospital visitation before 2011: policy admits immediate family, staff decide who counts (minimal pair base)",
+  "roles": [
+   {
+    "name": "patient",
+    "gloss": "the admitted patient whose visitors are at issue"
+   },
+   {
+    "name": "partner",
+    "gloss": "the would-be visitor; a spouse or an unmarried partner, depending on the trace (married is exogenous here)"
+   },
+   {
+    "name": "staff",
+    "gloss": "the charge nurse or unit staff who decide who counts as family and admit visitors"
+   },
+   {
+    "name": "hospital",
+    "gloss": "the hospital as an institution (administration); sets visitation policy and disciplines staff"
+   }
+  ],
+  "fluents": [
+   {
+    "name": "admitted",
+    "arity": 1,
+    "gloss": "p is an inpatient",
+    "arg_roles": [
+     "patient"
+    ]
+   },
+   {
+    "name": "married",
+    "arity": 2,
+    "gloss": "p and x are married (exogenous in this entry; set by marry in the coverture composite)",
+    "arg_roles": [
+     "patient",
+     "partner"
+    ]
+   },
+   {
+    "name": "counts_as_family",
+    "arity": 2,
+    "gloss": "staff treat x as family of p for visitation (the informal judgment; set by recognize_family)",
+    "arg_roles": [
+     "patient",
+     "partner"
+    ]
+   },
+   {
+    "name": "clinically_restricted",
+    "arity": 1,
+    "gloss": "visiting p is clinically restricted (infection control, procedure, patient rest)",
+    "arg_roles": [
+     "patient"
+    ]
+   },
+   {
+    "name": "visiting",
+    "arity": 2,
+    "gloss": "x has been admitted as a visitor to p",
+    "arg_roles": [
+     "partner",
+     "patient"
+    ]
+   }
+  ],
+  "actions": [
+   {
+    "name": "admit",
+    "args": [
+     "s",
+     "p"
+    ],
+    "arg_roles": [
+     "staff",
+     "patient"
+    ],
+    "effects": [
+     {
+      "fluent": "admitted",
+      "args": [
+       "p"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "recognize_family",
+    "args": [
+     "s",
+     "p",
+     "x"
+    ],
+    "arg_roles": [
+     "staff",
+     "patient",
+     "partner"
+    ],
+    "effects": [
+     {
+      "fluent": "counts_as_family",
+      "args": [
+       "p",
+       "x"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "admit_visitor",
+    "args": [
+     "s",
+     "x",
+     "p"
+    ],
+    "arg_roles": [
+     "staff",
+     "partner",
+     "patient"
+    ],
+    "effects": [
+     {
+      "fluent": "visiting",
+      "args": [
+       "x",
+       "p"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "restrict",
+    "args": [
+     "s",
+     "p"
+    ],
+    "arg_roles": [
+     "staff",
+     "patient"
+    ],
+    "effects": [
+     {
+      "fluent": "clinically_restricted",
+      "args": [
+       "p"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "reprimand",
+    "args": [
+     "o",
+     "s"
+    ],
+    "arg_roles": [
+     "hospital",
+     "staff"
+    ],
+    "effects": []
+   }
+  ],
+  "rules": [
+   {
+    "id": "R1",
+    "attribute": "staff",
+    "deontic": "may",
+    "aim": "(admit s p)",
+    "conditions": "(not (admitted p))",
+    "or_else": null,
+    "strand": null,
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "Encoder's device: admission is the event that makes visitation a question; no source read for it. UNVERIFIED (general knowledge; no source opened).",
+    "var_roles": {
+     "s": "staff",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R2",
+    "attribute": "staff",
+    "deontic": "may",
+    "aim": "(recognize_family s p x)",
+    "conditions": "(and (admitted p) (not (counts_as_family p x)))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": true,
+    "kind": "norm",
+    "sanctioner": "none",
+    "function": "sorts_who_belongs",
+    "source": "The informal gate. No hospital policy text was found that names the decider; the rule rests on the regulators' description of practice: the Presidential Memorandum of 2010-04-15 describes the baseline as visitation privileges 'no more restrictive than those that immediate family members enjoy' (hv-presmemo-2010, opened by the worklist), and the 2010 final rule's preamble says 'the current practice in some medical institutions ... denies patients access to their loved ones' (hv-fr-2010-final-rule, opened by the worklist). That staff exercised discretion over who counted as family is the encoder's reading of those descriptions (ASSUMED); Lambda Legal's 2010 survey (hv-ll-2010-wcnc) could not be opened. A permission carries no sanction of its own; the sanction that bounds the discretion is R3's (sanctioner institution), which is why this norm's own sanctioner is none.",
+    "var_roles": {
+     "s": "staff",
+     "p": "patient",
+     "x": "partner"
+    }
+   },
+   {
+    "id": "R3",
+    "attribute": "staff",
+    "deontic": "must_not",
+    "aim": "(admit_visitor s x p)",
+    "conditions": "(not (counts_as_family p x))",
+    "or_else": "R6",
+    "strand": "tying",
+    "implicit": true,
+    "kind": "norm",
+    "sanctioner": "institution",
+    "function": "sorts_who_belongs",
+    "source": "The sanctioned side of the informal gate: a visitor staff do not count as family is not admitted, and staff who admit one answer to the hospital. Same evidence base as R2 (the Presidential Memorandum's 'no more restrictive than those that immediate family members enjoy' baseline and the final rule's 'denies patients access to their loved ones', both opened by the worklist); that the hospital disciplined staff who admitted non-family is the encoder's inference from the existence of a policy (ASSUMED, no disciplinary text found).",
+    "var_roles": {
+     "s": "staff",
+     "x": "partner",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R4",
+    "attribute": "staff",
+    "deontic": "must",
+    "aim": "(recognize_family s p x)",
+    "conditions": "(and (admitted p) (married p x) (not (counts_as_family p x)))",
+    "or_else": "R6",
+    "strand": "tying",
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "institution",
+    "function": "sorts_who_belongs",
+    "source": "The formal gate before 2011: hospital policy, not law. No pre-2011 hospital policy text or state hospital association model policy with 'immediate family' wording was found or opened (plans/sourcing-worklist-marriage.md, hv-pre2011-practice); the rule rests on the Presidential Memorandum's description of the baseline, 'no more restrictive than those that immediate family members enjoy' (hv-presmemo-2010, opened by the worklist). Immediate family other than the spouse (parents, children, siblings) is not encoded: the entry has one visitor role and the composite's question is the spouse. Written as an action obligation (must recognise) rather than a state obligation because no action can establish counts_as_family for the spouse at admission (ADR 0009 note).",
+    "var_roles": {
+     "s": "staff",
+     "p": "patient",
+     "x": "partner"
+    }
+   },
+   {
+    "id": "R5",
+    "attribute": "staff",
+    "deontic": "may",
+    "aim": "(admit_visitor s x p)",
+    "conditions": "(and (admitted p) (not (clinically_restricted p)))",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "The general permission the staff norm narrows (R3 bars non-family; R8 obliges family). Clinical restriction as the standing exception is what the 2011 rule kept (hv-fr-2010-final-rule, opened by the worklist: the rule allows 'clinically necessary or reasonable restriction' in 482.13(h) intro); before 2011 it is the encoder's reconstruction of ordinary practice. UNVERIFIED for the pre-2011 permission itself.",
+    "var_roles": {
+     "s": "staff",
+     "x": "partner",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R6",
+    "attribute": "hospital",
+    "deontic": "may",
+    "aim": "(reprimand o s)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": null,
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "Encoder's sanction holder for the hospital's own policy (R4) and the staff norm (R3): employer discipline. No disciplinary text found. UNVERIFIED (general knowledge; no source opened).",
+    "var_roles": {
+     "o": "hospital",
+     "s": "staff"
+    }
+   },
+   {
+    "id": "R7",
+    "attribute": "staff",
+    "deontic": "may",
+    "aim": "(restrict s p)",
+    "conditions": "(admitted p)",
+    "or_else": null,
+    "strand": null,
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "The clinical-restriction exception, unchanged across the pair. After 2011 it is in 42 CFR 482.13(h): 'clinically necessary or reasonable restriction' (hv-fr-2010-final-rule, opened by the worklist); CMS Transmittal 75 puts 'the burden of proof is upon the hospital to demonstrate that the visitation restriction is reasonably necessary to provide safe care' (hv-cms-r75soma, opened by the worklist). Before 2011 the same clinical judgment existed without the burden of proof; the burden is not encoded (no rule reads it). Clinical grounds are not modelled; restrict is a free staff act, which over-reads staff power (recorded).",
+    "var_roles": {
+     "s": "staff",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R8",
+    "attribute": "staff",
+    "deontic": "must",
+    "aim": "(admit_visitor s x p)",
+    "conditions": "(and (admitted p) (counts_as_family p x) (not (clinically_restricted p)) (not (visiting x p)))",
+    "or_else": "R6",
+    "strand": "superadditive",
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "institution",
+    "source": "Hospital policy before 2011: immediate family are admitted. No policy text was opened; the duty is read from the Presidential Memorandum's description of the baseline, visitation 'no more restrictive than those that immediate family members enjoy' (hv-presmemo-2010, opened by the worklist), which presupposes that family were admitted as of course. Written as a duty (must), not a permission, so that the spouse's visit is guaranteed and not merely possible; whether hospitals treated family admission as obligatory on themselves is the encoder's reading (ASSUMED). The 'not visiting' conjunct makes the duty fire once (one action slot per step).",
+    "var_roles": {
+     "s": "staff",
+     "x": "partner",
+     "p": "patient"
+    }
+   }
+  ],
+  "source_text": "Before the 2011 Medicare rule there was no federal visitor-choice standard. The Presidential Memorandum of 2010-04-15 describes the baseline it set out to change as visitation 'no more restrictive than those that immediate family members enjoy' and the final rule's preamble says 'the current practice in some medical institutions ... denies patients access to their loved ones' (75 FR 70831). Both are regulators' descriptions; no pre-2011 hospital policy text was opened (plans/sourcing-worklist-marriage.md). Encoded as a formal policy gate (R4: the spouse must be recognised as family; R8: family are admitted) over an informal staff gate (R2: staff decide who else counts; R3: staff may not admit anyone they do not count), a general permission to admit visitors (R5) that R3 narrows, and the clinical-restriction exception (R7) that the 2011 rule kept.",
+  "expected_properties": {
+   "spouse_visit_guaranteed": "holds_to_k",
+   "spouse_visit_possible": "reachable",
+   "unmarried_partner_visit_possible": "reachable"
+  },
+  "isomorphic_to": [],
+  "not_isomorphic_to": [],
+  "minimal_pair_of": null,
+  "notes": "Base of the hospital-visitation minimal pair (plans/informal-rules.md R1; preregistered there 2026-11-08 before the first run). Vocabulary follows plans/sourcing-worklist-marriage.md section 4 with these changes: the hospital is split into staff (who decide and admit) and hospital (who sanction), so the institution sanction has a holder; the kin role is dropped (one visitor role, married exogenous, so the same role is the spouse in some traces and the unmarried partner in others); deny_visitor is dropped (non-admission is the default); can_visit as a derived power is dropped, because the engine's (enabled ...) ignores a sanctioned must_not (only an or_else-null disability blocks enablement, rules_lower.py), so a power fluent could not see the staff norm; the properties read the admission itself (visiting) on compliant traces, where every must_not binds under strict compliance. married has no setter here, so it is exogenous and free; in the coverture composite marry sets it. Engine facts the encoding leans on: a regulated action (one some may/must names) fires only at a step where some may/must condition on that instance holds, so R5 is what lets any visitor through and R3 is what stops non-family; one action per step (step-mode one), so a must-do that fires takes the step; a trace where two different must-do instances fire at one step is not compliant and is excluded, not counted. spouse_visit_guaranteed therefore has two grace steps (R4 recognises at t0, R8 admits at t1, visiting holds at t2). The formal gate is R4 (function: sorts_who_belongs; prediction: deleting it flips spouse_visit_guaranteed to violated while spouse_visit_possible stays reachable via R2). The informal gate is R2 + R3 (function: sorts_who_belongs; predictions: deleting R2 flips unmarried_partner_visit_possible to unreachable_open, since no other rule lets a non-spouse count; deleting R3 keeps it reachable and makes it reachable without recognition, since R5 permits any visitor). Deleting R8 flips spouse_visit_guaranteed to violated (admission no longer forced) and nothing else; deleting R5 flips nothing (R8 is also a permission). ASSUMED: the split roles, the family-admission duty (R8) and R4 as an action obligation; the card-only seat judges them."
+ },
+ {
+  "id": "hospital-visitation",
+  "name": "US hospital visitation after 42 CFR 482.13(h) (2011): the patient designates visitors; the staff gate remains as a norm the rule overrides",
+  "roles": [
+   {
+    "name": "patient",
+    "gloss": "the admitted patient whose visitors are at issue"
+   },
+   {
+    "name": "partner",
+    "gloss": "the would-be visitor; a spouse or an unmarried partner, depending on the trace (married is exogenous here)"
+   },
+   {
+    "name": "staff",
+    "gloss": "the charge nurse or unit staff who decide who counts as family and admit visitors"
+   },
+   {
+    "name": "hospital",
+    "gloss": "the hospital as an institution (administration); sets visitation policy and disciplines staff"
+   },
+   {
+    "name": "surveyor",
+    "gloss": "the state survey agency acting for CMS; enforces the Conditions of Participation"
+   }
+  ],
+  "fluents": [
+   {
+    "name": "admitted",
+    "arity": 1,
+    "gloss": "p is an inpatient",
+    "arg_roles": [
+     "patient"
+    ]
+   },
+   {
+    "name": "married",
+    "arity": 2,
+    "gloss": "p and x are married (exogenous in this entry; set by marry in the coverture composite)",
+    "arg_roles": [
+     "patient",
+     "partner"
+    ]
+   },
+   {
+    "name": "counts_as_family",
+    "arity": 2,
+    "gloss": "staff treat x as family of p for visitation (the informal judgment; set by recognize_family)",
+    "arg_roles": [
+     "patient",
+     "partner"
+    ]
+   },
+   {
+    "name": "clinically_restricted",
+    "arity": 1,
+    "gloss": "visiting p is clinically restricted (infection control, procedure, patient rest)",
+    "arg_roles": [
+     "patient"
+    ]
+   },
+   {
+    "name": "visiting",
+    "arity": 2,
+    "gloss": "x has been admitted as a visitor to p",
+    "arg_roles": [
+     "partner",
+     "patient"
+    ]
+   },
+   {
+    "name": "designated",
+    "arity": 2,
+    "gloss": "p has designated x as a visitor (482.13(h)(2))",
+    "arg_roles": [
+     "patient",
+     "partner"
+    ]
+   }
+  ],
+  "actions": [
+   {
+    "name": "admit",
+    "args": [
+     "s",
+     "p"
+    ],
+    "arg_roles": [
+     "staff",
+     "patient"
+    ],
+    "effects": [
+     {
+      "fluent": "admitted",
+      "args": [
+       "p"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "recognize_family",
+    "args": [
+     "s",
+     "p",
+     "x"
+    ],
+    "arg_roles": [
+     "staff",
+     "patient",
+     "partner"
+    ],
+    "effects": [
+     {
+      "fluent": "counts_as_family",
+      "args": [
+       "p",
+       "x"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "admit_visitor",
+    "args": [
+     "s",
+     "x",
+     "p"
+    ],
+    "arg_roles": [
+     "staff",
+     "partner",
+     "patient"
+    ],
+    "effects": [
+     {
+      "fluent": "visiting",
+      "args": [
+       "x",
+       "p"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "restrict",
+    "args": [
+     "s",
+     "p"
+    ],
+    "arg_roles": [
+     "staff",
+     "patient"
+    ],
+    "effects": [
+     {
+      "fluent": "clinically_restricted",
+      "args": [
+       "p"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "reprimand",
+    "args": [
+     "o",
+     "s"
+    ],
+    "arg_roles": [
+     "hospital",
+     "staff"
+    ],
+    "effects": []
+   },
+   {
+    "name": "designate",
+    "args": [
+     "p",
+     "x"
+    ],
+    "arg_roles": [
+     "patient",
+     "partner"
+    ],
+    "effects": [
+     {
+      "fluent": "designated",
+      "args": [
+       "p",
+       "x"
+      ],
+      "value": true
+     }
+    ]
+   },
+   {
+    "name": "cite",
+    "args": [
+     "v",
+     "o"
+    ],
+    "arg_roles": [
+     "surveyor",
+     "hospital"
+    ],
+    "effects": []
+   }
+  ],
+  "rules": [
+   {
+    "id": "R1",
+    "attribute": "staff",
+    "deontic": "may",
+    "aim": "(admit s p)",
+    "conditions": "(not (admitted p))",
+    "or_else": null,
+    "strand": null,
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "Encoder's device: admission is the event that makes visitation a question; no source read for it. UNVERIFIED (general knowledge; no source opened).",
+    "var_roles": {
+     "s": "staff",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R2",
+    "attribute": "staff",
+    "deontic": "may",
+    "aim": "(recognize_family s p x)",
+    "conditions": "(and (admitted p) (not (counts_as_family p x)))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": true,
+    "kind": "norm",
+    "sanctioner": "none",
+    "function": "sorts_who_belongs",
+    "source": "The informal gate. No hospital policy text was found that names the decider; the rule rests on the regulators' description of practice: the Presidential Memorandum of 2010-04-15 describes the baseline as visitation privileges 'no more restrictive than those that immediate family members enjoy' (hv-presmemo-2010, opened by the worklist), and the 2010 final rule's preamble says 'the current practice in some medical institutions ... denies patients access to their loved ones' (hv-fr-2010-final-rule, opened by the worklist). That staff exercised discretion over who counted as family is the encoder's reading of those descriptions (ASSUMED); Lambda Legal's 2010 survey (hv-ll-2010-wcnc) could not be opened. A permission carries no sanction of its own; the sanction that bounds the discretion is R3's (sanctioner institution), which is why this norm's own sanctioner is none.",
+    "var_roles": {
+     "s": "staff",
+     "p": "patient",
+     "x": "partner"
+    }
+   },
+   {
+    "id": "R3",
+    "attribute": "staff",
+    "deontic": "must_not",
+    "aim": "(admit_visitor s x p)",
+    "conditions": "(and (not (counts_as_family p x)) (not (designated p x)))",
+    "or_else": "R6",
+    "strand": "tying",
+    "implicit": true,
+    "kind": "norm",
+    "sanctioner": "institution",
+    "function": "sorts_who_belongs",
+    "source": "The pre-2011 staff norm (hospital-visitation-pre2011 R3), retained. The 2011 rule does not delete it; it overrides it where the patient has designated the visitor, which strict compliance can only express as a narrowing of the norm's condition (ASSUMED encoding of 'overrides but does not delete'; a norm kept at full width would contradict R9 and leave no compliant trace). That the norm persisted is anecdotal: a registered domestic partner was denied access at a Las Vegas hospital in 2012, 'It didn't matter that we were registered domestic partners' (hv-nv-2012, opened by the worklist); no rate exists (no compliance study found, plans/informal-rules.md R1). Baseline evidence as before: 'no more restrictive than those that immediate family members enjoy' (hv-presmemo-2010).",
+    "var_roles": {
+     "s": "staff",
+     "x": "partner",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R4",
+    "attribute": "staff",
+    "deontic": "must",
+    "aim": "(recognize_family s p x)",
+    "conditions": "(and (admitted p) (married p x) (not (counts_as_family p x)))",
+    "or_else": "R6",
+    "strand": "tying",
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "institution",
+    "function": "sorts_who_belongs",
+    "source": "The formal gate before 2011: hospital policy, not law. No pre-2011 hospital policy text or state hospital association model policy with 'immediate family' wording was found or opened (plans/sourcing-worklist-marriage.md, hv-pre2011-practice); the rule rests on the Presidential Memorandum's description of the baseline, 'no more restrictive than those that immediate family members enjoy' (hv-presmemo-2010, opened by the worklist). Immediate family other than the spouse (parents, children, siblings) is not encoded: the entry has one visitor role and the composite's question is the spouse. Written as an action obligation (must recognise) rather than a state obligation because no action can establish counts_as_family for the spouse at admission (ADR 0009 note).",
+    "var_roles": {
+     "s": "staff",
+     "p": "patient",
+     "x": "partner"
+    }
+   },
+   {
+    "id": "R5",
+    "attribute": "staff",
+    "deontic": "may",
+    "aim": "(admit_visitor s x p)",
+    "conditions": "(and (admitted p) (not (clinically_restricted p)))",
+    "or_else": null,
+    "strand": "superadditive",
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "The general permission the staff norm narrows (R3 bars non-family; R8 obliges family). Clinical restriction as the standing exception is what the 2011 rule kept (hv-fr-2010-final-rule, opened by the worklist: the rule allows 'clinically necessary or reasonable restriction' in 482.13(h) intro); before 2011 it is the encoder's reconstruction of ordinary practice. UNVERIFIED for the pre-2011 permission itself.",
+    "var_roles": {
+     "s": "staff",
+     "x": "partner",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R6",
+    "attribute": "hospital",
+    "deontic": "may",
+    "aim": "(reprimand o s)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": null,
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "Encoder's sanction holder for the hospital's own policy (R4) and the staff norm (R3): employer discipline. No disciplinary text found. UNVERIFIED (general knowledge; no source opened).",
+    "var_roles": {
+     "o": "hospital",
+     "s": "staff"
+    }
+   },
+   {
+    "id": "R7",
+    "attribute": "staff",
+    "deontic": "may",
+    "aim": "(restrict s p)",
+    "conditions": "(admitted p)",
+    "or_else": null,
+    "strand": null,
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "The clinical-restriction exception, unchanged across the pair. After 2011 it is in 42 CFR 482.13(h): 'clinically necessary or reasonable restriction' (hv-fr-2010-final-rule, opened by the worklist); CMS Transmittal 75 puts 'the burden of proof is upon the hospital to demonstrate that the visitation restriction is reasonably necessary to provide safe care' (hv-cms-r75soma, opened by the worklist). Before 2011 the same clinical judgment existed without the burden of proof; the burden is not encoded (no rule reads it). Clinical grounds are not modelled; restrict is a free staff act, which over-reads staff power (recorded).",
+    "var_roles": {
+     "s": "staff",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R8",
+    "attribute": "staff",
+    "deontic": "must",
+    "aim": "(admit_visitor s x p)",
+    "conditions": "(and (admitted p) (counts_as_family p x) (not (clinically_restricted p)) (not (visiting x p)))",
+    "or_else": "R6",
+    "strand": "superadditive",
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "institution",
+    "source": "Hospital policy before 2011: immediate family are admitted. No policy text was opened; the duty is read from the Presidential Memorandum's description of the baseline, visitation 'no more restrictive than those that immediate family members enjoy' (hv-presmemo-2010, opened by the worklist), which presupposes that family were admitted as of course. Written as a duty (must), not a permission, so that the spouse's visit is guaranteed and not merely possible; whether hospitals treated family admission as obligatory on themselves is the encoder's reading (ASSUMED). The 'not visiting' conjunct makes the duty fire once (one action slot per step).",
+    "var_roles": {
+     "s": "staff",
+     "x": "partner",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R9",
+    "attribute": "staff",
+    "deontic": "must",
+    "aim": "(admit_visitor s x p)",
+    "conditions": "(and (admitted p) (designated p x) (not (clinically_restricted p)) (not (visiting x p)))",
+    "or_else": "R11",
+    "strand": "tying",
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "state",
+    "function": "settles_who_decides",
+    "source": "42 CFR 482.13(h), added by 75 FR 70831 (2010-11-19), effective 2011-01-18 (hv-fr-2010-final-rule, opened by the worklist): the patient has 'the right, subject to his or her consent, to receive the visitors whom he or she designates, including, but not limited to, a spouse, a domestic partner (including a same-sex domestic partner), another family member, or a friend' ((h)(2)), and the hospital must 'Ensure that all visitors enjoy full and equal visitation privileges consistent with patient preferences' ((h)(4)) (hv-cfr-482-13-h, current text, opened by the worklist). Enforced through the Medicare Conditions of Participation by state survey agencies under CMS Transmittal 75 (hv-cms-r75soma, A-0215, opened by the worklist), hence sanctioner state and or_else R11. (h)(3), which bars restriction on race, sex, sexual orientation and the other listed grounds, is not encoded: the entry has no protected-ground fluents; the relationship-agnostic effect here comes from (h)(2) and (h)(4). The 'not visiting' conjunct makes the obligation fire once (one action slot per step).",
+    "var_roles": {
+     "s": "staff",
+     "x": "partner",
+     "p": "patient"
+    }
+   },
+   {
+    "id": "R10",
+    "attribute": "patient",
+    "deontic": "may",
+    "aim": "(designate p x)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "42 CFR 482.13(h)(1)-(2), added by 75 FR 70831 (hv-fr-2010-final-rule, opened by the worklist): the hospital informs the patient of the right 'to receive the visitors whom he or she designates'; for critical access hospitals 485.635(f)(1) adds 'in advance of furnishing patient care whenever possible', so designation may precede admission (condition true). Written as a power conferred by the rule (may), not a default capacity: before 2011 no such designation existed.",
+    "var_roles": {
+     "p": "patient",
+     "x": "partner"
+    }
+   },
+   {
+    "id": "R11",
+    "attribute": "surveyor",
+    "deontic": "may",
+    "aim": "(cite v o)",
+    "conditions": "true",
+    "or_else": null,
+    "strand": null,
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "source": "CMS Transmittal 75, Pub. 100-07, 2011-12-02 (hv-cms-r75soma, opened by the worklist): interpretive guidelines A-0215 to A-0217 give state surveyors the standard for 482.13(h); a deficiency is cited against the hospital's Medicare participation. The consequence (termination from Medicare) is not encoded; cite has no effects. 'the burden of proof is upon the hospital to demonstrate that the visitation restriction is reasonably necessary to provide safe care' is the one quoted line.",
+    "var_roles": {
+     "v": "surveyor",
+     "o": "hospital"
+    }
+   }
+  ],
+  "source_text": "From 2011-01-18 a hospital must give each patient 'the right, subject to his or her consent, to receive the visitors whom he or she designates, including, but not limited to, a spouse, a domestic partner (including a same-sex domestic partner), another family member, or a friend' and must 'Ensure that all visitors enjoy full and equal visitation privileges consistent with patient preferences', subject to 'clinically necessary or reasonable restriction' (42 CFR 482.13(h), added by 75 FR 70831, 2010-11-19; critical access hospitals 485.635(f)). Surveyors enforce it under CMS Transmittal 75 (2011-12-02), where 'the burden of proof is upon the hospital to demonstrate that the visitation restriction is reasonably necessary to provide safe care'. The pre-2011 policy gate (R4) and staff norm (R2, R3) are kept; R3 is narrowed where the patient has designated the visitor. Denials continued in reported cases (Nevada 2012: 'It didn't matter that we were registered domestic partners'); no rate is known.",
+  "expected_properties": {
+   "spouse_visit_guaranteed": "holds_to_k",
+   "spouse_visit_possible": "reachable",
+   "unmarried_partner_visit_possible": "reachable",
+   "designated_visit_guaranteed": "holds_to_k"
+  },
+  "isomorphic_to": [],
+  "not_isomorphic_to": [],
+  "minimal_pair_of": {
+   "id": "hospital-visitation-pre2011",
+   "differs_on": "designated_visit_guaranteed"
+  },
+  "notes": "The after-2011 side of the pair (plans/informal-rules.md R1; preregistered there 2026-11-08 before the first run). Diff from the base: the patient gains designate (R10) and staff a state-sanctioned admission duty on designation (R9, or_else R11, sanctioner state via the surveyor role); the staff norm R3 is narrowed by (not (designated p x)), the one way strict compliance can express 'overridden, not deleted' (ASSUMED). The formal policy gate R4 and the family-admission duty R8 stay, so the spouse is guaranteed admission by R4 + R8 and, if the patient designates, also by R9. Predictions (function): deleting R4 (sorts_who_belongs) flips spouse_visit_guaranteed to violated, because designation is a may (R10) and is not forced, while spouse_visit_possible stays reachable by two routes (R2 then R8; R10 then R9); deleting R9 (settles_who_decides) flips designated_visit_guaranteed to violated and nothing else (R5 still permits, so admission stays possible); deleting R2 leaves unmarried_partner_visit_possible reachable (displaced to designation), unlike the base where it goes unreachable; deleting R8 flips spouse_visit_guaranteed to violated (not forced; possible stays). designated_visit_guaranteed is the differs_on property of the pair: not applicable to the base (no designated fluent), holds_to_k here. (h)(3) protected grounds not encoded; the Medicare termination consequence not encoded (cite has no effects); the 2012 and 2019 amendments to (h) not read."
  }
 ]
