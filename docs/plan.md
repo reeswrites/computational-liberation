@@ -98,6 +98,7 @@ Superseded: items 3–6 landed per the Restart list; layer 2 frozen 2026-11-04 (
 7. done — README cold-visitor pass with diagrams (README.md, docs/overview.md, engine README).
 
 ## Log
+- 2026-11-08 (evening) — Cardinality Q1 landed in the engine (PR #4, 994eee0, not merged): `count` on roles, instance naming, atmost/atleast; preregistered Q1 clean (diff 0/146, check-all 146/146). Consent guard note scope settled: sexual-conduct entries only; hospital and SSI runs unblocked. Hospital slice (session), SSI entry and cardinality ran in parallel worktrees. Agents: 3 builders + 2 doc agents.
 - 2026-11-08 (later) — plans/cardinality.md written from an engine and ABM read. Correction to ADR 0018 and plans/composition.md: no property uses a role name as an agent literal (all quantify over `agent`; role identity is `arg_roles` typing, which aliases rewrite), so the nine husband/wife properties should apply to neutral composites unchanged; Q2 tests it. compose() landed in the engine (47cd94b, 678 tests, built in a worktree); P3b fixed S4. Agents: 3.
 
 - 2026-11-08 — P3b applied (engine 858a1c7): position-0 attribute bindings written into var_roles, 62 distinct (102 raw rows), 0 conflicts; diff 0 changed of 146; card "= unbound" lines 46 -> 8.
