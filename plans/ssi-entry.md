@@ -145,3 +145,57 @@ Items the council raised that could move a verdict or change a rule. The mechani
 4. **One-rule pair choice.** The pair is a 5-rule reform pair. Candidates: drop R3 alone (flips married_couple_limited) or drop R4 alone (flips penalty_reaches_unmarried).
 5. **R4: follow POMS or the text as written.** The rule follows POMS SI 00501.152 (same-sex couples included); 416.1806(a)(3) says opposite sex. Also unencoded: `unrelated`, and timing (`at or after the time you apply`).
 6. **Two unrun checks** (correctness item 9): whether `(exists ((g agent)) ...)` is limited to the agency role (rather than any agent), and R4 deletion on a married holding-out pair.
+
+### Revision 2 rulings (author, 2026-11-08; applied in the faithfulness batch, preregistered there before any run)
+
+- Item 1 (cohabitation): **add a `cohabits` fluent** and condition R2, R3, R5, R6 on it. Chosen over "keep the gap declared" because every composite built on SSI inherits the over-application, and the same fluent is wanted by the hospital and two-wife entries. Verdicts may move; preregister and rerun.
+- Item 5 (R4 sex condition): **leave sex unencoded.** No opposite-sex condition; notes cite both 416.1806(a)(3) (opposite sex) and POMS SI 00501.152 (same-sex included) and declare the gap. Chosen over following the text (historically true pre-2015, not now) and over following POMS (not the cited regulation). Consistent with ADR 0018 neutral roles.
+- Items 2, 3, 4, 6: still open; recommendations go in plans/faithfulness-batch.md.
+
+### Revision 2 item 6 probes (run 2026-11-08, engine at ENGINE_PIN)
+
+Engine 81d5b9e (ENGINE_PIN; philosophy-engine HEAD). Both probes run on copies of `data/institutions/{institutions,properties}.json` in the scratchpad dir `ssi-probe/`; no file under data/ was touched. Runner: `/Users/rees/Documents/computational-liberation/.venv/bin/phil` (the worktree has no .venv), cwd the scratchpad, flags as in Results: `--k {6,8} --init declared --compliance strict --step-mode one`, plus `--no-cache --institutions <copy> --properties <copy>` on every `check`.
+
+**Probe A: does `(exists ((g agent)) (enabled apply_couple_rate g c s))` range over any agent, or only the agency?**
+
+Code reading (`philengine/rules_lower.py`): `lower_state_formula` lowers a `Quant` with `_typed_domains(names, {}, G.agents)`, an empty type map, so the `exists` enumerates every agent (claimant, spouse, agency). It is `G.enabled` that confines it: it returns constant False for any args tuple not in `G.action_instances[action]`, and `ground()` builds those instances (1) typed by the action's `arg_roles` or the prefix heuristic (`apply_couple_rate` declares no arg_roles; `g` is a prefix of no role, so it is untyped; `c` -> claimant, `s` -> spouse), (2) pairwise distinct, and (3) attribute-scoped: the first argument's role must be the `attribute` of some rule naming the action. The fluent's own `arg_roles: [claimant, spouse]` types only the fluent's tuple (c, s), not the witness `g`. So the restriction to the agency is a property of the rules as written (every rule on `apply_couple_rate` has `attribute: agency`), not of the `exists`.
+
+Direct enumeration (`ssi-probe/instances.py`, `ground(inst, k=2, init="declared")`):
+
+| file | `apply_couple_rate` instances | `(enabled apply_couple_rate g claimant spouse)@1` per g |
+|---|---|---|
+| base copy | `[(agency, claimant, spouse)]` | claimant: const False; spouse: const False; agency: `Or(married, And(cohabits, holds_out))` |
+| probeA2 (R2, R4 `attribute: other`, `var_roles g: other`; new role `other`, no other rule) | `[(other, claimant, spouse)]` | claimant, spouse, agency: const False; other: `Or(married, And(cohabits, holds_out))` |
+
+Verdicts (`phil rules check --inst ssi-marriage-penalty`, k 6 and 8 identical):
+
+| Property | base copy | probeA1 (R2 -> `other`, R4 stays agency) | probeA2 (R2 and R4 -> `other`; no agency rule on the action) |
+|---|---|---|---|
+| married_couple_rated | holds_to_k | holds_to_k | holds_to_k |
+| married_couple_limited | holds_to_k | holds_to_k | holds_to_k |
+| penalty_reaches_unmarried | reachable | reachable | reachable |
+| married_rated_individually | open | open | open |
+| over_limit_ineligible | holds_to_k | holds_to_k | holds_to_k |
+
+Verdict does not differ: with no agency rule at all on `apply_couple_rate`, a non-agency bearer satisfies the `exists`, so `married_couple_rated` still holds. Reading: the `exists` is over any agent and the agency restriction is borrowed from the rules' `attribute` lines, which is adequate for this entry alone but is the gap item 6 names for composition: in a composite, any rule by any role on `apply_couple_rate` (or on a same-named action after aliasing) would count as "the agency holds the power". Declaring `arg_roles: [agency, claimant, spouse]` on the five `apply_*`/`pay_benefit` actions would type `g` at the action level; this names the gap only, no edit made.
+
+**Probe B: R4 (holding-out rule) ablated on a married holding-out pair.**
+
+Plain ablation: `phil rules ablate --entry ssi-marriage-penalty --k 6,8 --init declared --compliance strict --step-mode one --institutions <copy> --properties <copy> --json ssi-probe/ablate.json` (exit 0; identical to Results: R2, R3, R4, R7 flip the predicted property; R1, R5, R6 none; R4~prohibit double flip as in S5). R4 rows:
+
+| row | load_freedom (k6/k8) | note | flips |
+|---|---|---|---|
+| R4 (deleted) | 0/0 | permission removed | penalty_reaches_unmarried: reachable > open |
+| R4~prohibit | 1/1 | prohibited | married_couple_rated: holds_to_k > violated [freedom_up]; penalty_reaches_unmarried: reachable > open |
+
+Initial-state override: `phil rules ablate` and `phil rules check` have no flag for it (`--init` selects empty/free/declared only; `--help` read 2026-11-08). The override was done by file: a copy with `initial: [(resources_under_limit claimant), (married claimant spouse), (cohabits claimant spouse), (holds_out claimant spouse)]`, run with `--init declared`, once with all seven rules (probeB1) and once with R4 removed from `rules` (probeB2). k 6 and 8 identical:
+
+| Property | probeB1 married + holding out, all rules | probeB2 same initial, R4 deleted | flip |
+|---|---|---|---|
+| married_couple_rated | holds_to_k | holds_to_k | no |
+| married_couple_limited | holds_to_k | holds_to_k | no |
+| penalty_reaches_unmarried | reachable | open | yes |
+| married_rated_individually | open | open | no |
+| over_limit_ineligible | holds_to_k | holds_to_k | no |
+
+Reading: starting married and holding out, deleting R4 flips only `penalty_reaches_unmarried` (the pair can still `divorce` and keep holding out, but no rule then grants the couple rate to an unmarried pair), while `married_couple_rated` keeps holding because R2 covers the married pair whatever its conduct, so the derived `couple_rate` does read R2 and R4 as two routes and R4 alone is never load-bearing for a married pair. The plain ablation's R4 row says the same (one flip, load 0/0 because the flipped property is a failure_mode); the only R4 verdict movement on `married_couple_rated` is the prohibit variant, S5, an artifact of the disability reading, not of the initial state.
