@@ -37,7 +37,7 @@ Bools per fluent per step grow as (agents)^arity. A 2-role arity-2 untyped fluen
 
 ## Checks that can fail (preregister before the engine change lands)
 
-- Q1. With every `count` at its default, `phil rules diff` over the 27 entries is clean and `check-all` matches 146/146. The change is invisible until used.
+- Q1. With every `count` at its default, `phil rules diff` over the 27 entries is clean and `check-all` matches 146/146. The change is invisible until used. Preregistered 2026-11-08 before the run: engine branch cardinality-q1, every count at default; expected diff 0 changed of 146 and check-all 146/146.
 - Q2. The first composite (coverture-household-us + hospital-visitation, neutral roles) runs the nine properties ADR 0018 called inapplicable, with no variant. If any is inapplicable, the ADR was right and this plan's correction is wrong; record which.
 - Q3. A two-wife MWPA entry (`wife.count: 2`, one `owns` in `initial`, the other not) makes `financial_dependence` and `financial_dependence_unpropertied` readable on one entry; preregistered verdicts: dependence holds for the unpropertied instance and not the propertied one under mwpa-property. Drift recorded.
 - Q4. A multi-partner pair: `dp-somerville` (no cap) vs `dp-cambridge` (cap; verify the actual ordinance text first, plans/sourcing-worklist-marriage.md style) differ by one `atmost` rule; property `third_partner_can_register` flips between them. This is the poly test.
