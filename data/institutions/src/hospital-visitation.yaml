@@ -49,11 +49,11 @@ rules_replace:
     pin: null
     jurisdiction: US-NV
     effective_date: '2012-08-21'
-    verification: opened
+    verification: snippet
     excerpt: It didn't matter that we were registered domestic partners
     accessed: '2026-11-08'
     url: https://www.nbcnews.com/news/world/nv-hospital-denies-rights-domestic-partners-flna957300
-    note: 'opened by the worklist (summary-mediated); one anecdote; a stated hospital policy, not evidence of an unwritten staff norm; silent on designation'
+    note: 'opened by the worklist (summary-mediated); one anecdote; a stated hospital policy, not evidence of an unwritten staff norm; silent on designation; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   var_roles:
     s: staff
     x: partner
@@ -77,11 +77,11 @@ rules_add:
     pin: (h)(4)
     jurisdiction: US
     effective_date: '2011-01-18'
-    verification: opened
+    verification: snippet
     excerpt: Ensure that all visitors enjoy full and equal visitation privileges consistent with patient preferences
     accessed: '2026-11-08'
     url: https://www.law.cornell.edu/cfr/text/42/482.13
-    note: 'opened by the worklist (summary-mediated); current eCFR text, amended 2012 and 2019; the duty this rule encodes'
+    note: 'opened by the worklist (summary-mediated); current eCFR text, amended 2012 and 2019; the duty this rule encodes; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   - source_id: hv-cms-r75soma
     pin: A-0217
     jurisdiction: US
@@ -95,11 +95,11 @@ rules_add:
     pin: 42 CFR 482.13(h)(2), as added (the designation right)
     jurisdiction: US
     effective_date: '2011-01-18'
-    verification: opened
+    verification: snippet
     excerpt: to receive the visitors whom he or she designates, including, but not limited to, a spouse, a domestic partner (including a same-sex domestic partner), another family member, or a friend
     accessed: '2026-11-08'
     url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
-    note: 'opened by the worklist (summary-mediated); (h)(2) is phrased as a duty to inform the patient of the right; it grounds the designation, not the admission duty'
+    note: 'opened by the worklist (summary-mediated); (h)(2) is phrased as a duty to inform the patient of the right; it grounds the designation, not the admission duty; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   var_roles:
     s: staff
     x: partner
@@ -121,11 +121,11 @@ rules_add:
     pin: 42 CFR 482.13(h)(1)-(2); 485.635(f)(1), as added
     jurisdiction: US
     effective_date: '2011-01-18'
-    verification: opened
+    verification: snippet
     excerpt: to receive the visitors whom he or she designates ... in advance of furnishing patient care whenever possible
     accessed: '2026-11-08'
     url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
-    note: 'opened by the worklist (summary-mediated); the second fragment is the CAH text, 485.635(f)(1), not 482.13(h)'
+    note: 'opened by the worklist (summary-mediated); the second fragment is the CAH text, 485.635(f)(1), not 482.13(h); downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   var_roles:
     p: patient
     x: partner
@@ -155,11 +155,11 @@ rules_add:
     pin: Part II, response to comments (enforcement)
     jurisdiction: US
     effective_date: '2011-01-18'
-    verification: opened
+    verification: snippet
     excerpt: noncompliance with this provision could result in the provider's termination from the Medicare program
     accessed: '2026-11-08'
     url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
-    note: 'opened 2026-11-08 (WebFetch summary); the sanction holder is CMS, collapsed here into the surveyor role'
+    note: 'opened 2026-11-08 (WebFetch summary); the sanction holder is CMS, collapsed here into the surveyor role; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   var_roles:
     v: surveyor
     o: hospital

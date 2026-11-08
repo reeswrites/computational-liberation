@@ -75,7 +75,7 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
   `opened` requires `accessed` (ISO date) and a non-empty `excerpt`: `build.py --check` and `tests/test_sources.py` check 6 fail an
   `opened` item without both, naming entry, rule and source_id. The card-only seat found provenance items carried from
   summarising fetches and marked `opened` in two batches (SSI, hospital); a fetch nobody re-opened is `snippet` (ADR 0017 s.3).
-  The check is mechanical: it cannot tell a raw open from a dated summary, so `accessed` must mean a raw read.
+  The check is mechanical: it cannot tell a raw open from a dated summary, so `accessed` must mean a raw read. The mechanical rule catches a missing date, not a summary labelled as a read; the card-only seat is the check for that.
 
 ## Revisions (dataset fixes after the first check-all, 21/36)
 

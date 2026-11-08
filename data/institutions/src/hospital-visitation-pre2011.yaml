@@ -107,20 +107,20 @@ rules:
     pin: paras. 1-2 (practice described)
     jurisdiction: US
     effective_date: '2010-04-15'
-    verification: opened
+    verification: snippet
     excerpt: a widow or widower with no children is denied the support and comfort of a good friend ... unable to choose someone other than an immediate family member to visit them ... gay and lesbian Americans who are often barred from the bedsides of the partners
     accessed: '2026-11-08'
     url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
-    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted'
+    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   - source_id: hv-fr-2010-final-rule
     pin: Part II, response to comments (CAH visitation subsection)
     jurisdiction: US
     effective_date: '2011-01-18'
-    verification: opened
+    verification: snippet
     excerpt: denies patients access to their loved ones in times of need
     accessed: '2026-11-08'
     url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
-    note: 'opened by the worklist and re-opened 2026-11-08 (WebFetch summary; the sentence sits in a comment response, not in a Background section as first pinned); a regulator''s characterisation of practice, not a hospital''s policy text'
+    note: 'opened by the worklist and re-opened 2026-11-08 (WebFetch summary; the sentence sits in a comment response, not in a Background section as first pinned); a regulator''s characterisation of practice, not a hospital''s policy text; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   - source_id: hv-ll-2010-wcnc
     pin: null
     jurisdiction: US
@@ -152,20 +152,20 @@ rules:
     pin: paras. 1-2 (practice described)
     jurisdiction: US
     effective_date: '2010-04-15'
-    verification: opened
+    verification: snippet
     excerpt: a widow or widower with no children is denied the support and comfort of a good friend ... unable to choose someone other than an immediate family member to visit them ... gay and lesbian Americans who are often barred from the bedsides of the partners
     accessed: '2026-11-08'
     url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
-    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted'
+    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   - source_id: hv-fr-2010-final-rule
     pin: Part II, response to comments (CAH visitation subsection)
     jurisdiction: US
     effective_date: '2011-01-18'
-    verification: opened
+    verification: snippet
     excerpt: denies patients access to their loved ones in times of need
     accessed: '2026-11-08'
     url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
-    note: 'opened by the worklist and re-opened 2026-11-08 (WebFetch summary; the sentence sits in a comment response, not in a Background section as first pinned); a regulator''s characterisation of practice, not a hospital''s policy text'
+    note: 'opened by the worklist and re-opened 2026-11-08 (WebFetch summary; the sentence sits in a comment response, not in a Background section as first pinned); a regulator''s characterisation of practice, not a hospital''s policy text; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   - source_id: null
     pin: null
     jurisdiction: US
@@ -197,11 +197,11 @@ rules:
     pin: paras. 1-2 (practice described)
     jurisdiction: US
     effective_date: '2010-04-15'
-    verification: opened
+    verification: snippet
     excerpt: a widow or widower with no children is denied the support and comfort of a good friend ... unable to choose someone other than an immediate family member to visit them ... gay and lesbian Americans who are often barred from the bedsides of the partners
     accessed: '2026-11-08'
     url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
-    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted'
+    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   - source_id: hv-presmemo-2010
     pin: para. 3 (the target standard)
     jurisdiction: US
@@ -241,11 +241,11 @@ rules:
     pin: 42 CFR 482.13(h) introductory text, as added
     jurisdiction: US
     effective_date: '2011-01-18'
-    verification: opened
+    verification: snippet
     excerpt: clinically necessary or reasonable restriction
     accessed: '2026-11-08'
     url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
-    note: 'opened by the worklist (summary-mediated); post-2011 text; supports the shape of the exception, not the pre-2011 permission'
+    note: 'opened by the worklist (summary-mediated); post-2011 text; supports the shape of the exception, not the pre-2011 permission; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   - source_id: null
     pin: null
     jurisdiction: US
@@ -301,11 +301,11 @@ rules:
     pin: 42 CFR 482.13(h) introductory text, as added
     jurisdiction: US
     effective_date: '2011-01-18'
-    verification: opened
+    verification: snippet
     excerpt: clinically necessary or reasonable restriction
     accessed: '2026-11-08'
     url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
-    note: 'opened by the worklist (summary-mediated); post-2011 text'
+    note: 'opened by the worklist (summary-mediated); post-2011 text; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   - source_id: hv-cms-r75soma
     pin: A-0215
     jurisdiction: US
@@ -344,11 +344,11 @@ rules:
     pin: paras. 1-2 (practice described)
     jurisdiction: US
     effective_date: '2010-04-15'
-    verification: opened
+    verification: snippet
     excerpt: a widow or widower with no children is denied the support and comfort of a good friend ... unable to choose someone other than an immediate family member to visit them ... gay and lesbian Americans who are often barred from the bedsides of the partners
     accessed: '2026-11-08'
     url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
-    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted'
+    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted; downgraded 2026-11-08: fetch summary, raw text not read (ADR 0017 s.3)'
   - source_id: null
     pin: null
     jurisdiction: US
