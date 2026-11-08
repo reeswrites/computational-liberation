@@ -227,6 +227,10 @@ def compose_entry(spec: dict, resolved: dict) -> tuple[dict, dict]:
         if errs:
             raise SystemExit(f"{COMPOSITES} {cid}: invalid after initial_free: " + "; ".join(errs))
     stripped = json.loads(comp.model_dump_json())
+    # engine defaults that hand-written entries never carry: drop role count when it is the default 1
+    for role in stripped.get("roles", []):
+        if role.get("count") == 1:
+            del role["count"]
     # card view: the member's human-readable rule keys, looked up by (member, original rule id)
     seen: dict[str, int] = {}
     prefixes = []
