@@ -103,7 +103,7 @@ rules:
   kind: formal
   sanctioner: none
   sanctioner_review: derived
-  source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children''s house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it Verification pass: re-read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): the page says ''Kibbutz members who were considered the most educated and esteemed got the position of educators'' and names no committee or assignment procedure.'
+  source: 'Wikipedia, ''Kibbutz communal child rearing and collective education'' (read 2026-11-03): ''The nanny position was always a woman''s role. Teacher positions were both for women and men.''; children ''lived in the children''s house, where they had communal sleeping arrangements'' and ''visited their parents for 2-3 hours a day''; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children''s house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it Verification pass: re-read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): the page says ''Kibbutz members who were considered the most educated and esteemed got the position of educators'' and names no committee or assignment procedure. No read text names the committee; the work-assignment committee (sidur avoda) is the encoder''s reconstruction; Spiro 1956 / Gavron 2000 are the leads, lending-only; unsourced committee: pin when a borrow is possible (faithfulness batch 3a, A3 option (i)).'
   provenance:
   - source_id: wikipedia-kibbutz-communal-child-rearing
     pin: null
@@ -122,7 +122,7 @@ rules:
     excerpt: null
     accessed: null
     url: null
-    note: 'the committee''s power to assign a member to the children''s house: stated only in the encoder''s parenthesis; no read text states it'
+    note: 'the committee''s power to assign a member to the children''s house: stated only in the encoder''s parenthesis; no read text states it; the work-assignment committee (sidur avoda) is the encoder''s reconstruction; Spiro 1956 / Gavron 2000 are the leads, lending-only; unsourced committee, pin when a borrow is possible'
 - id: R2
   plain: '(practice, not written) The committee must not assign a male member to the children''s house, or else the committee may reprimand (R6).'
   attribute: committee

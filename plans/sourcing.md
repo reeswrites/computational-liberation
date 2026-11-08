@@ -435,3 +435,18 @@ Sub-batch 3a of plans/faithfulness-batch.md (Part C "3a", under the section 6 ru
 ### Prediction
 
 `phil rules diff --baseline data/verdicts-baseline.json`: 0 changed, 0 added, 0 removed of 192. `phil rules check-all`: 192/192. `phil rules gate`: PASS, output unchanged (b: the six cluster pairs partial(care+control), controls none). `scripts/drop_one_match.py`: (b) fails on deleting exactly coverture R2, R5, R6; police R2, R4, R11; cps R3, R4, R10. `build.py --check` ok after `--write --cards`; pytest passes (38). Certain by the batch 2 P1 argument: `plain`, `source`, `provenance` and glosses do not reach the lowering (build.py strips `plain`/`provenance`; `source` and glosses reach the JSON and nothing reads them). Council: card-only seat only.
+
+### Results (2026-11-08, engine at ENGINE_PIN 81d5b9e; preregistration commit 066d6ea)
+
+Every verdict, gate and match prediction held. Verbatim summary lines:
+
+- `phil rules diff --baseline data/verdicts-baseline.json`: `0 changed, 0 added, 0 removed (of 192 rows)`, exit 0.
+- `phil rules check-all`: `agreement: 192/192 = 100%`.
+- `phil rules gate`: `GATE PASS`; (b) PASS, the six cluster pairs `partial(care+control)` at guard+strands, crisis-team `none at every level`, the nine control pairs `none@guard+strands`; (e) `agreement 192/192 = 100%`.
+- `scripts/drop_one_match.py`: (b) fails on deleting exactly coverture-household R2, R5, R6; police-crisis R2, R4, R11; cps R3, R4, R10; PASS on every other deletion. (Its `unverified=` column, a grep for "UNVERIFIED" in the source string, now reads False on cps R1 and R11, whose stale UNVERIFIED leads were the edits; a print change, not a match change.)
+- `build.py --check`: `ok: 33 institutions, 43 properties, JSON and 34 cards match src/`. institutions.json changed in 27 lines, all `source`, `gloss` or `source_text` strings; 17 cards regenerated (the six touched entries, their descendants coverture-floor, the mwpa chain, kibbutz-no-implicit, and the two composites).
+- `pytest -q`: `40 passed in 111.20s`.
+
+Drift: one, in a count, not a verdict. The preregistration said "pytest passes (38)"; the suite has 40 tests (two added with PR #8's provenance CI rule after the figure in the brief), all passing. Recorded, not edited. Surprises ledger: none (no verdict moved; nothing unpredicted was produced).
+
+Left for the author (outside 3a's fields): coverture-household-us `notes` still says "(no unilateral divorce before 1969)" in its R6 reading; the Blackstone R7 incapacity passage is now `accessed` 2026-11-08 (re-read today at Avalon, p. 430), so the card-only seat can read the pin against the chapter opening. Council owed: card-only seat on the six touched entries (does each plain line now say what the source says).

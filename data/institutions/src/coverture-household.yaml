@@ -227,7 +227,7 @@ rules:
     w: wife
     h: husband
 - id: R4
-  plain: 'The wife cannot sue in her own name while married: no such power exists (Blackstone I.15).'
+  plain: 'The wife cannot sue in her own name while married: no such power exists (Blackstone I.15; unless the husband has abjured the realm or is banished, when she sues as a feme sole: an exception not encoded).'
   attribute: wife
   deontic: must_not
   aim: (sue w)
@@ -315,7 +315,7 @@ rules:
     h: husband
     w: wife
 - id: R7
-  plain: 'The wife cannot contract in her own name while married: no such power exists (Blackstone I.15).'
+  plain: 'The wife cannot contract in her own name while married: no such power exists (Blackstone I.15: her legal existence is suspended during the marriage; Blackstone: void or at least voidable; encoded as no power).'
   attribute: wife
   deontic: must_not
   aim: (contract w)
@@ -326,17 +326,17 @@ rules:
   kind: formal
   sanctioner: none
   sanctioner_review: derived
-  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765); https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ (contracts between husband and wife void; her contracts are his) Verification pass: read 2026-11-06 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable'' ... ''all compacts made between husband and wife, when single, are voided by the intermarriage'' (long s modernised; the OCR prints ''converture'' in the first passage).'
+  source: 'Blackstone, Commentaries on the Laws of England, Book I ch. 15 ''Of Husband and Wife'' (1765), p. 430, read 2026-11-06 and re-read 2026-11-08 at https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: ''By marriage, the husband and wife are one person in law: that is, the very being or legal existence of the woman is suspended during the marriage, or at least is incorporated and consolidated into that of the husband: under whose wing, protection, and cover, she performs every thing''; the incapacity to contract with third parties is encoded from this passage as a disability (no power). The chapter''s literal sentence on her acts, p. 432, introduced as instances where she is ''separately considered; as inferior to him, and acting by his compulsion'': ''all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable'' (long s modernised; the OCR prints ''converture''); voidable acts bind until avoided, so the row is the stronger reading, kept on the author''s ruling of 2026-11-08 (faithfulness batch 3a, A6: the general doctrine and every secondary source the dataset cites treat her contracts with third parties as void at common law; the card says ''encoded as no power''). The earlier second fragment (''all compacts made between husband and wife, when single, are voided by the intermarriage'', p. 430) concerns compacts between the spouses, not her capacity with third parties, and is no longer cited for this row (council 2026-11-06). Earlier pointer: https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/.'
   provenance:
   - source_id: blackstone-1765-bk1-ch15
-    pin: Bk I ch 15
+    pin: Bk I ch 15, pp. 430, 432
     jurisdiction: England
     effective_date: null
     verification: opened
-    excerpt: all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable ... all compacts made between husband and wife, when single, are voided by the intermarriage
-    accessed: '2026-11-06'
+    excerpt: the very being or legal existence of the woman is suspended during the marriage, or at least is incorporated and consolidated into that of the husband ... all deeds executed, and acts done, by her, during her coverture, are void, or at least voidable
+    accessed: '2026-11-08'
     url: https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp
-    note: long s modernised; the OCR prints 'converture' in the first passage; 'void, or at least voidable' is weaker than the row's 'no such power exists' (voidable acts bind until avoided); the first passage is introduced as acts done 'by his compulsion', and the second concerns compacts between the spouses, not her capacity to contract with third parties (council 2026-11-06); earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/
+    note: 'long s modernised; the OCR prints ''converture''; re-pinned 2026-11-08 (faithfulness batch 3a, A6) to the incapacity passage (p. 430), the pin for the disability as encoded; the p. 432 sentence is the chapter''s literal statement on her acts, introduced as acts done ''by his compulsion'': ''void, or at least voidable'' is weaker than the row''s ''no such power exists'' (voidable acts bind until avoided), a doctrinal reading kept over the literal one on the author''s ruling; the compacts-between-spouses fragment is dropped (council 2026-11-06: it concerns compacts between the spouses, not her capacity with third parties); earlier pointer https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/'
   var_roles:
     h: husband
     w: wife
