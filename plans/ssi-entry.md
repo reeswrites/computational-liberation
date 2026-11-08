@@ -1,6 +1,6 @@
 # ssi-marriage-penalty entry and pair (2026-11-08)
 
-Status: PREREGISTERED, not yet run. Written and committed before the first `phil rules check`, `ablate` or `diff` over either entry. Engine: ENGINE_PIN b5fd019. Branch `ssi-entry`. Inputs: plans/sourcing-worklist-marriage.md section 5 (Entry 2) and its Gaps, docs/connections.md section 4 (C2), plans/disability.md (SSI), plans/composition.md, ADR 0018, data/institutions/src/lease.yaml as the model.
+Status: PREREGISTERED (commit ba5b4b0, before any run); RUN 2026-11-08, results recorded under "Results" below; COUNCIL PENDING. The preregistration sections are unedited. Written and committed before the first `phil rules check`, `ablate` or `diff` over either entry. Engine: ENGINE_PIN b5fd019. Branch `ssi-entry`. Inputs: plans/sourcing-worklist-marriage.md section 5 (Entry 2) and its Gaps, docs/connections.md section 4 (C2), plans/disability.md (SSI), plans/composition.md, ADR 0018, data/institutions/src/lease.yaml as the model.
 
 ## What was built
 
@@ -64,3 +64,72 @@ Expected: 0 changed, 0 removed over the baseline's rows; new rows only for the t
 ## Drift and surprises
 
 Any result other than the tables above is recorded below against the row it contradicts, in the entry that follows this section, and never edited into the preregistration; an unpredicted flip also gets a row in docs/surprises.md.
+
+## Results (run 2026-11-08, engine b5fd019, k 6 and 8, declared, strict, step-mode one)
+
+Recorded against the preregistration; nothing above was edited.
+
+**Verdicts.** `phil rules check` on both entries at k=6 and k=8: all 10 property verdicts match the table (5/5 on each entry at each k; `open` is the engine's word for unreachable_open). Both entries pass with no vacuity flags. The pair prints two warnings (derived `couple_rate`, `couple_limit` name actions no rule regulates), as predicted. The older properties: not applicable (the ablation header reads "5 properties applicable, 35 not applicable"; the dataset lists 39 properties after the five were added, so the header's 40 is one more than I can account for, recorded as an unexplained count, not tuned).
+
+**Ablation of the base** (`phil rules ablate --entry ssi-marriage-penalty`). Expected flips held: R2 -> married_couple_rated holds_to_k > violated; R3 -> married_couple_limited holds_to_k > violated; R4 -> penalty_reaches_unmarried reachable > open; R7 -> over_limit_ineligible holds_to_k > violated; R1, R5, R6 -> no flip. `function:` predictions on R2, R3, R4 all fired (none unsupported). Total 4 of 4 predicted flips, 0 of 3 predicted non-flips contradicted.
+
+Drift and readings, recorded, not tuned:
+
+1. **R4's prohibit variant flips a second property.** `R4~prohibit` (the engine's prohibit variant of a `may`, a disability on the couple-rate power under the holding-out condition) flips `married_couple_rated` as well as `penalty_reaches_unmarried`. Not preregistered (the preregistration covered deletion only). Reason: the disability bars `apply_couple_rate` for any pair that is cohabiting and holding out, including a married pair, so married holding-out pairs lose the power. An artifact of what a prohibit of R4 means, not a finding about SSI. Logged as a surprise (docs/surprises.md S5, artifact).
+2. **Deregulation flags.** R1, R3, R5, R6 are each the sole regulator of their action, so the engine files their deletion under "deregulated, not ranked" (action becomes unregulated, derived power zeroed). R3 flips `married_couple_limited` but is excluded from the ranking for that reason; R2 and R4 share `apply_couple_rate`, so both are ranked. The preregistration expected a possible flag on R1 only. Reading, not a miss: it means the ranked load table undercounts R3, and the unranked row is the one to read.
+3. **Load is zero for R4 in the ranked table.** `penalty_reaches_unmarried` is a failure_mode, which the engine lists but does not count toward load_freedom. R4's flip is real and listed, its `load_freedom` is 0/0. Not predicted in those words.
+4. **Isomorphism (C2 (i)).** `phil rules iso` of the entry against coverture-household, police-crisis, cps and lease: iso False at exact and at guard, with and without strands, `care+control: -` in all 8 runs, so the care+control claim held. The preregistration said "no match at any level"; one run is not literally empty: against police-crisis at the guard level the matcher reports a partial 1/7 pairing, R2 -> R3 (agency -> officer, apply_couple_rate -> detain), a single conditional `may`, which is not a cluster and not iso. Recorded as drift in my wording (partial pairings exist at guard), not as a match. Pair against base: iso False at guard, 2/7 matched (R1, R7), distance 5.
+5. **C2 (ii) held vacuously, as preregistered.** All 34 older properties are not_applicable on the entry; deleting R2 or R3 flips none of them because none is run. A check that could not have failed.
+
+**`phil rules diff --baseline data/verdicts-baseline.json`** (after `build.py --write --cards` then `--check`: ok, 29 institutions, 39 properties, 30 cards; pytest 38 passed):
+
+```
+note: engine source hash differs from the baseline's
+ssi-marriage-penalty: added x5 (married_couple_limited holds_to_k, married_couple_rated holds_to_k, married_rated_individually open, over_limit_ineligible holds_to_k, penalty_reaches_unmarried reachable)
+ssi-marriage-penalty-individual: added x5 (married_couple_limited violated, married_couple_rated violated, married_rated_individually reachable, over_limit_ineligible holds_to_k, penalty_reaches_unmarried open)
+0 changed, 10 added, 0 removed (of 156 rows)   exit 0
+```
+
+The 27 existing entries are clean. The preregistration guessed "possibly none" new rows; the ten additions are the two new entries' own rows.
+
+## Not done here (named, not hidden)
+
+- No composite. `ssi-marriage-penalty` with `coverture-household-us` is P2 (plans/composition.md) and the second half of C2.
+- No council. Spawn was not available; see the self-review checklist and the "council pending" mark below.
+- No raw-source re-opening: every `opened` row carries the worklist's summarising fetch.
+
+## What P2 will need (composite with coverture-household-us)
+
+1. **Aliases:** `coverture-household-us`: husband -> partner_a, wife -> partner_b; this entry: claimant -> one of them (the claimant may be either; the choice decides whose penalty `financial_dependence` reads), spouse -> the other, agency stays a third role. `married` is typed [claimant, spouse] and coverture's is untyped, so typed wins by the unification table; confirm the arg order matches (h, w) after aliasing.
+2. **A shared fluent that carries SSI into `financial_dependence`.** The property reads `is_subject`, `controls_own_property`, `owns_earnings`; this entry declares none and writes none. Without one, deleting R2 in the composite flips nothing the older properties read, and C2's second half fails by construction, not by the claim. Options to preregister: declare `is_subject` on the claimant; have the benefit supply `has_own_income` (coverture's is derived `(enabled draw_subsistence w)`, so a same-name derived fluent with a different definition is a unification error, ADR 0018); or add an SSI-specific `means_tested_income` fluent and a new property. This is an entry change and should be preregistered.
+3. **Derived-fluent names in common:** none now (`couple_rate`, `eligible` and the rest are new to the dataset), so no conflict, but `eligible` and `individual_rate` need `exists g` over the agency role, which composition must keep typed.
+4. **Prohibit/deregulation reading:** R3 and R1, R5, R6 land under "deregulated, not ranked" in the entry; in a composite, check that the composite's ranking does not hide them again.
+5. **A dollar-valued penalty is out of scope** of the engine's boolean fluents; P2 can show where load moves, not how large the penalty is.
+
+## Self-review checklist (council pending)
+
+The council could not be spawned. These are what each seat must check; the batch is marked **council pending** until they run.
+
+**Correctness seat** (does the engine mean what the entry says?):
+- Does every derived fluent actually read the rule it is named for? Probe by deleting R2 and reading `couple_rate`, and by deleting R4 with a married holding-out pair.
+- Is the `exists ((g agent))` over the agency role really one agent, and does `(enabled apply_couple_rate g c s)` respect the attribute scoping (agency only)?
+- The R4~prohibit double flip: confirm it is the disability reading and not a lowering bug; confirm the base R2/R4 overlap (both name `apply_couple_rate`) makes R2 deletion non-deregulating.
+- Is `resources_under_limit` initial-true the only initial literal needed, and does `init declared` honour it? Does `over_limit_ineligible` hold only because R7 is a hard must_not (not vacuously because `accumulate` is unreachable)? Check the vacuity flags and the antecedent reachability by trace.
+- The invariant `married_couple_rated` is `holds_to_k` at k=6 and 8; is `marry` reachable at k=6 (so it is not vacuous)?
+- Does `married_rated_individually` unreachable_open mean "not within k" only, never "safe"?
+
+**Faithfulness seat** (does the entry say what the sources say?):
+- Re-open the six sources raw (the worklist's fetches were summaries): confirm every excerpt carried into `provenance`, including the worklist's own typo in 416.1802 ("calculated"), and upgrade or downgrade the levels.
+- R2 and R3 are `may`, the statute is mandatory: is the power reading acceptable, or must a state-obligation encoding be tried? R4 should be checked against 416.1806 (a)(3) in full: the reg says opposite sex; POMS covers same-sex pairs; the encoding follows POMS.
+- R7's bar (over the limit, no payment) rests on no excerpt (unverified); open 42 U.S.C. 1382(a)(3)(A) and 20 CFR 416.1205.
+- R5 and R6 conditions (neither married nor holding out) are the encoder's complement; the three tests in 416.1806 (a)(1)-(3) are not all encoded (formal marriage, and (a)(3) holding out; the other test is not read).
+- The `sanctioner: none` on R4 against the brief's `state`: decide whether to invent the recovery or appeal sanction, with a source, or to accept none.
+- 2026 rates and limits are an unverified lead; `penalty` size is nowhere in the encoding.
+- The pair keeps R1 and R7 and drops holding out; confirm no reform text keeps the test.
+
+**Card-only seat** (reading the generated cards without the source):
+- Read `docs/cards/ssi-marriage-penalty.md` and `docs/cards/ssi-marriage-penalty-individual.md` only: can the reader say what `couple_rate` means, that it is a power not an applied rate, and which rule makes a married pair penalised? Is the word "penalty" defined? Is `holds_out` readable as conduct?
+- Does the card show the weakest provenance per rule (R1 and R7 unverified) and the dropped holding-out rule in the pair?
+- Do the card's property names (`married_couple_rated`) read as the penalty holding, and `married_rated_individually` as the penalty absent, without the plan?
+
+Council pending.
