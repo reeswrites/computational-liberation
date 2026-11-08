@@ -11,6 +11,9 @@ rules_replace:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'Minimal-pair construction: the reserved block is made shareable, as the shareable block is under QPIP s. 16 and as all 35 standard parental weeks were under Canadian EI before the 2019-03-17 Parental Sharing Benefit. Employment Insurance maternity and parental benefits, canada.ca; https://www.canada.ca/en/services/benefits/ei/ei-maternity-parental.html; Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011'
   provenance:
   - source_id: canada-ei-maternity-parental
@@ -33,6 +36,8 @@ rules_replace:
     note: cited with no record of reading in this row's source; re-open to upgrade
   var_roles:
     q: birthing_parent
+    c: child
+    p: non_birthing_parent
 source_text: 'Canadian EI standard parental benefits: ''up to 40 weeks can be shared between parents, but one parent cannot receive more than 35 weeks of standard benefits''; maternity benefits ''can''t be shared between parents'' (canada.ca, read at https://www.canada.ca/en/services/benefits/ei/ei-maternity-parental.html). Before 2019-03-17 there were no reserved weeks: the Parental Sharing Benefit added the 5 (standard) or 8 (extended) use-it-or-lose-it weeks for children born on or after that date (https://canada.ca/en/employment-social-development/campaigns/ei-improvements/parent-sharing.html). The entry encodes the pre-2019 form: the same block exists but may be transferred.'
 expected_properties:
   solo_care_by_non_birthing_parent: reachable

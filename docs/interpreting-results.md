@@ -76,3 +76,21 @@ Standing caveats (ADR 0016). Two things the model cannot see apply to every resu
 - Negative or expected-match controls missing (airline, lease, library); a cluster claim with no control.
 - Flags ignored: vacuous, `no-subject`, inert, inconsistent, or `open` read as safe.
 - Tags cited as findings rather than inputs; forward claims about a real institution instead of "the encoding permits/forces".
+
+## 7. What the engine can and cannot find
+
+Written 2026-11-07 after the question "can this find new liberation paths, or does it only nail down specifics?" Both, through three mechanisms, and the limits are worth stating before the claims table.
+
+**Nothing comes out that was not put in.** The engine cannot propose a rule, a gate or an institution that no entry encodes. Its outputs are combinations and comparisons of the encodings. A surprising verdict is a combination the author did not hold in mind, or an encoding error; the council decides which, and so far every surprise on record has been the second kind (prohibit-variant leak, deregulation zeroing a power, exit twins double-counted; see plans/priority-slice1-results.md). The blind rediscovery hit 1 of 5 preregistered top rules (L21). Read together: intuition about which rule carries the load is unreliable even for a careful author, and the engine's first return is forcing that intuition to be written down and checked.
+
+**Where novelty can come from, in order of how much the repo already has:**
+- *Cut sets.* A minimal set of rules whose removal flips a freedom property is a path. When it is not the obvious set, it is a path nobody saw. Bounded by the encoded rules; still more than a person holds in mind at twenty rules.
+- *Isomorphism as an analogy library.* If entry A matches entry B at the rule level and history records a move that worked on B, that move is a candidate path for A. The engine proposes the transfer; the human did not have to think of it. docs/connections.md C1–C4 preregister this for guardianship against coverture. Every faithfully encoded historical case adds a known move; every match is a proposal.
+- *Recombination through composition* (plans/composition.md, not built). Institutions that never existed, built from rules that did. Selection and arrangement of grounded pieces, not blank-page generation.
+- *Edit search* (not built, riskier). Enumerate single-rule edits beyond delete and prohibit, such as reattaching a condition from `married` to a designation, and report which flip a freedom without costing a good. Bounded edit types only; it generates nonsense otherwise.
+
+**Where the thinking happens.** Mostly in the encoding. Writing "who counts as family at the hospital, sanctioned by whom" as a rule with a source is where the encoder finds out they do not know. The engine then refuses vagueness. That is the main return in any first slice; cut sets are the second; sequencing over endpoints is not a return until a dynamics layer exists (plans/dynamics-sticks.md).
+
+**Limits to state up front:** one agent per role, no counts, no distributions; no time; k-bounded search; hand tags the verdicts depend on (strand; see the parked redesign); faithfulness of the encodings (L24: 24 of 211 rule rows unfaithful on the card-only pass). The honest tally and the preregistration rule are what make the claims believable, and saying the limits first is part of that.
+
+**Surprise ledger.** Until there is a place where "the engine saw something the author did not" is recorded as such, nobody can tell when it first happens. docs/surprises.md holds one row per unpredicted flip, with the council's ruling: artifact or finding. The ledger starting empty of findings is itself the current result.

@@ -26,33 +26,33 @@
 
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
-| R1 | owner | may | `(transfer o a o2)` | `(owns o a)` | none | rival | The owner may transfer the animal to another when the owner owns it (Cal. Civ. Code 655, 663). | recalled | [full source under Sources, R1](#src-r1) https://codes.findlaw.com/ca/civil-code/civ-sect-655/ |
-| R2 | owner | may | `(euthanize o a)` | `(owns o a)` | none | rival | The owner may have the animal euthanized when the owner owns it. | unverified | owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize |
-| R3 | owner | must not | `(abandon o a)` | `(owns o a)` | R4 `(prosecute state o)` | rival | The owner must not abandon the animal when the owner owns it, or else the state may prosecute (R4) (Cal. Penal Code 597s). | opened | [full source under Sources, R3](#src-r3) https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ |
-| R4 | state | may | `(prosecute state o)` | `(abandoned a)` | none | rival | The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s). | opened | [full source under Sources, R4](#src-r4) https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ |
-| R5 | owner | must | `(provides_care o a)` | `(owns o a)` | none | superadditive | The owner providing care to the animal must hold when the owner owns it (Cal. Penal Code 597(b)). | unverified | [full source under Sources, R5](#src-r5) |
-| R6 | animal | must not (disability) (implicit) | `(leave a)` | `(is_subject a)` | none | rival | (practice, not written) The animal cannot leave while it is a companion animal: no such power exists. | unverified | [full source under Sources, R6](#src-r6) |
-| R7 | state | may | `(impound state a)` | `(at_large a)` | none | rival | The state may impound the animal when it is at large. | unverified | local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened) |
-| R8 | owner | may | `(breed_or_sterilize o a)` | `(owns o a)` | none | rival | The owner may breed or sterilize the animal when the owner owns it. | unverified | incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled |
-| R9 (replaced) | court | may | `(reassign court o a)` | `(and (owns o a) (not (best_interest o a)))` | none | tying | The court may reassign custody of the animal when the owner owns it and the arrangement is not in the animal's best interest (Alaska Stat. 25.24.160(a)(5)). | unverified | [full source under Sources, R9](#src-r9) https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment |
-| R10 | owner | may | `(feed o a)` | `(and (owns o a) (not (provides_care o a)))` | none | superadditive | The owner may feed the animal when the owner owns it and is not currently providing it care. | unverified | feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened) |
-| R11 | animal | must not (disability) (implicit) | `(sue a)` | `true` | none | tying | (practice, not written) The animal cannot sue in its own name at any time: no such power exists. | unverified | [full source under Sources, R11](#src-r11) |
+| R1 | owner | may (sanctioner derived, unreviewed) | `(transfer o a o2)` | `(owns o a)` | none | rival | The owner may transfer the animal to another when the owner owns it (Cal. Civ. Code 655, 663). | recalled | [full source under Sources, R1](#src-r1) https://codes.findlaw.com/ca/civil-code/civ-sect-655/ |
+| R2 | owner | may (sanctioner derived, unreviewed) | `(euthanize o a)` | `(owns o a)` | none | rival | The owner may have the animal euthanized when the owner owns it. | unverified | owner may have the animal euthanized by a veterinarian. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(o, a) reads transfer and euthanize |
+| R3 | owner | must not (sanctioner derived, unreviewed) | `(abandon o a)` | `(owns o a)` | R4 `(prosecute state o)` | rival | The owner must not abandon the animal when the owner owns it, or else the state may prosecute (R4) (Cal. Penal Code 597s). | opened | [full source under Sources, R3](#src-r3) https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ |
+| R4 | state | may (sanctioner derived, unreviewed) | `(prosecute state o)` | `(abandoned a)` | none | rival | The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s). | opened | [full source under Sources, R4](#src-r4) https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ |
+| R5 | owner | must (sanctioner derived, unreviewed) | `(provides_care o a)` | `(owns o a)` | none | superadditive | The owner providing care to the animal must hold when the owner owns it (Cal. Penal Code 597(b)). | unverified | [full source under Sources, R5](#src-r5) |
+| R6 | animal | must not (disability) (implicit) (sanctioner derived, unreviewed) | `(leave a)` | `(is_subject a)` | none | rival | (practice, not written) The animal cannot leave while it is a companion animal: no such power exists. | unverified | [full source under Sources, R6](#src-r6) |
+| R7 | state | may (sanctioner derived, unreviewed) | `(impound state a)` | `(at_large a)` | none | rival | The state may impound the animal when it is at large. | unverified | local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened) |
+| R8 | owner | may (sanctioner derived, unreviewed) | `(breed_or_sterilize o a)` | `(owns o a)` | none | rival | The owner may breed or sterilize the animal when the owner owns it. | unverified | incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled |
+| R9 (replaced) | court | may (sanctioner derived, unreviewed) | `(reassign court o a)` | `(and (owns o a) (not (best_interest o a)))` | none | tying | The court may reassign custody of the animal when the owner owns it and the arrangement is not in the animal's best interest (Alaska Stat. 25.24.160(a)(5)). | unverified | [full source under Sources, R9](#src-r9) https://www.animallaw.info/statute/ak-divorce-%C2%A7-2524160-judgment |
+| R10 | owner | may (sanctioner derived, unreviewed) | `(feed o a)` | `(and (owns o a) (not (provides_care o a)))` | none | superadditive | The owner may feed the animal when the owner owns it and is not currently providing it care. | unverified | feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened) |
+| R11 | animal | must not (disability) (implicit) (sanctioner derived, unreviewed) | `(sue a)` | `true` | none | tying | (practice, not written) The animal cannot sue in its own name at any time: no such power exists. | unverified | [full source under Sources, R11](#src-r11) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave
 
 ## Variables
 
-- R1: `o` = owner (action transfer, effects); `a` = animal (action transfer, effects); `o2` = owner (action transfer, effects)
-- R2: `o` = owner (fluent owns); `a` = animal (action euthanize, effects)
-- R3: `o` = owner (action abandon, effects); `a` = animal (action abandon, effects)
-- R4: `o` = unbound (encoder to fix); `a` = animal (fluent abandoned)
-- R5: `o` = owner (fluent provides_care); `a` = animal (fluent provides_care)
-- R6: `a` = animal (action leave, effects)
-- R7: `a` = animal (action impound, effects)
-- R8: `o` = owner (fluent owns); `a` = animal (fluent owns)
-- R9: `o` = owner (action reassign, effects); `a` = animal (action reassign, effects)
-- R10: `o` = owner (action feed, effects); `a` = animal (action feed, effects)
-- R11: `a` = unbound (encoder to fix)
+- R1: `o` = owner (rule var_roles); `a` = animal (rule var_roles); `o2` = owner (action transfer, effects)
+- R2: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
+- R3: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
+- R4: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
+- R5: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
+- R6: `a` = animal (rule var_roles)
+- R7: `a` = animal (rule var_roles)
+- R8: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
+- R9: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
+- R10: `o` = owner (rule var_roles); `a` = animal (rule var_roles)
+- R11: `a` = animal (rule var_roles)
 
 ## Sources
 

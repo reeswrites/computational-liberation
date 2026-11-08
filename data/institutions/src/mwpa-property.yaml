@@ -12,6 +12,9 @@ rules_add:
   or_else: null
   strand: tying
   implicit: false
+  kind: formal
+  sanctioner: none
+  sanctioner_review: derived
   source: 'New York Married Women''s Property Act 1848 (the statute text itself not opened: [R] UNVERIFIED; dates from Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md]); Geddes, Lueck & Tennyson 2007 (draft), Table 1 dates of property / earnings acts; https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf [F, via plans/backtest-mwpa.md] (property acts: the wife holds and controls property acquired by gift or inheritance as if a feme sole). Conditioned on (not narrowed): a narrow construction (BL entry, R17) re-disables the power. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_own_property(w) = hold_property enabled (R13)'
   provenance:
   - source_id: ny-mwpa-1848

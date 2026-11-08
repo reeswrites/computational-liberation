@@ -25,28 +25,28 @@
 
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
-| R1 | husband | may | `(control_property h w)` | `(married h w)` | none | tying | The husband may control his wife's property when they are married (Blackstone II.29). | opened | [full source under Sources, R1](#src-r1) https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: |
-| R2 | husband | must | `(provides_care h w)` | `(married h w)` | none | superadditive | The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15). | opened | [full source under Sources, R2](#src-r2) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
-| R3 | wife | must (implicit) | `(provides_care w h)` | `(married h w)` | R5 `(chastise h w)` | superadditive | (practice, not written) The wife providing care to her husband (household labour) must hold when they are married, or else the husband may chastise her (R5). | unverified | [full source under Sources, R3](#src-r3) |
-| R4 | wife | must not (disability) | `(sue w)` | `(married h w)` | none | tying | The wife cannot sue in her own name while married: no such power exists (Blackstone I.15). | opened | [full source under Sources, R4](#src-r4) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
-| R5 | husband | may | `(chastise h w)` | `(and (married h w) (misbehaves w))` | none | rival | The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15). | opened | [full source under Sources, R5](#src-r5) https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: |
-| R6 | wife | must not (disability) | `(leave w)` | `(married h w)` | none | rival | The wife cannot leave the marriage at her own will while married: no such power exists (pre-reform divorce required the spouse's consent or proved fault, Stevenson & Wolfers; NY 1787 adultery only). | opened | [full source under Sources, R6](#src-r6) https://www.nber.org/system/files/working_papers/w10175/w10175.pdf |
-| R7 | wife | must not (disability) | `(contract w)` | `(married h w)` | none | tying | The wife cannot contract in her own name while married: no such power exists (Blackstone I.15). | opened | [full source under Sources, R7](#src-r7) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
-| R10 (added) | creditor | may (implicit) | `(attach c w)` | `(married h w)` | none | rival | (practice, not written) A creditor may attach the wife's property when she is married (it reaches what the husband holds). | unverified | [full source under Sources, R10](#src-r10) |
-| R11 (added) | creditor | must not (disability) | `(attach c w)` | `(and (married h w) (acquired_property w))` | none | tying | A creditor cannot attach the wife's property while she is married and has acquired property: no such power exists (Chused 1984). | unverified | [full source under Sources, R11](#src-r11) https://core.ac.uk/download/230496986.pdf |
-| R12 (added) | husband | may (implicit) | `(transfer_to_wife h w)` | `(married h w)` | none | tying | (practice, not written) The husband may transfer property to his wife when they are married (Chused 1984). | unverified | [full source under Sources, R12](#src-r12) https://core.ac.uk/download/230496986.pdf |
+| R1 | husband | may (sanctioner derived, unreviewed) | `(control_property h w)` | `(married h w)` | none | tying | The husband may control his wife's property when they are married (Blackstone II.29). | opened | [full source under Sources, R1](#src-r1) https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: |
+| R2 | husband | must (sanctioner derived, unreviewed) | `(provides_care h w)` | `(married h w)` | none | superadditive | The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15). | opened | [full source under Sources, R2](#src-r2) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R3 | wife | must (implicit) (sanctioner derived, unreviewed) | `(provides_care w h)` | `(married h w)` | R5 `(chastise h w)` | superadditive | (practice, not written) The wife providing care to her husband (household labour) must hold when they are married, or else the husband may chastise her (R5). | unverified | [full source under Sources, R3](#src-r3) |
+| R4 | wife | must not (disability) (sanctioner derived, unreviewed) | `(sue w)` | `(married h w)` | none | tying | The wife cannot sue in her own name while married: no such power exists (Blackstone I.15). | opened | [full source under Sources, R4](#src-r4) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R5 | husband | may (sanctioner derived, unreviewed) | `(chastise h w)` | `(and (married h w) (misbehaves w))` | none | rival | The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15). | opened | [full source under Sources, R5](#src-r5) https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: |
+| R6 | wife | must not (disability) (sanctioner derived, unreviewed) | `(leave w)` | `(married h w)` | none | rival | The wife cannot leave the marriage at her own will while married: no such power exists (pre-reform divorce required the spouse's consent or proved fault, Stevenson & Wolfers; NY 1787 adultery only). | opened | [full source under Sources, R6](#src-r6) https://www.nber.org/system/files/working_papers/w10175/w10175.pdf |
+| R7 | wife | must not (disability) (sanctioner derived, unreviewed) | `(contract w)` | `(married h w)` | none | tying | The wife cannot contract in her own name while married: no such power exists (Blackstone I.15). | opened | [full source under Sources, R7](#src-r7) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R10 (added) | creditor | may (implicit) (sanctioner derived, unreviewed) | `(attach c w)` | `(married h w)` | none | rival | (practice, not written) A creditor may attach the wife's property when she is married (it reaches what the husband holds). | unverified | [full source under Sources, R10](#src-r10) |
+| R11 (added) | creditor | must not (disability) (sanctioner derived, unreviewed) | `(attach c w)` | `(and (married h w) (acquired_property w))` | none | tying | A creditor cannot attach the wife's property while she is married and has acquired property: no such power exists (Chused 1984). | unverified | [full source under Sources, R11](#src-r11) https://core.ac.uk/download/230496986.pdf |
+| R12 (added) | husband | may (implicit) (sanctioner derived, unreviewed) | `(transfer_to_wife h w)` | `(married h w)` | none | tying | (practice, not written) The husband may transfer property to his wife when they are married (Chused 1984). | unverified | [full source under Sources, R12](#src-r12) https://core.ac.uk/download/230496986.pdf |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue, contract
 
 ## Variables
 
-- R1: `h` = husband (fluent married); `w` = wife (fluent married)
-- R2: `h` = husband (fluent married); `w` = wife (fluent married)
-- R3: `w` = wife (fluent married); `h` = husband (fluent married)
-- R4: `w` = wife (fluent married); `h` = husband (fluent married)
-- R5: `h` = husband (fluent married); `w` = wife (fluent married)
-- R6: `w` = wife (fluent married); `h` = husband (fluent married)
-- R7: `w` = wife (fluent married); `h` = husband (fluent married)
+- R1: `h` = husband (rule var_roles); `w` = wife (rule var_roles)
+- R2: `h` = husband (rule var_roles); `w` = wife (rule var_roles)
+- R3: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
+- R4: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
+- R5: `h` = husband (rule var_roles); `w` = wife (rule var_roles)
+- R6: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
+- R7: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
 - R10: `c` = creditor (rule var_roles); `w` = wife (rule var_roles); `h` = husband (rule var_roles)
 - R11: `c` = creditor (rule var_roles); `w` = wife (rule var_roles); `h` = husband (rule var_roles)
 - R12: `h` = husband (rule var_roles); `w` = wife (rule var_roles)

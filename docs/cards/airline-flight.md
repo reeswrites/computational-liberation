@@ -24,11 +24,11 @@
 
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
-| R1 | crew | may | `(board c p)` | `(not (aboard p))` | none | tying | The crew may board the passenger when the passenger is not aboard. | unverified | Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) |
-| R2 | crew | must | `(provides_care c p)` | `(aboard p)` | none | superadditive | The crew providing care to the passenger must hold when the passenger is aboard (14 CFR 121.571 supports only a briefing and assistance duty; the general in-flight care duty is unverified). | unverified | [full source under Sources, R2](#src-r2) https://www.law.cornell.edu/cfr/text/14/121.571 |
-| R3 | crew | may | `(restrain c p)` | `(and (aboard p) (disruptive p))` | none | rival | The crew may restrain the passenger when the passenger is aboard and disruptive (14 CFR 91.11 / 121.580, unverified). | unverified | [full source under Sources, R3](#src-r3) |
-| R4 | passenger | must not (disability) | `(leave p)` | `(aboard p)` | none | rival | The passenger cannot leave while aboard: no such power exists (14 CFR 91.11 / 121.580, unverified). | unverified | [full source under Sources, R4](#src-r4) |
-| R6 | passenger | may | `(complain p)` | `true` | none | tying | The passenger may complain at any time. | unverified | Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger may complain) |
+| R1 | crew | may (sanctioner derived, unreviewed) | `(board c p)` | `(not (aboard p))` | none | tying | The crew may board the passenger when the passenger is not aboard. | unverified | Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) |
+| R2 | crew | must (sanctioner derived, unreviewed) | `(provides_care c p)` | `(aboard p)` | none | superadditive | The crew providing care to the passenger must hold when the passenger is aboard (14 CFR 121.571 supports only a briefing and assistance duty; the general in-flight care duty is unverified). | unverified | [full source under Sources, R2](#src-r2) https://www.law.cornell.edu/cfr/text/14/121.571 |
+| R3 | crew | may (sanctioner derived, unreviewed) | `(restrain c p)` | `(and (aboard p) (disruptive p))` | none | rival | The crew may restrain the passenger when the passenger is aboard and disruptive (14 CFR 91.11 / 121.580, unverified). | unverified | [full source under Sources, R3](#src-r3) |
+| R4 | passenger | must not (disability) (sanctioner derived, unreviewed) | `(leave p)` | `(aboard p)` | none | rival | The passenger cannot leave while aboard: no such power exists (14 CFR 91.11 / 121.580, unverified). | unverified | [full source under Sources, R4](#src-r4) |
+| R6 | passenger | may (sanctioner derived, unreviewed) | `(complain p)` | `true` | none | tying | The passenger may complain at any time. | unverified | Reconstruction from the third review's 6-rule sketch (no statute opened): 14 CFR 91.11 / 121.580 (interference with crew; crew may restrain) and flight-attendant duties are named by the reviewer from general knowledge. UNVERIFIED (general knowledge; no source opened) (a passenger may complain) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave
 
@@ -37,8 +37,8 @@
 - R1: `c` = crew (rule var_roles); `p` = passenger (rule var_roles)
 - R2: `c` = crew (rule var_roles); `p` = passenger (rule var_roles)
 - R3: `c` = crew (rule var_roles); `p` = passenger (rule var_roles)
-- R4: `p` = passenger (action leave, effects)
-- R6: `p` = unbound (encoder to fix)
+- R4: `p` = passenger (rule var_roles)
+- R6: `p` = passenger (rule var_roles)
 
 ## Sources
 

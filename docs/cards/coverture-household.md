@@ -24,25 +24,25 @@
 
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
-| R1 | husband | may | `(control_property h w)` | `(married h w)` | none | tying | The husband may control his wife's property when they are married (Blackstone II.29). | opened | [full source under Sources, R1](#src-r1) https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: |
-| R2 | husband | must | `(provides_care h w)` | `(married h w)` | none | superadditive | The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15). | opened | [full source under Sources, R2](#src-r2) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
-| R3 | wife | must (implicit) | `(provides_care w h)` | `(married h w)` | R5 `(chastise h w)` | superadditive | (practice, not written) The wife providing care to her husband (household labour) must hold when they are married, or else the husband may chastise her (R5). | unverified | [full source under Sources, R3](#src-r3) |
-| R4 | wife | must not (disability) | `(sue w)` | `(married h w)` | none | tying | The wife cannot sue in her own name while married: no such power exists (Blackstone I.15). | opened | [full source under Sources, R4](#src-r4) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
-| R5 | husband | may | `(chastise h w)` | `(and (married h w) (misbehaves w))` | none | rival | The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15). | opened | [full source under Sources, R5](#src-r5) https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: |
-| R6 | wife | must not (disability) | `(leave w)` | `(married h w)` | none | rival | The wife cannot leave the marriage while married: no such power exists (no unilateral exit before the Matrimonial Causes Act 1857; unverified). | opened | [full source under Sources, R6](#src-r6) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
-| R7 | wife | must not (disability) | `(contract w)` | `(married h w)` | none | tying | The wife cannot contract in her own name while married: no such power exists (Blackstone I.15). | opened | [full source under Sources, R7](#src-r7) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R1 | husband | may (sanctioner derived, unreviewed) | `(control_property h w)` | `(married h w)` | none | tying | The husband may control his wife's property when they are married (Blackstone II.29). | opened | [full source under Sources, R1](#src-r1) https://avalon.law.yale.edu/18th_century/blackstone_bk2ch29.asp: |
+| R2 | husband | must (sanctioner derived, unreviewed) | `(provides_care h w)` | `(married h w)` | none | superadditive | The husband providing care to his wife must hold when they are married; no sanction is attached (Blackstone I.15). | opened | [full source under Sources, R2](#src-r2) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R3 | wife | must (implicit) (sanctioner derived, unreviewed) | `(provides_care w h)` | `(married h w)` | R5 `(chastise h w)` | superadditive | (practice, not written) The wife providing care to her husband (household labour) must hold when they are married, or else the husband may chastise her (R5). | unverified | [full source under Sources, R3](#src-r3) |
+| R4 | wife | must not (disability) (sanctioner derived, unreviewed) | `(sue w)` | `(married h w)` | none | tying | The wife cannot sue in her own name while married: no such power exists (Blackstone I.15). | opened | [full source under Sources, R4](#src-r4) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R5 | husband | may (sanctioner derived, unreviewed) | `(chastise h w)` | `(and (married h w) (misbehaves w))` | none | rival | The husband may chastise his wife (restrain her liberty) when they are married and her conduct is gross misbehaviour (Blackstone I.15). | opened | [full source under Sources, R5](#src-r5) https://avalon.law.yale.edu/18th_century/blackstone_bk1ch15.asp: |
+| R6 | wife | must not (disability) (sanctioner derived, unreviewed) | `(leave w)` | `(married h w)` | none | rival | The wife cannot leave the marriage while married: no such power exists (no unilateral exit before the Matrimonial Causes Act 1857; unverified). | opened | [full source under Sources, R6](#src-r6) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
+| R7 | wife | must not (disability) (sanctioner derived, unreviewed) | `(contract w)` | `(married h w)` | none | tying | The wife cannot contract in her own name while married: no such power exists (Blackstone I.15). | opened | [full source under Sources, R7](#src-r7) https://wams.nyhistory.org/colonies-and-revolution/english-colonies/coverture/ |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue, contract
 
 ## Variables
 
-- R1: `h` = unbound (encoder to fix); `w` = unbound (encoder to fix)
-- R2: `h` = unbound (encoder to fix); `w` = unbound (encoder to fix)
-- R3: `w` = unbound (encoder to fix); `h` = unbound (encoder to fix)
-- R4: `w` = unbound (encoder to fix); `h` = unbound (encoder to fix)
-- R5: `h` = unbound (encoder to fix); `w` = unbound (encoder to fix)
-- R6: `w` = unbound (encoder to fix); `h` = unbound (encoder to fix)
-- R7: `w` = unbound (encoder to fix); `h` = unbound (encoder to fix)
+- R1: `h` = husband (rule var_roles); `w` = wife (rule var_roles)
+- R2: `h` = husband (rule var_roles); `w` = wife (rule var_roles)
+- R3: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
+- R4: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
+- R5: `h` = husband (rule var_roles); `w` = wife (rule var_roles)
+- R6: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
+- R7: `w` = wife (rule var_roles); `h` = husband (rule var_roles)
 
 ## Sources
 
