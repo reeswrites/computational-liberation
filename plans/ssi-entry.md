@@ -1,21 +1,21 @@
 # ssi-marriage-penalty entry and pair (2026-11-08)
 
-Status: PREREGISTERED (commit ba5b4b0, before any run); RUN 2026-11-08, results recorded under "Results" below; COUNCIL PENDING. The preregistration sections are unedited. Written and committed before the first `phil rules check`, `ablate` or `diff` over either entry. Engine: ENGINE_PIN b5fd019. Branch `ssi-entry`. Inputs: plans/sourcing-worklist-marriage.md section 5 (Entry 2) and its Gaps, docs/connections.md section 4 (C2), plans/disability.md (SSI), plans/composition.md, ADR 0018, data/institutions/src/lease.yaml as the model.
+Status: PREREGISTERED (commit ba5b4b0, before any run); RUN 2026-11-08, results recorded under "Results" below; COUNCIL DONE 2026-11-08 (docs/reviews/2026-11-08-ssi-{correctness,faithfulness,card-only}.md; faithful with reservations); MECHANICAL FIX PASS APPLIED (wording, pins, levels; no verdict moved); REVISION 2 AWAITS THE AUTHOR (section at the end). The preregistration sections are unedited. Written and committed before the first `phil rules check`, `ablate` or `diff` over either entry. Engine: ENGINE_PIN b5fd019. Branch `ssi-entry`. Inputs: plans/sourcing-worklist-marriage.md section 5 (Entry 2) and its Gaps, docs/connections.md section 4 (C2), plans/disability.md (SSI), plans/composition.md, ADR 0018, data/institutions/src/lease.yaml as the model.
 
 ## What was built
 
 - `data/institutions/src/ssi-marriage-penalty.yaml`: roles claimant, spouse, agency. Base fluents `married`, `cohabits`, `holds_out`, `resources_under_limit`; derived power fluents `couple_rate`, `couple_limit`, `individual_rate`, `individual_limit`, `eligible` (each reads `enabled` of an agency action, the convention of `can_sanction` and `has_standing`). Seven rules: R1 agency may pay a benefit; R2 may apply the couple rate when married; R3 may apply the couple resource limit when married; R4 may apply the couple rate when cohabiting and holding out (the displaced gate); R5, R6 individual rate and limit when neither married nor holding out; R7 disability: must_not pay when resources are not under the limit. `function:` on R2 (`penalises_marriage_rate`), R3 (`penalises_marriage_limit`), R4 (`extends_penalty_to_holding_out`).
 - `ssi-marriage-penalty-individual`: the pair, penalty removed. R2, R3, R4 dropped; R5, R6 lose their marital-status condition. **Holding out is dropped, not kept**: with no couple rate there is nothing for the test to gate, and no reform text was read that retains it (S. 73 of 2025 is an unopened lead).
-- Five new properties in `properties.yaml` (the 34 older ones all need fluents this entry does not declare): `married_couple_rated`, `married_couple_limited` (both freedom/unfreedom, invariant: the penalty holding), `penalty_reaches_unmarried` (failure_mode, reachable), `married_rated_individually` (structure, reachable: the penalty absent), `over_limit_ineligible` (freedom/unfreedom, invariant). Names, formulas and kinds are fixed here, before the run.
-- Six bibliography works in `data/sources/rules.yaml`. Every `opened` level and excerpt is carried from the worklist, whose fetches returned model summaries rather than raw text; none was re-opened here.
+- Five new properties in `properties.yaml`, which are encoding checks (each restates one rule), not findings (the 34 older ones all need fluents this entry does not declare): `married_couple_rated`, `married_couple_limited` (both freedom/unfreedom, invariant: the penalty holding), `penalty_reaches_unmarried` (failure_mode, reachable), `married_rated_individually` (structure, reachable: the penalty absent), `over_limit_ineligible` (freedom/unfreedom, invariant). Names, formulas and kinds are fixed here, before the run.
+- Six bibliography works in `data/sources/rules.yaml`. Every provenance excerpt was carried from the worklist, whose fetches returned model summaries rather than raw text; none was re-opened by the builder. After the council all carried rows are `snippet` (ADR 0017 s.3), not `opened`; the faithfulness seat confirmed 416.1802(b)(1) and (d)(1), 416.1806(a)(3) and 1382(a)(3)(A)-(B) verbatim from raw text.
 
 ## Declared deviations from the brief (before the run)
 
-1. R4 has `sanctioner: none`, not `state`. The engine rejects a sanctioner without an `or_else`, and the only candidate sanction (recovery of overpayments, appeal) is in no opened source. The displaced reading therefore cannot use a sanctioner difference; it can read attribute sets only.
+1. R4 has `sanctioner: none`, not `state`, because R4 is an agency `may` power with no duty to sanction (the engine also rejects a sanctioner without an `or_else`). Overpayment recovery (20 CFR 416.537, not opened) sanctions the claimant under a different, unencoded rule. This is not "no sanction in any source". The displaced reading therefore cannot use a sanctioner difference; it can read attribute sets only. (Wording corrected after the council, 2026-11-08; the earlier reason was wrong.)
 2. Rules are `may` powers, not the statute's mandatory `must`: an action `must` fires every step and blocks every other action (ADR 0009), and a must-be needs the establishing action to carry the rate. The penalty is therefore represented as a power the rules grant. Because an action no rule names stays free in traces, only the derived fluents see the rules; this is why every property here reads a derived fluent.
 3. Holding out is a second route to the couple rate on the same aim as R2, not a rewrite of `married`, because a derived fluent cannot read `married or holds_out`.
 4. Dollar amounts ($2,000 / $3,000; $994 / $1,491) are not representable; only which limit and rate the agency may apply.
-5. Consent guard note (plans/consent-guard-note-DRAFT.md): ruled not applicable to benefits rules by the author, 2026-11-08.
+5. "Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to benefits rules by the author, 2026-11-08."
 
 ## Preregistered verdicts (k = 6 and 8, `--init declared`, strict, step-mode one)
 
@@ -69,7 +69,7 @@ Any result other than the tables above is recorded below against the row it cont
 
 Recorded against the preregistration; nothing above was edited.
 
-**Verdicts.** `phil rules check` on both entries at k=6 and k=8: all 10 property verdicts match the table (5/5 on each entry at each k; `open` is the engine's word for unreachable_open). Both entries pass with no vacuity flags. The pair prints two warnings (derived `couple_rate`, `couple_limit` name actions no rule regulates), as predicted. The older properties: not applicable (the ablation header reads "5 properties applicable, 35 not applicable"; the dataset lists 39 properties after the five were added, so the header's 40 is one more than I can account for, recorded as an unexplained count, not tuned).
+**Verdicts.** `phil rules check` on both entries at k=6 and k=8: all 10 property verdicts match the table (5/5 on each entry at each k; `open` is the engine's word for unreachable_open). Both entries pass with no vacuity flags. The pair prints two warnings (derived `couple_rate`, `couple_limit` name actions no rule regulates), as predicted. The older properties: not applicable (the ablation header reads "5 properties applicable, 35 not applicable"; the dataset lists 39 properties, and the header's 40 is explained: `expand_contested` adds the contested-reading variant `provided_for@encoder-2`, so 39 becomes 40; on the raw 39 the split is 5 applicable and 34 not (correctness review, item 5)).
 
 **Ablation of the base** (`phil rules ablate --entry ssi-marriage-penalty`). Expected flips held: R2 -> married_couple_rated holds_to_k > violated; R3 -> married_couple_limited holds_to_k > violated; R4 -> penalty_reaches_unmarried reachable > open; R7 -> over_limit_ineligible holds_to_k > violated; R1, R5, R6 -> no flip. `function:` predictions on R2, R3, R4 all fired (none unsupported). Total 4 of 4 predicted flips, 0 of 3 predicted non-flips contradicted.
 
@@ -78,7 +78,7 @@ Drift and readings, recorded, not tuned:
 1. **R4's prohibit variant flips a second property.** `R4~prohibit` (the engine's prohibit variant of a `may`, a disability on the couple-rate power under the holding-out condition) flips `married_couple_rated` as well as `penalty_reaches_unmarried`. Not preregistered (the preregistration covered deletion only). Reason: the disability bars `apply_couple_rate` for any pair that is cohabiting and holding out, including a married pair, so married holding-out pairs lose the power. An artifact of what a prohibit of R4 means, not a finding about SSI. Logged as a surprise (docs/surprises.md S5, artifact).
 2. **Deregulation flags.** R1, R3, R5, R6 are each the sole regulator of their action, so the engine files their deletion under "deregulated, not ranked" (action becomes unregulated, derived power zeroed). R3 flips `married_couple_limited` but is excluded from the ranking for that reason; R2 and R4 share `apply_couple_rate`, so both are ranked. The preregistration expected a possible flag on R1 only. Reading, not a miss: it means the ranked load table undercounts R3, and the unranked row is the one to read.
 3. **Load is zero for R4 in the ranked table.** `penalty_reaches_unmarried` is a failure_mode, which the engine lists but does not count toward load_freedom. R4's flip is real and listed, its `load_freedom` is 0/0. Not predicted in those words.
-4. **Isomorphism (C2 (i)).** `phil rules iso` of the entry against coverture-household, police-crisis, cps and lease: iso False at exact and at guard, with and without strands, `care+control: -` in all 8 runs, so the care+control claim held. The preregistration said "no match at any level"; one run is not literally empty: against police-crisis at the guard level the matcher reports a partial 1/7 pairing, R2 -> R3 (agency -> officer, apply_couple_rate -> detain), a single conditional `may`, which is not a cluster and not iso. Recorded as drift in my wording (partial pairings exist at guard), not as a match. Pair against base: iso False at guard, 2/7 matched (R1, R7), distance 5.
+4. **Isomorphism (C2 (i)).** `phil rules iso` of the entry against coverture-household, police-crisis, cps and lease: iso False at exact and at guard, with and without strands, `care+control: -` in every run. Wording after the council: exact 0/7; guard 1/7 (R2 -> police-crisis R3, agency -> officer); care+control '-' in every run; weak evidence of non-match, since at guard any conditional `may` pairs with any other. The preregistration said "no match at any level"; one run is not literally empty: against police-crisis at the guard level the matcher reports a partial 1/7 pairing, R2 -> R3 (agency -> officer, apply_couple_rate -> detain), a single conditional `may`, which is not a cluster and not iso. Recorded as drift in my wording (partial pairings exist at guard), not as a match. Pair against base: iso False at guard, 2/7 matched (R1, R7), distance 5.
 5. **C2 (ii) held vacuously, as preregistered.** All 34 older properties are not_applicable on the entry; deleting R2 or R3 flips none of them because none is run. A check that could not have failed.
 
 **`phil rules diff --baseline data/verdicts-baseline.json`** (after `build.py --write --cards` then `--check`: ok, 29 institutions, 39 properties, 30 cards; pytest 38 passed):
@@ -94,9 +94,10 @@ The 27 existing entries are clean. The preregistration guessed "possibly none" n
 
 ## Not done here (named, not hidden)
 
+- Mechanical fix pass (2026-11-08): the three council files were read and the wording, pins and levels fixed; every verdict row is unchanged (`phil rules check` output for both entries identical before and after; `phil rules diff` 0 changed, 10 added, 0 removed).
 - No composite. `ssi-marriage-penalty` with `coverture-household-us` is P2 (plans/composition.md) and the second half of C2.
-- No council. Spawn was not available; see the self-review checklist and the "council pending" mark below.
-- No raw-source re-opening: every `opened` row carries the worklist's summarising fetch.
+- The council has run (see Status); the self-review checklist below is kept as written before it.
+- No raw-source re-opening by the builder in the fix pass: carried rows are `snippet`, and R2's 1382(b)(2) pin and R7's 1382(a)(1)(B) bar pin are `unverified` (pins supplied by the faithfulness seat's raw read).
 
 ## What P2 will need (composite with coverture-household-us)
 
@@ -133,3 +134,14 @@ The council could not be spawned. These are what each seat must check; the batch
 - Do the card's property names (`married_couple_rated`) read as the penalty holding, and `married_rated_individually` as the penalty absent, without the plan?
 
 Council pending.
+
+## Revision 2 (author decisions)
+
+Items the council raised that could move a verdict or change a rule. The mechanical pass did not touch them.
+
+1. **Cohabitation condition on R2 and R3.** The source states the couple rate and limit for a spouse "with whom he or she is living" (416.1801(c); 1382(a)(1)(B)(i)); the rules carry `married` alone, so a separated married pair gets the couple rate. Add `cohabits`, or keep the gap declared. Same complement gap on R5 and R6.
+2. **`must` on a state fluent with an establishing action, or `may`.** The lease R2 pattern (ADR 0009 must-be) is available here; `may ... when true` was a choice, not forced (correctness item 3). Either try the must-be encoding or label the entry "power reading only".
+3. **R1 and the pair's R5/R6 as `default_capacity`** instead of `may ... when true` (cards/README.md convention).
+4. **One-rule pair choice.** The pair is a 5-rule reform pair. Candidates: drop R3 alone (flips married_couple_limited) or drop R4 alone (flips penalty_reaches_unmarried).
+5. **R4: follow POMS or the text as written.** The rule follows POMS SI 00501.152 (same-sex couples included); 416.1806(a)(3) says opposite sex. Also unencoded: `unrelated`, and timing (`at or after the time you apply`).
+6. **Two unrun checks** (correctness item 9): whether `(exists ((g agent)) ...)` is limited to the agency role (rather than any agent), and R4 deletion on a married holding-out pair.
