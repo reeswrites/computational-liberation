@@ -16,6 +16,10 @@
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
 - **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
+**Constructed world (ADR 0018):** composed from coverture-household-us, ssi-marriage-penalty for check claim C2b (second half of C2): does deleting SSI R2 or R3 flip financial_dependence (`phil rules ablate --entry coverture-us-ssi`); not a historical institution; the members span 1787–2008 (from provenance effective_date where present).
+
+Council: docs/reviews/2026-11-08-p2-correctness.md, 2026-11-08-p2-faithfulness.md, 2026-11-08-p2-card-only.md
+
 ## Members
 
 A composite (ADR 0018): the members' roles are unioned after the aliases below, fluents unified by name, rules concatenated under `<member>__` prefixes. Each rule row below is the member's rule, unchanged except for the renamed roles; its plain line and sources are the member's.
@@ -29,34 +33,40 @@ Free at t=0: `acquired_property`, `earns`
 
 Role map: **partner_a** = husband in coverture-household-us = claimant in ssi-marriage-penalty; **partner_b** = wife in coverture-household-us = spouse in ssi-marriage-penalty
 
-Actions (name(parameters): what they set; a member's rules permit, oblige or bar them):
-- `marry(h, w)` [h: partner_a; w: partner_b]: married(h, w), is_subject(w), provides_care(h, w), provides_care(w, h)
-- `hold_property(w)` [w: partner_b]: no effect
-- `keep_earnings(w)` [w: partner_b]: no effect
-- `maintain(h, w)` [h: partner_a; w: partner_b]: provides_care(h, w)
-- `neglect(h, w)` [h: partner_a; w: partner_b]: not provides_care(h, w)
-- `keep_house(w, h)` [w: partner_b; h: partner_a]: provides_care(w, h)
-- `neglect_house(w, h)` [w: partner_b; h: partner_a]: not provides_care(w, h)
-- `control_property(h, w)` [h: partner_a; w: partner_b]: no effect
-- `chastise(h, w)` [h: partner_a; w: partner_b]: no effect
-- `misbehave(w)` [w: partner_b]: misbehaves(w)
-- `draw_subsistence(w)` [w: partner_b]: no effect
-- `leave(w)` [w: partner_b]: no effect
-- `sue(w)` [w: partner_b]: no effect
-- `contract(w)` [w: partner_b]: no effect
-- `wed(c, s)` [c: partner_a; s: partner_b]: married(c, s)
-- `divorce(c, s)` [c: partner_a; s: partner_b]: not married(c, s)
-- `cohabit(c, s)` [c: partner_a; s: partner_b]: cohabits(c, s)
-- `separate(c, s)` [c: partner_a; s: partner_b]: not cohabits(c, s), not holds_out(c, s)
-- `present_as_married(c, s)` [c: partner_a; s: partner_b]: holds_out(c, s)
-- `cease_holding_out(c, s)` [c: partner_a; s: partner_b]: not holds_out(c, s)
-- `accumulate(c)` [c: partner_a]: not resources_under_limit(c)
-- `spend_down(c)` [c: partner_a]: resources_under_limit(c)
-- `apply_couple_rate(g, c, s)` [c: partner_a; s: partner_b]: no effect
-- `apply_couple_limit(g, c, s)` [c: partner_a; s: partner_b]: no effect
-- `apply_individual_rate(g, c, s)` [c: partner_a; s: partner_b]: no effect
-- `apply_individual_limit(g, c, s)` [c: partner_a; s: partner_b]: no effect
-- `pay_benefit(g, c)` [c: partner_a]: no effect
+Alias map (original role gloss):
+- husband (coverture-household-us) → partner_a: the husband; the legal person the marriage keeps
+- wife (coverture-household-us) → partner_b: the feme covert; her legal existence is suspended during marriage
+- claimant (ssi-marriage-penalty) → partner_a: the person who applies for or receives SSI (the benefit's subject)
+- spouse (ssi-marriage-penalty) → partner_b: the other person of the pair, a legal spouse or a cohabitant who holds out as one
+
+Actions (name(parameters): what they set; a member's rules permit, oblige or bar them; `from member` is the entry that declares the action):
+- `marry(h, w)` [h: partner_a; w: partner_b]: married(h, w), is_subject(w), provides_care(h, w), provides_care(w, h) (from member: coverture-household-us)
+- `hold_property(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `keep_earnings(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `maintain(h, w)` [h: partner_a; w: partner_b]: provides_care(h, w) (from member: coverture-household-us)
+- `neglect(h, w)` [h: partner_a; w: partner_b]: not provides_care(h, w) (from member: coverture-household-us)
+- `keep_house(w, h)` [w: partner_b; h: partner_a]: provides_care(w, h) (from member: coverture-household-us)
+- `neglect_house(w, h)` [w: partner_b; h: partner_a]: not provides_care(w, h) (from member: coverture-household-us)
+- `control_property(h, w)` [h: partner_a; w: partner_b]: no effect (from member: coverture-household-us)
+- `chastise(h, w)` [h: partner_a; w: partner_b]: no effect (from member: coverture-household-us)
+- `misbehave(w)` [w: partner_b]: misbehaves(w) (from member: coverture-household-us)
+- `draw_subsistence(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `leave(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `sue(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `contract(w)` [w: partner_b]: no effect (from member: coverture-household-us)
+- `wed(c, s)` [c: partner_a; s: partner_b]: married(c, s) (from member: ssi-marriage-penalty)
+- `divorce(c, s)` [c: partner_a; s: partner_b]: not married(c, s) (from member: ssi-marriage-penalty)
+- `cohabit(c, s)` [c: partner_a; s: partner_b]: cohabits(c, s) (from member: ssi-marriage-penalty)
+- `separate(c, s)` [c: partner_a; s: partner_b]: not cohabits(c, s), not holds_out(c, s) (from member: ssi-marriage-penalty)
+- `present_as_married(c, s)` [c: partner_a; s: partner_b]: holds_out(c, s) (from member: ssi-marriage-penalty)
+- `cease_holding_out(c, s)` [c: partner_a; s: partner_b]: not holds_out(c, s) (from member: ssi-marriage-penalty)
+- `accumulate(c)` [c: partner_a]: not resources_under_limit(c) (from member: ssi-marriage-penalty)
+- `spend_down(c)` [c: partner_a]: resources_under_limit(c) (from member: ssi-marriage-penalty)
+- `apply_couple_rate(g, c, s)` [c: partner_a; s: partner_b]: no effect (from member: ssi-marriage-penalty)
+- `apply_couple_limit(g, c, s)` [c: partner_a; s: partner_b]: no effect (from member: ssi-marriage-penalty)
+- `apply_individual_rate(g, c, s)` [c: partner_a; s: partner_b]: no effect (from member: ssi-marriage-penalty)
+- `apply_individual_limit(g, c, s)` [c: partner_a; s: partner_b]: no effect (from member: ssi-marriage-penalty)
+- `pay_benefit(g, c)` [c: partner_a]: no effect (from member: ssi-marriage-penalty)
 
 ## Roles
 
@@ -192,7 +202,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 | care_assigned_by_sex | freedom | violated | All care at step t is provided by female agents. Reachable via a tying rule, persisting where an implicit assignment norm survives reform; violated where a non-female carer is permitted. |
 | financial_dependence | freedom | holds_to_k | Every subject (married woman) lacks any economic resource under her own control: she neither holds separate property nor owns her earnings. holds_to_k under coverture; violated by a property act for a propertied wife (MWPA backtest, plans/backtest-mwpa.md, preregistered 2026-11-03). |
 | financial_dependence_unpropertied | freedom | holds_to_k | Every subject who has acquired no property by gift or inheritance lacks any economic resource under her own control. Still holds_to_k after a property act (the act flips dependence 'for propertied wives only'); violated by an earnings act for a wage-earning wife (MWPA backtest, preregistered 2026-11-03). |
-| cannot_contract | freedom | holds_to_k | No subject may contract in her own name. holds_to_k under coverture (R7 disability); violated once a sole-trader act grants the power (MWPA backtest, preregistered 2026-11-03). |
+| cannot_contract | freedom | violated | No subject may contract in her own name. holds_to_k under coverture (R7 disability); violated once a sole-trader act grants the power (MWPA backtest, preregistered 2026-11-03). |
 | double_burden | failure_mode | unreachable_open | Partial reform (no mode) check for the MWPA chain (filed as displacement (DI) until 2026-11-04; ADR 0016's 2026-11-03 note kept it DI, its 2026-11-04 council-pass amendment relabelled it: a burden that stays, not one that moves, and nothing rewards undermining the property, so neither DI nor Perverse incentive; property name kept, it is a preregistered identifier): some married wife owns her earnings and is still bound to the household's care (the implicit R3 unchanged). Reachable from the earnings act on; open before (preregistered 2026-11-03). |
 | creditor_shield | failure_mode | unreachable_open | Capture check (filed as dark twin (DT) until ADR 0016, 2026-11-03): a husband has conveyed property to his wife, still manages it, and no creditor can attach it. Reachable in the 1839-50 exemption form and under narrow construction; open once the property act removes the husband's management (preregistered 2026-11-03). |
 | married_couple_rated | freedom | holds_to_k | Whenever two people are married, the benefits agency holds the power to rate them as a couple (the couple federal rate, combined income): marriage brings the couple rate. Its holding is the SSI marriage penalty (preregistered plans/ssi-entry.md, 2026-11-08); read as a power the rules grant (derived), not as an applied rate. |
@@ -207,6 +217,6 @@ No pair relations.
 
 <details><summary>Encoder notes (engine internals)</summary>
 
-P2 composite (plans/p2-ssi-composite.md, preregistered 2026-11-08 before the build): tests the second half of claim C2 (docs/connections.md section 4). Claimant -> partner_a so that the SSI rules' (married c s) is the same atom as coverture's married(h, w) after aliasing; the claimant being the husband is an assumption of this composite, not of SSI. Sex by female(partner_b) in initial; acquired_property and earns free as in the first composite. C2b is read from `phil rules ablate --entry coverture-us-ssi`, rows ssi_marriage_penalty__R2 and R3: predicted NOT to flip financial_dependence (it reads is_subject, controls_own_property and owns_earnings, which no SSI rule touches), so C2 fails as written. Not a cluster member; no iso claims; takes no part in the gate.
+P2 composite (plans/p2-ssi-composite.md, preregistered 2026-11-08 before the build): tests the second half of claim C2 (docs/connections.md section 4). Claimant -> partner_a so that the SSI rules' (married c s) is the same atom as coverture's married(h, w) after aliasing; the claimant being the husband is an assumption of this composite, not of SSI. Sex by female(partner_b) in initial; acquired_property and earns free as in the first composite. C2b is read from `phil rules ablate --entry coverture-us-ssi`, rows ssi_marriage_penalty__R2 and R3: predicted NOT to flip financial_dependence (it reads is_subject, controls_own_property and owns_earnings, which no SSI rule touches), so C2 fails as written. Not a cluster member; no iso claims; takes no part in the gate. Post hoc (S7): cannot_contract was preregistered holds_to_k and is edited to violated after the run; violated via SSI divorce (an unsourced encoder action that un-marries a coverture pair, so R7's married condition fails). The edit follows the repo post hoc convention (docs/interpreting-results.md section 6); the baseline row already records the actual verdict. Constructed world (ADR 0018): pairs 1765 coverture with 1974+ SSI over one couple; not a historical regime.
 
 </details>

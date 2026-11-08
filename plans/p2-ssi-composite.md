@@ -86,3 +86,18 @@ Recorded against the preregistration above; nothing above was edited.
 - Can a reader see that `marry` (coverture) and `wed` (SSI) both set `married`, and that `divorce` exists only because of SSI? Is the alias line (claimant -> partner_a) visible with its reason?
 - Does the card show that the expected `cannot_contract` verdict missed and why, or only the preregistered value? (It shows the value; the miss lives here and in S7.)
 - Is it clear from the card that no SSI rule touches the wife's property or earnings?
+
+## Post-council record (fix pass, 2026-11-08; appended, nothing above edited)
+
+Council reviews: docs/reviews/2026-11-08-p2-{correctness,faithfulness,card-only}.md.
+
+- **S7 was a reading error, not a model surprise.** The mechanism was visible in the preregistration text above: it lists `divorce` among the SSI actions and says SSI actions touch no coverture fluent except `married`, while `divorce` writes `married`. The prediction was falsifiable from its own text.
+- **Post hoc (S7): preregistered holds_to_k; violated via SSI divorce.** `cannot_contract` in `coverture-us-ssi` is edited from `holds_to_k` to `violated` after the run, marked post hoc in the composite notes (the `expected_properties` field has no place for a mark). The baseline row already recorded the actual verdict; `check-all` now 192/192.
+- **The R2+R3 joint deletion is a scratch probe, not a CLI row.** It ran over `without_rule` in memory; the C2b conclusion does not rest on it (the single-rule rows already show no flip of `financial_dependence`).
+- **Verdict vacuity.** `financial_dependence` and `_unpropertied` hold under any SSI rule set (their fluents are never enabled, as in coverture alone); "no SSI row flips a coverture property" is true by disjoint fluents, not a finding.
+- **Not run:** the claimant -> partner_b swap probe and the `exists ((g agent))` scope probe.
+
+## P2c (preregistered, not run)
+
+A derived SSI member `ssi-marriage-penalty-no-exit`, via `extends: ssi-marriage-penalty` with `actions_drop: [wed, divorce]` (so `married` is coverture's alone), composed as `coverture-us-ssi-noexit` with the same aliases, `initial` and `initial_free` as `coverture-us-ssi`. Expected: `cannot_contract: holds_to_k`, and every other verdict identical to `coverture-us-ssi`. Not built here. Any other result is recorded against this section, not edited into it.
+
