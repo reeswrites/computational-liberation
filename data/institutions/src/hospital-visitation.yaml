@@ -1,0 +1,178 @@
+id: hospital-visitation
+name: 'US hospital visitation after 42 CFR 482.13(h) (2011): the patient designates visitors; the staff gate remains as a norm the rule overrides'
+extends: hospital-visitation-pre2011
+roles_add:
+- name: surveyor
+  gloss: the state survey agency acting for CMS; enforces the Conditions of Participation
+fluents_add:
+- name: designated
+  arity: 2
+  gloss: p has designated x as a visitor (482.13(h)(2))
+  arg_roles: [patient, partner]
+actions_add:
+- name: designate
+  args: [p, x]
+  arg_roles: [patient, partner]
+  effects:
+  - fluent: designated
+    args: [p, x]
+    value: true
+- name: cite
+  args: [v, o]
+  arg_roles: [surveyor, hospital]
+  effects: []
+rules_replace:
+- id: R3
+  plain: '(practice, not written; overridden where the patient has designated the visitor) Staff must not admit as a visitor anyone they do not count as family and whom the patient has not designated, or else the hospital may reprimand them (R6).'
+  attribute: staff
+  deontic: must_not
+  aim: (admit_visitor s x p)
+  conditions: (and (not (counts_as_family p x)) (not (designated p x)))
+  or_else: R6
+  strand: tying
+  implicit: true
+  kind: norm
+  sanctioner: institution
+  function: sorts_who_belongs
+  source: 'The pre-2011 staff norm (hospital-visitation-pre2011 R3), retained. The 2011 rule does not delete it; it overrides it where the patient has designated the visitor, which strict compliance can only express as a narrowing of the norm''s condition (ASSUMED encoding of ''overrides but does not delete''; a norm kept at full width would contradict R9 and leave no compliant trace). The rule is wider than the narrowing: Transmittal 75 A-0217 says ''it is not permissible for the hospital, on its own, to differentiate among visitors without any clinically necessary or reasonable basis'' (hv-cms-r75soma, opened 2026-11-08 from the PDF text), so the narrowing by designation is an encoding concession, not what the rule says. Evidence that denials continued after 2011: a 2012 Las Vegas denial of a registered domestic partner, ''It didn''t matter that we were registered domestic partners'' (hv-nv-2012, opened); the admissions officer cited a hospital policy requiring power of attorney for gay couples, which is a stated policy (and a likely breach of (h)(3)-(h)(4)), not an unwritten staff norm, and the report does not say whether the patient had designated her partner, so it says nothing about this rule''s sanction or its narrowed condition (council 2026-11-08). No rate exists (no compliance study found, plans/informal-rules.md R1).'
+  provenance:
+  - source_id: hv-cms-r75soma
+    pin: A-0217
+    jurisdiction: US
+    effective_date: '2011-12-02'
+    verification: opened
+    excerpt: it is not permissible for the hospital, on its own, to differentiate among visitors without any clinically necessary or reasonable basis
+    accessed: '2026-11-08'
+    url: https://www.cms.gov/regulations-and-guidance/guidance/transmittals/downloads/r75soma.pdf
+    note: 'opened by the encoder 2026-11-08 (PDF text); the rules override is wider than the designation narrowing encoded here'
+  - source_id: hv-nv-2012
+    pin: null
+    jurisdiction: US-NV
+    effective_date: '2012-08-21'
+    verification: opened
+    excerpt: It didn't matter that we were registered domestic partners
+    accessed: '2026-11-08'
+    url: https://www.nbcnews.com/news/world/nv-hospital-denies-rights-domestic-partners-flna957300
+    note: 'opened by the worklist (summary-mediated); one anecdote; a stated hospital policy, not evidence of an unwritten staff norm; silent on designation'
+  var_roles:
+    s: staff
+    x: partner
+    p: patient
+rules_add:
+- id: R9
+  plain: 'Staff must admit a visitor the patient has designated when the patient is admitted, visiting is not restricted and the visitor is not already visiting, or else the state survey agency may cite the hospital (R11) (42 CFR 482.13(h)(4), read with Transmittal 75 A-0217; the designation right is (h)(2)).'
+  attribute: staff
+  deontic: must
+  aim: (admit_visitor s x p)
+  conditions: (and (admitted p) (designated p x) (not (clinically_restricted p)) (not (visiting x p)))
+  or_else: R11
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: state
+  function: settles_who_decides
+  source: '42 CFR 482.13(h), added by 75 FR 70831 (2010-11-19), effective 2011-01-18. The duty to admit is (h)(4): the hospital must ''Ensure that all visitors enjoy full and equal visitation privileges consistent with patient preferences'' (hv-cfr-482-13-h, current text, opened by the worklist), read with Transmittal 75 A-0217: ''it is not permissible for the hospital, on its own, to differentiate among visitors without any clinically necessary or reasonable basis'' (hv-cms-r75soma, opened 2026-11-08 from the PDF text). The designation itself is (h)(2), phrased as a duty to inform the patient of the right ''to receive the visitors whom he or she designates, including, but not limited to, a spouse, a domestic partner (including a same-sex domestic partner), another family member, or a friend'' (hv-fr-2010-final-rule, opened by the worklist; council 2026-11-08 corrected the pin: (h)(2) grounds the designation, (h)(4) the duty). Enforced through the Medicare Conditions of Participation by state survey agencies under Transmittal 75 (A-0215 to A-0217), hence sanctioner state and or_else R11. (h)(3), which bars restriction on race, sex, sexual orientation and the other listed grounds, is not encoded: the entry has no protected-ground fluents. Also not encoded: the patient''s consent and its withdrawal ((h)(2)), the support person and incapacitated patients (A-0216), and the breadth of (h)(4) beyond designated visitors. The ''not visiting'' conjunct makes the obligation fire once (one action slot per step).'
+  provenance:
+  - source_id: hv-cfr-482-13-h
+    pin: (h)(4)
+    jurisdiction: US
+    effective_date: '2011-01-18'
+    verification: opened
+    excerpt: Ensure that all visitors enjoy full and equal visitation privileges consistent with patient preferences
+    accessed: '2026-11-08'
+    url: https://www.law.cornell.edu/cfr/text/42/482.13
+    note: 'opened by the worklist (summary-mediated); current eCFR text, amended 2012 and 2019; the duty this rule encodes'
+  - source_id: hv-cms-r75soma
+    pin: A-0217
+    jurisdiction: US
+    effective_date: '2011-12-02'
+    verification: opened
+    excerpt: it is not permissible for the hospital, on its own, to differentiate among visitors without any clinically necessary or reasonable basis
+    accessed: '2026-11-08'
+    url: https://www.cms.gov/regulations-and-guidance/guidance/transmittals/downloads/r75soma.pdf
+    note: 'opened by the encoder 2026-11-08 (PDF text, pdftotext); the surveyor reading of (h)(4)'
+  - source_id: hv-fr-2010-final-rule
+    pin: 42 CFR 482.13(h)(2), as added (the designation right)
+    jurisdiction: US
+    effective_date: '2011-01-18'
+    verification: opened
+    excerpt: to receive the visitors whom he or she designates, including, but not limited to, a spouse, a domestic partner (including a same-sex domestic partner), another family member, or a friend
+    accessed: '2026-11-08'
+    url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
+    note: 'opened by the worklist (summary-mediated); (h)(2) is phrased as a duty to inform the patient of the right; it grounds the designation, not the admission duty'
+  var_roles:
+    s: staff
+    x: partner
+    p: patient
+- id: R10
+  plain: The patient may designate any person as a visitor (42 CFR 482.13(h)(1)-(2)).
+  attribute: patient
+  deontic: may
+  aim: (designate p x)
+  conditions: 'true'
+  or_else: null
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: none
+  source: '42 CFR 482.13(h)(1)-(2), added by 75 FR 70831 (hv-fr-2010-final-rule, opened by the worklist): the hospital informs the patient of the right ''to receive the visitors whom he or she designates''; for critical access hospitals 485.635(f)(1) adds ''in advance of furnishing patient care whenever possible'', so designation may precede admission (condition true). Written as a power conferred by the rule (may), not a default capacity: before 2011 no such designation existed.'
+  provenance:
+  - source_id: hv-fr-2010-final-rule
+    pin: 42 CFR 482.13(h)(1)-(2); 485.635(f)(1), as added
+    jurisdiction: US
+    effective_date: '2011-01-18'
+    verification: opened
+    excerpt: to receive the visitors whom he or she designates ... in advance of furnishing patient care whenever possible
+    accessed: '2026-11-08'
+    url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
+    note: 'opened by the worklist (summary-mediated); the second fragment is the CAH text, 485.635(f)(1), not 482.13(h)'
+  var_roles:
+    p: patient
+    x: partner
+- id: R11
+  plain: 'The state survey agency may cite the hospital (the sanction behind R9; a deficiency under the Medicare Conditions of Participation, which CMS may follow with termination from Medicare).'
+  attribute: surveyor
+  deontic: may
+  aim: (cite v o)
+  conditions: 'true'
+  or_else: null
+  strand: null
+  implicit: false
+  kind: formal
+  sanctioner: none
+  source: 'CMS Transmittal 75, Pub. 100-07, 2011-12-02 (hv-cms-r75soma, opened by the worklist and by the encoder 2026-11-08): interpretive guidelines A-0215 to A-0217 give state surveyors the standard for 482.13(h); a deficiency is cited against the hospital''s Medicare participation; A-0215: ''the burden of proof is upon the hospital to demonstrate that the visitation restriction is reasonably necessary to provide safe care''. The consequence is CMS''s, not the surveyor''s: ''noncompliance with this provision could result in the provider''s termination from the Medicare program'' (hv-fr-2010-final-rule, Part II, opened 2026-11-08); termination is not encoded, cite has no effects, and the two-step path (state agency cites, CMS terminates) is collapsed into one surveyor role.'
+  provenance:
+  - source_id: hv-cms-r75soma
+    pin: A-0215
+    jurisdiction: US
+    effective_date: '2011-12-02'
+    verification: opened
+    excerpt: the burden of proof is upon the hospital to demonstrate that the visitation restriction is reasonably necessary to provide safe care
+    accessed: '2026-11-08'
+    url: https://www.cms.gov/regulations-and-guidance/guidance/transmittals/downloads/r75soma.pdf
+    note: 'opened by the worklist and by the encoder 2026-11-08 (PDF text)'
+  - source_id: hv-fr-2010-final-rule
+    pin: Part II, response to comments (enforcement)
+    jurisdiction: US
+    effective_date: '2011-01-18'
+    verification: opened
+    excerpt: noncompliance with this provision could result in the provider's termination from the Medicare program
+    accessed: '2026-11-08'
+    url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
+    note: 'opened 2026-11-08 (WebFetch summary); the sanction holder is CMS, collapsed here into the surveyor role'
+  var_roles:
+    v: surveyor
+    o: hospital
+source_text: 'From 2011-01-18 a hospital must give each patient ''the right, subject to his or her consent, to receive the visitors whom he or she designates, including, but not limited to, a spouse, a domestic partner (including a same-sex domestic partner), another family member, or a friend'' and must ''Ensure that all visitors enjoy full and equal visitation privileges consistent with patient preferences'', subject to ''clinically necessary or reasonable restriction'' (42 CFR 482.13(h), added by 75 FR 70831, 2010-11-19; critical access hospitals 485.635(f)). Surveyors enforce it under CMS Transmittal 75 (2011-12-02), where ''the burden of proof is upon the hospital to demonstrate that the visitation restriction is reasonably necessary to provide safe care''. The pre-2011 policy gate (R4) and staff norm (R2, R3) are kept; R3 is narrowed where the patient has designated the visitor. Denials continued in reported cases (Nevada 2012: ''It didn''t matter that we were registered domestic partners''); no rate is known.'
+expected_properties:
+  spouse_visit_guaranteed: holds_to_k
+  spouse_visit_possible: reachable
+  unmarried_partner_visit_possible: reachable
+  designated_visit_guaranteed: holds_to_k
+isomorphic_to: []
+not_isomorphic_to: []
+minimal_pair_of:
+  id: hospital-visitation-pre2011
+  rule: R9
+  differs_on: designated_visit_guaranteed
+notes: 'The after-2011 side of the pair (plans/informal-rules.md R1; preregistered there 2026-11-08 before the first run). Not a one-rule pair: the diff is R9, R10, R11, the designate and cite actions, the designated fluent and the narrowing of R3; R4 and R8 are kept on both sides, which matches the sources (the 2011 rule added designation and did not remove the family gate), and designated_visit_guaranteed is not applicable to the base, so the pair''s differs_on shows a new property rather than a flipped one (council 2026-11-08). Diff from the base: the patient gains designate (R10) and staff a state-sanctioned admission duty on designation (R9, or_else R11, sanctioner state via the surveyor role); the staff norm R3 is narrowed by (not (designated p x)), the one way strict compliance can express ''overridden, not deleted'' (ASSUMED). The formal policy gate R4 and the family-admission duty R8 stay, so the spouse is guaranteed admission by R4 + R8 and, if the patient designates, also by R9. Predictions (function): deleting R4 (sorts_who_belongs) flips spouse_visit_guaranteed to violated, because designation is a may (R10) and is not forced, while spouse_visit_possible stays reachable by two routes (R2 then R8; R10 then R9); deleting R9 (settles_who_decides) flips designated_visit_guaranteed to violated and nothing else (R5 still permits, so admission stays possible); deleting R2 leaves unmarried_partner_visit_possible reachable (displaced to designation), unlike the base where it goes unreachable; deleting R8 flips spouse_visit_guaranteed to violated (not forced; possible stays). designated_visit_guaranteed is the differs_on property of the pair: not applicable to the base (no designated fluent), holds_to_k here. (h)(3) protected grounds not encoded; consent and its withdrawal, the support person and incapacitated patients ((h)(2), A-0216) not encoded; the Medicare termination consequence not encoded (cite has no effects); the 2012 and 2019 amendments to (h) not read. Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to visitor-access rules by the author, 2026-11-08.'

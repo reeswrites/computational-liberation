@@ -1,0 +1,373 @@
+id: hospital-visitation-pre2011
+name: 'US hospital visitation before 2011: policy admits immediate family, staff decide who counts (minimal pair base)'
+roles:
+- name: patient
+  gloss: the admitted patient whose visitors are at issue
+- name: partner
+  gloss: the would-be visitor; a spouse or an unmarried partner, depending on the trace (married is exogenous here)
+- name: staff
+  gloss: the charge nurse or unit staff who decide who counts as family and admit visitors
+- name: hospital
+  gloss: the hospital as an institution (administration); sets visitation policy and disciplines staff
+fluents:
+- name: admitted
+  arity: 1
+  gloss: p is an inpatient
+  arg_roles: [patient]
+- name: married
+  arity: 2
+  gloss: p and x are married (exogenous in this entry; set by marry in the coverture composite)
+  arg_roles: [patient, partner]
+- name: counts_as_family
+  arity: 2
+  gloss: 'staff treat x as family of p for visitation (the informal judgment; set by recognize_family)'
+  arg_roles: [patient, partner]
+- name: clinically_restricted
+  arity: 1
+  gloss: visiting p is clinically restricted (infection control, procedure, patient rest)
+  arg_roles: [patient]
+- name: visiting
+  arity: 2
+  gloss: x has been admitted as a visitor to p
+  arg_roles: [partner, patient]
+actions:
+- name: admit
+  args: [s, p]
+  arg_roles: [staff, patient]
+  effects:
+  - fluent: admitted
+    args: [p]
+    value: true
+- name: recognize_family
+  args: [s, p, x]
+  arg_roles: [staff, patient, partner]
+  effects:
+  - fluent: counts_as_family
+    args: [p, x]
+    value: true
+- name: admit_visitor
+  args: [s, x, p]
+  arg_roles: [staff, partner, patient]
+  effects:
+  - fluent: visiting
+    args: [x, p]
+    value: true
+- name: restrict
+  args: [s, p]
+  arg_roles: [staff, patient]
+  effects:
+  - fluent: clinically_restricted
+    args: [p]
+    value: true
+- name: reprimand
+  args: [o, s]
+  arg_roles: [hospital, staff]
+  effects: []
+rules:
+- id: R1
+  plain: Staff may admit a patient who is not already admitted.
+  attribute: staff
+  deontic: may
+  aim: (admit s p)
+  conditions: (not (admitted p))
+  or_else: null
+  strand: null
+  implicit: false
+  kind: formal
+  sanctioner: none
+  source: 'Encoder''s device: admission is the event that makes visitation a question; no source read for it. UNVERIFIED (general knowledge; no source opened).'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: admission is the precondition of visitation and is not itself regulated here'
+  var_roles:
+    s: staff
+    p: patient
+- id: R2
+  plain: '(practice, not written; reconstruction, no policy text found) Staff may treat any visitor as family of an admitted patient: the charge nurse decides who counts.'
+  attribute: staff
+  deontic: may
+  aim: (recognize_family s p x)
+  conditions: (and (admitted p) (not (counts_as_family p x)))
+  or_else: null
+  strand: tying
+  implicit: true
+  kind: norm
+  sanctioner: none
+  function: sorts_who_belongs
+  source: 'The informal gate. No hospital policy text names the decider. Evidence that non-relatives were excluded while immediate family were admitted is the 2010 Presidential Memorandum''s own description of practice: ''a widow or widower with no children is denied the support and comfort of a good friend''; members of religious orders ''unable to choose someone other than an immediate family member to visit them''; ''gay and lesbian Americans who are often barred from the bedsides of the partners'' (hv-presmemo-2010, opened); and the final rule''s comment response on practice that ''denies patients access to their loved ones in times of need'' (hv-fr-2010-final-rule, opened). That the exclusion was exercised as staff discretion rather than written policy is the encoder''s reading (ASSUMED); Lambda Legal''s 2010 survey (hv-ll-2010-wcnc) could not be opened. The memo''s sentence ''no more restrictive than those that immediate family members enjoy'' is its target standard for designated visitors, not a description of the baseline (council 2026-11-08). Tag note: a permission carries no sanction of its own; the sanction that bounds the discretion is R3''s (sanctioner institution). D1 defines a norm as sanctioned; this `may` half of the practice is tagged norm with sanctioner none knowingly, and whether it should read strategy is an open question for the author (council 2026-11-08).'
+  provenance:
+  - source_id: hv-presmemo-2010
+    pin: paras. 1-2 (practice described)
+    jurisdiction: US
+    effective_date: '2010-04-15'
+    verification: opened
+    excerpt: a widow or widower with no children is denied the support and comfort of a good friend ... unable to choose someone other than an immediate family member to visit them ... gay and lesbian Americans who are often barred from the bedsides of the partners
+    accessed: '2026-11-08'
+    url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
+    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted'
+  - source_id: hv-fr-2010-final-rule
+    pin: Part II, response to comments (CAH visitation subsection)
+    jurisdiction: US
+    effective_date: '2011-01-18'
+    verification: opened
+    excerpt: denies patients access to their loved ones in times of need
+    accessed: '2026-11-08'
+    url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
+    note: 'opened by the worklist and re-opened 2026-11-08 (WebFetch summary; the sentence sits in a comment response, not in a Background section as first pinned); a regulator''s characterisation of practice, not a hospital''s policy text'
+  - source_id: hv-ll-2010-wcnc
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: https://legacy.lambdalegal.org/sites/default/files/publications/downloads/whcic_report_when-health-care-isnt-caring.pdf
+    note: 'host redirect-loops; not opened; lead only'
+  var_roles:
+    s: staff
+    p: patient
+    x: partner
+- id: R3
+  plain: '(practice, not written; reconstruction, no policy text found) Staff must not admit as a visitor anyone they do not count as family, or else the hospital may reprimand them (R6).'
+  attribute: staff
+  deontic: must_not
+  aim: (admit_visitor s x p)
+  conditions: (not (counts_as_family p x))
+  or_else: R6
+  strand: tying
+  implicit: true
+  kind: norm
+  sanctioner: institution
+  function: sorts_who_belongs
+  source: 'The sanctioned side of the informal gate: a visitor staff do not count as family is not admitted. Evidence for the exclusion is the memo''s description of practice (''a widow or widower with no children is denied the support and comfort of a good friend''; members of religious orders ''unable to choose someone other than an immediate family member to visit them''; ''gay and lesbian Americans who are often barred from the bedsides of the partners'', hv-presmemo-2010, opened) and the final rule''s ''denies patients access to their loved ones in times of need'' (hv-fr-2010-final-rule, opened). That staff who admitted non-family answered to the hospital is the encoder''s inference from the existence of a policy (ASSUMED; no disciplinary text found, unverified item below).'
+  provenance:
+  - source_id: hv-presmemo-2010
+    pin: paras. 1-2 (practice described)
+    jurisdiction: US
+    effective_date: '2010-04-15'
+    verification: opened
+    excerpt: a widow or widower with no children is denied the support and comfort of a good friend ... unable to choose someone other than an immediate family member to visit them ... gay and lesbian Americans who are often barred from the bedsides of the partners
+    accessed: '2026-11-08'
+    url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
+    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted'
+  - source_id: hv-fr-2010-final-rule
+    pin: Part II, response to comments (CAH visitation subsection)
+    jurisdiction: US
+    effective_date: '2011-01-18'
+    verification: opened
+    excerpt: denies patients access to their loved ones in times of need
+    accessed: '2026-11-08'
+    url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
+    note: 'opened by the worklist and re-opened 2026-11-08 (WebFetch summary; the sentence sits in a comment response, not in a Background section as first pinned); a regulator''s characterisation of practice, not a hospital''s policy text'
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: the sanction on staff who admit non-family is inferred, not sourced; no pre-2011 hospital policy text or state hospital association model policy was found or opened (plans/sourcing-worklist-marriage.md hv-pre2011-practice), so the rule as a hospital rule is unverified'
+  var_roles:
+    s: staff
+    x: partner
+    p: patient
+- id: R4
+  plain: '(reconstruction, no policy text found) Staff must recognise an admitted patient''s spouse as family (hospital policy admits immediate family), or else the hospital may reprimand them (R6).'
+  attribute: staff
+  deontic: must
+  aim: (recognize_family s p x)
+  conditions: (and (admitted p) (married p x) (not (counts_as_family p x)))
+  or_else: R6
+  strand: tying
+  implicit: false
+  kind: formal
+  sanctioner: institution
+  function: sorts_who_belongs
+  source: 'The formal gate before 2011: hospital policy, not law. No pre-2011 hospital policy text or state hospital association model policy with ''immediate family'' wording was found or opened (unverified item below), so written-ness is ASSUMED and `kind: formal` rests on the ordinary existence of hospital visiting policies. That immediate family were admitted where others were not is the memo''s description of practice: members of religious orders were ''unable to choose someone other than an immediate family member to visit them'', while ''a widow or widower with no children is denied the support and comfort of a good friend'' and ''gay and lesbian Americans who are often barred from the bedsides of the partners'' (hv-presmemo-2010, opened). The memo''s ''no more restrictive than those that immediate family members enjoy'' is its target standard for designees, not the baseline (council 2026-11-08). Immediate family other than the spouse is not encoded (one visitor role). Written as an action obligation (must recognise) because no action can establish counts_as_family for the spouse at admission (ADR 0009 note). That recognition was a DUTY on staff rather than custom is ASSUMED; this rule, with R8, is what makes spouse_visit_guaranteed hold, so the guarantee is an encoding claim about the reconstructed policy (council 2026-11-08).'
+  provenance:
+  - source_id: hv-presmemo-2010
+    pin: paras. 1-2 (practice described)
+    jurisdiction: US
+    effective_date: '2010-04-15'
+    verification: opened
+    excerpt: a widow or widower with no children is denied the support and comfort of a good friend ... unable to choose someone other than an immediate family member to visit them ... gay and lesbian Americans who are often barred from the bedsides of the partners
+    accessed: '2026-11-08'
+    url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
+    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted'
+  - source_id: hv-presmemo-2010
+    pin: para. 3 (the target standard)
+    jurisdiction: US
+    effective_date: '2010-04-15'
+    verification: opened
+    excerpt: no more restrictive than those that immediate family members enjoy
+    accessed: '2026-11-08'
+    url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
+    note: 'the memo''s TARGET for designated visitors, not a description of pre-2011 policy (council 2026-11-08); CMS replaced it with ''full and equal'' because ''the proposed language may have been difficult to define, measure, and enforce'' (75 FR 70831, Part II)'
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: a hospital policy obliging staff to treat the spouse as family is reconstructed from the memos description, not read; no pre-2011 hospital policy text or state hospital association model policy was found or opened (plans/sourcing-worklist-marriage.md hv-pre2011-practice), so the rule as a hospital rule is unverified'
+  var_roles:
+    s: staff
+    p: patient
+    x: partner
+- id: R5
+  plain: 'Staff may admit any visitor to an admitted patient unless visiting is restricted (the general permission that the staff norm R3 narrows; the entry models every restriction as clinical, the 2011 text says clinically necessary or reasonable).'
+  attribute: staff
+  deontic: may
+  aim: (admit_visitor s x p)
+  conditions: (and (admitted p) (not (clinically_restricted p)))
+  or_else: null
+  strand: superadditive
+  implicit: false
+  kind: formal
+  sanctioner: none
+  source: 'The general permission the staff norm narrows (R3 bars non-family; R8 obliges family). Post-2011 text cited for a pre-2011 rule: the 2011 rule keeps restriction to a ''clinically necessary or reasonable restriction'' (42 CFR 482.13(h) introductory text; hv-fr-2010-final-rule and hv-cfr-482-13-h, opened; Transmittal 75 A-0217 reads it as a bar on the hospital differentiating among visitors ''without any clinically necessary or reasonable basis'', hv-cms-r75soma, opened). Before 2011 the permission is the encoder''s reconstruction of ordinary practice: UNVERIFIED (item below).'
+  provenance:
+  - source_id: hv-fr-2010-final-rule
+    pin: 42 CFR 482.13(h) introductory text, as added
+    jurisdiction: US
+    effective_date: '2011-01-18'
+    verification: opened
+    excerpt: clinically necessary or reasonable restriction
+    accessed: '2026-11-08'
+    url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
+    note: 'opened by the worklist (summary-mediated); post-2011 text; supports the shape of the exception, not the pre-2011 permission'
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: a general permission to admit visitors before 2011 is reconstructed; no pre-2011 hospital policy text or state hospital association model policy was found or opened (plans/sourcing-worklist-marriage.md hv-pre2011-practice), so the rule as a hospital rule is unverified'
+  var_roles:
+    s: staff
+    x: partner
+    p: patient
+- id: R6
+  plain: The hospital may reprimand staff (the sanction behind R3 and R4).
+  attribute: hospital
+  deontic: may
+  aim: (reprimand o s)
+  conditions: 'true'
+  or_else: null
+  strand: null
+  implicit: false
+  kind: formal
+  sanctioner: none
+  source: 'Encoder''s sanction holder for the hospital''s own policy (R4) and the staff norm (R3): employer discipline. No disciplinary text found. UNVERIFIED (general knowledge; no source opened).'
+  provenance:
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: a hospital policy is enforced by the hospital on its staff'
+  var_roles:
+    o: hospital
+    s: staff
+- id: R7
+  plain: 'Staff may restrict visiting to an admitted patient (grounds not modelled; the rule says clinically necessary or reasonable restriction).'
+  attribute: staff
+  deontic: may
+  aim: (restrict s p)
+  conditions: (admitted p)
+  or_else: null
+  strand: null
+  implicit: false
+  kind: formal
+  sanctioner: none
+  source: 'The restriction exception, unchanged across the pair. After 2011 it is in 42 CFR 482.13(h): ''clinically necessary or reasonable restriction'' (hv-fr-2010-final-rule, opened by the worklist); CMS Transmittal 75 puts ''the burden of proof is upon the hospital to demonstrate that the visitation restriction is reasonably necessary to provide safe care'' (hv-cms-r75soma, opened by the worklist and re-opened 2026-11-08 from the PDF text). Before 2011 the same clinical judgment is assumed to have existed without the burden of proof (post-2011 text cited for a pre-2011 rule; unverified item below); the burden is not encoded. Grounds are not modelled: restrict is a free staff act, which over-reads staff power (recorded).'
+  provenance:
+  - source_id: hv-fr-2010-final-rule
+    pin: 42 CFR 482.13(h) introductory text, as added
+    jurisdiction: US
+    effective_date: '2011-01-18'
+    verification: opened
+    excerpt: clinically necessary or reasonable restriction
+    accessed: '2026-11-08'
+    url: https://www.govinfo.gov/content/pkg/FR-2010-11-19/html/2010-29194.htm
+    note: 'opened by the worklist (summary-mediated); post-2011 text'
+  - source_id: hv-cms-r75soma
+    pin: A-0215
+    jurisdiction: US
+    effective_date: '2011-12-02'
+    verification: opened
+    excerpt: the burden of proof is upon the hospital to demonstrate that the visitation restriction is reasonably necessary to provide safe care
+    accessed: '2026-11-08'
+    url: https://www.cms.gov/regulations-and-guidance/guidance/transmittals/downloads/r75soma.pdf
+    note: 'opened by the worklist and by the encoder 2026-11-08 (PDF text); the burden of proof is not encoded'
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: a pre-2011 clinical-restriction power is reconstructed; no pre-2011 hospital policy text or state hospital association model policy was found or opened (plans/sourcing-worklist-marriage.md hv-pre2011-practice), so the rule as a hospital rule is unverified'
+  var_roles:
+    s: staff
+    p: patient
+- id: R8
+  plain: '(reconstruction, no policy text found) Staff must admit a visitor they count as family of an admitted patient when visiting is not restricted and that visitor is not already visiting, or else the hospital may reprimand them (R6).'
+  attribute: staff
+  deontic: must
+  aim: (admit_visitor s x p)
+  conditions: (and (admitted p) (counts_as_family p x) (not (clinically_restricted p)) (not (visiting x p)))
+  or_else: R6
+  strand: superadditive
+  implicit: false
+  kind: formal
+  sanctioner: institution
+  source: 'Hospital policy before 2011: immediate family are admitted. No policy text was opened (unverified item below). The memo describes immediate family as the class admitted as of course (members of religious orders ''unable to choose someone other than an immediate family member to visit them'', while ''a widow or widower with no children is denied the support and comfort of a good friend'' and ''gay and lesbian Americans who are often barred from the bedsides of the partners'', hv-presmemo-2010, opened). Written as a duty (must), not a permission, so that the spouse''s visit is guaranteed and not merely possible; whether hospitals treated family admission as a duty on themselves is the encoder''s reading and the largest over-read in the entry (council 2026-11-08): the source shows custom, not a duty. The ''not visiting'' conjunct makes the duty fire once (one action slot per step).'
+  provenance:
+  - source_id: hv-presmemo-2010
+    pin: paras. 1-2 (practice described)
+    jurisdiction: US
+    effective_date: '2010-04-15'
+    verification: opened
+    excerpt: a widow or widower with no children is denied the support and comfort of a good friend ... unable to choose someone other than an immediate family member to visit them ... gay and lesbian Americans who are often barred from the bedsides of the partners
+    accessed: '2026-11-08'
+    url: https://obamawhitehouse.archives.gov/the-press-office/presidential-memorandum-hospital-visitation
+    note: 'opened 2026-11-08 by the council''s faithfulness seat and by the encoder (WebFetch summary, verbatim sentences requested); the memo''s own description of practice: non-relatives excluded where immediate family are admitted'
+  - source_id: null
+    pin: null
+    jurisdiction: US
+    effective_date: null
+    verification: unverified
+    excerpt: null
+    accessed: null
+    url: null
+    note: 'no work named; rationale: a duty on staff to admit family is reconstructed from the memos description of custom; no pre-2011 hospital policy text or state hospital association model policy was found or opened (plans/sourcing-worklist-marriage.md hv-pre2011-practice), so the rule as a hospital rule is unverified'
+  var_roles:
+    s: staff
+    x: partner
+    p: patient
+source_text: 'Before the 2011 Medicare rule there was no federal visitor-choice standard (North Carolina had amended its Patients'' Bill of Rights to let patients designate visitors, as the Presidential Memorandum of 2010-04-15 notes; no other state rule is encoded). The memorandum describes the practice: ''a widow or widower with no children is denied the support and comfort of a good friend'', members of religious orders ''unable to choose someone other than an immediate family member to visit them'', ''gay and lesbian Americans who are often barred from the bedsides of the partners''; the final rule''s comment responses speak of practice that ''denies patients access to their loved ones in times of need'' (75 FR 70831). Both are regulators'' descriptions; no pre-2011 hospital policy text was opened (plans/sourcing-worklist-marriage.md). Encoded as a reconstructed formal policy gate (R4: the spouse must be recognised as family; R8: family are admitted) over an informal staff gate (R2: staff decide who else counts; R3: staff may not admit anyone they do not count), a general permission to admit visitors (R5) that R3 narrows, and the restriction exception (R7) that the 2011 rule kept.'
+expected_properties:
+  spouse_visit_guaranteed: holds_to_k
+  spouse_visit_possible: reachable
+  unmarried_partner_visit_possible: reachable
+isomorphic_to: []
+not_isomorphic_to: []
+minimal_pair_of: null
+notes: 'Base of the hospital-visitation minimal pair (plans/informal-rules.md R1; preregistered there 2026-11-08 before the first run). Council 2026-11-08 (docs/reviews/2026-11-08-hospital-slice.md): R4 and R8 are duties reconstructed from the memo''s description of custom, so spouse_visit_guaranteed is a claim about the reconstruction, and ''no state rule'' holds federally only (North Carolina had a designation law); R2 is a may tagged norm with sanctioner none, D1''s sanction requirement being carried by R3 (open question for the author: norm or strategy). Vocabulary follows plans/sourcing-worklist-marriage.md section 4 with these changes: the hospital is split into staff (who decide and admit) and hospital (who sanction), so the institution sanction has a holder; the kin role is dropped (one visitor role, married exogenous, so the same role is the spouse in some traces and the unmarried partner in others); deny_visitor is dropped (non-admission is the default); can_visit as a derived power is dropped, because the engine''s (enabled ...) ignores a sanctioned must_not (only an or_else-null disability blocks enablement, rules_lower.py), so a power fluent could not see the staff norm; the properties read the admission itself (visiting) on compliant traces, where every must_not binds under strict compliance. married has no setter here, so it is exogenous and free; in the coverture composite marry sets it. Engine facts the encoding leans on: a regulated action (one some may/must names) fires only at a step where some may/must condition on that instance holds, so R5 is what lets any visitor through and R3 is what stops non-family; one action per step (step-mode one), so a must-do that fires takes the step; a trace where two different must-do instances fire at one step is not compliant and is excluded, not counted. spouse_visit_guaranteed therefore has two grace steps (R4 recognises at t0, R8 admits at t1, visiting holds at t2). The formal gate is R4 (function: sorts_who_belongs; prediction: deleting it flips spouse_visit_guaranteed to violated while spouse_visit_possible stays reachable via R2). The informal gate is R2 + R3 (function: sorts_who_belongs; predictions: deleting R2 flips unmarried_partner_visit_possible to unreachable_open, since no other rule lets a non-spouse count; deleting R3 keeps it reachable and makes it reachable without recognition, since R5 permits any visitor). Deleting R8 flips spouse_visit_guaranteed to violated (admission no longer forced) and nothing else; deleting R5 flips nothing (R8 is also a permission). ASSUMED: the split roles, the family-admission duty (R8) and R4 as an action obligation; the card-only seat judges them. Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to visitor-access rules by the author, 2026-11-08.'

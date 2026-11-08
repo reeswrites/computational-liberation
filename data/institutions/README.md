@@ -4,7 +4,7 @@ Since 2026-11-04 the generator (`_gen_institutions.py`, `_gen_properties.py`) is
 
 Hand-reconstructed institutions for the Phase 0 institutions family (`plans/institutions-phase0.md`).
 
-- `institutions.json`: list of 27 entries (`coverture-household` (English), `police-crisis`, `cps`, `crisis-team`,
+- `institutions.json`: list of 30 entries (27 ordered entries, the hospital-visitation pair and one composite, see "Hospital visitation pair and the first composite" below; the ordered 27 are `coverture-household` (English), `police-crisis`, `cps`, `crisis-team`,
   `paternity-quota`, `transferable-leave`, `companion-ownership`, `companion-guardianship`,
   `companion-guardian-renamed`, the negative controls `lease`, `public-library` and `naming-convention`, the gate (d) pair
   `kibbutz-childrens-house`, `kibbutz-childrens-house-no-implicit`, the expected-match control `airline-flight`,
@@ -500,3 +500,27 @@ or a guardian ad litem and exists because a rule grants it, where an adult's `su
 ## Polarity (slice 1 revision 5, 2026-11-06)
 
 Every `kind: freedom` property carries `polarity: unfreedom`: the encoder's declaration that the property's holding is bad for the subject (no exit, no standing, no resources, ...). The engine's loader rejects a freedom property without it, and `rules_ablate` signs a flip from `kind` alone (freedom_up when the verdict moves from reachable / holds_to_k / persists to open / violated / fails), replacing the hand name table `rules_ablate.UNFREEDOM` (so the README notes above that a property "is not in UNFREEDOM" are history). Other kinds carry no polarity yet; slice 2 decides what goods properties carry. plans/priority.md "Slice 1 revision 5".
+
+## Hospital visitation pair and the first composite (2026-11-08, plans/informal-rules.md slice 1, ADR 0018)
+
+- `hospital-visitation-pre2011` and `hospital-visitation` (extends it): the static rediscovery case R1 of plans/informal-rules.md,
+  encoded from plans/sourcing-worklist-marriage.md at the levels the worklist reached. Roles patient, partner (spouse or
+  unmarried partner by trace; `married` is exogenous in the standalone entries), staff (decide and admit), hospital (sanction);
+  the post entry adds surveyor (state survey agency). Pre: R4 formal policy gate (staff must recognise the spouse as family,
+  sanctioner institution), R2/R3 the informal staff gate (`kind: norm`; R2 the discretion, R3 the sanctioned bar on
+  non-family), R5 general permission to admit, R8 family-admission duty, R7 clinical restriction. Post: R10 the patient may
+  designate, R9 staff must admit the designated visitor (sanctioner state, or_else R11), R3 narrowed by
+  `(not (designated p x))`, the one way strict compliance can express "overridden, not deleted" (ASSUMED). `function:` on the
+  gate rules is a preregistered prediction (D2), confirmed or embarrassed by ablation, never a description.
+- Properties `spouse_visit_guaranteed`, `spouse_visit_possible`, `unmarried_partner_visit_possible`, `designated_visit_guaranteed`
+  (kind structure) read the admission itself (`visiting`) on compliant traces, because `(enabled ...)` ignores a sanctioned
+  `must_not` and so a derived power cannot see a norm.
+- `src/_composites.yaml` lists build-time composites (ADR 0018). `build.py` resolves members after `extends`, freezes each
+  member's action parameter types from the member's own roles (P1b: the prefix heuristic re-typed coverture's `h` as `hospital`
+  after aliasing, docs/surprises.md S6), calls the engine's `compose()`, appends `initial_free` from the spec, and emits an
+  ordinary entry with `members`; its card has a Members section (aliases, initial literals, free fluents) and each rule keeps
+  the member's plain line and provenance. Declaring `initial` on a composite puts the engine in init mode `declared`, under
+  which an exogenous fluent is false and constant unless listed in `initial_free`; the first composite lists coverture's
+  `acquired_property` and `earns` for that reason. First composite: `coverture-us-hospital-visitation` (husband → partner_a →
+  patient, wife → partner_b → visitor, `female(partner_b)`), 14 preregistered verdicts, all matched after P1b; N1 read
+  displaced (plans/informal-rules.md "Slice 1, run 2").

@@ -31,6 +31,24 @@ from the same resolved entries; a card's rule table has a `level` column (the we
 and its Sources section lists every provenance item (source id, pin, jurisdiction, date, level, excerpt). `--check` rebuilds JSON and cards into a temp dir and fails on any difference, on a
 rule with an empty `plain` or `source`, and on an `extends` cycle.
 
+Composites (ADR 0018, plans/composition.md): src/_composites.yaml lists build-time composites,
+
+    - id: <composite id>
+      name: <display name>                      # optional; default the id
+      members: [<entry id>, ...]                # resolved entries, after `extends`
+      aliases: {<member id>: {<old role>: <new role>}}   # applied per member before union
+      initial: [<literal>, ...]                 # extra initial literals (switches the engine to init mode `declared`)
+      initial_free: [<fluent>, ...]             # fluents left free at t=0 (added after composition, re-validated)
+      expected_properties: {<property>: <verdict>}
+      notes: <text>
+
+The engine's `philengine.rules_compose.compose` does the union (bindings frozen, aliases applied, unification table);
+build.py appends the result to institutions.json as an ordinary entry carrying `members: [ids]`, after the ordered
+entries, and writes a card whose rules table shows each member's rules under their prefixed ids with the member's
+`plain`, `source` and provenance re-attached (the engine strips none of them; the build re-attaches them by
+(member, rule id) since the engine JSON never carried them). A composition conflict is a build error naming the
+member and the field.
+
 Usage (from the comp-lib root):  uv run python data/institutions/build.py [--write] [--cards] | --check
 """
 from __future__ import annotations
@@ -153,10 +171,103 @@ def strip(entry):
     return e
 
 
+COMPOSITES = "_composites.yaml"
+CARD_RULE_KEYS = ("plain", "choices", "provenance", "sanctioner_review")  # re-attached to composite rules for the card
+
+
+def load_composites(src: Path = SRC) -> list:
+    path = src / COMPOSITES
+    if not path.exists():
+        return []
+    specs = load_yaml(path) or []
+    for c in specs:
+        for k in ("id", "members"):
+            if k not in c:
+                raise SystemExit(f"{COMPOSITES}: a composite lacks {k!r}")
+    return specs
+
+
+def freeze_action_types(inst):
+    """P1b (plans/composition.md): write each action's parameter types as `arg_roles`, resolved by the engine's prefix
+    heuristic over the MEMBER's own roles, so that aliasing cannot re-type them (run 1 typed coverture's `h` as
+    `hospital`). Parameters already typed keep their type; a parameter the heuristic cannot type stays None."""
+    from philengine.rules_lower import literal_roles, var_role
+    lits = literal_roles(inst)
+    acts = []
+    for a in inst.actions:
+        given = list(a.arg_roles) if a.arg_roles is not None else [None] * len(a.args)
+        typed = [g if g is not None else var_role(p, inst, lits) for p, g in zip(a.args, given)]
+        acts.append(a.model_copy(update={"arg_roles": typed}) if any(x is not None for x in typed) else a)
+    return inst.model_copy(update={"actions": acts})
+
+
+def compose_entry(spec: dict, resolved: dict) -> tuple[dict, dict]:
+    """(resolved composite for cards, stripped composite for the JSON). Uses the engine's compose(); a ComposeError is a
+    build error. `members` must be resolved entry ids (composites of composites are not supported)."""
+    from philengine.rules_compose import ComposeError, compose
+    from philengine.rules_lower import validate_institution
+    from philengine.schemas_rules import InstitutionJSON
+
+    cid = spec["id"]
+    members = []
+    for mid in spec["members"]:
+        if mid not in resolved:
+            raise SystemExit(f"{COMPOSITES} {cid}: member {mid!r} is not an entry in _order.yaml")
+        members.append(freeze_action_types(InstitutionJSON.model_validate(strip(resolved[mid]))))
+    aliases = {m: dict(a or {}) for m, a in (spec.get("aliases") or {}).items()}
+    try:
+        comp = compose(members, aliases, cid, initial=spec.get("initial") or None,
+                       expected_properties=spec.get("expected_properties") or {}, notes=spec.get("notes") or "")
+    except ComposeError as e:
+        raise SystemExit(f"{COMPOSITES} {cid}: {e}")
+    extra_free = [f for f in (spec.get("initial_free") or []) if f not in comp.initial_free]
+    if extra_free or spec.get("name"):
+        comp = comp.model_copy(update={"initial_free": comp.initial_free + extra_free, "name": spec.get("name") or comp.name})
+        errs = validate_institution(comp)
+        if errs:
+            raise SystemExit(f"{COMPOSITES} {cid}: invalid after initial_free: " + "; ".join(errs))
+    stripped = json.loads(comp.model_dump_json())
+    # card view: the member's human-readable rule keys, looked up by (member, original rule id)
+    seen: dict[str, int] = {}
+    prefixes = []
+    for mid in spec["members"]:
+        seen[mid] = seen.get(mid, 0) + 1
+        eff = mid if seen[mid] == 1 else f"{mid}_{seen[mid]}"
+        prefixes.append((eff.replace("-", "_") + "__", mid))
+    card_rules = []
+    for r in stripped["rules"]:
+        r = dict(r)
+        for pre, mid in prefixes:
+            if r["id"].startswith(pre):
+                orig = next((x for x in resolved[mid]["rules"] if x["id"] == r["id"][len(pre):]), None)
+                if orig:
+                    for k in CARD_RULE_KEYS:
+                        if k in orig:
+                            r[k] = copy.deepcopy(orig[k])
+                    r["member"] = mid
+                    # a member's plain line says "(R6)"; on the composite card that id is `<member>__R6`
+                    r["plain"] = re.sub(r"\bR(\d+)\b", lambda m: pre + m.group(0), str(r.get("plain", "")))
+                break
+        card_rules.append(r)
+    view = {**stripped, "rules": card_rules, "aliases": aliases}
+    return view, stripped
+
+
 def build_all(src: Path = SRC):
     order, raws = load_sources(src)
     resolved = [resolve(i, raws) for i in order]
-    return resolved, [strip(e) for e in resolved], load_yaml(src / "properties.yaml")
+    by_id = {e["id"]: e for e in resolved}
+    stripped = [strip(e) for e in resolved]
+    for spec in load_composites(src):
+        if spec["id"] in by_id:
+            raise SystemExit(f"{COMPOSITES}: id {spec['id']!r} collides with an entry")
+        view, flat = compose_entry(spec, by_id)
+        resolved.append(view)
+        stripped.append(flat)
+        by_id[spec["id"]] = view
+        order.append(spec["id"])
+        raws[spec["id"]] = {"id": spec["id"], "composite": spec}  # card plumbing: no `extends`, no own rules
+    return resolved, stripped, load_yaml(src / "properties.yaml")
 
 
 # ---------------------------------------------------------------- cards
@@ -181,6 +292,7 @@ LEGEND = """## Legend
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 """
 
 KEYWORDS = {"and", "or", "not", "exists", "forall", "true", "false", "=", "imp", "implies"}
@@ -278,6 +390,8 @@ def provenance_line(p) -> str:
     out = f"- {sid} ({'; '.join(_cell(m) for m in meta)}): {lvl}"
     if p.get("excerpt"):
         out += f": \"{_cell(p['excerpt'])}\""
+    if p.get("url"):
+        out += f" <{p['url']}>"
     return out
 
 
@@ -428,7 +542,34 @@ def card(e, raws, resolved, props) -> str:
         for r in raw.get(k, ()):
             own[r["id"]] = tag
     L = [f"# {e['id']}", "", f"**{e['name']}**", "", "> " + " ".join(str(e.get("source_text", "")).split()), "",
-         LEGEND, "## Roles", ""]
+         LEGEND]
+    if e.get("members"):
+        spec = raw.get("composite", {})
+        L += ["## Members", "", "A composite (ADR 0018): the members' roles are unioned after the aliases below, fluents "
+              "unified by name, rules concatenated under `<member>__` prefixes. Each rule row below is the member's rule, "
+              "unchanged except for the renamed roles; its plain line and sources are the member's.", ""]
+        for mid in e["members"]:
+            am = (spec.get("aliases") or {}).get(mid) or {}
+            al = ", ".join(f"{o} → {n}" for o, n in am.items()) or "no aliases"
+            L.append(f"- [{mid}]({mid}.md): {al}")
+        if e.get("initial"):
+            L += ["", "Initial literals: " + ", ".join(f"`{x}`" for x in e["initial"])
+                  + (" (init mode `declared`; fluents not listed start false)" if e["initial"] else "")]
+        if e.get("initial_free"):
+            L += ["", "Free at t=0: " + ", ".join(f"`{x}`" for x in e["initial_free"])]
+        rev: dict[str, list[str]] = {}
+        for mid in e["members"]:
+            for o, n in ((spec.get("aliases") or {}).get(mid) or {}).items():
+                rev.setdefault(n, []).append(f"{o} in {mid}")
+        if rev:
+            L += ["", "Role map: " + "; ".join(f"**{n}** = {' = '.join(v)}" for n, v in rev.items())]
+        L += ["", "Actions (name(parameters): what they set; a member's rules permit, oblige or bar them):"]
+        for a in e["actions"]:
+            eff = ", ".join(f"{'' if x['value'] else 'not '}{x['fluent']}({', '.join(x['args'])})" for x in a.get("effects", [])) or "no effect"
+            tr = [f"{p}: {r}" for p, r in zip(a["args"], a.get("arg_roles") or []) if r]
+            L.append(f"- `{a['name']}({', '.join(a['args'])})`" + (f" [{'; '.join(tr)}]" if tr else "") + f": {eff}")
+        L.append("")
+    L += ["## Roles", ""]
     L += [f"- **{r['name']}**: {_cell(r.get('gloss', ''))}" for r in e["roles"]]
     L += ["", "## Rules", "",
           "| id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |",
@@ -546,14 +687,24 @@ def problems(resolved, require_plain):
     return errs, warns
 
 
+def _order_and_raws(resolved):
+    """Order and raw sources for the card renderer, composites included (their raw is a stub carrying the spec)."""
+    order, raws = load_sources()
+    for e in resolved:
+        if e["id"] not in raws:
+            raws[e["id"]] = {"id": e["id"], "composite": next(c for c in load_composites() if c["id"] == e["id"])}
+            order.append(e["id"])
+    return order, raws
+
+
 def write(out: Path, inst, props):
     (out / "institutions.json").write_text(dump_json(inst), encoding="utf-8")
     (out / "properties.json").write_text(dump_json(props), encoding="utf-8")
 
 
 def check():
-    order, raws = load_sources()
     resolved, inst, props = build_all()
+    order, raws = _order_and_raws(resolved)
     errs, _ = problems(resolved, True)
     with tempfile.TemporaryDirectory() as td:
         write(Path(td), inst, props)
@@ -582,8 +733,8 @@ def main(argv=None):
     a = ap.parse_args(argv)
     if a.check:
         return check()
-    order, raws = load_sources()
     resolved, inst, props = build_all()
+    order, raws = _order_and_raws(resolved)
     errs, _ = problems(resolved, False)
     if errs:
         print("\n".join("ERROR: " + m for m in errs))

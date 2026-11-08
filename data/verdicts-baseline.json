@@ -1,5 +1,5 @@
 {
- "engine_hash": "e43025b5a158baf07f33975a86b35a5accdea7afbcf776e42aea113ef1f37cfb",
+ "engine_hash": "ea4bed041fd32c7940e01bd27c93a6fcdb6c1cd0db96f9552419510a67f83bc5",
  "format": 1,
  "params": {
   "compliance": "strict",
@@ -292,6 +292,90 @@
   },
   {
    "check": "invariant",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "cannot_contract",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "care_and_sanction_same_role",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "care_assigned_by_sex",
+   "verdict": "violated"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "creditor_shield",
+   "verdict": "open"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "dependent_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "designated_visit_guaranteed",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "double_burden",
+   "verdict": "open"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "financial_dependence",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "financial_dependence_unpropertied",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "no_standing",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "spouse_visit_guaranteed",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "spouse_visit_possible",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "subject_cannot_exit",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "coverture-us-hospital-visitation",
+   "property": "unmarried_partner_visit_possible",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
    "institution": "cps",
    "property": "care_and_sanction_same_role",
    "verdict": "holds_to_k"
@@ -438,6 +522,48 @@
    "check": "reachable",
    "institution": "gestational-surrogacy",
    "property": "solo_care_by_non_birthing_parent",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "hospital-visitation",
+   "property": "designated_visit_guaranteed",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "invariant",
+   "institution": "hospital-visitation",
+   "property": "spouse_visit_guaranteed",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "hospital-visitation",
+   "property": "spouse_visit_possible",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "hospital-visitation",
+   "property": "unmarried_partner_visit_possible",
+   "verdict": "reachable"
+  },
+  {
+   "check": "invariant",
+   "institution": "hospital-visitation-pre2011",
+   "property": "spouse_visit_guaranteed",
+   "verdict": "holds_to_k"
+  },
+  {
+   "check": "reachable",
+   "institution": "hospital-visitation-pre2011",
+   "property": "spouse_visit_possible",
+   "verdict": "reachable"
+  },
+  {
+   "check": "reachable",
+   "institution": "hospital-visitation-pre2011",
+   "property": "unmarried_partner_visit_possible",
    "verdict": "reachable"
   },
   {

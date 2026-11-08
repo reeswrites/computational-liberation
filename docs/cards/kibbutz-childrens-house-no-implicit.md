@@ -14,6 +14,7 @@
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
 ## Roles
 
@@ -51,13 +52,13 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r1"></a>
 **R1**: Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children's house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it Verification pass: re-read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): the page says 'Kibbutz members who were considered the most educated and esteemed got the position of educators' and names no committee or assignment procedure.
 
-- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **recalled**
+- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **recalled** <https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722>
 - no work named: **unverified** (the committee's power to assign a member to the children's house: stated only in the encoder's parenthesis; no read text states it)
 
 <a id="src-r3"></a>
 **R3**: Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.'
 
-- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **opened** 2026-11-06: "A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs."
+- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **opened** 2026-11-06: "A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs." <https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722>
 
 <a id="src-r4"></a>
 **R4**: Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (communal sleeping: the children lived and slept in the children's house). A disability (or_else null), as every subject-side exit bar since ADR 0013; the draft's or_else R6 is dropped for the same reason as coverture R6. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(child) = sleep_home enabled (a default capacity) and not barred (R4)
@@ -67,7 +68,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 <a id="src-r5"></a>
 **R5**: Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment' ... 'visited their parents for 2-3 hours a day' (the page prints an en dash).
 
-- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **opened** 2026-11-06: "Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment ... visited their parents for 2-3 hours a day"
+- `wikipedia-kibbutz-communal-child-rearing` (date n/a): **opened** 2026-11-06: "Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment ... visited their parents for 2-3 hours a day" <https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722>
 - no work named: **unverified** ('at any time': the encoder's reading; the read text gives a daily visiting time at the parents' house)
 
 <a id="src-r6"></a>

@@ -31,3 +31,6 @@ How to read a card: every card opens with the same Legend (what may / must / mus
 - [footbinding-no-pledge](footbinding-no-pledge.md): Footbinding without the pledge action (minimal pair for gate (a)) | pairs: footbinding (extends)
 - [ectogenesis](ectogenesis.md): Ectogenesis (artificial womb; Firestone 1970): gestation in a device, no birthing parent | pairs: gestational-surrogacy (extended by)
 - [gestational-surrogacy](gestational-surrogacy.md): Gestational surrogacy: the rival input moves to another body (control for ectogenesis) | pairs: ectogenesis (extends)
+- [hospital-visitation-pre2011](hospital-visitation-pre2011.md): US hospital visitation before 2011: policy admits immediate family, staff decide who counts (minimal pair base) | pairs: hospital-visitation (extended by)
+- [hospital-visitation](hospital-visitation.md): US hospital visitation after 42 CFR 482.13(h) (2011): the patient designates visitors; the staff gate remains as a norm the rule overrides | pairs: hospital-visitation-pre2011 (extends)
+- [coverture-us-hospital-visitation](coverture-us-hospital-visitation.md): Composite: coverture household (US) + hospital visitation after 2011, the husband as patient and the wife as visitor

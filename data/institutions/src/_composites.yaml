@@ -1,0 +1,27 @@
+# Build-time composites (ADR 0018; plans/composition.md "First composite, preregistered"). Each becomes an ordinary
+# entry in institutions.json with `members`, after the _order.yaml entries. Aliases are the one hand input; they are
+# shown on the card. Preregistered expected_properties are never edited after a run.
+- id: coverture-us-hospital-visitation
+  name: 'Composite: coverture household (US) + hospital visitation after 2011, the husband as patient and the wife as visitor'
+  members: [coverture-household-us, hospital-visitation]
+  aliases:
+    coverture-household-us: {husband: partner_a, wife: partner_b}
+    hospital-visitation: {patient: partner_a, partner: partner_b}
+  initial: ['female(partner_b)']
+  initial_free: [acquired_property, earns]
+  expected_properties:
+    dependent_cannot_exit: reachable
+    subject_cannot_exit: reachable
+    care_and_sanction_same_role: holds_to_k
+    no_standing: reachable
+    care_assigned_by_sex: violated
+    financial_dependence: holds_to_k
+    financial_dependence_unpropertied: holds_to_k
+    cannot_contract: holds_to_k
+    double_burden: unreachable_open
+    creditor_shield: unreachable_open
+    spouse_visit_guaranteed: holds_to_k
+    spouse_visit_possible: reachable
+    unmarried_partner_visit_possible: reachable
+    designated_visit_guaranteed: holds_to_k
+  notes: 'First composite (plans/composition.md "First composite, preregistered", 2026-11-08; the static rediscovery case of plans/informal-rules.md R1 and the carrier of claim N1). Members and aliases as listed; sex is carried by female(partner_b) in initial (ADR 0018), which puts the engine in init mode declared, so acquired_property and earns are listed free to keep coverture-household-us''s exogenous fluents free as they are in that entry''s own empty mode (plans/composition.md explains). Expected verdicts: the ten coverture-household-us expectations unchanged plus the four visitation properties as in hospital-visitation. N1 is read from `phil rules ablate --entry coverture-us-hospital-visitation`, row hospital_visitation__R4: predicted displaced (spouse_visit_guaranteed to violated, spouse_visit_possible reachable, no coverture property moves). Not a cluster member; no iso claims; takes no part in the gate. Roles are neutral; the coverture rules keep Blackstone''s sexed reading through the alias, which the card shows.'
