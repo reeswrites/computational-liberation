@@ -14,6 +14,8 @@
 - **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
+- **kind**: what sort of rule it is. `formal` = written law or contract (the default, always shown so it can be questioned); `norm` = an unwritten practice that others enforce; `strategy` = a regularity nobody enforces. A `strategy` rule written as `must` is still read by the engine as a duty under strict compliance, though nobody enforces it.
+- **sanctioner**: who enforces the or-else: `state`, `institution`, `peers`, `family`, `self`, or `none` (no or-else, so nobody).
 - **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 
 ## Roles
@@ -24,8 +26,8 @@
 
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
-| R1 | member | may (sanctioner derived, unreviewed) | `(use_old m)` | `true` | none | superadditive | A member may use the old name at any time (Centola et al. 2018). | opened | [full source under Sources, R1](#src-r1) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
-| R2 | member | may (sanctioner derived, unreviewed) | `(use_new m)` | `true` | none | superadditive | A member may use the new name at any time (Centola et al. 2018). | opened | [full source under Sources, R2](#src-r2) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
+| R1 | member | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(use_old m)` | `true` | none | superadditive | A member may use the old name at any time (Centola et al. 2018). | opened | [full source under Sources, R1](#src-r1) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
+| R2 | member | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(use_new m)` | `true` | none | superadditive | A member may use the new name at any time (Centola et al. 2018). | opened | [full source under Sources, R2](#src-r2) https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): none
 
