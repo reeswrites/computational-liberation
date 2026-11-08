@@ -517,7 +517,7 @@ Every `kind: freedom` property carries `polarity: unfreedom`: the encoder's decl
   `must_not` and so a derived power cannot see a norm.
 - `src/_composites.yaml` lists build-time composites (ADR 0018). `build.py` resolves members after `extends`, freezes each
   member's action parameter types from the member's own roles (P1b: the prefix heuristic re-typed coverture's `h` as `hospital`
-  after aliasing, docs/surprises.md S5), calls the engine's `compose()`, appends `initial_free` from the spec, and emits an
+  after aliasing, docs/surprises.md S6), calls the engine's `compose()`, appends `initial_free` from the spec, and emits an
   ordinary entry with `members`; its card has a Members section (aliases, initial literals, free fluents) and each rule keeps
   the member's plain line and provenance. Declaring `initial` on a composite puts the engine in init mode `declared`, under
   which an exogenous fluent is false and constant unless listed in `initial_free`; the first composite lists coverture's
