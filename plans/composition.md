@@ -10,7 +10,7 @@ A person lives under several institutions at once. Today every entry is isolated
 
 - `ablate(inst, properties, ...)` and `without_rule(inst, rule_id)` take an in-memory `InstitutionJSON` (rules_ablate.py:406, :289). Nothing re-reads from disk. A composite can be passed straight in.
 - Agents are one per role, named after the role (rules_reference.py:88). Two entries that share a role name share an agent after union. That is the mechanism by which "the same wife" appears in coverture and in a benefits entry.
-- Properties are global, matched by fluent name and arity, never by entry id (schemas_rules.py:219-300; `applicable_which` rules_ablate.py:369). A composite with unprefixed fluent names matches existing properties with no change, EXCEPT the nine that name husband/wife literally: under neutral composite roles those are not applicable until variants over `female` exist (see Decided).
+- Properties are global, matched by fluent name and arity, never by entry id (schemas_rules.py:219-300; `applicable_which` rules_ablate.py:369). A composite with unprefixed fluent names matches existing properties with no change; the earlier worry about nine husband/wife properties was wrong (see Decided, and plans/cardinality.md Q2).
 - `validate_institution` (rules_lower.py:205-330) already enforces everything a composite must satisfy: unique role/fluent/action names and rule ids, every `attribute` a declared role, every `or_else` an id in the same entry, conditions over declared fluents.
 
 ## Two problems the connections sketch did not see
@@ -78,13 +78,13 @@ Untyped fluents ground as `product(agents, repeat=arity)`. A composite with eigh
 
 ## Decided with the author (2026-11-08)
 
-- **Composite roles are neutral: `partner_a` / `partner_b`.** Historical entries keep their sexed roles (coverture's husband/wife are faithful to Blackstone) and are aliased onto the neutral pair; sex is carried by the existing `female` fluent set in the composite's `initial`. Reason: the sexed vocabulary does not cover same-sex relationships and will not suit over time; writing it into a hospital entry would be historically false. Cost, accepted: the 9 properties that name husband/wife literally (backlash, cared_for, chosen_mutual_care, creditor_shield, double_burden, financial_dependence, financial_dependence_unpropertied, no_standing_against_spouse, provided_for) are not applicable to composites until variants over `female` are written. Connections C2 needs a `female`-based `financial_dependence` first; that variant is a task below.
+- **Composite roles are neutral: `partner_a` / `partner_b`.** Historical entries keep their sexed roles (coverture's husband/wife are faithful to Blackstone) and are aliased onto the neutral pair; sex is carried by the existing `female` fluent set in the composite's `initial`. Reason: the sexed vocabulary does not cover same-sex relationships and will not suit over time; writing it into a hospital entry would be historically false. Cost as first stated, then corrected the same day: the 9 properties thought to name husband/wife literally (backlash, cared_for, chosen_mutual_care, creditor_shield, double_burden, financial_dependence, financial_dependence_unpropertied, no_standing_against_spouse, provided_for) do not; they quantify over the agent sort and are typed through fluent `arg_roles`, which aliases rewrite (plans/cardinality.md, "What is already there"). Expected to apply to composites unchanged; Q2 there checks it. C2 needs no variant unless Q2 fails.
 - **Derived-fluent conflicts error.** Disjoining rejected: it changes the fluent's meaning in every member silently.
 - **First composite: coverture-household-us + hospital-visitation.** It doubles as the static rediscovery case (plans/informal-rules.md R1). SSI second.
 - **Poly is out of scope for this verb and recorded as an engine limit.** `Reference.agents` is one agent per role, so a multi-partner entry cannot be written under any naming. The named future change is role cardinality (N agents per role); the Somerville and Cambridge multi-partner ordinances would be its first test. ADR 0018 records it.
 - Golden baseline: composites enter on first build (CI diff then covers them); their council pass is recorded in the claims register as usual. ASSUMED by the coordinator, not asked.
 
-Added tasks: `female`-based variants of the 9 sexed properties, starting with `financial_dependence` (preregister that the variant agrees with the original on every existing entry); a `_composites.yaml` example with aliases for the first composite.
+Added tasks: run Q2 (the nine apply to the first composite with no variant) before writing any `female` variant; a `_composites.yaml` example with aliases for the first composite.
 
 ## Recombination and synthesis (the direction composition opens; not a task, 2026-11-07)
 
