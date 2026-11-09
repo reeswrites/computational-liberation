@@ -34,7 +34,7 @@ fluents:
   arg_roles: [patron]
 - name: disruptive
   arity: 1
-  gloss: p is behaving disruptively (exogenous)
+  gloss: 'p continues to be disruptive after the B.1 warning (Berkeley policy B.2 ''Continued disruption''; the warning step is not encoded; exogenous)'
   arg_roles: [patron]
 actions:
 - name: open_library
@@ -157,7 +157,7 @@ rules:
     lb: librarian
     p: patron
 - id: R3
-  plain: 'The librarian may suspend the patron when the patron is present and disruptive (Berkeley Patron Suspension Policy).'
+  plain: 'The librarian may suspend the patron when the patron is present and continues to be disruptive after being warned (Berkeley Patron Suspension Policy B.2).'
   attribute: librarian
   deontic: may
   aim: (suspend lb p)
@@ -178,7 +178,7 @@ rules:
     excerpt: 'Continued disruption (same or different day): Library privileges will be suspended for the day by an authorized staff-member and the patron will be asked to leave the Library building.'
     accessed: '2026-11-06'
     url: https://www.berkeleypubliclibrary.org/sites/default/files/files/inline/patron_suspension_policy_approved_14nov2018.pdf
-    note: suspension follows an initial warning (B.1); the row's single-step suspension of a disruptive patron skips the warning
+    note: 'suspension follows an initial warning (B.1), then B.2 ''Continued disruption''; the fluent disruptive is glossed as continued disruption after the warning (re-gloss 2026-11-08, faithfulness batch 3a, A4), so the warning step sits in the fluent, not in a rule'
   var_roles:
     p: patron
     lb: librarian
