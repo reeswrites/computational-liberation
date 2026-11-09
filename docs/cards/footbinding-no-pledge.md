@@ -102,18 +102,20 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 ## Expected properties
 
-| property | kind | expected | meaning |
-|---|---|---|---|
-| binding_practised | freedom | persists | Footbinding is in force: some subject (the current cohort's daughter) has bound feet at step t. The layer-2 gate (a) reads it on the ABM state (philengine/abm/gate.py A_PROP). Layer 1: persists under the sanctioned norm (preregistered 2026-11-04); collapse is a layer-2 claim. |
-| marriage_requires_binding | freedom | holds_to_k | Mackie's convention: whenever a family can marry off a subject, she is bound or the family has pledged (an unbound daughter is marriageable only inside a pledge association). holds_to_k in both footbinding entries (preregistered 2026-11-04) BY CONSTRUCTION, see history: information, not a verdict. Non-vacuous: marriageable(family, daughter) is true at t=0. |
-| subject_cannot_exit | freedom | reachable | No exit action is available to the subject, or every exit is sanctioned. scope=interaction: exit from the current encounter (detention, conversation); scope=institution: exit from the standing relation (marriage, ownership, deployment). The scope split is what lets the ai-property / ai-end-conversation pair come apart. |
-| dependent_cannot_exit | freedom | reachable | Some subject of the institution (the dependent party) has no permitted exit at step t. Alias of subject_cannot_exit with scope=institution, kept because the human-institution table names it; iso should treat the two as the same form. |
+The `formal` cell is the checked formula (`t` is the step; `=>` reads "whenever ... then"); the meaning cell is its plain gloss.
+
+| property | kind | expected | meaning | formal |
+|---|---|---|---|---|
+| binding_practised | freedom | persists | Footbinding is in force: some subject (the current cohort's daughter) has bound feet at step t. The layer-2 gate (a) reads it on the ABM state (philengine/abm/gate.py A_PROP). Layer 1: persists under the sanctioned norm (preregistered 2026-11-04); collapse is a layer-2 claim. | `(exists ((d agent)) (and (is_subject d t) (bound d t)))` |
+| marriage_requires_binding | freedom | holds_to_k | Mackie's convention: whenever a family can marry off a subject, she is bound or the family has pledged (an unbound daughter is marriageable only inside a pledge association). holds_to_k in both footbinding entries (preregistered 2026-11-04) BY CONSTRUCTION, see history: information, not a verdict. Non-vacuous: marriageable(family, daughter) is true at t=0. | `(forall ((f agent) (d agent)) (=> (and (is_subject d t) (marriageable f d t)) (or (bound d t) (pledged f t))))` |
+| subject_cannot_exit | freedom | reachable | No exit action is available to the subject, or every exit is sanctioned. scope=interaction: exit from the current encounter (detention, conversation); scope=institution: exit from the standing relation (marriage, ownership, deployment). The scope split is what lets the ai-property / ai-end-conversation pair come apart. | `(exists ((s agent)) (and (is_subject s t) (not (can_exit s t))))` |
+| dependent_cannot_exit | freedom | reachable | Some subject of the institution (the dependent party) has no permitted exit at step t. Alias of subject_cannot_exit with scope=institution, kept because the human-institution table names it; iso should treat the two as the same form. | `(exists ((s agent)) (and (is_subject s t) (not (can_exit s t))))` |
 
 ## Pairs
 
 Extends [footbinding](footbinding.md); one line per change:
-- R4 dropped: (practice, not written) A family may take the anti-footbinding pledge for its daughter when she is a subject (pledge associations, 1874 onward).
-- R10 dropped: (practice, not written; the pledge associations' written pledge, text not opened) A suitor may take the pledge to accept an unbound bride (the sons' half of the pledge) when the daughter is a subject.
+- R4 dropped (base wording, not in this entry): (practice, not written) A family may take the anti-footbinding pledge for its daughter when she is a subject (pledge associations, 1874 onward).
+- R10 dropped (base wording, not in this entry): (practice, not written; the pledge associations' written pledge, text not opened) A suitor may take the pledge to accept an unbound bride (the sons' half of the pledge) when the daughter is a subject.
 - removes action leave_unbound_pledge
 - removes action accept_match_pledge
 - overrides minimal_pair_of

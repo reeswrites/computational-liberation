@@ -431,8 +431,8 @@
   "kind": "freedom",
   "polarity": "unfreedom",
   "check": "invariant",
-  "gloss": "Whenever two people are married, the benefits agency holds the power to rate them as a couple (the couple federal rate, combined income): marriage brings the couple rate. Its holding is the SSI marriage penalty (preregistered plans/ssi-entry.md, 2026-11-08); read as a power the rules grant (derived), not as an applied rate.",
-  "formal": "(forall ((c agent) (s agent)) (=> (married c s t) (couple_rate c s t)))"
+  "gloss": "Whenever two people are married and living together, the benefits agency holds the power to rate them as a couple (the couple federal rate, combined income): marriage with a shared household brings the couple rate (the living-together conjunct added in SSI revision 2, 2026-11-09, with the rule it restates). Its holding is the SSI marriage penalty (preregistered plans/ssi-entry.md, 2026-11-08); read as a power the rules grant (derived), not as an applied rate.",
+  "formal": "(forall ((c agent) (s agent)) (=> (and (married c s t) (cohabits c s t)) (couple_rate c s t)))"
  },
  {
   "name": "married_couple_limited",
@@ -440,8 +440,8 @@
   "kind": "freedom",
   "polarity": "unfreedom",
   "check": "invariant",
-  "gloss": "Whenever two people are married, the agency holds the power to apply the couple resource limit. Its holding is the resource half of the SSI marriage penalty (plans/ssi-entry.md).",
-  "formal": "(forall ((c agent) (s agent)) (=> (married c s t) (couple_limit c s t)))"
+  "gloss": "Whenever two people are married and living together, the agency holds the power to apply the couple resource limit (the living-together conjunct added in SSI revision 2, 2026-11-09, with the rule it restates). The differs_on property of the one-rule SSI pair (R3 dropped). Its holding is the resource half of the SSI marriage penalty (plans/ssi-entry.md).",
+  "formal": "(forall ((c agent) (s agent)) (=> (and (married c s t) (cohabits c s t)) (couple_limit c s t)))"
  },
  {
   "name": "penalty_reaches_unmarried",
@@ -456,7 +456,7 @@
   "family": "penalty_absent",
   "kind": "structure",
   "check": "reachable",
-  "gloss": "Some married pair are rated as individuals: marriage does not by itself bring the couple rate. The mirror of married_couple_rated, preregistered to separate ssi-marriage-penalty from its individual-rate pair (plans/ssi-entry.md).",
+  "gloss": "Some married pair are rated as individuals: marriage does not by itself bring the couple rate. The mirror of married_couple_rated (preregistered 2026-11-08, plans/ssi-entry.md). Since SSI revision 2 (2026-11-09) it is reachable in ssi-marriage-penalty and in its one-rule pair alike: a married pair living apart is rated individually. It does not distinguish the two entries; married_couple_limited does.",
   "formal": "(exists ((c agent) (s agent)) (and (married c s t) (individual_rate c s t)))"
  },
  {
