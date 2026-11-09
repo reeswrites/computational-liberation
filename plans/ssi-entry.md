@@ -395,3 +395,15 @@ Recorded, not decided. Each with the seats' recommendation.
 5. **(v) The R6/R3 non-complement gap (N77).** Encode it (R3 to read cohabits and (married or holds_out), or R6 narrowed to the complement of R3) or keep it declared. Correctness seat: it is a faithfulness ruling and a new preregistration; kept declared for now.
 
 The prediction held: 0 of 192 rows moved. The three checks were run on the data, build.py and cards as committed; the edits to this file, docs/negative-results.md, docs/scoreboard.md and docs/plan.md were written while pytest ran and are read by no test or check.
+
+#### Author rulings (2026-11-09, evening)
+
+The list above is kept as the record of what was asked. Numbers below follow it.
+
+1. **Property-formula edits ratified.** `married_couple_rated` and `married_couple_limited` keep the cohabits conjunct, and both are flagged as holding by construction (encoding checks, not findings). Chosen over reversing the edits (the base would violate both and the pair would differ on nothing) and over adding non-trivial twin properties, which are a separate piece of work.
+2. **Ruling 3 amended to "R1 only".** R5 and R6 stay conditioned `may` rules: a default capacity cannot carry a condition, and the regulation's individual rate is conditional. Chosen over converting them, which would state a disability the text does not.
+3. **`pay_benefit`: restore R1 as a formal `may` rule and remove the default capacity,** in a short preregistration; predicted no verdict change. Paying benefits is a power the statute confers, not a default liberty, and the README definition of the flag should not be widened to fit. Together with ruling 2 this means no SSI rule ends up converted to a default capacity; the original item 3 ruling (Revision 2 rulings above) is in effect withdrawn.
+4. **Deletion pair kept, id renamed, reform pair added.** The one-rule pair stays as a deletion pair and its misnamed `-individual` id is renamed to say deletion; a real two-rule reform pair is added (drop R3, widen R6 to cover married people). Chosen over rename-only and over replacing the one-rule pair, since the deletion pair is still a valid probe and the reform pair is the one a bill would resemble.
+5. **Fix the R3/R6 gap** (an unmarried cohabiting holding-out pair gets the couple rate under R4 but has neither resource-limit power) by widening R3's condition to match R4, in the same preregistration as the reform pair. Verdicts may move; predictions are written first.
+
+Items 3, 4 and 5 form the next dataset batch ("SSI revision 3"), one preregistration.
