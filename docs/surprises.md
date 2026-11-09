@@ -1,5 +1,7 @@
 # Surprise ledger
 
+Artifacts are mirrored in docs/negative-results.md.
+
 One row per verdict the engine produced that no preregistration predicted. Each row is ruled by the council: **artifact** (an encoding or semantics error; fixed or recorded), or **finding** (survived the faithfulness seat; a combination the author did not hold in mind). A row is entered when the run is reported, before the ruling; the ruling is added with the review file. Rows are never deleted. This file exists so that the first genuine finding is recognisable as one, and so the claim "the engine only tells us about our encodings" can be checked against a count rather than an impression (docs/interpreting-results.md section 7).
 
 Do not enter: flips that were preregistered and hit; flips produced by a run whose preregistration was edited after the run (those are M4/L15 violations, not surprises).

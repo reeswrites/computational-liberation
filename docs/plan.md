@@ -5,6 +5,8 @@ Revised whenever a batch lands. Status words: todo · doing · done · parked ·
 ## Goal
 Compute liberation: given institutions as rules and candidate changes, say which change to make first and what it sets off. Five layers (docs/theory.md, Roadmap). No forward claim until layer 3 passes.
 
+Negative space: docs/negative-results.md (refuted, weakened, null, untested, refused, declined, artifact, gate_fail, abandoned).
+
 ## Where to pick up (updated 2026-11-08, late)
 
 Merged to `main` today: computational-liberation PRs #5-#11 and philosophy-engine PRs #3-#5 (engine `main` e46f6ea). PR #12 (ENGINE_PIN -> e46f6ea, removes the build.py P1b workaround) is open, not merged; until it merges, `ENGINE_PIN` on `main` is still 81d5b9e. Branches: `fb-3a` (batch 3a: 6589a37 preregistration, 0ba8e13 edits; not merged) and `plan-pickup` (this edit). Start new work from `main`; PR the engine first when both repos change.

@@ -28,3 +28,5 @@ A fresh agent is pointed at this file, one seat name and a scope (a branch/commi
 
 ## How the coordinator invokes a seat
 Spawn a fresh agent per seat (never reuse the builder). The prompt contains: this file's path and the seat name; the scope as an explicit list (entries, commits, plan section); the output filename per the convention above; and, for card-only, an explicit "do not open any YAML, JSON or code". Do not paste conclusions or the builder's self-assessment. Seats run in parallel. Each reports back: counts (or green/amber/red tallies), whether the batch pauses, and the output path. The coordinator then fills "### Council" in the plan, runs the fix pass, and appends the calibration row (`scripts/checks.sh` prints a skeleton).
+
+Each seat's refusals and "cannot tell" rows are logged in docs/negative-results.md by the fix pass.
