@@ -8,10 +8,13 @@
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
 - **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
-- **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
+- **(implicit)**: not written as a rule in the cited source; reconstructed from it or from practice. The source cell gives the rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
-- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
+- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it. The "Default capacities" list under the table names the bearer role for each.
+- **free fluent**: an input the model varies, not set by any rule; a when cell that names one waits on a fact the world supplies (a report arrives, it is visiting time), not on something a role does. Listed with its gloss under "Free fluents" below the table.
+- **(replaced) / (added)** after a row id: this entry `extends` another, and the row replaces the base entry's row of that id, or adds one; the base card holds the original wording.
+- **linked to no rule**: a sanction-shaped rule (such as `may reprimand`) that no row's or else points at; it fires on no breach and is kept for the record only.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
 - **kind**: what sort of rule it is. `formal` = written law or contract (the default, always shown so it can be questioned); `norm` = an unwritten practice that others enforce; `strategy` = a regularity nobody enforces. A `strategy` rule written as `must` is still read by the engine as a duty under strict compliance, though nobody enforces it.
@@ -31,13 +34,17 @@
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
 | R2 (replaced) | provider | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(implant provider gestator child)` | `true` | none | rival | The provider may implant an embryo in the gestator for the child at any time (gestational surrogacy). | unverified | gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. |
-| R3 (replaced) | gestator | must [kind: formal; sanctioner: none] | `(give_birth gestator child)` | `(gestates gestator child)` | none | rival | The gestator must give birth to the child when she is gestating it; no sanction is encoded. | unverified | [full source under Sources, R3](#src-r3) |
+| R3 (replaced) | gestator | must [kind: formal; sanctioner: none] | `(give_birth gestator child)` | `(gestates gestator child)` | none | rival | The gestator must give birth to the child when she is gestating it (no statute or case has been opened for this duty; state surrogacy acts vary); no sanction is encoded. | unverified | [full source under Sources, R3](#src-r3) |
 | R4 | intended_parent | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child))` | none | superadditive | An intended parent may provide care for the child when a registered parent of the child and the child is a born subject. | unverified | [full source under Sources, R4](#src-r4) |
 | R5 | intended_parent | must (implicit) [kind: strategy; sanctioner: none] (strategy: nobody enforces this, yet the engine reads it as a duty under strict compliance) | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child) (female intended_parent))` | none | tying | (practice, not written; nobody enforces it) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached. | unverified | [full source under Sources, R5](#src-r5) |
-| R6 | registry | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(reprimand registry x)` | `true` | none | tying | The registry may reprimand at any time (formerly the sanction for R3; since batch 3c linked to no rule). | unverified | [full source under Sources, R6](#src-r6) |
+| R6 | registry | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(reprimand registry x)` | `true` | none | tying | The registry may reprimand at any time (formerly the sanction for R3; the link was dropped 2026-11-09, so no rule points to it; no text names this power). | unverified | [full source under Sources, R6](#src-r6) |
 | R7 | registry | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(register_parentage registry intended_parent child)` | `(is_subject child)` | none | tying | The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition. | unverified | [full source under Sources, R7](#src-r7) |
 
-**Default capacities** (an action a person of that kind can do unless an express disability removes it): none
+**Free fluents** (inputs the model varies, not set by any rule; see the Legend):
+
+- `female(intended_parent)`: x is female (sex as assigned by the institution's own records); no action in this institution sets it.
+
+**Default capacities** (an action a person of that kind can do unless an express disability removes it; these replaced the implicit `may ... when true` rows that once encoded them, README revision 4): none
 
 ## Variables
 
@@ -57,7 +64,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary))
 
 <a id="src-r3"></a>
-**R3**: the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04). Sanction dropped 2026-11-09 (batch 3c, B7), as in ectogenesis R3, so the guard-level iso claim is read on the same or_else bit both sides.
+**R3**: the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04). Sanction dropped 2026-11-09 (batch 3c, B7), as in ectogenesis R3, so the guard-level iso claim is read on the same or_else bit both sides. Post-council note (2026-11-09, correctness seat finding 4): with no or_else there is nothing to breach, so under sanctioned compliance this must is hard, as it already was under strict.
 
 - no work named: **unverified** (rationale: the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary))
 
@@ -73,9 +80,9 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** ('the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it)': the reason for the female trigger; the row gives no citation and none is in the bibliography (a search lead for it is in plans/sourcing-worklist-other.md: add an entry and upgrade when opened))
 
 <a id="src-r6"></a>
-**R6**: the registry's former sanction for R3 (or_else target until 2026-11-09, batch 3c B7; R5's link removed 2026-11-04); now linked to no rule, kept so the pair's rule set stays symmetric. Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
+**R6**: the registry's former sanction for R3 (or_else target until 2026-11-09, batch 3c B7; R5's link removed 2026-11-04); now linked to no rule: no text names this power and nothing links to it; kept so the pair's rule set stays symmetric (deleting it is an encoding change for a later preregistration). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
 
-- no work named: **unverified** (rationale: the registry's sanction for R3 (or_else target; R5's link removed 2026-11-04). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule))
+- no work named: **unverified** (formerly the sanction for R3 (or_else target until 2026-11-09; R5's link removed 2026-11-04); no text names this power and nothing links to it. Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule))
 
 <a id="src-r7"></a>
 **R7**: parentage is registered for any born child; NO birthing_parent condition (ASSUMED author decision, 2026-11-04; the legal default today keys it to the birth, which would make care_decoupled_from_birth unreachable in E). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
@@ -101,7 +108,7 @@ Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision
 Extends [ectogenesis](ectogenesis.md); one line per change:
 - R1 dropped: A provider may start gestation of a child at any time (Firestone 1970).
 - R2 replaced: was "The provider may transfer the child to the device when the child is in gestation (Firestone 1970)." now "The provider may implant an embryo in the gestator for the child at any time (gestational surrogacy)."
-- R3 replaced: was "The provider must decant the child when the child has been gestated ex utero (Firestone 1970); no sanction is encoded." now "The gestator must give birth to the child when she is gestating it; no sanction is encoded."
+- R3 replaced: was "The provider must decant the child when the child has been gestated ex utero (a proposed duty in the institution Firestone sketched in 1970, not enacted law: no statute exists); no sanction is encoded." now "The gestator must give birth to the child when she is gestating it (no statute or case has been opened for this duty; state surrogacy acts vary); no sanction is encoded."
 - adds role gestator (the surrogate whose body carries the child; the rival input (one body, a short window; docs/theory.md 'Pregnancy, birth, nursing'))
 - removes fluent gestated_ex_utero
 - changes fluent birthing_parent (p gave birth to c): arg roles becomes ["gestator", "child"]

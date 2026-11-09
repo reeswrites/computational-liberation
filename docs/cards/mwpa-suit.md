@@ -8,10 +8,13 @@
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
 - **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
-- **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
+- **(implicit)**: not written as a rule in the cited source; reconstructed from it or from practice. The source cell gives the rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
-- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
+- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it. The "Default capacities" list under the table names the bearer role for each.
+- **free fluent**: an input the model varies, not set by any rule; a when cell that names one waits on a fact the world supplies (a report arrives, it is visiting time), not on something a role does. Listed with its gloss under "Free fluents" below the table.
+- **(replaced) / (added)** after a row id: this entry `extends` another, and the row replaces the base entry's row of that id, or adds one; the base card holds the original wording.
+- **linked to no rule**: a sanction-shaped rule (such as `may reprimand`) that no row's or else points at; it fires on no breach and is kept for the record only.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
 - **kind**: what sort of rule it is. `formal` = written law or contract (the default, always shown so it can be questioned); `norm` = an unwritten practice that others enforce; `strategy` = a regularity nobody enforces. A `strategy` rule written as `must` is still read by the engine as a duty under strict compliance, though nobody enforces it.
@@ -41,7 +44,18 @@
 | R16 (added) | wife | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(sue w)` | `(married h w)` | none | tying | The wife may sue third parties in her own name when married (US suit acts: NY 1860 ch. 90 s. 7, NY 1862 ch. 172, MA 1855 c. 304 ss. 4, 7); suits against her husband stay barred (R19). | recalled | [full source under Sources, R16](#src-r16) https://isnie-archive.sioe.org/assets/files/papers2007/geddes.pdf |
 | R19 (added) | wife | must not (disability) [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(sue_spouse w h)` | `(married h w)` | none | tying | The wife cannot sue her husband while married: no such power exists (the suit acts leave suits between spouses barred: omitted in MA 1855 c. 304, barred in terms by MA 1874 c. 184 s. 3; in New York by construction, Longendyke 1863). | opened | [full source under Sources, R19](#src-r19) https://archives.lib.state.ma.us/server/api/core/bitstreams/6cc4626f-6cc6-47f5-9a38-7a775ff276b4/content: |
 
-**Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue, contract, sue_spouse
+**Free fluents** (inputs the model varies, not set by any rule; see the Legend):
+
+- `female(wife)`: x is female (sex as assigned by the institution's own records); no action in this institution sets it.
+- `acquired_property(wife)`: w has acquired property by gift or inheritance (exogenous); later set by: transfer_to_wife.
+- `earns(wife)`: w earns wages outside the household (exogenous); no action in this institution sets it.
+
+**Default capacities** (an action a person of that kind can do unless an express disability removes it; these replaced the implicit `may ... when true` rows that once encoded them, README revision 4):
+
+- `leave`: A wife (the who cell of R6; the action parameter is untyped) may leave unless a rule forbids it; rule rows naming it: R6 (must not, a disability).
+- `sue`: A wife (the who cell of R16; the action parameter is untyped) may sue unless a rule forbids it; rule rows naming it: R16 (may).
+- `contract`: A wife (the who cell of R15; the action parameter is untyped) may contract unless a rule forbids it; rule rows naming it: R15 (may).
+- `sue_spouse`: A wife (the who cell of R19; the action parameter is untyped) may sue spouse unless a rule forbids it; rule rows naming it: R19 (must not, a disability).
 
 ## Variables
 

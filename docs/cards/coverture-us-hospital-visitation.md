@@ -8,10 +8,13 @@
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
 - **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
-- **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
+- **(implicit)**: not written as a rule in the cited source; reconstructed from it or from practice. The source cell gives the rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
-- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
+- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it. The "Default capacities" list under the table names the bearer role for each.
+- **free fluent**: an input the model varies, not set by any rule; a when cell that names one waits on a fact the world supplies (a report arrives, it is visiting time), not on something a role does. Listed with its gloss under "Free fluents" below the table.
+- **(replaced) / (added)** after a row id: this entry `extends` another, and the row replaces the base entry's row of that id, or adds one; the base card holds the original wording.
+- **linked to no rule**: a sanction-shaped rule (such as `may reprimand`) that no row's or else points at; it fires on no breach and is kept for the record only.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
 - **kind**: what sort of rule it is. `formal` = written law or contract (the default, always shown so it can be questioned); `norm` = an unwritten practice that others enforce; `strategy` = a regularity nobody enforces. A `strategy` rule written as `must` is still read by the engine as a duty under strict compliance, though nobody enforces it.
@@ -95,7 +98,16 @@ Actions (name(parameters): what they set; a member's rules permit, oblige or bar
 | hospital_visitation__R10 | partner_a | may [kind: formal; sanctioner: none] | `(designate p x)` | `true` | none | tying | The patient may designate any person as a visitor (42 CFR 482.13(h)(1)-(2)). | snippet | [full source under Sources, hospital_visitation__R10](#src-hospital_visitation__r10) |
 | hospital_visitation__R11 | surveyor | may [kind: formal; sanctioner: none] | `(cite v o)` | `true` | none | untagged (null) | The state survey agency may cite the hospital (the sanction behind hospital_visitation__R9; a deficiency under the Medicare Conditions of Participation, which CMS may follow with termination from Medicare). | snippet | [full source under Sources, hospital_visitation__R11](#src-hospital_visitation__r11) |
 
-**Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue, contract
+**Free fluents** (inputs the model varies, not set by any rule; see the Legend):
+
+- `acquired_property(x)`: w has acquired property by gift or inheritance (exogenous); no action in this institution sets it.
+- `earns(x)`: w earns wages outside the household (exogenous); no action in this institution sets it.
+
+**Default capacities** (an action a person of that kind can do unless an express disability removes it; these replaced the implicit `may ... when true` rows that once encoded them, README revision 4):
+
+- `leave`: A partner_b may leave unless a rule forbids it; rule rows naming it: coverture_household_us__R6 (must not, a disability).
+- `sue`: A partner_b may sue unless a rule forbids it; rule rows naming it: coverture_household_us__R4 (must not, a disability).
+- `contract`: A partner_b may contract unless a rule forbids it; rule rows naming it: coverture_household_us__R7 (must not, a disability).
 
 ## Variables
 

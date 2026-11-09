@@ -8,10 +8,13 @@
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
 - **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
-- **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
+- **(implicit)**: not written as a rule in the cited source; reconstructed from it or from practice. The source cell gives the rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
-- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
+- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it. The "Default capacities" list under the table names the bearer role for each.
+- **free fluent**: an input the model varies, not set by any rule; a when cell that names one waits on a fact the world supplies (a report arrives, it is visiting time), not on something a role does. Listed with its gloss under "Free fluents" below the table.
+- **(replaced) / (added)** after a row id: this entry `extends` another, and the row replaces the base entry's row of that id, or adds one; the base card holds the original wording.
+- **linked to no rule**: a sanction-shaped rule (such as `may reprimand`) that no row's or else points at; it fires on no breach and is kept for the record only.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
 - **kind**: what sort of rule it is. `formal` = written law or contract (the default, always shown so it can be questioned); `norm` = an unwritten practice that others enforce; `strategy` = a regularity nobody enforces. A `strategy` rule written as `must` is still read by the engine as a duty under strict compliance, though nobody enforces it.
@@ -40,7 +43,19 @@
 | R10 | child | must not (disability) [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(leave c)` | `(in_custody c)` | none | rival | The child cannot leave while in custody: no such power exists (Cal. WIC 306). | opened | [full source under Sources, R10](#src-r10) https://california.public.law/codes/ca_welf_and_inst_code_section_306 |
 | R11 | child | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(petition c)` | `(counsel_appointed c)` | none | tying | The child may petition through a guardian when one has been appointed for the child (Cal. WIC 388(a)(1), on grounds of change of circumstance or new evidence; the guardian ad litem may be the appointed attorney, WIC 326.5; encoded as counsel appointed). | opened | [full source under Sources, R11](#src-r11) https://california.public.law/codes/ca_welf_and_inst_code_section_317: |
 
-**Default capacities** (an action a person of that kind can do unless an express disability removes it): leave
+**Free fluents** (inputs the model varies, not set by any rule; see the Legend):
+
+- `report_received(child)`: an abuse or neglect report about c has been received; later set by: investigate.
+- `cause_to_believe(child)`: the social worker has cause to believe that c is a child described in WIC s. 300 (the s. 328(a) trigger; exogenous); no action in this institution sets it.
+- `immediate_danger(child)`: c is in immediate danger of physical or sexual abuse or needs immediate medical care; no action in this institution sets it.
+- `parent(parent, child)`: p is a parent of c; no action in this institution sets it.
+- `female(parent)`: x is female (sex as assigned by the institution's own records); no action in this institution sets it.
+- `substantial_danger(parent, child)`: clear and convincing evidence of substantial danger to c's health or safety with no reasonable means to protect without removal (WIC 361(c)(1)); no action in this institution sets it.
+- `would_not_benefit(child)`: the court finds that c would not benefit from the appointment of counsel (WIC 317(c)(1)); exogenous; no action in this institution sets it.
+
+**Default capacities** (an action a person of that kind can do unless an express disability removes it; these replaced the implicit `may ... when true` rows that once encoded them, README revision 4):
+
+- `leave`: A child (the who cell of R10; the action parameter is untyped) may leave unless a rule forbids it; rule rows naming it: R10 (must not, a disability).
 
 ## Variables
 
@@ -133,6 +148,6 @@ Contrasts with controls: lease, public-library, naming-convention
 
 <details><summary>Encoder notes (engine internals)</summary>
 
-Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (the facility's care + hold, since 2026-11-06) and coverture (maintain + chastise). R7 is the court-reassigns-the-dependent rule (on substantial danger here, WIC 361(c)(1); on best interest in companion-guardianship R9) that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists 'fails' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) 'reachable' for subject_cannot_exit is permission, not frequency. Only WIC 306 was read; R1, R2, R7, R8 cite sections from memory and are marked UNVERIFIED in source. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, cause_to_believe, immediate_danger, parent, female, substantial_danger) are initial_free; cause_to_believe added 2026-11-09 (batch 3c, A1) as R1's second conjunct.
+Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (the facility's care + hold, since 2026-11-06) and coverture (maintain + chastise). R7 is the court-reassigns-the-dependent rule (on substantial danger here, WIC 361(c)(1); on best interest in companion-guardianship R9) that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists 'fails' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) 'reachable' for subject_cannot_exit is permission, not frequency. Opened items (see the level column): R1 (WIC 328(a)), R3, R4, R7 (WIC 361(c)(1)), R8 (WIC 317), R10, R11; R2 (WIC 16501), R5 and R6 are unverified and say so in source (the stale sentence that R1 cited from memory was struck 2026-11-09, post-council fix). The recorded R1 excerpt stops before the cause-to-believe trigger clause of s. 328(a); extending the excerpt waits until the page is next opened. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, cause_to_believe, immediate_danger, parent, female, substantial_danger) are initial_free; cause_to_believe added 2026-11-09 (batch 3c, A1) as R1's second conjunct.
 
 </details>
