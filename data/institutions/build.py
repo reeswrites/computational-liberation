@@ -187,23 +187,10 @@ def load_composites(src: Path = SRC) -> list:
     return specs
 
 
-def freeze_action_types(inst):
-    """P1b (plans/composition.md): write each action's parameter types as `arg_roles`, resolved by the engine's prefix
-    heuristic over the MEMBER's own roles, so that aliasing cannot re-type them (run 1 typed coverture's `h` as
-    `hospital`). Parameters already typed keep their type; a parameter the heuristic cannot type stays None."""
-    from philengine.rules_lower import literal_roles, var_role
-    lits = literal_roles(inst)
-    acts = []
-    for a in inst.actions:
-        given = list(a.arg_roles) if a.arg_roles is not None else [None] * len(a.args)
-        typed = [g if g is not None else var_role(p, inst, lits) for p, g in zip(a.args, given)]
-        acts.append(a.model_copy(update={"arg_roles": typed}) if any(x is not None for x in typed) else a)
-    return inst.model_copy(update={"actions": acts})
-
-
 def compose_entry(spec: dict, resolved: dict) -> tuple[dict, dict]:
     """(resolved composite for cards, stripped composite for the JSON). Uses the engine's compose(); a ComposeError is a
     build error. `members` must be resolved entry ids (composites of composites are not supported)."""
+    # P1b moved into the engine, 2026-11-08, engine e46f6ea: freeze_bindings types action parameters itself.
     from philengine.rules_compose import ComposeError, compose
     from philengine.rules_lower import validate_institution
     from philengine.schemas_rules import InstitutionJSON
@@ -213,7 +200,7 @@ def compose_entry(spec: dict, resolved: dict) -> tuple[dict, dict]:
     for mid in spec["members"]:
         if mid not in resolved:
             raise SystemExit(f"{COMPOSITES} {cid}: member {mid!r} is not an entry in _order.yaml")
-        members.append(freeze_action_types(InstitutionJSON.model_validate(strip(resolved[mid]))))
+        members.append(InstitutionJSON.model_validate(strip(resolved[mid])))
     aliases = {m: dict(a or {}) for m, a in (spec.get("aliases") or {}).items()}
     try:
         comp = compose(members, aliases, cid, initial=spec.get("initial") or None,
