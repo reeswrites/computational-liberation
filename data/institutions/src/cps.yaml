@@ -72,6 +72,10 @@ fluents:
   arity: 1
   gloss: an abuse or neglect report about c has been received
   arg_roles: [child]
+- name: cause_to_believe
+  arity: 1
+  gloss: 'the social worker has cause to believe that c is a child described in WIC s. 300 (the s. 328(a) trigger; exogenous)'
+  arg_roles: [child]
 - name: case_open
   arity: 1
   gloss: a case on c is open
@@ -184,18 +188,17 @@ actions:
     value: true
 rules:
 - id: R1
-  plain: 'The social worker must investigate the child''s case when a report about the child has been received.'
+  plain: 'The social worker must investigate the child''s case when a report about the child has been received and the worker has cause to believe the child is described in WIC s. 300 (the investigation the worker deems necessary; WIC 328(a)).'
   attribute: social_worker
   deontic: must
   aim: (investigate w c)
-  conditions: (report_received c)
+  conditions: (and (report_received c) (cause_to_believe c))
   or_else: null
   strand: tying
   implicit: false
   kind: formal
   sanctioner: none
-  sanctioner_review: derived
-  source: 'Cal. WIC 328(a), opened 2026-11-06: the social worker''s investigation duty; the same worker who offers services investigates. The encoded trigger (every received report) is wider than the statute''s (cause to believe the child is described in s. 300; scope what the worker deems necessary): re-encode scheduled as faithfulness batch 3c (A1). Penal Code 11165.14 is not support for this row (read 2026-11-06 and found off point, below). [ADR 0009: one-off action obligation; investigate consumes report_received so it fires once per report] Verification pass: WIC 328 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_328: (a) ''the social worker shall immediately make any investigation the social worker deems necessary to determine whether child welfare services should be offered to the family''. Penal Code 11165.14 read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_11165.14: ''The appropriate local law enforcement agency shall investigate a child abuse complaint filed by a parent or guardian of a pupil with a school'' (police inquiries into abuse by school staff at a schoolsite; not the social worker''s duty this row encodes, so this pin does not support the row). Re-pinned 2026-11-06 (faithfulness batch 2, P1): the duty is WIC 328(a) as read above; Penal Code 11165.14 (police inquiries into school staff) is off point and no longer cited.'
+  source: 'Cal. WIC 328(a), opened 2026-11-06: the social worker''s investigation duty; the same worker who offers services investigates. The encoded trigger was every received report, wider than the statute''s (cause to believe the child is described in s. 300; scope what the worker deems necessary); re-encoded 2026-11-09 (batch 3c, A1): the trigger is now a received report and cause to believe (free fluent cause_to_believe); the scope (''deems necessary'') stays unencoded. Penal Code 11165.14 is not support for this row (read 2026-11-06 and found off point, below). [ADR 0009: one-off action obligation; investigate consumes report_received so it fires once per report] Verification pass: WIC 328 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_328: (a) ''the social worker shall immediately make any investigation the social worker deems necessary to determine whether child welfare services should be offered to the family''. Penal Code 11165.14 read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_11165.14: ''The appropriate local law enforcement agency shall investigate a child abuse complaint filed by a parent or guardian of a pupil with a school'' (police inquiries into abuse by school staff at a schoolsite; not the social worker''s duty this row encodes, so this pin does not support the row). Re-pinned 2026-11-06 (faithfulness batch 2, P1): the duty is WIC 328(a) as read above; Penal Code 11165.14 (police inquiries into school staff) is off point and no longer cited.'
   provenance:
   - source_id: cal-wic-328
     pin: s. 328(a)
@@ -205,7 +208,7 @@ rules:
     excerpt: the social worker shall immediately make any investigation the social worker deems necessary to determine whether child welfare services should be offered to the family
     accessed: '2026-11-06'
     url: https://california.public.law/codes/ca_welf_and_inst_code_section_328
-    note: trigger is 'cause to believe' a child is described in s. 300, not a received report; the scope is what the worker 'deems necessary'; the same worker refers to services, which fits the row's dual role
+    note: trigger is 'cause to believe' a child is described in s. 300, not a received report (encoded as both since 3c, 2026-11-09); the scope is what the worker 'deems necessary' and stays unencoded; the same worker refers to services, which fits the row's dual role
   var_roles:
     w: social_worker
     c: child
@@ -485,10 +488,11 @@ isomorphic_to:
 not_isomorphic_to: [crisis-team]
 not_isomorphic_to_control: [lease, public-library, naming-convention]
 minimal_pair_of: null
-notes: 'Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (the facility''s care + hold, since 2026-11-06) and coverture (maintain + chastise). R7 is the court-reassigns-the-dependent rule (on substantial danger here, WIC 361(c)(1); on best interest in companion-guardianship R9) that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists ''fails'' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) ''reachable'' for subject_cannot_exit is permission, not frequency. Only WIC 306 was read; R1, R2, R7, R8 cite sections from memory and are marked UNVERIFIED in source. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, immediate_danger, parent, female, substantial_danger) are initial_free.'
+notes: 'Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (the facility''s care + hold, since 2026-11-06) and coverture (maintain + chastise). R7 is the court-reassigns-the-dependent rule (on substantial danger here, WIC 361(c)(1); on best interest in companion-guardianship R9) that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists ''fails'' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) ''reachable'' for subject_cannot_exit is permission, not frequency. Only WIC 306 was read; R1, R2, R7, R8 cite sections from memory and are marked UNVERIFIED in source. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, cause_to_believe, immediate_danger, parent, female, substantial_danger) are initial_free; cause_to_believe added 2026-11-09 (batch 3c, A1) as R1''s second conjunct.'
 initial: []
 initial_free:
 - report_received
+- cause_to_believe
 - immediate_danger
 - parent
 - female

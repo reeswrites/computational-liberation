@@ -65,18 +65,18 @@ rules_replace:
     url: null
     note: 'no work named; rationale: gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary)'
 - id: R3
-  plain: 'The gestator must give birth to the child when she is gestating it, or else the registry may reprimand (R6).'
+  plain: 'The gestator must give birth to the child when she is gestating it; no sanction is encoded.'
   attribute: gestator
   deontic: must
   aim: (give_birth gestator child)
   conditions: (gestates gestator child)
-  or_else: R6
+  or_else: null
   strand: rival
   implicit: false
   kind: formal
-  sanctioner: state
+  sanctioner: none
   sanctioner_review: reviewed
-  source: 'the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04).'
+  source: 'the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04). Sanction dropped 2026-11-09 (batch 3c, B7), as in ectogenesis R3, so the guard-level iso claim is read on the same or_else bit both sides.'
   provenance:
   - source_id: null
     pin: null

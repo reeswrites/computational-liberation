@@ -1214,6 +1214,14 @@
     ]
    },
    {
+    "name": "cause_to_believe",
+    "arity": 1,
+    "gloss": "the social worker has cause to believe that c is a child described in WIC s. 300 (the s. 328(a) trigger; exogenous)",
+    "arg_roles": [
+     "child"
+    ]
+   },
+   {
     "name": "case_open",
     "arity": 1,
     "gloss": "a case on c is open",
@@ -1501,13 +1509,13 @@
     "attribute": "social_worker",
     "deontic": "must",
     "aim": "(investigate w c)",
-    "conditions": "(report_received c)",
+    "conditions": "(and (report_received c) (cause_to_believe c))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. WIC 328(a), opened 2026-11-06: the social worker's investigation duty; the same worker who offers services investigates. The encoded trigger (every received report) is wider than the statute's (cause to believe the child is described in s. 300; scope what the worker deems necessary): re-encode scheduled as faithfulness batch 3c (A1). Penal Code 11165.14 is not support for this row (read 2026-11-06 and found off point, below). [ADR 0009: one-off action obligation; investigate consumes report_received so it fires once per report] Verification pass: WIC 328 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_328: (a) 'the social worker shall immediately make any investigation the social worker deems necessary to determine whether child welfare services should be offered to the family'. Penal Code 11165.14 read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_11165.14: 'The appropriate local law enforcement agency shall investigate a child abuse complaint filed by a parent or guardian of a pupil with a school' (police inquiries into abuse by school staff at a schoolsite; not the social worker's duty this row encodes, so this pin does not support the row). Re-pinned 2026-11-06 (faithfulness batch 2, P1): the duty is WIC 328(a) as read above; Penal Code 11165.14 (police inquiries into school staff) is off point and no longer cited.",
+    "source": "Cal. WIC 328(a), opened 2026-11-06: the social worker's investigation duty; the same worker who offers services investigates. The encoded trigger was every received report, wider than the statute's (cause to believe the child is described in s. 300; scope what the worker deems necessary); re-encoded 2026-11-09 (batch 3c, A1): the trigger is now a received report and cause to believe (free fluent cause_to_believe); the scope ('deems necessary') stays unencoded. Penal Code 11165.14 is not support for this row (read 2026-11-06 and found off point, below). [ADR 0009: one-off action obligation; investigate consumes report_received so it fires once per report] Verification pass: WIC 328 read 2026-11-06 at https://california.public.law/codes/ca_welf_and_inst_code_section_328: (a) 'the social worker shall immediately make any investigation the social worker deems necessary to determine whether child welfare services should be offered to the family'. Penal Code 11165.14 read 2026-11-06 at https://california.public.law/codes/ca_penal_code_section_11165.14: 'The appropriate local law enforcement agency shall investigate a child abuse complaint filed by a parent or guardian of a pupil with a school' (police inquiries into abuse by school staff at a schoolsite; not the social worker's duty this row encodes, so this pin does not support the row). Re-pinned 2026-11-06 (faithfulness batch 2, P1): the duty is WIC 328(a) as read above; Penal Code 11165.14 (police inquiries into school staff) is off point and no longer cited.",
     "var_roles": {
      "w": "social_worker",
      "c": "child"
@@ -1704,10 +1712,11 @@
    "naming-convention"
   ],
   "minimal_pair_of": null,
-  "notes": "Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (the facility's care + hold, since 2026-11-06) and coverture (maintain + chastise). R7 is the court-reassigns-the-dependent rule (on substantial danger here, WIC 361(c)(1); on best interest in companion-guardianship R9) that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists 'fails' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) 'reachable' for subject_cannot_exit is permission, not frequency. Only WIC 306 was read; R1, R2, R7, R8 cite sections from memory and are marked UNVERIFIED in source. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, immediate_danger, parent, female, substantial_danger) are initial_free.",
+  "notes": "Care (R2, services) and sanction (R3, removal) sit in one role, and R5 makes the care relationship itself the lever: refusing services is a condition for the sanction. That is the structure shared with police-crisis (the facility's care + hold, since 2026-11-06) and coverture (maintain + chastise). R7 is the court-reassigns-the-dependent rule (on substantial danger here, WIC 361(c)(1); on best interest in companion-guardianship R9) that companion-guardianship adds to companion-ownership; the iso with that entry is partial (R7 only) and structural. Pitfalls: (1) R5 and R6 are implicit; dropping R6 makes care_assigned_by_sex unreachable and looks like a success (same failure shape as the kibbutz entry); (2) no_standing_persists 'fails' because R7 and R8/R11 give the child a claim path (can_claim_for court c derived from R7, has_standing derived from R11 under appointed counsel), unlike the animal entries; (3) 'reachable' for subject_cannot_exit is permission, not frequency. Only WIC 306 was read; R1, R2, R7, R8 cite sections from memory and are marked UNVERIFIED in source. ADR 0009: R4, R5 and R8 are state obligations and R1/R6 one-off action obligations (consumed trigger / guard); as per-step action obligations R1, R4, R5, R6 and R8 all fired at every open-case step, so under one action per step remove could never fit (subject_cannot_exit open). Exogenous triggers (report_received, cause_to_believe, immediate_danger, parent, female, substantial_danger) are initial_free; cause_to_believe added 2026-11-09 (batch 3c, A1) as R1's second conjunct.",
   "initial": [],
   "initial_free": [
    "report_received",
+   "cause_to_believe",
    "immediate_danger",
    "parent",
    "female",
@@ -5750,6 +5759,14 @@
     "arg_roles": [
      "child"
     ]
+   },
+   {
+    "name": "visiting_time",
+    "arity": 1,
+    "gloss": "it is the daily visiting time for the child (the read page: 2-3 hours a day; exogenous)",
+    "arg_roles": [
+     "child"
+    ]
    }
   ],
   "actions": [
@@ -5816,7 +5833,8 @@
       ],
       "value": false
      }
-    ]
+    ],
+    "default_capacity": true
    },
    {
     "name": "visit",
@@ -5911,13 +5929,13 @@
     "attribute": "male_member",
     "deontic": "may",
     "aim": "(visit male_member child)",
-    "conditions": "true",
+    "conditions": "(visiting_time child)",
     "or_else": null,
     "strand": "superadditive",
     "implicit": false,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment' ... 'visited their parents for 2-3 hours a day' (the page prints an en dash). Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited."
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment' ... 'visited their parents for 2-3 hours a day' (the page prints an en dash). Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited. Re-encoded 2026-11-09 (batch 3c, A3): the condition visiting_time (a free fluent on the child) replaces 'true'; the rule no longer says 'at any time'."
    },
    {
     "id": "R6",
@@ -5931,19 +5949,6 @@
     "kind": "norm",
     "sanctioner": "none",
     "source": "UNVERIFIED (not opened 2026-11-04): Spiro, Kibbutz: Venture in Utopia (1956; 1958 ed.) and Gavron, The Kibbutz: Awakening from Utopia (2000), on the general assembly and public opinion as the kibbutz's instrument of discipline over members (archive.org search-inside returned 403 and the Google Books API 429, two tries each). implicit: the committee / general assembly disciplines a member who neglects the rota (R3's or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(committee, x) = reprimand enabled (R6)"
-   },
-   {
-    "id": "R8",
-    "attribute": "metapelet",
-    "deontic": "may",
-    "aim": "(neglect metapelet child)",
-    "conditions": "(assigned metapelet)",
-    "or_else": null,
-    "strand": "superadditive",
-    "implicit": true,
-    "kind": "norm",
-    "sanctioner": "none",
-    "source": "implicit, added 2026-11-04 per ADR 0015 A6 (strict enabledness at layer 2: an action needs a may/must rule) so that the breaker of R3 is an enabled action for the layer-2 ABM: the metapelet can always fail the children's house, and that is the choice R3's or_else R6 answers. Under layer 1 the permissive floor already let the unregulated neglect fire in traces, so no verdict should change; the rule makes neglect regulated, which narrows its firing to the assigned metapelet (the only bearer of R3). Condition mirrors R3: neglect is a breach only while assigned. Tagged superadditive as the care strand's own breach (R3), as companion R10 `may feed` is tagged for the restore. UNVERIFIED (general knowledge; no source opened)"
    }
   ],
   "source_text": "'Children's lives had three focal points: the children's house, parents' house, and the whole kibbutz.' 'They lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day.' 'The nanny position was always a woman's role. Teacher positions were both for women and men.' (Wikipedia, 'Kibbutz communal child rearing and collective education', read 2026-11-03.) 'The era ended over the weekend, when the 80 children at Kibbutz Baram in the lower Galilee moved into their parents' homes' (JTA, 1997-06-16); the pressure came 'particularly from young mothers' (SCMP, 1997).",
@@ -5966,7 +5971,7 @@
    "cps"
   ],
   "minimal_pair_of": null,
-  "notes": "Gate (d): the historical failure. The explicit rules are sex-blind (R1 may assign any member) and the reform of the 1970s-1990s removed the exit bar on the child (R4), yet care_assigned_by_sex PERSISTS because the implicit sanctioned norm R2 (never a man in the children's house; a documented practice, or_else R6) survives: every strictly compliant trace keeps provides_care in female hands. RE-ENCODED after the third review (2026-11-03): R2 was a disability (or_else null); the sources support a practice, not a committee disability, so it is now must_not + or_else R6. 'implicit' is a human tag the engine reports back; the ablation bites because R1 was written sex-blind (disclosed). PREREGISTERED (2026-11-03, before any run): care_assigned_by_sex persists here; fails in kibbutz-childrens-house-no-implicit, which is this entry minus R2 (differs_on care_assigned_by_sex); subject_cannot_exit reachable (R4 bars sleep_home); care_and_sanction_same_role violated (the committee sanctions, the metapelet cares). Deviations from plans/institutions-batch2.md: R1 is '(assign committee x) when (member x)' rather than '(assign committee metapelet)', because an action instance no may/must rule names is disabled, so the draft's ablation (drop R2 -> assign male_member) only bites if R1 covers the man; R4 is a disability (or_else null) per the ADR 0013 exit convention, so R6 is R3's or_else only and its condition is 'true' (the or_else link enables it on breach); sleep_home is a default capacity (flagged on the action since revision 4, 2026-11-04; the former implicit R7 'may sleep_home when true' is deleted) so can_exit is carried by the capacity unless R4 bars it, as in every other entry; the draft's release action is kept but the breaker of R3 is neglect (release clears the condition with the state, so it breaks nothing). Pitfalls: (1) female needs arg_roles [metapelet] or the solver invents a female male_member; (2) an encoder that writes R1 as 'may assign metapelet' hides R2 inside R1 and the no-implicit variant collapses into the original; (3) 'persists' is about what the rules permit, not uptake. Rival reading (notes only): regendering of care came from mothers' demands (SCMP), not from the committee; the entry does not encode who drove the reform. PREREGISTERED 2026-11-04 (before any run; ADR 0015 A6: R8 'metapelet may neglect when assigned', implicit, in KIB_RULES so it flows into the no-implicit pair too): expected effect on this entry's three properties is NONE. care_assigned_by_sex persists (neglect can only clear provides_care, never put it in male hands; at layer 1 the unregulated neglect already fired freely under the trace floor, and making it regulated narrows its firing to the assigned metapelet, which removes no trace that bears on the property); subject_cannot_exit reachable (R4 untouched; sleep_home stays a default capacity); care_and_sanction_same_role violated (the committee's reprimand power and the metapelet's care are untouched; the violating trace needs assign, not neglect). Minimal pair kibbutz-childrens-house-no-implicit: unchanged (fails / reachable / violated), distance to this entry stays 1 with R2 the one separating rule (R8 is in both). isomorphic_to coverture-household at guard+strands: it already reads NO today (matched 0, distance 9: a pre-existing disagreement with the claim as written, found while baselining, not caused by this change) and is expected to stay NO with matched 0 and distance 9, because coverture has no may-rule tagged superadditive for R8 to match and distance = max(8, 9) - 0 is unchanged; not_isomorphic_to police-crisis / cps stay yes. Gate (d): PASS unchanged (persists vs fails, R2 the one separating rule). check-all: 106/106, no inert rule (R8 is a may). Layer 2 (information only): neglect becomes an available action for the assigned metapelet; the baseline ABM run (2026-11-04, before R8) shows the metapelet with no available action at all. PREREGISTERED 2026-11-04 (before any run; R6 guard, accepted decision of 2026-11-04): R6 'may reprimand' gains the condition (assigned x) (ASSUMED: the committee disciplines only a member on the rota; previously 'true', under which the layer-2 ABM had the committee reprimand random members about half the time). Expected effect on the three expected_properties: NONE. care_assigned_by_sex persists (reprimand has no effects; nothing new puts care in male hands); subject_cannot_exit reachable (R4 untouched; sleep_home stays a default capacity); care_and_sanction_same_role violated (can_sanction(committee, x) = (enabled reprimand committee x) now holds only while assigned(x); assigned(metapelet) is in the initial state, so can_sanction(committee, metapelet) is still true in compliant traces while the metapelet provides care, and the property's (= z x) fails exactly as before). The or_else links R2->R6 and R3->R6 are unaffected: under compliance=sanctioned a breach enables the or_else action whatever its condition, and check-all runs strict, where or_else is not read. Minimal pair kibbutz-childrens-house-no-implicit: unchanged (fails / reachable / violated), distance 1 with R2 the separating rule (R6 is in both via KIB_RULES). check-all: 106/106 agreement, no inert rule (R6 is a may); the 'R6: untyped variable(s) [x]' warning stays. Gate: PASS; (d) unchanged (persists vs fails, R2 the one separating rule); (a) 0 inert; (b), (c), (e), (f) untouched (kibbutz is outside the cluster). isomorphic_to coverture-household at guard+strands: stays NO, matched 0, distance 9 (R6's skeleton becomes (may, (role, var), guarded, no or_else, rival); coverture R5 chastise is (may, (var, var), guarded, no or_else, rival): the aim patterns differ, so no new pair); not_isomorphic_to police-crisis / cps stay yes (distances 10 / 11 move by at most 1). Layer 2 (information only; baseline run 2026-11-04 before the guard, 10 seeds x 30 steps, committee adoption split: assign(committee,metapelet) 0.32, reprimand(committee,metapelet) 0.275, reprimand(committee,child) 0.225, reprimand(committee,male_member) 0.18): expected after the guard, reprimand(committee,child) and reprimand(committee,male_member) disappear (never assigned; the committee's R2 breach rate is 0.0 in the baseline) and the committee splits between assign(committee,metapelet) and reprimand(committee,metapelet) (plus 'none' if the material module prefers it); metapelet, male_member and child unchanged. If any verdict flips the guard is reverted, not the expectation. R6 guard tried 2026-11-04 and reverted: care_and_sanction_same_role flipped from violated to holds_to_k (flags vacuous, antecedent-unreachable) in this entry AND in kibbutz-childrens-house-no-implicit (check-all 104/106; gate still PASS). The preregistration above was wrong about which binding carries the verdict: the property quantifies sanction power over the SUBJECT ((is_subject y) and (can_sanction z y) and (provides_care x y) => (= z x)), so the violating trace needs can_sanction(committee, child) = (enabled reprimand committee child), which R6 'true' grants and (assigned child) never does (the child is not a member, so R1 cannot put it on the rota: the antecedent becomes unreachable and the invariant holds vacuously). The guard would have to be '(or (assigned x) (is_subject x))' or the property's reading changed; neither was accepted, so R6 is back to 'true' and the ABM keeps reprimanding random members (committee split with the guard, 10 seeds x 30 steps: assign(committee,metapelet) 0.685, reprimand(committee,metapelet) 0.315, as preregistered for layer 2; without it: 0.32 / 0.275 / child 0.225 / male_member 0.18). Layer-2 reading of R8 at step 0 (2026-11-04): assigned(metapelet) is in the entry's `initial` (_kib_init, alongside provides_care(metapelet, child)), so Reference.initial_split puts it in the fixed set and the ABM's step-0 state carries it; neglect(metapelet, child) is therefore a power at step 0 (verified with Reference.power on the ABM's initial state: available_for('metapelet') = [neglect]); the slice-3 observation that it was not predates R8 reaching institutions.json, and the metapelet's 'none' adoption is a choice (neglect breaches R3, sanctioned by R6), not an absence of power; no rule change. DISAGREEMENT 2026-11-04: iso with coverture-household at guard+strands reads NO (matched 0, distance 9) under the current matcher; claim not edited; cause unexamined (candidate: the matcher needs the same strand tag on R3 and coverture R3 and a shared guard shape). Encoder observation, not a cause finding: rules_iso.rule_skeleton keys the aim by literal-role vs variable positions, and this entry's R3 aim names roles (provides_care metapelet child) while coverture R3 uses bound variables (provides_care w h).",
+  "notes": "Gate (d): the historical failure. The explicit rules are sex-blind (R1 may assign any member) and the reform of the 1970s-1990s removed the exit bar on the child (R4), yet care_assigned_by_sex PERSISTS because the implicit sanctioned norm R2 (never a man in the children's house; a documented practice, or_else R6) survives: every strictly compliant trace keeps provides_care in female hands. RE-ENCODED after the third review (2026-11-03): R2 was a disability (or_else null); the sources support a practice, not a committee disability, so it is now must_not + or_else R6. 'implicit' is a human tag the engine reports back; the ablation bites because R1 was written sex-blind (disclosed). PREREGISTERED (2026-11-03, before any run): care_assigned_by_sex persists here; fails in kibbutz-childrens-house-no-implicit, which is this entry minus R2 (differs_on care_assigned_by_sex); subject_cannot_exit reachable (R4 bars sleep_home); care_and_sanction_same_role violated (the committee sanctions, the metapelet cares). Deviations from plans/institutions-batch2.md: R1 is '(assign committee x) when (member x)' rather than '(assign committee metapelet)', because an action instance no may/must rule names is disabled, so the draft's ablation (drop R2 -> assign male_member) only bites if R1 covers the man; R4 is a disability (or_else null) per the ADR 0013 exit convention, so R6 is R3's or_else only and its condition is 'true' (the or_else link enables it on breach); sleep_home is a default capacity (flagged on the action since revision 4, 2026-11-04; the former implicit R7 'may sleep_home when true' is deleted) so can_exit is carried by the capacity unless R4 bars it, as in every other entry; the draft's release action is kept but the breaker of R3 is neglect (release clears the condition with the state, so it breaks nothing). Pitfalls: (1) female needs arg_roles [metapelet] or the solver invents a female male_member; (2) an encoder that writes R1 as 'may assign metapelet' hides R2 inside R1 and the no-implicit variant collapses into the original; (3) 'persists' is about what the rules permit, not uptake. Rival reading (notes only): regendering of care came from mothers' demands (SCMP), not from the committee; the entry does not encode who drove the reform. PREREGISTERED 2026-11-04 (before any run; ADR 0015 A6: R8 'metapelet may neglect when assigned', implicit, in KIB_RULES so it flows into the no-implicit pair too): expected effect on this entry's three properties is NONE. care_assigned_by_sex persists (neglect can only clear provides_care, never put it in male hands; at layer 1 the unregulated neglect already fired freely under the trace floor, and making it regulated narrows its firing to the assigned metapelet, which removes no trace that bears on the property); subject_cannot_exit reachable (R4 untouched; sleep_home stays a default capacity); care_and_sanction_same_role violated (the committee's reprimand power and the metapelet's care are untouched; the violating trace needs assign, not neglect). Minimal pair kibbutz-childrens-house-no-implicit: unchanged (fails / reachable / violated), distance to this entry stays 1 with R2 the one separating rule (R8 is in both). isomorphic_to coverture-household at guard+strands: it already reads NO today (matched 0, distance 9: a pre-existing disagreement with the claim as written, found while baselining, not caused by this change) and is expected to stay NO with matched 0 and distance 9, because coverture has no may-rule tagged superadditive for R8 to match and distance = max(8, 9) - 0 is unchanged; not_isomorphic_to police-crisis / cps stay yes. Gate (d): PASS unchanged (persists vs fails, R2 the one separating rule). check-all: 106/106, no inert rule (R8 is a may). Layer 2 (information only): neglect becomes an available action for the assigned metapelet; the baseline ABM run (2026-11-04, before R8) shows the metapelet with no available action at all. PREREGISTERED 2026-11-04 (before any run; R6 guard, accepted decision of 2026-11-04): R6 'may reprimand' gains the condition (assigned x) (ASSUMED: the committee disciplines only a member on the rota; previously 'true', under which the layer-2 ABM had the committee reprimand random members about half the time). Expected effect on the three expected_properties: NONE. care_assigned_by_sex persists (reprimand has no effects; nothing new puts care in male hands); subject_cannot_exit reachable (R4 untouched; sleep_home stays a default capacity); care_and_sanction_same_role violated (can_sanction(committee, x) = (enabled reprimand committee x) now holds only while assigned(x); assigned(metapelet) is in the initial state, so can_sanction(committee, metapelet) is still true in compliant traces while the metapelet provides care, and the property's (= z x) fails exactly as before). The or_else links R2->R6 and R3->R6 are unaffected: under compliance=sanctioned a breach enables the or_else action whatever its condition, and check-all runs strict, where or_else is not read. Minimal pair kibbutz-childrens-house-no-implicit: unchanged (fails / reachable / violated), distance 1 with R2 the separating rule (R6 is in both via KIB_RULES). check-all: 106/106 agreement, no inert rule (R6 is a may); the 'R6: untyped variable(s) [x]' warning stays. Gate: PASS; (d) unchanged (persists vs fails, R2 the one separating rule); (a) 0 inert; (b), (c), (e), (f) untouched (kibbutz is outside the cluster). isomorphic_to coverture-household at guard+strands: stays NO, matched 0, distance 9 (R6's skeleton becomes (may, (role, var), guarded, no or_else, rival); coverture R5 chastise is (may, (var, var), guarded, no or_else, rival): the aim patterns differ, so no new pair); not_isomorphic_to police-crisis / cps stay yes (distances 10 / 11 move by at most 1). Layer 2 (information only; baseline run 2026-11-04 before the guard, 10 seeds x 30 steps, committee adoption split: assign(committee,metapelet) 0.32, reprimand(committee,metapelet) 0.275, reprimand(committee,child) 0.225, reprimand(committee,male_member) 0.18): expected after the guard, reprimand(committee,child) and reprimand(committee,male_member) disappear (never assigned; the committee's R2 breach rate is 0.0 in the baseline) and the committee splits between assign(committee,metapelet) and reprimand(committee,metapelet) (plus 'none' if the material module prefers it); metapelet, male_member and child unchanged. If any verdict flips the guard is reverted, not the expectation. R6 guard tried 2026-11-04 and reverted: care_and_sanction_same_role flipped from violated to holds_to_k (flags vacuous, antecedent-unreachable) in this entry AND in kibbutz-childrens-house-no-implicit (check-all 104/106; gate still PASS). The preregistration above was wrong about which binding carries the verdict: the property quantifies sanction power over the SUBJECT ((is_subject y) and (can_sanction z y) and (provides_care x y) => (= z x)), so the violating trace needs can_sanction(committee, child) = (enabled reprimand committee child), which R6 'true' grants and (assigned child) never does (the child is not a member, so R1 cannot put it on the rota: the antecedent becomes unreachable and the invariant holds vacuously). The guard would have to be '(or (assigned x) (is_subject x))' or the property's reading changed; neither was accepted, so R6 is back to 'true' and the ABM keeps reprimanding random members (committee split with the guard, 10 seeds x 30 steps: assign(committee,metapelet) 0.685, reprimand(committee,metapelet) 0.315, as preregistered for layer 2; without it: 0.32 / 0.275 / child 0.225 / male_member 0.18). Layer-2 reading of R8 at step 0 (2026-11-04): assigned(metapelet) is in the entry's `initial` (_kib_init, alongside provides_care(metapelet, child)), so Reference.initial_split puts it in the fixed set and the ABM's step-0 state carries it; neglect(metapelet, child) is therefore a power at step 0 (verified with Reference.power on the ABM's initial state: available_for('metapelet') = [neglect]); the slice-3 observation that it was not predates R8 reaching institutions.json, and the metapelet's 'none' adoption is a choice (neglect breaches R3, sanctioned by R6), not an absence of power; no rule change. DISAGREEMENT 2026-11-04: iso with coverture-household at guard+strands reads NO (matched 0, distance 9) under the current matcher; claim not edited; cause unexamined (candidate: the matcher needs the same strand tag on R3 and coverture R3 and a shared guard shape). Encoder observation, not a cause finding: rules_iso.rule_skeleton keys the aim by literal-role vs variable positions, and this entry's R3 aim names roles (provides_care metapelet child) while coverture R3 uses bound variables (provides_care w h). BATCH 3c (2026-11-09, plans/faithfulness-batch.md section 8, preregistered): R8 'metapelet may neglect when assigned' (implicit, added for ADR 0015 A6) is deleted and `neglect` carries `default_capacity: true` (README convention): enabled unless a disability bars it, which is what the may gave; R5 is conditioned on the free fluent visiting_time. Both inherited by kibbutz-childrens-house-no-implicit. Known limit, not tested: whether the frozen layer-2 ABM honours `default_capacity` for the R3 breaker (a code read says Reference.power does).",
   "initial": [
    "(female metapelet)",
    "(is_subject child)",
@@ -5974,6 +5979,9 @@
    "(member male_member)",
    "(assigned metapelet)",
    "(provides_care metapelet child)"
+  ],
+  "initial_free": [
+   "visiting_time"
   ]
  },
  {
@@ -6078,6 +6086,14 @@
     "arg_roles": [
      "child"
     ]
+   },
+   {
+    "name": "visiting_time",
+    "arity": 1,
+    "gloss": "it is the daily visiting time for the child (the read page: 2-3 hours a day; exogenous)",
+    "arg_roles": [
+     "child"
+    ]
    }
   ],
   "actions": [
@@ -6144,7 +6160,8 @@
       ],
       "value": false
      }
-    ]
+    ],
+    "default_capacity": true
    },
    {
     "name": "visit",
@@ -6225,13 +6242,13 @@
     "attribute": "male_member",
     "deontic": "may",
     "aim": "(visit male_member child)",
-    "conditions": "true",
+    "conditions": "(visiting_time child)",
     "or_else": null,
     "strand": "superadditive",
     "implicit": false,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment' ... 'visited their parents for 2-3 hours a day' (the page prints an en dash). Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited."
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment' ... 'visited their parents for 2-3 hours a day' (the page prints an en dash). Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited. Re-encoded 2026-11-09 (batch 3c, A3): the condition visiting_time (a free fluent on the child) replaces 'true'; the rule no longer says 'at any time'."
    },
    {
     "id": "R6",
@@ -6245,19 +6262,6 @@
     "kind": "norm",
     "sanctioner": "none",
     "source": "implicit: the committee / general assembly disciplines a member who neglects the rota (R3's or_else). Guard (assigned x) tried 2026-11-04 and reverted (see the entry notes): with it can_sanction(committee, child) is unreachable and care_and_sanction_same_role flips to holds_to_k (vacuous). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(committee, x) = reprimand enabled (R6)"
-   },
-   {
-    "id": "R8",
-    "attribute": "metapelet",
-    "deontic": "may",
-    "aim": "(neglect metapelet child)",
-    "conditions": "(assigned metapelet)",
-    "or_else": null,
-    "strand": "superadditive",
-    "implicit": true,
-    "kind": "norm",
-    "sanctioner": "none",
-    "source": "implicit, added 2026-11-04 per ADR 0015 A6 (strict enabledness at layer 2: an action needs a may/must rule) so that the breaker of R3 is an enabled action for the layer-2 ABM: the metapelet can always fail the children's house, and that is the choice R3's or_else R6 answers. Under layer 1 the permissive floor already let the unregulated neglect fire in traces, so no verdict should change; the rule makes neglect regulated, which narrows its firing to the assigned metapelet (the only bearer of R3). Condition mirrors R3: neglect is a breach only while assigned. Tagged superadditive as the care strand's own breach (R3), as companion R10 `may feed` is tagged for the restore. UNVERIFIED (general knowledge; no source opened)"
    }
   ],
   "source_text": "Construction: kibbutz-childrens-house with R2 (the implicit 'never a man in the children's house') deleted; nothing historical corresponds to it. The explicit rules are unchanged: R1 lets the committee assign any member.",
@@ -6283,6 +6287,9 @@
    "(member male_member)",
    "(assigned metapelet)",
    "(provides_care metapelet child)"
+  ],
+  "initial_free": [
+   "visiting_time"
   ]
  },
  {
@@ -11627,7 +11634,8 @@
       ],
       "value": false
      }
-    ]
+    ],
+    "default_capacity": true
    },
    {
     "name": "leave_unbound_pledge",
@@ -11723,19 +11731,6 @@
     "kind": "norm",
     "sanctioner": "none",
     "source": "Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] (the practice; each step is a cohort decision, so the rule stays enabled while a subject exists). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule: no text says a family 'may' bind, the convention presupposes it Retagged norm 2026-11-08 (batch 3b, B4 ruling): Mackie's convention is unwritten; the marriage market, not a body, enforces it."
-   },
-   {
-    "id": "R2",
-    "attribute": "family",
-    "deontic": "may",
-    "aim": "(leave_unbound family daughter)",
-    "conditions": "(is_subject daughter)",
-    "or_else": null,
-    "strand": "tying",
-    "implicit": true,
-    "kind": "norm",
-    "sanctioner": "none",
-    "source": "implicit: leaving a daughter unbound is always physically open to the family; R3 is what sanctions it. Per ADR 0015 A6 every action an agent may take needs a may rule. UNVERIFIED (reconstructed from the convention account; no primary text opened)"
    },
    {
     "id": "R3",
@@ -11852,7 +11847,7 @@
    "leave_unbound"
   ],
   "initial_practice": "bind",
-  "notes": "Layer-2 gate (a) institution. Mackie's convention: a family binds because every other family binds and suitors expect it (R3 sanctioned norm, R5 the market's refusal, R6/R7 the marriage condition); the campaign's pledge associations (R4) create a marriage pool in which an unbound daughter is marriageable, so the sanction R5 lapses for pledged families and leave_unbound (R2) becomes costless once enough neighbours pledge. Deviations from the task sketch: no matchmaker/community role (no source gives one a rule); a `suitor` role instead, because the sanction needs an actor and Mackie's sanction is the other side of the market; the pledge's son half is a second pledge action R10 accept_match_pledge (suitor) read by R5/R6 (until 2026-11-04 it was folded into the family's pledge; encoding review finding 2); marriageable is derived (ADR 0013) from R7 rather than asserted; R3 is unconditional and R5 carries the (not pledged) condition, so that the pledge changes nothing at layer 1 (the preregistration the gate pair needs). Sources: every text was read as a search snippet, none as a page (network closed in this session); the abstract sentences are verbatim from the index, everything else is [R] or UNVERIFIED and says so per rule. PREREGISTERED (2026-11-04, before any run; layer 1 under init declared, strict compliance, step one): binding_practised PERSISTS in footbinding AND in footbinding-no-pledge (bound(daughter) is initial; the only action that clears it, leave_unbound, is forbidden by the sanctioned norm R3, which strict compliance never breaches; the pledge R4 changes nothing at layer 1 because the norm R3 is unconditional and only the sanction R5 reads pledged). marriage_requires_binding HOLDS_TO_K in both (R7 is the only marry_off rule and its condition is bound-or-pledged; non-vacuous because marriageable(family, daughter) is true at t=0). subject_cannot_exit and dependent_cannot_exit REACHABLE in both (t=0: is_subject(daughter) and R9 bars refuse_binding). The pair's layer-1 verdicts are IDENTICAL (minimal_pair_of.differs_on is null on purpose: the pair differs only at layer 2). Expected warnings: can_sanction, provides_care, has_standing, can_claim_for undeclared (no care or standing here); care_and_sanction_same_role is not expected (it would be vacuous: no provides_care). Isomorphism: not_isomorphic_to the care+control cluster (no carer, no sanctioner over a cared-for subject; the sanction here is a counterparty's refusal); isomorphic_to nothing (no entry has the convention shape). Information only, not an expectation: under --compliance sanctioned binding_practised should FAIL in both (leave_unbound may fire and pay the sanction). PREREGISTERED (2026-11-04, encoding review finding 2, written and committed before the first run with the suitor pledge): adding accept_match_pledge(suitor, daughter) [effect pledged(suitor)] with rule R10 suitor may accept_match_pledge, and reading (pledged suitor) in R5 (and-not) and R6 (or), changes NO layer-1 verdict in footbinding or footbinding-no-pledge: binding_practised persists, marriage_requires_binding holds_to_k, subject_cannot_exit and dependent_cannot_exit reachable in both; the new pledge only lifts the sanction R5 (and widens R6), R3 is unconditional, R7 is untouched, and pledged is a fluent per role (footbinding-no-pledge strips BOTH pledge actions and both pledge rules R4 and R10, so nothing sets pledged(suitor) there). Iso: still none at every level against the care+control cluster; isomorphic_to nothing. Expected warnings unchanged (can_sanction, provides_care, has_standing, can_claim_for undeclared). Layer 2 (information, not an expectation): pledged(suitor) is role-level too (A2), so one suitor's pledge lifts R5 for every suitor, the same coarseness as pledged(family): the A2 caveat now applies on both sides; gate (a)'s _has_pledges reading is unchanged (true via either pledge) and ablate_pledges strips both. If any verdict flips, the drift is recorded here and the expectations are not edited. RESULT (2026-11-04, after the run, commit b6f48aa preceding it): no drift. check-all 115/115 with all four verdicts as preregistered in both entries; `phil rules gate` PASS; pytest 15 passed; no warning printed for either entry (none was printed before the change either). ABM information, `--seeds 5 --steps 60 --modules material,coordination`: bound 1.0 in every seed (persistence), pledged 0.667 over seeds, i.e. true on the family and the suitor role tuple and not the daughter's: the A2 caveat on both sides, as the preregistration said; breach, sanction and unavoidable rates 0. Drift 2026-11-04 (encoding review finding 3): marriage_requires_binding is by construction (marriageable is derived from R7's enabledness and R7's condition is bound-or-pledged, so the property restates the rule); kept in expected_properties for the record, not evidence; the property carries by_construction: true, which the engine ignores. Layer 1 has one cohort (encoding review 2026-11-04 finding 4): one daughter, bound at t=0, and `married` never clears, so no trace shows a per-cohort binding decision before the market; a `new_cohort` action clearing bound/married is deferred to the author. LAYER 2 (for the engine's coordination module, which is a stub at writing): the actions the module should treat as `coordinated` are bind and leave_unbound (a family's choice pays only when enough neighbouring families choose the same, Mackie's marriage-market assurance game); the pledge is leave_unbound_pledge (A3 naming convention, counts as adoption of leave_unbound for neighbours' thresholds). philengine has no action tag for this yet (ActionDecl has no `tags`), so the entry carries an ASSUMED extra field `coordinated: [bind, leave_unbound]` that pydantic ignores. Two things the engine agent should know: (1) state is role-level (A2 deferred), so `pledged(family)` flips for every family when one agent pledges and `Reference.successor` lets set-true beat set-false, so bound(daughter) stays true while any family still binds: collapse of binding_practised needs every family to leave unbound in one step; the gate's collapse reading should probably use the adoption share of leave_unbound instead, or the module should read pledges per agent; (2) `payoffs` sets bind and leave_unbound both to 1.0 (the A1 default made explicit) so the gate can sweep them; the sanction R5 is what the material run prices.",
+  "notes": "Layer-2 gate (a) institution. Mackie's convention: a family binds because every other family binds and suitors expect it (R3 sanctioned norm, R5 the market's refusal, R6/R7 the marriage condition); the campaign's pledge associations (R4) create a marriage pool in which an unbound daughter is marriageable, so the sanction R5 lapses for pledged families and leave_unbound (R2) becomes costless once enough neighbours pledge. Deviations from the task sketch: no matchmaker/community role (no source gives one a rule); a `suitor` role instead, because the sanction needs an actor and Mackie's sanction is the other side of the market; the pledge's son half is a second pledge action R10 accept_match_pledge (suitor) read by R5/R6 (until 2026-11-04 it was folded into the family's pledge; encoding review finding 2); marriageable is derived (ADR 0013) from R7 rather than asserted; R3 is unconditional and R5 carries the (not pledged) condition, so that the pledge changes nothing at layer 1 (the preregistration the gate pair needs). Sources: every text was read as a search snippet, none as a page (network closed in this session); the abstract sentences are verbatim from the index, everything else is [R] or UNVERIFIED and says so per rule. PREREGISTERED (2026-11-04, before any run; layer 1 under init declared, strict compliance, step one): binding_practised PERSISTS in footbinding AND in footbinding-no-pledge (bound(daughter) is initial; the only action that clears it, leave_unbound, is forbidden by the sanctioned norm R3, which strict compliance never breaches; the pledge R4 changes nothing at layer 1 because the norm R3 is unconditional and only the sanction R5 reads pledged). marriage_requires_binding HOLDS_TO_K in both (R7 is the only marry_off rule and its condition is bound-or-pledged; non-vacuous because marriageable(family, daughter) is true at t=0). subject_cannot_exit and dependent_cannot_exit REACHABLE in both (t=0: is_subject(daughter) and R9 bars refuse_binding). The pair's layer-1 verdicts are IDENTICAL (minimal_pair_of.differs_on is null on purpose: the pair differs only at layer 2). Expected warnings: can_sanction, provides_care, has_standing, can_claim_for undeclared (no care or standing here); care_and_sanction_same_role is not expected (it would be vacuous: no provides_care). Isomorphism: not_isomorphic_to the care+control cluster (no carer, no sanctioner over a cared-for subject; the sanction here is a counterparty's refusal); isomorphic_to nothing (no entry has the convention shape). Information only, not an expectation: under --compliance sanctioned binding_practised should FAIL in both (leave_unbound may fire and pay the sanction). PREREGISTERED (2026-11-04, encoding review finding 2, written and committed before the first run with the suitor pledge): adding accept_match_pledge(suitor, daughter) [effect pledged(suitor)] with rule R10 suitor may accept_match_pledge, and reading (pledged suitor) in R5 (and-not) and R6 (or), changes NO layer-1 verdict in footbinding or footbinding-no-pledge: binding_practised persists, marriage_requires_binding holds_to_k, subject_cannot_exit and dependent_cannot_exit reachable in both; the new pledge only lifts the sanction R5 (and widens R6), R3 is unconditional, R7 is untouched, and pledged is a fluent per role (footbinding-no-pledge strips BOTH pledge actions and both pledge rules R4 and R10, so nothing sets pledged(suitor) there). Iso: still none at every level against the care+control cluster; isomorphic_to nothing. Expected warnings unchanged (can_sanction, provides_care, has_standing, can_claim_for undeclared). Layer 2 (information, not an expectation): pledged(suitor) is role-level too (A2), so one suitor's pledge lifts R5 for every suitor, the same coarseness as pledged(family): the A2 caveat now applies on both sides; gate (a)'s _has_pledges reading is unchanged (true via either pledge) and ablate_pledges strips both. If any verdict flips, the drift is recorded here and the expectations are not edited. RESULT (2026-11-04, after the run, commit b6f48aa preceding it): no drift. check-all 115/115 with all four verdicts as preregistered in both entries; `phil rules gate` PASS; pytest 15 passed; no warning printed for either entry (none was printed before the change either). ABM information, `--seeds 5 --steps 60 --modules material,coordination`: bound 1.0 in every seed (persistence), pledged 0.667 over seeds, i.e. true on the family and the suitor role tuple and not the daughter's: the A2 caveat on both sides, as the preregistration said; breach, sanction and unavoidable rates 0. Drift 2026-11-04 (encoding review finding 3): marriage_requires_binding is by construction (marriageable is derived from R7's enabledness and R7's condition is bound-or-pledged, so the property restates the rule); kept in expected_properties for the record, not evidence; the property carries by_construction: true, which the engine ignores. Layer 1 has one cohort (encoding review 2026-11-04 finding 4): one daughter, bound at t=0, and `married` never clears, so no trace shows a per-cohort binding decision before the market; a `new_cohort` action clearing bound/married is deferred to the author. LAYER 2 (for the engine's coordination module, which is a stub at writing): the actions the module should treat as `coordinated` are bind and leave_unbound (a family's choice pays only when enough neighbouring families choose the same, Mackie's marriage-market assurance game); the pledge is leave_unbound_pledge (A3 naming convention, counts as adoption of leave_unbound for neighbours' thresholds). philengine has no action tag for this yet (ActionDecl has no `tags`), so the entry carries an ASSUMED extra field `coordinated: [bind, leave_unbound]` that pydantic ignores. Two things the engine agent should know: (1) state is role-level (A2 deferred), so `pledged(family)` flips for every family when one agent pledges and `Reference.successor` lets set-true beat set-false, so bound(daughter) stays true while any family still binds: collapse of binding_practised needs every family to leave unbound in one step; the gate's collapse reading should probably use the adoption share of leave_unbound instead, or the module should read pledges per agent; (2) `payoffs` sets bind and leave_unbound both to 1.0 (the A1 default made explicit) so the gate can sweep them; the sanction R5 is what the material run prices. BATCH 3c (2026-11-09, plans/faithfulness-batch.md section 8, preregistered): R2 'family may leave_unbound when subject' (implicit, added for ADR 0015 A6) is deleted and `leave_unbound` carries `default_capacity: true` (README convention): enabled unless a disability bars it, which is what the may gave; R3 (a sanctioned must_not) punishes its exercise and does not remove it. Inherited by footbinding-no-pledge. Known limit, not tested: whether the frozen layer-2 ABM honours `default_capacity` for the R3 breaker (a code read says Reference.power does).",
   "initial": [
    "(is_subject daughter)",
    "(bound daughter)"
@@ -11963,7 +11958,8 @@
       ],
       "value": false
      }
-    ]
+    ],
+    "default_capacity": true
    },
    {
     "name": "marry_off",
@@ -12027,19 +12023,6 @@
     "kind": "norm",
     "sanctioner": "none",
     "source": "Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] (the practice; each step is a cohort decision, so the rule stays enabled while a subject exists). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule: no text says a family 'may' bind, the convention presupposes it Retagged norm 2026-11-08 (batch 3b, B4 ruling): Mackie's convention is unwritten; the marriage market, not a body, enforces it."
-   },
-   {
-    "id": "R2",
-    "attribute": "family",
-    "deontic": "may",
-    "aim": "(leave_unbound family daughter)",
-    "conditions": "(is_subject daughter)",
-    "or_else": null,
-    "strand": "tying",
-    "implicit": true,
-    "kind": "norm",
-    "sanctioner": "none",
-    "source": "implicit: leaving a daughter unbound is always physically open to the family; R3 is what sanctions it. Per ADR 0015 A6 every action an agent may take needs a may rule. UNVERIFIED (reconstructed from the convention account; no primary text opened)"
    },
    {
     "id": "R3",
@@ -12376,12 +12359,12 @@
     "deontic": "must",
     "aim": "(decant provider child)",
     "conditions": "(gestated_ex_utero child)",
-    "or_else": "R6",
+    "or_else": null,
     "strand": "superadditive",
     "implicit": false,
     "kind": "formal",
-    "sanctioner": "institution",
-    "source": "Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). The birth duty moves from a body to a device operator; decant never sets birthing_parent. Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04)."
+    "sanctioner": "none",
+    "source": "Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from 'the tyranny of their reproductive biology' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 'The Ultimate Revolution' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). The birth duty moves from a body to a device operator; decant never sets birthing_parent. Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04). Sanction dropped 2026-11-09 (batch 3c, B7): the registry reprimand (or_else R6) was an encoder invention, no text names a sanction; R3 is now an unsanctioned duty, kind formal, sanctioner none."
    },
    {
     "id": "R4",
@@ -12420,7 +12403,7 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "the registry's sanction for R3 (or_else target; R5's link removed 2026-11-04). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+    "source": "the registry's former sanction for R3 (or_else target until 2026-11-09, batch 3c B7; R5's link removed 2026-11-04); now linked to no rule, kept so the pair's rule set stays symmetric. Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
    },
    {
     "id": "R7",
@@ -12698,12 +12681,12 @@
     "deontic": "must",
     "aim": "(give_birth gestator child)",
     "conditions": "(gestates gestator child)",
-    "or_else": "R6",
+    "or_else": null,
     "strand": "rival",
     "implicit": false,
     "kind": "formal",
-    "sanctioner": "state",
-    "source": "the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04)."
+    "sanctioner": "none",
+    "source": "the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04). Sanction dropped 2026-11-09 (batch 3c, B7), as in ectogenesis R3, so the guard-level iso claim is read on the same or_else bit both sides."
    },
    {
     "id": "R4",
@@ -12742,7 +12725,7 @@
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "the registry's sanction for R3 (or_else target; R5's link removed 2026-11-04). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+    "source": "the registry's former sanction for R3 (or_else target until 2026-11-09, batch 3c B7; R5's link removed 2026-11-04); now linked to no rule, kept so the pair's rule set stays symmetric. Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
    },
    {
     "id": "R7",

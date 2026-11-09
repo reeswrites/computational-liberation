@@ -347,10 +347,31 @@ Any result other than the above is recorded in Results against the row it contra
 
 **Nothing above "### Results" is edited after the first run.** Commit this section before any edit, build or run.
 
-### Results
+### Results (2026-11-09, engine at ENGINE_PIN e46f6ea; preregistration commit 9b36553)
 
-(filled after the run)
+Every verdict, gate and match prediction held; no stop condition met. Verbatim summary lines from `scripts/checks.sh`:
+
+- `build.py --check`: `ok: 33 institutions, 43 properties, JSON and 34 cards match src/`.
+- `phil rules diff --baseline data/verdicts-baseline.json`: `0 changed, 0 added, 0 removed (of 192 rows)`.
+- `phil rules check-all`: `agreement: 192/192 = 100%`.
+- `phil rules gate`: `GATE PASS  (deferred criteria do not fail the gate)`; `b PASS coverture-household~police-crisis@guard+strands: partial(care+control); coverture-household~cps@guard+strands: partial(care+control); police-crisis~cps@guard+strands: partial(care+c...`; `e PASS agreement 192/192 = 100% (min 60%)`; (d) rerun by hand: `PASS care_assigned_by_sex persists; implicit rule R2 (committee must_not (assign committee male_member)); kibbutz-childrens-house-no-implicit care_assigned_by_sex fails`.
+- `scripts/drop_one_match.py`: `b=PASS rows: 19`; (b) fails on deleting exactly `coverture-household R2, coverture-household R5, coverture-household R6, police-crisis R2, police-crisis R4, police-crisis R11, cps R3, cps R4, cps R10`.
+- `pytest -q`: `40 passed in 100.10s (0:01:40)`.
+- `ALL CHECKS OK`.
+
+Per-property: all 27 rows of the seven touched entries read as preregistered (cps 5, kibbutz and no-implicit 3 each, footbinding and no-pledge 4 each, ectogenesis and surrogacy 4 each); the check-all flags column is `-` on every one of them, so no cps forall property went vacuous with the new free fluent. institutions.json: the two new fluent declarations, two `initial_free` changes, two conditions, two `default_capacity` flags, two `or_else`/`sanctioner` pairs, the R8/R2 rows gone from kibbutz, kibbutz-no-implicit, footbinding and footbinding-no-pledge (emitted rule rows 291 -> 287), and `source`/`gloss`/`notes` strings; 7 cards regenerated (cps, kibbutz-childrens-house and -no-implicit, footbinding and -no-pledge, ectogenesis, gestational-surrogacy); nothing else changed.
+
+Iso (reported, not a stop): cps~police-crisis at `--cond guard` unchanged, `matched=5/10|11 distance=6` with strands off (R1->R2 still a pair) and on (R1 unmatched, care+control sub-signature 5/10|11), as the refined prediction said. At `--cond exact` (run against the baseline JSON for comparison) the count is unchanged, `2/10|11 distance=9`, but the pairing shifted: baseline `R1->R2, R3->R11`; now `R3->R11, R10->R4`. That is the A1 "may drop by one" shift, realised at exact level as a swap rather than a drop. ectogenesis~gestational-surrogacy unchanged: `5/7|6 distance=2` strands off with R3->R3 matched, `4/7|6 distance=3` strands on; the guard-level claim is read on the same or_else bit both sides.
+
+Ablation (docs/ablation/2026-11-09-batch3c/, exploratory): cps R1 load 0/0, no flips; R10 the only ranked rule with a flip (dependent/subject_cannot_exit reachable>open), as in batch 2. kibbutz R5 load 0/0 (deregulated table: `visit` has no other rule); R8 row absent; R2 and R4 load 1/1 as in slice 1; R3 load 0 unread; R6~prohibit flips care_and_sanction_same_role violated>holds with orphaned_or_else R2,R3 (pre-existing shape). footbinding R2 row absent; R3 load 1/1 with binding_practised persists>fails and R9 load 1/1 with the exit rows, exactly slice 1's tie, so the default capacity carries R3's breaker as the dropped `may` did. ectogenesis R3 load 0/0 unread; R5 1/1 tying, R1~prohibit and R4 / R4~prohibit 1/1 as before; R6 and R6~prohibit load 0 with no orphaned_or_else column entry (nothing points at R6 any more).
+
+Drift (none in a verdict, gate or match):
+1. The ablation prediction said cps R1's deletion "deregulates `investigate`, its sole regulator, as in batch 2". R1 is a `must`; the deregulation flag covers a deleted sole `may`, so R1 sits in the ranked table with load 0, as it did in batch 2 (that report listed it alongside R4/R5/R6 at load 0). The load-0 / no-flip part held; the "deregulated" wording was wrong. Recorded, not edited.
+2. The build prediction said "rule count 131 -> 127 own rules counted across the four files that lose a rule"; the figure mixes two counts. What changed: two own rules deleted (footbinding R2, kibbutz R8), four emitted rule rows gone (the variants inherit the drop), 291 -> 287 in institutions.json. Recorded, not edited.
+3. Refined before the run and inside the preregistration, so not drift: the A1 paragraph's iso shift was placed at exact level; at guard level the counts did not move.
+
+Surprises ledger: none (no verdict moved; nothing unpredicted was produced by a run). Known limit stands as written (ABM `default_capacity`, not tested).
 
 ### Council
 
-(pending)
+Pending: correctness seat (the two new free fluents added worlds: confirm no forall property became vacuous, the check-all flags column read `-` on every touched row; confirm `default_capacity` enabledness on `leave_unbound` and `neglect` equals the dropped `may`: the conversion lives on the two action declarations, `default_capacity: true`, in footbinding.yaml and kibbutz-childrens-house.yaml, inherited by the variants), faithfulness seat (cps R1 and kibbutz R5 conditions against the WIC 328(a) and Wikipedia excerpts; the two dropped sanctions), card-only seat (the regenerated cards of the seven touched entries).

@@ -46,7 +46,7 @@ Hand-reconstructed institutions for the Phase 0 institutions family (`plans/inst
 - `or_else: null` on a `must_not` means a disability (no power exists), not an unenforced prohibition
   (coverture R4/R7, crisis-team R4, companion-ownership R9, and since ADR 0013 every subject-side exit bar:
   coverture R6, police-crisis R4, cps R10, companion R6). Lowering should not invent a sanctioner.
-- A capacity a person of that kind holds by default (leave, sue, sleep_home, refuse_binding, contract) is not written
+- A capacity a person of that kind holds by default (leave, sue, sleep_home, refuse_binding, contract, leave_unbound, neglect) is not written
   as an implicit `may ... when true`: the action carries `default_capacity: true`, it is enabled unless an express
   disability (`must_not`, `or_else` null) bars it, and a sanctioned `must_not` only punishes its exercise. Powers are
   conferred by `may`/`must`. See "Default-capacity actions (revision 4)" below.

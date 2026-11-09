@@ -29,19 +29,17 @@
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
 | R1 | family | may [kind: norm; sanctioner: none] | `(bind family daughter)` | `(is_subject daughter)` | none | tying | (practice, not written) A family may bind its daughter when she is a subject of the institution (Mackie 1996). | unverified | [full source under Sources, R1](#src-r1) https://www.jstor.org/stable/2096305 |
-| R2 | family | may (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(leave_unbound family daughter)` | `(is_subject daughter)` | none | tying | (practice, not written) A family may leave its daughter unbound when she is a subject of the institution. | unverified | implicit: leaving a daughter unbound is always physically open to the family; R3 is what sanctions it. Per ADR 0015 A6 every action an agent may take needs a may rule. UNVERIFIED (reconstructed from the convention account; no primary text opened) |
 | R3 | family | must not (implicit) [kind: norm; sanctioner: peers] (sanctioner derived, unreviewed) | `(leave_unbound family daughter)` | `(is_subject daughter)` | R5 `(reject_match suitor daughter)` | tying | (practice, not written) A family must not leave its daughter unbound when she is a subject, or else the suitor may reject the match (R5) (Mackie 1996). | unverified | [full source under Sources, R3](#src-r3) https://www.jstor.org/stable/2096305 |
 | R5 | suitor | may (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(reject_match suitor daughter)` | `(and (is_subject daughter) (not (bound daughter)) (not (pledged family)) (not (pledged suitor)))` | none | rival | (practice, not written) A suitor may reject the match when the daughter is a subject, is not bound, and neither the family nor the suitor has pledged (Mackie 1996). | unverified | [full source under Sources, R5](#src-r5) https://www.jstor.org/stable/2096305 |
 | R6 | suitor | may [kind: norm; sanctioner: none] | `(accept_match suitor daughter)` | `(and (is_subject daughter) (or (bound daughter) (pledged family) (pledged suitor)))` | none | tying | (practice, not written) A suitor may accept the match when the daughter is a subject and is bound, or the family or the suitor has pledged (Mackie 1996). | unverified | [full source under Sources, R6](#src-r6) https://www.jstor.org/stable/2096305 |
 | R7 | family | may [kind: norm; sanctioner: none] | `(marry_off family daughter)` | `(and (is_subject daughter) (or (bound daughter) (pledged family)))` | none | tying | (practice, not written) A family may marry off its daughter when she is a subject and is bound or the family has pledged (Mackie 1996). | recalled | [full source under Sources, R7](#src-r7) https://www.jstor.org/stable/2096305 |
 | R9 | daughter | must not (disability) (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(refuse_binding daughter)` | `(is_subject daughter)` | none | rival | (practice, not written) The daughter cannot refuse binding while she is a subject: no such power exists (ADR 0013). | unverified | [full source under Sources, R9](#src-r9) |
 
-**Default capacities** (an action a person of that kind can do unless an express disability removes it): refuse_binding
+**Default capacities** (an action a person of that kind can do unless an express disability removes it): leave_unbound, refuse_binding
 
 ## Variables
 
 - R1: no variables
-- R2: no variables
 - R3: no variables
 - R5: no variables
 - R6: no variables
@@ -57,10 +55,6 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 - `mackie-1996` (abstract; date n/a): **snippet** 2026-11-04: "Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market"
 - no work named: **unverified** (the rule (a family 'may' bind) is reconstructed from the convention account; no primary text opened: UNVERIFIED as a rule)
-
-**R2**
-
-- no work named: **unverified** (rationale: implicit: leaving a daughter unbound is always physically open to the family; R3 is what sanctions it. Per ADR 0015 A6 every action an agent may take needs a may rule)
 
 <a id="src-r3"></a>
 **R3**: SANCTIONED NORM (implicit; a convention, not a written rule): a family that leaves a daughter unbound loses her on the marriage market: Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]. or_else R5 (the suitor's rejection) is the market sanction; the norm is stated unconditionally because it is the wider society's expectation, and it is the SANCTION (R5) that a pledge association lifts, not the norm. Tying: binding is tied to marriage, which is Mackie's whole point

@@ -31,10 +31,10 @@
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
 | R2 (replaced) | provider | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(implant provider gestator child)` | `true` | none | rival | The provider may implant an embryo in the gestator for the child at any time (gestational surrogacy). | unverified | gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. |
-| R3 (replaced) | gestator | must [kind: formal; sanctioner: state] | `(give_birth gestator child)` | `(gestates gestator child)` | R6 `(reprimand registry x)` | rival | The gestator must give birth to the child when she is gestating it, or else the registry may reprimand (R6). | unverified | the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04). |
+| R3 (replaced) | gestator | must [kind: formal; sanctioner: none] | `(give_birth gestator child)` | `(gestates gestator child)` | none | rival | The gestator must give birth to the child when she is gestating it; no sanction is encoded. | unverified | [full source under Sources, R3](#src-r3) |
 | R4 | intended_parent | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child))` | none | superadditive | An intended parent may provide care for the child when a registered parent of the child and the child is a born subject. | unverified | [full source under Sources, R4](#src-r4) |
 | R5 | intended_parent | must (implicit) [kind: strategy; sanctioner: none] (strategy: nobody enforces this, yet the engine reads it as a duty under strict compliance) | `(provide_care intended_parent child)` | `(and (parent intended_parent child) (is_subject child) (female intended_parent))` | none | tying | (practice, not written; nobody enforces it) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached. | unverified | [full source under Sources, R5](#src-r5) |
-| R6 | registry | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(reprimand registry x)` | `true` | none | tying | The registry may reprimand at any time (the sanction for R3). | unverified | [full source under Sources, R6](#src-r6) |
+| R6 | registry | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(reprimand registry x)` | `true` | none | tying | The registry may reprimand at any time (formerly the sanction for R3; since batch 3c linked to no rule). | unverified | [full source under Sources, R6](#src-r6) |
 | R7 | registry | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(register_parentage registry intended_parent child)` | `(is_subject child)` | none | tying | The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition. | unverified | [full source under Sources, R7](#src-r7) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): none
@@ -56,7 +56,8 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 - no work named: **unverified** (rationale: gestational surrogacy: the clinic implants an embryo in the gestator. Statute citations still to be added (state surrogacy acts vary))
 
-**R3**
+<a id="src-r3"></a>
+**R3**: the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary). UNVERIFIED: no statute or case opened. Gestator consent and the right to keep the child are out of scope (ASSUMED author decision 2026-11-04). Sanction dropped 2026-11-09 (batch 3c, B7), as in ectogenesis R3, so the guard-level iso claim is read on the same or_else bit both sides.
 
 - no work named: **unverified** (rationale: the gestator carries to term and gives birth; the rival input sits in one body. Statute citations still to be added (state surrogacy acts vary))
 
@@ -72,7 +73,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** ('the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it)': the reason for the female trigger; the row gives no citation and none is in the bibliography (a search lead for it is in plans/sourcing-worklist-other.md: add an entry and upgrade when opened))
 
 <a id="src-r6"></a>
-**R6**: the registry's sanction for R3 (or_else target; R5's link removed 2026-11-04). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
+**R6**: the registry's former sanction for R3 (or_else target until 2026-11-09, batch 3c B7; R5's link removed 2026-11-04); now linked to no rule, kept so the pair's rule set stays symmetric. Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)
 
 - no work named: **unverified** (rationale: the registry's sanction for R3 (or_else target; R5's link removed 2026-11-04). Condition 'true' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule))
 
@@ -100,7 +101,7 @@ Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision
 Extends [ectogenesis](ectogenesis.md); one line per change:
 - R1 dropped: A provider may start gestation of a child at any time (Firestone 1970).
 - R2 replaced: was "The provider may transfer the child to the device when the child is in gestation (Firestone 1970)." now "The provider may implant an embryo in the gestator for the child at any time (gestational surrogacy)."
-- R3 replaced: was "The provider must decant the child when the child has been gestated ex utero, or else the registry may reprimand (R6) (Firestone 1970)." now "The gestator must give birth to the child when she is gestating it, or else the registry may reprimand (R6)."
+- R3 replaced: was "The provider must decant the child when the child has been gestated ex utero (Firestone 1970); no sanction is encoded." now "The gestator must give birth to the child when she is gestating it; no sanction is encoded."
 - adds role gestator (the surrogate whose body carries the child; the rival input (one body, a short window; docs/theory.md 'Pregnancy, birth, nursing'))
 - removes fluent gestated_ex_utero
 - changes fluent birthing_parent (p gave birth to c): arg roles becomes ["gestator", "child"]
