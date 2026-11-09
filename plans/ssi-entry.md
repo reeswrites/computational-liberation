@@ -202,3 +202,84 @@ Initial-state override: `phil rules ablate` and `phil rules check` have no flag 
 | over_limit_ineligible | holds_to_k | holds_to_k | no |
 
 Reading: starting married and holding out, deleting R4 flips only `penalty_reaches_unmarried` (the pair can still `divorce` and keep holding out, but no rule then grants the couple rate to an unmarried pair), while `married_couple_rated` keeps holding because R2 covers the married pair whatever its conduct, so the derived `couple_rate` does read R2 and R4 as two routes and R4 alone is never load-bearing for a married pair. The plain ablation's R4 row says the same (one flip, load 0/0 because the flipped property is a failure_mode); the only R4 verdict movement on `married_couple_rated` is the prohibit variant, S5, an artifact of the disability reading, not of the initial state.
+
+## Revision 2 run: preregistered 2026-11-09, before any edit or run
+
+Engine: ENGINE_PIN e46f6ea; the installed philengine checkout is at 50ed97f (PR #6 on top of the pin, "drop the stale dataset copy"; not touched by this batch, a separate session works there). Baseline 192 rows (k=6, strict, step_mode one). Branch `ssi-cohabits` off main d5d3a92. Inputs read: this file in full; data/institutions/src/{ssi-marriage-penalty,ssi-marriage-penalty-individual,_composites,properties,kibbutz-childrens-house}.yaml; data/institutions/README.md (Conventions; "Default-capacity actions (revision 4)"); plans/faithfulness-batch.md section 8 with its post-council fix pass; plans/informal-rules.md "Rulings 2026-11-09" item 2; docs/claims.md C2a/C2b/C2c; docs/reviews/2026-11-08-ssi-faithfulness.md (R2, R3, R6 rows); scripts/checks.sh; data/verdicts-baseline.json (the 15 SSI and composite rows); philengine rules_lower.py `enabled` and rules_gate.py `crit_c` (read only). No `phil` command was run before this commit.
+
+### Scope
+
+Revision 2 items 1 to 4 as ruled, and the kibbutz R2/R3 `sanctioner` retag (plans/informal-rules.md Rulings 2026-11-09 item 2). Not changed: R4 and R7 of the base (conditions, sources, levels); no provenance level; no excerpt; no new provenance item; no `kind`; the pair's entry id; the four `apply_*` actions stay untyped (the Probe A gap stays declared); no must-be encoding (item 2 is a label only); coverture-household-us; no cluster match row; `penalty_reaches_unmarried`, `married_rated_individually` and `over_limit_ineligible` formulas.
+
+Three things found on reading that the brief did not have, decided here before any run and flagged for the author:
+
+(a) **`cohabits` already exists.** The base declares `cohabits` (arity 2, arg_roles [claimant, spouse]) with setters `cohabit` and `separate`; R4 reads it; it is false in `initial` and it is NOT in `initial_free`. So item 1 adds no fluent and no free world: it adds a conjunct to four conditions. No holds_to_k row becomes conditional on a free input.
+
+(b) **Item 1 x item 4 need the two invariant formulas to follow the rules.** `married_couple_rated` and `married_couple_limited` are `(=> (married c s t) (couple_rate|couple_limit c s t))`. Once R2 and R3 carry `cohabits`, a pair that weds without living together violates both in the base, and then dropping R3 flips nothing (violated on both sides), against ruling 4 ("drop R3 alone (flips married_couple_limited)"). The two properties are, by this file's own words, "encoding checks (each restates one rule)"; the rule they restate now reads "a spouse with whom he or she is living". Resolution: the antecedent of both becomes `(and (married c s t) (cohabits c s t))`, glosses reworded. This is a property edit the rulings do not name. Alternative not taken: leave the formulas, in which case the predicted moves would be base and composite `married_couple_rated` and `married_couple_limited` holds_to_k -> violated and the pair would separate on nothing. `married_rated_individually` is NOT edited (it restates no rule); it is predicted to move, below.
+
+(c) **Item 3 x items 1 and 4: only R1 converts.** Ruling 3 names "R1 and the pair's R5/R6" as `may ... when true` rows. The pair's R5/R6 were `when true` only because the five-rule pair replaced them; under ruling 4 the pair is `rules_drop: [R3]` and has no R5/R6 of its own, it inherits the base's, and under ruling 1 those carry a condition. A default capacity cannot carry a condition (README revision 4: enabled "whenever no disability ... holds"). Rule text: base R5 `plain` "The agency may rate the claimant as an individual when the pair are neither married nor holding out"; R6 "may apply the individual resource limit ($2,000) when the pair are neither married nor holding out", and the limit text is for an individual without a spouse "with whom he is living" (faithfulness review R6 row). Both are conditioned powers, not plain liberties. So: **plain liberty: R1 only** (`pay_benefit`, `conditions: 'true'`, "the encoder's grant, so that the resource bar in R7 has a power to remove") -> `default_capacity: true` on `pay_benefit`, R1 deleted. **Conditioned, stay rules: R5 and R6** in both entries, with the cohabits condition of item 1. Not done: turning R5/R6 into default capacities with must_not disabilities for couples (it would invert who bears the burden of the text and is a re-encoding nobody ruled).
+
+Known consequence of (c) and ruling 4, recorded not fixed: in the one-rule pair a married pair living together has neither the couple limit (R3 dropped) nor the individual limit (R6 excludes them). The pair is a one-rule deletion in the ADR 0007 sense, not a coherent reform; the old note said the same of dropping R2 alone. The id `ssi-marriage-penalty-individual` and its old name no longer describe it; the id is kept (renaming removes and adds baseline rows), the `name` is rewritten.
+
+### Edits / Build
+
+1. ssi-marriage-penalty.yaml R2 `conditions`: `(married c s)` -> `(and (married c s) (cohabits c s))`. R3 the same. `plain`, `source` tail and provenance `note` of both: "cohabitation condition not encoded; revision 2 item" -> encoded 2026-11-09 (revision 2 item 1), citing 20 CFR 416.1801(c) and 42 U.S.C. 1382(a)(1)(B)(i) as already cited; excerpts and levels untouched.
+2. Same file R5, R6 `conditions`: `(not (or (married c s) (and (cohabits c s) (holds_out c s))))` -> `(not (and (cohabits c s) (or (married c s) (holds_out c s))))`, the exact complement of the two couple routes (R2: married and living together; R4: living together and holding out). `plain`: "neither married nor holding out" -> "not living together as a married or holding-out couple (a married pair living apart is rated individually)".
+3. Same file, item 3: action `pay_benefit` gains `arg_roles: [agency, claimant]` and `default_capacity: true`; rule R1 deleted (ids not renumbered). R7 `plain`/`source` and `notes` say the power R7 removes is now a default capacity. `eligible` gloss unchanged.
+4. Same file, item 2: `name` gains "power reading only"; `notes` gains a "POWER READING ONLY" sentence (every rule is a power the agency holds, not the statute's mandatory duty; the ADR 0009 must-be encoding is a later preregistration) and the revision 2 record; the "Unencoded, revision 2 items" sentence drops the R2/R3 cohabitation gap. `expected_properties.married_rated_individually`: unreachable_open -> reachable.
+5. ssi-marriage-penalty-individual.yaml, item 4: `rules_drop: [R2, R3, R4]` -> `[R3]`; `rules_replace` removed; `minimal_pair_of: {id: ssi-marriage-penalty, rule: R3, differs_on: married_couple_limited}`; `name` rewritten (couple resource limit removed; one-rule pair; power reading only); `expected_properties`: married_couple_rated holds_to_k, married_couple_limited violated, penalty_reaches_unmarried reachable, married_rated_individually reachable, over_limit_ineligible holds_to_k; `notes` records the previous five-rule pair (R2, R3, R4 dropped; R5, R6 replaced by `when true` rows; differs_on married_couple_rated; its five verdicts) and the known consequence above.
+6. properties.yaml: `married_couple_rated` and `married_couple_limited` antecedent `(married c s t)` -> `(and (married c s t) (cohabits c s t))`; glosses reworded ("married and living together"). `married_rated_individually` gloss gains one clause (reachable in the base since revision 2: a married pair living apart).
+7. _composites.yaml coverture-us-ssi: `expected_properties.married_rated_individually`: unreachable_open -> reachable; `notes` gains one sentence (revision 2, power reading only). Nothing else.
+8. kibbutz-childrens-house.yaml R2 and R3: `sanctioner: peers` -> `institution`. The brief also says to drop their `sanctioner_review: derived`; both rows already read `sanctioner_review: reviewed` (only R6 is `derived`, and R6 is not in scope), so there is nothing to drop and `reviewed` stays. kibbutz-childrens-house-no-implicit inherits R3.
+9. `python data/institutions/build.py --write --cards`; data/institutions/README.md line for the SSI pair if it states the pair's shape.
+
+### Predictions
+
+- `build.py --check` after `--write --cards`: ok, 33 institutions, 43 properties, 34 cards. Emitted rule rows 287 -> 286 (base 7 -> 6; composite 14 -> 13; pair 4 -> 5: R2, R4, R5, R6, R7).
+- `phil rules diff --baseline data/verdicts-baseline.json`, first run: **4 changed, 0 added, 0 removed of 192** (so checks.sh prints CHECKS FAILED and exits 1 on the first run, by design):
+
+| # | institution | property | baseline | predicted |
+|---|---|---|---|---|
+| 1 | ssi-marriage-penalty | married_rated_individually | open | reachable |
+| 2 | ssi-marriage-penalty-individual | married_couple_rated | violated | holds_to_k |
+| 3 | ssi-marriage-penalty-individual | penalty_reaches_unmarried | open | reachable |
+| 4 | coverture-us-ssi | married_rated_individually | open | reachable |
+
+- `phil rules check-all`: 192/192 (the three `expected_properties` edits above are these predictions written into the data before the run).
+- `phil rules gate`: PASS; (b) the cluster pairs `partial(care+control)` as now; (e) 192/192. No SSI entry is in a gate criterion.
+- `scripts/drop_one_match.py`: (b) fails on deleting exactly coverture-household R2, R5, R6; police-crisis R2, R4, R11; cps R3, R4, R10; `b=PASS rows: 19`. Unchanged.
+- `pytest -q`: 40 passed.
+- After the baseline is regenerated (`phil rules verdicts --k 6 --no-cache --out data/verdicts-baseline.json`, only if every moved row is one of the four): 192 rows, `0 changed, 0 added, 0 removed (of 192 rows)`, ALL CHECKS OK.
+
+Per-property expectations, k = 6 and 8 (declared, strict, step-mode one), the same at both k:
+
+| Property | ssi-marriage-penalty | ssi-marriage-penalty-individual (drops R3) | coverture-us-ssi |
+|---|---|---|---|
+| married_couple_rated (edited formula) | holds_to_k, non-vacuous | holds_to_k, non-vacuous | holds_to_k |
+| married_couple_limited (edited formula) | holds_to_k, non-vacuous | violated | holds_to_k |
+| penalty_reaches_unmarried | reachable | reachable | reachable |
+| married_rated_individually | reachable (moves) | reachable | reachable (moves) |
+| over_limit_ineligible | holds_to_k | holds_to_k | holds_to_k |
+
+Reasons. married_couple_rated: R2 grants the couple-rate power exactly when married and cohabiting, which is the new antecedent; `wed` then `cohabit` reaches the antecedent by step 2, so no vacuity flag; the pair keeps R2. married_couple_limited: R3 the same in the base and composite; in the pair no rule names `apply_couple_limit`, the derived `couple_limit` is constant false (the engine warns, one warning where the old pair printed two), and the antecedent is reachable, so violated. penalty_reaches_unmarried: R4 (cohabit, present_as_married, never wed) in all three; the pair now keeps R4, hence its move. married_rated_individually: after `wed` and before any `cohabit` the pair are married and R5's new condition holds (not cohabiting), so `individual_rate` is true of a married pair: reachable at step 1 in the base and the pair, and in the composite through `wed` or coverture's `marry` (cohabits starts false and no coverture action sets it). over_limit_ineligible: `pay_benefit` is a default capacity removed by R7's disability exactly when resources are over the limit, the same Bool as `true and not over` under R1; `accumulate` keeps the antecedent reachable.
+
+coverture-us-ssi, the ten coverture rows (dependent_cannot_exit reachable, subject_cannot_exit reachable, care_and_sanction_same_role holds_to_k, no_standing reachable, care_assigned_by_sex violated, financial_dependence holds_to_k, financial_dependence_unpropertied holds_to_k, cannot_contract violated, double_burden open, creditor_shield open): unchanged. The SSI edits touch conditions of effect-less `may` actions and one default-capacity flag on an effect-less action; no `must` is added or removed, so strict-compliance pruning and every coverture fluent's reachable set are as before; `divorce` (S7) is untouched.
+
+Kibbutz (both entries): care_assigned_by_sex persists / fails, subject_cannot_exit reachable, care_and_sanction_same_role violated, unchanged; `sanctioner` is prose the checker does not read (validate needs only none iff or_else null; R2 and R3 keep `or_else: R6`).
+
+Exploratory, reported, not stop conditions:
+- `phil rules ablate --entry ssi-marriage-penalty --k 6,8`: no R1 row; R2 -> married_couple_rated holds_to_k > violated; R3 -> married_couple_limited holds_to_k > violated (still under "deregulated, not ranked"); R4 -> penalty_reaches_unmarried reachable > open; **R5 -> married_rated_individually reachable > open (new flip; R5 is the sole regulator of its action, so expected in the deregulated table)**; R6 none; R7 -> over_limit_ineligible holds_to_k > violated (pay_benefit stays enabled by the default capacity once the bar is gone).
+- `phil rules ablate --entry coverture-us-ssi --k 6,8`: ssi R2 flips married_couple_rated only, R3 married_couple_limited only, R5 married_rated_individually only; no row flips `financial_dependence`.
+- `phil rules iso` base against coverture-household, police-crisis, cps, lease at guard: iso False, `care+control: -`; denominators 6 where they were 7.
+
+Claims afterwards: **C2b stays "refuted as written"** (its evidence, no SSI rule flips financial_dependence in the composite, is predicted to stand; the rule now reads married and living together, which touches no fluent financial_dependence reads). **C2c stays `untested`** (no shared fluent is added; P2c work). C2a unchanged (still vacuous on the 34 older properties). No claim was attached to the five-rule pair in docs/claims.md.
+
+### Drift rule
+
+Any result other than the above is recorded in Results against the row it contradicts and never edited into this section; an unpredicted verdict flip also gets a row in docs/surprises.md. Stop conditions: a changed, added or removed diff row other than the four in the table (then the baseline is NOT regenerated); gate FAIL; a different drop-one set; a build failure not caused by a typo of this batch.
+
+**Nothing above "### Results" is edited after the first run.** Commit this section before any edit, build or run.
+
+### Results
+
+(pending)
