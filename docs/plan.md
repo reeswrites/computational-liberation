@@ -6,6 +6,7 @@ Revised whenever a batch lands. Status words: todo · doing · done · parked ·
 Compute liberation: given institutions as rules and candidate changes, say which change to make first and what it sets off. Five layers (docs/theory.md, Roadmap). No forward claim until layer 3 passes.
 
 Negative space: docs/negative-results.md (refuted, weakened, null, untested, refused, declined, artifact, gate_fail, abandoned).
+Direction tests (proposed 2026-11-09, not yet accepted): plans/direction-tests.md — five questions, one gate (G1), and stop conditions for the approach.
 
 ## Where to pick up (updated 2026-11-09, end of day)
 
