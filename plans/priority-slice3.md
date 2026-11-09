@@ -137,3 +137,12 @@ Parked by the seat: `rebundling` rows beyond the seven entries and any gate crit
 5. Finding 8: docs/claims.md T1 and T11 keep status `untested` and T11's count is unchanged; each evidence cell gained the seat's sentence. P9's "the written count moves from 3 of 4 to 4 of 4" is withdrawn as a claim (it stays in the preregistration as written): the seat is right that a layer-1 proxy is not ADR 0016's layer-3 mode, and that the starting "3 of 4" is itself soft.
 6. Findings 10 and 11: no change made; they are author decisions B and D. Not done here: a `~prohibit` rerun, an ADR 0016 or glossary edit, any dataset row.
 7. Engine suite at 1627af0, serial as CI runs it: see the engine PR. Under `pytest -n` one pre-existing test (`test_spawn_workers_match_serial`, untouched by this slice) fails because pools are serial inside an xdist worker; CI does not use `-n`.
+
+### Author rulings (2026-11-09)
+
+Taken in the evening, answering the scope seat's A to D above. Nothing above this heading is edited.
+
+- **A. Rename the engine check.** The engine's `rebundling` check is renamed (for example `load_transfer`; the final name is chosen at implementation) so it does not read as ADR 0016's layer-3 rebundling mode. Chosen over amending ADR 0016's row and the glossary, because the check is a layer-1 rule-set proxy and the ADR's mode is a different thing; renaming the check costs one engine PR, amending the ADR would blur a taxonomy. ADR 0016 and claim T11 stay untouched and untested. Follow-up engine PR.
+- **B. Extend the transfer graph to prohibit variants.** `~prohibit` rows become sources and targets, in their own preregistration. Chosen over ratifying deletions only, because the slice 3 null rested on a small denominator (6 of 30 ordered pairs in kibbutz) and a null on that region says little about the rest.
+- **C. Slice 4 runs on multi-carrier entries.** Cut sets and `phil rules sequence` run on entries where one freedom is carried by two or more rules, starting with coverture-household (R2/R5/R6 already fail drop-one) and the two composites. Chosen over the seven slice 3 entries (a likely second null) and over running both sets, because the question slice 4 asks only has an answer where rules share a load.
+- **D. Report-only.** The check stays report-only (printed by `phil rules transfer`) and is not a dataset property row until it reads something other than `open` on a real entry. No baseline rows are added. Chosen over a derived dataset row now, because a row that reads `open` everywhere adds cost to every check run and tests nothing.
