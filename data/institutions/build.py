@@ -277,10 +277,13 @@ LEGEND = """## Legend
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
 - **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
-- **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
+- **(implicit)**: not written as a rule in the cited source; reconstructed from it or from practice. The source cell gives the rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
-- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
+- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it. The "Default capacities" list under the table names the bearer role for each.
+- **free fluent**: an input the model varies, not set by any rule; a when cell that names one waits on a fact the world supplies (a report arrives, it is visiting time), not on something a role does. Listed with its gloss under "Free fluents" below the table.
+- **(replaced) / (added)** after a row id: this entry `extends` another, and the row replaces the base entry's row of that id, or adds one; the base card holds the original wording.
+- **linked to no rule**: a sanction-shaped rule (such as `may reprimand`) that no row's or else points at; it fires on no breach and is kept for the record only.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
 - **kind**: what sort of rule it is. `formal` = written law or contract (the default, always shown so it can be questioned); `norm` = an unwritten practice that others enforce; `strategy` = a regularity nobody enforces. A `strategy` rule written as `must` is still read by the engine as a duty under strict compliance, though nobody enforces it.
@@ -531,6 +534,61 @@ def pair_lines(e, raws, resolved) -> list:
     return out
 
 
+def _aim_head(r) -> str:
+    m = re.match(r"\(\s*([^\s()]+)", str(r["aim"]))
+    return m.group(1) if m else str(r["aim"]).strip()
+
+
+def free_fluent_lines(e) -> list:
+    """Free fluents (`initial_free`): inputs the model varies, set by no rule; each with its gloss and whether any action sets it later."""
+    head = "**Free fluents** (inputs the model varies, not set by any rule; see the Legend):"
+    free = list(e.get("initial_free") or [])
+    if not free:
+        return [head + " none"]
+    fl = {f["name"]: f for f in e["fluents"]}
+    setters: dict[str, set] = {}
+    for a in e["actions"]:
+        for ef in a.get("effects", []):
+            setters.setdefault(ef["fluent"], set()).add(a["name"])
+    L = [head, ""]
+    for name in free:
+        f = fl.get(name, {})
+        roles = f.get("arg_roles") or ["x", "y", "z"][: int(f.get("arity") or 0)]
+        later = (f"later set by: {', '.join(sorted(setters[name]))}" if name in setters
+                 else "no action in this institution sets it")
+        L.append(f"- `{name}({', '.join(roles)})`: {_cell(f.get('gloss', '')) or 'no gloss'}; {later}.")
+    return L
+
+
+def default_capacity_lines(e) -> list:
+    """Default-capacity actions, one line each: the bearer role (from arg_roles, else a role-named parameter), what it can do, and which rows name it."""
+    head = ("**Default capacities** (an action a person of that kind can do unless an express disability removes it; "
+            "these replaced the implicit `may ... when true` rows that once encoded them, README revision 4):")
+    dc = [a for a in e["actions"] if a.get("default_capacity")]
+    if not dc:
+        return [head + " none"]
+    roles = {r["name"] for r in e["roles"]}
+    L = [head, ""]
+    for a in dc:
+        ar = a.get("arg_roles") or []
+        typed = [(ar[i] if i < len(ar) and ar[i] else (p if p in roles else None)) for i, p in enumerate(a["args"])]
+        bearer, objs = (typed[0] if typed else None), [x for x in typed[1:] if x]
+        naming = [r for r in e["rules"] if _aim_head(r) == a["name"]]
+        if bearer:
+            who = f"A {bearer}"
+        elif naming:
+            who = f"A {naming[0]['attribute']} (the who cell of {naming[0]['id']}; the action parameter is untyped)"
+        else:
+            who = "Someone (bearer role not recorded: encoder to fix)"
+        what = a["name"].replace("_", " ") + (" a " + " and a ".join(objs) if objs else "")
+        rows = [f"{r['id']} ({r['deontic'].replace('_', ' ')}"
+                + (", a disability" if r["deontic"] == "must_not" and r.get("or_else") is None else "") + ")"
+                for r in naming]
+        tail = ("rule rows naming it: " + ", ".join(rows)) if rows else "no rule row names this action"
+        L.append(f"- `{a['name']}`: {who} may {what} unless a rule forbids it; {tail}.")
+    return L
+
+
 def card(e, raws, resolved, props) -> str:
     raw = raws[e["id"]]
     by_id = {r["id"]: r for r in e["rules"]}
@@ -596,9 +654,7 @@ def card(e, raws, resolved, props) -> str:
         L.append("| " + " | ".join([
             rid, r["attribute"], deontic_cell(r), _code(r["aim"]), _code(r["conditions"]), or_else_cell(r, by_id),
             r.get("strand") or "untagged (null)", _cell(r["plain"]), level_cell(r), source_cell(r)]) + " |")
-    dc = [a["name"] for a in e["actions"] if a.get("default_capacity")]
-    L += ["", "**Default capacities** (an action a person of that kind can do unless an express disability removes it): "
-          + (", ".join(dc) if dc else "none"), "", "## Variables", ""]
+    L += [""] + free_fluent_lines(e) + [""] + default_capacity_lines(e) + ["", "## Variables", ""]
     for r in e["rules"]:
         vs = rule_variables(r, e)
         if not vs:
@@ -660,7 +716,7 @@ def render_cards(order, raws, resolved_list, props) -> dict:
     idx = ["# Institution cards", "",
            "Generated by `data/institutions/build.py --cards` from `data/institutions/src/`. Do not edit.", "",
            "How to read a card: every card opens with the same Legend (what may / must / must not, disability, "
-           "implicit, strands, default capacity, or else and k mean); see the Legend at the top of any card, e.g. "
+           "implicit, strands, default capacity, free fluent, or else and k mean); see the Legend at the top of any card, e.g. "
            "[lease](lease.md#legend), and `docs/glossary.md`.", ""]
     for i in order:
         p = partners(i, raws, resolved)

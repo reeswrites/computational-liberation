@@ -1,0 +1,32 @@
+# Faithfulness batch 3c: correctness seat (ADR 0014)
+
+Seat: fresh; did not build, encode or gloss the batch. Read: SEATS.md; plans/faithfulness-batch.md section 8 (preregistration, Results, drift); `git diff 2252983..987d996 -- data/institutions/src/ data/institutions/README.md`; institutions.json at both commits; docs/ablation/2026-11-09-batch3c/*.txt; claims.md L23, scoreboard.md, plan.md. Engine e46f6ea: rules_lower.py (`enabled` 729-742, `regulated_actions` 120, the `enable:` firing gate and `soft` 1028-1092, validate 320-326), rules_reference.py `power`, rules_checks.py vacuity 413-415, rules_iso.py `match`/`_bind`. The builder's Results were read as claims.
+
+Ran (worktree root, pinned venv): `phil rules check --inst cps|kibbutz-childrens-house --k 6|8 --init declared --compliance strict --step-mode one --no-cache --json`; `phil rules iso --pair cps police-crisis --cond exact|guard` on the current JSON and on `git show 2252983:...institutions.json`; `scripts/checks.sh` in full.
+
+## Findings
+
+1. **Vacuity (Q1): green, correct.** cps k=6 and 8: care_and_sanction_same_role `holds_to_k`, no_standing_persists `fails`, both `vacuous=False`, `antecedent_reachable=True`; the three existentials `reachable`. kibbutz k=6 and 8: care_assigned_by_sex `persists`, care_and_sanction_same_role `violated`, both non-vacuous, antecedents reachable. Neither cps forall reads `investigate`, no kibbutz derived fluent reads `visit`. Note: the preregistration's mechanism ("removes the traces where investigate fired without cause_to_believe and adds none") is half right: R1 is a `must`, so the `enable:` gate now needs both conjuncts, but the free fluent adds a world and the narrower `must` relaxes the hard constraint, so traces are added too. What was checked (reachable antecedent, same verdict) holds. fix: none.
+
+2. **`default_capacity` vs dropped `may` (Q2), footbinding: green, correct.** R2 was `may leave_unbound when (is_subject daughter)`, not `when true`. (a) Derived power: `enabled` (741) and `Reference.power` give true minus disabilities; no footbinding derived fluent reads `leave_unbound`, so unread either way. (b) Firing: with R2 the action was regulated and gated on `is_subject`; without it, unregulated and ungated (`regulated_actions` counts may/must only). `is_subject` is initial-true with no effect on it, so the gate was constant: equivalent. R3 is sanctioned (or_else R5), not a disability; strict still forbids the act, hence ablation's R3 flip reads as before. JSON: footbinding and -no-pledge both carry the flag; rules R1,R3,R4,R10,R5,R6,R7,R9 / R1,R3,R5,R6,R7,R9. fix: none.
+
+3. **Same, kibbutz `neglect`: amber; correct at layer 1, not strictly equivalent.** R8 was `metapelet may neglect when (assigned metapelet)`. `release` clears `assigned`, so the old gate was not constant; and `neglect` has `args: [x, child]` with no `arg_roles`, so R8 also scoped the instance to (metapelet, child), while now `neglect(committee, child)` and `neglect(male_member, child)` fire freely. No derived fluent reads `(enabled neglect ...)` and the extra firings only clear `provides_care` tuples that are false or male, so no layer-1 verdict can move (re-run: none did). But the known-limit sentence understates it: the ABM would now see `neglect` available after a `release` and for non-metapelet agents, where R8 denied it. Both variants inherit the flag (R1..R6 / R1,R3,R4,R5,R6). fix: give `neglect` `arg_roles: [metapelet, child]` (verdict-neutral; run the diff), or add to `notes` that enabledness widened from "assigned metapelet" to any agent at any step, layer-2-visible only.
+
+4. **B7 or_else-less R6 (Q3): green, correct.** validate accepts `or_else null` + `sanctioner none`. R6 is now an ordinary `registry may reprimand when true`, always enabled, `effects: []`: nothing newly enabled (its condition was already `true`), nothing changed by it. `sanction_of` has no R6 entry; the engine has no warning for an unpointed-at sanction rule (ablation's `orphaned_or_else` is the reverse case), so "no warning" is a correct absence. Consequence: `soft` (1047) needs `or_else is not None`, so under `--compliance sanctioned` R3 was breakable and is now hard in both modes. Strict check-all never read it; ABM frozen. fix: optional clause in the B7 row that an unsanctioned `must` is hard in sanctioned mode.
+
+5. **Iso exact swap (Q4): green, correct, legitimate.** Re-run reproduces baseline `R1->R2, R3->R11` and current `R3->R11, R10->R4`, 2/10|11 distance 9 both. `match` seeks a maximum bijection under one injective name map. Baseline R1->R2 bound `report_received -> in_custody`; R10->R4 needs `in_custody -> in_custody`; injectivity forbids both, so the maximum was 2 either way. R1's `(and ...)` skeleton has no exact police image, R1->R2 leaves, the blocked R10->R4 (`must_not leave when in_custody`) takes the slot. Guard level unchanged, 5/10|11 distance 6, with both pairs present. fix: none.
+
+6. **Git order: green, correct.** 9b36553 touches only the plan (+57). 987d996 removes three placeholder lines (`### Results`, `(filled after the run)`, `(pending)`) and appends below; nothing above Results edited.
+
+7. **Drift and ledgers: green, correct.** Drift 1 and 2 are recorded against the rows they contradict; drift 3 is rightly not drift (the exact-level refinement sits in the committed Predictions). scoreboard.md gained the 3c row `pending`; plan.md updated; claims.md L23 stays `supported (encoding level)`, consistent with 0 changed. fix: none.
+
+8. **Results re-run: green, correct.** `scripts/checks.sh` at 987d996: `ok: 33 institutions, 43 properties, JSON and 34 cards match src/`; `0 changed, 0 added, 0 removed (of 192 rows)`; `agreement: 192/192 = 100%`; `GATE PASS`, (b) and (e) PASS; drop-one `b=PASS rows: 19`, failing on exactly the nine preregistered rows; `40 passed`; `ALL CHECKS OK`. Iso (finding 5) and the cps/kibbutz per-property rows (finding 1) re-run by hand. fix: none.
+
+## Counts
+
+Findings 8: green 7, amber 1, red 0. Questions: correct 7, incorrect 0, cannot tell 0 (finding 3 is correct on every verdict and the built JSON; amber on the equivalence claim). Batch does not pause.
+
+## Fixes requested (fix pass)
+
+1. Finding 3: kibbutz `neglect`: `arg_roles: [metapelet, child]`, or a `notes` sentence that the default capacity is wider than the dropped R8 (any agent, after `release` too), layer-2-visible only.
+2. Finding 4 (optional): B7 row or ectogenesis R3 `source`: an unsanctioned `must` is hard under sanctioned compliance.

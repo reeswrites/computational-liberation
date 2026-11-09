@@ -23,6 +23,7 @@ Any result other than the above is recorded in Results against the row it contra
 **Nothing above "### Results" is edited after the first run.** Commit this section before any edit, build or run.
 
 ### Results
+Negative results: add a row to docs/negative-results.md for every refuted/weakened/untested/refused/declined/artifact outcome; null batches get one group row.
 <Run date, engine hash. Verbatim summary lines from `scripts/checks.sh`. Drift items, one per line.>
 
 ### Council

@@ -132,18 +132,17 @@ rules:
     url: null
     note: 'UNVERIFIED: no text opened; wording from memory (plans/ectogenesis.md section 2)'
 - id: R3
-  plain: 'The provider must decant the child when the child has been gestated ex utero, or else the registry may reprimand (R6) (Firestone 1970).'
+  plain: 'The provider must decant the child when the child has been gestated ex utero (a proposed duty in the institution Firestone sketched in 1970, not enacted law: no statute exists); no sanction is encoded.'
   attribute: provider
   deontic: must
   aim: (decant provider child)
   conditions: (gestated_ex_utero child)
-  or_else: R6
+  or_else: null
   strand: superadditive
   implicit: false
   kind: formal
-  sanctioner: institution
-  sanctioner_review: derived
-  source: 'Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from ''the tyranny of their reproductive biology'' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 ''The Ultimate Revolution'' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). The birth duty moves from a body to a device operator; decant never sets birthing_parent. Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04).'
+  sanctioner: none
+  source: 'Firestone, The Dialectic of Sex (1970), ch.1 (the demand to free women from ''the tyranny of their reproductive biology'' and to spread child-bearing and child-rearing across society; wording from memory, check before quoting) and ch.10 ''The Ultimate Revolution'' (artificial reproduction and the end of the biological family; from memory). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded). The birth duty moves from a body to a device operator; decant never sets birthing_parent. Strand tag is a HAND TAG (ASSUMED author decision 2026-11-04). Sanction dropped 2026-11-09 (batch 3c, B7): the registry reprimand (or_else R6) was an encoder invention, no text names a sanction; R3 is now an unsanctioned duty, kind formal, sanctioner none. Post-council note (2026-11-09, correctness seat finding 4): with no or_else there is nothing to breach, so under sanctioned compliance this must is hard, as it already was under strict; strict check-all never read the link.'
   provenance:
   - source_id: firestone-1970
     pin: ch. 1; ch. 10
@@ -211,7 +210,7 @@ rules:
     note: '''the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it)'': the reason for the female trigger; the row gives no citation and none is in the bibliography (a search lead for it is in plans/sourcing-worklist-other.md: add an entry and upgrade when opened)'
   choices: 'Until 2026-11-04 the or_else was R6 (the registry reprimands a non-caring mother): a sanction invented by the encoder on 2026-11-04 with nothing behind it, removed on the card-seat finding. Under strict compliance the verdicts do not depend on it.'
 - id: R6
-  plain: 'The registry may reprimand at any time (the sanction for R3).'
+  plain: 'The registry may reprimand at any time (formerly the sanction for R3; the link was dropped 2026-11-09, so no rule points to it; no text names this power).'
   attribute: registry
   deontic: may
   aim: (reprimand registry x)
@@ -222,7 +221,7 @@ rules:
   kind: formal
   sanctioner: none
   sanctioner_review: derived
-  source: 'the registry''s sanction for R3 (or_else target; R5''s link removed 2026-11-04). Condition ''true'' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
+  source: 'the registry''s former sanction for R3 (or_else target until 2026-11-09, batch 3c B7; R5''s link removed 2026-11-04); now linked to no rule: no text names this power and nothing links to it; kept so the pair''s rule set stays symmetric (deleting it is an encoding change for a later preregistration). Condition ''true'' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule). UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
   provenance:
   - source_id: null
     pin: null
@@ -232,7 +231,7 @@ rules:
     excerpt: null
     accessed: null
     url: null
-    note: 'no work named for this rule; rationale: the registry''s sanction for R3 (or_else target; R5''s link removed 2026-11-04). Condition ''true'' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule)'
+    note: 'no work named for this rule; formerly the sanction for R3 (or_else target until 2026-11-09; R5''s link removed 2026-11-04); no text names this power and nothing links to it. Condition ''true'' as in kibbutz-childrens-house R6; x is untyped (the sanctioned party differs by rule)'
 - id: R7
   plain: 'The registry may register an intended parent as parent of the child when the child is a born subject, with no birth condition.'
   attribute: registry

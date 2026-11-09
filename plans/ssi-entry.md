@@ -151,6 +151,9 @@ Items the council raised that could move a verdict or change a rule. The mechani
 - Item 1 (cohabitation): **add a `cohabits` fluent** and condition R2, R3, R5, R6 on it. Chosen over "keep the gap declared" because every composite built on SSI inherits the over-application, and the same fluent is wanted by the hospital and two-wife entries. Verdicts may move; preregister and rerun.
 - Item 5 (R4 sex condition): **leave sex unencoded.** No opposite-sex condition; notes cite both 416.1806(a)(3) (opposite sex) and POMS SI 00501.152 (same-sex included) and declare the gap. Chosen over following the text (historically true pre-2015, not now) and over following POMS (not the cited regulation). Consistent with ADR 0018 neutral roles.
 - Items 2, 3, 4, 6: still open; recommendations go in plans/faithfulness-batch.md.
+- Item 2 (must-be vs `may`), ruled 2026-11-09: **add the "power reading only" label** in the cohabits revision, then try the ADR 0009 must-be encoding afterwards as its own preregistration. Chosen over doing both at once so the two sources of verdict movement are not mixed in one run.
+- Item 3 (`default_capacity`), ruled 2026-11-09: **convert R1 and the pair's R5/R6** from `may ... when true` to `default_capacity: true` on the actions, inside the cohabits revision (same convention as batch 3c's B3). Predicted no verdict change.
+- Item 4 (one-rule pair), ruled 2026-11-09: **drop R3 alone** (flips married_couple_limited). Chosen over dropping R4 because the couple resource limit is the lever the marriage-penalty bills actually pull.
 
 ### Revision 2 item 6 probes (run 2026-11-08, engine at ENGINE_PIN)
 

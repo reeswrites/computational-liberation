@@ -8,10 +8,13 @@
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
 - **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
-- **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
+- **(implicit)**: not written as a rule in the cited source; reconstructed from it or from practice. The source cell gives the rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
-- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it.
+- **default capacity**: an action a person of that kind can do unless an express disability removes it, as opposed to a power that exists only because a rule grants it. The "Default capacities" list under the table names the bearer role for each.
+- **free fluent**: an input the model varies, not set by any rule; a when cell that names one waits on a fact the world supplies (a report arrives, it is visiting time), not on something a role does. Listed with its gloss under "Free fluents" below the table.
+- **(replaced) / (added)** after a row id: this entry `extends` another, and the row replaces the base entry's row of that id, or adds one; the base card holds the original wording.
+- **linked to no rule**: a sanction-shaped rule (such as `may reprimand`) that no row's or else points at; it fires on no breach and is kept for the record only.
 - **k**: the step bound; verdicts such as `holds_to_k` mean "holds for every trace of at most k steps".
 - **Variables**: letters in the aim and when cells are bound to roles in the Variables section; "unbound (encoder to fix)" means no binding was recorded.
 - **kind**: what sort of rule it is. `formal` = written law or contract (the default, always shown so it can be questioned); `norm` = an unwritten practice that others enforce; `strategy` = a regularity nobody enforces. A `strategy` rule written as `must` is still read by the engine as a duty under strict compliance, though nobody enforces it.
@@ -39,7 +42,17 @@
 | R8 | officer | may (implicit) [kind: formal; sanctioner: none] | `(detain o s)` | `(and (responding o s) (danger s))` | none | rival | The officer may detain the subject when responding to the subject and there is danger (Cal. WIC 5150). | opened | [full source under Sources, R8](#src-r8) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
 | R9 | subject | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | unverified | an adult keeps legal capacity to sue in their own name; a voluntary encounter does not touch it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue enabled |
 
-**Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue
+**Free fluents** (inputs the model varies, not set by any rule; see the Legend):
+
+- `call_received(subject)`: a crisis call about s has been received; later set by: dispatch_team.
+- `eligible(x)`: the call is a low-level, non-violent call eligible for the team; no action in this institution sets it.
+- `in_crisis(subject)`: x is in a mental-health crisis; no action in this institution sets it.
+- `danger(subject)`: x is a danger to self or others, or gravely disabled (WIC 5150 trigger); no action in this institution sets it.
+
+**Default capacities** (an action a person of that kind can do unless an express disability removes it; these replaced the implicit `may ... when true` rows that once encoded them, README revision 4):
+
+- `leave`: A subject (the who cell of R5; the action parameter is untyped) may leave unless a rule forbids it; rule rows naming it: R5 (may).
+- `sue`: A subject (the who cell of R9; the action parameter is untyped) may sue unless a rule forbids it; rule rows naming it: R9 (may).
 
 ## Variables
 
