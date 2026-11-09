@@ -1,0 +1,2645 @@
+{
+ "kibbutz-childrens-house": {
+  "seconds": 811.5,
+  "rules": 6,
+  "ordered_pairs": 30,
+  "cache": {
+   "hits": 422,
+   "misses": 352,
+   "hit_rate": 0.5452
+  },
+  "k_disagreement": {
+   "freedom": [],
+   "goods": [],
+   "rebundling": []
+  },
+  "by_k": {
+   "6": {
+    "base": {
+     "R1": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R2": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R1": "tying",
+     "R2": "tying",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "unread"
+    },
+    "deltas": {
+     "R1": {
+      "R2": {
+       "freedom_up": -1,
+       "freedom": -1
+      }
+     },
+     "R2": {
+      "R1": {
+       "freedom_up": -1,
+       "freedom": -1
+      }
+     },
+     "R3": {},
+     "R4": {},
+     "R5": {},
+     "R6": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [
+      [
+       "R1",
+       "R2",
+       -1
+      ],
+      [
+       "R2",
+       "R1",
+       -1
+      ]
+     ],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R1",
+     "R5",
+     "R6"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R1": 0,
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0
+     },
+     "goods": {
+      "R1": 0,
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R1": "superadditive",
+     "R2": "tying",
+     "R3": "superadditive",
+     "R4": "rival",
+     "R5": "superadditive",
+     "R6": "rival"
+    }
+   },
+   "8": {
+    "base": {
+     "R1": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R2": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R1": "tying",
+     "R2": "tying",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "unread"
+    },
+    "deltas": {
+     "R1": {
+      "R2": {
+       "freedom_up": -1,
+       "freedom": -1
+      }
+     },
+     "R2": {
+      "R1": {
+       "freedom_up": -1,
+       "freedom": -1
+      }
+     },
+     "R3": {},
+     "R4": {},
+     "R5": {},
+     "R6": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [
+      [
+       "R1",
+       "R2",
+       -1
+      ],
+      [
+       "R2",
+       "R1",
+       -1
+      ]
+     ],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R1",
+     "R5",
+     "R6"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R1": 0,
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0
+     },
+     "goods": {
+      "R1": 0,
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R1": "superadditive",
+     "R2": "tying",
+     "R3": "superadditive",
+     "R4": "rival",
+     "R5": "superadditive",
+     "R6": "rival"
+    }
+   }
+  }
+ },
+ "mwpa-creditor-exemption": {
+  "seconds": 1083.2,
+  "rules": 10,
+  "ordered_pairs": 90,
+  "cache": {
+   "hits": 2422,
+   "misses": 2240,
+   "hit_rate": 0.5195
+  },
+  "k_disagreement": {
+   "freedom": [],
+   "goods": [],
+   "rebundling": []
+  },
+  "by_k": {
+   "6": {
+    "base": {
+     "R1": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R7": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R1": "unread",
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R7": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread"
+    },
+    "deltas": {
+     "R1": {},
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R7": {},
+     "R10": {},
+     "R11": {},
+     "R12": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R1",
+     "R5",
+     "R10",
+     "R12"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R1": 0,
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0
+     },
+     "goods": {
+      "R1": 0,
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R1": "tying",
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R7": "tying",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying"
+    }
+   },
+   "8": {
+    "base": {
+     "R1": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R7": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R1": "unread",
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R7": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread"
+    },
+    "deltas": {
+     "R1": {},
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R7": {},
+     "R10": {},
+     "R11": {},
+     "R12": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R1",
+     "R5",
+     "R10",
+     "R12"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R1": 0,
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0
+     },
+     "goods": {
+      "R1": 0,
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R1": "tying",
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R7": "tying",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying"
+    }
+   }
+  }
+ },
+ "mwpa-earnings": {
+  "seconds": 1224.5,
+  "rules": 11,
+  "ordered_pairs": 110,
+  "cache": {
+   "hits": 2906,
+   "misses": 2680,
+   "hit_rate": 0.5202
+  },
+  "k_disagreement": {
+   "freedom": [],
+   "goods": [],
+   "rebundling": []
+  },
+  "by_k": {
+   "6": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R7": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R14": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R7": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread",
+     "R14": "unread"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R7": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {},
+     "R14": {
+      "R13": {
+       "freedom_down": 1,
+       "freedom": 1
+      }
+     }
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13",
+     "R14"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R7": "tying",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying",
+     "R14": "tying"
+    }
+   },
+   "8": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R7": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R14": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R7": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread",
+     "R14": "unread"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R7": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {},
+     "R14": {
+      "R13": {
+       "freedom_down": 1,
+       "freedom": 1
+      }
+     }
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13",
+     "R14"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R7": "tying",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying",
+     "R14": "tying"
+    }
+   }
+  }
+ },
+ "mwpa-property-narrowed": {
+  "seconds": 1512.0,
+  "rules": 12,
+  "ordered_pairs": 132,
+  "cache": {
+   "hits": 3434,
+   "misses": 3160,
+   "hit_rate": 0.5208
+  },
+  "k_disagreement": {
+   "freedom": [],
+   "goods": [],
+   "rebundling": []
+  },
+  "by_k": {
+   "6": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R7": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R17": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R18": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R7": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread",
+     "R17": "unread",
+     "R18": "unread"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R7": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {},
+     "R17": {},
+     "R18": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13",
+     "R17",
+     "R18"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R17": 0,
+      "R18": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R17": 0,
+      "R18": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R7": "tying",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying",
+     "R17": "rival",
+     "R18": "tying"
+    }
+   },
+   "8": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R7": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R17": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R18": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R7": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread",
+     "R17": "unread",
+     "R18": "unread"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R7": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {},
+     "R17": {},
+     "R18": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13",
+     "R17",
+     "R18"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R17": 0,
+      "R18": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R17": 0,
+      "R18": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R7": "tying",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying",
+     "R17": "rival",
+     "R18": "tying"
+    }
+   }
+  }
+ },
+ "mwpa-property": {
+  "seconds": 1089.4,
+  "rules": 10,
+  "ordered_pairs": 90,
+  "cache": {
+   "hits": 2422,
+   "misses": 2240,
+   "hit_rate": 0.5195
+  },
+  "k_disagreement": {
+   "freedom": [],
+   "goods": [],
+   "rebundling": []
+  },
+  "by_k": {
+   "6": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R7": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R7": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R7": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R7": "tying",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying"
+    }
+   },
+   "8": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R7": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R7": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R7": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R7": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R7": "tying",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying"
+    }
+   }
+  }
+ },
+ "mwpa-sole-trader": {
+  "seconds": 1216.6,
+  "rules": 11,
+  "ordered_pairs": 110,
+  "cache": {
+   "hits": 2906,
+   "misses": 2680,
+   "hit_rate": 0.5202
+  },
+  "k_disagreement": {
+   "freedom": [],
+   "goods": [],
+   "rebundling": []
+  },
+  "by_k": {
+   "6": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R14": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R15": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread",
+     "R14": "unread",
+     "R15": "unread"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {},
+     "R14": {
+      "R13": {
+       "freedom_down": 1,
+       "freedom": 1
+      }
+     },
+     "R15": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13",
+     "R14"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0,
+      "R15": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0,
+      "R15": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying",
+     "R14": "tying",
+     "R15": "tying"
+    }
+   },
+   "8": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R4": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R14": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R15": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R4": "tying",
+     "R5": "unread",
+     "R6": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread",
+     "R14": "unread",
+     "R15": "unread"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R4": {},
+     "R5": {},
+     "R6": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {},
+     "R14": {
+      "R13": {
+       "freedom_down": 1,
+       "freedom": 1
+      }
+     },
+     "R15": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13",
+     "R14"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0,
+      "R15": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R4": 0,
+      "R5": 0,
+      "R6": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0,
+      "R15": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R4": "tying",
+     "R5": "rival",
+     "R6": "rival",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying",
+     "R14": "tying",
+     "R15": "tying"
+    }
+   }
+  }
+ },
+ "mwpa-suit": {
+  "seconds": 1295.4,
+  "rules": 12,
+  "ordered_pairs": 132,
+  "cache": {
+   "hits": 3590,
+   "misses": 3318,
+   "hit_rate": 0.5197
+  },
+  "k_disagreement": {
+   "freedom": [],
+   "goods": [],
+   "rebundling": []
+  },
+  "by_k": {
+   "6": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R14": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R15": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R16": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R19": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R5": "unread",
+     "R6": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread",
+     "R14": "unread",
+     "R15": "unread",
+     "R16": "unread",
+     "R19": "tying"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R5": {},
+     "R6": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {},
+     "R14": {
+      "R13": {
+       "freedom_down": 1,
+       "freedom": 1
+      }
+     },
+     "R15": {},
+     "R16": {},
+     "R19": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13",
+     "R14"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R5": 0,
+      "R6": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0,
+      "R15": 0,
+      "R16": 0,
+      "R19": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R5": 0,
+      "R6": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0,
+      "R15": 0,
+      "R16": 0,
+      "R19": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R5": "rival",
+     "R6": "rival",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying",
+     "R14": "tying",
+     "R15": "tying",
+     "R16": "tying",
+     "R19": "tying"
+    }
+   },
+   "8": {
+    "base": {
+     "R2": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 2,
+      "goods_guaranteed": 4,
+      "goods_possible": 0
+     },
+     "R3": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 1,
+      "goods_possible": 0
+     },
+     "R5": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R6": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R10": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R11": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R12": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R13": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R14": {
+      "freedom_up": 0,
+      "freedom_down": 1,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R15": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R16": {
+      "freedom_up": 0,
+      "freedom_down": 0,
+      "freedom": 0,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     },
+     "R19": {
+      "freedom_up": 1,
+      "freedom_down": 0,
+      "freedom": 1,
+      "goods_primary": 0,
+      "goods_guaranteed": 0,
+      "goods_possible": 0
+     }
+    },
+    "base_reading": {
+     "R2": "carrying (guaranteed)",
+     "R3": "unread",
+     "R5": "unread",
+     "R6": "tying",
+     "R10": "unread",
+     "R11": "unread",
+     "R12": "unread",
+     "R13": "unread",
+     "R14": "unread",
+     "R15": "unread",
+     "R16": "unread",
+     "R19": "tying"
+    },
+    "deltas": {
+     "R2": {
+      "R3": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R3": {
+      "R2": {
+       "goods_guaranteed": -1
+      }
+     },
+     "R5": {},
+     "R6": {},
+     "R10": {},
+     "R11": {},
+     "R12": {},
+     "R13": {},
+     "R14": {
+      "R13": {
+       "freedom_down": 1,
+       "freedom": 1
+      }
+     },
+     "R15": {},
+     "R16": {},
+     "R19": {}
+    },
+    "edges": {
+     "freedom": [],
+     "goods": []
+    },
+    "relief": {
+     "freedom": [],
+     "goods": []
+    },
+    "inconsistent_sources": [],
+    "undefined": [],
+    "uncounted_pairs": [],
+    "unranked_rules": [
+     "R5",
+     "R10",
+     "R12",
+     "R13",
+     "R14"
+    ],
+    "out_transfer": {
+     "freedom": {
+      "R2": 0,
+      "R3": 0,
+      "R5": 0,
+      "R6": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0,
+      "R15": 0,
+      "R16": 0,
+      "R19": 0
+     },
+     "goods": {
+      "R2": 0,
+      "R3": 0,
+      "R5": 0,
+      "R6": 0,
+      "R10": 0,
+      "R11": 0,
+      "R12": 0,
+      "R13": 0,
+      "R14": 0,
+      "R15": 0,
+      "R16": 0,
+      "R19": 0
+     }
+    },
+    "rebundling": {},
+    "strands": {
+     "R2": "superadditive",
+     "R3": "superadditive",
+     "R5": "rival",
+     "R6": "rival",
+     "R10": "rival",
+     "R11": "tying",
+     "R12": "tying",
+     "R13": "tying",
+     "R14": "tying",
+     "R15": "tying",
+     "R16": "tying",
+     "R19": "tying"
+    }
+   }
+  }
+ }
+}

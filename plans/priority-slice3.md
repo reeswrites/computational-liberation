@@ -76,9 +76,43 @@ Any result other than the above is recorded in Results against the prediction it
 
 **Nothing above "### Results" is edited after the first transfer run.** This section is committed before any such run.
 
-### Results
+### Results (2026-11-09; preregistration commit 56d3e4a; engine branch `claude/slice3-transfer-graph-caf95a` at d763cb4, source hash differs from the baseline's as expected; dataset d5d3a92)
 
-(empty until the run)
+Outputs: docs/ablation/2026-11-09-slice3/ (one `.txt` per entry, `transfer-summary.json`). Seven `phil rules transfer` processes ran at once, each serial, each on a cold cache.
+
+**Headline.** No transfer edge, in either graph, in any of the seven entries, at k=6 or k=8. `rebundling` is `open` on all seven. The prediction of emptiness held; the slice's plan-level pass test ("graph matches preregistered edges") is met by a preregistered empty graph, which is a null result and is logged as one (N74). The two cost predictions failed (N75).
+
+| # | Prediction | Result |
+| --- | --- | --- |
+| P1 | diff 0 changed, 0 added, 0 removed of 192; check-all 192/192; engine suite passes | **held**: "0 changed, 0 added, 0 removed (of 192 rows)" (with "note: engine source hash differs from the baseline's"); "agreement: 192/192 = 100%"; engine `pytest -m "not llm"` 613 passed, 25 skipped before the fixture expectation was added (final count in the engine PR) |
+| P2 | freedom graph: no edge in seven entries; kibbutz relief R1 -> R2 = -1 and R2 -> R1 = -1 | **held** in all seven, both k. Kibbutz relief exactly as predicted; no relief anywhere else |
+| P3 | goods graph: no edge, no relief | **held** in all seven, both k |
+| P4 D1 | R14 -> R13 `freedom_down` +1 in earnings, sole-trader, suit; reverse pair 0 | **held** in all three, both k; R13 -> R14 has no delta |
+| P4 D2 | R3 -> R2 and R2 -> R3 `goods_guaranteed` -1 in all six MWPA entries | **held** in all six, both k |
+| P4 | no other nonzero delta | **held**: the deltas above are the only ones in `transfer-summary.json` |
+| P5 | no rebundling edge; derived check `open` on all seven, `z3_unknown` false; `reachable` on the toy | **held**: `phil rules check --inst <id> --prop rebundling` (overlay properties file, k=6 and k=8) prints `open` for all seven; the toy is engine test `test_derived_check_through_run_all` |
+| P6 | no inconsistent source, undefined pair, uncounted pair or k-disagreement | **held** |
+| P7 | cold hit rate 45 to 50%; MWPA entry 15 to 40 min serial; kibbutz under 5 min; under 3 CPU-hours | **miss** on two of four (drift 1, 2). Hit rates: kibbutz 55% (422/774), MWPA 52% each (2422/4662, 2422/4662, 2906/5586, 2906/5586, 3590/6908, 3434/6594). Times: creditor-exemption 1083 s, property 1089 s, earnings 1225 s, sole-trader 1217 s, suit 1295 s, property-narrowed 1512 s (18 to 25 min, in range); kibbutz 812 s (13.5 min, out of range). Total 8233 s = 2.3 CPU-hours (in range); 25 min wall |
+| P8 | out-transfer is 0 for every rule; T1 comparison a tie at zero | **held**: uninformative; T1 stays `untested` (N76) |
+| P9 | property written and checkable (4 of 4 written); fires on no entry in scope; T11 stays `untested` | **held** as predicted; see Council for whether "4 of 4" may be claimed at all |
+
+**Falsifiers.** F1 no. F2 no. F3 no (the derived check and `phil rules transfer` agree on all seven; see drift 3 for why that agreement is weaker than it looks). F4 no. F5 **fired** (hit rate above 50% in every entry).
+
+**Transfer edges found.** None. What the run did find, outside the graphs:
+- Kibbutz R1 and R2 are a conjunctive pair for `care_assigned_by_sex`: either deletion flips it persists > fails, so each loses its load once the other is gone (relief -1 both ways). Cutting either is enough; nothing rebundles.
+- MWPA R13 and R14 are substitute protections for `financial_dependence` where both exist (earnings, sole-trader, suit): R13 carries no protection load while R14 stands and carries one once R14 is gone. This is the only load that rises anywhere, it is a `freedom_down` (protection) load, and both rows are deregulated `may` deletions, so by the preregistered design it is a delta, not an edge.
+- MWPA R2 and R3 jointly guarantee `mutual_household_care`: each loses one guaranteed-measure family once the other is gone.
+
+**T1 observation.** Floor strands do not have the highest out-transfer, and neither does anything else: every rule's out-transfer is 0 in both graphs. The one rising load in the data runs from a floor-side rule (R14, earnings) to another floor-side rule (R13, property), in the protection direction. That is not evidence for or against floor-first.
+
+**Drift (recorded, nothing above "### Results" edited).**
+1. P7 hit rate: predicted 45 to 50%, observed 52 to 55%. The formula counted one cache question per (institution, property) and assumed all are distinct. Two properties with the same formal text share a cache key, so the second is a hit inside a single cold run: one cold `run_all` on kibbutz at k=6 shows 1 hit in 9 questions. The direction of the miss is harmless; the model of the cache was wrong.
+2. P7 kibbutz time: predicted under 5 min, observed 13.5 min for 44 distinct institutions over two k, about 18 s each against the 10 s I assumed (seven processes ran at once, and k=8 costs more than the average I took from the first-order rerun). The MWPA range held only because it was wide.
+3. Not a failed prediction, a defect found while checking F3: the derived check builds its graph without the cross-entry majority table of check kinds (`run_all` sees one entry), while `phil rules transfer` uses it. On the six MWPA entries the two therefore ask one property under a different check kind (56 to 79 cache misses on an otherwise warm cache, exactly one per institution; kibbutz 0). Verdicts agree here, but the two paths are not guaranteed to. Recorded for the fix pass.
+4. P2's kibbutz row said "both pairs involve the deregulated R1". R5 and R6 are deregulated in E too (three unranked rules, not one). No effect on any number.
+5. The plan's slice-3 file list names `properties.json` and the ADR path `docs/adr/`; the property source is `data/institutions/src/properties.yaml` and ADRs live in `docs/decisions/`. The dataset rows did not land (Build item 7), so "property written" means: written in the engine fixture and checked on the dataset through an overlay.
+
+**Reproduction.** From the engine checkout at d763cb4, with `D=<this repo>/data/institutions`: `phil rules transfer --entry <id> --k 6,8 --institutions $D/institutions.json --properties $D/properties.json --json <id>.json`; then `phil rules check --inst <id> --prop rebundling --k 6 --institutions $D/institutions.json --properties <overlay>` where the overlay is `properties.json` plus the `rebundling` row of the engine's `data/example/properties.json`.
 
 ### Council
 

@@ -1,0 +1,3 @@
+# Transfer graphs, priority slice 3 (2026-11-09)
+
+Outputs of the preregistered run in plans/priority-slice3.md (preregistration commit 56d3e4a; engine branch `claude/slice3-transfer-graph-caf95a` at d763cb4; dataset d5d3a92; strict, step one, k=6,8, cold cache, one process per entry, seven at once): `phil rules transfer --entry <id> --k 6,8 --institutions data/institutions/institutions.json --properties data/institutions/properties.json --json <id>.json > <id>.txt`. `transfer-summary.json` keeps, per entry and k, the base loads, every nonzero delta, edges, relief, out-transfer and the cache counters; the per-pair `after` tables of the full JSON (332 KB in all) were not kept.
