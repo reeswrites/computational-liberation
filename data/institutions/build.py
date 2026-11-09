@@ -19,7 +19,9 @@ Order of application: drops, then replaces/sets, then adds, then overrides. `pla
 (`derived` = the rule's `sanctioner` was derived by migration, not yet hand-reviewed) are for human readers; the engine schema does not carry them, so the build strips them before writing JSON (the
 engine JSON, ENGINE_PIN and the verdict baseline do not change when provenance does). The same holds for an
 entry's top-level `goods_note` (slice-2 goods readings, rendered as a "Goods (slice 2)" card section), which is
-never inherited through `extends`.
+never inherited through `extends`; for an entry's top-level `card_note` (one paragraph printed on the card face under
+the title as "Read first", for what a reader must not miss; also never inherited); and for an action's `plain` (a verb
+phrase such as "pay a benefit to", read only by the card's Default capacities line).
 
 Each rule may carry `provenance:`, a list of items {source_id, pin, jurisdiction, effective_date, verification,
 excerpt, accessed, url, note}; `source_id` names an entry of the bibliography in data/sources/*.yaml and
@@ -68,7 +70,9 @@ HERE = Path(__file__).resolve().parent
 SRC = HERE / "src"
 CARDS = HERE.parent.parent / "docs" / "cards"
 STRIP_RULE_KEYS = ("plain", "choices", "provenance", "sanctioner_review")
-STRIP_ENTRY_KEYS = ("goods_note",)  # card-only (plans/priority-slice2.md R2.5): not in the engine JSON
+STRIP_ENTRY_KEYS = ("goods_note", "card_note")  # card-only (plans/priority-slice2.md R2.5): not in the engine JSON
+STRIP_ACTION_KEYS = ("plain",)  # card-only verb phrase of an action ("pay a benefit to"), read by the Default capacities line
+CARD_ONLY_NOT_INHERITED = ("goods_note", "card_note")
 LISTS = ("roles", "fluents", "actions")
 RESERVED = {"extends", "rules_drop", "rules_replace", "rules_add", "keys_drop"} | {
     f"{l}_{v}" for l in LISTS for v in ("drop", "set", "add")}
@@ -158,8 +162,9 @@ def resolve(eid, raws, stack=()):
     for k, v in raw.items():
         if k not in RESERVED:
             e[k] = copy.deepcopy(v)
-    if "goods_note" not in raw:  # card-only, never inherited: each note names its own entry's readings
-        e.pop("goods_note", None)
+    for k in CARD_ONLY_NOT_INHERITED:  # card-only, never inherited: each note names its own entry's readings
+        if k not in raw:
+            e.pop(k, None)
     return e
 
 
@@ -168,6 +173,8 @@ def strip(entry):
     for k in STRIP_ENTRY_KEYS:
         e.pop(k, None)
     e["rules"] = [{k: v for k, v in r.items() if k not in STRIP_RULE_KEYS} for r in entry["rules"]]
+    if any(k in a for a in entry.get("actions", ()) for k in STRIP_ACTION_KEYS):
+        e["actions"] = [{k: v for k, v in a.items() if k not in STRIP_ACTION_KEYS} for a in entry["actions"]]
     return e
 
 
@@ -290,6 +297,23 @@ LEGEND = """## Legend
 - **sanctioner**: who enforces the or-else: `state`, `institution`, `peers`, `family`, `self`, or `none` (no or-else, so nobody).
 - **sanctioner derived, unreviewed**: the rule's `sanctioner` was derived once by the 2026-11-07 migration from the or-else target's role and has not been hand-reviewed yet (plans/informal-rules.md D1).
 """
+
+POWER_READING = "power reading only"
+POWER_READING_LEGEND = ("- **power reading only**: every `may` row and default capacity {scope} is a power the body holds, "
+                        "not the source's mandatory duty and not an applied rate or limit; a `must not (disability)` row removes "
+                        "such a power. A property verdict of `violated` then means \"no such power exists\", not that a law is broken.\n")
+
+
+def _power_reading_from(e, resolved) -> list:
+    """Ids whose `name` carries the "power reading only" label: the entry itself, or the members of a composite."""
+    if POWER_READING in str(e.get("name", "")).lower():
+        return [e["id"]]
+    return [m for m in e.get("members") or () if POWER_READING in str(resolved.get(m, {}).get("name", "")).lower()]
+
+
+def _an(word) -> str:
+    return ("An " if str(word)[:1].lower() in "aeiou" else "A ") + str(word)
+
 
 KEYWORDS = {"and", "or", "not", "exists", "forall", "true", "false", "=", "imp", "implies"}
 
@@ -421,7 +445,7 @@ def _delta_lines(raw, base, e) -> list:
     base_by = {r["id"]: r for r in base["rules"]}
     out = []
     for rid in raw.get("rules_drop", ()):
-        out.append(f"- {rid} dropped: {base_by[rid]['plain']}")
+        out.append(f"- {rid} dropped (base wording, not in this entry): {base_by[rid]['plain']}")
     for r in raw.get("rules_replace", ()):
         out.append(f"- {r['id']} replaced: was \"{base_by[r['id']]['plain']}\" now \"{r['plain']}\"")
     for r in raw.get("rules_add", ()):
@@ -560,14 +584,31 @@ def free_fluent_lines(e) -> list:
     return L
 
 
-def default_capacity_lines(e) -> list:
-    """Default-capacity actions, one line each: the bearer role (from arg_roles, else a role-named parameter), what it can do, and which rows name it."""
+def default_capacity_lines(e, resolved=None, spec=None) -> list:
+    """Default-capacity actions, one line each: the bearer role (from arg_roles, else a role-named parameter), what it can
+    do, and which rows name it. The verb phrase is the action's card-only `plain` ("pay a benefit to") when the source
+    gives one, else the action name with underscores as spaces. On a composite the phrase and the original role names
+    are read from the member that declares the action, and the aliased role is printed beside the member's."""
     head = ("**Default capacities** (an action a person of that kind can do unless an express disability removes it; "
             "these replaced the implicit `may ... when true` rows that once encoded them, README revision 4):")
     dc = [a for a in e["actions"] if a.get("default_capacity")]
     if not dc:
         return [head + " none"]
     roles = {r["name"] for r in e["roles"]}
+    phrase, back = {}, {}  # composite: action -> member's `plain`; action -> {aliased role: member's role name}
+    for mid in e.get("members") or ():
+        al = ((spec or {}).get("aliases") or {}).get(mid) or {}
+        for a in (resolved or {}).get(mid, {}).get("actions", ()):
+            if a.get("plain"):
+                phrase.setdefault(a["name"], a["plain"])
+            back.setdefault(a["name"], {}).update({n: o for o, n in al.items()})
+
+    def noun(a, role, lead):
+        orig = back.get(a["name"], {}).get(role)
+        word = orig or role
+        art = _an(word) if lead else _an(word).lower()
+        return art + (f" ({role} in this composite)" if orig else "")
+
     L = [head, ""]
     for a in dc:
         ar = a.get("arg_roles") or []
@@ -575,12 +616,13 @@ def default_capacity_lines(e) -> list:
         bearer, objs = (typed[0] if typed else None), [x for x in typed[1:] if x]
         naming = [r for r in e["rules"] if _aim_head(r) == a["name"]]
         if bearer:
-            who = f"A {bearer}"
+            who = noun(a, bearer, True)
         elif naming:
-            who = f"A {naming[0]['attribute']} (the who cell of {naming[0]['id']}; the action parameter is untyped)"
+            who = f"{_an(naming[0]['attribute'])} (the who cell of {naming[0]['id']}; the action parameter is untyped)"
         else:
             who = "Someone (bearer role not recorded: encoder to fix)"
-        what = a["name"].replace("_", " ") + (" a " + " and a ".join(objs) if objs else "")
+        verb = a.get("plain") or phrase.get(a["name"]) or a["name"].replace("_", " ")
+        what = verb + (" " + " and ".join(noun(a, o, False) for o in objs) if objs else "")
         rows = [f"{r['id']} ({r['deontic'].replace('_', ' ')}"
                 + (", a disability" if r["deontic"] == "must_not" and r.get("or_else") is None else "") + ")"
                 for r in naming]
@@ -596,8 +638,16 @@ def card(e, raws, resolved, props) -> str:
     for k, tag in (("rules_add", "added"), ("rules_replace", "replaced")):
         for r in raw.get(k, ()):
             own[r["id"]] = tag
-    L = [f"# {e['id']}", "", f"**{e['name']}**", "", "> " + " ".join(str(e.get("source_text", "")).split()), "",
-         LEGEND]
+    pr = _power_reading_from(e, resolved)
+    title = str(e["name"])
+    if pr and POWER_READING not in title.lower():  # a composite: the label is the member's, shown in the header as on its card
+        title += f"; power reading only (from member {', '.join(pr)})"
+    L = [f"# {e['id']}", "", f"**{title}**", ""]
+    if e.get("card_note"):
+        L += ["**Read first:** " + " ".join(str(e["card_note"]).split()), ""]
+    L += ["> " + " ".join(str(e.get("source_text", "")).split()), "",
+          (LEGEND + POWER_READING_LEGEND.format(scope="on this card" if pr == [e["id"]] else
+                                                 "in the rows of member " + ", ".join(pr))) if pr else LEGEND]
     if e.get("members"):
         spec = raw.get("composite", {})
         mem = ", ".join(e["members"])
@@ -654,7 +704,7 @@ def card(e, raws, resolved, props) -> str:
         L.append("| " + " | ".join([
             rid, r["attribute"], deontic_cell(r), _code(r["aim"]), _code(r["conditions"]), or_else_cell(r, by_id),
             r.get("strand") or "untagged (null)", _cell(r["plain"]), level_cell(r), source_cell(r)]) + " |")
-    L += [""] + free_fluent_lines(e) + [""] + default_capacity_lines(e) + ["", "## Variables", ""]
+    L += [""] + free_fluent_lines(e) + [""] + default_capacity_lines(e, resolved, raw.get("composite")) + ["", "## Variables", ""]
     for r in e["rules"]:
         vs = rule_variables(r, e)
         if not vs:
@@ -679,11 +729,14 @@ def card(e, raws, resolved, props) -> str:
     if e.get("goods_note"):
         L += ["", "## Goods (slice 2)", "", " ".join(str(e["goods_note"]).split())]
     L += ["", "## Expected properties", "",
-          "| property | kind | expected | meaning |", "|---|---|---|---|"]
+          "The `formal` cell is the checked formula (`t` is the step; `=>` reads \"whenever ... then\"); the meaning cell "
+          "is its plain gloss.", "",
+          "| property | kind | expected | meaning | formal |", "|---|---|---|---|---|"]
     pm = {p["name"]: p for p in props}
     for name, verdict in e.get("expected_properties", {}).items():
         p = pm.get(name, {})
-        L.append(f"| {name} | {p.get('kind', '?')} | {verdict} | {_cell(p.get('gloss', ''))} |")
+        L.append(f"| {name} | {p.get('kind', '?')} | {verdict} | {_cell(p.get('gloss', ''))} | "
+                 + (_code(p["formal"]) if p.get("formal") else "not recorded") + " |")
     L += ["", "## Pairs", ""]
     L += pair_lines(e, raws, resolved) or ["No pair relations."]
     L += ["", "<details><summary>Encoder notes (engine internals)</summary>", "", e.get("notes", "").rstrip(), "",

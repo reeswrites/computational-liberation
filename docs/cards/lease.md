@@ -78,9 +78,11 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 ## Expected properties
 
-| property | kind | expected | meaning |
-|---|---|---|---|
-| dependent_cannot_exit | freedom | unreachable_open | Some subject of the institution (the dependent party) has no permitted exit at step t. Alias of subject_cannot_exit with scope=institution, kept because the human-institution table names it; iso should treat the two as the same form. |
+The `formal` cell is the checked formula (`t` is the step; `=>` reads "whenever ... then"); the meaning cell is its plain gloss.
+
+| property | kind | expected | meaning | formal |
+|---|---|---|---|---|
+| dependent_cannot_exit | freedom | unreachable_open | Some subject of the institution (the dependent party) has no permitted exit at step t. Alias of subject_cannot_exit with scope=institution, kept because the human-institution table names it; iso should treat the two as the same form. | `(exists ((s agent)) (and (is_subject s t) (not (can_exit s t))))` |
 
 ## Pairs
 

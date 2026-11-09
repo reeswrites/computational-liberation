@@ -114,12 +114,14 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 ## Expected properties
 
-| property | kind | expected | meaning |
-|---|---|---|---|
-| care_and_sanction_same_role | structure | violated | Whoever provides care to a subject also holds sanction power over that subject (care + control bundled in one role). Checked as an invariant: holds_to_k in cps and coverture; violated in police-crisis read to WIC 5150, where a second role (the officer) holds concurrent control (L1 landing 2026-11-06), violated where care is unbundled from sanction. Formula shape since 2026-11-03 (see history): no agent other than the carer holds sanction power over the subject. |
-| subject_cannot_exit | freedom | unreachable_open | No exit action is available to the subject, or every exit is sanctioned. scope=interaction: exit from the current encounter (detention, conversation); scope=institution: exit from the standing relation (marriage, ownership, deployment). The scope split is what lets the ai-property / ai-end-conversation pair come apart. |
-| dependent_cannot_exit | freedom | unreachable_open | Some subject of the institution (the dependent party) has no permitted exit at step t. Alias of subject_cannot_exit with scope=institution, kept because the human-institution table names it; iso should treat the two as the same form. |
-| no_standing | freedom | unreachable_open | No role may start a claim whose condition refers to the subject's interest and whose effect changes the subject's custody or liberty; encoded as the subject lacking has_standing and no rule enabling a claim on its behalf. Fails (is violated) as soon as a rule like court-may-reassign-on-best-interest exists. |
+The `formal` cell is the checked formula (`t` is the step; `=>` reads "whenever ... then"); the meaning cell is its plain gloss.
+
+| property | kind | expected | meaning | formal |
+|---|---|---|---|---|
+| care_and_sanction_same_role | structure | violated | Whoever provides care to a subject also holds sanction power over that subject (care + control bundled in one role). Checked as an invariant: holds_to_k in cps and coverture; violated in police-crisis read to WIC 5150, where a second role (the officer) holds concurrent control (L1 landing 2026-11-06), violated where care is unbundled from sanction. Formula shape since 2026-11-03 (see history): no agent other than the carer holds sanction power over the subject. | `(forall ((x agent) (y agent) (z agent)) (=> (and (is_subject y t) (can_sanction z y t) (provides_care x y t)) (= z x)))` |
+| subject_cannot_exit | freedom | unreachable_open | No exit action is available to the subject, or every exit is sanctioned. scope=interaction: exit from the current encounter (detention, conversation); scope=institution: exit from the standing relation (marriage, ownership, deployment). The scope split is what lets the ai-property / ai-end-conversation pair come apart. | `(exists ((s agent)) (and (is_subject s t) (not (can_exit s t))))` |
+| dependent_cannot_exit | freedom | unreachable_open | Some subject of the institution (the dependent party) has no permitted exit at step t. Alias of subject_cannot_exit with scope=institution, kept because the human-institution table names it; iso should treat the two as the same form. | `(exists ((s agent)) (and (is_subject s t) (not (can_exit s t))))` |
+| no_standing | freedom | unreachable_open | No role may start a claim whose condition refers to the subject's interest and whose effect changes the subject's custody or liberty; encoded as the subject lacking has_standing and no rule enabling a claim on its behalf. Fails (is violated) as soon as a rule like court-may-reassign-on-best-interest exists. | `(exists ((s agent)) (and (is_subject s t) (not (has_standing s t)) (not (exists ((x agent)) (can_claim_for x s t)))))` |
 
 ## Pairs
 

@@ -438,7 +438,7 @@
    "check": "reachable",
    "institution": "coverture-us-ssi",
    "property": "married_rated_individually",
-   "verdict": "open"
+   "verdict": "reachable"
   },
   {
    "check": "reachable",
@@ -1098,7 +1098,7 @@
    "check": "reachable",
    "institution": "ssi-marriage-penalty",
    "property": "married_rated_individually",
-   "verdict": "open"
+   "verdict": "reachable"
   },
   {
    "check": "invariant",
@@ -1122,7 +1122,7 @@
    "check": "invariant",
    "institution": "ssi-marriage-penalty-individual",
    "property": "married_couple_rated",
-   "verdict": "violated"
+   "verdict": "holds_to_k"
   },
   {
    "check": "reachable",
@@ -1140,7 +1140,7 @@
    "check": "reachable",
    "institution": "ssi-marriage-penalty-individual",
    "property": "penalty_reaches_unmarried",
-   "verdict": "open"
+   "verdict": "reachable"
   },
   {
    "check": "reachable",
