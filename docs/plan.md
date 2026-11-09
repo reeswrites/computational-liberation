@@ -6,7 +6,7 @@ Revised whenever a batch lands. Status words: todo · doing · done · parked ·
 Compute liberation: given institutions as rules and candidate changes, say which change to make first and what it sets off. Five layers (docs/theory.md, Roadmap). No forward claim until layer 3 passes.
 
 Negative space: docs/negative-results.md (refuted, weakened, null, untested, refused, declined, artifact, gate_fail, abandoned).
-Direction tests (proposed 2026-11-09, not yet accepted): plans/direction-tests.md — five questions, one gate (G1), and stop conditions for the approach.
+**Top priority, planned 2026-11-09, not started: plans/worth-it-slice.md** — a one-to-two-day test of whether the solver tells us anything the encoding process did not (a voting-devices positive control, then cut sets on coverture-household judged against the author's written expectation). Everything in "Where to pick up" pauses until it reports. Backlog behind it: plans/direction-tests.md (five questions, gate G1, stop conditions).
 
 ## Where to pick up (updated 2026-11-09, end of day)
 
