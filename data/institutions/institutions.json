@@ -2578,7 +2578,7 @@
     "implicit": true,
     "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.",
+    "source": "implicit regularity (kind strategy since 3b): the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.",
     "var_roles": {
      "c": "child",
      "p": "birthing_parent"
@@ -3000,7 +3000,7 @@
     "implicit": true,
     "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.",
+    "source": "implicit regularity (kind strategy since 3b): the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.",
     "var_roles": {
      "c": "child",
      "p": "birthing_parent"
@@ -7632,7 +7632,7 @@
     "implicit": true,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -7666,9 +7666,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Retagged formal 2026-11-08 (batch 3b, B1 ruling): a conveyance route of the 1839-50 exemption acts (Chused 1984); no text opened for this row, the provenance stays recalled/unverified.",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -8245,7 +8245,7 @@
     "implicit": true,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -8279,9 +8279,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Retagged formal 2026-11-08 (batch 3b, B1 ruling): a conveyance route of the 1839-50 exemption acts (Chused 1984); no text opened for this row, the provenance stays recalled/unverified.",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -8875,7 +8875,7 @@
     "implicit": true,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -8909,9 +8909,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Retagged formal 2026-11-08 (batch 3b, B1 ruling): a conveyance route of the 1839-50 exemption acts (Chused 1984); no text opened for this row, the provenance stays recalled/unverified.",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -9505,7 +9505,7 @@
     "implicit": true,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -9539,9 +9539,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Retagged formal 2026-11-08 (batch 3b, B1 ruling): a conveyance route of the 1839-50 exemption acts (Chused 1984); no text opened for this row, the provenance stays recalled/unverified.",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -10157,7 +10157,7 @@
     "implicit": true,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -10191,9 +10191,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Retagged formal 2026-11-08 (batch 3b, B1 ruling): a conveyance route of the 1839-50 exemption acts (Chused 1984); no text opened for this row, the provenance stays recalled/unverified.",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -10875,7 +10875,7 @@
     "implicit": true,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -10909,9 +10909,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Retagged formal 2026-11-08 (batch 3b, B1 ruling): a conveyance route of the 1839-50 exemption acts (Chused 1984); no text opened for this row, the provenance stays recalled/unverified.",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -11761,7 +11761,7 @@
     "implicit": false,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "the anti-footbinding pledge (ADR 0015 A3 stand-in: `leave_unbound_pledge` is the pledge for `leave_unbound`): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(family). The son half of the pledge (no bound bride) is R10 accept_match_pledge (suitor), read by R5/R6 as (pledged suitor); until the encoding review of 2026-11-04 (finding 2) it was folded into R5/R6's (pledged family) condition, which mis-attributed the sons' pledge to the daughter's family. The association's own marriage pool is what R6 reads. Superadditive: the pledge pays only in numbers (Mackie: the pledge associations' 'critical mass') Retagged norm 2026-11-08 (batch 3b, B4 ruling): Mackie's convention is unwritten; the marriage market, not a body, enforces it."
+    "source": "the anti-footbinding pledge (ADR 0015 A3 stand-in: `leave_unbound_pledge` is the pledge for `leave_unbound`): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(family). The son half of the pledge (no bound bride) is R10 accept_match_pledge (suitor), read by R5/R6 as (pledged suitor); until the encoding review of 2026-11-04 (finding 2) it was folded into R5/R6's (pledged family) condition, which mis-attributed the sons' pledge to the daughter's family. The association's own marriage pool is what R6 reads. Superadditive: the pledge pays only in numbers (Mackie: the pledge associations' 'critical mass') Retagged norm 2026-11-08 (batch 3b, B4 ruling): no read text states a rule that a family may pledge; the associations' written pledge is not opened (snippets only), so the tag matches R10's."
    },
    {
     "id": "R10",
@@ -11772,9 +11772,9 @@
     "or_else": null,
     "strand": "superadditive",
     "implicit": true,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "the son half of the anti-footbinding pledge (ADR 0015 A3 stand-in: `accept_match_pledge` is the pledge for `accept_match`, i.e. the suitor family commits to marry its sons to unbound women): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(suitor), read by R5 (lifts the rejection) and R6 (accepts the unbound bride). Added 2026-11-04 after the encoding review (finding 2: Mackie's pool is made by pledged SUITOR families). implicit: the rule is reconstructed, no text says a suitor 'may' pledge. Superadditive like R4. UNVERIFIED (reconstructed from the convention account; no primary text opened) Retagged formal 2026-11-08 (batch 3b, B1 ruling): the pledge is an explicit, written commitment of the pledge associations, not an unwritten practice; no text opened for this row, the provenance stays recalled/unverified."
+    "source": "the son half of the anti-footbinding pledge (ADR 0015 A3 stand-in: `accept_match_pledge` is the pledge for `accept_match`, i.e. the suitor family commits to marry its sons to unbound women): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(suitor), read by R5 (lifts the rejection) and R6 (accepts the unbound bride). Added 2026-11-04 after the encoding review (finding 2: Mackie's pool is made by pledged SUITOR families). implicit: the rule is reconstructed, no text says a suitor 'may' pledge. Superadditive like R4. UNVERIFIED (reconstructed from the convention account; no primary text opened) Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text; the pledge associations' pledge is written law in substance, text not opened; retag to formal when opened)."
    },
    {
     "id": "R5",
@@ -12407,7 +12407,7 @@
     "implicit": true,
     "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it."
+    "source": "implicit regularity (a care-norm in the loose sense, not a written rule; no sanction; kind strategy since 3b): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it."
    },
    {
     "id": "R6",
@@ -12729,7 +12729,7 @@
     "implicit": true,
     "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it."
+    "source": "implicit regularity (a care-norm in the loose sense, not a written rule; no sanction; kind strategy since 3b): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it."
    },
    {
     "id": "R6",

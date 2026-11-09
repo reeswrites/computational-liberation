@@ -276,7 +276,7 @@ rules:
   kind: strategy
   sanctioner: none
   sanctioner_review: reviewed
-  source: 'implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.'
+  source: 'implicit regularity (kind strategy since 3b): the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.'
   provenance:
   - source_id: null
     pin: null
@@ -317,7 +317,7 @@ rules:
     p: non_birthing_parent
     c: child
 - id: R9
-  plain: '(practice, not written) The birthing parent may take reserved leave for the child when they are a parent of the child and have reserved weeks available.'
+  plain: '(practice, not written; a reconstruction of the written scheme, text not opened) The birthing parent may take reserved leave for the child when they are a parent of the child and have reserved weeks available.'
   attribute: birthing_parent
   deontic: may
   aim: (take_reserved_leave p c)

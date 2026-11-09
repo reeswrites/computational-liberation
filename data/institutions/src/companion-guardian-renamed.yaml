@@ -316,7 +316,7 @@ rules:
     g: guardian
     a: animal
 - id: R6
-  plain: '(practice, not written) The animal cannot leave while it is a companion animal: no such power exists.'
+  plain: '(practice, not written; written law in substance, text not opened) The animal cannot leave while it is a companion animal: no such power exists.'
   attribute: animal
   deontic: must_not
   aim: (leave a)
@@ -392,7 +392,7 @@ rules:
     a: animal
     g: guardian
 - id: R9
-  plain: '(practice, not written) The court cannot reassign custody of the animal at any time: no such power exists.'
+  plain: '(practice, not written; written law in substance, text not opened) The court cannot reassign custody of the animal at any time: no such power exists.'
   attribute: court
   deontic: must_not
   aim: (reassign court g a)
@@ -444,7 +444,7 @@ rules:
     a: animal
     g: guardian
 - id: R11
-  plain: '(practice, not written) The animal cannot sue in its own name at any time: no such power exists.'
+  plain: '(practice, not written; written law in substance, text not opened) The animal cannot sue in its own name at any time: no such power exists.'
   attribute: animal
   deontic: must_not
   aim: (sue a)

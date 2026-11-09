@@ -111,7 +111,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 Extends [footbinding](footbinding.md); one line per change:
 - R4 dropped: (practice, not written) A family may take the anti-footbinding pledge for its daughter when she is a subject (pledge associations, 1874 onward).
-- R10 dropped: (the pledge associations' written pledge; text not opened) A suitor may take the pledge to accept an unbound bride (the sons' half of the pledge) when the daughter is a subject.
+- R10 dropped: (practice, not written; the pledge associations' written pledge, text not opened) A suitor may take the pledge to accept an unbound bride (the sons' half of the pledge) when the daughter is a subject.
 - removes action leave_unbound_pledge
 - removes action accept_match_pledge
 - overrides minimal_pair_of
