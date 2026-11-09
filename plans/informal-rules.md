@@ -322,3 +322,8 @@ After the faithfulness seat (docs/reviews/2026-11-08-batch3b-faithfulness.md: 17
 6. coverture-household-us R6 `plain`: "the spouse's consent" -> "both spouses' consent", matching the notes and the Stevenson & Wolfers excerpt.
 
 Not changed, for the author: (a) kibbutz R2/R3 `sanctioner`: the faithfulness seat rules `institution` (the or_else actor is the committee, glossed in Roles as "the kibbutz general assembly's organ"; `peers` would need R6's actor to be a members role), against the 2026-11-08 hand review's `peers`; recorded, not applied (sanctioner is not a 3b field and the seat's brief said so). (b) crisis-team R8 and mwpa R10 print "(implicit)" beside `kind: formal`: `implicit` stays true by the B1 ruling (gate (d) flag; the README allows implicit and formal together), the card-only seat found the pairing legible but unglossed in the Legend. (c) The B1 premise "four with opened text" held for two rows; the two refusals mean B1 landed as two promotions and nine holds.
+
+### Rulings 2026-11-09 (author)
+
+1. **B1 refusals: ruling** mwpa R12 and footbinding R10 stay `norm` with the hold note. The author accepts the hold rather than opening Chused 1983 or a pledge text (closed-access or unlocated; no claim rests on either row). Chosen over chasing the texts because the retag cannot move a verdict. Known limit.
+2. **Kibbutz R2 and R3 `sanctioner`: ruling** apply the 3b faithfulness seat's `institution` (the `or_else` is R6, enacted by the committee role, glossed as the general assembly's organ), in the next dataset PR. Chosen over the 2026-11-08 hand review's `peers` because `peers` would need R6's actor to be a members role. Prose-only; it cannot move a verdict.

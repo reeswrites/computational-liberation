@@ -375,3 +375,11 @@ Surprises ledger: none (no verdict moved; nothing unpredicted was produced by a 
 ### Council
 
 Pending: correctness seat (the two new free fluents added worlds: confirm no forall property became vacuous, the check-all flags column read `-` on every touched row; confirm `default_capacity` enabledness on `leave_unbound` and `neglect` equals the dropped `may`: the conversion lives on the two action declarations, `default_capacity: true`, in footbinding.yaml and kibbutz-childrens-house.yaml, inherited by the variants), faithfulness seat (cps R1 and kibbutz R5 conditions against the WIC 328(a) and Wikipedia excerpts; the two dropped sanctions), card-only seat (the regenerated cards of the seven touched entries).
+
+## 9. Post-batch rulings (author, 2026-11-09)
+
+Nothing above is edited.
+
+1. **Card "(implicit)" tag: ruling** reword the card Legend in build.py rather than hide the tag or clear the flag. New legend text: "implicit: not written as a rule in the cited source; reconstructed from it or from practice". Chosen over hiding the tag or clearing the flag because the engine flag stays (gate (d) reads it) and the tag is true; only the wording misled. To be done in the 3c post-council fix pass or the next build.py PR.
+2. **3d experiment 1 (coverture-us R6 `exit_ground`): ruling** do not land now; it stays a recorded experiment. Revisit when marriage batch 2 reopens the coverture-us entries, so the iso-claim downgrade (exact to guard) is paid once.
+3. **3d experiment 2 (companion-ownership): ruling** the R5 flip is an artifact of R4's untyped second-owner variable plus sticky `abandoned`. Fix R4's typing in its own small preregistration (predict which rows move, likely none at k=6), and do not pursue the two-step sanction now. Reason: slice 4 will run cut sets on this entry and should not carry the artifact.
