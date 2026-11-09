@@ -1,0 +1,21 @@
+== kibbutz-childrens-house  transfer graph at k=6  (6 rules; weight = load(r2 | E minus r1) - load(r2 | E); freedom = load_freedom_up, goods = load_goods_primary; deletions only)
+-- freedom edges: 0
+   relief (load fell): R1->R2 -1, R2->R1 -1
+   out-transfer (ranked edges): R1[superadditive]=0, R2[tying]=0, R3[superadditive]=0, R4[rival]=0, R5[superadditive]=0, R6[rival]=0
+-- goods edges: 0
+   out-transfer (ranked edges): R1[superadditive]=0, R2[tying]=0, R3[superadditive]=0, R4[rival]=0, R5[superadditive]=0, R6[rival]=0
+-- rebundling(E, r1): no rule
+   deregulated in E (their edges are unranked): R1, R5, R6
+== kibbutz-childrens-house  transfer graph at k=8  (6 rules; weight = load(r2 | E minus r1) - load(r2 | E); freedom = load_freedom_up, goods = load_goods_primary; deletions only)
+-- freedom edges: 0
+   relief (load fell): R1->R2 -1, R2->R1 -1
+   out-transfer (ranked edges): R1[superadditive]=0, R2[tying]=0, R3[superadditive]=0, R4[rival]=0, R5[superadditive]=0, R6[rival]=0
+-- goods edges: 0
+   out-transfer (ranked edges): R1[superadditive]=0, R2[tying]=0, R3[superadditive]=0, R4[rival]=0, R5[superadditive]=0, R6[rival]=0
+-- rebundling(E, r1): no rule
+   deregulated in E (their edges are unranked): R1, R5, R6
+   k-disagreement: none
+   811.5s for 6 rules (30 ordered pairs) at k=6,8; cache: 422 hit(s), 352 miss(es), hit rate 55%
+
+wrote kibbutz-childrens-house.json
+exit 0
