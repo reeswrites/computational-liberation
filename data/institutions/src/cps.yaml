@@ -420,7 +420,7 @@ rules:
   var_roles:
     c: child
 - id: R11
-  plain: 'The child may petition through a guardian when one has been appointed for the child (Cal. WIC 388(a)(1); the guardian ad litem may be the appointed attorney, WIC 326.5; encoded as counsel appointed).'
+  plain: 'The child may petition through a guardian when one has been appointed for the child (Cal. WIC 388(a)(1), on grounds of change of circumstance or new evidence; the guardian ad litem may be the appointed attorney, WIC 326.5; encoded as counsel appointed).'
   attribute: child
   deontic: may
   aim: (petition c)

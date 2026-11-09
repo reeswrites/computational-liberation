@@ -450,3 +450,14 @@ Every verdict, gate and match prediction held. Verbatim summary lines:
 Drift: one, in a count, not a verdict. The preregistration said "pytest passes (38)"; the suite has 40 tests (two added with PR #8's provenance CI rule after the figure in the brief), all passing. Recorded, not edited. Surprises ledger: none (no verdict moved; nothing unpredicted was produced).
 
 Left for the author (outside 3a's fields): coverture-household-us `notes` still says "(no unilateral divorce before 1969)" in its R6 reading; the Blackstone R7 incapacity passage is now `accessed` 2026-11-08 (re-read today at Avalon, p. 430), so the card-only seat can read the pin against the chapter opening. Council owed: card-only seat on the six touched entries (does each plain line now say what the source says).
+
+### Post-council fix pass (2026-11-08)
+
+After the card-only seat (docs/reviews/2026-11-08-batch3a-card-only.md). Prose and provenance only; no rule condition, deontic, or_else, kind or sanctioner changed.
+
+1. coverture-household and coverture-household-us R7 `plain`: the fragment now has a subject ("her acts during coverture are 'void, or at least voidable'; encoded as no power to contract").
+2. kibbutz-childrens-house R1: `plain` now opens "(unsourced: the committee is the encoder's reconstruction; unverified)", as R6 does. The Wikipedia provenance item moves from `recalled` to `snippet` (the repo rule needs `accessed` and an excerpt for `opened`, and the item has neither; the oldid was read as wikitext, which is more than recalled, but nothing is excerpted).
+3. naming-convention: the entry-level `source_text` and `notes` no longer say "NOT OPENED / UNVERIFIED" without qualification; they say the 2026-11-04 session could not open the source, the accepted manuscript was opened 2026-11-06 (rule provenance, `opened`), and the 25% band figures stay UNVERIFIED.
+4. cps R11: the WIC 326.5 provenance item already exists (`opened`, accessed 2026-11-06, excerpt recorded), so nothing was added; the card-only seat's note was mistaken. `plain` now carries 388(a)(1)'s ground ("on grounds of change of circumstance or new evidence"). cps R1 (deferred to 3c) and public-library R3 "may" (disclosed encoder choice) untouched.
+
+For 3b: the seat flagged naming-convention R1/R2 and kibbutz R1/R4/R5 `formal` (already in B4/B5 of plans/faithfulness-batch.md), and proposed kibbutz R2/R3 sanctioner `institution` rather than `peers`. That contradicts the 2026-11-08 hand review; the 3b faithfulness seat settles it. Not changed here.

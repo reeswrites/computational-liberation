@@ -144,7 +144,7 @@ rules_replace:
     h: husband
     w: wife
 - id: R7
-  plain: 'The wife cannot contract in her own name while married: no such power exists (Blackstone I.15: her legal existence is suspended during the marriage; Blackstone: void or at least voidable; encoded as no power).'
+  plain: 'The wife cannot contract in her own name while married: no such power exists (Blackstone I.15: her legal existence is suspended during the marriage; Blackstone: her acts during coverture are ''void, or at least voidable''; encoded as no power to contract).'
   attribute: wife
   deontic: must_not
   aim: (contract w)

@@ -147,7 +147,7 @@ Slice 2 revision 3 (plans/priority-slice2-results.md, "Revision 3" and "Revision
 ## Pairs
 
 Extends [mwpa-earnings](mwpa-earnings.md); one line per change:
-- R7 dropped: The wife cannot contract in her own name while married: no such power exists (Blackstone I.15: her legal existence is suspended during the marriage; Blackstone: void or at least voidable; encoded as no power).
+- R7 dropped: The wife cannot contract in her own name while married: no such power exists (Blackstone I.15: her legal existence is suspended during the marriage; Blackstone: her acts during coverture are 'void, or at least voidable'; encoded as no power to contract).
 - R15 added: The wife may contract in her own name at any time (sole-trader acts, Khan 1996).
 - overrides expected_properties
 - overrides minimal_pair_of

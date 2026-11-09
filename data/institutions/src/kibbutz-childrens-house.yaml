@@ -92,7 +92,7 @@ actions:
   effects: []
 rules:
 - id: R1
-  plain: 'The committee may assign a member to the children''s house when that person is a member.'
+  plain: '(unsourced: the committee is the encoder''s reconstruction; unverified) The committee may assign a member to the children''s house when that person is a member.'
   attribute: committee
   deontic: may
   aim: (assign committee x)
@@ -109,7 +109,7 @@ rules:
     pin: null
     jurisdiction: null
     effective_date: null
-    verification: recalled
+    verification: snippet
     excerpt: null
     accessed: null
     url: https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722
