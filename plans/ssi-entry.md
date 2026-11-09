@@ -1,6 +1,6 @@
 # ssi-marriage-penalty entry and pair (2026-11-08)
 
-Status: PREREGISTERED (commit ba5b4b0, before any run); RUN 2026-11-08, results recorded under "Results" below; COUNCIL DONE 2026-11-08 (docs/reviews/2026-11-08-ssi-{correctness,faithfulness,card-only}.md; faithful with reservations); MECHANICAL FIX PASS APPLIED (wording, pins, levels; no verdict moved); REVISION 2 RULED 2026-11-08/09 AND RUN 2026-11-09 (section "Revision 2 run" at the end; council pending). The preregistration sections are unedited. Written and committed before the first `phil rules check`, `ablate` or `diff` over either entry. Engine: ENGINE_PIN b5fd019. Branch `ssi-entry`. Inputs: plans/sourcing-worklist-marriage.md section 5 (Entry 2) and its Gaps, docs/connections.md section 4 (C2), plans/disability.md (SSI), plans/composition.md, ADR 0018, data/institutions/src/lease.yaml as the model.
+Status: PREREGISTERED (commit ba5b4b0, before any run); RUN 2026-11-08, results recorded under "Results" below; COUNCIL DONE 2026-11-08 (docs/reviews/2026-11-08-ssi-{correctness,faithfulness,card-only}.md; faithful with reservations); MECHANICAL FIX PASS APPLIED (wording, pins, levels; no verdict moved); REVISION 2 RULED 2026-11-08/09 AND RUN 2026-11-09 (section "Revision 2 run" at the end); REVISION 2 COUNCIL DONE 2026-11-09 (docs/reviews/2026-11-09-ssi-rev2-{correctness,faithfulness,card-only}.md; the card-only seat paused the batch) AND POST-COUNCIL FIX PASS APPLIED 2026-11-09 (prose and card rendering only; no verdict moved; five items open for the author). The preregistration sections are unedited. Written and committed before the first `phil rules check`, `ablate` or `diff` over either entry. Engine: ENGINE_PIN b5fd019. Branch `ssi-entry`. Inputs: plans/sourcing-worklist-marriage.md section 5 (Entry 2) and its Gaps, docs/connections.md section 4 (C2), plans/disability.md (SSI), plans/composition.md, ADR 0018, data/institutions/src/lease.yaml as the model.
 
 ## What was built
 
@@ -282,7 +282,7 @@ Any result other than the above is recorded in Results against the row it contra
 
 ### Results (run 2026-11-09; installed engine 50ed97f, ENGINE_PIN e46f6ea, baseline engine_hash 58c4c54222de before and after; z3 5.3.3; preregistration commit ecca295)
 
-Every verdict, diff, gate, drop-one and pytest prediction held; no stop condition met; the baseline was regenerated. Nothing above this heading was edited.
+Every verdict, diff, gate, drop-one and pytest prediction held; no stop condition met; the baseline was regenerated. Nothing above this heading was edited, except the file's Status line (line 3), which is kept current (wording corrected in the post-council fix pass; correctness finding 3).
 
 **First run of `scripts/checks.sh`** (old baseline; CHECKS FAILED by design, the diff line is the only failing check):
 
@@ -338,3 +338,60 @@ Surprises ledger: none (no unpredicted verdict). Negative results: N74 (declined
 ### Council
 
 Pending (coordinator). Correctness seat: the two edited invariant formulas (is the antecedent reachable, flags `-`; is the edit the right resolution or should the formulas have stayed and the base read violated); `pay_benefit` default capacity with `arg_roles [agency, claimant]` equals the dropped R1 in enabledness, alone and after aliasing in the composite; R5/R6 condition is the exact complement of R2 or R4. Faithfulness seat: R2/R3 "married and living together" against 20 CFR 416.1801(c) and 42 U.S.C. 1382(a)(1)(B)(i) (no excerpt was added; the phrases rest on the 2026-11-08 seat's raw read); whether a married pair living apart really gets the individual rate and limit (R5/R6 complement; the 416.1802(a) deeming case stays unencoded); whether a one-rule pair that leaves a married cohabiting pair with no limit power is acceptable; kibbutz R2/R3 `institution`. Card-only seat: does "power reading only" read on the three cards; the Default capacities line for `pay_benefit`; the pair card's name against its id; the previous pair recorded in notes.
+
+Done 2026-11-09 (the paragraph above is the brief as it stood at commit 3bc056a, kept). Reviews: docs/reviews/2026-11-09-ssi-rev2-{correctness,faithfulness,card-only}.md.
+
+- Correctness: 11 findings, **8 green / 3 amber / 0 red**. Process integrity green (the two property-formula edits are in the preregistration commit ecca295, before properties.yaml changed; not the S7 pattern); the four moved verdicts, the `pay_benefit` default capacity against the dropped R1, the R5 complement, the baseline (192 and 192 rows, exactly four differ) and `cohabits` non-vacuity all re-run and confirmed. Amber: the property edit needs the author (N75); the composite's shortest witness is a never-cohabited couple, not a separation; R6 is not the complement of R3. Does not pause.
+- Faithfulness: 9 items, counted by the seat as **5 faithful / 1 understates / 2 overstates / 0 cannot tell** (understates: `pay_benefit` as a default capacity, disclosed by the label; overstates: R5's married-apart branch, pre-existing and disclosed, and the one-rule pair if read as a reform). Does not pause.
+- Card-only: 15 rows, **8 says it / 1 overstates / 4 understates / 2 cannot tell**. The two cannot-tell rows (the pair card did not say a married cohabiting pair has no limit rule; the property formulas were not on the cards) fail legibility under SEATS.md and **paused the batch** until the fix pass below.
+
+### Post-council fix pass (2026-11-09)
+
+Scope: prose and card rendering only. No rule's attribute, deontic, aim, conditions or or_else, no property formula, no id, no `kind` or `sanctioner` value, no provenance level or excerpt was changed. Items that need the author's ruling are recorded under "Open for the author", not decided. Nothing above "### Council" was edited except the Status line and one Results sentence (fix C3).
+
+Fixes applied (the review each answers):
+
+A. Card-only seat.
+
+1. build.py Default capacities line (rows 5, 13): the article is chosen from the role ("An agency", and "An animal" on the companion cards); the verb phrase comes from a new card-only action key `plain` (stripped before the JSON, like a rule's `plain`), set on `pay_benefit` as "pay a benefit to", so the line reads "An agency may pay a benefit to a claimant unless a rule forbids it"; an action without `plain` falls back to its name as before. On a composite the phrase and the role name are read from the member that declares the action and the aliased role is printed beside it: "a claimant (partner_a in this composite)", "A wife (partner_b in this composite)".
+2. Legend and header (rows 6, 15): a card whose name carries "power reading only" (or a composite with such a member) gets a Legend line saying what the label means, including that `violated` then means "no such power exists"; on the composite the line is scoped to the rows of the SSI member and the header reads "...; power reading only (from member ssi-marriage-penalty)". The composite's `name` in the data is unchanged.
+3. Pair card "Pairs" section (row 9): a dropped rule now prints as "R3 dropped (base wording, not in this entry): ...". This is the wording on every card with a dropped rule.
+4. Pair card face (rows 8, 10, 11): a new card-only entry key `card_note` (stripped before the JSON, never inherited, as `goods_note`) prints a "Read first" paragraph under the title: the entry drops only the couple resource limit; a married pair living together then has no resource-limit rule at all; it is a deletion, not a reform; the id `ssi-marriage-penalty-individual` is historical; `violated` on married_couple_limited means no such power.
+5. Properties (rows 11, 12): the "Expected properties" table of every card gains a `formal` column with the property's full formula beside its gloss (the whole formula, not only the antecedent; the change was small, so all 34 cards carry it). Gloss text only: `married_rated_individually` no longer says it "separates the pair" (it is reachable in both entries; married_couple_limited is what distinguishes them); `married_couple_rated` reads "marriage with a shared household brings the couple rate". No formula touched.
+
+B. Faithfulness seat.
+
+1. R2 `plain` (fix 1): the quoted "with whom he or she is living" is replaced by the words the repo records, attributed separately: "with whom he is living" (42 U.S.C. 1382(a)(1)(B)(i)) and "in the same household" (20 CFR 416.1801(c)). The older "he or she" in "Revision 2 (author decisions)" item 1 of this file stays as written (a dated record); it is not a quotation the repo holds.
+2. Base `notes` item 3 (fix 2): says keeping R5 and R6 as conditioned rules is a departure from ruling 3 as worded (N74).
+3. Pair `name` (fix 3): gains "a deletion, not a reform".
+4. `married_couple_rated` gloss (fix 4): as in A5.
+5. Base `notes` (fix 5): "every rule here is a power" corrected: R2 to R6 are powers, `pay_benefit` a default capacity, R7 a disability that removes one.
+
+C. Correctness seat.
+
+1. Finding 8: **R6 is NOT the exact complement of R3.** R6 carries R5's condition, the complement of the two couple-rate routes (R2, R4); the couple limit has one route only (R3: married and living together). An unmarried pair who live together and hold out therefore has neither the couple limit power nor the individual limit power; the seat's probe finds it reachable at k=6 (present_as_married, cohabit). Pre-existing (the old R3 and R6 had the same hole). Recorded in the base `notes` ("KNOWN GAP"), in R6 `source`, and as N77. Wording corrected where it is not frozen: R5 `source` now says "the exact complement of the two couple-rate routes (R2, R4)", which is true of the rate. Edit 2 of the preregistration above calls the R5/R6 condition "the exact complement of the two couple routes"; that sentence is frozen and is wrong for R6 as a statement about limits. Not encoded: whether R3 should read cohabits and (married or holds_out) is open item (v).
+2. Finding 5: composite `notes` gains a sentence: coverture's `marry` leaves `cohabits` false, so the shortest witness of married_rated_individually is a couple who never cohabited, not a separation.
+3. Finding 3: Results now says "except the file's Status line".
+4. Finding 2 (N75) is the author's: open item (i).
+
+Not done, with reason: renaming the pair id (it removes and adds baseline rows; next dataset PR, open item (iii)); a README sentence on `pay_benefit` as an encoder's grant (it would decide open item (iv)); the R3 widening (open item (v)).
+
+Rebuild and light checks. The machine was busy, so the full `scripts/checks.sh` was NOT rerun after this pass (it ran twice before it, Results above); check-all, gate and drop-one are not re-verified here. Prediction, written before the run: institutions.json changes in `name`, `notes` and `source` strings only and properties.json in two glosses, so 0 of 192 rows move. Verbatim:
+
+- `python data/institutions/build.py --check`: `ok: 33 institutions, 43 properties, JSON and 34 cards match src/`
+- `phil rules diff --baseline data/verdicts-baseline.json`: `0 changed, 0 added, 0 removed (of 192 rows)`
+- `python -m pytest -q`: `40 passed in 132.26s (0:02:12)`
+
+Ledger: docs/negative-results.md N73 retyped `artifact` (resolved as a test defect, engine PR #8); N74 to N76 carry the seats' recommendations; N77 (`weakened`, the R6/R3 non-complement gap); N78 (`refused`, the card-only pause, fixed). Scoreboard: seats column filled on the SSI revision 2 row.
+
+#### Open for the author
+
+Recorded, not decided. Each with the seats' recommendation.
+
+1. **(i) N75, the two property-formula edits** (`married_couple_rated`, `married_couple_limited` gained the cohabits conjunct). Declared in the preregistration before the run (correctness finding 1), but no ruling names a property edit, and each property now restates its rule's condition, so `holds_to_k` holds by construction. Ratify or reverse before any claim cites these two rows. Faithfulness seat: accept, the properties restate the rules. Correctness seat: the author's call; with the old formulas both are violated in the base and the pair differs on nothing.
+2. **(ii) N74, ruling 3.** Only R1 became a default capacity; R5 and R6 stay conditioned rules. Faithfulness seat: yes, amend ruling 3 to "R1 only"; a default capacity cannot carry the condition, and couple disabilities would state a prohibition the text does not.
+3. **(iii) N76, the one-rule pair is a deletion, not a reform.** Seats: keep it as a deletion pair, never cited as a bill; rename the `-individual` id in the next dataset PR (for example `ssi-marriage-penalty-no-couple-limit`); and consider a real two-rule reform pair (drop R3, widen R6 so married cohabitants get the individual limit), after opening a bill and with its own preregistration.
+4. **(iv) Should `pay_benefit` be a default capacity at all?** Paying benefits is a power the statute confers, and the README reserves the flag for "a capacity a person of that kind holds by default" (it calls cps `petition` a conferred power, not a default capacity), so the definition is strained and the card line reads as a fact about agencies. Faithfulness seat: either one README sentence that here the flag marks an encoder's grant to an agency, or revert to a labelled R1 at the must-be revision. No verdict moves either way (correctness finding 6).
+5. **(v) The R6/R3 non-complement gap (N77).** Encode it (R3 to read cohabits and (married or holds_out), or R6 narrowed to the complement of R3) or keep it declared. Correctness seat: it is a faithfulness ruling and a new preregistration; kept declared for now.
+
+The prediction held: 0 of 192 rows moved. The three checks were run on the data, build.py and cards as committed; the edits to this file, docs/negative-results.md, docs/scoreboard.md and docs/plan.md were written while pytest ran and are read by no test or check.

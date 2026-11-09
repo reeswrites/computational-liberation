@@ -58,9 +58,11 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 ## Expected properties
 
-| property | kind | expected | meaning |
-|---|---|---|---|
-| new_convention_adopted | structure | reachable | The new name is the convention in use: every member uses the new name and not the old one at step t. Written for `naming-convention` (layer-2 gate (b), Centola et al. 2018; preregistered 2026-11-04). Layer 1: reachable (one use_new step from the declared initial uses_old); not persists (use_old stays permitted). Layer 2: read on the shared role-level state, where set-true wins over set-false in the successor, it is true at a step iff some member fired use_new and no member fired use_old; crit_b's mean over seeds of its last-step value is the adoption rate the committed_minority sweep reads. New-and-not-old, not uses_new alone, so that a committed minority using the new name does not by itself read as adoption. |
+The `formal` cell is the checked formula (`t` is the step; `=>` reads "whenever ... then"); the meaning cell is its plain gloss.
+
+| property | kind | expected | meaning | formal |
+|---|---|---|---|---|
+| new_convention_adopted | structure | reachable | The new name is the convention in use: every member uses the new name and not the old one at step t. Written for `naming-convention` (layer-2 gate (b), Centola et al. 2018; preregistered 2026-11-04). Layer 1: reachable (one use_new step from the declared initial uses_old); not persists (use_old stays permitted). Layer 2: read on the shared role-level state, where set-true wins over set-false in the successor, it is true at a step iff some member fired use_new and no member fired use_old; crit_b's mean over seeds of its last-step value is the adoption rate the committed_minority sweep reads. New-and-not-old, not uses_new alone, so that a committed minority using the new name does not by itself read as adoption. | `(forall ((m agent)) (and (uses_new m t) (not (uses_old m t))))` |
 
 ## Pairs
 

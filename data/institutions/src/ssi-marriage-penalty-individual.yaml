@@ -1,5 +1,6 @@
 id: ssi-marriage-penalty-individual
-name: 'SSI with the couple resource limit removed (one-rule pair of ssi-marriage-penalty: R3 dropped; couple rate and holding-out test kept); power reading only'
+name: 'SSI with the couple resource limit removed (one-rule pair of ssi-marriage-penalty: R3 dropped; couple rate and holding-out test kept; a deletion, not a reform); power reading only'
+card_note: 'This entry drops only the couple resource limit (R3) from ssi-marriage-penalty; the couple rate (R2) and the holding-out test (R4) are kept. A married pair living together then has NO resource-limit rule at all: the couple limit is gone and the individual limit (R6) does not cover them. So this is a one-rule deletion for comparison, not a reform anyone proposed, and no bill was read. The id `ssi-marriage-penalty-individual` is historical (kept from an earlier five-rule pair) and no longer describes the entry. `violated` on married_couple_limited means the agency holds no power to apply the couple limit, not that a law is broken.'
 extends: ssi-marriage-penalty
 rules_drop: [R3]
 expected_properties:

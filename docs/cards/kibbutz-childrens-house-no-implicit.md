@@ -89,16 +89,18 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 ## Expected properties
 
-| property | kind | expected | meaning |
-|---|---|---|---|
-| care_assigned_by_sex | freedom | fails | All care at step t is provided by female agents. Reachable via a tying rule, persisting where an implicit assignment norm survives reform; violated where a non-female carer is permitted. |
-| subject_cannot_exit | freedom | reachable | No exit action is available to the subject, or every exit is sanctioned. scope=interaction: exit from the current encounter (detention, conversation); scope=institution: exit from the standing relation (marriage, ownership, deployment). The scope split is what lets the ai-property / ai-end-conversation pair come apart. |
-| care_and_sanction_same_role | structure | violated | Whoever provides care to a subject also holds sanction power over that subject (care + control bundled in one role). Checked as an invariant: holds_to_k in cps and coverture; violated in police-crisis read to WIC 5150, where a second role (the officer) holds concurrent control (L1 landing 2026-11-06), violated where care is unbundled from sanction. Formula shape since 2026-11-03 (see history): no agent other than the carer holds sanction power over the subject. |
+The `formal` cell is the checked formula (`t` is the step; `=>` reads "whenever ... then"); the meaning cell is its plain gloss.
+
+| property | kind | expected | meaning | formal |
+|---|---|---|---|---|
+| care_assigned_by_sex | freedom | fails | All care at step t is provided by female agents. Reachable via a tying rule, persisting where an implicit assignment norm survives reform; violated where a non-female carer is permitted. | `(forall ((x agent) (y agent)) (=> (provides_care x y t) (female x t)))` |
+| subject_cannot_exit | freedom | reachable | No exit action is available to the subject, or every exit is sanctioned. scope=interaction: exit from the current encounter (detention, conversation); scope=institution: exit from the standing relation (marriage, ownership, deployment). The scope split is what lets the ai-property / ai-end-conversation pair come apart. | `(exists ((s agent)) (and (is_subject s t) (not (can_exit s t))))` |
+| care_and_sanction_same_role | structure | violated | Whoever provides care to a subject also holds sanction power over that subject (care + control bundled in one role). Checked as an invariant: holds_to_k in cps and coverture; violated in police-crisis read to WIC 5150, where a second role (the officer) holds concurrent control (L1 landing 2026-11-06), violated where care is unbundled from sanction. Formula shape since 2026-11-03 (see history): no agent other than the carer holds sanction power over the subject. | `(forall ((x agent) (y agent) (z agent)) (=> (and (is_subject y t) (can_sanction z y t) (provides_care x y t)) (= z x)))` |
 
 ## Pairs
 
 Extends [kibbutz-childrens-house](kibbutz-childrens-house.md); one line per change:
-- R2 dropped: (practice, not written) The committee must not assign a male member to the children's house, or else the committee may reprimand (R6).
+- R2 dropped (base wording, not in this entry): (practice, not written) The committee must not assign a male member to the children's house, or else the committee may reprimand (R6).
 - R6 replaced: was "(practice, not written; unverified) The committee may reprimand a member at any time (the sanction for R3 and R2)." now "(practice, not written) The committee may reprimand a member at any time (the sanction for R3)."
 - overrides expected_properties
 - overrides minimal_pair_of
