@@ -1,6 +1,6 @@
 # ssi-marriage-penalty entry and pair (2026-11-08)
 
-Status: PREREGISTERED (commit ba5b4b0, before any run); RUN 2026-11-08, results recorded under "Results" below; COUNCIL DONE 2026-11-08 (docs/reviews/2026-11-08-ssi-{correctness,faithfulness,card-only}.md; faithful with reservations); MECHANICAL FIX PASS APPLIED (wording, pins, levels; no verdict moved); REVISION 2 AWAITS THE AUTHOR (section at the end). The preregistration sections are unedited. Written and committed before the first `phil rules check`, `ablate` or `diff` over either entry. Engine: ENGINE_PIN b5fd019. Branch `ssi-entry`. Inputs: plans/sourcing-worklist-marriage.md section 5 (Entry 2) and its Gaps, docs/connections.md section 4 (C2), plans/disability.md (SSI), plans/composition.md, ADR 0018, data/institutions/src/lease.yaml as the model.
+Status: PREREGISTERED (commit ba5b4b0, before any run); RUN 2026-11-08, results recorded under "Results" below; COUNCIL DONE 2026-11-08 (docs/reviews/2026-11-08-ssi-{correctness,faithfulness,card-only}.md; faithful with reservations); MECHANICAL FIX PASS APPLIED (wording, pins, levels; no verdict moved); REVISION 2 RULED 2026-11-08/09 AND RUN 2026-11-09 (section "Revision 2 run" at the end; council pending). The preregistration sections are unedited. Written and committed before the first `phil rules check`, `ablate` or `diff` over either entry. Engine: ENGINE_PIN b5fd019. Branch `ssi-entry`. Inputs: plans/sourcing-worklist-marriage.md section 5 (Entry 2) and its Gaps, docs/connections.md section 4 (C2), plans/disability.md (SSI), plans/composition.md, ADR 0018, data/institutions/src/lease.yaml as the model.
 
 ## What was built
 
@@ -280,6 +280,61 @@ Any result other than the above is recorded in Results against the row it contra
 
 **Nothing above "### Results" is edited after the first run.** Commit this section before any edit, build or run.
 
-### Results
+### Results (run 2026-11-09; installed engine 50ed97f, ENGINE_PIN e46f6ea, baseline engine_hash 58c4c54222de before and after; z3 5.3.3; preregistration commit ecca295)
 
-(pending)
+Every verdict, diff, gate, drop-one and pytest prediction held; no stop condition met; the baseline was regenerated. Nothing above this heading was edited.
+
+**First run of `scripts/checks.sh`** (old baseline; CHECKS FAILED by design, the diff line is the only failing check):
+
+- `build.py --check`: `ok: 33 institutions, 43 properties, JSON and 34 cards match src/`
+- `rules diff`: `4 changed, 0 added, 0 removed (of 192 rows)` (`[FAIL] diff (exit 0)`)
+- `rules check-all`: `agreement: 192/192 = 100%`
+- `rules gate`: `b          PASS    coverture-household~police-crisis@guard+strands: partial(care+control); coverture-household~cps@guard+strands: partial(care+control); police-crisis~cps@guard+strands: partial(care+c...`; `e          PASS    agreement 192/192 = 100% (min 60%)`; `GATE PASS  (deferred criteria do not fail the gate)`
+- `drop_one_match`: `b=PASS rows: 19`; `coverture-household R2,coverture-household R5,coverture-household R6,police-crisis R2,police-crisis R4,police-crisis R11,cps R3,cps R4,cps R10`
+- `pytest`: `40 passed in 380.30s (0:06:20)`
+- `CHECKS FAILED` (exit 1)
+
+**Moved rows, predicted against actual** (`phil rules diff --baseline data/verdicts-baseline.json`, verbatim rows):
+
+| # | institution | property | baseline | predicted | actual | hit |
+|---|---|---|---|---|---|---|
+| 1 | ssi-marriage-penalty | married_rated_individually | open | reachable | `changed  married_rated_individually [reachable]: open -> reachable` | yes |
+| 2 | ssi-marriage-penalty-individual | married_couple_rated | violated | holds_to_k | `changed  married_couple_rated [invariant]: violated -> holds_to_k` | yes |
+| 3 | ssi-marriage-penalty-individual | penalty_reaches_unmarried | open | reachable | `changed  penalty_reaches_unmarried [reachable]: open -> reachable` | yes |
+| 4 | coverture-us-ssi | married_rated_individually | open | reachable | `changed  married_rated_individually [reachable]: open -> reachable` | yes |
+
+4 of 4 predicted rows moved; 0 unpredicted rows moved, added or removed.
+
+**Baseline.** Regenerated with `phil rules verdicts --k 6 --no-cache --out data/verdicts-baseline.json`: `wrote data/verdicts-baseline.json: 192 rows, engine_hash 58c4c54222de`. Old 192 rows, new 192 rows; compared by script: same key set, same engine_hash, params and z3, and exactly the four rows above differ.
+
+**Second run of `scripts/checks.sh`** (new baseline):
+
+- `build.py --check`: `ok: 33 institutions, 43 properties, JSON and 34 cards match src/`
+- `rules diff`: `0 changed, 0 added, 0 removed (of 192 rows)`
+- `rules check-all`: `agreement: 192/192 = 100%`
+- `rules gate`: `b          PASS    coverture-household~police-crisis@guard+strands: partial(care+control); coverture-household~cps@guard+strands: partial(care+control); police-crisis~cps@guard+strands: partial(care+c...`; `e          PASS    agreement 192/192 = 100% (min 60%)`; `GATE PASS  (deferred criteria do not fail the gate)`
+- `drop_one_match`: `b=PASS rows: 19`; `coverture-household R2,coverture-household R5,coverture-household R6,police-crisis R2,police-crisis R4,police-crisis R11,cps R3,cps R4,cps R10`
+- `pytest`: `40 passed in 159.06s (0:02:39)`
+- `ALL CHECKS OK` (exit 0)
+
+**Per-property** (`phil rules check --inst X --k {6,8} --init declared --compliance strict --step-mode one --no-cache`): all 25 rows as preregistered at both k (base 5/5, pair 5/5, composite 15/15), flags column `-` on every row, so neither edited invariant is vacuous. The pair prints one warning (derived `couple_limit` names an action no rule regulates), as predicted. Emitted rule rows 287 -> 286, as predicted. Cards regenerated: the two SSI entries, coverture-us-ssi, the two kibbutz entries, cards/README.md.
+
+**Exploratory, as predicted on every line.** `phil rules ablate --entry ssi-marriage-penalty --k 6,8`: no R1 row; R2 -> married_couple_rated holds_to_k>violated (load 1/1); R3 -> married_couple_limited holds_to_k>violated (deregulated table); R4 -> penalty_reaches_unmarried reachable>open (load 0/0); R5 -> married_rated_individually reachable>open (deregulated table; the new flip); R6 none; R7 -> over_limit_ineligible holds_to_k>violated. `R4~prohibit` still flips married_couple_rated as well (S5, unchanged artifact). `phil rules ablate --entry coverture-us-ssi --k 6,8`: the six ssi rows flip the same properties and nothing else; the string `financial_dependence:` occurs in no flips cell of the table. `phil rules iso --cond guard`, base against coverture-household 0/6|7, police-crisis 1/6|11 (R2->R3, as before), cps 0/6|10, lease 0/6|5; iso False in all four.
+
+**Claims.** C2b stays refuted as written (no SSI rule flips `financial_dependence` in the composite after the revision). C2c stays untested (no shared fluent added). C2a unchanged. docs/claims.md not edited.
+
+**Drift** (none in a verdict, diff row, gate, drop-one set or test count):
+
+1. Brief against data, found before the run and written into the preregistration, so recorded here for the record rather than as a miss: the brief called `cohabits` a new free fluent; it was already declared and is not free (Scope (a)). No row became conditional on a free input.
+2. Brief against data: the brief said to drop `sanctioner_review: derived` from kibbutz R2 and R3; both were already `reviewed`, nothing was dropped (Edit 8).
+3. Deviation from the rulings as worded, decided in the preregistration (Scope (b)): the formulas of `married_couple_rated` and `married_couple_limited` were edited to read married and cohabits. No ruling names a property edit. Flagged for the author; N75.
+4. Deviation from ruling 3 as worded, decided in the preregistration (Scope (c)): only R1 became a default capacity; "the pair's R5/R6" no longer exist as `when true` rows and stay conditioned rules. Flagged for the author; N74.
+5. Edit not listed in the preregistration's Edits: data/institutions/README.md Conventions bullet gained `pay_benefit` in the default-capacity example list, and kibbutz-childrens-house `notes` gained one sentence on the retag. Prose only.
+6. Card wording seen, not fixed (build.py is out of scope): the Default capacities line reads "A agency may pay benefit a claimant unless a rule forbids it".
+7. The installed engine is one merge past ENGINE_PIN (50ed97f, PR #6, dataset-copy drop); the baseline's engine_hash did not change across the regeneration, so the verdict code is the pinned one. ENGINE_PIN not edited.
+
+Surprises ledger: none (no unpredicted verdict). Negative results: N74 (declined: R5/R6 default-capacity conversion), N75 (weakened: ruling 1 needed a property edit for ruling 4's flip to exist), N76 (untested: the one-rule pair is not a coherent reform). The superseded five-rule pair had no claim attached in docs/claims.md, so it gets no `declined` row; it is recorded in the pair's `notes`.
+
+### Council
+
+Pending (coordinator). Correctness seat: the two edited invariant formulas (is the antecedent reachable, flags `-`; is the edit the right resolution or should the formulas have stayed and the base read violated); `pay_benefit` default capacity with `arg_roles [agency, claimant]` equals the dropped R1 in enabledness, alone and after aliasing in the composite; R5/R6 condition is the exact complement of R2 or R4. Faithfulness seat: R2/R3 "married and living together" against 20 CFR 416.1801(c) and 42 U.S.C. 1382(a)(1)(B)(i) (no excerpt was added; the phrases rest on the 2026-11-08 seat's raw read); whether a married pair living apart really gets the individual rate and limit (R5/R6 complement; the 416.1802(a) deeming case stays unencoded); whether a one-rule pair that leaves a married cohabiting pair with no limit power is acceptable; kibbutz R2/R3 `institution`. Card-only seat: does "power reading only" read on the three cards; the Default capacities line for `pay_benefit`; the pair card's name against its id; the previous pair recorded in notes.
