@@ -178,7 +178,7 @@ rules:
     url: null
     note: 'no work named for this rule; rationale: care by any registered parent of a born child is permitted, men included; nothing here bars it'
 - id: R5
-  plain: '(practice, not written) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached.'
+  plain: '(practice, not written; nobody enforces it) A female intended parent must provide care for the child when a registered parent of the child and the child is a born subject; no sanction is attached.'
   attribute: intended_parent
   deontic: must
   aim: (provide_care intended_parent child)
@@ -186,10 +186,10 @@ rules:
   or_else: null
   strand: tying
   implicit: true
-  kind: norm
+  kind: strategy
   sanctioner: none
-  sanctioner_review: derived
-  source: 'implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so ''the tying strand outlives the rival input'' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)'
+  sanctioner_review: reviewed
+  source: 'implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so ''the tying strand outlives the rival input'' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.'
   provenance:
   - source_id: null
     pin: null

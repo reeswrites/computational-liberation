@@ -7,7 +7,7 @@
 ## Legend
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
-- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist; this is not a norm someone enforces.
+- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
 - **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
@@ -34,7 +34,7 @@
 | R3 | social_worker | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(remove w c)` | `(and (case_open c) (immediate_danger c))` | none | rival | The social worker may remove the child when the case is open and the child is in immediate danger (Cal. WIC 306). | opened | [full source under Sources, R3](#src-r3) https://california.public.law/codes/ca_welf_and_inst_code_section_306 |
 | R4 | social_worker | must [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(in_home_considered w c)` | `(and (case_open c) (immediate_danger c))` | none | superadditive | The social worker having considered keeping the child at home must hold when the case is open and the child is in immediate danger (Cal. WIC 306). | opened | [full source under Sources, R4](#src-r4) https://california.public.law/codes/ca_welf_and_inst_code_section_306 |
 | R5 | parent | must (implicit) [kind: norm; sanctioner: state] (sanctioner derived, unreviewed) | `(cooperates p c)` | `(case_open c)` | R3 `(remove w c)` | tying | (practice, not written) The parent cooperating with the case must hold when the case is open, or else the social worker may remove the child (R3). | unverified | [full source under Sources, R5](#src-r5) |
-| R6 | social_worker | must (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(contact_mother w p)` | `(and (case_open c) (parent p c) (female p) (not (contacted w p)))` | none | tying | (practice, not written) The social worker must contact the mother when the case is open, she is the child's parent, and she has not yet been contacted. | unverified | implicit: the mother is the parent called first and held responsible (plan: 'the mother is called first'). UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation, guarded by its own effect contacted(w, p) so it fires once] |
+| R6 | social_worker | must (implicit) [kind: strategy; sanctioner: none] (strategy: nobody enforces this, yet the engine reads it as a duty under strict compliance) | `(contact_mother w p)` | `(and (case_open c) (parent p c) (female p) (not (contacted w p)))` | none | tying | (practice, not written; nobody enforces it) The social worker must contact the mother when the case is open, she is the child's parent, and she has not yet been contacted. | unverified | [full source under Sources, R6](#src-r6) |
 | R7 | court | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(reassign_custody court p c)` | `(and (case_open c) (substantial_danger p c))` | none | tying | The court may reassign custody of the child when the case is open and there is clear and convincing evidence of substantial danger to the child with no reasonable means of protection short of removal (Cal. WIC 361(c)(1)). | opened | [full source under Sources, R7](#src-r7) https://california.public.law/codes/ca_welf_and_inst_code_section_361 |
 | R8 | court | must [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(counsel_appointed c)` | `(and (case_open c) (not (would_not_benefit c)))` | none | tying | The child having appointed counsel must hold when the case is open, unless the court finds the child would not benefit (Cal. WIC 317(c)(1)). | opened | [full source under Sources, R8](#src-r8) https://california.public.law/codes/ca_welf_and_inst_code_section_317: |
 | R10 | child | must not (disability) [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(leave c)` | `(in_custody c)` | none | rival | The child cannot leave while in custody: no such power exists (Cal. WIC 306). | opened | [full source under Sources, R10](#src-r10) https://california.public.law/codes/ca_welf_and_inst_code_section_306 |
@@ -83,7 +83,8 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 - no work named: **unverified** (rationale: implicit: non-cooperation is read as risk and feeds the removal decision; practice norm, not statute)
 
-**R6**
+<a id="src-r6"></a>
+**R6**: implicit: the mother is the parent called first and held responsible (plan: 'the mother is called first'). UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation, guarded by its own effect contacted(w, p) so it fires once] Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.
 
 - no work named: **unverified** (rationale: implicit: the mother is the parent called first and held responsible (plan: 'the mother is called first'))
 

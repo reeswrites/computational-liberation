@@ -7,7 +7,7 @@
 ## Legend
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
-- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist; this is not a norm someone enforces.
+- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
 - **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
@@ -29,7 +29,7 @@
 
 | id | who | deontic | what (aim) | when (conditions) | or else | strand | plain | level | source |
 |---|---|---|---|---|---|---|---|---|---|
-| R1 | dispatcher | must (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(dispatch_officer d o s)` | `(call_received s)` | none | tying | (practice, not written) The dispatcher must dispatch an officer to a subject when a call about that subject has been received. | unverified | implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call] |
+| R1 | dispatcher | must (implicit) [kind: strategy; sanctioner: none] (strategy: nobody enforces this, yet the engine reads it as a duty under strict compliance) | `(dispatch_officer d o s)` | `(call_received s)` | none | tying | (practice, not written; nobody enforces it) The dispatcher must dispatch an officer to a subject when a call about that subject has been received. | unverified | [full source under Sources, R1](#src-r1) |
 | R2 | facility | must [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(provides_care f s)` | `(in_custody s)` | none | superadditive | The facility must keep providing care to the subject while the subject is in custody (Cal. WIC 5150(a), (c); 5152(a)). | opened | [full source under Sources, R2](#src-r2) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
 | R3 | officer | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(detain o f s)` | `(and (responding o s) (in_crisis s) (danger s))` | none | rival | The officer may detain the subject, delivering them to a facility, when responding to a subject who is in crisis and there is danger (Cal. WIC 5150). | opened | [full source under Sources, R3](#src-r3) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
 | R4 | subject | must not (disability) [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(leave s)` | `(in_custody s)` | none | rival | The subject cannot leave while in custody: no such power exists (Cal. WIC 5150). | opened | [full source under Sources, R4](#src-r4) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
@@ -61,7 +61,8 @@
 
 Per rule: the full source where the table cell is cut, then each provenance item (bibliography id in `data/sources/`, pin, jurisdiction, effective date, verification level with access date, excerpt). The `level` column is the weakest item; levels: opened > snippet > recalled > unverified.
 
-**R1**
+<a id="src-r1"></a>
+**R1**: implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call] Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.
 
 - no work named: **unverified** (no work named for this rule (WIC 5150 is cited as not requiring it); rationale: implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does)
 

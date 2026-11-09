@@ -315,7 +315,7 @@ rules:
     c: child
     p: parent
 - id: R6
-  plain: '(practice, not written) The social worker must contact the mother when the case is open, she is the child''s parent, and she has not yet been contacted.'
+  plain: '(practice, not written; nobody enforces it) The social worker must contact the mother when the case is open, she is the child''s parent, and she has not yet been contacted.'
   attribute: social_worker
   deontic: must
   aim: (contact_mother w p)
@@ -323,10 +323,10 @@ rules:
   or_else: null
   strand: tying
   implicit: true
-  kind: norm
+  kind: strategy
   sanctioner: none
-  sanctioner_review: derived
-  source: 'implicit: the mother is the parent called first and held responsible (plan: ''the mother is called first''). UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation, guarded by its own effect contacted(w, p) so it fires once]'
+  sanctioner_review: reviewed
+  source: 'implicit: the mother is the parent called first and held responsible (plan: ''the mother is called first''). UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation, guarded by its own effect contacted(w, p) so it fires once] Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.'
   provenance:
   - source_id: null
     pin: null

@@ -7,7 +7,7 @@
 ## Legend
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
-- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist; this is not a norm someone enforces.
+- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
 - **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
@@ -35,9 +35,9 @@
 | R4 | birthing_parent | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(take_shareable_leave p c)` | `(and (parent p c) (shareable_weeks_available p))` | none | rival | The birthing parent may take shareable leave for the child when they are a parent of the child and have shareable weeks available (QPIP ss. 10, 16). | recalled | Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 10: 32 shareable weeks; s. 16: may be taken by either parent or shared) |
 | R5 | non_birthing_parent | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(take_shareable_leave p c)` | `(and (parent p c) (shareable_weeks_available p))` | none | rival | The non-birthing parent may take shareable leave for the child when they are a parent of the child and have shareable weeks available (QPIP s. 16). | recalled | Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16) |
 | R6 | birthing_parent | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(transfer_shareable p q)` | `(and (shareable_weeks_available p) (parent q c))` | none | tying | The birthing parent may transfer shareable weeks to another parent of the child when she has shareable weeks available (QPIP s. 16). | recalled | Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 16: shareable weeks may be shared between the parents) |
-| R7 | birthing_parent | must (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(take_shareable_leave p c)` | `(and (parent p c) (shareable_weeks_available p) (female p))` | none | tying | (practice, not written) The birthing parent must take shareable leave for the child when she is a female parent of the child and has shareable weeks available. | unverified | implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) |
+| R7 | birthing_parent | must (implicit) [kind: strategy; sanctioner: none] (strategy: nobody enforces this, yet the engine reads it as a duty under strict compliance) | `(take_shareable_leave p c)` | `(and (parent p c) (shareable_weeks_available p) (female p))` | none | tying | (practice, not written; nobody enforces it) The birthing parent must take shareable leave for the child when she is a female parent of the child and has shareable weeks available. | unverified | [full source under Sources, R7](#src-r7) |
 | R8 | plan | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(grant_reserved plan p)` | `(and (parent p c) (not (birthing_parent p c)))` | none | tying | The plan may grant reserved weeks to a parent of the child who is not the birthing parent (QPIP s. 9). | recalled | Act respecting parental insurance, CQLR c. A-29.011, ss. 9, 10, 16, 17; https://www.legisquebec.gouv.qc.ca/en/document/cs/A-29.011 (s. 9: the exclusive weeks are granted to the non-birthing parent) |
-| R9 | birthing_parent | may (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(take_reserved_leave p c)` | `(and (parent p c) (reserved_weeks_available p))` | none | rival | (practice, not written) The birthing parent may take reserved leave for the child when they are a parent of the child and have reserved weeks available. | unverified | whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened) |
+| R9 | birthing_parent | may (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(take_reserved_leave p c)` | `(and (parent p c) (reserved_weeks_available p))` | none | rival | (practice, not written) The birthing parent may take reserved leave for the child when they are a parent of the child and have reserved weeks available. | unverified | [full source under Sources, R9](#src-r9) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): none
 
@@ -82,7 +82,8 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 - `qc-cqlr-a-29-011` (s. 16; CA-QC; date n/a): **recalled**
 
-**R7**
+<a id="src-r7"></a>
+**R7**: implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.
 
 - no work named: **unverified** (rationale: implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break))
 
@@ -90,7 +91,8 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 - `qc-cqlr-a-29-011` (s. 9; CA-QC; date n/a): **recalled**
 
-**R9**
+<a id="src-r9"></a>
+**R9**: whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened) Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.
 
 - no work named: **unverified** (rationale: whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute)
 

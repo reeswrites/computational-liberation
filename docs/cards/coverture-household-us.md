@@ -7,7 +7,7 @@
 ## Legend
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
-- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist; this is not a norm someone enforces.
+- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
 - **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
@@ -123,6 +123,6 @@ Not isomorphic to: crisis-team
 
 <details><summary>Encoder notes (engine internals)</summary>
 
-US base of the MWPA chain (split 2026-11-05, plans/sourcing.md 'Coverture split and US suit', author decision B3 with B1). The rules are coverture-household's, field for field, so every verdict is predicted identical; what differs is the reading and the sources. R6 is read as 'no exit at her own will' (no unilateral divorce before 1969) and cites US leads, not English law; a fault exit is not encoded (B2, a later preregistered experiment). R1, R2, R4, R5, R7 keep Blackstone (England) with a note that US reception is assumed and unsourced. R3 (implicit) inherited unchanged. coverture-household stays the English entry of the care+control cluster (claim L1); this entry is not a cluster member and carries no cluster iso claims. Pitfalls and ADR notes as coverture-household.
+US base of the MWPA chain (split 2026-11-05, plans/sourcing.md 'Coverture split and US suit', author decision B3 with B1). The rules are coverture-household's, field for field, so every verdict is predicted identical; what differs is the reading and the sources. R6 is read as 'no exit at her own will' (pre-reform divorce required both spouses' consent or proof of fault; Stevenson & Wolfers w10175, opened 2026-11-06, Table 1 lists nine pre-1964 unilateral statutes) and cites US leads, not English law; a fault exit is not encoded (B2, a later preregistered experiment). R1, R2, R4, R5, R7 keep Blackstone (England) with a note that US reception is assumed and unsourced. R3 (implicit) inherited unchanged. coverture-household stays the English entry of the care+control cluster (claim L1); this entry is not a cluster member and carries no cluster iso claims. Pitfalls and ADR notes as coverture-household.
 
 </details>

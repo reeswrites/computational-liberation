@@ -59,7 +59,7 @@ actions_add:
     value: true
 rules_add:
 - id: R10
-  plain: '(practice, not written) A creditor may attach the wife''s property when she is married (it reaches what the husband holds).'
+  plain: '(inferred from written law, Blackstone II.29) A creditor may attach the wife''s property when she is married (it reaches what the husband holds).'
   attribute: creditor
   deontic: may
   aim: (attach c w)
@@ -67,10 +67,10 @@ rules_add:
   or_else: null
   strand: rival
   implicit: true
-  kind: norm
+  kind: formal
   sanctioner: none
-  sanctioner_review: derived
-  source: 'implicit baseline: a husband''s creditors reach the property the husband holds, which under R1 includes his wife''s. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)'
+  sanctioner_review: reviewed
+  source: 'implicit baseline: a husband''s creditors reach the property the husband holds, which under R1 includes his wife''s. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife''s chattels in the husband as his absolute property; that a husband''s creditors reach what he holds is the encoder''s inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels ''which belonged formerly to the wife, are by act of law vested in the husband'' and ''the husband hath therein an immediate and absolute property, devolved to him by the marriage''.'
   provenance:
   - source_id: null
     pin: null
@@ -81,6 +81,15 @@ rules_add:
     accessed: null
     url: null
     note: 'no work named; rationale: implicit baseline: a husband''s creditors reach the property the husband holds, which under R1 includes his wife''s'
+  - source_id: blackstone-1766-bk2-ch29
+    pin: Bk II ch 29
+    jurisdiction: England
+    effective_date: null
+    verification: opened
+    excerpt: which belonged formerly to the wife, are by act of law vested in the husband ... the husband hath therein an immediate and absolute property, devolved to him by the marriage
+    accessed: '2026-11-04'
+    url: null
+    note: 'the same read as coverture-household R1 (2026-11-04, Avalon; long s modernised); attached 2026-11-08 (batch 3b): supports the vesting the creditor''s reach rests on, not the reach itself (English treatise in a US chain)'
   var_roles:
     c: creditor
     w: wife
@@ -140,7 +149,7 @@ rules_add:
     w: wife
     h: husband
 - id: R12
-  plain: '(practice, not written) The husband may transfer property to his wife when they are married (Chused 1984).'
+  plain: '(written law in substance, text not opened) The husband may transfer property to his wife when they are married (Chused 1984).'
   attribute: husband
   deontic: may
   aim: (transfer_to_wife h w)
@@ -148,10 +157,10 @@ rules_add:
   or_else: null
   strand: tying
   implicit: true
-  kind: norm
+  kind: formal
   sanctioner: none
-  sanctioner_review: derived
-  source: 'implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone''s bar on grants between spouses is read as lifted by the exemption acts for property so conveyed'
+  sanctioner_review: reviewed
+  source: 'implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts ''generally contained nothing more than statements exempting married women''s property from the debts of husbands''; courts ''narrowly construing'' the acts to keep husbands'' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone''s bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Retagged formal 2026-11-08 (batch 3b, B1 ruling): a conveyance route of the 1839-50 exemption acts (Chused 1984); no text opened for this row, the provenance stays recalled/unverified.'
   provenance:
   - source_id: chused-1984
     pin: null

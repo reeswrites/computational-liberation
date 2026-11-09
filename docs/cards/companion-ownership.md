@@ -7,7 +7,7 @@
 ## Legend
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
-- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist; this is not a norm someone enforces.
+- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
 - **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
@@ -88,7 +88,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `cal-pen-597` (s. 597(b); US-CA; date n/a): **unverified**
 
 <a id="src-r6"></a>
-**R6**: implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false
+**R6**: implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.
 
 - no work named: **unverified** (rationale: implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7))
 
@@ -101,7 +101,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: incident of ownership)
 
 <a id="src-r9"></a>
-**R9**: implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false
+**R9**: implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.
 
 - no work named: **unverified** (rationale: implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title)
 
@@ -110,7 +110,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled)
 
 <a id="src-r11"></a>
-**R11**: implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false
+**R11**: implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.
 
 - no work named: **unverified** (rationale: implicit: an animal is property and cannot sue in its own name (a disability, or_else null))
 
