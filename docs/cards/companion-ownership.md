@@ -7,7 +7,7 @@
 ## Legend
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
-- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist; this is not a norm someone enforces.
+- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
 - **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
@@ -34,12 +34,12 @@
 | R3 | owner | must not [kind: formal; sanctioner: state] (sanctioner derived, unreviewed) | `(abandon o a)` | `(owns o a)` | R4 `(prosecute state o)` | rival | The owner must not abandon the animal when the owner owns it, or else the state may prosecute (R4) (Cal. Penal Code 597s). | opened | [full source under Sources, R3](#src-r3) https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ |
 | R4 | state | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(prosecute state o)` | `(abandoned a)` | none | rival | The state may prosecute the abandoning owner when the animal has been abandoned (Cal. Penal Code 597s). | opened | [full source under Sources, R4](#src-r4) https://law.justia.com/codes/california/2015/code-pen/part-1/title-14/section-597s/ |
 | R5 | owner | must [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(provides_care o a)` | `(owns o a)` | none | superadditive | The owner providing care to the animal must hold when the owner owns it (Cal. Penal Code 597(b)). | unverified | [full source under Sources, R5](#src-r5) |
-| R6 | animal | must not (disability) (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(leave a)` | `(is_subject a)` | none | rival | (practice, not written) The animal cannot leave while it is a companion animal: no such power exists. | unverified | [full source under Sources, R6](#src-r6) |
+| R6 | animal | must not (disability) (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(leave a)` | `(is_subject a)` | none | rival | (practice, not written; written law in substance, text not opened) The animal cannot leave while it is a companion animal: no such power exists. | unverified | [full source under Sources, R6](#src-r6) |
 | R7 | state | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(impound state a)` | `(at_large a)` | none | rival | The state may impound the animal when it is at large. | unverified | local animal-control impound of animals at large. UNVERIFIED (general knowledge; no source opened) |
 | R8 | owner | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(breed_or_sterilize o a)` | `(owns o a)` | none | rival | The owner may breed or sterilize the animal when the owner owns it. | unverified | incident of ownership. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] controls_reproduction(o, a) = breed_or_sterilize enabled |
-| R9 | court | must not (disability) (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(reassign court o a)` | `true` | none | tying | (practice, not written) The court cannot reassign custody of the animal at any time: no such power exists. | unverified | [full source under Sources, R9](#src-r9) |
+| R9 | court | must not (disability) (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(reassign court o a)` | `true` | none | tying | (practice, not written; written law in substance, text not opened) The court cannot reassign custody of the animal at any time: no such power exists. | unverified | [full source under Sources, R9](#src-r9) |
 | R10 | owner | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(feed o a)` | `(and (owns o a) (not (provides_care o a)))` | none | superadditive | The owner may feed the animal when the owner owns it and is not currently providing it care. | unverified | feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled. UNVERIFIED (general knowledge; no source opened) |
-| R11 | animal | must not (disability) (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(sue a)` | `true` | none | tying | (practice, not written) The animal cannot sue in its own name at any time: no such power exists. | unverified | [full source under Sources, R11](#src-r11) |
+| R11 | animal | must not (disability) (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(sue a)` | `true` | none | tying | (practice, not written; written law in substance, text not opened) The animal cannot sue in its own name at any time: no such power exists. | unverified | [full source under Sources, R11](#src-r11) |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave
 
@@ -88,7 +88,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - `cal-pen-597` (s. 597(b); US-CA; date n/a): **unverified**
 
 <a id="src-r6"></a>
-**R6**: implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false
+**R6**: implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.
 
 - no work named: **unverified** (rationale: implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7))
 
@@ -101,7 +101,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: incident of ownership)
 
 <a id="src-r9"></a>
-**R9**: implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false
+**R9**: implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.
 
 - no work named: **unverified** (rationale: implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title)
 
@@ -110,7 +110,7 @@ Per rule: the full source where the table cell is cut, then each provenance item
 - no work named: **unverified** (rationale: feeding is the owner's act (incident of ownership) and restores provides_care after neglect; added with ADR 0009 so that feed, now discretionary, is scoped to the owner of the animal rather than always enabled)
 
 <a id="src-r11"></a>
-**R11**: implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false
+**R11**: implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.
 
 - no work named: **unverified** (rationale: implicit: an animal is property and cannot sue in its own name (a disability, or_else null))
 

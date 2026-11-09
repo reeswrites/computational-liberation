@@ -7,7 +7,7 @@
 ## Legend
 
 - **may / must / must not**: the rule permits / requires / forbids the aim for the person in the "who" cell, when the "when" cell holds.
-- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist; this is not a norm someone enforces.
+- **(disability)**: a `must not` with no sanction (or else = none). The power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom that people, not a body, uphold (`norm`).
 - **(implicit)**: a practice no text states, tagged by the encoder; the source cell gives its rationale, not a quotation.
 - **or else**: the sanction rule that applies on breach (the rule id and its aim).
 - **strand**: `rival` = an input only one party can supply at a time; `superadditive` = a good that exists only as a product of the bundle; `tying` = glued to the bundle by law, wages or norm with no production link.
@@ -35,8 +35,8 @@
 | R4 | responder | must not (disability) [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(detain r s)` | `true` | none | rival | The responder cannot detain the subject at any time: no such power exists (Denver STAR). | recalled | [full source under Sources, R4](#src-r4) https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police |
 | R5 | subject | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(leave s)` | `true` | none | rival | The subject may leave at any time (Denver STAR, voluntary encounter). | recalled | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (voluntary encounter) |
 | R6 | responder | must not (disability) [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(carry_weapon r)` | `true` | none | tying | The responder cannot carry a weapon at any time: no such power exists (Denver STAR, unarmed). | recalled | Denver STAR (Support Team Assisted Response), KUNC 2020-11-17; https://www.kunc.org/2020-11-17/in-denver-unarmed-mental-health-workers-respond-to-hundreds-of-911-calls-instead-of-police (unarmed) |
-| R7 | responder | may (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(request_police r o s)` | `(and (responding r s) (danger s))` | none | tying | (practice, not written) The responder may request police for the subject when responding to the subject and there is danger. | unverified | implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read. UNVERIFIED (general knowledge; no source opened) |
-| R8 | officer | may (implicit) [kind: norm; sanctioner: none] (sanctioner derived, unreviewed) | `(detain o s)` | `(and (responding o s) (danger s))` | none | rival | (practice, not written) The officer may detain the subject when responding to the subject and there is danger (Cal. WIC 5150). | recalled | [full source under Sources, R8](#src-r8) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
+| R7 | responder | may (implicit) [kind: strategy; sanctioner: none] | `(request_police r o s)` | `(and (responding r s) (danger s))` | none | tying | (practice, not written; nobody enforces it) The responder may request police for the subject when responding to the subject and there is danger. | unverified | [full source under Sources, R7](#src-r7) |
+| R8 | officer | may (implicit) [kind: formal; sanctioner: none] | `(detain o s)` | `(and (responding o s) (danger s))` | none | rival | The officer may detain the subject when responding to the subject and there is danger (Cal. WIC 5150). | opened | [full source under Sources, R8](#src-r8) https://california.public.law/codes/ca_welf_and_inst_code_section_5150 |
 | R9 | subject | may [kind: formal; sanctioner: none] (sanctioner derived, unreviewed) | `(sue s)` | `true` | none | tying | The subject may sue in their own name at any time. | unverified | an adult keeps legal capacity to sue in their own name; a voluntary encounter does not touch it. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(s) = sue enabled |
 
 **Default capacities** (an action a person of that kind can do unless an express disability removes it): leave, sue
@@ -84,14 +84,15 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 - `kunc-2020-denver-star` (date n/a): **recalled**
 
-**R7**
+<a id="src-r7"></a>
+**R7**: implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read. UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; a permission in practice, not a conferred power.
 
 - no work named: **unverified** (rationale: implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read)
 
 <a id="src-r8"></a>
-**R8**: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (the peace officer the team calls holds the 5150 custody power the team lacks; the rebundling path R7 opens). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(officer, s) = detain enabled
+**R8**: Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (the peace officer the team calls holds the 5150 custody power the team lacks; the rebundling path R7 opens). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(officer, s) = detain enabled Retagged formal 2026-11-08 (batch 3b, B1 ruling): the s. 5150(a) text was opened 2026-11-06 on police-crisis R3; that read is recorded here as the provenance item (the excerpt is the peace officer's custody power this rule encodes). Excerpt (police-crisis R3 read): 'When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer' ... 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'.
 
-- `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **recalled**
+- `cal-wic-5150` (s. 5150(a); US-CA; date n/a): **opened** 2026-11-06: "When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer ... may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours" <https://california.public.law/codes/ca_welf_and_inst_code_section_5150>
 
 **R9**
 

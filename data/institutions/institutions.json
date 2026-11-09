@@ -835,9 +835,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "norm",
+    "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call]",
+    "source": "implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call] Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.",
     "var_roles": {
      "o": "officer",
      "s": "subject",
@@ -1591,9 +1591,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "norm",
+    "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit: the mother is the parent called first and held responsible (plan: 'the mother is called first'). UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation, guarded by its own effect contacted(w, p) so it fires once]",
+    "source": "implicit: the mother is the parent called first and held responsible (plan: 'the mother is called first'). UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation, guarded by its own effect contacted(w, p) so it fires once] Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.",
     "var_roles": {
      "w": "social_worker",
      "c": "child",
@@ -2148,9 +2148,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "norm",
+    "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read. UNVERIFIED (general knowledge; no source opened)",
+    "source": "implicit rebundling path: the team can call police when a scene turns violent; practice, not written policy in the source read. UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; a permission in practice, not a conferred power.",
     "var_roles": {
      "o": "officer",
      "s": "subject",
@@ -2166,9 +2166,9 @@
     "or_else": null,
     "strand": "rival",
     "implicit": true,
-    "kind": "norm",
+    "kind": "formal",
     "sanctioner": "none",
-    "source": "Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (the peace officer the team calls holds the 5150 custody power the team lacks; the rebundling path R7 opens). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(officer, s) = detain enabled",
+    "source": "Cal. Welf. & Inst. Code s. 5150(a); https://california.public.law/codes/ca_welf_and_inst_code_section_5150 (the peace officer the team calls holds the 5150 custody power the team lacks; the rebundling path R7 opens). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_sanction(officer, s) = detain enabled Retagged formal 2026-11-08 (batch 3b, B1 ruling): the s. 5150(a) text was opened 2026-11-06 on police-crisis R3; that read is recorded here as the provenance item (the excerpt is the peace officer's custody power this rule encodes). Excerpt (police-crisis R3 read): 'When a person, as a result of a mental health disorder, is a danger to others, or to themselves, or gravely disabled, a peace officer' ... 'may, upon probable cause, take, or cause to be taken, the person into custody for a period of up to 72 hours'.",
     "var_roles": {
      "s": "subject",
      "o": "officer"
@@ -2576,9 +2576,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "norm",
+    "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened)",
+    "source": "implicit regularity (kind strategy since 3b): the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.",
     "var_roles": {
      "c": "child",
      "p": "birthing_parent"
@@ -2612,7 +2612,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened)",
+    "source": "whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened) Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "c": "child",
      "p": "birthing_parent"
@@ -2998,9 +2998,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "norm",
+    "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit norm: the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened)",
+    "source": "implicit regularity (kind strategy since 3b): the shareable block is taken by the mother by default (the pattern the quota was introduced to break). UNVERIFIED (general knowledge; no source opened) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.",
     "var_roles": {
      "c": "child",
      "p": "birthing_parent"
@@ -3034,7 +3034,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened)",
+    "source": "whoever holds reserved weeks may take them; shared by both leave entries so the pair differs only by R2 (in the quota the birthing parent never holds any, so R9 is idle there). Reconstruction, not statute. UNVERIFIED (general knowledge; no source opened) Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "c": "child",
      "p": "birthing_parent"
@@ -3549,7 +3549,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false",
+    "source": "implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "a": "animal"
     }
@@ -3598,7 +3598,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false",
+    "source": "implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "o": "owner",
      "a": "animal"
@@ -3632,7 +3632,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false",
+    "source": "implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "a": "animal"
     }
@@ -4145,7 +4145,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false",
+    "source": "implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "a": "animal"
     }
@@ -4228,7 +4228,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false",
+    "source": "implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "a": "animal"
     }
@@ -4745,7 +4745,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false",
+    "source": "implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state's power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal's status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "a": "animal"
     }
@@ -4794,7 +4794,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false",
+    "source": "implicit: no role may start a claim in the animal's own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "g": "guardian",
      "a": "animal"
@@ -4828,7 +4828,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false",
+    "source": "implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "a": "animal"
     }
@@ -5598,9 +5598,9 @@
     "or_else": null,
     "strand": "superadditive",
     "implicit": false,
-    "kind": "formal",
+    "kind": "strategy",
     "sanctioner": "none",
-    "source": "Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827; the accepted manuscript read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (City Research Online; Science's PDF returned 403): 'participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field' ... 'Continuous interactions led to occasional switching by subjects throughout the study.' Support is design-only: free-text entry each round and occasional switching imply that either name may be used in any round; no sentence of the paper states a permission, and the rule is the encoder's reading of the game's design (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). The 25% tipping threshold is stated as 'not expected to be a universal value' and is not a rule (it lives in docs/theory.md T7 and the layer-2 gate band). Cited from memory 2026-11-04 before the manuscript was opened; rewritten 2026-11-08 (faithfulness batch 3a, A8). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission]",
+    "source": "Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827; the accepted manuscript read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (City Research Online; Science's PDF returned 403): 'participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field' ... 'Continuous interactions led to occasional switching by subjects throughout the study.' Support is design-only: free-text entry each round and occasional switching imply that either name may be used in any round; no sentence of the paper states a permission, and the rule is the encoder's reading of the game's design (each round a paired participant proposes any name; both are rewarded when the names match, penalised when they do not; no name is required or forbidden). The 25% tipping threshold is stated as 'not expected to be a universal value' and is not a rule (it lives in docs/theory.md T7 and the layer-2 gate band). Cited from memory 2026-11-04 before the manuscript was opened; rewritten 2026-11-08 (faithfulness batch 3a, A8). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] Retagged strategy 2026-11-08 (batch 3b, B5 ruling): a tipping convention with no sanction.",
     "var_roles": {
      "m": "member"
     }
@@ -5614,9 +5614,9 @@
     "or_else": null,
     "strand": "superadditive",
     "implicit": false,
-    "kind": "formal",
+    "kind": "strategy",
     "sanctioner": "none",
-    "source": "Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827; the accepted manuscript read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (City Research Online; Science's PDF returned 403): 'participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field' ... 'Continuous interactions led to occasional switching by subjects throughout the study.' Support is design-only: free-text entry each round and occasional switching imply that either name may be used in any round; no sentence of the paper states a permission, and the rule is the encoder's reading of the game's design (as R1: the alternative name; the committed minority holds it regardless of payoff, which is a model parameter, not a rule). The 25% tipping threshold is stated as 'not expected to be a universal value' and is not a rule (it lives in docs/theory.md T7 and the layer-2 gate band). Cited from memory 2026-11-04 before the manuscript was opened; rewritten 2026-11-08 (faithfulness batch 3a, A8). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission]",
+    "source": "Centola, Becker, Brackbill & Baronchelli, 'Experimental evidence for tipping points in social convention', Science 360(6393):1116-1119, 8 June 2018, doi:10.1126/science.aas8827; the accepted manuscript read 2026-11-06 at https://openaccess.city.ac.uk/id/eprint/20031/1/CM_CRO_Version.pdf (City Research Online; Science's PDF returned 403): 'participants are shown an image (a picture of a man or a woman) and prompted to enter a name in the response field' ... 'Continuous interactions led to occasional switching by subjects throughout the study.' Support is design-only: free-text entry each round and occasional switching imply that either name may be used in any round; no sentence of the paper states a permission, and the rule is the encoder's reading of the game's design (as R1: the alternative name; the committed minority holds it regardless of payoff, which is a model parameter, not a rule). The 25% tipping threshold is stated as 'not expected to be a universal value' and is not a rule (it lives in docs/theory.md T7 and the layer-2 gate band). Cited from memory 2026-11-04 before the manuscript was opened; rewritten 2026-11-08 (faithfulness batch 3a, A8). [coordination: the payoff is the matching reward of the naming game; a name pays only when the partner uses it, which the layer-2 coordination module reads from the `payoffs` block (A1) and its own `threshold`; at layer 1 the rule is just a permission] Retagged strategy 2026-11-08 (batch 3b, B5 ruling): a tipping convention with no sanction.",
     "var_roles": {
      "m": "member"
     }
@@ -5861,9 +5861,9 @@
     "or_else": null,
     "strand": "superadditive",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children's house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it Verification pass: re-read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): the page says 'Kibbutz members who were considered the most educated and esteemed got the position of educators' and names no committee or assignment procedure. No read text names the committee; the work-assignment committee (sidur avoda) is the encoder's reconstruction; Spiro 1956 / Gavron 2000 are the leads, lending-only; unsourced committee: pin when a borrow is possible (faithfulness batch 3a, A3 option (i))."
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children's house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it Verification pass: re-read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): the page says 'Kibbutz members who were considered the most educated and esteemed got the position of educators' and names no committee or assignment procedure. No read text names the committee; the work-assignment committee (sidur avoda) is the encoder's reconstruction; Spiro 1956 / Gavron 2000 are the leads, lending-only; unsourced committee: pin when a borrow is possible (faithfulness batch 3a, A3 option (i)). Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited."
    },
    {
     "id": "R2",
@@ -5888,9 +5888,9 @@
     "or_else": "R6",
     "strand": "superadditive",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "peers",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.'",
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.' Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited.",
     "load_bearing": true
    },
    {
@@ -5902,9 +5902,9 @@
     "or_else": null,
     "strand": "rival",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (communal sleeping: the children lived and slept in the children's house). A disability (or_else null), as every subject-side exit bar since ADR 0013; the draft's or_else R6 is dropped for the same reason as coverture R6. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(child) = sleep_home enabled (a default capacity) and not barred (R4)"
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (communal sleeping: the children lived and slept in the children's house). A disability (or_else null), as every subject-side exit bar since ADR 0013; the draft's or_else R6 is dropped for the same reason as coverture R6. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(child) = sleep_home enabled (a default capacity) and not barred (R4) Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited."
    },
    {
     "id": "R5",
@@ -5915,9 +5915,9 @@
     "or_else": null,
     "strand": "superadditive",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment' ... 'visited their parents for 2-3 hours a day' (the page prints an en dash)."
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment' ... 'visited their parents for 2-3 hours a day' (the page prints an en dash). Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited."
    },
    {
     "id": "R6",
@@ -6189,9 +6189,9 @@
     "or_else": null,
     "strand": "superadditive",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children's house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it Verification pass: re-read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): the page says 'Kibbutz members who were considered the most educated and esteemed got the position of educators' and names no committee or assignment procedure. No read text names the committee; the work-assignment committee (sidur avoda) is the encoder's reconstruction; Spiro 1956 / Gavron 2000 are the leads, lending-only; unsourced committee: pin when a borrow is possible (faithfulness batch 3a, A3 option (i))."
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (members are assigned to the children's house by the committee; the rule as written is sex-blind: any member). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_assign(committee, x) = assign enabled (R1); R2 is a sanctioned norm, so `enabled` does not read it and compliant traces carry it Verification pass: re-read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): the page says 'Kibbutz members who were considered the most educated and esteemed got the position of educators' and names no committee or assignment procedure. No read text names the committee; the work-assignment committee (sidur avoda) is the encoder's reconstruction; Spiro 1956 / Gavron 2000 are the leads, lending-only; unsourced committee: pin when a borrow is possible (faithfulness batch 3a, A3 option (i)). Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited."
    },
    {
     "id": "R3",
@@ -6202,9 +6202,9 @@
     "or_else": "R6",
     "strand": "superadditive",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "peers",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.'",
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.' Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited.",
     "load_bearing": true
    },
    {
@@ -6216,9 +6216,9 @@
     "or_else": null,
     "strand": "rival",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (communal sleeping: the children lived and slept in the children's house). A disability (or_else null), as every subject-side exit bar since ADR 0013; the draft's or_else R6 is dropped for the same reason as coverture R6. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(child) = sleep_home enabled (a default capacity) and not barred (R4)"
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (communal sleeping: the children lived and slept in the children's house). A disability (or_else null), as every subject-side exit bar since ADR 0013; the draft's or_else R6 is dropped for the same reason as coverture R6. [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(child) = sleep_home enabled (a default capacity) and not barred (R4) Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited."
    },
    {
     "id": "R5",
@@ -6229,9 +6229,9 @@
     "or_else": null,
     "strand": "superadditive",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment' ... 'visited their parents for 2-3 hours a day' (the page prints an en dash)."
+    "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (children 'visited their parents for 2-3 hours a day'; the father's relation to the children's house is the visit, not care) Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'Fathers were supposed to bond with their children through quality time much more so than in a non-kibbutz environment' ... 'visited their parents for 2-3 hours a day' (the page prints an en dash). Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited."
    },
    {
     "id": "R6",
@@ -7071,7 +7071,7 @@
   ],
   "not_isomorphic_to_control": [],
   "minimal_pair_of": null,
-  "notes": "US base of the MWPA chain (split 2026-11-05, plans/sourcing.md 'Coverture split and US suit', author decision B3 with B1). The rules are coverture-household's, field for field, so every verdict is predicted identical; what differs is the reading and the sources. R6 is read as 'no exit at her own will' (no unilateral divorce before 1969) and cites US leads, not English law; a fault exit is not encoded (B2, a later preregistered experiment). R1, R2, R4, R5, R7 keep Blackstone (England) with a note that US reception is assumed and unsourced. R3 (implicit) inherited unchanged. coverture-household stays the English entry of the care+control cluster (claim L1); this entry is not a cluster member and carries no cluster iso claims. Pitfalls and ADR notes as coverture-household."
+  "notes": "US base of the MWPA chain (split 2026-11-05, plans/sourcing.md 'Coverture split and US suit', author decision B3 with B1). The rules are coverture-household's, field for field, so every verdict is predicted identical; what differs is the reading and the sources. R6 is read as 'no exit at her own will' (pre-reform divorce required both spouses' consent or proof of fault; Stevenson & Wolfers w10175, opened 2026-11-06, Table 1 lists nine pre-1964 unilateral statutes) and cites US leads, not English law; a fault exit is not encoded (B2, a later preregistered experiment). R1, R2, R4, R5, R7 keep Blackstone (England) with a note that US reception is assumed and unsourced. R3 (implicit) inherited unchanged. coverture-household stays the English entry of the care+control cluster (claim L1); this entry is not a cluster member and carries no cluster iso claims. Pitfalls and ADR notes as coverture-household."
  },
  {
   "id": "mwpa-creditor-exemption",
@@ -7630,9 +7630,9 @@
     "or_else": null,
     "strand": "rival",
     "implicit": true,
-    "kind": "norm",
+    "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -7668,7 +7668,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -8243,9 +8243,9 @@
     "or_else": null,
     "strand": "rival",
     "implicit": true,
-    "kind": "norm",
+    "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -8281,7 +8281,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -8873,9 +8873,9 @@
     "or_else": null,
     "strand": "rival",
     "implicit": true,
-    "kind": "norm",
+    "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -8911,7 +8911,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -9503,9 +9503,9 @@
     "or_else": null,
     "strand": "rival",
     "implicit": true,
-    "kind": "norm",
+    "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -9541,7 +9541,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -10155,9 +10155,9 @@
     "or_else": null,
     "strand": "rival",
     "implicit": true,
-    "kind": "norm",
+    "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -10193,7 +10193,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -10873,9 +10873,9 @@
     "or_else": null,
     "strand": "rival",
     "implicit": true,
-    "kind": "norm",
+    "kind": "formal",
     "sanctioner": "none",
-    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11)",
+    "source": "implicit baseline: a husband's creditors reach the property the husband holds, which under R1 includes his wife's. UNVERIFIED as to the creditor's reach (an inference; the Blackstone vesting it rests on is opened, see the provenance item and the excerpt below). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_attach(c, w) = attach enabled (R10) and not barred (R11) Retagged formal 2026-11-08 (batch 3b, B1 ruling): Blackstone Bk II ch 29 (opened 2026-11-04 on coverture-household R1) vests the wife's chattels in the husband as his absolute property; that a husband's creditors reach what he holds is the encoder's inference from it, not a quoted sentence. Excerpt (coverture-household R1 read): chattels 'which belonged formerly to the wife, are by act of law vested in the husband' and 'the husband hath therein an immediate and absolute property, devolved to him by the marriage'.",
     "var_roles": {
      "c": "creditor",
      "w": "wife",
@@ -10911,7 +10911,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed",
+    "source": "implicit: the transfer vehicle the exemption invites (conveyance to the wife, in practice through a trustee); Chused 1984 (https://core.ac.uk/download/230496986.pdf [F, via plans/backtest-mwpa.md]): the 1839-50 acts 'generally contained nothing more than statements exempting married women's property from the debts of husbands'; courts 'narrowly construing' the acts to keep husbands' control during marriage (citing Chused 1983 at 1400; Chused 1983 itself [R], PDF refused: UNVERIFIED). UNVERIFIED (general knowledge; no source opened) as a rule of the 1839-50 acts; Blackstone's bar on grants between spouses is read as lifted by the exemption acts for property so conveyed Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text): written law in substance, text not opened; retag to formal when opened.",
     "var_roles": {
      "h": "husband",
      "w": "wife"
@@ -11720,9 +11720,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] (the practice; each step is a cohort decision, so the rule stays enabled while a subject exists). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule: no text says a family 'may' bind, the convention presupposes it"
+    "source": "Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] (the practice; each step is a cohort decision, so the rule stays enabled while a subject exists). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule: no text says a family 'may' bind, the convention presupposes it Retagged norm 2026-11-08 (batch 3b, B4 ruling): Mackie's convention is unwritten; the marriage market, not a body, enforces it."
    },
    {
     "id": "R2",
@@ -11759,9 +11759,9 @@
     "or_else": null,
     "strand": "superadditive",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "the anti-footbinding pledge (ADR 0015 A3 stand-in: `leave_unbound_pledge` is the pledge for `leave_unbound`): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(family). The son half of the pledge (no bound bride) is R10 accept_match_pledge (suitor), read by R5/R6 as (pledged suitor); until the encoding review of 2026-11-04 (finding 2) it was folded into R5/R6's (pledged family) condition, which mis-attributed the sons' pledge to the daughter's family. The association's own marriage pool is what R6 reads. Superadditive: the pledge pays only in numbers (Mackie: the pledge associations' 'critical mass')"
+    "source": "the anti-footbinding pledge (ADR 0015 A3 stand-in: `leave_unbound_pledge` is the pledge for `leave_unbound`): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(family). The son half of the pledge (no bound bride) is R10 accept_match_pledge (suitor), read by R5/R6 as (pledged suitor); until the encoding review of 2026-11-04 (finding 2) it was folded into R5/R6's (pledged family) condition, which mis-attributed the sons' pledge to the daughter's family. The association's own marriage pool is what R6 reads. Superadditive: the pledge pays only in numbers (Mackie: the pledge associations' 'critical mass') Retagged norm 2026-11-08 (batch 3b, B4 ruling): no read text states a rule that a family may pledge; the associations' written pledge is not opened (snippets only), so the tag matches R10's."
    },
    {
     "id": "R10",
@@ -11774,7 +11774,7 @@
     "implicit": true,
     "kind": "norm",
     "sanctioner": "none",
-    "source": "the son half of the anti-footbinding pledge (ADR 0015 A3 stand-in: `accept_match_pledge` is the pledge for `accept_match`, i.e. the suitor family commits to marry its sons to unbound women): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(suitor), read by R5 (lifts the rejection) and R6 (accepts the unbound bride). Added 2026-11-04 after the encoding review (finding 2: Mackie's pool is made by pledged SUITOR families). implicit: the rule is reconstructed, no text says a suitor 'may' pledge. Superadditive like R4. UNVERIFIED (reconstructed from the convention account; no primary text opened)"
+    "source": "the son half of the anti-footbinding pledge (ADR 0015 A3 stand-in: `accept_match_pledge` is the pledge for `accept_match`, i.e. the suitor family commits to marry its sons to unbound women): Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]). Effect pledged(suitor), read by R5 (lifts the rejection) and R6 (accepts the unbound bride). Added 2026-11-04 after the encoding review (finding 2: Mackie's pool is made by pledged SUITOR families). implicit: the rule is reconstructed, no text says a suitor 'may' pledge. Superadditive like R4. UNVERIFIED (reconstructed from the convention account; no primary text opened) Kind held at norm 2026-11-08 (batch 3b post-council fix pass: the faithfulness seat refused the B1 promotion, no opened text; the pledge associations' pledge is written law in substance, text not opened; retag to formal when opened)."
    },
    {
     "id": "R5",
@@ -11798,9 +11798,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "the convention from the groom's side: a bound daughter is acceptable; an unbound one only inside the pledge association, on either side's pledge (Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]; Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]); (pledged suitor) added 2026-11-04, encoding review finding 2). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule"
+    "source": "the convention from the groom's side: a bound daughter is acceptable; an unbound one only inside the pledge association, on either side's pledge (Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]; Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]); (pledged suitor) added 2026-11-04, encoding review finding 2). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule Retagged norm 2026-11-08 (batch 3b, B4 ruling): Mackie's convention is unwritten; the marriage market, not a body, enforces it."
    },
    {
     "id": "R7",
@@ -11811,9 +11811,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "the marriage condition: Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] ('interdependent expectations on the marriage market'); Brown, Bossen, Gates & Satterthwaite-Phillips, 'Marriage Mobility and Footbinding in Pre-1949 Rural China', J. Asian Studies 71(4):1035-1067 (2012), abstract only (search snippet, 2026-11-04, [R]): in a sample of 7,314 rural women footbinding did not guarantee a better marriage (two-thirds did not marry up); the marriage-market reading is Mackie's, and this entry encodes it as the convention, not as a claim that binding bought mobility (the data qualify mobility, not marriageability as encoded). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] marriageable(f, d) = marry_off enabled (R7)"
+    "source": "the marriage condition: Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] ('interdependent expectations on the marriage market'); Brown, Bossen, Gates & Satterthwaite-Phillips, 'Marriage Mobility and Footbinding in Pre-1949 Rural China', J. Asian Studies 71(4):1035-1067 (2012), abstract only (search snippet, 2026-11-04, [R]): in a sample of 7,314 rural women footbinding did not guarantee a better marriage (two-thirds did not marry up); the marriage-market reading is Mackie's, and this entry encodes it as the convention, not as a claim that binding bought mobility (the data qualify mobility, not marriageability as encoded). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] marriageable(f, d) = marry_off enabled (R7) Retagged norm 2026-11-08 (batch 3b, B4 ruling): Mackie's convention is unwritten; the marriage market, not a body, enforces it."
    },
    {
     "id": "R9",
@@ -12024,9 +12024,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] (the practice; each step is a cohort decision, so the rule stays enabled while a subject exists). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule: no text says a family 'may' bind, the convention presupposes it"
+    "source": "Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] (the practice; each step is a cohort decision, so the rule stays enabled while a subject exists). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule: no text says a family 'may' bind, the convention presupposes it Retagged norm 2026-11-08 (batch 3b, B4 ruling): Mackie's convention is unwritten; the marriage market, not a body, enforces it."
    },
    {
     "id": "R2",
@@ -12076,9 +12076,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "the convention from the groom's side: a bound daughter is acceptable; an unbound one only inside the pledge association, on either side's pledge (Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]; Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]); (pledged suitor) added 2026-11-04, encoding review finding 2). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule"
+    "source": "the convention from the groom's side: a bound daughter is acceptable; an unbound one only inside the pledge association, on either side's pledge (Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]]; Anti-footbinding pledge associations: Heavenly Foot Society (Xiamen, 1874, MacGowan) and the Tian Zu Hui / Natural Foot Society (Shanghai, 1895, Alicia Little; Chinese reformers' societies from 1897, claimed membership ~300,000): members pledged not to bind their daughters' feet and not to let their sons marry women with bound feet (Wikipedia 'Tian Zu Hui', 'Heavenly Foot Society', 'Foot Emancipation Society', read 2026-11-04 as search snippets only, pages not opened: [R]; Mackie 1996 names the same two-part pledge for the FGC analogue, abstract [F]); (pledged suitor) added 2026-11-04, encoding review finding 2). UNVERIFIED (reconstructed from the convention account; no primary text opened) as a rule Retagged norm 2026-11-08 (batch 3b, B4 ruling): Mackie's convention is unwritten; the marriage market, not a body, enforces it."
    },
    {
     "id": "R7",
@@ -12089,9 +12089,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "kind": "formal",
+    "kind": "norm",
     "sanctioner": "none",
-    "source": "the marriage condition: Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] ('interdependent expectations on the marriage market'); Brown, Bossen, Gates & Satterthwaite-Phillips, 'Marriage Mobility and Footbinding in Pre-1949 Rural China', J. Asian Studies 71(4):1035-1067 (2012), abstract only (search snippet, 2026-11-04, [R]): in a sample of 7,314 rural women footbinding did not guarantee a better marriage (two-thirds did not marry up); the marriage-market reading is Mackie's, and this entry encodes it as the convention, not as a claim that binding bought mobility (the data qualify mobility, not marriageability as encoded). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] marriageable(f, d) = marry_off enabled (R7)"
+    "source": "the marriage condition: Mackie, 'Ending Footbinding and Infibulation: A Convention Account', ASR 61(6):999-1017 (1996), abstract (read 2026-11-04 as a search-index snippet, the article itself not opened: https://www.jstor.org/stable/2096305 paywalled, PDF mirrors unreachable from this session): 'Female footbinding in China lasted for 1,000 years but ended in a single generation. I show that each practice is a self-enforcing convention, in Schelling's (1960) sense, maintained by interdependent expectations on the marriage market'; 'A Schelling coordination diagram explains how the three methods of the Chinese campaign to abolish footbinding succeeded in bringing it to a quick end'; 'The convention hypothesis predicts that promotion of such pledge associations would help bring female genital mutilation to an end' [F for these sentences; body [R]] ('interdependent expectations on the marriage market'); Brown, Bossen, Gates & Satterthwaite-Phillips, 'Marriage Mobility and Footbinding in Pre-1949 Rural China', J. Asian Studies 71(4):1035-1067 (2012), abstract only (search snippet, 2026-11-04, [R]): in a sample of 7,314 rural women footbinding did not guarantee a better marriage (two-thirds did not marry up); the marriage-market reading is Mackie's, and this entry encodes it as the convention, not as a claim that binding bought mobility (the data qualify mobility, not marriageability as encoded). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] marriageable(f, d) = marry_off enabled (R7) Retagged norm 2026-11-08 (batch 3b, B4 ruling): Mackie's convention is unwritten; the marriage market, not a body, enforces it."
    },
    {
     "id": "R9",
@@ -12405,9 +12405,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "norm",
+    "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+    "source": "implicit regularity (a care-norm in the loose sense, not a written rule; no sanction; kind strategy since 3b): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it."
    },
    {
     "id": "R6",
@@ -12727,9 +12727,9 @@
     "or_else": null,
     "strand": "tying",
     "implicit": true,
-    "kind": "norm",
+    "kind": "strategy",
     "sanctioner": "none",
-    "source": "implicit norm (a care-norm, not a written rule; no sanction): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded)"
+    "source": "implicit regularity (a care-norm in the loose sense, not a written rule; no sanction; kind strategy since 3b): the female registered parent of a born child must care for it. The condition names female and parent, NOT birthing_parent: the Kleven finding in docs/theory.md (adoptive mothers take the same hit, so role not body carries it). ASSUMED decision (author, 2026-11-04): trigger on female(p), so the norm survives the loss of the body. Not load-bearing at layer 1: it fires either way, so 'the tying strand outlives the rival input' is carried by the encoding, not discovered. UNVERIFIED: no text opened for this rule (plans/ectogenesis.md section 2: Firestone 1970 ch.1 and ch.10 are cited from memory; the one network probe, an archive.org search, returned HTTP 200 and no text was read or downloaded) Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it."
    },
    {
     "id": "R6",

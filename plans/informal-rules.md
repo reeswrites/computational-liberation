@@ -233,3 +233,92 @@ Together these test the open question already on the repo's list, "do rules lead
 3. A minimal dynamics model and its run results for the marriage slice.
 4. One rediscovery case, with a pass/fail write-up.
 5. Additions to the claims register, plus a short doc explaining how the layer works and why it's built this way.
+
+## Faithfulness batch 3b: kind and sanctioner retags, preregistered 2026-11-08 (before any edit)
+
+Sub-batch 3b of plans/faithfulness-batch.md (Part C "3b", under the section 6 rulings for B1, B2, B4, B5; B7's `sanctioner_review` removal on the rows touched). `kind` is prose to the engine (read once, to reject `strategy` with a non-null `or_else`), so every row below changes only `kind`, `sanctioner_review`, `plain` or `source`; no condition, deontic, `or_else`, `implicit`, `sanctioner`, action or fluent changes. Engine at ENGINE_PIN e46f6ea, baseline 192 rows (k=6, strict, step_mode one). The kibbutz R2/R3 sanctioner question (peers vs institution; docs/reviews/2026-11-08-batch3a-card-only.md and plans/sourcing.md "Post-council fix pass") is NOT touched here; the 3b faithfulness seat rules on it and the ruling is recorded, not applied.
+
+Inheritance (checked in the YAML before writing this): transferable-leave carries paternity-quota's R7 and R9 unchanged (it replaces only R2); gestational-surrogacy carries ectogenesis R5 (it drops R1, replaces R2/R3); kibbutz-childrens-house-no-implicit carries kibbutz R1/R3/R4/R5 (drops R2, replaces R6); footbinding-no-pledge carries footbinding R1/R6/R7 (drops R4/R10); the whole mwpa chain (mwpa-property, -narrowed, -earnings, -sole-trader, -suit) carries mwpa-creditor-exemption's R10/R12 (none drops or replaces them); companion-guardianship carries companion-ownership R6/R11 and replaces R9 with a formal `may`; companion-guardian-renamed has its own R6/R9/R11. So every retag is written once, in the file that defines the rule, and the variants inherit it.
+
+### Rows (entry, rule, old kind -> new kind; `sanctioner_review` derived -> reviewed on every retagged row, since the retag is the hand review of the row and `sanctioner: none` is forced by `or_else: null`; no `sanctioner` value changes)
+
+B1, norm -> formal (ruling: retag only the four with opened text; the hold rows stay norm with the note):
+
+| File | Rule | Change | Provenance state and what is added |
+|---|---|---|---|
+| crisis-team.yaml | R8 officer may detain | norm -> formal | the row's own cal-wic-5150 item is `recalled`; the same s. 5150(a) text was opened 2026-11-06 on police-crisis R3 (excerpt and date recorded there). The `recalled` item is replaced by that opened item (same source_id, pin, url, excerpt, accessed 2026-11-06) with a note saying it is the police-crisis R3 read and that the excerpt is the peace officer's custody power R8 encodes. Not a new read: a recorded read attached to the second row that rests on it. |
+| mwpa-creditor-exemption.yaml | R10 creditor may attach | norm -> formal | `unverified`, no work named. Blackstone Bk II ch 29 was opened 2026-11-04 on coverture-household R1 (the husband's "immediate and absolute property" in the wife's chattels); that opened item is added to R10 with a note that it supports the vesting, while the creditor's reach of what the husband holds remains the encoder's inference (the `unverified` item stays). |
+| mwpa-creditor-exemption.yaml | R12 husband may transfer_to_wife | norm -> formal | `recalled` (Chused 1984, quote relayed), `unverified` (Chused 1983), `recalled` (Blackstone). No item opened. Retagged on the ruling; `source` gains "retagged formal 2026-11-08 under the B1 ruling: a conveyance route of the 1839-50 exemption acts (Chused 1984); no text opened for this row". |
+| footbinding.yaml | R10 suitor may accept_match_pledge | norm -> formal | four `recalled`, one `unverified`. No item opened. Retagged on the ruling (the pledge is an explicit written commitment of the pledge associations); `source` gains the same disclosure. Inherited by nothing (footbinding-no-pledge drops it). |
+
+B1 holds (no kind change; `source` gains "written law in substance, text not opened; retag to formal when opened"; `sanctioner_review` stays `derived`, since nothing is retagged): companion-ownership.yaml R6, R9, R11 (inherited by companion-guardianship for R6, R11); companion-guardian-renamed.yaml R6, R9, R11; paternity-quota.yaml R9 (inherited by transferable-leave).
+
+Contingency, written now: if the faithfulness seat refuses a B1 promotion for want of opened text (its brief tells it to), that row reverts to `norm` with the hold note in the post-council fix pass and the refusal is reported to the author, since the ruling's premise ("the four with opened text") does not hold for R12 and footbinding R10 on the provenance as it stands (recorded here before the seat sees it).
+
+B2, norm -> strategy (ruling: retag all seven, `must` kept; the card states both: nobody enforces it, the engine still reads a duty). `plain` prefix "(practice, not written)" becomes "(practice, not written; nobody enforces it)" so the plain line claims no enforcement; no `plain` claims enforcement today (checked). `or_else` is null on all seven (validate will accept `strategy`).
+
+| File | Rule | Deontic | Copies that inherit |
+|---|---|---|---|
+| police-crisis.yaml | R1 dispatcher dispatch_officer | must | none |
+| cps.yaml | R6 social_worker contact_mother | must | none |
+| crisis-team.yaml | R7 responder request_police | may | none |
+| paternity-quota.yaml | R7 birthing_parent take_shareable_leave | must | transferable-leave R7 |
+| ectogenesis.yaml | R5 intended_parent provide_care | must | gestational-surrogacy R5 |
+
+(Seven rows in the brief's count: the two inherited copies are the sixth and seventh.)
+
+B4, formal -> norm (ruling: apply). `implicit` stays false (these are documented practices, not encoder-invented ones; `implicit` is the gate (d) flag and is not touched). `plain` gains the "(practice, not written)" prefix the other norm rows carry, so the card's own text matches the tag.
+
+| File | Rule | Deontic | Copies that inherit |
+|---|---|---|---|
+| kibbutz-childrens-house.yaml | R1 committee assign | may | kibbutz-childrens-house-no-implicit |
+| kibbutz-childrens-house.yaml | R3 metapelet provides_care (or_else R6, sanctioner peers, already reviewed) | must | no-implicit |
+| kibbutz-childrens-house.yaml | R4 child sleep_home (disability) | must_not | no-implicit |
+| kibbutz-childrens-house.yaml | R5 male_member visit | may | no-implicit |
+| footbinding.yaml | R1 family bind | may | footbinding-no-pledge |
+| footbinding.yaml | R4 family leave_unbound_pledge | may | none (no-pledge drops it) |
+| footbinding.yaml | R6 suitor accept_match | may | no-pledge |
+| footbinding.yaml | R7 family marry_off | may | no-pledge |
+
+kibbutz R4 becomes a `norm` disability. The card Legend's disability sentence (build.py `LEGEND`, printed on every card: "The power does not exist; this is not a norm someone enforces.") is adjusted to one sentence that allows a customary disability: the power does not exist and nobody enforces anything, whether the disability is written law (`formal`) or custom (`norm`). data/institutions/README.md Conventions' own bullet ("a disability (no power exists), not an unenforced prohibition") does not collide and is not edited; a clause is added to it only if the wording turns out to be read as formal-only (it names `or_else: null`, not `kind`).
+
+B5, formal -> strategy (ruling: apply; A8 prose landed in 3a): naming-convention.yaml R1, R2 (`may`, or_else null). `plain` gains "; no one sanctions either choice" inside the closing parenthesis.
+
+Other edits in this sub-batch (prose, author-flagged in 3a): coverture-household-us.yaml `notes`, "(no unilateral divorce before 1969)" -> "(pre-reform divorce required both spouses' consent or proof of fault; Stevenson & Wolfers w10175, opened 2026-11-06, Table 1 lists nine pre-1964 unilateral statutes)". Inherited notes are not shared, so no other file changes.
+
+Rows that keep `sanctioner_review: derived` after this batch: every rule not named above (the batch reviews only what it retags; B7's removal "across them" means the touched rows).
+
+### Prediction
+
+`phil rules diff --baseline data/verdicts-baseline.json`: 0 changed, 0 added, 0 removed of 192. `build.py --write --cards` then `--check`: ok, 33 institutions, 43 properties; validate accepts every `strategy` row (all have `or_else: null`) and no `strategy` rule carries an `or_else`. The regenerated cards of police-crisis, cps, paternity-quota, transferable-leave, ectogenesis, gestational-surrogacy show "(strategy: nobody enforces this, yet the engine reads it as a duty under strict compliance)" in the deontic cell of the `strategy must` rows (build.py already prints it; confirmed on the card, not assumed). `phil rules check-all`: 192/192. `phil rules gate`: PASS, unchanged (the six cluster pairs partial(care+control), crisis-team none, nine controls none). `scripts/drop_one_match.py`: (b) fails on deleting exactly coverture-household R2, R5, R6; police-crisis R2, R4, R11; cps R3, R4, R10. `pytest -q`: 40 passed. institutions.json changes only in `kind` values, `source` strings and the coverture-us `notes` string (`plain`, `provenance`, `sanctioner_review` are stripped). Certain by the Part B argument: `kind` reaches only `validate_institution`. Council: faithfulness seat (each retag against the cited text; refuses B1 promotions without opened text; rules on kibbutz R2/R3), card-only seat (tags against the card's own text; the strategy+must clause).
+
+### Results (2026-11-08, engine at ENGINE_PIN e46f6ea; preregistration commit 035cc4c)
+
+Every verdict, gate and match prediction held. Verbatim summary lines (first run, after the retags and before the two prose fixes below; the diff and pytest were rerun after them):
+
+- `phil rules diff --baseline data/verdicts-baseline.json --no-cache`: `0 changed, 0 added, 0 removed (of 192 rows)`, exit 0 (both runs).
+- `phil rules check-all`: `agreement 192/192 = 100%` (gate (e) line; the check-all run itself printed only the standing warnings and exit 0).
+- `phil rules gate`: `GATE PASS`; (b) PASS, the six cluster pairs `partial(care+control)` at guard+strands; (c) PASS distance 1 paternity-quota:R2 vs transferable-leave:R2; (d) PASS care_assigned_by_sex persists, no-implicit fails; (e) `agreement 192/192 = 100%`; (f) PASS.
+- `scripts/drop_one_match.py`: (b) fails on deleting exactly coverture-household R2, R5, R6; police-crisis R2, R4, R11; cps R3, R4, R10; PASS on every other deletion (run via a `uv` shim that execs the venv's `phil`).
+- `build.py --check`: `ok: 33 institutions, 43 properties, JSON and 34 cards match src/`. institutions.json changed in 87 lines: 38 `kind` values, 48 `source` strings, 1 `notes` string; nothing else. 33 cards regenerated (every card carries the new Legend sentence).
+- Cards: the six `strategy must` rows (police-crisis R1, cps R6, paternity-quota R7, transferable-leave R7, ectogenesis R5, gestational-surrogacy R5) print "(strategy: nobody enforces this, yet the engine reads it as a duty under strict compliance)" in the deontic cell; crisis-team R7 and naming-convention R1/R2 (`may`) print `[kind: strategy; sanctioner: none]` without it, as build.py intends. No `strategy` rule carries an `or_else` (checked in the JSON: 9 strategy rows, 0 with or_else).
+- `pytest -q`: first run `1 failed, 39 passed in 114.82s`; second run `40 passed in 99.54s`.
+
+Drift: one, in the pytest count, not in a verdict. The preregistration said 40 passed; the first run failed `tests/test_sources.py::test_opened_excerpt_in_source` on the two provenance items this batch attached (crisis-team R8 cal-wic-5150, mwpa-creditor-exemption R10 blackstone-1766-bk2-ch29): the repo rule requires an `opened` item's excerpt to appear verbatim in the rule's `source` string, and the preregistration added the items without the excerpt text. Fixed by appending each excerpt verbatim to the two `source` strings (prose; `source` reaches the JSON and nothing reads it); diff and pytest rerun, both as predicted. Recorded, not edited away. Surprises ledger: none (no verdict moved; nothing unpredicted was produced by a run).
+
+Edits beyond the listed rows, recorded here: (1) the four B1 rows carried the "(practice, not written)" plain prefix that the norm rows share; after the retag to formal that prefix contradicted the tag, so the prefix was dropped on crisis-team R8 (the line already cites Cal. WIC 5150) and replaced on mwpa R10 ("(inferred from written law, Blackstone II.29)"), mwpa R12 ("(written law in substance, text not opened)") and footbinding R10 ("(the pledge associations' written pledge; text not opened)"). `plain` is stripped from the JSON. (2) The two excerpt appends above. The README Conventions bullet was not edited (as the preregistration allowed); the Legend sentence in build.py was.
+
+Left for the council: the faithfulness seat's ruling on each B1 promotion (the R12 and footbinding R10 provenance is recalled/unverified; the contingency in the preregistration applies) and on kibbutz R2/R3 sanctioner (peers vs institution); the card-only seat's reading of every retagged tag against its card.
+
+### Post-council fix pass (2026-11-08)
+
+After the faithfulness seat (docs/reviews/2026-11-08-batch3b-faithfulness.md: 17 faithful, 2 unfaithful, 0 cannot tell; B1 accepted crisis-team R8 and mwpa R10, refused mwpa R12 and footbinding R10) and the card-only seat (docs/reviews/2026-11-08-batch3b-card-only.md: 39 says it, 0 overstates, 1 understates, 0 cannot tell; no pause). Kind, `plain` and `source` only; no condition, deontic, or_else, sanctioner value or implicit changed. Verdicts: `phil rules diff` rerun `0 changed, 0 added, 0 removed (of 192 rows)`; `build.py --check` ok; `pytest -q` `40 passed`. institutions.json: 7 `kind` lines (the two reverts, inherited down the mwpa chain), 18 `source` lines.
+
+1. mwpa-creditor-exemption R12 and footbinding R10: the preregistered contingency applied; both revert to `kind: norm` with the hold note ("written law in substance, text not opened; retag to formal when opened"), `sanctioner_review` back to `derived` as on the other holds; the `plain` prefix reads "(practice, not written; ... text not opened)". This also removes the card-only seat's one "understates" (footbinding R4 `norm` beside R10 `formal` for the same pledge).
+2. footbinding R4 retag sentence rewritten: no read text states that a family may pledge; the associations' written pledge is not opened (the earlier sentence described Mackie's marriage-market convention, which is R1/R6/R7's reason, not R4's).
+3. mwpa R10 `source`: "UNVERIFIED (general knowledge; no source opened)" now says the creditor's reach is the unverified inference and the Blackstone vesting it rests on is opened (the item attached in 3b).
+4. ectogenesis R5 and paternity-quota R7 `source`: the "implicit norm" label beside `kind: strategy` now reads "implicit regularity (... kind strategy since 3b)".
+5. Hold rows' `plain` (companion-ownership and -guardian-renamed R6/R9/R11, paternity-quota R9): the "(practice, not written)" prefix contradicted the hold note, so it now carries the hold ("written law in substance" / "a reconstruction of the written scheme", "text not opened").
+6. coverture-household-us R6 `plain`: "the spouse's consent" -> "both spouses' consent", matching the notes and the Stevenson & Wolfers excerpt.
+
+Not changed, for the author: (a) kibbutz R2/R3 `sanctioner`: the faithfulness seat rules `institution` (the or_else actor is the committee, glossed in Roles as "the kibbutz general assembly's organ"; `peers` would need R6's actor to be a members role), against the 2026-11-08 hand review's `peers`; recorded, not applied (sanctioner is not a 3b field and the seat's brief said so). (b) crisis-team R8 and mwpa R10 print "(implicit)" beside `kind: formal`: `implicit` stays true by the B1 ruling (gate (d) flag; the README allows implicit and formal together), the card-only seat found the pairing legible but unglossed in the Legend. (c) The B1 premise "four with opened text" held for two rows; the two refusals mean B1 landed as two promotions and nine holds.

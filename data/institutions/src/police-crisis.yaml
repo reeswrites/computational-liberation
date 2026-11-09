@@ -147,7 +147,7 @@ actions:
     value: true
 rules:
 - id: R1
-  plain: '(practice, not written) The dispatcher must dispatch an officer to a subject when a call about that subject has been received.'
+  plain: '(practice, not written; nobody enforces it) The dispatcher must dispatch an officer to a subject when a call about that subject has been received.'
   attribute: dispatcher
   deontic: must
   aim: (dispatch_officer d o s)
@@ -155,10 +155,10 @@ rules:
   or_else: null
   strand: tying
   implicit: true
-  kind: norm
+  kind: strategy
   sanctioner: none
-  sanctioner_review: derived
-  source: 'implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call]'
+  sanctioner_review: reviewed
+  source: 'implicit: police are the default responder to a crisis call; nothing in WIC 5150 requires it, dispatch practice does. UNVERIFIED (general knowledge; no source opened). [ADR 0009: one-off action obligation; dispatch consumes call_received so it fires once per call] Retagged strategy 2026-11-08 (batch 3b, B2 ruling): a regularity nobody sanctions; the must is kept so the engine sees who carries the duty under strict compliance, though nobody enforces it.'
   provenance:
   - source_id: null
     pin: null

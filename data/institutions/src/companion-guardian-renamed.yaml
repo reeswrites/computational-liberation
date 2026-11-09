@@ -316,7 +316,7 @@ rules:
     g: guardian
     a: animal
 - id: R6
-  plain: '(practice, not written) The animal cannot leave while it is a companion animal: no such power exists.'
+  plain: '(practice, not written; written law in substance, text not opened) The animal cannot leave while it is a companion animal: no such power exists.'
   attribute: animal
   deontic: must_not
   aim: (leave a)
@@ -327,7 +327,7 @@ rules:
   kind: norm
   sanctioner: none
   sanctioner_review: derived
-  source: 'implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state''s power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal''s status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false'
+  source: 'implicit: confinement / leash norm; the animal has no permitted exit while it is a companion animal, owned or stray (an animal at large is impounded, R7). UNVERIFIED (general knowledge; no source opened). [ADR 0013: or_else R7 -> null and condition owns -> is_subject: a disability on the animal, not a sanctioned prohibition (impound is the state''s power over an at-large animal, triggered by at_large, not a penalty the animal answers for), and conditioned on the animal''s status rather than on title so that reassign / abandon, which clear owns in the one-owner domain, do not read as giving the animal an exit.] [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_exit(a) = leave enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.'
   provenance:
   - source_id: null
     pin: null
@@ -392,7 +392,7 @@ rules:
     a: animal
     g: guardian
 - id: R9
-  plain: '(practice, not written) The court cannot reassign custody of the animal at any time: no such power exists.'
+  plain: '(practice, not written; written law in substance, text not opened) The court cannot reassign custody of the animal at any time: no such power exists.'
   attribute: court
   deontic: must_not
   aim: (reassign court g a)
@@ -403,7 +403,7 @@ rules:
   kind: norm
   sanctioner: none
   sanctioner_review: derived
-  source: 'implicit: no role may start a claim in the animal''s own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false'
+  source: 'implicit: no role may start a claim in the animal''s own interest; animals are property and cannot sue, and custody follows title. UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] can_claim_for(court, a) = reassign enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.'
   provenance:
   - source_id: null
     pin: null
@@ -444,7 +444,7 @@ rules:
     a: animal
     g: guardian
 - id: R11
-  plain: '(practice, not written) The animal cannot sue in its own name at any time: no such power exists.'
+  plain: '(practice, not written; written law in substance, text not opened) The animal cannot sue in its own name at any time: no such power exists.'
   attribute: animal
   deontic: must_not
   aim: (sue a)
@@ -455,7 +455,7 @@ rules:
   kind: norm
   sanctioner: none
   sanctioner_review: derived
-  source: 'implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false'
+  source: 'implicit: an animal is property and cannot sue in its own name (a disability, or_else null). UNVERIFIED (general knowledge; no source opened). [ADR 0013: power fluents are derived from rule enabledness; this rule is what the derived fluent reads] has_standing(a) = sue enabled, which this disability makes false Kind held at norm 2026-11-08 (batch 3b, B1 ruling): written law in substance, text not opened; retag to formal when opened.'
   provenance:
   - source_id: null
     pin: null
