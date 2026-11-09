@@ -116,8 +116,24 @@ Outputs: docs/ablation/2026-11-09-slice3/ (one `.txt` per entry, `transfer-summa
 
 ### Council
 
-(scope seat, ADR 0014: "does this batch move the thin path in docs/plan.md, or open a front? Name what should be parked." SEATS.md has no standing brief for it; the brief is written from that line in SEATS.md's format and recorded in the review file.)
+Scope seat (ADR 0014; SEATS.md has no standing brief for it, so the fresh agent was given ADR 0014's one line, SEATS.md's general rules and the Correctness seat's format, the scope as an explicit list, and no conclusions): docs/reviews/2026-11-09-slice3-scope.md. **5 green, 7 amber, 0 red; no pause.** Verdict: scope supported, with parks. Its reading of the plan's three-part pass test, which this file adopts: part 1 (graph matches preregistered edges) met as a null; part 2 (`rebundling` written and checked) half met, engine side only; part 3 (T11 three to four) not met.
 
-### Post-council fix pass
+Ambers: (4) fix-pass engine work sat uncommitted before council; (5) Results cited N74 to N76 before the rows existed, and no Log line; (6) the null rests on a small denominator; (7) overlay and check outputs not saved; (8) T11 must not move; (10) deletions only and the unranked exclusion were decided alone and shape the null; (11) the derived check kind is wider than the slice's file list and has a cost tail in check-all.
 
-(appended only)
+Parked by the seat: `rebundling` rows beyond the seven entries and any gate criterion; transfer under `step_mode many`, `compliance sanctioned` or other entries; the T1 out-transfer test until some entry has a nonempty ranked graph; reconciling the three definitions of rebundling from inside a slice; the R13/R14 and R1/R2 observations as theory points.
+
+**Decisions for the author before slice 4 is preregistered** (the seat's A to D):
+- A. Name: amend ADR 0016's rebundling row to "3 (1 as a rule-set proxy)" and align the glossary, or rename the engine property.
+- B. Coverage: ratify deletions only plus the unranked exclusion, or add `~prohibit` rows as sources and targets. Slice 4 inherits the answer.
+- C. Where slice 4 runs: on these seven entries anyway (a likely second null), or first on entries where one family is carried by two rules.
+- D. Derived check or report-only, and which entries list the row at the pin bump.
+
+### Post-council fix pass (2026-11-09, appended; nothing above edited)
+
+1. Finding 4 and drift 3: engine commit 1627af0 (on top of d763cb4). `run_all` takes the cross-entry majority table of check kinds and hands it to the derived check only; `phil rules check`, `check-all`, `verdicts` and `diff` pass it. The engine fixture's `coverture-household` now expects `rebundling: unreachable_open`, so engine CI's check-all runs the derived check (23/23; 7 s cold for that entry at k=6). Re-run at 1627af0 on this dataset: diff "0 changed, 0 added, 0 removed (of 192 rows)", check-all 192/192, `rebundling` `open` on all seven at k=6 and k=8. The derived check now asks the cache exactly what `phil rules transfer` asks per k (for example mwpa-creditor-exemption 1212 hits + 1120 misses = half of the transfer run's 4662 over two k), so the two paths read one graph. Honest order: this fix was written while the seat was reading, before its report; the seat saw it uncommitted and said so.
+2. Finding 5: rows N74 (`null`), N75 (`refuted`), N76 (`untested`) and N77 (`untested`, pass-test part 3) added to docs/negative-results.md; one Log line in docs/plan.md; one calibration row in docs/scoreboard.md.
+3. Finding 6, the denominator the headline lacked. Ordered pairs that can carry a ranked edge (neither rule deregulated in E), of all ordered pairs: kibbutz 6 of 30; creditor-exemption 30 of 90; property 30 of 90; earnings 30 of 110; sole-trader 30 of 110; suit 42 of 132; property-narrowed 30 of 132. The one load that rises anywhere (R14 -> R13, `freedom_down`) lies outside that region and would not be an edge inside it either, since edges read `load_freedom_up`. "Met" for part 1 means: met by a preregistered empty graph on that denominator, a null (N74).
+4. Finding 7: the overlay row and the seven check outputs are saved in docs/ablation/2026-11-09-slice3/ (`rebundling-property-row.json`, `rebundling-checks.txt`). Part 2 reads: engine side written and checked; dataset rows (`src/properties.yaml`, `expected_properties`, baseline) pending the ENGINE_PIN bump and decision D.
+5. Finding 8: docs/claims.md T1 and T11 keep status `untested` and T11's count is unchanged; each evidence cell gained the seat's sentence. P9's "the written count moves from 3 of 4 to 4 of 4" is withdrawn as a claim (it stays in the preregistration as written): the seat is right that a layer-1 proxy is not ADR 0016's layer-3 mode, and that the starting "3 of 4" is itself soft.
+6. Findings 10 and 11: no change made; they are author decisions B and D. Not done here: a `~prohibit` rerun, an ADR 0016 or glossary edit, any dataset row.
+7. Engine suite at 1627af0, serial as CI runs it: see the engine PR. Under `pytest -n` one pre-existing test (`test_spawn_workers_match_serial`, untouched by this slice) fails because pools are serial inside an xdist worker; CI does not use `-n`.

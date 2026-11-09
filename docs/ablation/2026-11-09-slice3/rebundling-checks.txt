@@ -1,0 +1,28 @@
+kibbutz-childrens-house  rebundling  rebundling  -         open  -      -      6  declared
+cache: 212 hit(s), 176 miss(es), hit rate 55%
+kibbutz-childrens-house  rebundling  rebundling  -         open  -      -      8  declared
+cache: 212 hit(s), 176 miss(es), hit rate 55%
+mwpa-creditor-exemption  rebundling  rebundling  -         open  -      -      6  declared
+cache: 1212 hit(s), 1120 miss(es), hit rate 52%
+mwpa-creditor-exemption  rebundling  rebundling  -         open  -      -      8  declared
+cache: 1212 hit(s), 1120 miss(es), hit rate 52%
+mwpa-property  rebundling  rebundling  -         open  -      -      6  declared
+cache: 1212 hit(s), 1120 miss(es), hit rate 52%
+mwpa-property  rebundling  rebundling  -         open  -      -      8  declared
+cache: 1212 hit(s), 1120 miss(es), hit rate 52%
+mwpa-earnings  rebundling  rebundling  -         open  -      -      6  declared
+cache: 1454 hit(s), 1340 miss(es), hit rate 52%
+mwpa-earnings  rebundling  rebundling  -         open  -      -      8  declared
+cache: 1454 hit(s), 1340 miss(es), hit rate 52%
+mwpa-sole-trader  rebundling  rebundling  -         open  -      -      6  declared
+cache: 1454 hit(s), 1340 miss(es), hit rate 52%
+mwpa-sole-trader  rebundling  rebundling  -         open  -      -      8  declared
+cache: 1454 hit(s), 1340 miss(es), hit rate 52%
+mwpa-suit    rebundling  rebundling  -         open  -      -      6  declared
+cache: 1796 hit(s), 1659 miss(es), hit rate 52%
+mwpa-suit    rebundling  rebundling  -         open  -      -      8  declared
+cache: 1796 hit(s), 1659 miss(es), hit rate 52%
+mwpa-property-narrowed  rebundling  rebundling  -         open  -      -      6  declared
+cache: 1718 hit(s), 1580 miss(es), hit rate 52%
+mwpa-property-narrowed  rebundling  rebundling  -         open  -      -      8  declared
+cache: 1718 hit(s), 1580 miss(es), hit rate 52%
