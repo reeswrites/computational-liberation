@@ -103,12 +103,14 @@ Slice 2 revisions 2 and 3 (plans/priority-slice2-results.md, "Revision 2" and "R
 
 ## Expected properties
 
-| property | kind | expected | meaning |
-|---|---|---|---|
-| birth_labor_rival | structure | violated | Any gestation is held by exactly one body: whenever c is in gestation, exactly one agent gestates c. holds_to_k where the rival input sits in a body (gestational-surrogacy, preregistered); violated where gestation can be in a device (ectogenesis, preregistered), BY CONSTRUCTION (see history). Headline property of the ectogenesis pair (plans/ectogenesis.md section 3). |
-| care_decoupled_from_birth | structure | reachable | Care exists for a born child and no one is its birthing parent. is_subject guards against pre-birth vacuity (is_subject is set only by a birth action). Preregistered reachable in ectogenesis and unreachable_open in gestational-surrogacy (plans/ectogenesis.md section 3). |
-| solo_care_by_non_birthing_parent | structure | reachable | Some non-birthing parent is the sole carer of the child at step t. |
-| care_assigned_by_sex | freedom | violated | All care at step t is provided by female agents. Reachable via a tying rule, persisting where an implicit assignment norm survives reform; violated where a non-female carer is permitted. |
+The `formal` cell is the checked formula (`t` is the step; `=>` reads "whenever ... then"); the meaning cell is its plain gloss.
+
+| property | kind | expected | meaning | formal |
+|---|---|---|---|---|
+| birth_labor_rival | structure | violated | Any gestation is held by exactly one body: whenever c is in gestation, exactly one agent gestates c. holds_to_k where the rival input sits in a body (gestational-surrogacy, preregistered); violated where gestation can be in a device (ectogenesis, preregistered), BY CONSTRUCTION (see history). Headline property of the ectogenesis pair (plans/ectogenesis.md section 3). | `(forall ((c agent)) (=> (in_gestation c t) (and (exists ((x agent)) (gestates x c t)) (forall ((x agent) (y agent)) (=> (and (gestates x c t) (gestates y c t)) (= x y))))))` |
+| care_decoupled_from_birth | structure | reachable | Care exists for a born child and no one is its birthing parent. is_subject guards against pre-birth vacuity (is_subject is set only by a birth action). Preregistered reachable in ectogenesis and unreachable_open in gestational-surrogacy (plans/ectogenesis.md section 3). | `(exists ((p agent) (c agent)) (and (is_subject c t) (provides_care p c t) (not (exists ((q agent)) (birthing_parent q c t)))))` |
+| solo_care_by_non_birthing_parent | structure | reachable | Some non-birthing parent is the sole carer of the child at step t. | `(exists ((p agent) (c agent)) (and (parent p c t) (not (birthing_parent p c t)) (provides_care p c t) (forall ((q agent)) (=> (provides_care q c t) (= q p)))))` |
+| care_assigned_by_sex | freedom | violated | All care at step t is provided by female agents. Reachable via a tying rule, persisting where an implicit assignment norm survives reform; violated where a non-female carer is permitted. | `(forall ((x agent) (y agent)) (=> (provides_care x y t) (female x t)))` |
 
 ## Pairs
 

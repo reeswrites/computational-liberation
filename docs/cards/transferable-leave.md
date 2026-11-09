@@ -105,11 +105,13 @@ Per rule: the full source where the table cell is cut, then each provenance item
 
 ## Expected properties
 
-| property | kind | expected | meaning |
-|---|---|---|---|
-| solo_care_by_non_birthing_parent | structure | reachable | Some non-birthing parent is the sole carer of the child at step t. |
-| leave_reserved_for_non_birthing_parent | structure | violated | Extra property, added for gate (c): any parent on reserved (quota) leave is the non-birthing parent, i.e. the reserved weeks cannot have been transferred. holds_to_k under a non-transferable quota; violated when leave is transferable. Distinguishes the paternity-quota / transferable-leave pair, which solo_care_by_non_birthing_parent alone (reachable in both) cannot. |
-| care_assigned_by_sex | freedom | reachable | All care at step t is provided by female agents. Reachable via a tying rule, persisting where an implicit assignment norm survives reform; violated where a non-female carer is permitted. |
+The `formal` cell is the checked formula (`t` is the step; `=>` reads "whenever ... then"); the meaning cell is its plain gloss.
+
+| property | kind | expected | meaning | formal |
+|---|---|---|---|---|
+| solo_care_by_non_birthing_parent | structure | reachable | Some non-birthing parent is the sole carer of the child at step t. | `(exists ((p agent) (c agent)) (and (parent p c t) (not (birthing_parent p c t)) (provides_care p c t) (forall ((q agent)) (=> (provides_care q c t) (= q p)))))` |
+| leave_reserved_for_non_birthing_parent | structure | violated | Extra property, added for gate (c): any parent on reserved (quota) leave is the non-birthing parent, i.e. the reserved weeks cannot have been transferred. holds_to_k under a non-transferable quota; violated when leave is transferable. Distinguishes the paternity-quota / transferable-leave pair, which solo_care_by_non_birthing_parent alone (reachable in both) cannot. | `(forall ((p agent) (c agent)) (=> (and (on_reserved_leave p t) (parent p c t)) (not (birthing_parent p c t))))` |
+| care_assigned_by_sex | freedom | reachable | All care at step t is provided by female agents. Reachable via a tying rule, persisting where an implicit assignment norm survives reform; violated where a non-female carer is permitted. | `(forall ((x agent) (y agent)) (=> (provides_care x y t) (female x t)))` |
 
 ## Pairs
 

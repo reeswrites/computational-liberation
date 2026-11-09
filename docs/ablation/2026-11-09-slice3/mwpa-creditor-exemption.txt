@@ -1,0 +1,19 @@
+== mwpa-creditor-exemption  transfer graph at k=6  (10 rules; weight = load(r2 | E minus r1) - load(r2 | E); freedom = load_freedom_up, goods = load_goods_primary; deletions only)
+-- freedom edges: 0
+   out-transfer (ranked edges): R1[tying]=0, R2[superadditive]=0, R3[superadditive]=0, R4[tying]=0, R5[rival]=0, R6[rival]=0, R7[tying]=0, R10[rival]=0, R11[tying]=0, R12[tying]=0
+-- goods edges: 0
+   out-transfer (ranked edges): R1[tying]=0, R2[superadditive]=0, R3[superadditive]=0, R4[tying]=0, R5[rival]=0, R6[rival]=0, R7[tying]=0, R10[rival]=0, R11[tying]=0, R12[tying]=0
+-- rebundling(E, r1): no rule
+   deregulated in E (their edges are unranked): R1, R5, R10, R12
+== mwpa-creditor-exemption  transfer graph at k=8  (10 rules; weight = load(r2 | E minus r1) - load(r2 | E); freedom = load_freedom_up, goods = load_goods_primary; deletions only)
+-- freedom edges: 0
+   out-transfer (ranked edges): R1[tying]=0, R2[superadditive]=0, R3[superadditive]=0, R4[tying]=0, R5[rival]=0, R6[rival]=0, R7[tying]=0, R10[rival]=0, R11[tying]=0, R12[tying]=0
+-- goods edges: 0
+   out-transfer (ranked edges): R1[tying]=0, R2[superadditive]=0, R3[superadditive]=0, R4[tying]=0, R5[rival]=0, R6[rival]=0, R7[tying]=0, R10[rival]=0, R11[tying]=0, R12[tying]=0
+-- rebundling(E, r1): no rule
+   deregulated in E (their edges are unranked): R1, R5, R10, R12
+   k-disagreement: none
+   1083.2s for 10 rules (90 ordered pairs) at k=6,8; cache: 2422 hit(s), 2240 miss(es), hit rate 52%
+
+wrote mwpa-creditor-exemption.json
+exit 0

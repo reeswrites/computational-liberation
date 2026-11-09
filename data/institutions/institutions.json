@@ -5897,7 +5897,7 @@
     "strand": "tying",
     "implicit": true,
     "kind": "norm",
-    "sanctioner": "peers",
+    "sanctioner": "institution",
     "source": "SANCTIONED NORM encoding a documented PRACTICE, not a written rule (third review 2026-11-03: the sources support a practice, not a committee disability): the nanny 'was always a woman's role' (WIKI_KIB); no kibbutz by-law said so, the rota simply never put a man in the children's house, and Tiger & Shepher, Women in the Kibbutz (Harcourt Brace Jovanovich, 1975): women concentrated in child care, education and services despite formal equality. Cited by WIKI_KIB (pp. 41, 167); book and sample (34,040 members) confirmed via Kirkus review https://www.kirkusreviews.com/book-reviews/lionel-joseph-shepher-tiger/women-in-the-kibbutz/ ; the assignment finding itself NOT read directly: UNVERIFIED reports women concentrated in child care as a pattern (the finding is framed there as women's own choice). Encoded as a prohibition the committee answers for (or_else R6, the implicit reprimand), not as a disability; under strict compliance the effect on traces is the same, which is what gate (d) reads. Earlier draft (disability, or_else null) retired by the third review Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'",
     "load_bearing": true
    },
@@ -5911,7 +5911,7 @@
     "strand": "superadditive",
     "implicit": false,
     "kind": "norm",
-    "sanctioner": "peers",
+    "sanctioner": "institution",
     "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.' Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited.",
     "load_bearing": true
    },
@@ -5975,7 +5975,7 @@
    "cps"
   ],
   "minimal_pair_of": null,
-  "notes": "Gate (d): the historical failure. The explicit rules are sex-blind (R1 may assign any member) and the reform of the 1970s-1990s removed the exit bar on the child (R4), yet care_assigned_by_sex PERSISTS because the implicit sanctioned norm R2 (never a man in the children's house; a documented practice, or_else R6) survives: every strictly compliant trace keeps provides_care in female hands. RE-ENCODED after the third review (2026-11-03): R2 was a disability (or_else null); the sources support a practice, not a committee disability, so it is now must_not + or_else R6. 'implicit' is a human tag the engine reports back; the ablation bites because R1 was written sex-blind (disclosed). PREREGISTERED (2026-11-03, before any run): care_assigned_by_sex persists here; fails in kibbutz-childrens-house-no-implicit, which is this entry minus R2 (differs_on care_assigned_by_sex); subject_cannot_exit reachable (R4 bars sleep_home); care_and_sanction_same_role violated (the committee sanctions, the metapelet cares). Deviations from plans/institutions-batch2.md: R1 is '(assign committee x) when (member x)' rather than '(assign committee metapelet)', because an action instance no may/must rule names is disabled, so the draft's ablation (drop R2 -> assign male_member) only bites if R1 covers the man; R4 is a disability (or_else null) per the ADR 0013 exit convention, so R6 is R3's or_else only and its condition is 'true' (the or_else link enables it on breach); sleep_home is a default capacity (flagged on the action since revision 4, 2026-11-04; the former implicit R7 'may sleep_home when true' is deleted) so can_exit is carried by the capacity unless R4 bars it, as in every other entry; the draft's release action is kept but the breaker of R3 is neglect (release clears the condition with the state, so it breaks nothing). Pitfalls: (1) female needs arg_roles [metapelet] or the solver invents a female male_member; (2) an encoder that writes R1 as 'may assign metapelet' hides R2 inside R1 and the no-implicit variant collapses into the original; (3) 'persists' is about what the rules permit, not uptake. Rival reading (notes only): regendering of care came from mothers' demands (SCMP), not from the committee; the entry does not encode who drove the reform. PREREGISTERED 2026-11-04 (before any run; ADR 0015 A6: R8 'metapelet may neglect when assigned', implicit, in KIB_RULES so it flows into the no-implicit pair too): expected effect on this entry's three properties is NONE. care_assigned_by_sex persists (neglect can only clear provides_care, never put it in male hands; at layer 1 the unregulated neglect already fired freely under the trace floor, and making it regulated narrows its firing to the assigned metapelet, which removes no trace that bears on the property); subject_cannot_exit reachable (R4 untouched; sleep_home stays a default capacity); care_and_sanction_same_role violated (the committee's reprimand power and the metapelet's care are untouched; the violating trace needs assign, not neglect). Minimal pair kibbutz-childrens-house-no-implicit: unchanged (fails / reachable / violated), distance to this entry stays 1 with R2 the one separating rule (R8 is in both). isomorphic_to coverture-household at guard+strands: it already reads NO today (matched 0, distance 9: a pre-existing disagreement with the claim as written, found while baselining, not caused by this change) and is expected to stay NO with matched 0 and distance 9, because coverture has no may-rule tagged superadditive for R8 to match and distance = max(8, 9) - 0 is unchanged; not_isomorphic_to police-crisis / cps stay yes. Gate (d): PASS unchanged (persists vs fails, R2 the one separating rule). check-all: 106/106, no inert rule (R8 is a may). Layer 2 (information only): neglect becomes an available action for the assigned metapelet; the baseline ABM run (2026-11-04, before R8) shows the metapelet with no available action at all. PREREGISTERED 2026-11-04 (before any run; R6 guard, accepted decision of 2026-11-04): R6 'may reprimand' gains the condition (assigned x) (ASSUMED: the committee disciplines only a member on the rota; previously 'true', under which the layer-2 ABM had the committee reprimand random members about half the time). Expected effect on the three expected_properties: NONE. care_assigned_by_sex persists (reprimand has no effects; nothing new puts care in male hands); subject_cannot_exit reachable (R4 untouched; sleep_home stays a default capacity); care_and_sanction_same_role violated (can_sanction(committee, x) = (enabled reprimand committee x) now holds only while assigned(x); assigned(metapelet) is in the initial state, so can_sanction(committee, metapelet) is still true in compliant traces while the metapelet provides care, and the property's (= z x) fails exactly as before). The or_else links R2->R6 and R3->R6 are unaffected: under compliance=sanctioned a breach enables the or_else action whatever its condition, and check-all runs strict, where or_else is not read. Minimal pair kibbutz-childrens-house-no-implicit: unchanged (fails / reachable / violated), distance 1 with R2 the separating rule (R6 is in both via KIB_RULES). check-all: 106/106 agreement, no inert rule (R6 is a may); the 'R6: untyped variable(s) [x]' warning stays. Gate: PASS; (d) unchanged (persists vs fails, R2 the one separating rule); (a) 0 inert; (b), (c), (e), (f) untouched (kibbutz is outside the cluster). isomorphic_to coverture-household at guard+strands: stays NO, matched 0, distance 9 (R6's skeleton becomes (may, (role, var), guarded, no or_else, rival); coverture R5 chastise is (may, (var, var), guarded, no or_else, rival): the aim patterns differ, so no new pair); not_isomorphic_to police-crisis / cps stay yes (distances 10 / 11 move by at most 1). Layer 2 (information only; baseline run 2026-11-04 before the guard, 10 seeds x 30 steps, committee adoption split: assign(committee,metapelet) 0.32, reprimand(committee,metapelet) 0.275, reprimand(committee,child) 0.225, reprimand(committee,male_member) 0.18): expected after the guard, reprimand(committee,child) and reprimand(committee,male_member) disappear (never assigned; the committee's R2 breach rate is 0.0 in the baseline) and the committee splits between assign(committee,metapelet) and reprimand(committee,metapelet) (plus 'none' if the material module prefers it); metapelet, male_member and child unchanged. If any verdict flips the guard is reverted, not the expectation. R6 guard tried 2026-11-04 and reverted: care_and_sanction_same_role flipped from violated to holds_to_k (flags vacuous, antecedent-unreachable) in this entry AND in kibbutz-childrens-house-no-implicit (check-all 104/106; gate still PASS). The preregistration above was wrong about which binding carries the verdict: the property quantifies sanction power over the SUBJECT ((is_subject y) and (can_sanction z y) and (provides_care x y) => (= z x)), so the violating trace needs can_sanction(committee, child) = (enabled reprimand committee child), which R6 'true' grants and (assigned child) never does (the child is not a member, so R1 cannot put it on the rota: the antecedent becomes unreachable and the invariant holds vacuously). The guard would have to be '(or (assigned x) (is_subject x))' or the property's reading changed; neither was accepted, so R6 is back to 'true' and the ABM keeps reprimanding random members (committee split with the guard, 10 seeds x 30 steps: assign(committee,metapelet) 0.685, reprimand(committee,metapelet) 0.315, as preregistered for layer 2; without it: 0.32 / 0.275 / child 0.225 / male_member 0.18). Layer-2 reading of R8 at step 0 (2026-11-04): assigned(metapelet) is in the entry's `initial` (_kib_init, alongside provides_care(metapelet, child)), so Reference.initial_split puts it in the fixed set and the ABM's step-0 state carries it; neglect(metapelet, child) is therefore a power at step 0 (verified with Reference.power on the ABM's initial state: available_for('metapelet') = [neglect]); the slice-3 observation that it was not predates R8 reaching institutions.json, and the metapelet's 'none' adoption is a choice (neglect breaches R3, sanctioned by R6), not an absence of power; no rule change. DISAGREEMENT 2026-11-04: iso with coverture-household at guard+strands reads NO (matched 0, distance 9) under the current matcher; claim not edited; cause unexamined (candidate: the matcher needs the same strand tag on R3 and coverture R3 and a shared guard shape). Encoder observation, not a cause finding: rules_iso.rule_skeleton keys the aim by literal-role vs variable positions, and this entry's R3 aim names roles (provides_care metapelet child) while coverture R3 uses bound variables (provides_care w h). BATCH 3c (2026-11-09, plans/faithfulness-batch.md section 8, preregistered): R8 'metapelet may neglect when assigned' (implicit, added for ADR 0015 A6) is deleted and `neglect` carries `default_capacity: true` (README convention): enabled unless a disability bars it, which is what the may gave; R5 is conditioned on the free fluent visiting_time. Both inherited by kibbutz-childrens-house-no-implicit. Known limit, not tested: whether the frozen layer-2 ABM honours `default_capacity` for the R3 breaker (a code read says Reference.power does). POST-COUNCIL FIX (2026-11-09, correctness seat finding 3): `neglect` carries arg_roles [metapelet, child], so the default capacity has the bearer the dropped R8 had (the metapelet, acting on the child); without it any agent could neglect at any step, also after release. Verdict-neutral at layer 1 (no derived fluent reads enabled neglect); layer-2-visible only.",
+  "notes": "R2 and R3 `sanctioner` is `institution` since 2026-11-09 (author ruling, plans/informal-rules.md Rulings 2026-11-09 item 2: their or_else is R6, enacted by the committee role, glossed as the general assembly's organ; the 2026-11-08 hand review's `peers` would need R6's actor to be a members role); prose only, no verdict reads it. Gate (d): the historical failure. The explicit rules are sex-blind (R1 may assign any member) and the reform of the 1970s-1990s removed the exit bar on the child (R4), yet care_assigned_by_sex PERSISTS because the implicit sanctioned norm R2 (never a man in the children's house; a documented practice, or_else R6) survives: every strictly compliant trace keeps provides_care in female hands. RE-ENCODED after the third review (2026-11-03): R2 was a disability (or_else null); the sources support a practice, not a committee disability, so it is now must_not + or_else R6. 'implicit' is a human tag the engine reports back; the ablation bites because R1 was written sex-blind (disclosed). PREREGISTERED (2026-11-03, before any run): care_assigned_by_sex persists here; fails in kibbutz-childrens-house-no-implicit, which is this entry minus R2 (differs_on care_assigned_by_sex); subject_cannot_exit reachable (R4 bars sleep_home); care_and_sanction_same_role violated (the committee sanctions, the metapelet cares). Deviations from plans/institutions-batch2.md: R1 is '(assign committee x) when (member x)' rather than '(assign committee metapelet)', because an action instance no may/must rule names is disabled, so the draft's ablation (drop R2 -> assign male_member) only bites if R1 covers the man; R4 is a disability (or_else null) per the ADR 0013 exit convention, so R6 is R3's or_else only and its condition is 'true' (the or_else link enables it on breach); sleep_home is a default capacity (flagged on the action since revision 4, 2026-11-04; the former implicit R7 'may sleep_home when true' is deleted) so can_exit is carried by the capacity unless R4 bars it, as in every other entry; the draft's release action is kept but the breaker of R3 is neglect (release clears the condition with the state, so it breaks nothing). Pitfalls: (1) female needs arg_roles [metapelet] or the solver invents a female male_member; (2) an encoder that writes R1 as 'may assign metapelet' hides R2 inside R1 and the no-implicit variant collapses into the original; (3) 'persists' is about what the rules permit, not uptake. Rival reading (notes only): regendering of care came from mothers' demands (SCMP), not from the committee; the entry does not encode who drove the reform. PREREGISTERED 2026-11-04 (before any run; ADR 0015 A6: R8 'metapelet may neglect when assigned', implicit, in KIB_RULES so it flows into the no-implicit pair too): expected effect on this entry's three properties is NONE. care_assigned_by_sex persists (neglect can only clear provides_care, never put it in male hands; at layer 1 the unregulated neglect already fired freely under the trace floor, and making it regulated narrows its firing to the assigned metapelet, which removes no trace that bears on the property); subject_cannot_exit reachable (R4 untouched; sleep_home stays a default capacity); care_and_sanction_same_role violated (the committee's reprimand power and the metapelet's care are untouched; the violating trace needs assign, not neglect). Minimal pair kibbutz-childrens-house-no-implicit: unchanged (fails / reachable / violated), distance to this entry stays 1 with R2 the one separating rule (R8 is in both). isomorphic_to coverture-household at guard+strands: it already reads NO today (matched 0, distance 9: a pre-existing disagreement with the claim as written, found while baselining, not caused by this change) and is expected to stay NO with matched 0 and distance 9, because coverture has no may-rule tagged superadditive for R8 to match and distance = max(8, 9) - 0 is unchanged; not_isomorphic_to police-crisis / cps stay yes. Gate (d): PASS unchanged (persists vs fails, R2 the one separating rule). check-all: 106/106, no inert rule (R8 is a may). Layer 2 (information only): neglect becomes an available action for the assigned metapelet; the baseline ABM run (2026-11-04, before R8) shows the metapelet with no available action at all. PREREGISTERED 2026-11-04 (before any run; R6 guard, accepted decision of 2026-11-04): R6 'may reprimand' gains the condition (assigned x) (ASSUMED: the committee disciplines only a member on the rota; previously 'true', under which the layer-2 ABM had the committee reprimand random members about half the time). Expected effect on the three expected_properties: NONE. care_assigned_by_sex persists (reprimand has no effects; nothing new puts care in male hands); subject_cannot_exit reachable (R4 untouched; sleep_home stays a default capacity); care_and_sanction_same_role violated (can_sanction(committee, x) = (enabled reprimand committee x) now holds only while assigned(x); assigned(metapelet) is in the initial state, so can_sanction(committee, metapelet) is still true in compliant traces while the metapelet provides care, and the property's (= z x) fails exactly as before). The or_else links R2->R6 and R3->R6 are unaffected: under compliance=sanctioned a breach enables the or_else action whatever its condition, and check-all runs strict, where or_else is not read. Minimal pair kibbutz-childrens-house-no-implicit: unchanged (fails / reachable / violated), distance 1 with R2 the separating rule (R6 is in both via KIB_RULES). check-all: 106/106 agreement, no inert rule (R6 is a may); the 'R6: untyped variable(s) [x]' warning stays. Gate: PASS; (d) unchanged (persists vs fails, R2 the one separating rule); (a) 0 inert; (b), (c), (e), (f) untouched (kibbutz is outside the cluster). isomorphic_to coverture-household at guard+strands: stays NO, matched 0, distance 9 (R6's skeleton becomes (may, (role, var), guarded, no or_else, rival); coverture R5 chastise is (may, (var, var), guarded, no or_else, rival): the aim patterns differ, so no new pair); not_isomorphic_to police-crisis / cps stay yes (distances 10 / 11 move by at most 1). Layer 2 (information only; baseline run 2026-11-04 before the guard, 10 seeds x 30 steps, committee adoption split: assign(committee,metapelet) 0.32, reprimand(committee,metapelet) 0.275, reprimand(committee,child) 0.225, reprimand(committee,male_member) 0.18): expected after the guard, reprimand(committee,child) and reprimand(committee,male_member) disappear (never assigned; the committee's R2 breach rate is 0.0 in the baseline) and the committee splits between assign(committee,metapelet) and reprimand(committee,metapelet) (plus 'none' if the material module prefers it); metapelet, male_member and child unchanged. If any verdict flips the guard is reverted, not the expectation. R6 guard tried 2026-11-04 and reverted: care_and_sanction_same_role flipped from violated to holds_to_k (flags vacuous, antecedent-unreachable) in this entry AND in kibbutz-childrens-house-no-implicit (check-all 104/106; gate still PASS). The preregistration above was wrong about which binding carries the verdict: the property quantifies sanction power over the SUBJECT ((is_subject y) and (can_sanction z y) and (provides_care x y) => (= z x)), so the violating trace needs can_sanction(committee, child) = (enabled reprimand committee child), which R6 'true' grants and (assigned child) never does (the child is not a member, so R1 cannot put it on the rota: the antecedent becomes unreachable and the invariant holds vacuously). The guard would have to be '(or (assigned x) (is_subject x))' or the property's reading changed; neither was accepted, so R6 is back to 'true' and the ABM keeps reprimanding random members (committee split with the guard, 10 seeds x 30 steps: assign(committee,metapelet) 0.685, reprimand(committee,metapelet) 0.315, as preregistered for layer 2; without it: 0.32 / 0.275 / child 0.225 / male_member 0.18). Layer-2 reading of R8 at step 0 (2026-11-04): assigned(metapelet) is in the entry's `initial` (_kib_init, alongside provides_care(metapelet, child)), so Reference.initial_split puts it in the fixed set and the ABM's step-0 state carries it; neglect(metapelet, child) is therefore a power at step 0 (verified with Reference.power on the ABM's initial state: available_for('metapelet') = [neglect]); the slice-3 observation that it was not predates R8 reaching institutions.json, and the metapelet's 'none' adoption is a choice (neglect breaches R3, sanctioned by R6), not an absence of power; no rule change. DISAGREEMENT 2026-11-04: iso with coverture-household at guard+strands reads NO (matched 0, distance 9) under the current matcher; claim not edited; cause unexamined (candidate: the matcher needs the same strand tag on R3 and coverture R3 and a shared guard shape). Encoder observation, not a cause finding: rules_iso.rule_skeleton keys the aim by literal-role vs variable positions, and this entry's R3 aim names roles (provides_care metapelet child) while coverture R3 uses bound variables (provides_care w h). BATCH 3c (2026-11-09, plans/faithfulness-batch.md section 8, preregistered): R8 'metapelet may neglect when assigned' (implicit, added for ADR 0015 A6) is deleted and `neglect` carries `default_capacity: true` (README convention): enabled unless a disability bars it, which is what the may gave; R5 is conditioned on the free fluent visiting_time. Both inherited by kibbutz-childrens-house-no-implicit. Known limit, not tested: whether the frozen layer-2 ABM honours `default_capacity` for the R3 breaker (a code read says Reference.power does). POST-COUNCIL FIX (2026-11-09, correctness seat finding 3): `neglect` carries arg_roles [metapelet, child], so the default capacity has the bearer the dropped R8 had (the metapelet, acting on the child); without it any agent could neglect at any step, also after release. Verdict-neutral at layer 1 (no derived fluent reads enabled neglect); layer-2-visible only.",
   "initial": [
    "(female metapelet)",
    "(is_subject child)",
@@ -6228,7 +6228,7 @@
     "strand": "superadditive",
     "implicit": false,
     "kind": "norm",
-    "sanctioner": "peers",
+    "sanctioner": "institution",
     "source": "Wikipedia, 'Kibbutz communal child rearing and collective education' (read 2026-11-03): 'The nanny position was always a woman's role. Teacher positions were both for women and men.'; children 'lived in the children's house, where they had communal sleeping arrangements' and 'visited their parents for 2-3 hours a day'; https://en.wikipedia.org/wiki/Kibbutz_communal_child_rearing_and_collective_education (the metapelet runs the children's house). [ADR 0009: converted from an action obligation to a state obligation (must-be); the establishing action carries the state, so it does not fire every step] assign establishes provides_care(x, child); neglect breaks it (sanction R6); release ends the assignment Verification pass: read 2026-11-06 at https://en.wikipedia.org/w/index.php?title=Kibbutz_communal_child_rearing_and_collective_education&oldid=1360699722 (revision of 2026-06-23): 'A group of children, all about the same age, shared a children's house and had a nanny who took care of their everyday needs.' Retagged norm 2026-11-08 (batch 3b, B4 ruling): the read text reports a practice; no by-law or written rule is cited.",
     "load_bearing": true
    },
@@ -13529,7 +13529,7 @@
  },
  {
   "id": "ssi-marriage-penalty",
-  "name": "SSI marriage penalty (couple rate and resource limit gated on marriage, extended to unmarried couples who hold out)",
+  "name": "SSI marriage penalty (couple rate and resource limit gated on marriage and living together, extended to unmarried couples who hold out); power reading only",
   "roles": [
    {
     "name": "claimant",
@@ -13832,40 +13832,28 @@
      "g",
      "c"
     ],
-    "effects": []
+    "arg_roles": [
+     "agency",
+     "claimant"
+    ],
+    "effects": [],
+    "default_capacity": true
    }
   ],
   "rules": [
-   {
-    "id": "R1",
-    "attribute": "agency",
-    "deontic": "may",
-    "aim": "(pay_benefit g c)",
-    "conditions": "true",
-    "or_else": null,
-    "strand": "tying",
-    "implicit": false,
-    "kind": "formal",
-    "sanctioner": "none",
-    "source": "The SSI payment power, 42 U.S.C. 1382(a). UNVERIFIED as a rule row: no excerpt supports a bare grant of the power to pay; it is the encoder's skeleton so that R7 (the resource bar) removes something. Sanctioner none: the sources opened name no enforcement of the agency's payment duty.",
-    "var_roles": {
-     "g": "agency",
-     "c": "claimant"
-    }
-   },
    {
     "id": "R2",
     "attribute": "agency",
     "deontic": "may",
     "aim": "(apply_couple_rate g c s)",
-    "conditions": "(married c s)",
+    "conditions": "(and (married c s) (cohabits c s))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
     "function": "penalises_marriage_rate",
-    "source": "20 CFR 416.1802 'Effects of marriage on eligibility and amount of benefits' (https://www.law.cornell.edu/cfr/text/20/416.1802), as carried from plans/sourcing-worklist-marriage.md section 5 (a summarising fetch, not raw text; not re-opened for this row; level snippet): 'we will count your combined income and calculated the benefit amount for you as a couple.' (the worklist's quotation, typo included) and '(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.' The couple federal rate is lower than two individual rates (42 U.S.C. 1382(b)(2), not (a)(1)(B), per the faithfulness review's raw read; 1974 base rates $1,752 individual, $2,628 couple per the worklist; 2026 rates $994 / $1,491 are an unverified lead). Sanctioner none: no enforcement of the agency's duty is in the text read. Read as a power (`may`), not an applied rate; the statute is mandatory, which the encoding does not carry.",
+    "source": "20 CFR 416.1802 'Effects of marriage on eligibility and amount of benefits' (https://www.law.cornell.edu/cfr/text/20/416.1802), as carried from plans/sourcing-worklist-marriage.md section 5 (a summarising fetch, not raw text; not re-opened for this row; level snippet): 'we will count your combined income and calculated the benefit amount for you as a couple.' (the worklist's quotation, typo included) and '(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.' The couple federal rate is lower than two individual rates (42 U.S.C. 1382(b)(2), not (a)(1)(B), per the faithfulness review's raw read; 1974 base rates $1,752 individual, $2,628 couple per the worklist; 2026 rates $994 / $1,491 are an unverified lead). Sanctioner none: no enforcement of the agency's duty is in the text read. Read as a power (`may`), not an applied rate; the statute is mandatory, which the encoding does not carry. Revision 2 (2026-11-09, item 1): the condition gained `cohabits` (20 CFR 416.1801(c); 42 U.S.C. 1382(a)(1)(B)(i), both read raw by the faithfulness seat, not re-opened by the builder; no excerpt added).",
     "var_roles": {
      "g": "agency",
      "c": "claimant",
@@ -13877,14 +13865,14 @@
     "attribute": "agency",
     "deontic": "may",
     "aim": "(apply_couple_limit g c s)",
-    "conditions": "(married c s)",
+    "conditions": "(and (married c s) (cohabits c s))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
     "function": "penalises_marriage_limit",
-    "source": "42 U.S.C. 1382(a)(3)(A)-(B) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (first 100,000 of 170,641 characters, through a summarising fetch; not re-opened; level snippet): '$3,000 on January 1, 1989' for a couple and '$2,000 on January 1, 1989' for an individual (Pub. L. 98-369 s. 2611, not indexed to inflation; the 1.5 ratio is arithmetic). A pair of individuals may hold $4,000 together, so the couple limit is the lower of the two. Sanctioner none: no enforcement in the text read. The 2026 limits equal the 1989 figures per an unverified search-summary lead.",
+    "source": "42 U.S.C. 1382(a)(3)(A)-(B) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (first 100,000 of 170,641 characters, through a summarising fetch; not re-opened; level snippet): '$3,000 on January 1, 1989' for a couple and '$2,000 on January 1, 1989' for an individual (Pub. L. 98-369 s. 2611, not indexed to inflation; the 1.5 ratio is arithmetic). A pair of individuals may hold $4,000 together, so the couple limit is the lower of the two. Sanctioner none: no enforcement in the text read. The 2026 limits equal the 1989 figures per an unverified search-summary lead. Revision 2 (2026-11-09, item 1): the condition gained `cohabits` (42 U.S.C. 1382(a)(1)(B)(i), a spouse with whom he is living, read raw by the faithfulness seat, not re-opened by the builder; no excerpt added).",
     "var_roles": {
      "g": "agency",
      "c": "claimant",
@@ -13915,13 +13903,13 @@
     "attribute": "agency",
     "deontic": "may",
     "aim": "(apply_individual_rate g c s)",
-    "conditions": "(not (or (married c s) (and (cohabits c s) (holds_out c s))))",
+    "conditions": "(not (and (cohabits c s) (or (married c s) (holds_out c s))))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "CRS RL33675 (https://www.everycrsreport.com/reports/RL33675.html), as carried from the worklist (summarising fetch; not re-opened): 'a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.' (so the unmarried are rated as individuals). 20 CFR 416.1802(d)(1) as in R2 (it does not itself state an individual rate for the unmarried). The complement condition (not married and not holding out) is the encoder's reading of the three tests in the worklist.",
+    "source": "CRS RL33675 (https://www.everycrsreport.com/reports/RL33675.html), as carried from the worklist (summarising fetch; not re-opened): 'a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.' (so the unmarried are rated as individuals). 20 CFR 416.1802(d)(1) as in R2 (it does not itself state an individual rate for the unmarried). The complement condition is the encoder's reading of the three tests in the worklist; since revision 2 (2026-11-09) it is the exact complement of the two couple-rate routes (R2, R4): not (living together and (married or holding out)).",
     "var_roles": {
      "g": "agency",
      "c": "claimant",
@@ -13933,13 +13921,13 @@
     "attribute": "agency",
     "deontic": "may",
     "aim": "(apply_individual_limit g c s)",
-    "conditions": "(not (or (married c s) (and (cohabits c s) (holds_out c s))))",
+    "conditions": "(not (and (cohabits c s) (or (married c s) (holds_out c s))))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "42 U.S.C. 1382(a)(3)(B) as carried from the worklist (summarising fetch; not re-opened; level snippet): '$2,000 on January 1, 1989' for an individual, '$3,000 on January 1, 1989' for a couple. The complement condition is the encoder's reading.",
+    "source": "42 U.S.C. 1382(a)(3)(B) as carried from the worklist (summarising fetch; not re-opened; level snippet): '$2,000 on January 1, 1989' for an individual, '$3,000 on January 1, 1989' for a couple. The condition is the encoder's reading and is the complement of the couple RATE routes (R2, R4), not of the couple limit (R3 is the only couple-limit rule, so an unmarried cohabiting holding-out pair has neither limit power; see notes); since revision 2 (2026-11-09) it is not (living together and (married or holding out)), so a spouse not living with the claimant leaves the individual limit in place (1382(a)(1)(B)(i), read raw by the faithfulness seat only).",
     "var_roles": {
      "g": "agency",
      "c": "claimant",
@@ -13969,7 +13957,7 @@
    "married_couple_rated": "holds_to_k",
    "married_couple_limited": "holds_to_k",
    "penalty_reaches_unmarried": "reachable",
-   "married_rated_individually": "unreachable_open",
+   "married_rated_individually": "reachable",
    "over_limit_ineligible": "holds_to_k"
   },
   "initial": [
@@ -13983,11 +13971,11 @@
    "lease"
   ],
   "minimal_pair_of": null,
-  "notes": "SSI marriage penalty, encoded as powers the rules grant the agency (the project's convention: a derived fluent reads `enabled`). Roles claimant, spouse, agency; `married` arity 2 typed [claimant, spouse] so it can be aliased to partner_a / partner_b for composition with coverture-household-us (plans/composition.md; ADR 0018). Preregistered in plans/ssi-entry.md before any run. Encoded as `may` powers, not the statute's mandatory 'must': a must on an action fires every step and blocks the other actions (ADR 0009), and a must-be would need the establishing action to carry the rate. Dollar amounts are not represented: the couple penalty appears only as which limit and which rate the agency is empowered to apply. Deviations from the brief, recorded: (1) R4, the displaced gate, is `kind: formal, sanctioner: none`, not `state`: R4 is an agency `may` power with no duty to sanction, and the engine rejects a sanctioner without an or_else; overpayment recovery (20 CFR 416.537, not opened) sanctions the claimant under a different, unencoded rule; the displaced reading therefore cannot lean on a sanctioner difference and reads attribute sets only. (2) Holding out is encoded as a power on the same aim as R2 (a second route to the couple rate), not as a rewrite of `married`, because a derived fluent cannot read `married or holds_out`. Unverified or unread: 20 CFR 416.1804, 416.1805 and the deeming sections 416.1160-1163; effective dates of 416.1806; 2026 federal benefit rates and limits (a search-summary lead); 20 CFR 416.537 (overpayment recovery); no secondary source frames holding out as a displaced gate (CRS gives rule and size only); every provenance level is `snippet` or `unverified` (ADR 0017 s.3): the excerpts were carried from the worklist, whose fetches returned a summary, not raw text, and were not re-opened by the builder (the faithfulness seat confirmed 416.1802(b)(1) and (d)(1), 416.1806(a)(3) and 1382(a)(3)(A)-(B) verbatim from raw text). `divorce` is an unsourced encoder action (a bare setter of married false; no source mentions divorce, and no rule uses it). `marry` was renamed `wed` for composition (P2b, plans/p2-ssi-composite.md) because coverture-household-us also has a `marry`; no rule, plain line or source changed. Vocabulary is the worklist's ASSUMED vocabulary. No `is_subject`, `can_exit` or care fluents are declared, so none of the 34 older properties is applicable to this entry alone; they become applicable only in a composite (what P2 needs is in plans/ssi-entry.md). Unencoded, revision 2 items: R2/R3 cohabitation condition (the source says a spouse with whom he or she is living; the rules carry `married` alone), R4 qualifiers `unrelated` and timing, R5/R6 complement omits 416.1806(a)(2) and the 416.1802(a) deeming case. R4 follows POMS SI 00501.152 (same-sex included), not the opposite-sex text of 416.1806(a)(3). Consent guard ruling, quoted exactly: \"Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to benefits rules by the author, 2026-11-08.\""
+  "notes": "POWER READING ONLY (revision 2 item 2, ruled 2026-11-09): every `may` rule here (R2 to R6) is a power the agency holds and `pay_benefit` is a default capacity; R7 is not a power but a disability that removes one; none is the statute's mandatory duty and not an applied rate or limit; the ADR 0009 must-be encoding is not attempted in this entry and is a later preregistration of its own. Revision 2 (plans/ssi-entry.md, \"Revision 2 run\", preregistered 2026-11-09): (item 1) R2 and R3 are conditioned on married and cohabits, R5 and R6 on the complement not (cohabits and (married or holds_out)), so a married pair living apart gets the individual rate and limit; `cohabits` was already declared (set by `cohabit` / `separate`, false at the start, not a free fluent). (item 3) `pay_benefit` is a `default_capacity` action typed `arg_roles [agency, claimant]` and the grant rule R1 (`may pay_benefit when true`) is deleted, ids not renumbered; R5 and R6 stay rules because they carry a condition, which a default capacity cannot; this is a departure from ruling 3 as worded, which named \"R1 and the pair's R5/R6\" (N74, docs/negative-results.md; open for the author). (item 4) the pair ssi-marriage-penalty-individual is now a one-rule pair that drops R3. The properties married_couple_rated and married_couple_limited read married and cohabits since the same revision. KNOWN GAP, declared 2026-11-09 (post-council fix pass; correctness finding 8; pre-existing, the old R3/R6 had the same hole): R6 is NOT the exact complement of R3. R6 carries R5's condition, the complement of the two couple-rate routes, but the couple limit has one route only (R3: married and living together), so an unmarried pair who live together and hold out has neither the couple limit power nor the individual limit power (reachable by present_as_married then cohabit; probed by the correctness seat at k=6). Whether R3 should read cohabits and (married or holds_out) is a faithfulness ruling and a new preregistration; not encoded here. SSI marriage penalty, encoded as powers the rules grant the agency (the project's convention: a derived fluent reads `enabled`). Roles claimant, spouse, agency; `married` arity 2 typed [claimant, spouse] so it can be aliased to partner_a / partner_b for composition with coverture-household-us (plans/composition.md; ADR 0018). Preregistered in plans/ssi-entry.md before any run. Encoded as `may` powers, not the statute's mandatory 'must': a must on an action fires every step and blocks the other actions (ADR 0009), and a must-be would need the establishing action to carry the rate. Dollar amounts are not represented: the couple penalty appears only as which limit and which rate the agency is empowered to apply. Deviations from the brief, recorded: (1) R4, the displaced gate, is `kind: formal, sanctioner: none`, not `state`: R4 is an agency `may` power with no duty to sanction, and the engine rejects a sanctioner without an or_else; overpayment recovery (20 CFR 416.537, not opened) sanctions the claimant under a different, unencoded rule; the displaced reading therefore cannot lean on a sanctioner difference and reads attribute sets only. (2) Holding out is encoded as a power on the same aim as R2 (a second route to the couple rate), not as a rewrite of `married`, because a derived fluent cannot read `married or holds_out`. Unverified or unread: 20 CFR 416.1804, 416.1805 and the deeming sections 416.1160-1163; effective dates of 416.1806; 2026 federal benefit rates and limits (a search-summary lead); 20 CFR 416.537 (overpayment recovery); no secondary source frames holding out as a displaced gate (CRS gives rule and size only); every provenance level is `snippet` or `unverified` (ADR 0017 s.3): the excerpts were carried from the worklist, whose fetches returned a summary, not raw text, and were not re-opened by the builder (the faithfulness seat confirmed 416.1802(b)(1) and (d)(1), 416.1806(a)(3) and 1382(a)(3)(A)-(B) verbatim from raw text). `divorce` is an unsourced encoder action (a bare setter of married false; no source mentions divorce, and no rule uses it). `marry` was renamed `wed` for composition (P2b, plans/p2-ssi-composite.md) because coverture-household-us also has a `marry`; no rule, plain line or source changed. Vocabulary is the worklist's ASSUMED vocabulary. No `is_subject`, `can_exit` or care fluents are declared, so none of the 34 older properties is applicable to this entry alone; they become applicable only in a composite (what P2 needs is in plans/ssi-entry.md). Unencoded: R4 qualifiers `unrelated` and timing, R5/R6 complement omits 416.1806(a)(2) and the 416.1802(a) deeming case. R4 follows POMS SI 00501.152 (same-sex included), not the opposite-sex text of 416.1806(a)(3). Consent guard ruling, quoted exactly: \"Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to benefits rules by the author, 2026-11-08.\""
  },
  {
   "id": "ssi-marriage-penalty-individual",
-  "name": "SSI without the marriage penalty (individual rate and limit regardless of marital status; holding-out test dropped)",
+  "name": "SSI with the couple resource limit removed (one-rule pair of ssi-marriage-penalty: R3 dropped; couple rate and holding-out test kept; a deletion, not a reform); power reading only",
   "roles": [
    {
     "name": "claimant",
@@ -14290,25 +14278,51 @@
      "g",
      "c"
     ],
-    "effects": []
+    "arg_roles": [
+     "agency",
+     "claimant"
+    ],
+    "effects": [],
+    "default_capacity": true
    }
   ],
   "rules": [
    {
-    "id": "R1",
+    "id": "R2",
     "attribute": "agency",
     "deontic": "may",
-    "aim": "(pay_benefit g c)",
-    "conditions": "true",
+    "aim": "(apply_couple_rate g c s)",
+    "conditions": "(and (married c s) (cohabits c s))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "The SSI payment power, 42 U.S.C. 1382(a). UNVERIFIED as a rule row: no excerpt supports a bare grant of the power to pay; it is the encoder's skeleton so that R7 (the resource bar) removes something. Sanctioner none: the sources opened name no enforcement of the agency's payment duty.",
+    "function": "penalises_marriage_rate",
+    "source": "20 CFR 416.1802 'Effects of marriage on eligibility and amount of benefits' (https://www.law.cornell.edu/cfr/text/20/416.1802), as carried from plans/sourcing-worklist-marriage.md section 5 (a summarising fetch, not raw text; not re-opened for this row; level snippet): 'we will count your combined income and calculated the benefit amount for you as a couple.' (the worklist's quotation, typo included) and '(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.' The couple federal rate is lower than two individual rates (42 U.S.C. 1382(b)(2), not (a)(1)(B), per the faithfulness review's raw read; 1974 base rates $1,752 individual, $2,628 couple per the worklist; 2026 rates $994 / $1,491 are an unverified lead). Sanctioner none: no enforcement of the agency's duty is in the text read. Read as a power (`may`), not an applied rate; the statute is mandatory, which the encoding does not carry. Revision 2 (2026-11-09, item 1): the condition gained `cohabits` (20 CFR 416.1801(c); 42 U.S.C. 1382(a)(1)(B)(i), both read raw by the faithfulness seat, not re-opened by the builder; no excerpt added).",
     "var_roles": {
      "g": "agency",
-     "c": "claimant"
+     "c": "claimant",
+     "s": "spouse"
+    }
+   },
+   {
+    "id": "R4",
+    "attribute": "agency",
+    "deontic": "may",
+    "aim": "(apply_couple_rate g c s)",
+    "conditions": "(and (cohabits c s) (holds_out c s))",
+    "or_else": null,
+    "strand": "tying",
+    "implicit": false,
+    "kind": "formal",
+    "sanctioner": "none",
+    "function": "extends_penalty_to_holding_out",
+    "source": "20 CFR 416.1806 (https://www.law.cornell.edu/cfr/text/20/416.1806), as carried from the worklist (a summarising fetch; not re-opened; level snippet): someone is a spouse for SSI purposes where (a)(3) 'You and an unrelated person of the opposite sex are living together in the same household' and 'you both lead people to believe that you are husband and wife.' POMS SI 00501.150 (TN 80, 02-25): 'Living together in the same household and holding themselves out as a married couple to the community in which they live.' POMS SI 00501.152 (TN 85, 12-25): 'both individuals lead people in the community in which they reside to believe they are a married couple'. POMS covers same-sex couples per a search summary; the Cornell regulation text still says opposite sex. This is the displaced gate: a conduct test that carries the couple rate to unmarried pairs. Sanctioner none (see notes): R4 is an agency `may` power with no duty to sanction, and the engine rejects a sanctioner without an or_else. Unencoded qualifiers: the regulation's `unrelated` and `at or after the time you apply`; the opposite-sex limit is deliberately not encoded (POMS). Overpayment recovery (20 CFR 416.537, not opened) sanctions the claimant under a different, unencoded rule.",
+    "var_roles": {
+     "g": "agency",
+     "c": "claimant",
+     "s": "spouse"
     }
    },
    {
@@ -14316,13 +14330,13 @@
     "attribute": "agency",
     "deontic": "may",
     "aim": "(apply_individual_rate g c s)",
-    "conditions": "true",
+    "conditions": "(not (and (cohabits c s) (or (married c s) (holds_out c s))))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED reform: no reform text was read (S. 73 of 2025, named in plans/sourcing-worklist-marriage.md Gaps, is an unopened lead). The rule is the base R5 with its marital-status condition removed, which is what 'penalty removed' means in the preregistration (plans/ssi-entry.md). Baseline text for the rule it replaces: CRS RL33675, 'a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.' (carried from the worklist; summarising fetch).",
+    "source": "CRS RL33675 (https://www.everycrsreport.com/reports/RL33675.html), as carried from the worklist (summarising fetch; not re-opened): 'a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.' (so the unmarried are rated as individuals). 20 CFR 416.1802(d)(1) as in R2 (it does not itself state an individual rate for the unmarried). The complement condition is the encoder's reading of the three tests in the worklist; since revision 2 (2026-11-09) it is the exact complement of the two couple-rate routes (R2, R4): not (living together and (married or holding out)).",
     "var_roles": {
      "g": "agency",
      "c": "claimant",
@@ -14334,13 +14348,13 @@
     "attribute": "agency",
     "deontic": "may",
     "aim": "(apply_individual_limit g c s)",
-    "conditions": "true",
+    "conditions": "(not (and (cohabits c s) (or (married c s) (holds_out c s))))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
     "kind": "formal",
     "sanctioner": "none",
-    "source": "UNVERIFIED reform: no reform text was read. The rule is the base R6 with its marital-status condition removed. Baseline text for the rule it replaces: 42 U.S.C. 1382(a)(3)(B), '$2,000 on January 1, 1989' for an individual (carried from the worklist; summarising fetch).",
+    "source": "42 U.S.C. 1382(a)(3)(B) as carried from the worklist (summarising fetch; not re-opened; level snippet): '$2,000 on January 1, 1989' for an individual, '$3,000 on January 1, 1989' for a couple. The condition is the encoder's reading and is the complement of the couple RATE routes (R2, R4), not of the couple limit (R3 is the only couple-limit rule, so an unmarried cohabiting holding-out pair has neither limit power; see notes); since revision 2 (2026-11-09) it is not (living together and (married or holding out)), so a spouse not living with the claimant leaves the individual limit in place (1382(a)(1)(B)(i), read raw by the faithfulness seat only).",
     "var_roles": {
      "g": "agency",
      "c": "claimant",
@@ -14367,9 +14381,9 @@
   ],
   "source_text": "Per the sourcing worklist (summarising fetches, not raw text): 20 CFR 416.1802 ('we will count your combined income and calculated the benefit amount for you as a couple.'; '(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.'); 20 CFR 416.1806 (a)(3) (cohabitants who 'lead people to believe that you are husband and wife' are spouses for SSI); SSA POMS SI 00501.150 and .152 (holding out); 42 U.S.C. 1382(a)(3) (resource limits $2,000 individual and $3,000 couple as of 1 January 1989); CRS RL33675 (a married couple has a lower resource limit, a lower maximum federal benefit and a lower amount of excluded income).",
   "expected_properties": {
-   "married_couple_rated": "violated",
+   "married_couple_rated": "holds_to_k",
    "married_couple_limited": "violated",
-   "penalty_reaches_unmarried": "unreachable_open",
+   "penalty_reaches_unmarried": "reachable",
    "married_rated_individually": "reachable",
    "over_limit_ineligible": "holds_to_k"
   },
@@ -14385,10 +14399,10 @@
   ],
   "minimal_pair_of": {
    "id": "ssi-marriage-penalty",
-   "rule": "R2,R3,R4,R5,R6",
-   "differs_on": "married_couple_rated"
+   "rule": "R3",
+   "differs_on": "married_couple_limited"
   },
-  "notes": "This is a 5-rule reform pair, not a minimal pair (the field name `minimal_pair_of` is the dataset's, ADR 0007 names one-rule pairs as the model). Revision 2 options for a one-rule pair: drop R3 alone (flips married_couple_limited), or drop R4 alone (holding out removed; flips penalty_reaches_unmarried). Dropping R2 alone leaves married pairs with no rate, which is why the reform edits R5 and R6. Penalty removed: R2, R3 (couple rate and limit gated on marriage) and R4 (the holding-out gate) are dropped, and R5, R6 lose their marital-status condition, so the individual rate and limit apply to every claimant. This is not one rule apart (three dropped, two edited); `rule` names the five rules (R2,R3,R4 dropped; R5,R6 replaced) and the pair is read on verdicts, not on the one-rule gate. R5 and R6 of the pair rest on no source (unverified counterfactuals). `violated` here means the power is absent, not that a law is broken; dollar amounts are not modelled. Holding out is DROPPED, not kept: with no couple rate there is nothing for the test to gate, and no reform text was read that keeps it (S. 73 of 2025 is an unopened lead; the CRS report gives rule and size only). The fluents `holds_out`, `cohabits` and the actions remain declared so the two entries share a vocabulary and can be compared; here they gate nothing. The resource bar (R1, R7) is kept: the reform removes the penalty, not the resource test. Preregistered in plans/ssi-entry.md before any run. Consent guard ruling, quoted exactly: \"Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to benefits rules by the author, 2026-11-08.\""
+  "notes": "One-rule pair since revision 2 (plans/ssi-entry.md, \"Revision 2 run\", preregistered 2026-11-09; item 4 ruled 2026-11-09): the base with R3, the couple resource limit, dropped and nothing else changed; preregistered to differ from the base on married_couple_limited (holds_to_k in the base, violated here). Power reading only, as the base: `violated` means the agency holds no power to apply the couple limit, not that a law is broken; dollar amounts are not modelled. Known limit: with R3 gone a married pair living together has neither the couple limit nor the individual limit (R6 excludes them), so this is a one-rule deletion in the ADR 0007 sense, not a coherent reform text; no reform bill was read (S. 73 of 2025 is an unopened lead). The entry id is kept from the earlier pair and no longer describes it: R2 (couple rate), R4 (holding out), R5 and R6 (individual rate and limit, conditioned) and R7 (resource bar) are all inherited unchanged, and `pay_benefit` is the base's default capacity. PREVIOUS PAIR, superseded 2026-11-09 and recorded here: a five-rule reform pair, `rules_drop: [R2, R3, R4]` with R5 and R6 replaced by `may ... when true` rows (individual rate and limit whatever the marital status; unverified counterfactuals resting on no source), `minimal_pair_of.rule: R2,R3,R4,R5,R6`, `differs_on: married_couple_rated`; its verdicts at k 6 and 8 were married_couple_rated violated, married_couple_limited violated, penalty_reaches_unmarried unreachable_open, married_rated_individually reachable, over_limit_ineligible holds_to_k (plans/ssi-entry.md Results, run 2026-11-08). Its notes read: This is a 5-rule reform pair, not a minimal pair (the field name `minimal_pair_of` is the dataset's, ADR 0007 names one-rule pairs as the model). Revision 2 options for a one-rule pair: drop R3 alone (flips married_couple_limited), or drop R4 alone (holding out removed; flips penalty_reaches_unmarried). Dropping R2 alone leaves married pairs with no rate, which is why the reform edits R5 and R6. Penalty removed: R2, R3 (couple rate and limit gated on marriage) and R4 (the holding-out gate) are dropped, and R5, R6 lose their marital-status condition, so the individual rate and limit apply to every claimant. This is not one rule apart (three dropped, two edited); `rule` names the five rules (R2,R3,R4 dropped; R5,R6 replaced) and the pair is read on verdicts, not on the one-rule gate. R5 and R6 of the pair rest on no source (unverified counterfactuals). `violated` here means the power is absent, not that a law is broken; dollar amounts are not modelled. Holding out is DROPPED, not kept: with no couple rate there is nothing for the test to gate, and no reform text was read that keeps it (S. 73 of 2025 is an unopened lead; the CRS report gives rule and size only). The fluents `holds_out`, `cohabits` and the actions remain declared so the two entries share a vocabulary and can be compared; here they gate nothing. The resource bar (R1, R7) is kept: the reform removes the penalty, not the resource test. Preregistered in plans/ssi-entry.md before any run. (end of the previous pair's notes). Consent guard ruling, quoted exactly: \"Consent guard note (plans/consent-guard-note-DRAFT.md) ruled not applicable to benefits rules by the author, 2026-11-08.\""
  },
  {
   "id": "coverture-us-hospital-visitation",
@@ -16217,12 +16231,12 @@
      "c"
     ],
     "arg_roles": [
-     null,
+     "agency",
      "partner_a"
     ],
     "effects": [],
     "gloss": "",
-    "default_capacity": false
+    "default_capacity": true
    }
   ],
   "rules": [
@@ -16367,36 +16381,16 @@
     "function": null
    },
    {
-    "id": "ssi_marriage_penalty__R1",
-    "attribute": "agency",
-    "deontic": "may",
-    "aim": "(pay_benefit g c)",
-    "aim_kind": null,
-    "conditions": "true",
-    "or_else": null,
-    "strand": "tying",
-    "implicit": false,
-    "source": "The SSI payment power, 42 U.S.C. 1382(a). UNVERIFIED as a rule row: no excerpt supports a bare grant of the power to pay; it is the encoder's skeleton so that R7 (the resource bar) removes something. Sanctioner none: the sources opened name no enforcement of the agency's payment duty.",
-    "var_roles": {
-     "g": "agency",
-     "c": "partner_a"
-    },
-    "load_bearing": false,
-    "kind": "formal",
-    "sanctioner": "none",
-    "function": null
-   },
-   {
     "id": "ssi_marriage_penalty__R2",
     "attribute": "agency",
     "deontic": "may",
     "aim": "(apply_couple_rate g c s)",
     "aim_kind": null,
-    "conditions": "(married c s)",
+    "conditions": "(and (married c s) (cohabits c s))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "source": "20 CFR 416.1802 'Effects of marriage on eligibility and amount of benefits' (https://www.law.cornell.edu/cfr/text/20/416.1802), as carried from plans/sourcing-worklist-marriage.md section 5 (a summarising fetch, not raw text; not re-opened for this row; level snippet): 'we will count your combined income and calculated the benefit amount for you as a couple.' (the worklist's quotation, typo included) and '(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.' The couple federal rate is lower than two individual rates (42 U.S.C. 1382(b)(2), not (a)(1)(B), per the faithfulness review's raw read; 1974 base rates $1,752 individual, $2,628 couple per the worklist; 2026 rates $994 / $1,491 are an unverified lead). Sanctioner none: no enforcement of the agency's duty is in the text read. Read as a power (`may`), not an applied rate; the statute is mandatory, which the encoding does not carry.",
+    "source": "20 CFR 416.1802 'Effects of marriage on eligibility and amount of benefits' (https://www.law.cornell.edu/cfr/text/20/416.1802), as carried from plans/sourcing-worklist-marriage.md section 5 (a summarising fetch, not raw text; not re-opened for this row; level snippet): 'we will count your combined income and calculated the benefit amount for you as a couple.' (the worklist's quotation, typo included) and '(d)(1) Benefits depend on whether you are married or not married at the beginning of each month.' The couple federal rate is lower than two individual rates (42 U.S.C. 1382(b)(2), not (a)(1)(B), per the faithfulness review's raw read; 1974 base rates $1,752 individual, $2,628 couple per the worklist; 2026 rates $994 / $1,491 are an unverified lead). Sanctioner none: no enforcement of the agency's duty is in the text read. Read as a power (`may`), not an applied rate; the statute is mandatory, which the encoding does not carry. Revision 2 (2026-11-09, item 1): the condition gained `cohabits` (20 CFR 416.1801(c); 42 U.S.C. 1382(a)(1)(B)(i), both read raw by the faithfulness seat, not re-opened by the builder; no excerpt added).",
     "var_roles": {
      "g": "agency",
      "c": "partner_a",
@@ -16413,11 +16407,11 @@
     "deontic": "may",
     "aim": "(apply_couple_limit g c s)",
     "aim_kind": null,
-    "conditions": "(married c s)",
+    "conditions": "(and (married c s) (cohabits c s))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "source": "42 U.S.C. 1382(a)(3)(A)-(B) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (first 100,000 of 170,641 characters, through a summarising fetch; not re-opened; level snippet): '$3,000 on January 1, 1989' for a couple and '$2,000 on January 1, 1989' for an individual (Pub. L. 98-369 s. 2611, not indexed to inflation; the 1.5 ratio is arithmetic). A pair of individuals may hold $4,000 together, so the couple limit is the lower of the two. Sanctioner none: no enforcement in the text read. The 2026 limits equal the 1989 figures per an unverified search-summary lead.",
+    "source": "42 U.S.C. 1382(a)(3)(A)-(B) (https://www.law.cornell.edu/uscode/text/42/1382), as carried from the worklist (first 100,000 of 170,641 characters, through a summarising fetch; not re-opened; level snippet): '$3,000 on January 1, 1989' for a couple and '$2,000 on January 1, 1989' for an individual (Pub. L. 98-369 s. 2611, not indexed to inflation; the 1.5 ratio is arithmetic). A pair of individuals may hold $4,000 together, so the couple limit is the lower of the two. Sanctioner none: no enforcement in the text read. The 2026 limits equal the 1989 figures per an unverified search-summary lead. Revision 2 (2026-11-09, item 1): the condition gained `cohabits` (42 U.S.C. 1382(a)(1)(B)(i), a spouse with whom he is living, read raw by the faithfulness seat, not re-opened by the builder; no excerpt added).",
     "var_roles": {
      "g": "agency",
      "c": "partner_a",
@@ -16455,11 +16449,11 @@
     "deontic": "may",
     "aim": "(apply_individual_rate g c s)",
     "aim_kind": null,
-    "conditions": "(not (or (married c s) (and (cohabits c s) (holds_out c s))))",
+    "conditions": "(not (and (cohabits c s) (or (married c s) (holds_out c s))))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "source": "CRS RL33675 (https://www.everycrsreport.com/reports/RL33675.html), as carried from the worklist (summarising fetch; not re-opened): 'a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.' (so the unmarried are rated as individuals). 20 CFR 416.1802(d)(1) as in R2 (it does not itself state an individual rate for the unmarried). The complement condition (not married and not holding out) is the encoder's reading of the three tests in the worklist.",
+    "source": "CRS RL33675 (https://www.everycrsreport.com/reports/RL33675.html), as carried from the worklist (summarising fetch; not re-opened): 'a married couple has a lower resource limit, a lower maximum federal benefit, and a lower amount of excluded income.' (so the unmarried are rated as individuals). 20 CFR 416.1802(d)(1) as in R2 (it does not itself state an individual rate for the unmarried). The complement condition is the encoder's reading of the three tests in the worklist; since revision 2 (2026-11-09) it is the exact complement of the two couple-rate routes (R2, R4): not (living together and (married or holding out)).",
     "var_roles": {
      "g": "agency",
      "c": "partner_a",
@@ -16476,11 +16470,11 @@
     "deontic": "may",
     "aim": "(apply_individual_limit g c s)",
     "aim_kind": null,
-    "conditions": "(not (or (married c s) (and (cohabits c s) (holds_out c s))))",
+    "conditions": "(not (and (cohabits c s) (or (married c s) (holds_out c s))))",
     "or_else": null,
     "strand": "tying",
     "implicit": false,
-    "source": "42 U.S.C. 1382(a)(3)(B) as carried from the worklist (summarising fetch; not re-opened; level snippet): '$2,000 on January 1, 1989' for an individual, '$3,000 on January 1, 1989' for a couple. The complement condition is the encoder's reading.",
+    "source": "42 U.S.C. 1382(a)(3)(B) as carried from the worklist (summarising fetch; not re-opened; level snippet): '$2,000 on January 1, 1989' for an individual, '$3,000 on January 1, 1989' for a couple. The condition is the encoder's reading and is the complement of the couple RATE routes (R2, R4), not of the couple limit (R3 is the only couple-limit rule, so an unmarried cohabiting holding-out pair has neither limit power; see notes); since revision 2 (2026-11-09) it is not (living together and (married or holding out)), so a spouse not living with the claimant leaves the individual limit in place (1382(a)(1)(B)(i), read raw by the faithfulness seat only).",
     "var_roles": {
      "g": "agency",
      "c": "partner_a",
@@ -16527,14 +16521,14 @@
    "married_couple_rated": "holds_to_k",
    "married_couple_limited": "holds_to_k",
    "penalty_reaches_unmarried": "reachable",
-   "married_rated_individually": "unreachable_open",
+   "married_rated_individually": "reachable",
    "over_limit_ineligible": "holds_to_k"
   },
   "isomorphic_to": [],
   "not_isomorphic_to": [],
   "not_isomorphic_to_control": [],
   "minimal_pair_of": null,
-  "notes": "P2 composite (plans/p2-ssi-composite.md, preregistered 2026-11-08 before the build): tests the second half of claim C2 (docs/connections.md section 4). Claimant -> partner_a so that the SSI rules' (married c s) is the same atom as coverture's married(h, w) after aliasing; the claimant being the husband is an assumption of this composite, not of SSI. Sex by female(partner_b) in initial; acquired_property and earns free as in the first composite. C2b is read from `phil rules ablate --entry coverture-us-ssi`, rows ssi_marriage_penalty__R2 and R3: predicted NOT to flip financial_dependence (it reads is_subject, controls_own_property and owns_earnings, which no SSI rule touches), so C2 fails as written. Not a cluster member; no iso claims; takes no part in the gate. Post hoc (S7): cannot_contract was preregistered holds_to_k and is edited to violated after the run; violated via SSI divorce (an unsourced encoder action that un-marries a coverture pair, so R7's married condition fails). The edit follows the repo post hoc convention (docs/interpreting-results.md section 6); the baseline row already records the actual verdict. Constructed world (ADR 0018): pairs 1765 coverture with 1974+ SSI over one couple; not a historical regime.",
+  "notes": "P2 composite (plans/p2-ssi-composite.md, preregistered 2026-11-08 before the build): tests the second half of claim C2 (docs/connections.md section 4). Claimant -> partner_a so that the SSI rules' (married c s) is the same atom as coverture's married(h, w) after aliasing; the claimant being the husband is an assumption of this composite, not of SSI. Sex by female(partner_b) in initial; acquired_property and earns free as in the first composite. C2b is read from `phil rules ablate --entry coverture-us-ssi`, rows ssi_marriage_penalty__R2 and R3: predicted NOT to flip financial_dependence (it reads is_subject, controls_own_property and owns_earnings, which no SSI rule touches), so C2 fails as written. Not a cluster member; no iso claims; takes no part in the gate. Post hoc (S7): cannot_contract was preregistered holds_to_k and is edited to violated after the run; violated via SSI divorce (an unsourced encoder action that un-marries a coverture pair, so R7's married condition fails). The edit follows the repo post hoc convention (docs/interpreting-results.md section 6); the baseline row already records the actual verdict. Constructed world (ADR 0018): pairs 1765 coverture with 1974+ SSI over one couple; not a historical regime. SSI revision 2 (2026-11-09, plans/ssi-entry.md \"Revision 2 run\"): the SSI member is a power reading only; its R2 and R3 need married and cohabits, its R1 is gone (`pay_benefit` is a default capacity), and married_rated_individually is expected reachable (a married pair living apart). Post-council (2026-11-09, correctness finding 5): coverture's `marry` leaves `cohabits` false (only SSI's `cohabit` sets it, and it starts false), so every coverture couple starts out \"living apart\" for SSI and the shortest witness of married_rated_individually is a couple who never cohabited (one step, after `marry` or `wed`), not a separation; `separate` reaches it too, later.",
   "defaults": {},
   "initial": [
    "(resources_under_limit partner_a)",

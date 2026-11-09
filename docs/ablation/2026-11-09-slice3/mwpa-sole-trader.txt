@@ -1,0 +1,19 @@
+== mwpa-sole-trader  transfer graph at k=6  (11 rules; weight = load(r2 | E minus r1) - load(r2 | E); freedom = load_freedom_up, goods = load_goods_primary; deletions only)
+-- freedom edges: 0
+   out-transfer (ranked edges): R2[superadditive]=0, R3[superadditive]=0, R4[tying]=0, R5[rival]=0, R6[rival]=0, R10[rival]=0, R11[tying]=0, R12[tying]=0, R13[tying]=0, R14[tying]=0, R15[tying]=0
+-- goods edges: 0
+   out-transfer (ranked edges): R2[superadditive]=0, R3[superadditive]=0, R4[tying]=0, R5[rival]=0, R6[rival]=0, R10[rival]=0, R11[tying]=0, R12[tying]=0, R13[tying]=0, R14[tying]=0, R15[tying]=0
+-- rebundling(E, r1): no rule
+   deregulated in E (their edges are unranked): R5, R10, R12, R13, R14
+== mwpa-sole-trader  transfer graph at k=8  (11 rules; weight = load(r2 | E minus r1) - load(r2 | E); freedom = load_freedom_up, goods = load_goods_primary; deletions only)
+-- freedom edges: 0
+   out-transfer (ranked edges): R2[superadditive]=0, R3[superadditive]=0, R4[tying]=0, R5[rival]=0, R6[rival]=0, R10[rival]=0, R11[tying]=0, R12[tying]=0, R13[tying]=0, R14[tying]=0, R15[tying]=0
+-- goods edges: 0
+   out-transfer (ranked edges): R2[superadditive]=0, R3[superadditive]=0, R4[tying]=0, R5[rival]=0, R6[rival]=0, R10[rival]=0, R11[tying]=0, R12[tying]=0, R13[tying]=0, R14[tying]=0, R15[tying]=0
+-- rebundling(E, r1): no rule
+   deregulated in E (their edges are unranked): R5, R10, R12, R13, R14
+   k-disagreement: none
+   1216.6s for 11 rules (110 ordered pairs) at k=6,8; cache: 2906 hit(s), 2680 miss(es), hit rate 52%
+
+wrote mwpa-sole-trader.json
+exit 0
